@@ -1,0 +1,7 @@
+{
+  "name": "NeoBoost EMS Oradea",
+  "description": "Website-ul oficial NeoBoost - Studio premium de antrenament EMS în Oradea. Eficiență, rezultate și suport personalizat în doar 30 de minute.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

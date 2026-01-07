@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBoost — Bio-Electric Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=League+Spartan:wght@100;300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: 25px;
+            --neon-accent: #00F5FF;
+            /* Turquoise Greenish / Cyan */
+            --accent-glow: 0 0 30px rgba(0, 245, 255, 0.3);
+            --deep-black: #030303;
+        }
+
+        body {
+            font-family: 'League Spartan', sans-serif;
+            background-color: var(--deep-black);
+            color: rgba(255, 255, 255, 0.9);
+            overflow-x: hidden;
+            cursor: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+
+            #custom-cursor {
+                display: none;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        .impact-font {
+            font-family: 'Antonio', sans-serif;
+            text-transform: uppercase;
+            line-height: 0.85;
+            /* Slightly increased for readability */
+            letter-spacing: -0.04em;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Minimalist Glassmorphism */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            /* Subtle depth */
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Glass Insertion - The "Block" look */
+        .glass-block {
+            background: rgba(255, 255, 255, 0.015);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            /* Sharp edges or very minimal rounded corners usually fit "cyberpunk" better, 
+               but we'll stick to established border-radius in components if used */
+        }
+
+        .glass-neon {
+            background: rgba(0, 245, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
+        }
+
+        .neon-border {
+            border: 1px solid rgba(0, 245, 255, 0.4);
+            box-shadow: var(--accent-glow);
+        }
+
+        .neon-text {
+            color: var(--neon-accent);
+            text-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+        }
+
+        /* Subtle Grid Background for that technical feel */
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 20%, transparent 80%, black 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%, black 100%);
+        }
+
+        .heading-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 40px rgba(0, 245, 255, 0.1);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+
+        .readable-text {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hardware acceleration hints */
+        .will-change-scroll {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+
+        /* Reveal Animations - Smoother Transitions */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Cursor Style */
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(0, 245, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            mix-blend-mode: difference;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        #custom-cursor::after {
+            content: "";
+            width: 4px;
+            height: 4px;
+            background: var(--neon-accent);
+            border-radius: 50%;
+        }
+
+        /* Optimized scanline effect - Fainter */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.02) 50%);
+            /* Much lighter scanline */
+            z-index: 9998;
+            background-size: 100% 3px;
+            /* Tighter lines */
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* Minimal scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+            /* Slightly wider for usability but still thin */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00FF88;
+        }
+
+        /* Morphing text mask */
+        .text-morph-mask {
+            background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.1) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Lightning Strike Animation - Aggressive flickering */
+        @keyframes lightning-strike {
+
+            0%,
+            85%,
+            90%,
+            95%,
+            100% {
+                text-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+                filter: brightness(1);
+            }
+
+            88%,
+            93%,
+            98% {
+                text-shadow: 0 0 40px #00F5FF;
+                filter: brightness(2) contrast(1.2);
+            }
+        }
+
+        .lightning-text {
+            animation: lightning-strike 8s infinite;
+            /* Slower loop */
+        }
+
+        /* Ambient Electric Glow */
+        @keyframes electric-glow {
+
+            0%,
+            100% {
+                opacity: 0.05;
+                filter: blur(80px);
+            }
+
+            50% {
+                opacity: 0.15;
+                filter: blur(120px);
+            }
+        }
+
+        .electric-glow {
+            animation: electric-glow 5s infinite ease-in-out;
+        }
+
+        @keyframes scan-fast {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(500%);
+            }
+        }
+
+        .animate-scan-fast {
+            animation: scan-fast 3s infinite linear;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulse-height {
+
+            0%,
+            100% {
+                height: 20%;
+            }
+
+            50% {
+                height: 100%;
+            }
+        }
+
+        @keyframes sound-wave {
+            0% {
+                transform: scaleY(0.5);
+            }
+
+            50% {
+                transform: scaleY(1.2);
+            }
+
+            100% {
+                transform: scaleY(0.5);
+            }
+        }
+
+        /* ===== LASER CLICK EFFECT ===== */
+        .laser-click {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.8) 0%, rgba(0, 245, 255, 0) 70%);
+            animation: laser-pulse 0.4s ease-out forwards;
+        }
+
+        .laser-click::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            border: 2px solid rgba(0, 245, 255, 0.6);
+            border-radius: 50%;
+            animation: laser-ring 0.5s ease-out forwards;
+        }
+
+        @keyframes laser-pulse {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes laser-ring {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Glitch Effect */
+        .glitch-hover:hover {
+            animation: glitch-anim 0.2s infinite;
+            text-shadow: 2px 0 #00F5FF, -2px 0 #ff00ff;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        .glitch-text-hover:hover {
+            position: relative;
+        }
+
+        .glitch-text-hover:hover::before,
+        .glitch-text-hover:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .glitch-text-hover:hover::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+
+        .glitch-text-hover:hover::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            animation: glitch-anim-2 1s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip: rect(31px, 9999px, 94px, 0);
+            }
+
+            5% {
+                clip: rect(2px, 9999px, 11px, 0);
+            }
+
+            10% {
+                clip: rect(78px, 9999px, 89px, 0);
+            }
+
+            15% {
+                clip: rect(10px, 9999px, 30px, 0);
+            }
+
+            /* ... more keyframes if needed but keeping it simple ... */
+            100% {
+                clip: rect(67px, 9999px, 50px, 0);
+            }
+        }
+
+        /* ===== MOBILE OPTIMIZATIONS ===== */
+        @media (max-width: 640px) {
+
+            h1,
+            h2,
+            .impact-font {
+                letter-spacing: -0.02em;
+            }
+
+            .glass-block {
+                padding: 1.25rem !important;
+            }
+
+            /* Larger touch targets */
+            a,
+            button {
+                min-height: 44px;
+            }
+
+            /* Better text scaling */
+            .text-7xl {
+                font-size: 3rem !important;
+            }
+
+            .text-6xl {
+                font-size: 2.5rem !important;
+            }
+
+            .text-5xl {
+                font-size: 2rem !important;
+            }
+
+            /* Remove heavy animations on mobile */
+            .animate-bounce,
+            .animate-pulse {
+                animation: none;
+            }
+        }
+
+        /* Touch feedback for mobile */
+        @media (hover: none) {
+
+            a:active,
+            button:active {
+                transform: scale(0.97);
+                transition: transform 0.1s;
+            }
+        }
+
+        /* Haptic feedback class */
+        .haptic-tap {
+            transition: transform 0.08s ease-out;
+        }
+
+        .haptic-tap:active {
+            transform: scale(0.96);
+        }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+
+<body>
+    <div id="custom-cursor"></div>
+    <div id="root"></div>
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        let mouseX = 0, mouseY = 0;
+        let curX = 0, curY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        }, { passive: true });
+
+        const loop = () => {
+            // Disable on touch devices to save battery/performance
+            if (window.matchMedia('(hover: none)').matches) return;
+
+            curX += (mouseX - curX) * 0.15;
+            curY += (mouseY - curY) * 0.15;
+            cursor.style.transform = `translate3d(${curX - 16}px, ${curY - 16}px, 0)`;
+            requestAnimationFrame(loop);
+        };
+
+        // Only start loop if not a touch device
+        if (window.matchMedia('(hover: hover)').matches) {
+            loop();
+        }
+
+        // ===== LASER CLICK EFFECT + HAPTIC FEEDBACK =====
+        document.addEventListener('click', (e) => {
+            // Create laser effect
+            const laser = document.createElement('div');
+            laser.className = 'laser-click';
+            laser.style.left = (e.clientX - 20) + 'px';
+            laser.style.top = (e.clientY - 20) + 'px';
+            document.body.appendChild(laser);
+
+            // Remove after animation
+            setTimeout(() => laser.remove(), 500);
+
+            // Haptic feedback on mobile (if supported)
+            if (navigator.vibrate) {
+                navigator.vibrate(15); // Short 15ms vibration
+            }
+        });
+
+        // ===== GLITCH SOUND EFFECT (Procedural) =====
+        const playGlitchSound = () => {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(Math.random() * 400 + 50, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(Math.random() * 1000 + 100, ctx.currentTime + 0.1);
+
+                gain.gain.setValueAtTime(0.05, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + 0.1);
+            } catch (e) { console.warn('Audio Context not allowed yet'); }
+        };
+
+        document.addEventListener('mousedown', (e) => {
+            if (e.target.closest('button, a, .glitch-hover')) {
+                playGlitchSound();
+            }
+        });
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
