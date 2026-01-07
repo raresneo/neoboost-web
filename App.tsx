@@ -1101,12 +1101,12 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
 
           <div className="flex flex-col gap-3">
             <button
-              onClick={() => user ? onCheckout(pkg) : onOpenAuth()}
+              onClick={() => onCheckout(pkg)}
               className="group/btn relative flex items-center justify-between p-5 bg-[#00F5FF] text-black overflow-hidden transition-all duration-500 shadow-[0_0_25px_rgba(0,245,255,0.2)] hover:shadow-[0_0_40px_rgba(0,245,255,0.4)] glitch-hover"
             >
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
               <span className="relative z-10 text-[11px] font-black tracking-[0.2em] uppercase">
-                {user ? 'CUMPĂRĂ ONLINE' : 'AUTENTIFICARE'}
+                CUMPĂRĂ ACUM
               </span>
               <CreditCard size={20} className="relative z-10" />
             </button>
@@ -2006,11 +2006,6 @@ const App: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false); // Audio ON by default for immersive experience
 
   const handleCheckout = async (pkg: NeoPackage) => {
-    if (!session?.user) {
-      setIsAuthOpen(true);
-      return;
-    }
-
     try {
       const price = parseInt(pkg.price.replace(/\D/g, ''));
       const isQuarterly = pricingPeriod === 'quarterly';
@@ -2020,8 +2015,8 @@ const App: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: session.user.id,
-          priceId: pkg.stripePriceId, // Use the ID we just added
+          userId: session?.user?.id, // Optional - only if logged in
+          priceId: pkg.stripePriceId,
           amount: price,
           productName: `${pkg.title} (${pricingPeriod === 'monthly' ? 'Lunar' : '3 Luni'})`,
           interval: 'month',

@@ -1,10 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import stripeRoutes from './routes/stripeRoutes';
-import userRoutes from './routes/userRoutes';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import stripeRoutes from './routes/stripeRoutes.ts';
+import userRoutes from './routes/userRoutes.ts';
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config({ path: join(__dirname, '.env') });
 
 const app = express();
 const port = process.env.PORT || 3001;

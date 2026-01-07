@@ -1,40 +1,42 @@
 
-import { Request, Response } from 'express';
-import { stripe, supabaseAdmin } from '../lib/clients';
+import type { Request, Response } from 'express';
+import { stripe, supabaseAdmin } from '../lib/clients.ts';
 
 export const createCheckoutSession = async (req: Request, res: Response) => {
     const { userId, priceId, amount, productName, interval, intervalCount, mode } = req.body;
 
     try {
-        // 1. Verify user exists in Supabase
-        const { data: profile, error: profileError } = await supabaseAdmin
-            .from('profiles')
-            .select('email, stripe_customer_id')
-            .eq('id', userId)
-            .single();
+        let customerId = undefined;
 
-        if (profileError || !profile) {
-            return res.status(404).json({ error: 'Utilizatorul nu a fost găsit.' });
-        }
-
-        let customerId = profile.stripe_customer_id;
-
-        // 2. Create Stripe Customer if not exists
-        if (!customerId) {
-            const customer = await stripe.customers.create({
-                email: profile.email,
-                metadata: { supabase_id: userId }
-            });
-            customerId = customer.id;
-
-            // Update profile with stripe_customer_id
-            await supabaseAdmin
+        // 1. If user is logged in, try to get/create their Stripe customer
+        if (userId) {
+            const { data: profile, error: profileError } = await supabaseAdmin
                 .from('profiles')
-                .update({ stripe_customer_id: customerId })
-                .eq('id', userId);
+                .select('email, stripe_customer_id')
+                .eq('id', userId)
+                .single();
+
+            if (profile) {
+                customerId = profile.stripe_customer_id;
+
+                // Create Stripe Customer if not exists
+                if (!customerId) {
+                    const customer = await stripe.customers.create({
+                        email: profile.email,
+                        metadata: { supabase_id: userId }
+                    });
+                    customerId = customer.id;
+
+                    // Update profile with stripe_customer_id
+                    await supabaseAdmin
+                        .from('profiles')
+                        .update({ stripe_customer_id: customerId })
+                        .eq('id', userId);
+                }
+            }
         }
 
-        // 3. Construct Line Items
+        // 2. Construct Line Items
         let line_items;
 
         if (priceId) {
@@ -70,23 +72,33 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
 
         const sessionMode = mode || (interval ? 'subscription' : 'payment');
 
-        // 4. Create Checkout Session
-        const session = await stripe.checkout.sessions.create({
-            customer: customerId,
+        // 3. Create Checkout Session
+        const sessionConfig: any = {
             line_items: line_items,
             mode: sessionMode,
             success_url: `${process.env.FRONTEND_URL}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.FRONTEND_URL}?payment_canceled=true`, // Redirect back to home with cancel param
-            client_reference_id: userId,
-            subscription_data: sessionMode === 'subscription' ? {
-                metadata: {
-                    supabase_id: userId
-                }
-            } : undefined,
-            metadata: {
-                supabase_id: userId
+            cancel_url: `${process.env.FRONTEND_URL}?payment_canceled=true`,
+        };
+
+        // Add customer if exists, otherwise Stripe will ask for email
+        if (customerId) {
+            sessionConfig.customer = customerId;
+        } else {
+            sessionConfig.customer_email = undefined; // Let Stripe collect it
+        }
+
+        // Add metadata
+        if (userId) {
+            sessionConfig.client_reference_id = userId;
+            if (sessionMode === 'subscription') {
+                sessionConfig.subscription_data = {
+                    metadata: { supabase_id: userId }
+                };
             }
-        });
+            sessionConfig.metadata = { supabase_id: userId };
+        }
+
+        const session = await stripe.checkout.sessions.create(sessionConfig);
 
         res.json({ url: session.url });
     } catch (error: any) {

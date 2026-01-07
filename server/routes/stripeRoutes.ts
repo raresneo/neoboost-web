@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import express from 'express';
-import { createCheckoutSession, handleWebhook } from '../controllers/stripeController';
+import { createCheckoutSession, handleWebhook } from '../controllers/stripeController.ts';
 
 const router = Router();
 

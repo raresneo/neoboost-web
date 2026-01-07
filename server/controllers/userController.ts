@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { supabaseAdmin } from '../lib/clients';
+import type { Request, Response } from 'express';
+import { supabaseAdmin } from '../lib/clients.ts';
 
 export const getUserProfile = async (req: Request, res: Response) => {
     const { userId } = req.params;
