@@ -2011,7 +2011,8 @@ const App: React.FC = () => {
       const isQuarterly = pricingPeriod === 'quarterly';
       const intervalCount = isQuarterly ? 3 : 1;
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/stripe/create-checkout-session`, {
+      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const res = await fetch(`${apiUrl}/api/stripe/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
