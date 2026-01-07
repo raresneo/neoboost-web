@@ -2402,7 +2402,36 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="h-px w-full bg-white/5 my-12"></div>
-              <div className="flex flex-col md:flex-row justify-between gap-6">
+
+              {/* Mandatory Legal Links */}
+              <div className="flex flex-wrap justify-center md:justify-start gap-8 mb-12 text-[10px] md:text-xs mono-font uppercase tracking-widest text-white/40">
+                <a href="#" className="hover:text-[#00F5FF] transition-colors">Politică de Confidențialitate</a>
+                <a href="#" className="hover:text-[#00F5FF] transition-colors">Termeni și condiții</a>
+                <a href="#" className="hover:text-[#00F5FF] transition-colors">Regulament Intern</a>
+                <a href="#faq" className="hover:text-[#00F5FF] transition-colors">Întrebări Frecvente</a>
+              </div>
+
+              {/* ANPC Badges */}
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-12">
+                <a
+                  href="https://ec.europa.eu/consumers/odr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto h-16 px-6 glass hover:glass-neon transition-all flex items-center justify-center border border-white/10"
+                >
+                  <img src="https://etamade-com.github.io/anpc-sal-sol-logo/anpc-sol.svg" alt="Solutionarea Online a Litigiilor" className="h-10 brightness-200 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all" />
+                </a>
+                <a
+                  href="https://anpc.ro/ce-este-sal/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto h-16 px-6 glass hover:glass-neon transition-all flex items-center justify-center border border-white/10"
+                >
+                  <img src="https://etamade-com.github.io/anpc-sal-sol-logo/anpc-sal.svg" alt="Solutionarea Alternativa a Litigiilor" className="h-10 brightness-200 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all" />
+                </a>
+              </div>
+
+              <div className="flex flex-col md:flex-row justify-between gap-6 pt-6 border-t border-white/5">
                 <p className="mono-font text-[9px] text-white/20 uppercase tracking-[0.4em]">© 2025 NeoBoost — Performanță Bio-Electrică Oradea</p>
                 <p className="mono-font text-[9px] text-white/10 uppercase tracking-[0.4em]">Tehnologie Integrated Muscle Stimulation</p>
               </div>
