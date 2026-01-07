@@ -198,7 +198,7 @@ const AnimatedCounter: React.FC<{ value: number; duration?: number; suffix?: str
 
       const progress = Math.min((currentTime - startTime) / duration, 1);
       const easedProgress = 1 - Math.pow(1 - progress, 4); // Quartic ease out
-      const currentCount = Math.floor(easedProgress * value);
+      const currentCount = easedProgress * value;
 
       setCount(currentCount);
 
@@ -210,7 +210,8 @@ const AnimatedCounter: React.FC<{ value: number; duration?: number; suffix?: str
     requestAnimationFrame(animate);
   }, [isVisible, value, duration, delay]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  const decimals = value % 1 !== 0 ? 1 : 0;
+  return <span ref={ref}>{count.toFixed(decimals)}{suffix}</span>;
 };
 
 const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
@@ -446,19 +447,20 @@ const SciencePage: React.FC<{ onBack: () => void; initialArticleId?: string | nu
   return (
     <div className="min-h-screen bg-black text-white relative z-50">
       {/* Fixed Navigation Header */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-white/10 px-4 md:px-6 py-4 flex items-center justify-between">
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#00F5FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
         <div className="flex items-center gap-4">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-white/60 hover:text-[#00F5FF] transition-colors text-[10px] md:text-sm font-black uppercase tracking-widest"
+            className="flex items-center gap-3 text-[#00F5FF] hover:bg-[#00F5FF]/10 transition-all px-4 py-2 rounded-lg border border-[#00F5FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
           >
-            <ChevronDown size={16} className="rotate-90" />
-            ÎNAPOI
+            <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
+            ÎNAPOI LA SITE
           </button>
         </div>
-        <div className="mono-font text-[#00F5FF] text-[10px] md:text-xs font-black tracking-[0.3em] uppercase">
-          SCIENCE ZONE
+        <div className="mono-font text-[#00F5FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase hidden sm:block">
+          NEOBOOST / RESEARCH
         </div>
+        <img src="/logo_white.png" alt="Logo" className="w-8 h-8 object-contain opacity-50" />
       </div>
 
       <div className="pt-20">
@@ -970,17 +972,17 @@ const ImmersiveHero = () => {
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white/60 text-sm md:text-base">
           <div className="flex items-center gap-2">
             <Star size={18} className="text-yellow-400 fill-yellow-400" />
-            <span><strong className="text-white">4.9</strong> pe Google</span>
+            <span><strong className="text-white"><AnimatedCounter value={4.9} duration={1500} suffix="" /></strong> pe Google</span>
           </div>
           <div className="w-px h-5 bg-white/20 hidden md:block"></div>
           <div className="flex items-center gap-2">
             <CheckCircle2 size={18} className="text-[#00F5FF]" />
-            <span><strong className="text-white">500+</strong> clienți activi</span>
+            <span><strong className="text-white"><AnimatedCounter value={500} suffix="+" /></strong> clienți activi</span>
           </div>
           <div className="w-px h-5 bg-white/20 hidden md:block"></div>
           <div className="flex items-center gap-2">
             <Zap size={18} className="text-[#00F5FF]" />
-            <span><strong className="text-white">3000+</strong> ședințe EMS</span>
+            <span><strong className="text-white"><AnimatedCounter value={3000} suffix="+" /></strong> ședințe EMS</span>
           </div>
         </div>
 
@@ -1501,10 +1503,13 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => setIsMenuOpen(false)}
-                className="impact-font text-5xl md:text-7xl text-white uppercase tracking-tighter hover:text-[#00F5FF] transition-all block"
+                className="group flex items-end gap-4"
                 style={{ transitionDelay: `${idx * 50}ms`, transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)' }}
               >
-                {item.label}
+                <span className="mono-font text-[#00F5FF] text-xs font-bold mb-4 opacity-40 group-hover:opacity-100 transition-opacity">0{idx + 1}</span>
+                <span className="impact-font text-5xl md:text-8xl text-white uppercase tracking-tighter hover:text-[#00F5FF] hover:translate-x-4 transition-all duration-500 block">
+                  {item.label}
+                </span>
               </a>
             ))}
           </div>
@@ -1998,10 +2003,24 @@ const App: React.FC = () => {
       });
     });
 
+    // Handle Browser Back Button for internal views
+    const handlePopState = () => {
+      setActiveView('home');
+    };
+    window.addEventListener('popstate', handlePopState);
+
     return () => {
       lenis.destroy();
+      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
+
+  // Update history state when view changes
+  useEffect(() => {
+    if (activeView === 'science') {
+      window.history.pushState({ view: 'science' }, '');
+    }
+  }, [activeView]);
 
   const [isMuted, setIsMuted] = useState(false); // Audio ON by default for immersive experience
 
