@@ -286,7 +286,7 @@ const BenefitsVideoBackground = () => {
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-40 grayscale-[20%] contrast-[1.2] brightness-75 mix-blend-overlay scale-[2]">
         <iframe
-          src="https://www.youtube.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+          src={`https://www.youtube-nocookie.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Benefits"
@@ -306,7 +306,7 @@ const BiohackVideoBackground = () => {
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-40 grayscale-[20%] contrast-[1.1] brightness-75 mix-blend-screen scale-[2]">
         <iframe
-          src="https://www.youtube.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+          src={`https://www.youtube-nocookie.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Biohack"
@@ -326,7 +326,7 @@ const TechnologyVideoBackground = () => {
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-40 grayscale-[20%] contrast-[1.1] brightness-75 mix-blend-screen scale-[1.3]">
         <iframe
-          src="https://www.youtube.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+          src={`https://www.youtube-nocookie.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Technology"
@@ -346,7 +346,7 @@ const ProgramsVideoBackground = () => {
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-50 grayscale-[10%] contrast-[1.1] brightness-90 mix-blend-screen scale-[2.4]">
         <iframe
-          src="https://www.youtube.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+          src={`https://www.youtube-nocookie.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Programs"
@@ -655,7 +655,7 @@ const EvolutionVideoBackground = () => (
   <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[5%] brightness-100 contrast-[1.1] scale-[2.4]">
       <iframe
-        src="https://www.youtube.com/embed/dHSf8UHlfYo?autoplay=1&mute=1&controls=0&loop=1&playlist=dHSf8UHlfYo&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+        src={`https://www.youtube-nocookie.com/embed/dHSf8UHlfYo?autoplay=1&mute=1&controls=0&loop=1&playlist=dHSf8UHlfYo&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
         className="w-full h-full pointer-events-none"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         title="NeoBoost Evolution"
@@ -673,7 +673,7 @@ const HistoryVideoBackground = () => (
   <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-50 grayscale-[10%] brightness-90 contrast-[1.1] scale-[1.5]">
       <iframe
-        src="https://www.youtube.com/embed/gihuF94qjWA?autoplay=1&mute=1&controls=0&loop=1&playlist=gihuF94qjWA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+        src={`https://www.youtube-nocookie.com/embed/gihuF94qjWA?autoplay=1&mute=1&controls=0&loop=1&playlist=gihuF94qjWA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
         className="w-full h-full pointer-events-none"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         title="NeoBoost EMS History"
@@ -912,7 +912,7 @@ const ImmersiveHero = () => {
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full">
             <iframe
-              src="https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+              src={`https://www.youtube-nocookie.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
               className="w-full h-full opacity-65 grayscale-[20%] scale-[2.2] pointer-events-none"
               style={{ filter: 'brightness(0.7) contrast(1.1)' }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1692,7 +1692,7 @@ const TrialVideoBackground = () => (
   <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-30 grayscale-[10%] brightness-50 contrast-[1.1] scale-[1.5]">
       <iframe
-        src="https://www.youtube.com/embed/2yi5qIn9J7w?autoplay=1&mute=1&controls=0&loop=1&playlist=2yi5qIn9J7w&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+        src={`https://www.youtube-nocookie.com/embed/2yi5qIn9J7w?autoplay=1&mute=1&controls=0&loop=1&playlist=2yi5qIn9J7w&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${window.location.origin}&modestbranding=1`}
         className="w-full h-full pointer-events-none"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         title="NeoBoost Trial Experience"
