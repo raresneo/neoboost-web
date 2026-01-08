@@ -73,11 +73,12 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
         const sessionMode = mode || (interval ? 'subscription' : 'payment');
 
         // 3. Create Checkout Session
+        const frontendUrl = process.env.FRONTEND_URL || 'https://www.neo-boost.com';
         const sessionConfig: any = {
             line_items: line_items,
             mode: sessionMode,
-            success_url: `${process.env.FRONTEND_URL}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.FRONTEND_URL}?payment_canceled=true`,
+            success_url: `${frontendUrl}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${frontendUrl}?payment_canceled=true`,
         };
 
         // Add customer if exists, otherwise Stripe will ask for email

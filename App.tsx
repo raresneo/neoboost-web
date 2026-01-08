@@ -2181,15 +2181,14 @@ const App: React.FC = () => {
       });
 
       const data = await res.json();
-      if (data.url) {
+      if (res.ok && data.url) {
         window.location.href = data.url;
       } else {
-        console.error(data);
-        alert('Eroare la inițierea plății: ' + (data.error || 'Necunoscută'));
+        alert(`Eroare Stripe: ${data.error || 'Serverul nu a returnat un URL valid.'}`);
       }
-    } catch (e) {
-      console.error(e);
-      alert('Eroare conexiune server.');
+    } catch (err: any) {
+      console.error('Checkout error:', err);
+      alert(`Eroare conexiune: ${err.message || 'Verifică conexiunea la internet sau setările serverului.'}`);
     }
   };
 

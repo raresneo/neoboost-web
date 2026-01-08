@@ -7,8 +7,10 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Load environment variables from server/.env
-dotenv.config({ path: join(__dirname, '..', '.env') });
+// Load environment variables from server/.env only in development
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config({ path: join(__dirname, '..', '.env') });
+}
 
 console.log('Environment check:', {
     url: process.env.VITE_SUPABASE_URL,
