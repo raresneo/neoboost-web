@@ -1,6 +1,6 @@
 
 import type { Request, Response } from 'express';
-import { stripe, supabaseAdmin } from '../lib/clients.ts';
+import { stripe, supabaseAdmin } from '../lib/clients';
 
 export const createCheckoutSession = async (req: Request, res: Response) => {
     const { userId, priceId, amount, productName, interval, intervalCount, mode } = req.body;

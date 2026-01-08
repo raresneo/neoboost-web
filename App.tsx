@@ -2160,13 +2160,13 @@ const App: React.FC = () => {
       const isQuarterly = pricingPeriod === 'quarterly';
       const intervalCount = isQuarterly ? 3 : 1;
 
-      // Use relative path for same-domain API calls on Vercel
-      const apiUrl = '';
+      // Use absolute URL for maximum compatibility with iOS/Safari
+      const apiUrl = typeof window !== 'undefined' ? window.location.origin : '';
       const res = await fetch(`${apiUrl}/api/stripe/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: session?.user?.id, // Optional - only if logged in
+          userId: session?.user?.id,
           priceId: pkg.stripePriceId,
           amount: price,
           productName: `${pkg.title} (${pricingPeriod === 'monthly' ? 'Lunar' : '3 Luni'})`,
@@ -2174,21 +2174,23 @@ const App: React.FC = () => {
           intervalCount: intervalCount
         })
       });
-      trackEvent('InitiateCheckout', {
-        content_name: pkg.title,
-        value: price,
-        currency: 'RON'
-      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Server status ${res.status}: ${errorText.substring(0, 50)}`);
+      }
 
       const data = await res.json();
-      if (res.ok && data.url) {
+      if (data.url) {
         window.location.href = data.url;
       } else {
         alert(`Eroare Stripe: ${data.error || 'Serverul nu a returnat un URL valid.'}`);
       }
     } catch (err: any) {
       console.error('Checkout error:', err);
-      alert(`Eroare conexiune: ${err.message || 'Verifică conexiunea la internet sau setările serverului.'}`);
+      // More descriptive error for debugging
+      const msg = err.message || 'Verifică conexiunea la internet.';
+      alert(`Eroare conexiune: ${msg}`);
     }
   };
 
