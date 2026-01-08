@@ -4,10 +4,10 @@ import { createCheckoutSession, handleWebhook } from '../controllers/stripeContr
 
 const router = Router();
 
-// Webhook for Stripe (needs raw body)
+// 1. Webhook - TREBUIE să fie RAW pentru semnătură
 router.post('/webhook', express.raw({ type: 'application/json' }), handleWebhook);
 
-// Check out session (needs JSON body)
+// 2. Checkout - TREBUIE să fie JSON
 router.post('/create-checkout-session', express.json(), createCheckoutSession);
 
 export default router;

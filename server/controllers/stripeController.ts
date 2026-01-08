@@ -3,13 +3,15 @@ import type { Request, Response } from 'express';
 import { stripe, supabaseAdmin } from '../lib/clients';
 
 export const createCheckoutSession = async (req: Request, res: Response) => {
-    const { userId, priceId, amount, productName, interval, intervalCount, mode } = req.body;
-
-    if (!process.env.STRIPE_SECRET_KEY) {
-        return res.status(401).json({ error: 'STRIPE_SECRET_KEY is not defined in the environment variables.' });
-    }
-
     try {
+        const { userId, priceId, amount, productName, interval, intervalCount, mode } = req.body;
+        console.log('📦 Checkout Request:', { userId, productName, priceId });
+
+        if (!process.env.STRIPE_SECRET_KEY) {
+            console.error('❌ Missing STRIPE_SECRET_KEY');
+            return res.status(401).json({ error: 'Configurare Stripe incompletă pe server.' });
+        }
+
         let customerId = undefined;
 
         // 1. If user is logged in, try to get/create their Stripe customer
