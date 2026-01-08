@@ -3,8 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import stripeRoutes from './routes/stripeRoutes.ts';
-import userRoutes from './routes/userRoutes.ts';
+import stripeRoutes from './routes/stripeRoutes';
+import userRoutes from './routes/userRoutes';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,16 +23,17 @@ app.use(cors({
 app.use('/api/stripe', stripeRoutes);
 app.use('/api/users', userRoutes);
 
-// General User routes placeholder
+// Health Check
 app.get('/health', (req, res) => {
     res.json({ status: 'Backend is running ⚡️' });
 });
 
-app.listen(port, () => {
-    console.log(`
-  🚀 NeoBoost Server is live!
-  📡 Port: ${port}
-  🔗 API: http://localhost:${port}/api
-  ✅ Health Check: http://localhost:${port}/health
-  `);
-});
+// Conditionally listen if running directly
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => {
+        console.log(`🚀 NeoBoost Server for development: http://localhost:${port}`);
+    });
+}
+
+// Export for Vercel
+export default app;
