@@ -5,6 +5,10 @@ import { stripe, supabaseAdmin } from '../lib/clients';
 export const createCheckoutSession = async (req: Request, res: Response) => {
     const { userId, priceId, amount, productName, interval, intervalCount, mode } = req.body;
 
+    if (!process.env.STRIPE_SECRET_KEY) {
+        return res.status(401).json({ error: 'STRIPE_SECRET_KEY is not defined in the environment variables.' });
+    }
+
     try {
         let customerId = undefined;
 

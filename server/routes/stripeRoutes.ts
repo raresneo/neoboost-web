@@ -4,10 +4,10 @@ import { createCheckoutSession, handleWebhook } from '../controllers/stripeContr
 
 const router = Router();
 
-// STRIPE ROUTES
-// Note: Webhook needs raw body for signature verification
+// Webhook for Stripe (needs raw body)
 router.post('/webhook', express.raw({ type: 'application/json' }), handleWebhook);
 
+// Check out session (needs JSON body)
 router.post('/create-checkout-session', express.json(), createCheckoutSession);
 
 export default router;
