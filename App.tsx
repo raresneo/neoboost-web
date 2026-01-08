@@ -1307,10 +1307,14 @@ const ProgramModal: React.FC<{ program: typeof PROGRAMS[0] | null; onClose: () =
   useEffect(() => {
     setIsApplying(false);
     if (program) {
+      // Small delay to allow portal-like entry
       document.body.style.overflow = 'hidden';
+      // Signal Lenis to stop if present
+      if ((window as any).lenis) (window as any).lenis.stop();
     }
     return () => {
       document.body.style.overflow = 'unset';
+      if ((window as any).lenis) (window as any).lenis.start();
     };
   }, [program]);
 
@@ -1323,57 +1327,86 @@ const ProgramModal: React.FC<{ program: typeof PROGRAMS[0] | null; onClose: () =
   }
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-0 md:p-10 overscroll-contain">
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose}></div>
-      <div className="relative w-full max-w-4xl h-[100dvh] md:h-auto md:max-h-[90vh] bg-[#0a0a0a] border-x md:border border-[#00F5FF]/20 shadow-[0_0_50px_rgba(0,245,255,0.1)] md:rounded-3xl overflow-hidden flex flex-col">
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-black/50">
-          <h3 className="impact-font text-2xl text-white uppercase">{program.title}</h3>
-          <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors text-white/60 hover:text-white">
-            <CloseIcon size={24} />
-          </button>
-        </div>
+    <div className={`fixed inset-0 z-[250] flex flex-col bg-black overflow-hidden transition-all duration-700 ${program ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-[#050505]">
+        <div className="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-[#00F5FF]/5 to-transparent"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00F5FF]/10 rounded-full blur-[120px]"></div>
+      </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto font-sans text-white/80 leading-relaxed whitespace-pre-wrap scrollbar-thin scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20">
+      {/* Navigation Header */}
+      <div className="relative z-10 flex items-center justify-between p-6 md:p-10 border-b border-white/5 backdrop-blur-3xl bg-black/40">
+        <button
+          onClick={onClose}
+          className="flex items-center gap-3 text-[#00F5FF] hover:bg-[#00F5FF]/10 transition-all px-4 py-2 rounded-lg border border-[#00F5FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
+        >
+          <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
+          ÎNAPOI LA SITE
+        </button>
+        <div className="mono-font text-[#00F5FF]/60 text-[10px] font-black tracking-[0.4em] uppercase hidden sm:block">
+          PROGRAME / {program.title}
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="relative z-10 flex-1 overflow-y-auto scroll-smooth">
+        <div className="container mx-auto max-w-5xl">
           {program.image && (
-            <div className="w-full aspect-video md:aspect-[21/9] overflow-hidden">
+            <div className="relative w-full aspect-[16/6] md:aspect-[21/7] overflow-hidden">
               <img
                 src={program.image}
                 alt={program.title}
-                className="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-1000"
+                className="w-full h-full object-cover opacity-60"
               />
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[#0a0a0a]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent hidden md:block"></div>
             </div>
           )}
-          <div className="p-6 md:p-10 prose prose-invert max-w-none">
-            {program.content.replace(/\[WHATSAPP_LINK\]/g, "").replace(/\[LINK FORMULAR\]/g, "")}
-          </div>
-        </div>
 
-        {/* Sticky Footer CTA */}
-        <div className="p-6 border-t border-white/10 bg-black/50 flex flex-col md:flex-row gap-4 items-center justify-between">
-          <div className="text-xs text-white/40 hidden md:block">
-            *Locurile sunt limitate.
+          <div className="px-6 py-12 md:px-20 md:py-20 flex flex-col lg:flex-row gap-16">
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-1 bg-[#00F5FF]"></div>
+                <span className="mono-font text-[10px] text-[#00F5FF] font-black uppercase tracking-[0.4em]">{program.tag}</span>
+              </div>
+              <h2 className="text-5xl md:text-8xl font-black impact-font text-white mb-8 border-b border-white/5 pb-8 uppercase leading-none">
+                {program.title}
+              </h2>
+              <div className="prose prose-invert prose-lg max-w-none text-white/60 font-light leading-relaxed mb-12">
+                {program.content.replace(/\[WHATSAPP_LINK\]/g, "").replace(/\[LINK FORMULAR\]/g, "")}
+              </div>
+            </div>
+
+            <div className="lg:w-80 shrink-0">
+              <div className="sticky top-0 glass-block p-8 border-[#00F5FF]/20 space-y-8">
+                <div>
+                  <span className="text-[10px] font-black text-[#00F5FF] uppercase tracking-widest block mb-4">Recomandat pentru</span>
+                  <div className="text-white font-bold impact-font text-2xl uppercase">{program.idealFor}</div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-black text-[#00F5FF] uppercase tracking-widest block mb-4">Durată</span>
+                  <div className="text-white font-bold impact-font text-2xl uppercase">{program.duration}</div>
+                </div>
+
+                {formConfig ? (
+                  <button
+                    onClick={() => setIsApplying(true)}
+                    className="w-full bg-[#00F5FF] text-black py-5 font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_30px_rgba(0,245,255,0.3)]"
+                  >
+                    REZERVARE LOC
+                  </button>
+                ) : (
+                  <a
+                    href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să mă înscriu în programul ${program.title}.`}
+                    target="_blank"
+                    className="w-full bg-[#00F5FF] text-black py-5 font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all text-center block shadow-[0_0_30px_rgba(0,245,255,0.3)]"
+                  >
+                    CONTACT WHATSAPP
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
-          {formConfig ? (
-            <button
-              onClick={() => setIsApplying(true)}
-              className="w-full md:w-auto bg-[#00F5FF] text-black px-8 py-3 font-black impact-font uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,255,136,0.2)]"
-            >
-              <MessageCircle size={18} />
-              Aplică Acum
-            </button>
-          ) : (
-            <a
-              href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să mă înscriu în programul ${program.title}.`}
-              target="_blank"
-              className="w-full md:w-auto bg-[#00F5FF] text-black px-8 py-3 font-black impact-font uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2"
-            >
-              <MessageCircle size={18} />
-              Aplică Acum
-            </a>
-          )}
         </div>
       </div>
     </div>
