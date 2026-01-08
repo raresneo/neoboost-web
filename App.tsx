@@ -157,6 +157,26 @@ const ScrollReveal: React.FC<{ children: React.ReactNode; className?: string; de
   );
 };
 
+// --- Conversion Tracking Utility ---
+const trackEvent = (name: string, data?: any) => {
+  // Google Ads
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, data);
+  }
+  // Meta Pixel
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', name, data);
+  }
+  console.log(`[Tracking] ${name}`, data);
+};
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 // --- Interactive Stats Components (moved into ObjectivesWithSlider) ---
 
 const AnimatedCounter: React.FC<{ value: number; duration?: number; suffix?: string; delay?: number }> = ({ value, duration = 2000, suffix = "", delay = 0 }) => {
@@ -2069,6 +2089,10 @@ const App: React.FC = () => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('payment_success')) {
       setShowSuccessModal(true);
+      trackEvent('Purchase', {
+        currency: 'RON',
+        value: 0 // Ideally get from URL or session
+      });
       window.history.replaceState({}, '', window.location.pathname);
     }
 
@@ -2149,6 +2173,12 @@ const App: React.FC = () => {
           intervalCount: intervalCount
         })
       });
+      trackEvent('InitiateCheckout', {
+        content_name: pkg.title,
+        value: price,
+        currency: 'RON'
+      });
+
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;

@@ -208,6 +208,15 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                             href={whatsappUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => {
+                                // Basic tracking for Lead/Contact
+                                if (typeof (window as any).gtag === 'function') {
+                                    (window as any).gtag('event', 'generate_lead', { 'event_category': 'form', 'event_label': 'whatsapp_send' });
+                                }
+                                if (typeof (window as any).fbq === 'function') {
+                                    (window as any).fbq('track', 'Contact');
+                                }
+                            }}
                             className="w-full block bg-[#00F5FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(0,255,136,0.3)] hover:shadow-[0_0_60px_rgba(0,255,136,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3"
                         >
                             <MessageCircle size={28} />
