@@ -1620,7 +1620,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
         </div>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-[#080808] z-[150] transition-all duration-500 flex flex-col pt-32 px-10 md:px-24 overflow-y-auto ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-black z-[150] transition-all duration-700 flex flex-col pt-32 px-10 md:px-24 overflow-y-auto origin-top ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 scale-95 pointer-events-none'}`}>
           {/* Menu Items */}
           <div className="flex flex-col gap-6 md:gap-8 mb-16">
             {navItems.map((item, idx) => (
@@ -2160,7 +2160,8 @@ const App: React.FC = () => {
       const isQuarterly = pricingPeriod === 'quarterly';
       const intervalCount = isQuarterly ? 3 : 1;
 
-      const apiUrl = import.meta.env.VITE_API_URL || '';
+      // Use relative path for same-domain API calls on Vercel
+      const apiUrl = '';
       const res = await fetch(`${apiUrl}/api/stripe/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

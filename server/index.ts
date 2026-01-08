@@ -20,8 +20,12 @@ app.use(cors({
 }));
 
 // API Routes
+// On Vercel, the /api path might be stripped or kept depending on configuration
+// We mount them both with and without the /api prefix to be safe
 app.use('/api/stripe', stripeRoutes);
 app.use('/api/users', userRoutes);
+app.use('/stripe', stripeRoutes);
+app.use('/users', userRoutes);
 
 // Health Check
 app.get('/health', (req, res) => {
