@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import express from 'express';
-import { getUserProfile, updateMembershipStatus } from '../controllers/userController.ts';
+import { getUserProfile, updateMembershipStatus } from '../controllers/userController';
 
 const router = Router();
 
