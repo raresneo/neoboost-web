@@ -386,19 +386,16 @@ const BenefitsVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
       {/* 
-        Fallback Image:
-        Visible if video fails to load or autoplay (Mobile Low Power Mode)
+        Fallback Image (ALWAYS VISIBLE ON MOBILE to prevent YouTube logo/loading issues) 
+        The iframe will sit on top only on larger screens where autoplay is reliable.
       */}
-      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="absolute inset-0 bg-cover bg-center opacity-50 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
 
       {/* 
         Video Wrapper: 
-        - 177.78vh = 16/9 * 100vh (Height-based cover)
-        - 56.25vw = 9/16 * 100vw (Width-based cover)
-        - min-w-full & min-h-full ensure it always covers the box
-        - scale-[1.35] provides a safe zoom
+        Hidden on mobile (max-width: 768px) to guarantee clean UI without YouTube logos/play buttons.
       */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[1.35]">
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
@@ -407,7 +404,7 @@ const BenefitsVideoBackground = () => {
           referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
-      {/* VIGNETTE FADE - Optimized for Mobile Readability */}
+      {/* VIGNETTE FADE */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] z-10 opacity-90"></div>
       <div className="absolute inset-0 bg-black/40 z-10"></div>
@@ -416,14 +413,15 @@ const BenefitsVideoBackground = () => {
 };
 
 // --- Biohack Video Background Component ---
+// --- Biohack Video Background Component ---
 const BiohackVideoBackground = () => {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
   const fallbackImage = "/Cems2.jpg";
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
+      <div className="absolute inset-0 bg-cover bg-center opacity-50 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
@@ -446,8 +444,8 @@ const TechnologyVideoBackground = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      <div className="absolute inset-0 bg-cover bg-center opacity-30 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
+      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
@@ -470,8 +468,8 @@ const ProgramsVideoBackground = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[1.35]">
+      <div className="absolute inset-0 bg-cover bg-center opacity-50 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
@@ -1635,37 +1633,36 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
             </a>
           </div>
 
-          {/* Mobile UI Buttons */}
-          <div className="flex lg:hidden items-center gap-3">
+          {/* Mobile UI Buttons - FIXED Z-INDEX & VISIBILITY */}
+          <div className="flex lg:hidden items-center gap-3 relative z-[101]">
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#00F5FF]/20 border-[#00F5FF]/40 text-[#00F5FF]' : 'bg-white/5 text-white/40'}`}
+              className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#00F5FF]/20 border-[#00F5FF]/40 text-[#00F5FF]' : 'bg-black/40 text-white/40'}`}
             >
               {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all ${isMenuOpen ? 'text-[#00F5FF] bg-white/10' : 'text-white bg-white/5'}`}
+              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all backdrop-blur-md border border-white/10 ${isMenuOpen ? 'text-[#00F5FF] bg-black/60' : 'text-white bg-black/40'}`}
             >
-              {isMenuOpen ? <CloseIcon size={28} /> : <Menu size={28} />}
+              {isMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-black z-[150] transition-all duration-700 flex flex-col pt-32 px-10 md:px-24 overflow-y-auto origin-top ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 scale-95 pointer-events-none'}`}>
+        {/* Mobile Menu Overlay - FIXED "BLACK" APPEARANCE & ANIMATION */}
+        <div className={`fixed inset-0 bg-[#050505] z-[100] transition-all duration-500 flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
           {/* Menu Items */}
-          <div className="flex flex-col gap-6 md:gap-8 mb-16">
+          <div className="flex flex-col gap-6 mb-12">
             {navItems.map((item, idx) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => setIsMenuOpen(false)}
-                className="group flex items-end gap-4"
-                style={{ transitionDelay: `${idx * 50}ms`, transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)' }}
+                className="group flex items-center gap-4 border-b border-white/5 pb-4"
               >
-                <span className="mono-font text-[#00F5FF] text-xs font-bold mb-4 opacity-40 group-hover:opacity-100 transition-opacity">0{idx + 1}</span>
-                <span className="impact-font text-5xl md:text-8xl text-white uppercase tracking-tighter group-hover:text-[#00F5FF] group-hover:translate-x-4 transition-all duration-500 block" style={{ color: 'white' }}>
+                <span className="mono-font text-[#00F5FF] text-xs font-bold opacity-60">0{idx + 1}</span>
+                <span className="impact-font text-4xl text-white uppercase tracking-tight group-hover:text-[#00F5FF] transition-colors">
                   {item.label}
                 </span>
               </a>
