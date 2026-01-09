@@ -91,7 +91,7 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-[9999] bg-black text-white flex flex-col h-[100dvh] w-screen overscroll-none touch-none">
+        <div className="fixed inset-0 z-[100000] bg-black text-white flex flex-col h-[100dvh] w-screen overscroll-none" style={{ touchAction: 'pan-y' }}>
             {/* Header */}
             <div className="flex justify-between items-center p-4 md:p-6 border-b border-white/10 bg-black z-50">
                 <div>

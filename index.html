@@ -343,6 +343,32 @@
             }
         }
 
+        .hi-fi-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #00F5FF;
+            border-radius: 5px;
+            border: 2px solid #000000;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #00D1DA;
+        }
+
         /* ===== LASER CLICK EFFECT ===== */
         .laser-click {
             position: fixed;
@@ -389,6 +415,61 @@
             100% {
                 transform: scale(1.5);
                 opacity: 0;
+            }
+        }
+
+        /* ===== BEAM ANIMATIONS ===== */
+        @keyframes beam-slide-1 {
+            0% {
+                transform: translateY(-100%) translateX(-100%) rotate(45deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            80% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(100%) translateX(100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes beam-slide-2 {
+            0% {
+                transform: translateY(100%) translateX(-100%) rotate(-45deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            80% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100%) translateX(100%) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes beam-pulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
             }
         }
 

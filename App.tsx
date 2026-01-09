@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Lenis from 'lenis';
+import { ProgramModal } from './components/ProgramModal';
 import {
   X,
   MessageCircle,
@@ -60,7 +61,7 @@ const StaggeredText: React.FC<{ text: string; className?: string; delay?: number
         setIsVisible(true);
         observer.disconnect();
       }
-    }, { threshold: 0.1 }); // Use a local observer for text to ensure it triggers correctly
+    }, { threshold: 0.1 });
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -301,11 +302,87 @@ const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
   );
 };
 
+// --- Mouse-Reactive Glitch Overlay (Refined & Global) ---
+const DynamicGlitchOverlay = () => {
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 }); // Center default
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Use window dimensions for normalized coordinates
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      setMousePos({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-[1] pointer-events-none overflow-hidden mix-blend-screen select-none">
+
+      {/* 1. MIGRATING BEAMS (Unified & Discreet) */}
+      {/* Beam 1: Cyan/Blue - Top Left to Bottom Right - Very Slow & Faint */}
+      <div
+        className="absolute w-[200%] h-[200px] blur-[100px] opacity-[0.15]"
+        style={{
+          background: 'linear-gradient(90deg, transparent, #00F5FF, #0044FF, transparent)',
+          left: '-50%',
+          top: '-20%',
+          transform: 'rotate(15deg)',
+          animation: 'beam-slide-1 25s infinite linear'
+        }}
+      />
+
+      {/* Beam 2: Purple/Pink - Bottom Left to Top Right - Very Slow & Faint */}
+      <div
+        className="absolute w-[200%] h-[250px] blur-[120px] opacity-[0.12]"
+        style={{
+          background: 'linear-gradient(90deg, transparent, #8000FF, #FF00CC, transparent)',
+          left: '-50%',
+          bottom: '-20%',
+          transform: 'rotate(-15deg)',
+          animation: 'beam-slide-2 35s infinite linear',
+          animationDelay: '2s'
+        }}
+      />
+
+      {/* 2. MOUSE AURA (Subtle Interaction) */}
+      <div
+        className="absolute w-[1000px] h-[1000px] rounded-full blur-[150px] opacity-[0.15] transition-transform duration-500 ease-out will-change-transform"
+        style={{
+          background: `radial-gradient(circle, rgba(0,245,255,0.4) 0%, rgba(138,43,226,0.2) 40%, transparent 70%)`,
+          left: `calc(${mousePos.x * 100}% - 500px)`,
+          top: `calc(${mousePos.y * 100}% - 500px)`,
+        }}
+      />
+
+      {/* 3. UNIFORM NOISE (Film Grain Style) */}
+      <div
+        className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* 4. SUBTLE SCANLINES */}
+      <div
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 50%, rgba(0, 245, 255, 0.1) 50%)',
+          backgroundSize: '100% 4px'
+        }}
+      />
+
+    </div>
+  );
+};
+
 // --- Benefits Video Background Component ---
 const BenefitsVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-40 grayscale-[20%] contrast-[1.2] brightness-75 mix-blend-overlay scale-[2]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[2]">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
           className="w-full h-full pointer-events-none"
@@ -316,7 +393,7 @@ const BenefitsVideoBackground = () => {
       {/* VIGNETTE FADE */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-black/40 z-10"></div>
     </div>
   );
 };
@@ -325,7 +402,7 @@ const BenefitsVideoBackground = () => {
 const BiohackVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-40 grayscale-[20%] contrast-[1.1] brightness-75 mix-blend-screen scale-[2]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[2]">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
           className="w-full h-full pointer-events-none"
@@ -336,7 +413,7 @@ const BiohackVideoBackground = () => {
       {/* VIGNETTE FADE */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/70 z-10"></div>
+      <div className="absolute inset-0 bg-black/60 z-10"></div>
     </div>
   );
 };
@@ -345,7 +422,7 @@ const BiohackVideoBackground = () => {
 const TechnologyVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-40 grayscale-[20%] contrast-[1.1] brightness-75 mix-blend-screen scale-[1.3]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.3]">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
           className="w-full h-full pointer-events-none"
@@ -356,7 +433,7 @@ const TechnologyVideoBackground = () => {
       {/* VIGNETTE FADE */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/70 z-10"></div>
+      <div className="absolute inset-0 bg-black/60 z-10"></div>
     </div>
   );
 };
@@ -365,7 +442,7 @@ const TechnologyVideoBackground = () => {
 const ProgramsVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-50 grayscale-[10%] contrast-[1.1] brightness-90 mix-blend-screen scale-[2.4]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[2.4]">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
           className="w-full h-full pointer-events-none"
@@ -376,10 +453,11 @@ const ProgramsVideoBackground = () => {
       {/* VIGNETTE FADE */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
     </div>
   );
 };
+
 
 // --- Benefit Articles Section ---
 const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = "" }) => {
@@ -1300,118 +1378,6 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> = ({ te
 };
 
 
-// --- Program Modal ---
-const ProgramModal: React.FC<{ program: typeof PROGRAMS[0] | null; onClose: () => void }> = ({ program, onClose }) => {
-  const [isApplying, setIsApplying] = useState(false);
-
-  useEffect(() => {
-    setIsApplying(false);
-    if (program) {
-      // Small delay to allow portal-like entry
-      document.body.style.overflow = 'hidden';
-      // Signal Lenis to stop if present
-      if ((window as any).lenis) (window as any).lenis.stop();
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-      if ((window as any).lenis) (window as any).lenis.start();
-    };
-  }, [program]);
-
-  if (!program) return null;
-
-  const formConfig = FORM_CONFIGS[program.id];
-
-  if (isApplying && formConfig) {
-    return <StepForm config={formConfig} onClose={onClose} />;
-  }
-
-  return (
-    <div className={`fixed inset-0 z-[250] flex flex-col bg-black overflow-hidden transition-all duration-700 ${program ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-      {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[#050505]">
-        <div className="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-[#00F5FF]/5 to-transparent"></div>
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00F5FF]/10 rounded-full blur-[120px]"></div>
-      </div>
-
-      {/* Navigation Header */}
-      <div className="relative z-10 flex items-center justify-between p-6 md:p-10 border-b border-white/5 backdrop-blur-3xl bg-black/40">
-        <button
-          onClick={onClose}
-          className="flex items-center gap-3 text-[#00F5FF] hover:bg-[#00F5FF]/10 transition-all px-4 py-2 rounded-lg border border-[#00F5FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
-        >
-          <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
-          ÎNAPOI LA SITE
-        </button>
-        <div className="mono-font text-[#00F5FF]/60 text-[10px] font-black tracking-[0.4em] uppercase hidden sm:block">
-          PROGRAME / {program.title}
-        </div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="relative z-10 flex-1 overflow-y-auto scroll-smooth">
-        <div className="container mx-auto max-w-5xl">
-          {program.image && (
-            <div className="relative w-full aspect-[16/6] md:aspect-[21/7] overflow-hidden">
-              <img
-                src={program.image}
-                alt={program.title}
-                className="w-full h-full object-cover opacity-60"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent hidden md:block"></div>
-            </div>
-          )}
-
-          <div className="px-6 py-12 md:px-20 md:py-20 flex flex-col lg:flex-row gap-16">
-            <div className="flex-1">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-1 bg-[#00F5FF]"></div>
-                <span className="mono-font text-[10px] text-[#00F5FF] font-black uppercase tracking-[0.4em]">{program.tag}</span>
-              </div>
-              <h2 className="text-5xl md:text-8xl font-black impact-font text-white mb-8 border-b border-white/5 pb-8 uppercase leading-none">
-                {program.title}
-              </h2>
-              <div className="prose prose-invert prose-lg max-w-none text-white/60 font-light leading-relaxed mb-12">
-                {program.content.replace(/\[WHATSAPP_LINK\]/g, "").replace(/\[LINK FORMULAR\]/g, "")}
-              </div>
-            </div>
-
-            <div className="lg:w-80 shrink-0">
-              <div className="sticky top-0 glass-block p-8 border-[#00F5FF]/20 space-y-8">
-                <div>
-                  <span className="text-[10px] font-black text-[#00F5FF] uppercase tracking-widest block mb-4">Recomandat pentru</span>
-                  <div className="text-white font-bold impact-font text-2xl uppercase">{program.idealFor}</div>
-                </div>
-                <div>
-                  <span className="text-[10px] font-black text-[#00F5FF] uppercase tracking-widest block mb-4">Durată</span>
-                  <div className="text-white font-bold impact-font text-2xl uppercase">{program.duration}</div>
-                </div>
-
-                {formConfig ? (
-                  <button
-                    onClick={() => setIsApplying(true)}
-                    className="w-full bg-[#00F5FF] text-black py-5 font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_30px_rgba(0,245,255,0.3)]"
-                  >
-                    REZERVARE LOC
-                  </button>
-                ) : (
-                  <a
-                    href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să mă înscriu în programul ${program.title}.`}
-                    target="_blank"
-                    className="w-full bg-[#00F5FF] text-black py-5 font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all text-center block shadow-[0_0_30px_rgba(0,245,255,0.3)]"
-                  >
-                    CONTACT WHATSAPP
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // --- Programs Grid Section ---
 const ProgramsSection = () => {
@@ -1488,7 +1454,7 @@ const ProgramsSection = () => {
                     {prog.subtitle}
                   </p>
 
-                  <p className="text-white/60 text-sm leading-relaxed mb-8 flex-grow">
+                  <p className="text-white/60 text-sm leading-relaxed mb-8 flex-grow overflow-y-auto custom-scrollbar max-h-[150px]">
                     {prog.description}
                   </p>
 
@@ -1511,7 +1477,12 @@ const ProgramsSection = () => {
         </div>
       </div>
 
-      <ProgramModal program={selectedProgram} onClose={() => setSelectedProgram(null)} />
+      <ProgramModal
+        program={selectedProgram}
+        onClose={() => setSelectedProgram(null)}
+        FORM_CONFIGS={FORM_CONFIGS}
+        StepForm={StepForm}
+      />
     </section>
   );
 };
@@ -2239,6 +2210,8 @@ const App: React.FC = () => {
   return (
     <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#00F5FF] selection:text-black">
       <AmbientAudio isMuted={isMuted} />
+      <DynamicGlitchOverlay />
+
       {activeView !== 'science' && (
         <Navbar
           isMuted={isMuted}
