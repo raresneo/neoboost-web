@@ -381,7 +381,7 @@ const DynamicGlitchOverlay = () => {
 // --- Benefits Video Background Component ---
 const BenefitsVideoBackground = () => {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/Cems1.jpg"; // Fallback for Benefits
+  const fallbackImage = "/ems_training_2.jpg"; // Active Squat Image
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
@@ -414,9 +414,10 @@ const BenefitsVideoBackground = () => {
 
 // --- Biohack Video Background Component ---
 // --- Biohack Video Background Component ---
+// --- Biohack Video Background Component ---
 const BiohackVideoBackground = () => {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/Cems2.jpg";
+  const fallbackImage = "/ems_training_4.jpg"; // Tech/Solo Image
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
@@ -440,7 +441,7 @@ const BiohackVideoBackground = () => {
 // --- Technology Video Background Component ---
 const TechnologyVideoBackground = () => {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/powerbox_real.jpg";
+  const fallbackImage = "/ems_training_5.jpg"; // BW Solo Image
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
@@ -464,7 +465,7 @@ const TechnologyVideoBackground = () => {
 // --- Programs Video Background Component ---
 const ProgramsVideoBackground = () => {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/Cems3.jpg";
+  const fallbackImage = "/ems_training_3.jpg"; // Group Image
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
@@ -1651,9 +1652,19 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
         </div>
 
         {/* Mobile Menu Overlay - FIXED "BLACK" APPEARANCE & ANIMATION */}
-        <div className={`fixed inset-0 bg-[#050505] z-[100] transition-all duration-500 flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-black/95 z-[100] transition-all duration-500 flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+          {/* Dynamic Background Image with Theme Overlay */}
+          <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 bg-cover bg-center opacity-30 blur-sm scale-105"
+              style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
+            </div>
+            {/* Theme Layer: Cyan/Black Mix */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-[#00F5FF]/10 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+
           {/* Menu Items */}
-          <div className="flex flex-col gap-6 mb-12">
+          <div className="flex flex-col gap-6 mb-12 relative z-10">
             {navItems.map((item, idx) => (
               <a
                 key={item.id}
