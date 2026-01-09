@@ -380,21 +380,31 @@ const DynamicGlitchOverlay = () => {
 
 // --- Benefits Video Background Component ---
 const BenefitsVideoBackground = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const fallbackImage = "/Cems1.jpg"; // Fallback for Benefits
+
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+      {/* 
+        Fallback Image:
+        Visible if video fails to load or autoplay (Mobile Low Power Mode)
+      */}
+      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+
       {/* 
         Video Wrapper: 
         - 177.78vh = 16/9 * 100vh (Height-based cover)
         - 56.25vw = 9/16 * 100vw (Width-based cover)
         - min-w-full & min-h-full ensure it always covers the box
-        - scale-[1.3] provides a safe zoom to hide YouTube controls/borders without becoming unintelligible on mobile
+        - scale-[1.35] provides a safe zoom
       */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
+          src={`https://www.youtube.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           title="NeoBoost Benefits"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
       {/* VIGNETTE FADE - Optimized for Mobile Readability */}
@@ -407,14 +417,19 @@ const BenefitsVideoBackground = () => {
 
 // --- Biohack Video Background Component ---
 const BiohackVideoBackground = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const fallbackImage = "/Cems2.jpg";
+
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
+          src={`https://www.youtube.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           title="NeoBoost Biohack"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
@@ -426,14 +441,19 @@ const BiohackVideoBackground = () => {
 
 // --- Technology Video Background Component ---
 const TechnologyVideoBackground = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const fallbackImage = "/powerbox_real.jpg";
+
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+      <div className="absolute inset-0 bg-cover bg-center opacity-30 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
+          src={`https://www.youtube.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           title="NeoBoost Technology"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
@@ -445,14 +465,19 @@ const TechnologyVideoBackground = () => {
 
 // --- Programs Video Background Component ---
 const ProgramsVideoBackground = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const fallbackImage = "/Cems3.jpg";
+
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
+          src={`https://www.youtube.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
           className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           title="NeoBoost Programs"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
