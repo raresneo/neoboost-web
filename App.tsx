@@ -385,16 +385,11 @@ const BenefitsVideoBackground = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      {/* 
-        Fallback Image (ALWAYS VISIBLE ON MOBILE to prevent YouTube logo/loading issues) 
-        The iframe will sit on top only on larger screens where autoplay is reliable.
-      */}
-      <div className="absolute inset-0 bg-cover bg-center opacity-50 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      {/* MOBILE: Image Only (No Video) */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-60 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
 
-      {/* 
-        Video Wrapper: 
-        Hidden on mobile (max-width: 768px) to guarantee clean UI without YouTube logos/play buttons.
-      */}
+      {/* DESKTOP: Video Only (No Image) */}
       <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
@@ -404,7 +399,8 @@ const BenefitsVideoBackground = () => {
           referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
-      {/* VIGNETTE FADE */}
+
+      {/* GLOBAL OVERLAYS */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] z-10 opacity-90"></div>
       <div className="absolute inset-0 bg-black/40 z-10"></div>
@@ -417,11 +413,15 @@ const BenefitsVideoBackground = () => {
 // --- Biohack Video Background Component ---
 const BiohackVideoBackground = () => {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_4.jpg"; // Tech/Solo Image
+  const fallbackImage = "/ems_training_4.jpg"; // Tech/Solo Image 
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      <div className="absolute inset-0 bg-cover bg-center opacity-50 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      {/* MOBILE: Image Only */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-60 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+
+      {/* DESKTOP: Video Only */}
       <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
@@ -445,7 +445,11 @@ const TechnologyVideoBackground = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      {/* MOBILE: Image Only */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-40 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+
+      {/* DESKTOP: Video Only */}
       <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
@@ -469,7 +473,11 @@ const ProgramsVideoBackground = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      <div className="absolute inset-0 bg-cover bg-center opacity-50 blur-[2px] scale-110" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      {/* MOBILE: Image Only */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-50 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+
+      {/* DESKTOP: Video Only */}
       <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[1.35]">
         <iframe
           src={`https://www.youtube.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
@@ -1131,6 +1139,8 @@ const EMSEducation = () => {
 // --- Immersive Morph Hero ---
 const ImmersiveHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const fallbackImage = "/ems_training_5.jpg"; // Strong Hero Image
 
   useEffect(() => {
     setIsLoaded(true);
@@ -1142,13 +1152,18 @@ const ImmersiveHero = () => {
       {/* Background Visual */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full">
+          {/* MOBILE: Image Only */}
+          <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-50 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+
+          {/* DESKTOP: Video Only */}
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full">
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
+              src={`https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
               className="w-full h-full opacity-65 grayscale-[20%] scale-[2.2] pointer-events-none"
               style={{ filter: 'brightness(0.7) contrast(1.1)' }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               title="NeoBoost Hero"
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>
@@ -1859,22 +1874,33 @@ const ScienceSolutionsSection = () => (
 );
 
 // --- Trial Video Background Component ---
-const TrialVideoBackground = () => (
-  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-30 grayscale-[10%] brightness-50 contrast-[1.1] scale-[1.5]">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/2yi5qIn9J7w?autoplay=1&mute=1&controls=0&loop=1&playlist=2yi5qIn9J7w&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
-        className="w-full h-full pointer-events-none"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        title="NeoBoost Trial Experience"
-      />
+const TrialVideoBackground = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const fallbackImage = "/ems_training_1.jpg"; // Consulting/Intro Image
+
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+      {/* MOBILE: Image Only */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-50 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+
+      {/* DESKTOP: Video Only */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-30 grayscale-[10%] brightness-50 contrast-[1.1] scale-[1.5]">
+        <iframe
+          src={`https://www.youtube.com/embed/2yi5qIn9J7w?autoplay=1&mute=1&controls=0&loop=1&playlist=2yi5qIn9J7w&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
+          className="w-full h-full pointer-events-none"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          title="NeoBoost Trial Experience"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+      {/* VIGNETTE / FADE OVERLAYS to hide edges */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
+      <div className="absolute inset-0 bg-black/35 z-10"></div>
     </div>
-    {/* VIGNETTE / FADE OVERLAYS to hide edges */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
-    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-    <div className="absolute inset-0 bg-black/35 z-10"></div>
-  </div>
-);
+  );
+};
 
 // --- Trial Roadmap Section ---
 const TrialRoadmap = () => {
