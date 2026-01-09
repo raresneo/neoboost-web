@@ -824,39 +824,15 @@ const ObjectivesWithSlider = () => {
 
 // --- EMSTimeline Component ---
 // --- Evolution Video Background Component ---
+// --- Evolution Video Background Component (High Performance) ---
 const EvolutionVideoBackground = () => (
-  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[5%] brightness-100 contrast-[1.1] scale-[2.4]">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/dHSf8UHlfYo?autoplay=1&mute=1&controls=0&loop=1&playlist=dHSf8UHlfYo&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
-        className="w-full h-full pointer-events-none"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        title="NeoBoost Evolution"
-      />
-    </div>
-    {/* VIGNETTE FADE - Stronger to hide edges */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
-    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-    <div className="absolute inset-0 bg-black/40 z-10"></div>
-  </div>
+  <CinematicBackground image="/DSC00193.jpg" opacity={0.3} />
 );
 
 // --- History Video Background Component ---
+// --- History Video Background Component (High Performance) ---
 const HistoryVideoBackground = () => (
-  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-50 grayscale-[10%] brightness-90 contrast-[1.1] scale-[1.5]">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/gihuF94qjWA?autoplay=1&mute=1&controls=0&loop=1&playlist=gihuF94qjWA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
-        className="w-full h-full pointer-events-none"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        title="NeoBoost EMS History"
-      />
-    </div>
-    {/* VIGNETTE FADE */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
-    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-    <div className="absolute inset-0 bg-black/60 z-10"></div>
-  </div>
+  <CinematicBackground image="/DSC04709.jpg" opacity={0.3} />
 );
 
 const EMSTimeline = () => {
@@ -1084,28 +1060,8 @@ const ImmersiveHero = () => {
 
       {/* Background Visual */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-          {/* MOBILE: Image Only */}
-          <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-50 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-
-          {/* DESKTOP: Video Only */}
-          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full">
-            <iframe
-              src={`https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
-              className="w-full h-full opacity-65 grayscale-[20%] scale-[2.2] pointer-events-none"
-              style={{ filter: 'brightness(0.7) contrast(1.1)' }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              title="NeoBoost Hero"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          </div>
-        </div>
-        {/* VIGNETTE FADE */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black z-10 opacity-90"></div>
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+        <CinematicBackground image={fallbackImage} opacity={0.5} />
       </div>
-
       {/* Content */}
       <div className={`relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
