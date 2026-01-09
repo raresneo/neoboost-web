@@ -103,10 +103,12 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
             <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-black/90 backdrop-blur-3xl z-[100000]">
                 <button
                     onClick={onClose}
-                    className="flex items-center gap-2 text-[#3A86FF] bg-white/5 hover:bg-[#3A86FF]/10 transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/20 text-[12px] font-black uppercase tracking-[0.2em] active:scale-95"
+                    className="relative overflow-hidden flex items-center gap-3 text-[#3A86FF] hover:text-black bg-transparent hover:bg-[#3A86FF] transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/30 hover:border-[#3A86FF] text-xs font-black uppercase tracking-[0.2em] group shadow-[0_0_15px_rgba(58,134,255,0.1)] hover:shadow-[0_0_30px_rgba(58,134,255,0.4)]"
                 >
-                    <MoveUpRight size={16} className="rotate-[225deg]" />
-                    ÎNAPOI
+                    <span className="relative z-10 flex items-center gap-3">
+                        <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
+                        ÎNAPOI
+                    </span>
                 </button>
                 <h3 className="impact-font text-lg md:text-2xl text-white uppercase tracking-tighter truncate max-w-[50%]">{program.title}</h3>
                 <div className="w-[80px] hidden md:block"></div>

@@ -38,12 +38,14 @@
 
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.06);
-            --glass-blur: 20px;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            /* Slightly more opaque for better contrast without heavy blur */
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: 10px;
+            /* Reduced from 20px for performance */
             --neon-accent: #3A86FF;
-            /* Electric Blue (21TSI Style) */
-            --accent-glow: 0 0 40px rgba(58, 134, 255, 0.25);
+            --accent-glow: 0 0 20px rgba(58, 134, 255, 0.2);
+            /* Reduced glow radius */
             --deep-black: #000000;
         }
 
@@ -55,8 +57,7 @@
             cursor: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* Global Aura Glow */
-            box-shadow: inset 0 0 100px rgba(58, 134, 255, 0.15);
+            /* Removed global box-shadow inset for performance */
             min-height: 100vh;
         }
 
@@ -430,6 +431,22 @@
             100% {
                 transform: translate(0);
             }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slideUp {
+            animation: slideUp 0.5s ease-out forwards;
         }
 
         .glitch-text-hover:hover {

@@ -47,6 +47,7 @@ import { AuthModal } from './components/Auth/AuthModal';
 import { Session } from '@supabase/supabase-js';
 import { StepForm } from './components/Forms/StepForm';
 import { FORM_CONFIGS } from './components/Forms/formConfig';
+import { CookieBanner } from './components/CookieBanner';
 
 // --- Components ---
 
@@ -302,197 +303,113 @@ const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
   );
 };
 
-// --- Mouse-Reactive Glitch Overlay (Refined & Global) ---
-const DynamicGlitchOverlay = () => {
-  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 }); // Center default
+// --- PARTICLE BACKGROUND (Antigravity Theme) ---
+const ParticleBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Use window dimensions for normalized coordinates
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      setMousePos({ x, y });
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    const setSize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+    setSize();
+    window.addEventListener('resize', setSize);
+
+    // Particles config
+    const particleCount = Math.min(50, Math.floor(width / 15)); // Fewer particles on mobile
+    const particles: { x: number; y: number; dx: number; dy: number; size: number; alpha: number }[] = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        dx: (Math.random() - 0.5) * 0.2, // Very slow movement
+        dy: (Math.random() - 0.5) * 0.2,
+        size: Math.random() * 2 + 0.5,
+        alpha: Math.random() * 0.5 + 0.1
+      });
+    }
+
+    let animationFrameId: number;
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.x += p.dx;
+        p.y += p.dy;
+
+        // Wrap around
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(58, 134, 255, ${p.alpha})`; // #3A86FF
+        ctx.fill();
+      });
+
+      // Draw connections (optional, keep it subtle/simple like Antigravity)
+      // For "simple", maybe just floating particles is better than heavy mesh
+
+      animationFrameId = requestAnimationFrame(draw);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    draw();
+
+    return () => {
+      window.removeEventListener('resize', setSize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
-  return (
-    <div className="fixed inset-0 z-[1] pointer-events-none overflow-hidden mix-blend-screen select-none">
-
-      {/* 1. MIGRATING BEAMS (Unified & Discreet) */}
-      {/* Beam 1: Cyan/Blue - Top Left to Bottom Right - Very Slow & Faint */}
-      <div
-        className="absolute w-[200%] h-[200px] blur-[100px] opacity-[0.15]"
-        style={{
-          background: 'linear-gradient(90deg, transparent, #3A86FF, #0044FF, transparent)',
-          left: '-50%',
-          top: '-20%',
-          transform: 'rotate(15deg)',
-          animation: 'beam-slide-1 25s infinite linear'
-        }}
-      />
-
-      {/* Beam 2: Purple/Pink - Bottom Left to Top Right - Very Slow & Faint */}
-      <div
-        className="absolute w-[200%] h-[250px] blur-[120px] opacity-[0.12]"
-        style={{
-          background: 'linear-gradient(90deg, transparent, #8000FF, #FF00CC, transparent)',
-          left: '-50%',
-          bottom: '-20%',
-          transform: 'rotate(-15deg)',
-          animation: 'beam-slide-2 35s infinite linear',
-          animationDelay: '2s'
-        }}
-      />
-
-      {/* 2. MOUSE AURA (Subtle Interaction) */}
-      <div
-        className="absolute w-[1000px] h-[1000px] rounded-full blur-[150px] opacity-[0.15] transition-transform duration-500 ease-out will-change-transform"
-        style={{
-          background: `radial-gradient(circle, rgba(0,245,255,0.4) 0%, rgba(138,43,226,0.2) 40%, transparent 70%)`,
-          left: `calc(${mousePos.x * 100}% - 500px)`,
-          top: `calc(${mousePos.y * 100}% - 500px)`,
-        }}
-      />
-
-      {/* 3. UNIFORM NOISE (Film Grain Style) */}
-      <div
-        className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* 4. SUBTLE SCANLINES */}
-      <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, transparent 50%, rgba(58, 134, 255, 0.1) 50%)',
-          backgroundSize: '100% 4px'
-        }}
-      />
-
-    </div>
-  );
+  return <canvas ref={canvasRef} className="fixed inset-0 z-[0] pointer-events-none opacity-60" />;
 };
 
-// --- Benefits Video Background Component ---
-const BenefitsVideoBackground = () => {
-  const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_2.jpg"; // Active Squat Image
+// --- OPTIMIZED BACKGROUNDS (High Performance) ---
 
-  return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      {/* MOBILE: Image Only (No Video) */}
-      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-60 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+// Reusable Cinematic Background Component
+const CinematicBackground: React.FC<{ image: string; opacity?: number }> = ({ image, opacity = 0.4 }) => (
+  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+    {/* DESKTOP ONLY: Cinematic Image */}
+    <div
+      className="hidden md:block absolute inset-0 bg-cover bg-center transition-transform duration-[20s] ease-linear transform scale-100 hover:scale-110 will-change-transform"
+      style={{ backgroundImage: `url(${image})`, opacity: opacity }}
+    ></div>
 
-      {/* DESKTOP: Video Only (No Image) */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[1.35]">
-        <iframe
-          src={`https://www.youtube.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
-          className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          title="NeoBoost Benefits"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      </div>
+    {/* MOBILE: Clean Dark Background (No Image) */}
+    <div className="md:hidden absolute inset-0 bg-[#050505]"></div>
 
-      {/* GLOBAL OVERLAYS */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
-    </div>
-  );
-};
+    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90"></div>
+    {/* Subtle grid only on desktop to keep mobile standard super clean */}
+    <div className="hidden md:block absolute inset-0 bg-grid-white/[0.02]"></div>
+  </div>
+);
 
-// --- Biohack Video Background Component ---
-// --- Biohack Video Background Component ---
-// --- Biohack Video Background Component ---
-const BiohackVideoBackground = () => {
-  const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_4.jpg"; // Tech/Solo Image 
+// --- Benefits Video Background Component (Optimized) ---
+const BenefitsVideoBackground = () => <CinematicBackground image="/ems_training_2.jpg" opacity={0.5} />;
 
-  return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      {/* MOBILE: Image Only */}
-      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-60 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+// --- Biohack Video Background Component (Optimized) ---
+const BiohackVideoBackground = () => <CinematicBackground image="/ems_training_4.jpg" opacity={0.4} />;
 
-      {/* DESKTOP: Video Only */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
-        <iframe
-          src={`https://www.youtube.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
-          className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          title="NeoBoost Biohack"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
-    </div>
-  );
-};
+// --- Technology Video Background Component (Optimized) ---
+const TechnologyVideoBackground = () => <CinematicBackground image="/ems_training_5.jpg" opacity={0.3} />;
 
-// --- Technology Video Background Component ---
-const TechnologyVideoBackground = () => {
-  const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_5.jpg"; // BW Solo Image
-
-  return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      {/* MOBILE: Image Only */}
-      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-40 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
-
-      {/* DESKTOP: Video Only */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
-        <iframe
-          src={`https://www.youtube.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
-          className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          title="NeoBoost Technology"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
-    </div>
-  );
-};
-
-// --- Programs Video Background Component ---
-const ProgramsVideoBackground = () => {
-  const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_3.jpg"; // Group Image
-
-  return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      {/* MOBILE: Image Only */}
-      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-50 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
-
-      {/* DESKTOP: Video Only */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[1.35]">
-        <iframe
-          src={`https://www.youtube.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
-          className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          title="NeoBoost Programs"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
-    </div>
-  );
-};
+// --- Programs Video Background Component (Optimized) ---
+const ProgramsVideoBackground = () => <CinematicBackground image="/ems_training_3.jpg" opacity={0.4} />;
 
 
 // --- Benefit Articles Section ---
@@ -655,10 +572,12 @@ const LegalPage: React.FC<{ onBack: () => void; type: 'privacy' | 'terms' | 'rul
       <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#3A86FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
         <button
           onClick={onBack}
-          className="flex items-center gap-3 text-[#3A86FF] hover:bg-[#3A86FF]/10 transition-all px-4 py-2 rounded-lg border border-[#3A86FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
+          className="relative overflow-hidden flex items-center gap-3 text-[#3A86FF] hover:text-black bg-transparent hover:bg-[#3A86FF] transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/30 hover:border-[#3A86FF] text-xs font-black uppercase tracking-[0.2em] group shadow-[0_0_15px_rgba(58,134,255,0.1)] hover:shadow-[0_0_30px_rgba(58,134,255,0.4)]"
         >
-          <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
-          ÎNAPOI
+          <span className="relative z-10 flex items-center gap-3">
+            <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
+            ÎNAPOI
+          </span>
         </button>
         <div className="mono-font text-[#3A86FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase">
           LEGAL / {current.title}
@@ -701,10 +620,12 @@ const SciencePage: React.FC<{ onBack: () => void; initialArticleId?: string | nu
         <div className="flex items-center gap-4">
           <button
             onClick={onBack}
-            className="flex items-center gap-3 text-[#3A86FF] hover:bg-[#3A86FF]/10 transition-all px-4 py-2 rounded-lg border border-[#3A86FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
+            className="relative overflow-hidden flex items-center gap-3 text-[#3A86FF] hover:text-black bg-transparent hover:bg-[#3A86FF] transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/30 hover:border-[#3A86FF] text-xs font-black uppercase tracking-[0.2em] group shadow-[0_0_15px_rgba(58,134,255,0.1)] hover:shadow-[0_0_30px_rgba(58,134,255,0.4)]"
           >
-            <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
-            ÎNAPOI LA SITE
+            <span className="relative z-10 flex items-center gap-3">
+              <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
+              ÎNAPOI LA SITE
+            </span>
           </button>
         </div>
         <div className="mono-font text-[#3A86FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase hidden sm:block">
@@ -1438,6 +1359,24 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> = ({ te
 const ProgramsSection = () => {
   const [selectedProgram, setSelectedProgram] = useState<typeof PROGRAMS[0] | null>(null);
 
+  // History management for Modal
+  useEffect(() => {
+    if (selectedProgram) {
+      window.history.pushState({ modal: 'program' }, '');
+    }
+  }, [selectedProgram]);
+
+  useEffect(() => {
+    const handlePopModal = (e: PopStateEvent) => {
+      const state = e.state;
+      if (selectedProgram && state?.modal !== 'program') {
+        setSelectedProgram(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopModal);
+    return () => window.removeEventListener('popstate', handlePopModal);
+  }, [selectedProgram]);
+
   const getIcon = (iconId: string) => {
     switch (iconId) {
       case 'zap': return <Zap size={80} className="text-white" />;
@@ -1652,6 +1591,14 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
                 )}
               </div>
             </button>
+
+            <a
+              href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau o programare.`}
+              target="_blank"
+              className="hidden xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
+            >
+              PROGRAMARE
+            </a>
 
             <a
               href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
@@ -1885,34 +1832,8 @@ const ScienceSolutionsSection = () => (
   </section>
 );
 
-// --- Trial Video Background Component ---
-const TrialVideoBackground = () => {
-  const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_1.jpg"; // Consulting/Intro Image
-
-  return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-      {/* MOBILE: Image Only */}
-      <div className="md:hidden absolute inset-0 bg-cover bg-center opacity-50 scale-105" style={{ backgroundImage: `url(${fallbackImage})` }}></div>
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
-
-      {/* DESKTOP: Video Only */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-30 grayscale-[10%] brightness-50 contrast-[1.1] scale-[1.5]">
-        <iframe
-          src={`https://www.youtube.com/embed/2yi5qIn9J7w?autoplay=1&mute=1&controls=0&loop=1&playlist=2yi5qIn9J7w&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1&origin=${origin}`}
-          className="w-full h-full pointer-events-none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          title="NeoBoost Trial Experience"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      </div>
-      {/* VIGNETTE / FADE OVERLAYS to hide edges */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
-      <div className="absolute inset-0 bg-black/35 z-10"></div>
-    </div>
-  );
-};
+// --- Trial Video Background Component (Optimized) ---
+const TrialVideoBackground = () => <CinematicBackground image="/ems_training_1.jpg" opacity={0.3} />;
 
 // --- Trial Roadmap Section ---
 const TrialRoadmap = () => {
@@ -2184,11 +2105,13 @@ const App: React.FC = () => {
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.8, // Faster scroll response (was 1.2)
+      easing: (t) => 1 - Math.pow(1 - t, 3), // Simpler ease
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
+      wheelMultiplier: 1.2, // Faster scrolling
+      touchMultiplier: 2, // More responsive touch
     });
 
     const raf = (time: number) => {
@@ -2212,10 +2135,18 @@ const App: React.FC = () => {
       });
     });
 
-    // Handle Browser Back Button for internal views
-    const handlePopState = () => {
-      setActiveView('home');
+    // Handle Browser Back Button for internal views & Modals
+    const handlePopState = (event: PopStateEvent) => {
+      const state = event.state;
+
+      if (state?.view) {
+        setActiveView(state.view);
+      } else {
+        setActiveView('home');
+        setIsAuthOpen(false);
+      }
     };
+
     window.addEventListener('popstate', handlePopState);
 
     return () => {
@@ -2224,12 +2155,41 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // Update history state when view changes
+  // Sync State with History
   useEffect(() => {
     if (activeView !== 'home') {
       window.history.pushState({ view: activeView }, '');
     }
   }, [activeView]);
+
+  useEffect(() => {
+    if (isAuthOpen) {
+      window.history.pushState({ modal: 'auth' }, '');
+    }
+  }, [isAuthOpen]);
+
+  // Scroll to Top Button Component (Internal)
+  const ScrollToTop = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    useEffect(() => {
+      const toggle = () => setIsVisible(window.scrollY > 500);
+      window.addEventListener('scroll', toggle);
+      return () => window.removeEventListener('scroll', toggle);
+    }, []);
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    return (
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-24 right-6 z-[90] p-4 bg-[#3A86FF] text-black rounded-full shadow-[0_0_20px_rgba(58,134,255,0.4)] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_40px_rgba(58,134,255,0.6)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+      >
+        <ArrowDown size={20} className="rotate-180" />
+      </button>
+    );
+  };
 
   const [isMuted, setIsMuted] = useState(false); // Audio ON by default for immersive experience
 
@@ -2284,7 +2244,7 @@ const App: React.FC = () => {
   return (
     <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
       <AmbientAudio isMuted={isMuted} />
-      <DynamicGlitchOverlay />
+      <ParticleBackground />
 
       {activeView !== 'science' && (
         <Navbar
@@ -2296,6 +2256,8 @@ const App: React.FC = () => {
       )}
       <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
       <PaymentSuccessModal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />
+      <ScrollToTop />
+      <CookieBanner />
 
       {/* Conditional Rendering based on View */}
       {activeView === 'science' ? (
