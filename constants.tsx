@@ -18,7 +18,7 @@ export const BRAND = {
   email: "contact@neoboost.ro",
   trial: "Primă Sesiune Gratuită",
   googleMapsLink: "https://www.google.com/search?q=neoboost+oradea+recenzii",
-  color: "#00F5FF"
+  color: "#3A86FF"
 };
 
 export interface NeoPackage extends Package {
@@ -117,11 +117,11 @@ export const EMS_STEPS = [
 ];
 
 export const EMS_OBJECTIVES = [
-  { title: "Slăbire & Metabolism", level: 95, color: "#00F5FF", icon: <Flame size={16} /> },
-  { title: "Tonifiere Musculară", level: 90, color: "#00F5FF", icon: <Target size={16} /> },
-  { title: "Sănătatea Coloanei", level: 85, color: "#00F5FF", icon: <Accessibility size={16} /> },
-  { title: "Performanță Atletică", level: 80, color: "#00F5FF", icon: <Zap size={16} /> },
-  { title: "Recuperare Medicală", level: 75, color: "#00F5FF", icon: <ShieldCheck size={16} /> }
+  { title: "Slăbire & Metabolism", level: 95, color: "#3A86FF", icon: <Flame size={16} /> },
+  { title: "Tonifiere Musculară", level: 90, color: "#3A86FF", icon: <Target size={16} /> },
+  { title: "Sănătatea Coloanei", level: 85, color: "#3A86FF", icon: <Accessibility size={16} /> },
+  { title: "Performanță Atletică", level: 80, color: "#3A86FF", icon: <Zap size={16} /> },
+  { title: "Recuperare Medicală", level: 75, color: "#3A86FF", icon: <ShieldCheck size={16} /> }
 ];
 
 export const IMS_PROTOCOL = {

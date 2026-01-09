@@ -88,7 +88,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                 );
             }
             return (
-                <div key={idx} className={isListItem ? 'bg-white/5 p-8 rounded-2xl border-l-4 border-[#00F5FF]/40 shadow-xl' : 'space-y-4'}>
+                <div key={idx} className={isListItem ? 'bg-white/5 p-8 rounded-2xl border-l-4 border-[#3A86FF]/40 shadow-xl' : 'space-y-4'}>
                     {para.split('\n').map((line, lIdx) => (
                         <p key={lIdx} className="mb-2 last:mb-0 leading-relaxed font-light">{line}</p>
                     ))}
@@ -103,7 +103,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
             <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-black/90 backdrop-blur-3xl z-[100000]">
                 <button
                     onClick={onClose}
-                    className="flex items-center gap-2 text-[#00F5FF] bg-white/5 hover:bg-[#00F5FF]/10 transition-all px-6 py-3 rounded-lg border border-[#00F5FF]/20 text-[12px] font-black uppercase tracking-[0.2em] active:scale-95"
+                    className="flex items-center gap-2 text-[#3A86FF] bg-white/5 hover:bg-[#3A86FF]/10 transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/20 text-[12px] font-black uppercase tracking-[0.2em] active:scale-95"
                 >
                     <MoveUpRight size={16} className="rotate-[225deg]" />
                     ÎNAPOI
@@ -128,7 +128,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         <div className="absolute bottom-10 left-10">
-                            <span className="mono-font text-[10px] text-[#00F5FF] font-black uppercase tracking-[0.5em] mb-4 block">{program.tag}</span>
+                            <span className="mono-font text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.5em] mb-4 block">{program.tag}</span>
                             <h2 className="text-5xl md:text-8xl font-black impact-font uppercase leading-none tracking-tighter">{program.title}</h2>
                         </div>
                     </div>
@@ -137,7 +137,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         <div className="lg:col-span-8 space-y-16">
                             <section>
                                 <div className="flex items-center gap-6 mb-10">
-                                    <Target size={32} className="text-[#00F5FF]" />
+                                    <Target size={32} className="text-[#3A86FF]" />
                                     <h4 className="text-3xl font-black impact-font uppercase italic tracking-wider">Impactul Programului</h4>
                                 </div>
                                 <div className="text-white/60 text-lg font-light leading-relaxed space-y-10">
@@ -148,7 +148,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                             {/* Tehnologia Section */}
                             <section>
                                 <div className="flex items-center gap-6 mb-10">
-                                    <Cpu size={32} className="text-[#00F5FF]" />
+                                    <Cpu size={32} className="text-[#3A86FF]" />
                                     <h4 className="text-3xl font-black impact-font uppercase italic tracking-wider">Tehnologia NeoBoost</h4>
                                 </div>
                                 <div className="grid md:grid-cols-2 gap-8 items-center bg-white/5 rounded-3xl overflow-hidden border border-white/10">
@@ -162,7 +162,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                                         </p>
                                         <div className="flex flex-wrap gap-3">
                                             {['Wireless', 'Drysuit Tech', 'Anti-Bacterial', 'Full Mobility'].map(tag => (
-                                                <span key={tag} className="text-[9px] font-black text-[#00F5FF] border border-[#00F5FF]/30 px-3 py-1 rounded-full uppercase tracking-widest">{tag}</span>
+                                                <span key={tag} className="text-[9px] font-black text-[#3A86FF] border border-[#3A86FF]/30 px-3 py-1 rounded-full uppercase tracking-widest">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -172,13 +172,13 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                             {/* Transformation Gallery */}
                             <section>
                                 <div className="flex items-center gap-6 mb-10">
-                                    <History size={32} className="text-[#00F5FF]" />
+                                    <History size={32} className="text-[#3A86FF]" />
                                     <h4 className="text-3xl font-black impact-font uppercase italic tracking-wider">Rezultate Vizibile</h4>
                                 </div>
                                 <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] group">
                                     <img src={mockBeforeAfter} alt="Before After" className="w-full grayscale group-hover:grayscale-0 transition-all duration-1000 hi-fi-image" />
                                     <div className="p-8 bg-black/40 backdrop-blur-md border-t border-white/5 text-center">
-                                        <p className="mono-font text-[11px] text-[#00F5FF] uppercase tracking-[0.4em] font-black">
+                                        <p className="mono-font text-[11px] text-[#3A86FF] uppercase tracking-[0.4em] font-black">
                                             Evoluție Recomandată după protocolul NeoBoost Oradea
                                         </p>
                                     </div>
@@ -187,13 +187,13 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         </div>
 
                         <div className="lg:col-span-4 h-fit lg:sticky lg:top-10">
-                            <div className="glass-block p-10 border-[#00F5FF]/20 space-y-8 rounded-[2rem] shadow-2xl">
+                            <div className="glass-block p-10 border-[#3A86FF]/20 space-y-8 rounded-[2rem] shadow-2xl">
                                 <div>
-                                    <span className="text-[10px] font-black text-[#00F5FF] uppercase tracking-[0.4em] block mb-4">Focus Obiectiv</span>
+                                    <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-[0.4em] block mb-4">Focus Obiectiv</span>
                                     <div className="font-bold impact-font text-4xl uppercase italic text-white leading-none">{program.benefit}</div>
                                 </div>
                                 <div>
-                                    <span className="text-[10px] font-black text-[#00F5FF] uppercase tracking-[0.4em] block mb-4">Durată Estimată</span>
+                                    <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-[0.4em] block mb-4">Durată Estimată</span>
                                     <div className="font-bold impact-font text-4xl uppercase italic text-white leading-none">{program.duration}</div>
                                 </div>
                                 <hr className="border-white/10" />
@@ -201,7 +201,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                                     <a
                                         href={calendlyLink}
                                         target="_blank"
-                                        className="w-full bg-[#00F5FF] text-black py-7 font-black impact-font text-2xl uppercase tracking-[0.2em] shadow-[0_0_50px_rgba(0,245,255,0.4)] text-center block hover:scale-[1.02] transition-transform"
+                                        className="w-full bg-[#3A86FF] text-black py-7 font-black impact-font text-2xl uppercase tracking-[0.2em] shadow-[0_0_50px_rgba(0,245,255,0.4)] text-center block hover:scale-[1.02] transition-transform"
                                     >
                                         REZERVĂ UN LOC
                                     </a>
@@ -219,19 +219,19 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
 
                     <section className="mb-32">
                         <div className="flex items-center gap-6 mb-16">
-                            <Users size={32} className="text-[#00F5FF]" />
+                            <Users size={32} className="text-[#3A86FF]" />
                             <h4 className="text-4xl md:text-6xl font-black impact-font uppercase mt-0 italic tracking-tighter">ANTRENORII TĂI.</h4>
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                             {trainers.map((t, idx) => (
-                                <div key={idx} className="group overflow-hidden rounded-[1.5rem] bg-[#0a0a0a] border border-white/5 hover:border-[#00F5FF]/40 transition-all duration-500">
+                                <div key={idx} className="group overflow-hidden rounded-[1.5rem] bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-500">
                                     <div className="aspect-square relative overflow-hidden">
                                         <img src={t.image} alt={t.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                                     </div>
                                     <div className="p-8 relative z-10 bg-gradient-to-t from-black via-black/80 to-transparent">
                                         <h5 className="font-bold impact-font text-2xl leading-none mb-1 text-white">{t.name.toUpperCase()}</h5>
-                                        <span className="text-[10px] text-[#00F5FF] font-black uppercase tracking-widest">{t.role}</span>
+                                        <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-widest">{t.role}</span>
                                     </div>
                                 </div>
                             ))}

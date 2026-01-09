@@ -95,15 +95,15 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
             {/* Header */}
             <div className="flex justify-between items-center p-4 md:p-6 border-b border-white/10 bg-black z-50">
                 <div>
-                    <h2 className="text-xl md:text-2xl font-black impact-font uppercase text-[#00F5FF]">{config.title}</h2>
+                    <h2 className="text-xl md:text-2xl font-black impact-font uppercase text-[#3A86FF]">{config.title}</h2>
                     <div className="flex gap-1 mt-2">
                         {config.steps.map((_, idx) => (
                             <div
                                 key={idx}
-                                className={`h-1 flex-1 rounded-full transition-all duration-500 ${idx <= currentStep ? 'bg-[#00F5FF]' : 'bg-white/10'}`}
+                                className={`h-1 flex-1 rounded-full transition-all duration-500 ${idx <= currentStep ? 'bg-[#3A86FF]' : 'bg-white/10'}`}
                             />
                         ))}
-                        <div className={`h-1 flex-1 rounded-full transition-all duration-500 ${currentStep === config.steps.length ? 'bg-[#00F5FF]' : 'bg-white/10'}`} />
+                        <div className={`h-1 flex-1 rounded-full transition-all duration-500 ${currentStep === config.steps.length ? 'bg-[#3A86FF]' : 'bg-white/10'}`} />
                     </div>
                 </div>
                 <button onClick={onClose} className="p-4 -mr-2 hover:bg-white/10 rounded-full transition-colors z-[60]">
@@ -124,7 +124,7 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                         className="h-full min-h-[calc(100vh-100px)] w-full flex flex-col justify-center items-center p-6 md:p-20 snap-start relative border-b border-white/5"
                     >
                         <div className="max-w-xl w-full animate-fadeIn">
-                            <span className="mono-font text-[#00F5FF] text-xs uppercase tracking-[0.3em] mb-4 block">
+                            <span className="mono-font text-[#3A86FF] text-xs uppercase tracking-[0.3em] mb-4 block">
                                 Pasul {index + 1} din {config.steps.length}
                             </span>
                             <h3 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">{step.question}</h3>
@@ -140,14 +140,14 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                                             onChange={(e) => handleAnswer(step.id, e.target.value)}
                                             onKeyDown={(e) => e.key === 'Enter' && handleNext()}
                                             placeholder={step.placeholder}
-                                            className="w-full bg-transparent border-b-2 border-white/20 focus:border-[#00F5FF] text-2xl md:text-3xl py-4 outline-none transition-colors placeholder:text-white/20 font-light"
+                                            className="w-full bg-transparent border-b-2 border-white/20 focus:border-[#3A86FF] text-2xl md:text-3xl py-4 outline-none transition-colors placeholder:text-white/20 font-light"
                                             autoFocus={currentStep === index}
                                             autoComplete="off"
                                         />
                                         <button
                                             onClick={handleNext}
                                             disabled={!answers[step.id]}
-                                            className="self-start mt-4 flex items-center gap-2 bg-white/10 hover:bg-[#00F5FF] hover:text-black px-6 py-3 rounded-full transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                                            className="self-start mt-4 flex items-center gap-2 bg-white/10 hover:bg-[#3A86FF] hover:text-black px-6 py-3 rounded-full transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                                         >
                                             Următorul <ArrowRight size={18} />
                                         </button>
@@ -160,11 +160,11 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                                             value={answers[step.id] || ''}
                                             onChange={(e) => handleAnswer(step.id, e.target.value)}
                                             placeholder={step.placeholder}
-                                            className="w-full bg-white/5 border border-white/10 focus:border-[#00F5FF] text-xl p-6 rounded-xl outline-none transition-colors placeholder:text-white/20 min-h-[150px]"
+                                            className="w-full bg-white/5 border border-white/10 focus:border-[#3A86FF] text-xl p-6 rounded-xl outline-none transition-colors placeholder:text-white/20 min-h-[150px]"
                                         />
                                         <button
                                             onClick={handleNext}
-                                            className="self-start mt-4 flex items-center gap-2 bg-white/10 hover:bg-[#00F5FF] hover:text-black px-6 py-3 rounded-full transition-all"
+                                            className="self-start mt-4 flex items-center gap-2 bg-white/10 hover:bg-[#3A86FF] hover:text-black px-6 py-3 rounded-full transition-all"
                                         >
                                             {step.required === false && !answers[step.id] ? 'Sari Peste' : 'Următorul'} <ArrowRight size={18} />
                                         </button>
@@ -177,7 +177,7 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                                             <button
                                                 key={opt}
                                                 onClick={() => handleAnswer(step.id, opt, true)}
-                                                className={`text-left p-6 rounded-xl border transition-all duration-300 flex items-center justify-between group ${answers[step.id] === opt ? 'bg-[#00F5FF] text-black border-[#00F5FF]' : 'bg-white/5 border-white/10 hover:border-[#00F5FF]/50 hover:bg-white/10'}`}
+                                                className={`text-left p-6 rounded-xl border transition-all duration-300 flex items-center justify-between group ${answers[step.id] === opt ? 'bg-[#3A86FF] text-black border-[#3A86FF]' : 'bg-white/5 border-white/10 hover:border-[#3A86FF]/50 hover:bg-white/10'}`}
                                             >
                                                 <span className="text-xl font-medium">{opt}</span>
                                                 {answers[step.id] === opt && <Check size={24} />}
@@ -196,8 +196,8 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                     className="h-full min-h-[calc(100vh-100px)] w-full flex flex-col justify-center items-center p-6 md:p-20 snap-start bg-[#0a0a0a]"
                 >
                     <div className="max-w-xl w-full text-center">
-                        <div className="w-20 h-20 bg-[#00F5FF]/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
-                            <MessageCircle size={40} className="text-[#00F5FF]" />
+                        <div className="w-20 h-20 bg-[#3A86FF]/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+                            <MessageCircle size={40} className="text-[#3A86FF]" />
                         </div>
                         <h3 className="text-4xl md:text-5xl font-black impact-font uppercase mb-6">Gata de Start!</h3>
                         <p className="text-white/60 text-lg mb-10 leading-relaxed">
@@ -217,7 +217,7 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                                     (window as any).fbq('track', 'Contact');
                                 }
                             }}
-                            className="w-full block bg-[#00F5FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(0,255,136,0.3)] hover:shadow-[0_0_60px_rgba(0,255,136,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3"
+                            className="w-full block bg-[#3A86FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(0,255,136,0.3)] hover:shadow-[0_0_60px_rgba(0,255,136,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3"
                         >
                             <MessageCircle size={28} />
                             Trimite pe WhatsApp

@@ -326,7 +326,7 @@ const DynamicGlitchOverlay = () => {
       <div
         className="absolute w-[200%] h-[200px] blur-[100px] opacity-[0.15]"
         style={{
-          background: 'linear-gradient(90deg, transparent, #00F5FF, #0044FF, transparent)',
+          background: 'linear-gradient(90deg, transparent, #3A86FF, #0044FF, transparent)',
           left: '-50%',
           top: '-20%',
           transform: 'rotate(15deg)',
@@ -369,7 +369,7 @@ const DynamicGlitchOverlay = () => {
       <div
         className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent 50%, rgba(0, 245, 255, 0.1) 50%)',
+          background: 'linear-gradient(to bottom, transparent 50%, rgba(58, 134, 255, 0.1) 50%)',
           backgroundSize: '100% 4px'
         }}
       />
@@ -502,9 +502,9 @@ const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = 
       <div className="container mx-auto px-6 md:px-24">
         <ScrollReveal>
           <div className="text-center mb-24">
-            <p className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-bold uppercase mb-4">Science & Solutions</p>
+            <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Science & Solutions</p>
             <h2 className="text-4xl md:text-5xl font-black impact-font text-white uppercase">
-              Explicații <span className="text-[#00F5FF]">Științifice</span>
+              Explicații <span className="text-[#3A86FF]">Științifice</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -517,7 +517,7 @@ const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = 
                   {/* Header Column */}
                   <div className="lg:sticky top-40 self-start">
                     <h3 className="text-4xl md:text-5xl font-black impact-font text-white mb-2 uppercase">{article.title}</h3>
-                    <p className="text-[#00F5FF] mono-font text-xs font-bold tracking-widest uppercase mb-6">{article.subtitle}</p>
+                    <p className="text-[#3A86FF] mono-font text-xs font-bold tracking-widest uppercase mb-6">{article.subtitle}</p>
                     <div className="text-white/40 text-sm leading-relaxed font-light">
                       {article.intro}
                     </div>
@@ -528,7 +528,7 @@ const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = 
                     {/* Mechanisms */}
                     <div className="grid md:grid-cols-2 gap-8">
                       {article.mechanisms.map((mech, mIdx) => (
-                        <div key={mIdx} className="bg-white/[0.02] border border-white/5 p-6 hover:border-[#00F5FF]/20 transition-colors duration-500">
+                        <div key={mIdx} className="bg-white/[0.02] border border-white/5 p-6 hover:border-[#3A86FF]/20 transition-colors duration-500">
                           <h4 className="text-white font-bold impact-font uppercase mb-3 text-lg">{mech.title}</h4>
                           <p className="text-white/50 text-xs leading-relaxed">{mech.desc}</p>
                         </div>
@@ -539,18 +539,18 @@ const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = 
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <Activity size={16} className="text-[#00F5FF]" />
+                          <Activity size={16} className="text-[#3A86FF]" />
                           <h4 className="font-bold text-white uppercase text-sm tracking-wider">Ce spune știința</h4>
                         </div>
-                        <p className="text-white/60 text-sm leading-relaxed pl-7 border-l border-[#00F5FF]/20">{article.science}</p>
+                        <p className="text-white/60 text-sm leading-relaxed pl-7 border-l border-[#3A86FF]/20">{article.science}</p>
                       </div>
 
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <Target size={16} className="text-[#00F5FF]" />
+                          <Target size={16} className="text-[#3A86FF]" />
                           <h4 className="font-bold text-white uppercase text-sm tracking-wider">Așteptări Corecte</h4>
                         </div>
-                        <p className="text-white/60 text-sm leading-relaxed pl-7 border-l border-[#00F5FF]/20">{article.expectations}</p>
+                        <p className="text-white/60 text-sm leading-relaxed pl-7 border-l border-[#3A86FF]/20">{article.expectations}</p>
                       </div>
                     </div>
                   </div>
@@ -640,15 +640,15 @@ const LegalPage: React.FC<{ onBack: () => void; type: 'privacy' | 'terms' | 'rul
 
   return (
     <div className="min-h-screen bg-black text-white relative z-50">
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#00F5FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#3A86FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
         <button
           onClick={onBack}
-          className="flex items-center gap-3 text-[#00F5FF] hover:bg-[#00F5FF]/10 transition-all px-4 py-2 rounded-lg border border-[#00F5FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
+          className="flex items-center gap-3 text-[#3A86FF] hover:bg-[#3A86FF]/10 transition-all px-4 py-2 rounded-lg border border-[#3A86FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
         >
           <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
           ÎNAPOI
         </button>
-        <div className="mono-font text-[#00F5FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase">
+        <div className="mono-font text-[#3A86FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase">
           LEGAL / {current.title}
         </div>
       </div>
@@ -658,7 +658,7 @@ const LegalPage: React.FC<{ onBack: () => void; type: 'privacy' | 'terms' | 'rul
         <div className="space-y-12">
           {current.sections.map((s, i) => (
             <div key={i} className="space-y-4">
-              <h2 className="text-xl font-black impact-font text-[#00F5FF] uppercase border-l-2 border-[#00F5FF] pl-4">{s.h}</h2>
+              <h2 className="text-xl font-black impact-font text-[#3A86FF] uppercase border-l-2 border-[#3A86FF] pl-4">{s.h}</h2>
               <p className="text-white/60 leading-relaxed font-light">{s.p}</p>
             </div>
           ))}
@@ -685,17 +685,17 @@ const SciencePage: React.FC<{ onBack: () => void; initialArticleId?: string | nu
   return (
     <div className="min-h-screen bg-black text-white relative z-50">
       {/* Fixed Navigation Header */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#00F5FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#3A86FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
         <div className="flex items-center gap-4">
           <button
             onClick={onBack}
-            className="flex items-center gap-3 text-[#00F5FF] hover:bg-[#00F5FF]/10 transition-all px-4 py-2 rounded-lg border border-[#00F5FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
+            className="flex items-center gap-3 text-[#3A86FF] hover:bg-[#3A86FF]/10 transition-all px-4 py-2 rounded-lg border border-[#3A86FF]/30 text-xs font-black uppercase tracking-[0.2em] group"
           >
             <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform" />
             ÎNAPOI LA SITE
           </button>
         </div>
-        <div className="mono-font text-[#00F5FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase hidden sm:block">
+        <div className="mono-font text-[#3A86FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase hidden sm:block">
           NEOBOOST / RESEARCH
         </div>
         <img src="/logo_white.png" alt="Logo" className="w-8 h-8 object-contain opacity-50" />
@@ -721,12 +721,12 @@ const EMSProtocolSubsection = () => {
     <div className="mt-40 md:mt-60">
       <ScrollReveal>
         <div className="flex items-center gap-6 mb-8">
-          <TrendingUp className="text-[#00F5FF]" size={20} />
-          <span className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-black uppercase">Standard de Performanță</span>
+          <TrendingUp className="text-[#3A86FF]" size={20} />
+          <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Standard de Performanță</span>
         </div>
         <div className="text-6xl md:text-8xl font-black impact-font text-white mb-24">
           <StaggeredText text="CUM FUNCȚIONEAZĂ" className="block" />
-          <StaggeredText text="PROTOCOLUL EMS." className="block text-[#00F5FF]" delay={200} />
+          <StaggeredText text="PROTOCOLUL EMS." className="block text-[#3A86FF]" delay={200} />
         </div>
       </ScrollReveal>
 
@@ -737,13 +737,13 @@ const EMSProtocolSubsection = () => {
             <ScrollReveal key={step.id} delay={idx * 150}>
               <div className="flex gap-10 group">
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] group-hover:border-[#00F5FF]/40 group-hover:bg-[#00F5FF]/5 transition-all duration-500">
-                    <span className="impact-font text-xl text-[#00F5FF]">{step.id}</span>
+                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] group-hover:border-[#3A86FF]/40 group-hover:bg-[#3A86FF]/5 transition-all duration-500">
+                    <span className="impact-font text-xl text-[#3A86FF]">{step.id}</span>
                   </div>
-                  {idx !== EMS_STEPS.length - 1 && <div className="w-px h-full bg-gradient-to-b from-[#00F5FF]/20 to-transparent my-4"></div>}
+                  {idx !== EMS_STEPS.length - 1 && <div className="w-px h-full bg-gradient-to-b from-[#3A86FF]/20 to-transparent my-4"></div>}
                 </div>
                 <div className="pt-2">
-                  <h3 className="text-3xl font-black impact-font text-white mb-4 group-hover:text-[#00F5FF] transition-colors">{step.title}</h3>
+                  <h3 className="text-3xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">{step.title}</h3>
                   <p className="text-white/40 leading-relaxed font-light">{step.description}</p>
                 </div>
               </div>
@@ -780,8 +780,8 @@ const ObjectivesWithSlider = () => {
 
   const sessionLabels = {
     1: { title: "MENȚINERE", color: "text-white/50" },
-    2: { title: "OPTIMAL", color: "text-[#00F5FF]" },
-    3: { title: "INTENSIV", color: "text-[#00F5FF]" }
+    2: { title: "OPTIMAL", color: "text-[#3A86FF]" },
+    3: { title: "INTENSIV", color: "text-[#3A86FF]" }
   };
 
   const currentLabel = sessionLabels[sessions as keyof typeof sessionLabels];
@@ -800,7 +800,7 @@ const ObjectivesWithSlider = () => {
           <div>
             <p className="mono-font text-[8px] text-white/30 uppercase tracking-widest mb-1">Ședințe / Săptămână</p>
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-black impact-font text-[#00F5FF]">{sessions}</span>
+              <span className="text-5xl font-black impact-font text-[#3A86FF]">{sessions}</span>
               <span className="mono-font text-[10px] text-white/20">× 30 min</span>
             </div>
           </div>
@@ -813,7 +813,7 @@ const ObjectivesWithSlider = () => {
         <div className="relative py-4">
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 bg-white/10 rounded-full">
             <div
-              className="h-full bg-[#00F5FF] shadow-[0_0_15px_#00F5FF] rounded-full transition-all duration-500"
+              className="h-full bg-[#3A86FF] shadow-[0_0_15px_#3A86FF] rounded-full transition-all duration-500"
               style={{ width: `${((sessions - 1) / 2) * 100}%` }}
             />
           </div>
@@ -824,7 +824,7 @@ const ObjectivesWithSlider = () => {
                 key={step}
                 onClick={() => setSessions(step)}
                 className={`w-6 h-6 rounded-full border-2 transition-all duration-300 flex items-center justify-center text-[9px] font-black ${sessions >= step
-                  ? 'bg-[#00F5FF] border-[#00F5FF] text-black shadow-[0_0_15px_rgba(0,255,136,0.5)]'
+                  ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(0,255,136,0.5)]'
                   : 'bg-black border-white/20 text-white/30 hover:border-white/40'
                   }`}
               >
@@ -853,16 +853,16 @@ const ObjectivesWithSlider = () => {
             <div key={idx} className="group/item transition-all duration-500 hover:translate-x-1">
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-3">
-                  <div className="text-[#00F5FF] group-hover/item:scale-110 transition-transform duration-300">{obj.icon}</div>
-                  <span className="mono-font text-[9px] uppercase tracking-widest text-white/60 font-bold group-hover/item:text-[#00F5FF] transition-colors">{obj.title}</span>
+                  <div className="text-[#3A86FF] group-hover/item:scale-110 transition-transform duration-300">{obj.icon}</div>
+                  <span className="mono-font text-[9px] uppercase tracking-widest text-white/60 font-bold group-hover/item:text-[#3A86FF] transition-colors">{obj.title}</span>
                 </div>
-                <span className="mono-font text-[10px] text-[#00F5FF] font-black transition-all duration-500">
+                <span className="mono-font text-[10px] text-[#3A86FF] font-black transition-all duration-500">
                   {scaledValue}%
                 </span>
               </div>
               <div className="h-[2px] w-full bg-white/5 relative overflow-hidden">
                 <div
-                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#00F5FF]/40 to-[#00F5FF] transition-all duration-700 ease-out"
+                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#3A86FF]/40 to-[#3A86FF] transition-all duration-700 ease-out"
                   style={{ width: `${scaledValue}%`, boxShadow: '0 0 8px rgba(0,255,136,0.3)' }}
                 />
                 <div
@@ -878,7 +878,7 @@ const ObjectivesWithSlider = () => {
       {/* Footer Note */}
       <div className="mt-10 pt-6 border-t border-white/5">
         <div className="flex gap-3 items-center mb-4">
-          <Zap size={12} className="text-[#00F5FF]" />
+          <Zap size={12} className="text-[#3A86FF]" />
           <p className="text-[9px] mono-font text-white/30 uppercase tracking-widest font-bold">Protocol NeoBoost Oradea</p>
         </div>
         <p className="text-[10px] text-white/20 leading-relaxed italic">
@@ -935,12 +935,12 @@ const EMSTimeline = () => {
       <div className="container mx-auto px-6 md:px-24">
         <ScrollReveal className="mb-24">
           <div className="flex items-center gap-6 mb-8">
-            <div className="w-12 h-px bg-[#00F5FF]"></div>
-            <span className="mono-font text-[9px] text-[#00F5FF] font-black tracking-[0.6em] uppercase">Evoluție Tehnologică</span>
+            <div className="w-12 h-px bg-[#3A86FF]"></div>
+            <span className="mono-font text-[9px] text-[#3A86FF] font-black tracking-[0.6em] uppercase">Evoluție Tehnologică</span>
           </div>
           <div className="text-7xl md:text-[12vw] font-black impact-font text-white leading-[0.7] tracking-tighter">
             <StaggeredText text="EMS." className="block" />
-            <StaggeredText text="ISTORIC." className="block text-[#00F5FF]" delay={200} />
+            <StaggeredText text="ISTORIC." className="block text-[#3A86FF]" delay={200} />
           </div>
         </ScrollReveal>
 
@@ -951,9 +951,9 @@ const EMSTimeline = () => {
               <div
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`group cursor-pointer flex items-center gap-6 p-6 transition-all duration-500 border-l-2 ${activeIndex === idx ? 'border-[#00F5FF] bg-white/[0.03]' : 'border-white/5 hover:border-white/20'}`}
+                className={`group cursor-pointer flex items-center gap-6 p-6 transition-all duration-500 border-l-2 ${activeIndex === idx ? 'border-[#3A86FF] bg-white/[0.03]' : 'border-white/5 hover:border-white/20'}`}
               >
-                <span className={`mono-font text-xl font-black transition-all duration-500 ${activeIndex === idx ? 'text-[#00F5FF] scale-110 translate-x-2' : 'text-white/20 group-hover:text-white/40'}`}>
+                <span className={`mono-font text-xl font-black transition-all duration-500 ${activeIndex === idx ? 'text-[#3A86FF] scale-110 translate-x-2' : 'text-white/20 group-hover:text-white/40'}`}>
                   {m.year}
                 </span>
                 <span className={`impact-font text-2xl tracking-wide uppercase transition-all duration-500 ${activeIndex === idx ? 'text-white opacity-100' : 'text-white/20 group-hover:text-white/40'}`}>
@@ -971,7 +971,7 @@ const EMSTimeline = () => {
               </div>
 
               <div className="relative z-10">
-                <div className={`w-16 h-16 flex items-center justify-center mb-10 transition-all duration-700 border border-white/10 ${EMS_MILESTONES[activeIndex].isNeo ? 'bg-[#00F5FF]/10 text-[#00F5FF] shadow-[0_0_50px_rgba(0,245,255,0.2)] border-[#00F5FF]/30' : 'bg-transparent text-white/40'}`}>
+                <div className={`w-16 h-16 flex items-center justify-center mb-10 transition-all duration-700 border border-white/10 ${EMS_MILESTONES[activeIndex].isNeo ? 'bg-[#3A86FF]/10 text-[#3A86FF] shadow-[0_0_50px_rgba(0,245,255,0.2)] border-[#3A86FF]/30' : 'bg-transparent text-white/40'}`}>
                   {EMS_MILESTONES[activeIndex].icon}
                 </div>
 
@@ -984,9 +984,9 @@ const EMSTimeline = () => {
                 </p>
 
                 {EMS_MILESTONES[activeIndex].isNeo && (
-                  <div className="mt-12 inline-flex items-center gap-3 px-6 py-2 border border-[#00F5FF]/20 bg-[#00F5FF]/5 rounded-full">
-                    <Zap size={14} className="text-[#00F5FF] animate-pulse" />
-                    <span className="mono-font text-[10px] text-[#00F5FF] uppercase tracking-widest font-black">Tehnologie activă în prezent</span>
+                  <div className="mt-12 inline-flex items-center gap-3 px-6 py-2 border border-[#3A86FF]/20 bg-[#3A86FF]/5 rounded-full">
+                    <Zap size={14} className="text-[#3A86FF] animate-pulse" />
+                    <span className="mono-font text-[10px] text-[#3A86FF] uppercase tracking-widest font-black">Tehnologie activă în prezent</span>
                   </div>
                 )}
               </div>
@@ -1007,53 +1007,53 @@ const EMSEducation = () => {
         {/* Evolution Section */}
         <ScrollReveal className="mb-40">
           <div className="flex items-center gap-6 mb-8">
-            <History className="text-[#00F5FF]" size={20} />
-            <span className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-black uppercase">Context & Istoric</span>
+            <History className="text-[#3A86FF]" size={20} />
+            <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Context & Istoric</span>
           </div>
           <div className="text-6xl md:text-8xl font-black impact-font text-white mb-20 leading-[0.8] uppercase">
             <StaggeredText text="Evoluția" className="inline-block mr-4" />
-            <StaggeredText text="EMS." className="inline-block text-[#00F5FF]" delay={200} />
+            <StaggeredText text="EMS." className="inline-block text-[#3A86FF]" delay={200} />
             <span className="text-white/30 text-4xl md:text-5xl tracking-normal normal-case font-light block mt-6">De unde a început și de ce contează azi.</span>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
             {/* Stage 1 */}
-            <div className="glass-block p-10 hover:border-[#00F5FF]/30 transition-all duration-500 group">
-              <span className="impact-font text-6xl text-white/5 group-hover:text-[#00F5FF]/20 transition-colors mb-6 block">01</span>
+            <div className="glass-block p-10 hover:border-[#3A86FF]/30 transition-all duration-500 group">
+              <span className="impact-font text-6xl text-white/5 group-hover:text-[#3A86FF]/20 transition-colors mb-6 block">01</span>
               <h3 className="text-2xl font-black impact-font text-white mb-4 uppercase">Recuperare & <br />Reabilitare</h3>
               <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
                 Rădăcinile EMS sunt medicale. Creat pentru a activa musculatura când contracția voluntară era slabă.
               </p>
               <ul className="space-y-2 text-[10px] mono-font text-white/30 uppercase tracking-wider">
-                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#00F5FF]"></div> Activare musculară</li>
-                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#00F5FF]"></div> Menținere tonus</li>
-                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#00F5FF]"></div> Reeducare neuromotorie</li>
+                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Activare musculară</li>
+                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Menținere tonus</li>
+                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Reeducare neuromotorie</li>
               </ul>
             </div>
 
             {/* Stage 2 */}
-            <div className="glass-block p-10 hover:border-[#00F5FF]/30 transition-all duration-500 group">
-              <span className="impact-font text-6xl text-white/5 group-hover:text-[#00F5FF]/20 transition-colors mb-6 block">02</span>
+            <div className="glass-block p-10 hover:border-[#3A86FF]/30 transition-all duration-500 group">
+              <span className="impact-font text-6xl text-white/5 group-hover:text-[#3A86FF]/20 transition-colors mb-6 block">02</span>
               <h3 className="text-2xl font-black impact-font text-white mb-4 uppercase">Performanță <br />Sportivă</h3>
               <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
                 Adoptat de atleți pentru recrutare musculară superioară și antrenament fără stress articular.
               </p>
               <ul className="space-y-2 text-[10px] mono-font text-white/30 uppercase tracking-wider">
-                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#00F5FF]"></div> Recrutare 90%+</li>
-                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#00F5FF]"></div> Recuperare activă</li>
-                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#00F5FF]"></div> Control & Eficiență</li>
+                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Recrutare 90%+</li>
+                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Recuperare activă</li>
+                <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Control & Eficiență</li>
               </ul>
             </div>
 
             {/* Stage 3 */}
-            <div className="glass-block border-[#00F5FF]/20 p-10 relative overflow-hidden group shadow-[0_0_30px_rgba(0,245,255,0.05)]">
-              <div className="absolute top-0 right-0 p-4 opacity-10"><Zap size={40} className="text-[#00F5FF]" /></div>
-              <span className="impact-font text-6xl text-[#00F5FF]/40 mb-6 block">03</span>
+            <div className="glass-block border-[#3A86FF]/20 p-10 relative overflow-hidden group shadow-[0_0_30px_rgba(0,245,255,0.05)]">
+              <div className="absolute top-0 right-0 p-4 opacity-10"><Zap size={40} className="text-[#3A86FF]" /></div>
+              <span className="impact-font text-6xl text-[#3A86FF]/40 mb-6 block">03</span>
               <h3 className="text-2xl font-black impact-font text-white mb-4 uppercase">Fitness Modern <br />& Eficiență</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-6 font-light">
                 Soluția pentru oamenii ocupați care vor rezultate structurate, fără "încercări la întâmplare".
               </p>
-              <ul className="space-y-2 text-[10px] mono-font text-[#00F5FF] uppercase tracking-wider font-bold">
+              <ul className="space-y-2 text-[10px] mono-font text-[#3A86FF] uppercase tracking-wider font-bold">
                 <li className="flex items-center gap-2"><CheckCircle2 size={10} /> Timp optimizat</li>
                 <li className="flex items-center gap-2"><CheckCircle2 size={10} /> Structură & Ghidaj</li>
                 <li className="flex items-center gap-2"><CheckCircle2 size={10} /> Mediu Sigur Exclusiv</li>
@@ -1067,13 +1067,13 @@ const EMSEducation = () => {
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <div className="flex items-center gap-6 mb-8">
-                <div className="w-12 h-px bg-[#00F5FF]"></div>
-                <span className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-black uppercase">NeoBoost Difference</span>
+                <div className="w-12 h-px bg-[#3A86FF]"></div>
+                <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">NeoBoost Difference</span>
               </div>
               <h2 className="text-6xl md:text-7xl font-black impact-font text-white mb-10 leading-[0.85]">
                 TRANSFORMARE<br />
                 PRIN ACȚIUNI<br />
-                <span className="text-[#00F5FF]">PERSONALIZATE.</span>
+                <span className="text-[#3A86FF]">PERSONALIZATE.</span>
               </h2>
               <p className="text-xl text-white/50 font-light leading-relaxed mb-12">
                 La NeoBoost, EMS nu e despre a împinge corpul la limită, ci despre a construi o transformare sustenabilă, într-un cadru de siguranță totală.
@@ -1081,13 +1081,13 @@ const EMSEducation = () => {
 
               <div className="space-y-8 border-l border-white/10 pl-8">
                 <div>
-                  <h4 className="text-white font-bold impact-font text-xl uppercase mb-2 text-[#00F5FF]">Costumul = Interfața</h4>
+                  <h4 className="text-white font-bold impact-font text-xl uppercase mb-2 text-[#3A86FF]">Costumul = Interfața</h4>
                   <p className="text-white/40 text-sm font-light leading-relaxed">
                     Fiecare costum este calea prin care semnalul ajunge în corp. Ajustarea lui nu este un detaliu logistic, ci baza personalizării pentru structura ta corporală.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-white font-bold impact-font text-xl uppercase mb-2 text-[#00F5FF]">Personalizare Reală</h4>
+                  <h4 className="text-white font-bold impact-font text-xl uppercase mb-2 text-[#3A86FF]">Personalizare Reală</h4>
                   <p className="text-white/40 text-sm font-light leading-relaxed">
                     Nu doar intensitate. Configurăm frecvența, profunzimea stimulării și parametrii pe grupe musculare. Două persoane pot face "același antrenament" cu setări complet diferite.
                   </p>
@@ -1096,19 +1096,19 @@ const EMSEducation = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-4 bg-[#00F5FF]/5 blur-3xl rounded-full opacity-20"></div>
+              <div className="absolute -inset-4 bg-[#3A86FF]/5 blur-3xl rounded-full opacity-20"></div>
               <div className="relative glass-block p-10 md:p-14">
                 <div className="mb-10">
-                  <Quote className="text-[#00F5FF] mb-6" size={40} />
+                  <Quote className="text-[#3A86FF] mb-6" size={40} />
                   <h3 className="text-2xl md:text-3xl font-bold impact-font text-white uppercase leading-tight mb-6">
                     "Noi nu urmărim să fie greu. Urmărim să fie corect pentru tine."
                   </h3>
-                  <div className="h-px w-20 bg-[#00F5FF] opacity-50"></div>
+                  <div className="h-px w-20 bg-[#3A86FF] opacity-50"></div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="flex gap-4">
-                    <div className="w-10 h-10 border border-[#00F5FF]/30 flex items-center justify-center text-[#00F5FF] flex-shrink-0 bg-[#00F5FF]/5">
+                    <div className="w-10 h-10 border border-[#3A86FF]/30 flex items-center justify-center text-[#3A86FF] flex-shrink-0 bg-[#3A86FF]/5">
                       <Zap size={20} />
                     </div>
                     <div>
@@ -1117,7 +1117,7 @@ const EMSEducation = () => {
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <div className="w-10 h-10 border border-[#00F5FF]/30 flex items-center justify-center text-[#00F5FF] flex-shrink-0 bg-[#00F5FF]/5">
+                    <div className="w-10 h-10 border border-[#3A86FF]/30 flex items-center justify-center text-[#3A86FF] flex-shrink-0 bg-[#3A86FF]/5">
                       <Target size={20} />
                     </div>
                     <div>
@@ -1178,7 +1178,7 @@ const ImmersiveHero = () => {
 
         {/* Brand Logo */}
         <div className="relative mb-6">
-          <div className="absolute inset-0 bg-[#00F5FF]/10 electric-glow pointer-events-none blur-3xl opacity-50"></div>
+          <div className="absolute inset-0 bg-[#3A86FF]/10 electric-glow pointer-events-none blur-3xl opacity-50"></div>
           <h1 className="text-[16vw] md:text-[10vw] font-black impact-font leading-[0.85] tracking-tighter select-none text-white uppercase relative z-10 px-4 heading-glow glitch-hover">
             NEOBOOST
           </h1>
@@ -1190,7 +1190,7 @@ const ImmersiveHero = () => {
             Antrenament EMS Premium în Oradea
           </h2>
           <p className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto leading-relaxed readable-text">
-            Slăbire, tonus muscular și postură mai bună în doar <span className="text-[#00F5FF] font-semibold">30 de minute pe săptămână</span>.
+            Slăbire, tonus muscular și postură mai bună în doar <span className="text-[#3A86FF] font-semibold">30 de minute pe săptămână</span>.
           </p>
         </div>
 
@@ -1198,7 +1198,7 @@ const ImmersiveHero = () => {
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
           <MagneticButton
             href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez o probă gratuită EMS.`}
-            className="bg-[#00F5FF] text-black px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-black impact-font tracking-tight hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.5)] hover:shadow-[0_0_50px_rgba(0,245,255,0.7)] active:scale-95 inline-flex items-center gap-3"
+            className="bg-[#3A86FF] text-black px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-black impact-font tracking-tight hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.5)] hover:shadow-[0_0_50px_rgba(0,245,255,0.7)] active:scale-95 inline-flex items-center gap-3"
           >
             <MessageCircle size={22} />
             PROBĂ GRATUITĂ
@@ -1221,12 +1221,12 @@ const ImmersiveHero = () => {
           </div>
           <div className="w-px h-5 bg-white/20 hidden md:block"></div>
           <div className="flex items-center gap-2">
-            <CheckCircle2 size={18} className="text-[#00F5FF]" />
+            <CheckCircle2 size={18} className="text-[#3A86FF]" />
             <span><strong className="text-white"><AnimatedCounter value={500} suffix="+" /></strong> clienți activi</span>
           </div>
           <div className="w-px h-5 bg-white/20 hidden md:block"></div>
           <div className="flex items-center gap-2">
-            <Zap size={18} className="text-[#00F5FF]" />
+            <Zap size={18} className="text-[#3A86FF]" />
             <span><strong className="text-white"><AnimatedCounter value={3000} suffix="+" /></strong> ședințe EMS</span>
           </div>
         </div>
@@ -1235,7 +1235,7 @@ const ImmersiveHero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
-        <ArrowDown size={20} className="text-[#00F5FF]" />
+        <ArrowDown size={20} className="text-[#3A86FF]" />
       </div>
     </div>
   );
@@ -1263,7 +1263,7 @@ const FAQItem: React.FC<{ item: NeoFAQItem; i: number }> = ({ item, i }) => {
       onTouchEnd={() => setIsExpanded(false)}
     >
       <div className={`transition-all duration-700 ${isExpanded ? 'py-10' : 'py-5'} flex items-center gap-8 cursor-default`}>
-        <div className={`transition-all duration-700 ${isExpanded ? 'text-[#00F5FF] scale-125' : 'text-white/10 scale-90'}`}>
+        <div className={`transition-all duration-700 ${isExpanded ? 'text-[#3A86FF] scale-125' : 'text-white/10 scale-90'}`}>
           {item.icon}
         </div>
         <div className="flex-1">
@@ -1272,11 +1272,11 @@ const FAQItem: React.FC<{ item: NeoFAQItem; i: number }> = ({ item, i }) => {
               {item.question}
             </h3>
             <div className={`transition-all duration-500 ${isExpanded ? 'opacity-100 rotate-180' : 'opacity-0'}`}>
-              <ChevronDown size={18} className="text-[#00F5FF]" />
+              <ChevronDown size={18} className="text-[#3A86FF]" />
             </div>
           </div>
           <div className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${isExpanded ? 'max-h-[300px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
-            <p className="text-white/50 font-light leading-relaxed text-sm md:text-base border-l border-[#00F5FF]/20 pl-6 py-2">
+            <p className="text-white/50 font-light leading-relaxed text-sm md:text-base border-l border-[#3A86FF]/20 pl-6 py-2">
               {item.answer}
             </p>
           </div>
@@ -1290,35 +1290,35 @@ const FAQItem: React.FC<{ item: NeoFAQItem; i: number }> = ({ item, i }) => {
 const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth: () => void; onCheckout: (pkg: NeoPackage) => void }> = ({ pkg, i, user, onOpenAuth, onCheckout }) => {
   return (
     <ScrollReveal delay={i * 100}>
-      <div className={`group relative p-8 md:p-12 border transition-all duration-700 h-full flex flex-col justify-between overflow-hidden cursor-default ${pkg.isPremium ? 'bg-black text-white shadow-2xl border-[#00F5FF]/50 shadow-[#00F5FF]/10' : 'bg-[#0a0a0a] text-white border-white/5 hover:border-[#00F5FF]/30'}`}>
+      <div className={`group relative p-8 md:p-12 border transition-all duration-700 h-full flex flex-col justify-between overflow-hidden cursor-default ${pkg.isPremium ? 'bg-black text-white shadow-2xl border-[#3A86FF]/50 shadow-[#3A86FF]/10' : 'bg-[#0a0a0a] text-white border-white/5 hover:border-[#3A86FF]/30'}`}>
 
         {/* Animated Background Element */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00F5FF]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#3A86FF]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
         {/* Recomandat Badge */}
         {pkg.isRecommended && (
-          <div className="absolute top-4 right-4 px-3 py-1 bg-[#00F5FF] text-black text-[9px] font-black uppercase tracking-wider rounded-full shadow-[0_0_20px_rgba(0,245,255,0.4)] z-20">
+          <div className="absolute top-4 right-4 px-3 py-1 bg-[#3A86FF] text-black text-[9px] font-black uppercase tracking-wider rounded-full shadow-[0_0_20px_rgba(0,245,255,0.4)] z-20">
             ⭐ FAVORIT
           </div>
         )}
 
-        <div className="absolute -top-12 -left-8 opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-1000 pointer-events-none text-[#00F5FF]">
+        <div className="absolute -top-12 -left-8 opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-1000 pointer-events-none text-[#3A86FF]">
           <span className="text-[280px] font-black impact-font leading-none">{pkg.sessionCount}</span>
         </div>
 
         <div className="relative z-10">
           <div className="flex justify-between items-start mb-10">
-            <span className="mono-font text-[9px] font-bold text-[#00F5FF]/40 uppercase tracking-[0.4em]">{pkg.duration}</span>
+            <span className="mono-font text-[9px] font-bold text-[#3A86FF]/40 uppercase tracking-[0.4em]">{pkg.duration}</span>
             <div className="text-right">
-              <span className="block text-5xl font-black impact-font text-[#00F5FF] leading-none text-glow">{pkg.sessionCount}</span>
+              <span className="block text-5xl font-black impact-font text-[#3A86FF] leading-none text-glow">{pkg.sessionCount}</span>
               <span className="text-[8px] mono-font opacity-40 uppercase font-bold tracking-widest block mt-1">Ședințe</span>
             </div>
           </div>
-          <h3 className="text-4xl md:text-5xl font-black impact-font mb-6 transition-colors group-hover:text-[#00F5FF] leading-none uppercase">{pkg.title}</h3>
+          <h3 className="text-4xl md:text-5xl font-black impact-font mb-6 transition-colors group-hover:text-[#3A86FF] leading-none uppercase">{pkg.title}</h3>
 
           {/* Ideal For Label */}
           {pkg.idealFor && (
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-sm text-[10px] font-bold uppercase tracking-wider mb-8 bg-[#00F5FF]/10 text-[#00F5FF] border border-[#00F5FF]/20`}>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-sm text-[10px] font-bold uppercase tracking-wider mb-8 bg-[#3A86FF]/10 text-[#3A86FF] border border-[#3A86FF]/20`}>
               <Target size={12} />
               {pkg.idealFor}
             </div>
@@ -1327,7 +1327,7 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
           <div className="space-y-4 mb-12">
             {pkg.features.map((f, idx) => (
               <div key={idx} className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-white/60">
-                <CheckCheck size={14} className="text-[#00F5FF]" /> {f}
+                <CheckCheck size={14} className="text-[#3A86FF]" /> {f}
               </div>
             ))}
           </div>
@@ -1337,7 +1337,7 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
           <div className="mb-6">
             <div className="flex items-baseline gap-2">
               <span className="text-6xl font-black impact-font text-white">{pkg.price}</span>
-              <span className="mono-font text-[10px] text-[#00F5FF] font-black tracking-widest">LEI</span>
+              <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest">LEI</span>
             </div>
             {pkg.pricePerSession && (
               <p className="mono-font text-[11px] mt-2 text-white/30 italic">
@@ -1349,7 +1349,7 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
           <div className="flex flex-col gap-3">
             <button
               onClick={() => onCheckout(pkg)}
-              className="group/btn relative flex items-center justify-between p-5 bg-[#00F5FF] text-black overflow-hidden transition-all duration-500 shadow-[0_0_25px_rgba(0,245,255,0.2)] hover:shadow-[0_0_40px_rgba(0,245,255,0.4)] glitch-hover"
+              className="group/btn relative flex items-center justify-between p-5 bg-[#3A86FF] text-black overflow-hidden transition-all duration-500 shadow-[0_0_25px_rgba(0,245,255,0.2)] hover:shadow-[0_0_40px_rgba(0,245,255,0.4)] glitch-hover"
             >
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
               <span className="relative z-10 text-[11px] font-black tracking-[0.2em] uppercase">
@@ -1361,7 +1361,7 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
             <a
               href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez pachetul ${pkg.title}.`}
               target="_blank"
-              className="flex items-center justify-between p-5 border border-white/10 text-white/50 hover:text-white hover:border-[#00F5FF]/50 transition-all duration-500"
+              className="flex items-center justify-between p-5 border border-white/10 text-white/50 hover:text-white hover:border-[#3A86FF]/50 transition-all duration-500"
             >
               <span className="text-[11px] font-black tracking-[0.2em] uppercase">CONTACT WHATSAPP</span>
               <MessageCircle size={20} />
@@ -1384,14 +1384,14 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> = ({ te
         rel="noopener noreferrer"
         className="group block relative p-10 glass transition-all duration-700 hover:glass-neon h-full flex flex-col justify-between overflow-hidden"
       >
-        <div className="absolute top-0 right-0 p-8 text-white/[0.02] pointer-events-none group-hover:text-[#00F5FF]/[0.05] transition-colors duration-700">
+        <div className="absolute top-0 right-0 p-8 text-white/[0.02] pointer-events-none group-hover:text-[#3A86FF]/[0.05] transition-colors duration-700">
           <Quote size={80} />
         </div>
 
         <div className="relative z-10 flex items-center justify-between mb-8">
           <div className="flex gap-1">
             {[...Array(testimonial.rating)].map((_, idx) => (
-              <Star key={idx} size={10} className="fill-[#00F5FF] text-[#00F5FF]" />
+              <Star key={idx} size={10} className="fill-[#3A86FF] text-[#3A86FF]" />
             ))}
           </div>
           <div className="flex items-center gap-2 text-[8px] mono-font text-white/20 uppercase tracking-widest font-bold">
@@ -1407,11 +1407,11 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> = ({ te
         </div>
 
         <div className="relative z-10 border-t border-white/5 pt-8 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden border border-[#00F5FF]/20 flex-shrink-0 grayscale group-hover:grayscale-0 transition-all duration-500">
+          <div className="w-12 h-12 rounded-full overflow-hidden border border-[#3A86FF]/20 flex-shrink-0 grayscale group-hover:grayscale-0 transition-all duration-500">
             <img src={testimonial.imageUrl} alt={testimonial.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
           </div>
           <div>
-            <h4 className="text-white font-bold impact-font text-xl group-hover:text-[#00F5FF] transition-colors">{testimonial.name.toUpperCase()}</h4>
+            <h4 className="text-white font-bold impact-font text-xl group-hover:text-[#3A86FF] transition-colors">{testimonial.name.toUpperCase()}</h4>
             <p className="mono-font text-[9px] text-white/20 uppercase tracking-widest mt-1">{testimonial.role}</p>
           </div>
         </div>
@@ -1447,11 +1447,11 @@ const ProgramsSection = () => {
           <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-10">
             <div>
               <div className="flex items-center gap-4 mb-6">
-                <Target className="text-[#00F5FF]" size={20} />
-                <span className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-black uppercase">Start Your Journey</span>
+                <Target className="text-[#3A86FF]" size={20} />
+                <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Start Your Journey</span>
               </div>
               <h2 className="text-7xl md:text-9xl font-black impact-font text-white uppercase leading-[0.8] heading-glow">
-                PROGRAME <br /><span className="text-transparent" style={{ WebkitTextStroke: '2px #00F5FF' }}>ACTIVE.</span>
+                PROGRAME <br /><span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>ACTIVE.</span>
               </h2>
             </div>
             <p className="text-white/60 max-w-md text-right text-sm font-light leading-relaxed hidden md:block readable-text">
@@ -1465,11 +1465,11 @@ const ProgramsSection = () => {
             <ScrollReveal key={prog.id} delay={i * 100}>
               <div
                 onClick={() => setSelectedProgram(prog)}
-                className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#00F5FF]/40 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col rounded-3xl"
+                className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col rounded-3xl"
               >
                 {/* Image Placeholder area */}
                 <div className="relative h-60 overflow-hidden bg-white/5">
-                  <div className={`absolute top-4 left-4 z-10 ${prog.tagColor || 'bg-[#00F5FF]'} text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-sm`}>
+                  <div className={`absolute top-4 left-4 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-sm`}>
                     {prog.tag}
                   </div>
                   <div className="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-sm">
@@ -1478,22 +1478,22 @@ const ProgramsSection = () => {
 
                   {/* We use a gradient overlay instead of image if image fails or just as style */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] opacity-90"></div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-100 group-hover:scale-110 group-hover:text-[#00F5FF] transition-all duration-700">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-100 group-hover:scale-110 group-hover:text-[#3A86FF] transition-all duration-700">
                     {getIcon(prog.iconId || 'zap')}
                   </div>
                 </div>
 
                 <div className="p-8 flex flex-col flex-1 relative z-10 -mt-10 bg-gradient-to-b from-transparent to-[#0a0a0a]">
                   <div className="mb-4">
-                    <span className="text-[9px] text-[#00F5FF] font-bold uppercase tracking-wider block mb-1">
+                    <span className="text-[9px] text-[#3A86FF] font-bold uppercase tracking-wider block mb-1">
                       Ideal: {prog.idealFor}
                     </span>
-                    <h3 className="text-3xl font-black impact-font text-white mb-2 group-hover:text-[#00F5FF] transition-colors leading-none uppercase">
+                    <h3 className="text-3xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors leading-none uppercase">
                       {prog.title}
                     </h3>
                   </div>
 
-                  <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-6 border-l-2 border-[#00F5FF] pl-3">
+                  <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-6 border-l-2 border-[#3A86FF] pl-3">
                     {prog.subtitle}
                   </p>
 
@@ -1509,7 +1509,7 @@ const ProgramsSection = () => {
                       </span>
                     </div>
 
-                    <button className="w-full py-3 bg-white/5 hover:bg-[#00F5FF] hover:text-black text-white text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 rounded-sm group-hover:bg-[#00F5FF] group-hover:text-black glitch-hover">
+                    <button className="w-full py-3 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 rounded-sm group-hover:bg-[#3A86FF] group-hover:text-black glitch-hover">
                       VEZI DETALII <MoveUpRight size={14} />
                     </button>
                   </div>
@@ -1535,15 +1535,15 @@ const PaymentSuccessModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[250] flex items-center justify-center p-6 bg-black/90 backdrop-blur-sm animate-in fade-in zoom-in duration-300">
-      <div className="relative glass-block p-10 max-w-md text-center border-[#00F5FF] shadow-[0_0_50px_rgba(0,245,255,0.3)] rounded-2xl">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#00F5FF]/10 to-transparent pointer-events-none rounded-2xl"></div>
+      <div className="relative glass-block p-10 max-w-md text-center border-[#3A86FF] shadow-[0_0_50px_rgba(0,245,255,0.3)] rounded-2xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#3A86FF]/10 to-transparent pointer-events-none rounded-2xl"></div>
         <div className="relative z-10">
-          <div className="w-20 h-20 bg-[#00F5FF]/20 rounded-full flex items-center justify-center mx-auto mb-6 text-[#00F5FF] shadow-[0_0_30px_rgba(0,245,255,0.4)]">
+          <div className="w-20 h-20 bg-[#3A86FF]/20 rounded-full flex items-center justify-center mx-auto mb-6 text-[#3A86FF] shadow-[0_0_30px_rgba(0,245,255,0.4)]">
             <CheckCheck size={40} />
           </div>
           <h2 className="text-3xl font-black impact-font text-white mb-4 uppercase">PLATA CONFIRMATĂ!</h2>
           <p className="text-white/60 mb-8 font-light leading-relaxed">Abonamentul tău a fost activat cu succes. Vei primi factura și confirmarea pe email.</p>
-          <button onClick={onClose} className="bg-[#00F5FF] text-black px-8 py-3 font-bold impact-font tracking-widest uppercase hover:scale-105 transition-transform shadow-lg w-full rounded">
+          <button onClick={onClose} className="bg-[#3A86FF] text-black px-8 py-3 font-bold impact-font tracking-widest uppercase hover:scale-105 transition-transform shadow-lg w-full rounded">
             ÎNȚELES
           </button>
         </div>
@@ -1595,7 +1595,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="mono-font text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-[#00F5FF] hover:shadow-[0_0_15px_rgba(0,255,136,0.5)] transition-all duration-300"
+                className="mono-font text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-[#3A86FF] hover:shadow-[0_0_15px_rgba(0,255,136,0.5)] transition-all duration-300"
               >
                 {item.label}
               </a>
@@ -1604,20 +1604,20 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
             {user ? (
               <div className="flex items-center gap-3 pl-6 border-l border-white/10">
                 <span className="text-white/40 text-xs text-right">
-                  <div className="mono-font text-[8px] uppercase tracking-widest text-[#00F5FF]">Active</div>
+                  <div className="mono-font text-[8px] uppercase tracking-widest text-[#3A86FF]">Active</div>
                   <div className="font-bold">{user.email?.split('@')[0]}</div>
                 </span>
                 <button
                   onClick={() => supabase.auth.signOut()}
-                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#00F5FF]/20 flex items-center justify-center transition-colors group"
+                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#3A86FF]/20 flex items-center justify-center transition-colors group"
                 >
-                  <LogOut className="text-white/60 group-hover:text-[#00F5FF]" size={18} />
+                  <LogOut className="text-white/60 group-hover:text-[#3A86FF]" size={18} />
                 </button>
               </div>
             ) : (
               <button
                 onClick={onOpenAuth}
-                className="ml-6 px-6 py-2 border border-[#00F5FF]/30 flex items-center gap-2 text-[#00F5FF] hover:bg-[#00F5FF] hover:text-black transition-all duration-300 rounded font-bold uppercase text-xs tracking-widest"
+                className="ml-6 px-6 py-2 border border-[#3A86FF]/30 flex items-center gap-2 text-[#3A86FF] hover:bg-[#3A86FF] hover:text-black transition-all duration-300 rounded font-bold uppercase text-xs tracking-widest"
               >
                 <UserCheck size={14} />
                 Contul Meu
@@ -1634,8 +1634,8 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
                   <VolumeX size={14} className="text-white/20 group-hover:text-white/40" />
                 ) : (
                   <>
-                    <Volume2 size={14} className="text-[#00F5FF] animate-pulse" />
-                    <span className="absolute -inset-1 border border-[#00F5FF]/20 rounded-full animate-ping"></span>
+                    <Volume2 size={14} className="text-[#3A86FF] animate-pulse" />
+                    <span className="absolute -inset-1 border border-[#3A86FF]/20 rounded-full animate-ping"></span>
                   </>
                 )}
               </div>
@@ -1643,7 +1643,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
 
             <a
               href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-              className="bg-[#00F5FF] text-black px-8 py-3 text-xs font-black tracking-widest impact-font hover:brightness-110 shadow-lg hover:shadow-[#00F5FF]/20 transition-all transform hover:-translate-y-0.5"
+              className="bg-[#3A86FF] text-black px-8 py-3 text-xs font-black tracking-widest impact-font hover:brightness-110 shadow-lg hover:shadow-[#3A86FF]/20 transition-all transform hover:-translate-y-0.5"
             >
               PROBĂ GRATUITĂ
             </a>
@@ -1653,13 +1653,13 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
           <div className="flex lg:hidden items-center gap-3 relative z-[101]">
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#00F5FF]/20 border-[#00F5FF]/40 text-[#00F5FF]' : 'bg-black/40 text-white/40'}`}
+              className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#3A86FF]/20 border-[#3A86FF]/40 text-[#3A86FF]' : 'bg-black/40 text-white/40'}`}
             >
               {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all backdrop-blur-md border border-white/10 ${isMenuOpen ? 'text-[#00F5FF] bg-black/60' : 'text-white bg-black/40'}`}
+              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all backdrop-blur-md border border-white/10 ${isMenuOpen ? 'text-[#3A86FF] bg-black/60' : 'text-white bg-black/40'}`}
             >
               {isMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
             </button>
@@ -1674,7 +1674,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
               style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
             </div>
             {/* Theme Layer: Cyan/Black Mix */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-[#00F5FF]/10 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-[#3A86FF]/10 mix-blend-overlay"></div>
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
 
@@ -1687,8 +1687,8 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
                 onClick={() => setIsMenuOpen(false)}
                 className="group flex items-center gap-4 border-b border-white/5 pb-4"
               >
-                <span className="mono-font text-[#00F5FF] text-xs font-bold opacity-60">0{idx + 1}</span>
-                <span className="impact-font text-4xl text-white uppercase tracking-tight group-hover:text-[#00F5FF] transition-colors">
+                <span className="mono-font text-[#3A86FF] text-xs font-bold opacity-60">0{idx + 1}</span>
+                <span className="impact-font text-4xl text-white uppercase tracking-tight group-hover:text-[#3A86FF] transition-colors">
                   {item.label}
                 </span>
               </a>
@@ -1703,7 +1703,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
               {user ? (
                 <div className="flex items-center justify-between p-5 bg-white/5 rounded-2xl border border-white/10">
                   <div className="flex flex-col">
-                    <span className="mono-font text-[10px] text-[#00F5FF] uppercase tracking-widest font-bold">Autentificat ca</span>
+                    <span className="mono-font text-[10px] text-[#3A86FF] uppercase tracking-widest font-bold">Autentificat ca</span>
                     <span className="text-xl font-bold text-white mt-1">{user.email?.split('@')[0]}</span>
                   </div>
                   <button onClick={() => { supabase.auth.signOut(); setIsMenuOpen(false); }} className="p-4 bg-red-500/10 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all">
@@ -1713,7 +1713,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
               ) : (
                 <button
                   onClick={() => { onOpenAuth(); setIsMenuOpen(false); }}
-                  className="w-full py-5 bg-white/5 text-white font-black impact-font text-xl tracking-widest uppercase border border-white/10 hover:border-[#00F5FF]/40 hover:text-[#00F5FF] transition-all flex items-center justify-center gap-4 rounded-xl"
+                  className="w-full py-5 bg-white/5 text-white font-black impact-font text-xl tracking-widest uppercase border border-white/10 hover:border-[#3A86FF]/40 hover:text-[#3A86FF] transition-all flex items-center justify-center gap-4 rounded-xl"
                 >
                   <UserCheck size={20} />
                   CONTUL MEU
@@ -1722,7 +1722,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
 
               <a
                 href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-                className="w-full bg-[#00F5FF] text-black py-6 text-center impact-font text-2xl uppercase tracking-widest shadow-[0_0_40px_rgba(0,255,136,0.3)] rounded-xl"
+                className="w-full bg-[#3A86FF] text-black py-6 text-center impact-font text-2xl uppercase tracking-widest shadow-[0_0_40px_rgba(0,255,136,0.3)] rounded-xl"
               >
                 PROBĂ GRATUITĂ
               </a>
@@ -1766,9 +1766,9 @@ const ComparisonSection = () => (
     <div className="container mx-auto px-6 md:px-24 relative z-10">
       <ScrollReveal>
         <div className="text-center mb-20 relative z-10">
-          <p className="mono-font text-[9px] tracking-[0.4em] text-[#00F5FF]/60 uppercase mb-4">Tradiție vs Inovație</p>
+          <p className="mono-font text-[9px] tracking-[0.4em] text-[#3A86FF]/60 uppercase mb-4">Tradiție vs Inovație</p>
           <h2 className="text-4xl md:text-6xl font-black impact-font text-white uppercase heading-glow">
-            EVOLUȚIA <span className="text-[#00F5FF]/80">FITNESS-ULUI</span>
+            EVOLUȚIA <span className="text-[#3A86FF]/80">FITNESS-ULUI</span>
           </h2>
         </div>
       </ScrollReveal>
@@ -1778,16 +1778,16 @@ const ComparisonSection = () => (
         <div className="grid grid-cols-3 gap-4 mb-8 text-[10px] md:text-xs mono-font uppercase tracking-widest text-white/30 border-b border-white/10 pb-4">
           <div className="pl-4">Criteriu</div>
           <div className="text-center">Sală Tradițională</div>
-          <div className="text-center text-[#00F5FF]">NeoBoost System</div>
+          <div className="text-center text-[#3A86FF]">NeoBoost System</div>
         </div>
 
         {/* Rows */}
         <div className="space-y-4">
           {GYM_VS_EMS.map((item, idx) => (
             <ScrollReveal key={idx} delay={idx * 50}>
-              <div className="group grid grid-cols-3 gap-4 items-center p-6 glass-block transition-all duration-300 hover:border-[#00F5FF]/30 hover:shadow-[0_0_20px_rgba(0,255,136,0.05)]">
+              <div className="group grid grid-cols-3 gap-4 items-center p-6 glass-block transition-all duration-300 hover:border-[#3A86FF]/30 hover:shadow-[0_0_20px_rgba(0,255,136,0.05)]">
                 <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00F5FF] group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#3A86FF] group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <span className="font-bold text-white text-sm md:text-lg">{item.feature}</span>
@@ -1797,7 +1797,7 @@ const ComparisonSection = () => (
                   {item.gym}
                 </div>
 
-                <div className="text-center font-black text-[#00F5FF] text-sm md:text-xl shadow-[#00F5FF]/20 drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]">
+                <div className="text-center font-black text-[#3A86FF] text-sm md:text-xl shadow-[#3A86FF]/20 drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]">
                   {item.ems}
                 </div>
               </div>
@@ -1821,16 +1821,16 @@ const ComparisonSection = () => (
 // --- Science & Solutions Section ---
 const ScienceSolutionsSection = () => (
   <section className="py-32 bg-zinc-900 border-b border-white/5 relative overflow-hidden">
-    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00F5FF]/20 to-transparent"></div>
+    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3A86FF]/20 to-transparent"></div>
     <div className="container mx-auto px-6 md:px-24">
       <ScrollReveal>
         <div className="mb-20 max-w-3xl">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-10 h-1 bg-[#00F5FF]"></div>
-            <span className="mono-font text-[#00F5FF] uppercase tracking-widest text-xs font-black">Probleme & Soluții</span>
+            <div className="w-10 h-1 bg-[#3A86FF]"></div>
+            <span className="mono-font text-[#3A86FF] uppercase tracking-widest text-xs font-black">Probleme & Soluții</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black impact-font text-white mb-8 heading-glow">
-            ȘTIINȚA DIN SPATELE <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F5FF] to-cyan-600">REZULTATELOR.</span>
+            ȘTIINȚA DIN SPATELE <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] to-cyan-600">REZULTATELOR.</span>
           </h2>
           <p className="text-white/60 text-lg font-light leading-relaxed">
             Nu este magie, este bio-inginerie. NeoBoost abordează corpul uman la nivel celular pentru a rezolva probleme specifice.
@@ -1841,17 +1841,17 @@ const ScienceSolutionsSection = () => (
       <div className="grid md:grid-cols-2 gap-8">
         {EMS_SOLUTIONS.map((sol, i) => (
           <ScrollReveal key={sol.id} delay={i * 100}>
-            <div className="group relative bg-black border border-white/10 p-8 md:p-12 hover:border-[#00F5FF]/40 transition-all duration-500 overflow-hidden">
+            <div className="group relative bg-black border border-white/10 p-8 md:p-12 hover:border-[#3A86FF]/40 transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 scale-150 grayscale group-hover:grayscale-0">
                 {sol.icon}
               </div>
 
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-8 text-[#00F5FF] group-hover:scale-110 transition-transform duration-500">
+                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-8 text-[#3A86FF] group-hover:scale-110 transition-transform duration-500">
                   {sol.icon}
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-black impact-font text-white mb-4 group-hover:text-[#00F5FF] transition-colors">
+                <h3 className="text-2xl md:text-3xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">
                   {sol.title}
                 </h3>
 
@@ -1859,9 +1859,9 @@ const ScienceSolutionsSection = () => (
                   {sol.description}
                 </p>
 
-                <div className="pl-6 border-l-2 border-[#00F5FF]/30">
+                <div className="pl-6 border-l-2 border-[#3A86FF]/30">
                   <p className="text-white/40 text-sm italic font-light">
-                    "<span className="text-[#00F5FF]">Știința:</span> {sol.science}"
+                    "<span className="text-[#3A86FF]">Știința:</span> {sol.science}"
                   </p>
                 </div>
               </div>
@@ -1917,7 +1917,7 @@ const TrialRoadmap = () => {
       <div className="container mx-auto px-6 md:px-24 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black impact-font text-white tracking-tight uppercase">EXPERIENȚA <span className="text-[#00F5FF]">PRIMEI VIZITE.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black impact-font text-white tracking-tight uppercase">EXPERIENȚA <span className="text-[#3A86FF]">PRIMEI VIZITE.</span></h2>
             <p className="text-white/40 mt-4 mono-font text-xs tracking-widest uppercase">Simplu, rapid, profesionist.</p>
           </div>
         </ScrollReveal>
@@ -1926,8 +1926,8 @@ const TrialRoadmap = () => {
           {roadmap.map((item, idx) => (
             <ScrollReveal key={idx} delay={idx * 100}>
               <div className="relative p-6 sm:p-10 glass rounded-2xl group hover:neon-border transition-all duration-500">
-                <div className="text-5xl font-black impact-font text-white/5 group-hover:text-[#00F5FF]/10 transition-colors mb-4">{item.step}</div>
-                <div className="text-[#00F5FF] mb-6 transform group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+                <div className="text-5xl font-black impact-font text-white/5 group-hover:text-[#3A86FF]/10 transition-colors mb-4">{item.step}</div>
+                <div className="text-[#3A86FF] mb-6 transform group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
                 <h3 className="text-xl font-black impact-font text-white mb-2 uppercase">{item.title}</h3>
                 <p className="text-sm text-white/30 font-light leading-relaxed">{item.desc}</p>
                 {idx < 3 && (
@@ -1946,7 +1946,7 @@ const TrialRoadmap = () => {
 
 // --- Sticky "20 Minute" Banner ---
 const StickyBanner = () => (
-  <div className="fixed bottom-0 left-0 w-full bg-[#00F5FF] text-black py-3 z-[90] overflow-hidden whitespace-nowrap border-t border-black/10 shadow-[0_-10px_40px_rgba(0,255,136,0.3)]">
+  <div className="fixed bottom-0 left-0 w-full bg-[#3A86FF] text-black py-3 z-[90] overflow-hidden whitespace-nowrap border-t border-black/10 shadow-[0_-10px_40px_rgba(0,255,136,0.3)]">
     <div className="flex items-center justify-around gap-10 animate-marquee">
       {[...Array(6)].map((_, i) => (
         <div key={i} className="flex items-center gap-4 px-10">
@@ -1975,7 +1975,7 @@ const EMSAppUI = () => (
     {/* Header */}
     <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
       <div className="flex items-center gap-3">
-        <div className="w-2 h-2 rounded-full bg-[#00F5FF] animate-pulse"></div>
+        <div className="w-2 h-2 rounded-full bg-[#3A86FF] animate-pulse"></div>
         <span className="text-[8px] font-bold text-white/40 tracking-widest uppercase">ID-EMS OS v3.4.2</span>
       </div>
       <div className="flex items-center gap-6 text-[8px] text-white/20 font-bold uppercase tracking-wider">
@@ -2007,7 +2007,7 @@ const EMSAppUI = () => (
             <div className="text-[6px] text-white/30 uppercase mb-1">Channel {i + 1}</div>
             <div className="text-sm font-bold text-white">{val}%</div>
             <div className="h-0.5 bg-white/10 mt-2 rounded-full overflow-hidden">
-              <div className="h-full bg-[#00F5FF]" style={{ width: `${val}%` }}></div>
+              <div className="h-full bg-[#3A86FF]" style={{ width: `${val}%` }}></div>
             </div>
           </div>
         ))}
@@ -2271,7 +2271,7 @@ const App: React.FC = () => {
   ];
 
   return (
-    <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#00F5FF] selection:text-black">
+    <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
       <AmbientAudio isMuted={isMuted} />
       <DynamicGlitchOverlay />
 
@@ -2309,9 +2309,9 @@ const App: React.FC = () => {
             <div className="container mx-auto px-6 md:px-24 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-16">
-                  <p className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-bold uppercase mb-4">Ce Poți Obține</p>
+                  <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Ce Poți Obține</p>
                   <h2 className="text-4xl md:text-6xl font-black impact-font text-white">
-                    Beneficii <span className="text-[#00F5FF]">reale</span>, nu promisiuni
+                    Beneficii <span className="text-[#3A86FF]">reale</span>, nu promisiuni
                   </h2>
                 </div>
               </ScrollReveal>
@@ -2319,16 +2319,16 @@ const App: React.FC = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {/* Benefit 1 - Slăbire */}
                 <ScrollReveal delay={0}>
-                  <div onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }} className="glass-block p-8 h-full hover:border-[#00F5FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
-                    <div className="w-14 h-14 rounded-full bg-[#00F5FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#00F5FF]/20 transition-colors">
-                      <Zap size={28} className="text-[#00F5FF]" />
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <Zap size={28} className="text-[#3A86FF]" />
                     </div>
-                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#00F5FF] transition-colors">SLĂBIRE RAPIDĂ</h3>
-                    <p className="text-[#00F5FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
+                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">SLĂBIRE RAPIDĂ</h3>
+                    <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
                     <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
                       Arzi până la <span className="text-white font-bold">500 kcal</span> în 30 min și activezi metabolismul pentru încă 48h (efect afterburn).
                     </p>
-                    <div className="flex items-center gap-2 text-[#00F5FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
                       Vezi explicația științifică <MoveUpRight size={12} />
                     </div>
                   </div>
@@ -2336,17 +2336,17 @@ const App: React.FC = () => {
 
                 {/* Benefit 2 - Dureri de Spate */}
                 <ScrollReveal delay={100}>
-                  <div onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }} className="glass-block p-8 h-full border-[#00F5FF]/20 hover:border-[#00F5FF]/40 transition-all duration-500 group block cursor-pointer relative overflow-hidden flex flex-col">
-                    <div className="absolute top-3 right-3 px-2 py-1 bg-[#00F5FF]/20 text-[#00F5FF] text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
-                    <div className="w-14 h-14 rounded-full bg-[#00F5FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#00F5FF]/20 transition-colors">
-                      <HeartPulse size={28} className="text-[#00F5FF]" />
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }} className="glass-block p-8 h-full border-[#3A86FF]/20 hover:border-[#3A86FF]/40 transition-all duration-500 group block cursor-pointer relative overflow-hidden flex flex-col">
+                    <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF]/20 text-[#3A86FF] text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <HeartPulse size={28} className="text-[#3A86FF]" />
                     </div>
-                    <h3 className="text-2xl font-black impact-font text-[#00F5FF] mb-2">ADIO DURERI DE SPATE</h3>
+                    <h3 className="text-2xl font-black impact-font text-[#3A86FF] mb-2">ADIO DURERI DE SPATE</h3>
                     <p className="text-white/60 text-xs font-bold uppercase tracking-wider mb-3">Fără frică de mișcare</p>
                     <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
                       Clienții noștri spun că după 6-8 ședințe pot sta la birou fără durere lombară.
                     </p>
-                    <div className="flex items-center gap-2 text-[#00F5FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
                       Cum funcționează, pas cu pas <MoveUpRight size={12} />
                     </div>
                   </div>
@@ -2354,16 +2354,16 @@ const App: React.FC = () => {
 
                 {/* Benefit 3 - Tonifiere */}
                 <ScrollReveal delay={200}>
-                  <div onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }} className="glass-block p-8 h-full hover:border-[#00F5FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
-                    <div className="w-14 h-14 rounded-full bg-[#00F5FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#00F5FF]/20 transition-colors">
-                      <Target size={28} className="text-[#00F5FF]" />
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <Target size={28} className="text-[#3A86FF]" />
                     </div>
-                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#00F5FF] transition-colors">TONIFIERE</h3>
-                    <p className="text-[#00F5FF] text-xs font-bold uppercase tracking-wider mb-3">Fără rușine la sală</p>
+                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">TONIFIERE</h3>
+                    <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără rușine la sală</p>
                     <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
                       Musculatura se activează 90% simultan. Rezultate vizibile în 4-8 săptămâni.
                     </p>
-                    <div className="flex items-center gap-2 text-[#00F5FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
                       Ce înseamnă „tonifiere” în realitate <MoveUpRight size={12} />
                     </div>
                   </div>
@@ -2371,16 +2371,16 @@ const App: React.FC = () => {
 
                 {/* Benefit 4 - Performanță */}
                 <ScrollReveal delay={300}>
-                  <div onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }} className="glass-block p-8 h-full hover:border-[#00F5FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
-                    <div className="w-14 h-14 rounded-full bg-[#00F5FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#00F5FF]/20 transition-colors">
-                      <TrendingUp size={28} className="text-[#00F5FF]" />
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <TrendingUp size={28} className="text-[#3A86FF]" />
                     </div>
-                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#00F5FF] transition-colors">FORȚĂ & PERFORMANȚĂ</h3>
-                    <p className="text-[#00F5FF] text-xs font-bold uppercase tracking-wider mb-3">Fără risc de accidentare</p>
+                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">FORȚĂ & PERFORMANȚĂ</h3>
+                    <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără risc de accidentare</p>
                     <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
                       Recrutare rapidă a fibrelor musculare, creștere forță fără stres articular.
                     </p>
-                    <div className="flex items-center gap-2 text-[#00F5FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
                       Protocolul care reduce riscul <MoveUpRight size={12} />
                     </div>
                   </div>
@@ -2395,9 +2395,9 @@ const App: React.FC = () => {
               <div className="grid lg:grid-cols-2 gap-32 items-start">
                 <div className="lg:sticky top-40">
                   <ScrollReveal>
-                    <p className="mono-font text-[9px] tracking-[0.6em] text-[#00F5FF] font-bold uppercase mb-6">Protocol de Eficiență</p>
-                    <h2 className="text-7xl md:text-9xl font-black impact-font text-white leading-[0.8]">BIO<br /><span className="text-[#00F5FF]">HACK.</span></h2>
-                    <div className="h-px w-20 bg-[#00F5FF] my-12 opacity-30"></div>
+                    <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-6">Protocol de Eficiență</p>
+                    <h2 className="text-7xl md:text-9xl font-black impact-font text-white leading-[0.8]">BIO<br /><span className="text-[#3A86FF]">HACK.</span></h2>
+                    <div className="h-px w-20 bg-[#3A86FF] my-12 opacity-30"></div>
                     <p className="text-2xl font-light text-white/40 leading-tight max-w-sm">
                       Rezultate garantate prin stimularea a <span className="text-white italic">90% din fibrele musculare</span> simultan.
                     </p>
@@ -2407,8 +2407,8 @@ const App: React.FC = () => {
                 <div className="grid gap-6">
                   {BENEFITS.map((b, i) => (
                     <ScrollReveal key={i} delay={i * 100}>
-                      <div className="group p-10 glass-block hover:border-[#00F5FF]/30 transition-all duration-700">
-                        <h3 className="text-3xl font-black impact-font mb-4 text-white group-hover:text-[#00F5FF] transition-colors">{b.title}</h3>
+                      <div className="group p-10 glass-block hover:border-[#3A86FF]/30 transition-all duration-700">
+                        <h3 className="text-3xl font-black impact-font mb-4 text-white group-hover:text-[#3A86FF] transition-colors">{b.title}</h3>
                         <p className="text-white/40 font-light leading-relaxed">{b.description}</p>
                       </div>
                     </ScrollReveal>
@@ -2440,7 +2440,7 @@ const App: React.FC = () => {
             <div className="container mx-auto px-6 md:px-24 relative z-10">
               <ScrollReveal>
                 <h2 className="text-7xl md:text-[12vw] font-black impact-font text-white mb-32 leading-none uppercase">
-                  PRECIZIE<br /><span className="text-[#00F5FF]">BIO-TECH.</span>
+                  PRECIZIE<br /><span className="text-[#3A86FF]">BIO-TECH.</span>
                 </h2>
               </ScrollReveal>
 
@@ -2485,8 +2485,8 @@ const App: React.FC = () => {
             <div className="container mx-auto px-6 md:px-24">
               <ScrollReveal className="mb-24 md:mb-40">
                 <div className="flex items-center gap-6 mb-8">
-                  <div className="w-12 h-px bg-[#00F5FF]"></div>
-                  <span className="mono-font text-[9px] text-[#00F5FF] font-black tracking-[0.6em] uppercase">Experiența Clienților</span>
+                  <div className="w-12 h-px bg-[#3A86FF]"></div>
+                  <span className="mono-font text-[9px] text-[#3A86FF] font-black tracking-[0.6em] uppercase">Experiența Clienților</span>
                 </div>
                 <h2 className="text-7xl md:text-[14vw] font-black impact-font text-white leading-[0.75] tracking-tighter">POVEȘTI.<br /><span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.1)' }}>DE SUCCES.</span></h2>
               </ScrollReveal>
@@ -2504,7 +2504,7 @@ const App: React.FC = () => {
                   <a
                     href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Am văzut recenziile și vreau să aflu mai multe despre EMS.`}
                     target="_blank"
-                    className="inline-flex items-center gap-3 bg-[#00F5FF] text-black px-8 py-4 text-lg font-black impact-font hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.4)]"
+                    className="inline-flex items-center gap-3 bg-[#3A86FF] text-black px-8 py-4 text-lg font-black impact-font hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.4)]"
                   >
                     <MessageCircle size={20} />
                     SCRIE-NE PE WHATSAPP
@@ -2522,14 +2522,14 @@ const App: React.FC = () => {
                   <div className="text-7xl md:text-[14vw] font-black impact-font leading-[0.7] tracking-tighter heading-glow">
                     <StaggeredText text="TARIFE." />
                   </div>
-                  <p className="text-[#00F5FF]/50 text-base font-bold tracking-[0.3em] mt-8 border-l-2 border-[#00F5FF]/20 pl-6 uppercase">Program de transformare accelerată.</p>
+                  <p className="text-[#3A86FF]/50 text-base font-bold tracking-[0.3em] mt-8 border-l-2 border-[#3A86FF]/20 pl-6 uppercase">Program de transformare accelerată.</p>
                 </ScrollReveal>
 
                 <ScrollReveal delay={200} className="w-full lg:w-auto">
                   <div className="relative p-1.5 bg-white/5 border border-white/10 rounded-full flex gap-1 w-fit">
                     <button onClick={() => setPricingPeriod('monthly')} className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-widest uppercase transition-all duration-700 rounded-full ${pricingPeriod === 'monthly' ? 'text-black' : 'text-white/40'}`}>LUNAR</button>
                     <button onClick={() => setPricingPeriod('quarterly')} className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-widest uppercase transition-all duration-700 rounded-full ${pricingPeriod === 'quarterly' ? 'text-black' : 'text-white/40'}`}>3 LUNI</button>
-                    <div className={`absolute top-1.5 bottom-1.5 bg-[#00F5FF] rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_20px_rgba(0,245,255,0.4)]`} style={{ left: pricingPeriod === 'monthly' ? '6px' : 'calc(50% + 1px)', width: 'calc(50% - 7px)' }} />
+                    <div className={`absolute top-1.5 bottom-1.5 bg-[#3A86FF] rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_20px_rgba(0,245,255,0.4)]`} style={{ left: pricingPeriod === 'monthly' ? '6px' : 'calc(50% + 1px)', width: 'calc(50% - 7px)' }} />
                   </div>
                 </ScrollReveal>
               </div>
@@ -2560,7 +2560,7 @@ const App: React.FC = () => {
                 {LOCATIONS.map((loc, i) => (
                   <ScrollReveal key={i} delay={i * 200}>
                     <div className="group cursor-default">
-                      <div className="relative aspect-video overflow-hidden mb-10 border border-white/5 group-hover:border-[#00F5FF]/30 transition-all duration-700">
+                      <div className="relative aspect-video overflow-hidden mb-10 border border-white/5 group-hover:border-[#3A86FF]/30 transition-all duration-700">
                         <img
                           src={locationImages[i]}
                           alt={loc.name}
@@ -2570,10 +2570,10 @@ const App: React.FC = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
                       </div>
-                      <h3 className="text-4xl md:text-6xl font-black impact-font text-white mb-4 group-hover:text-[#00F5FF] transition-colors">{loc.name}</h3>
+                      <h3 className="text-4xl md:text-6xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">{loc.name}</h3>
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-4 text-white/30 mono-font text-[10px] uppercase tracking-widest font-bold">
-                          <Target size={14} className="text-[#00F5FF]" /> {loc.address}
+                          <Target size={14} className="text-[#3A86FF]" /> {loc.address}
                         </div>
                         <p className="text-white/20 text-sm font-light leading-relaxed max-w-sm">{loc.description}</p>
                       </div>
@@ -2589,8 +2589,8 @@ const App: React.FC = () => {
               <ScrollReveal>
                 <div className="flex flex-col items-center mb-24">
                   <div className="flex items-center gap-4 mb-6">
-                    <HelpCircle className="text-[#00F5FF]" size={20} />
-                    <span className="mono-font text-[10px] tracking-[0.5em] text-[#00F5FF] font-black uppercase">Informații Tehnice</span>
+                    <HelpCircle className="text-[#3A86FF]" size={20} />
+                    <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Informații Tehnice</span>
                   </div>
                   <h2 className="text-7xl md:text-9xl font-black impact-font text-white text-center">ÎNTREBĂRI.</h2>
                 </div>
@@ -2608,18 +2608,18 @@ const App: React.FC = () => {
               <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
                 <h2 className="text-6xl md:text-8xl font-black impact-font text-white/90">{BRAND.name}</h2>
                 <div className="flex gap-8 text-white/20">
-                  <a href="https://www.instagram.com/neoboost.oradea?igsh=ZW5scDZvbGE4OTBw&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F5FF] transition-colors"><Instagram size={32} /></a>
-                  <a href="#" className="hover:text-[#00F5FF] transition-colors"><Facebook size={32} /></a>
+                  <a href="https://www.instagram.com/neoboost.oradea?igsh=ZW5scDZvbGE4OTBw&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-[#3A86FF] transition-colors"><Instagram size={32} /></a>
+                  <a href="#" className="hover:text-[#3A86FF] transition-colors"><Facebook size={32} /></a>
                 </div>
               </div>
               <div className="h-px w-full bg-white/5 my-12"></div>
 
               {/* Mandatory Legal Links */}
               <div className="flex flex-wrap justify-center md:justify-start gap-8 mb-12 text-[10px] md:text-xs mono-font uppercase tracking-widest text-white/40">
-                <button onClick={() => { setActiveView('legal'); setLegalType('privacy'); }} className="hover:text-[#00F5FF] transition-colors">Politică de Confidențialitate</button>
-                <button onClick={() => { setActiveView('legal'); setLegalType('terms'); }} className="hover:text-[#00F5FF] transition-colors">Termeni și condiții</button>
-                <button onClick={() => { setActiveView('legal'); setLegalType('rules'); }} className="hover:text-[#00F5FF] transition-colors">Regulament Intern</button>
-                <a href="#faq" className="hover:text-[#00F5FF] transition-colors">Întrebări Frecvente</a>
+                <button onClick={() => { setActiveView('legal'); setLegalType('privacy'); }} className="hover:text-[#3A86FF] transition-colors">Politică de Confidențialitate</button>
+                <button onClick={() => { setActiveView('legal'); setLegalType('terms'); }} className="hover:text-[#3A86FF] transition-colors">Termeni și condiții</button>
+                <button onClick={() => { setActiveView('legal'); setLegalType('rules'); }} className="hover:text-[#3A86FF] transition-colors">Regulament Intern</button>
+                <a href="#faq" className="hover:text-[#3A86FF] transition-colors">Întrebări Frecvente</a>
               </div>
 
               {/* ANPC Badges */}
@@ -2649,7 +2649,7 @@ const App: React.FC = () => {
             </div>
           </footer>
 
-          <a href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`} target="_blank" className="fixed bottom-20 right-8 z-[100] w-14 h-14 border border-[#00F5FF]/40 text-[#00F5FF] flex items-center justify-center hover:bg-[#00F5FF] hover:text-black transition-all duration-500 bg-black/50 backdrop-blur-md">
+          <a href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`} target="_blank" className="fixed bottom-20 right-8 z-[100] w-14 h-14 border border-[#3A86FF]/40 text-[#3A86FF] flex items-center justify-center hover:bg-[#3A86FF] hover:text-black transition-all duration-500 bg-black/50 backdrop-blur-md">
             <MessageCircle size={24} />
           </a>
 
