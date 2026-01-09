@@ -382,16 +382,23 @@ const DynamicGlitchOverlay = () => {
 const BenefitsVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[2]">
+      {/* 
+        Video Wrapper: 
+        - 177.78vh = 16/9 * 100vh (Height-based cover)
+        - 56.25vw = 9/16 * 100vw (Width-based cover)
+        - min-w-full & min-h-full ensure it always covers the box
+        - scale-[1.3] provides a safe zoom to hide YouTube controls/borders without becoming unintelligible on mobile
+      */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.2] brightness-90 mix-blend-overlay scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
+          src={`https://www.youtube-nocookie.com/embed/KjbuMF4nE80?autoplay=1&mute=1&controls=0&loop=1&playlist=KjbuMF4nE80&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Benefits"
         />
       </div>
-      {/* VIGNETTE FADE */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
+      {/* VIGNETTE FADE - Optimized for Mobile Readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] z-10 opacity-90"></div>
       <div className="absolute inset-0 bg-black/40 z-10"></div>
     </div>
@@ -402,16 +409,15 @@ const BenefitsVideoBackground = () => {
 const BiohackVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[2]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
+          src={`https://www.youtube-nocookie.com/embed/LRdKs1NpS5g?autoplay=1&mute=1&controls=0&loop=1&playlist=LRdKs1NpS5g&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Biohack"
         />
       </div>
-      {/* VIGNETTE FADE */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
       <div className="absolute inset-0 bg-black/60 z-10"></div>
     </div>
@@ -422,16 +428,15 @@ const BiohackVideoBackground = () => {
 const TechnologyVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.3]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-60 grayscale-[20%] contrast-[1.1] brightness-90 mix-blend-screen scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
+          src={`https://www.youtube-nocookie.com/embed/HNrYC60KFRc?autoplay=1&mute=1&controls=0&loop=1&playlist=HNrYC60KFRc&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Technology"
         />
       </div>
-      {/* VIGNETTE FADE */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
       <div className="absolute inset-0 bg-black/60 z-10"></div>
     </div>
@@ -442,16 +447,15 @@ const TechnologyVideoBackground = () => {
 const ProgramsVideoBackground = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[2.4]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full opacity-70 grayscale-[10%] contrast-[1.1] brightness-110 mix-blend-screen scale-[1.35]">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1`}
+          src={`https://www.youtube-nocookie.com/embed/AQrpSZ4viVA?autoplay=1&mute=1&controls=0&loop=1&playlist=AQrpSZ4viVA&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&modestbranding=1&disablekb=1`}
           className="w-full h-full pointer-events-none"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           title="NeoBoost Programs"
         />
       </div>
-      {/* VIGNETTE FADE */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 opacity-100"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-90"></div>
       <div className="absolute inset-0 bg-black/50 z-10"></div>
     </div>
@@ -2326,7 +2330,7 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          <section id="metoda" className="py-32 md:py-60 bg-[#020202] relative z-10 overflow-hidden">
+          <section id="metoda" className="py-24 md:py-60 bg-[#020202] relative z-10 overflow-hidden">
             <BiohackVideoBackground />
             <div className="container mx-auto px-6 md:px-24">
               <div className="grid lg:grid-cols-2 gap-32 items-start">
@@ -2372,7 +2376,7 @@ const App: React.FC = () => {
 
 
 
-          <section id="tehnologie" className="py-32 md:py-60 bg-black relative z-10 overflow-hidden">
+          <section id="tehnologie" className="py-24 md:py-60 bg-black relative z-10 overflow-hidden">
             <TechnologyVideoBackground />
             <div className="container mx-auto px-6 md:px-24 relative z-10">
               <ScrollReveal>
@@ -2418,7 +2422,7 @@ const App: React.FC = () => {
 
           <EMSEducation />
 
-          <section id="recenzii" className="py-32 md:py-60 bg-[#030303] relative z-10 overflow-hidden">
+          <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden">
             <div className="container mx-auto px-6 md:px-24">
               <ScrollReveal className="mb-24 md:mb-40">
                 <div className="flex items-center gap-6 mb-8">
@@ -2451,7 +2455,7 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          <section id="abonamente" className="py-32 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden">
+          <section id="abonamente" className="py-24 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden">
             <div className="absolute inset-0 grid-bg opacity-30"></div>
             <div className="container mx-auto px-6 md:px-24 relative z-10">
               <div className="flex flex-col lg:flex-row justify-between items-end mb-32 gap-10">
@@ -2486,7 +2490,7 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          <section id="locatii" className="py-32 md:py-60 bg-black relative z-10">
+          <section id="locatii" className="py-24 md:py-60 bg-black relative z-10">
             <div className="container mx-auto px-6 md:px-24">
               <ScrollReveal>
                 <div className="text-7xl md:text-[12vw] font-black impact-font text-white leading-none mb-24 uppercase">
@@ -2521,7 +2525,7 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          <section id="faq" className="py-32 md:py-60 bg-[#050505] relative z-10">
+          <section id="faq" className="py-24 md:py-60 bg-[#050505] relative z-10">
             <div className="container mx-auto px-6 md:px-24">
               <ScrollReveal>
                 <div className="flex flex-col items-center mb-24">
