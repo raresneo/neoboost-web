@@ -474,6 +474,7 @@ export const BENEFIT_ARTICLES = [
     id: "slabire-rapida",
     title: "Slăbire Rapidă",
     subtitle: "Fără dietă extremă",
+    image: "/DSC03924.jpg",
     intro: "În contextul antrenamentelor EMS (Electrical Muscle Stimulation), „slăbire rapidă” trebuie înțeleasă ca o accelerare a cheltuielii energetice și a adaptărilor metabolice atunci când EMS este integrat întrun program coerent.",
     mechanisms: [
       {
@@ -497,6 +498,7 @@ export const BENEFIT_ARTICLES = [
     id: "dureri-spate",
     title: "Adio Dureri de Spate",
     subtitle: "Fără frică de mișcare",
+    image: "/DSC04030.jpg",
     intro: "Durerea lombară nespecifică este una dintre cele mai comune probleme. Intervențiile moderne pun accent pe mișcare progresivă și pe recâștigarea încrederii în corp.",
     mechanisms: [
       {
@@ -519,6 +521,7 @@ export const BENEFIT_ARTICLES = [
     id: "tonifiere",
     title: "Tonifiere",
     subtitle: "Fără rușine la sală",
+    image: "/DSC07624.jpg",
     intro: "„Tonifierea” este o combinație între creșterea masei musculare și reducerea stratului adipos. EMS poate susține componenta de forță/hipertrofie, mai ales când este combinat cu exerciții active.",
     mechanisms: [
       {
@@ -541,6 +544,7 @@ export const BENEFIT_ARTICLES = [
     id: "forta-performanta",
     title: "Forță & Performanță",
     subtitle: "Fără risc de accidentare",
+    image: "/DSC07811.jpg",
     intro: "EMS poate fi o unealtă utilă pentru dezvoltarea forței dacă este folosită corect. Nu există „fără risc”, există reducerea riscului prin dozaj și tehnică.",
     mechanisms: [
       {
@@ -567,7 +571,7 @@ export const PROGRAMS = [
     id: "kickstart",
     title: "6 Week Kickstart",
     subtitle: "SLĂBEȘTE 2–4 KG ȘI TE RECOMPENSĂM!",
-    image: "/ramada.jpg",
+    image: "/DSC00193.jpg",
     tag: "SLĂBIRE RAPIDĂ",
     tagColor: "bg-green-500",
     iconId: "zap",
@@ -581,7 +585,7 @@ export const PROGRAMS = [
     id: "fit-mamma",
     title: "Fit Mamma",
     subtitle: "RECÂȘTIGĂ-ȚI ENERGIA DUPĂ NAȘTERE",
-    image: "/getfit.jpg",
+    image: "/DSC00442.jpg",
     tag: "POST-NATAL SAFE",
     tagColor: "bg-pink-400",
     iconId: "baby",
@@ -595,7 +599,7 @@ export const PROGRAMS = [
     id: "semi-private",
     title: "Semi-Private Training",
     subtitle: "ATENȚIE PREMIUM, COST OPTIMIZAT",
-    image: "/studio_session_1.jpg",
+    image: "/DSC01081.jpg",
     tag: "GRUP MIC 2-3 PERS",
     tagColor: "bg-blue-400",
     iconId: "users",
@@ -609,7 +613,7 @@ export const PROGRAMS = [
     id: "8-week-transform",
     title: "8-Week Transformation",
     subtitle: "RECOMPOZIȚIE CORPORALĂ HYBRID",
-    image: "/powerbox_lifestyle.png",
+    image: "/DSC03990.jpg",
     tag: "Protocol Complet",
     tagColor: "bg-purple-500",
     iconId: "muscle",
@@ -623,7 +627,7 @@ export const PROGRAMS = [
     id: "30-day-lifestyle",
     title: "30-day Lifestyle",
     subtitle: "RESET DE OBICEIURI ȘI ENERGIE",
-    image: "/tablet_combo.jpg",
+    image: "/DSC04229.jpg",
     tag: "HACKING RUTINĂ",
     tagColor: "bg-orange-500",
     iconId: "calendar",
@@ -637,7 +641,7 @@ export const PROGRAMS = [
     id: "on-boarding",
     title: "On-Boarding (Start Smart)",
     subtitle: "FUNDAȚIE SOLIDĂ ÎN 14 ZILE",
-    image: "/ramada.jpg",
+    image: "/DSC07054.jpg",
     tag: "START INTELIGENT",
     tagColor: "bg-cyan-400",
     iconId: "target",
@@ -651,7 +655,7 @@ export const PROGRAMS = [
     id: "vip",
     title: "Invitation-Only (VIP)",
     subtitle: "PREMIUM EXCLUSIV PE INVITAȚIE",
-    image: "/powerbox_lifestyle.png",
+    image: "/DSC09363.jpg",
     tag: "CONCIERGE FITNESS",
     tagColor: "bg-yellow-500",
     iconId: "crown",

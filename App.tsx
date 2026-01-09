@@ -516,6 +516,18 @@ const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = 
                 <div className="grid lg:grid-cols-[1fr_2fr] gap-12 border-t border-white/10 pt-16">
                   {/* Header Column */}
                   <div className="lg:sticky top-40 self-start">
+                    {/* Article Image - Newly Added */}
+                    {article.image && (
+                      <div className="mb-8 overflow-hidden rounded-2xl border border-white/10 relative group">
+                        <div className="absolute inset-0 bg-[#3A86FF]/20 mix-blend-overlay z-10"></div>
+                        <img
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-64 object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out grayscale hover:grayscale-0"
+                        />
+                      </div>
+                    )}
+
                     <h3 className="text-4xl md:text-5xl font-black impact-font text-white mb-2 uppercase">{article.title}</h3>
                     <p className="text-[#3A86FF] mono-font text-xs font-bold tracking-widest uppercase mb-6">{article.subtitle}</p>
                     <div className="text-white/40 text-sm leading-relaxed font-light">
@@ -2263,11 +2275,10 @@ const App: React.FC = () => {
 
   // Imagini specifice care reflectă pozele furnizate de utilizator
   const locationImages = [
-    // Ramada: Imagine locală (uploaded by user)
-    "/ramada.jpg",
-    // GetFit: Lumină naturală abundentă, geamuri mari, spațiu deschis (bazat pe a doua poză furnizată)
-    // GetFit: Imagine locală (uploaded by user)
-    "/getfit.jpg"
+    // Ramada: Imagine locală (uploaded by user - High Res update)
+    "/DSC04709.jpg",
+    // GetFit: Lumină naturală abundentă (High Res update)
+    "/DSC08213.jpg"
   ];
 
   return (
