@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MoveUpRight, Target, History, Users, Quote, Star, MessageCircle, Cpu } from 'lucide-react';
 import { BRAND } from '../constants';
 
@@ -12,6 +12,8 @@ interface ProgramModalProps {
 
 export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FORM_CONFIGS, StepForm }) => {
     const [isApplying, setIsApplying] = useState(false);
+
+    const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setIsApplying(false);
@@ -38,6 +40,13 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
             if ((window as any).lenis) (window as any).lenis.start();
         };
     }, [program]);
+
+    // Handle outside click
+    const handleOutsideClick = (e: React.MouseEvent) => {
+        if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+            onClose();
+        }
+    };
 
     if (!program) return null;
 
@@ -96,9 +105,11 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
             );
         });
     };
-
     return (
-        <div className={`fixed inset-0 z-[99999] flex flex-col bg-black transition-all duration-300 ${program ? 'opacity-100 visible' : 'opacity-0 invisible'} h-[100dvh] w-screen overflow-hidden overscroll-none`}>
+        <div
+            className={`fixed inset-0 z-[99999] flex flex-col bg-black/60 backdrop-blur-sm transition-all duration-300 ${program ? 'opacity-100 visible' : 'opacity-0 invisible'} h-[100dvh] w-screen overflow-hidden overscroll-none`}
+            onClick={handleOutsideClick}
+        >
             {/* Header - Fixed Height for Mobile Visibility */}
             <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-black/90 backdrop-blur-3xl z-[100000]">
                 <button
@@ -116,7 +127,8 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
 
             {/* Main Content Area - Scrollable */}
             <div
-                className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar bg-black"
+                ref={modalRef}
+                className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar bg-black mx-auto w-full max-w-5xl"
                 style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
             >
                 <div className="container mx-auto max-w-5xl px-6 py-10 md:py-20 text-white">
@@ -126,7 +138,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         <img
                             src={getHeroImage(program.id)}
                             alt={program.title}
-                            className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-[3000ms] hi-fi-image"
+                            className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-[3000ms] hi-fi-image grayscale hover:grayscale-0 duration-1000"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         <div className="absolute bottom-10 left-10">

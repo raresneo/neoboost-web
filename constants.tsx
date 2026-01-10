@@ -18,7 +18,11 @@ export const BRAND = {
   email: "contact@neoboost.ro",
   trial: "Primă Sesiune Gratuită",
   googleMapsLink: "https://www.google.com/search?q=neoboost+oradea+recenzii",
-  color: "#3A86FF"
+  color: "#3A86FF",
+  socials: {
+    instagram: "https://instagram.com/neoboost.oradea",
+    facebook: "https://facebook.com/neoboost.oradea"
+  }
 };
 
 export interface NeoPackage extends Package {

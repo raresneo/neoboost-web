@@ -384,9 +384,9 @@ const ParticleBackground = () => {
 // Reusable Cinematic Background Component
 const CinematicBackground: React.FC<{ image: string; opacity?: number }> = ({ image, opacity = 0.4 }) => (
   <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-    {/* DESKTOP ONLY: Cinematic Image */}
+    {/* DESKTOP ONLY: Cinematic Image with B&W Filter */}
     <div
-      className="hidden md:block absolute inset-0 bg-cover bg-center transition-transform duration-[20s] ease-linear transform scale-100 hover:scale-110 will-change-transform"
+      className="hidden md:block absolute inset-0 bg-cover bg-center transition-transform duration-[20s] ease-linear transform scale-100 hover:scale-110 will-change-transform grayscale contrast-[1.1] brightness-[0.85] sepia-[0.1]"
       style={{ backgroundImage: `url(${image})`, opacity: opacity }}
     ></div>
 
@@ -1581,66 +1581,78 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
           </div>
         </div>
 
-        {/* Mobile Menu Overlay - FIXED "BLACK" APPEARANCE & ANIMATION */}
-        <div className={`fixed inset-0 bg-black/95 z-[100] transition-all duration-500 flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+        {/* Mobile Menu Overlay - SLIDE DOWN FROM TOP */}
+        <div className={`fixed inset-0 bg-black z-[100] transition-all duration-700 ease-[cubic-bezier(0.2,1,0.3,1)] flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
           {/* Dynamic Background Image with Theme Overlay */}
           <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 bg-cover bg-center opacity-30 blur-sm scale-105"
+            <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-105 grayscale contrast-[1.2]"
               style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
             </div>
             {/* Theme Layer: Cyan/Black Mix */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-[#3A86FF]/10 mix-blend-overlay"></div>
-            <div className="absolute inset-0 bg-black/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-[#3A86FF]/5"></div>
+          </div>
+
+          {/* Menu Header (Logo/Close) */}
+          <div className="absolute top-8 left-6 right-6 flex justify-between items-center lg:hidden">
+            <div className="flex items-center gap-3">
+              <img src="/logo_white.png" alt="Logo" className="w-8 h-8" />
+              <span className="font-black impact-font text-white">{BRAND.name}</span>
+            </div>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white"
+            >
+              <CloseIcon size={24} />
+            </button>
           </div>
 
           {/* Menu Items */}
-          <div className="flex flex-col gap-6 mb-12 relative z-10">
+          <div className="flex flex-col gap-4 mb-16 relative z-10">
             {navItems.map((item, idx) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => setIsMenuOpen(false)}
-                className="group flex items-center gap-4 border-b border-white/5 pb-4"
+                className="group flex flex-col py-2"
+                style={{ transitionDelay: `${idx * 50}ms` }}
               >
-                <span className="mono-font text-[#3A86FF] text-xs font-bold opacity-60">0{idx + 1}</span>
-                <span className="impact-font text-4xl text-white uppercase tracking-tight group-hover:text-[#3A86FF] transition-colors">
+                <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest uppercase mb-1">0{idx + 1}</span>
+                <span className="text-4xl md:text-5xl font-black impact-font text-white transition-all group-active:text-[#3A86FF] uppercase">
                   {item.label}
                 </span>
               </a>
             ))}
           </div>
 
-          {/* Mobile Menu Footer Actions */}
-          <div className="mt-auto pb-12 space-y-6">
-            <div className="h-px w-full bg-white/10" />
-
-            <div className="grid gap-4">
-              {user ? (
-                <div className="flex items-center justify-between p-5 bg-white/5 rounded-2xl border border-white/10">
-                  <div className="flex flex-col">
-                    <span className="mono-font text-[10px] text-[#3A86FF] uppercase tracking-widest font-bold">Autentificat ca</span>
-                    <span className="text-xl font-bold text-white mt-1">{user.email?.split('@')[0]}</span>
-                  </div>
-                  <button onClick={() => { supabase.auth.signOut(); setIsMenuOpen(false); }} className="p-4 bg-red-500/10 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all">
-                    <LogOut size={20} />
-                  </button>
+          <div className="mt-auto pb-12 pt-8 border-t border-white/10 space-y-10 relative z-10">
+            <div className="grid grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Follow Us</p>
+                <div className="flex gap-6">
+                  <a href={BRAND.socials.instagram} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Instagram size={20} /></a>
+                  <a href={BRAND.socials.facebook} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Facebook size={20} /></a>
                 </div>
-              ) : (
-                <button
-                  onClick={() => { onOpenAuth(); setIsMenuOpen(false); }}
-                  className="w-full py-5 bg-white/5 text-white font-black impact-font text-xl tracking-widest uppercase border border-white/10 hover:border-[#3A86FF]/40 hover:text-[#3A86FF] transition-all flex items-center justify-center gap-4 rounded-xl"
-                >
-                  <UserCheck size={20} />
-                  CONTUL MEU
-                </button>
-              )}
+              </div>
+              <div className="space-y-3">
+                <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Contact</p>
+                <a href={`tel:${BRAND.phone}`} className="text-white impact-font text-lg block">{BRAND.phone}</a>
+                <p className="text-white/30 text-[10px] lowercase">{BRAND.email}</p>
+              </div>
+            </div>
 
+            <div className="flex flex-col gap-4">
               <a
                 href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-                className="w-full bg-[#3A86FF] text-black py-6 text-center impact-font text-2xl uppercase tracking-widest shadow-[0_0_40px_rgba(0,255,136,0.3)] rounded-xl"
+                className="w-full bg-[#3A86FF] text-black py-6 font-black impact-font text-xl text-center uppercase tracking-widest"
               >
                 PROBĂ GRATUITĂ
               </a>
+              <button
+                onClick={() => { setIsMenuOpen(false); onOpenAuth(); }}
+                className="w-full border border-white/20 text-white/60 py-4 font-bold text-xs uppercase tracking-widest"
+              >
+                CONTUL MEU
+              </button>
             </div>
           </div>
         </div>
