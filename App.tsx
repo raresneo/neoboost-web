@@ -2544,48 +2544,17 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          <footer className="py-24 bg-black border-t border-white/5 relative z-10">
+          <footer className="py-12 bg-black border-t border-white/5 relative z-10">
             <div className="container mx-auto px-6 md:px-24">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
-                <h2 className="text-6xl md:text-8xl font-black impact-font text-white/90">{BRAND.name}</h2>
-                <div className="flex gap-8 text-white/20">
-                  <a href="https://www.instagram.com/neoboost.oradea?igsh=ZW5scDZvbGE4OTBw&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-[#3A86FF] transition-colors"><Instagram size={32} /></a>
-                  <a href="#" className="hover:text-[#3A86FF] transition-colors"><Facebook size={32} /></a>
+              <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="flex flex-wrap justify-center md:justify-start gap-6 text-[10px] mono-font uppercase tracking-widest text-white/40">
+                  <button onClick={() => { setActiveView('legal'); setLegalType('privacy'); }} className="hover:text-[#3A86FF] transition-colors">Politică de Confidențialitate</button>
+                  <button onClick={() => { setActiveView('legal'); setLegalType('terms'); }} className="hover:text-[#3A86FF] transition-colors">Termeni și condiții</button>
+                  <button onClick={() => { setActiveView('legal'); setLegalType('rules'); }} className="hover:text-[#3A86FF] transition-colors">Regulament Intern</button>
                 </div>
-              </div>
-              <div className="h-px w-full bg-white/5 my-12"></div>
-
-              {/* Mandatory Legal Links */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-8 mb-12 text-[10px] md:text-xs mono-font uppercase tracking-widest text-white/40">
-                <button onClick={() => { setActiveView('legal'); setLegalType('privacy'); }} className="hover:text-[#3A86FF] transition-colors">Politică de Confidențialitate</button>
-                <button onClick={() => { setActiveView('legal'); setLegalType('terms'); }} className="hover:text-[#3A86FF] transition-colors">Termeni și condiții</button>
-                <button onClick={() => { setActiveView('legal'); setLegalType('rules'); }} className="hover:text-[#3A86FF] transition-colors">Regulament Intern</button>
-                <a href="#faq" className="hover:text-[#3A86FF] transition-colors">Întrebări Frecvente</a>
-              </div>
-
-              {/* ANPC Badges */}
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-12">
-                <a
-                  href="https://ec.europa.eu/consumers/odr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto h-16 px-6 glass hover:glass-neon transition-all flex items-center justify-center border border-white/10"
-                >
-                  <img src="https://etamade-com.github.io/anpc-sal-sol-logo/anpc-sol.svg" alt="Solutionarea Online a Litigiilor" className="h-10 brightness-200 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all" />
-                </a>
-                <a
-                  href="https://anpc.ro/ce-este-sal/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto h-16 px-6 glass hover:glass-neon transition-all flex items-center justify-center border border-white/10"
-                >
-                  <img src="https://etamade-com.github.io/anpc-sal-sol-logo/anpc-sal.svg" alt="Solutionarea Alternativa a Litigiilor" className="h-10 brightness-200 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all" />
-                </a>
-              </div>
-
-              <div className="flex flex-col md:flex-row justify-between gap-6 pt-6 border-t border-white/5">
-                <p className="mono-font text-[9px] text-white/20 uppercase tracking-[0.4em]">© 2025 NeoBoost — Performanță Bio-Electrică Oradea</p>
-                <p className="mono-font text-[9px] text-white/10 uppercase tracking-[0.4em]">Tehnologie Integrated Muscle Stimulation</p>
+                <p className="mono-font text-[9px] text-white/20 uppercase tracking-[0.4em]">
+                  © 2025 NeoBoost — Performanță Bio-Electrică Oradea
+                </p>
               </div>
             </div>
           </footer>

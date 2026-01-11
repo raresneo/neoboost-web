@@ -213,7 +213,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                                 <hr className="border-white/10" />
                                 <div className="space-y-4">
                                     <a
-                                        href={calendlyLink}
+                                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să rezerv un loc pentru programul ${program.title}.`}
                                         target="_blank"
                                         className="w-full bg-[#3A86FF] text-black py-7 font-black impact-font text-2xl uppercase tracking-[0.2em] shadow-[0_0_50px_rgba(0,245,255,0.4)] text-center block hover:scale-[1.02] transition-transform"
                                     >
