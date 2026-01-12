@@ -1356,25 +1356,6 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> = ({ te
 
 // --- Programs Grid Section ---
 const ProgramsSection = () => {
-  const [selectedProgram, setSelectedProgram] = useState<typeof PROGRAMS[0] | null>(null);
-
-  // History management for Modal
-  useEffect(() => {
-    if (selectedProgram) {
-      window.history.pushState({ modal: 'program' }, '');
-    }
-  }, [selectedProgram]);
-
-  useEffect(() => {
-    const handlePopModal = (e: PopStateEvent) => {
-      const state = e.state;
-      if (selectedProgram && state?.modal !== 'program') {
-        setSelectedProgram(null);
-      }
-    };
-    window.addEventListener('popstate', handlePopModal);
-    return () => window.removeEventListener('popstate', handlePopModal);
-  }, [selectedProgram]);
 
   const getIcon = (iconId: string) => {
     switch (iconId) {
@@ -1411,125 +1392,70 @@ const ProgramsSection = () => {
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-// --- Scroll to Top Button ---
-    // Moved up slightly to avoid collision with banner on desktop, hidden on mobile logic if needed
-    const ScrollToTop = () => {
-        const [isVisible, setIsVisible] = useState(false);
-        useEffect(() => {
-            const toggle = () => setIsVisible(window.scrollY > 500);
-          window.addEventListener('scroll', toggle);
-            return () => window.removeEventListener('scroll', toggle);
-        }, []);
+          {PROGRAMS.map((prog, i) => (
+            <ScrollReveal key={prog.id} delay={i * 100}>
+              <Link
+                to={`/program/${prog.id}`}
+                className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-700 cursor-pointer overflow-hidden flex flex-col rounded-[2rem] shadow-2xl block"
+              >
+                {/* Image Section */}
+                <div className="relative h-72 overflow-hidden">
+                  <img
+                    src={prog.image}
+                    alt={prog.title}
+                    className="absolute inset-0 w-full h-full object-cover reveal-color transform transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90"></div>
 
-        const scrollToTop = () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
+                  <div className={`absolute top-6 left-6 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg`}>
+                    {prog.tag}
+                  </div>
+                  <div className="absolute top-6 right-6 z-10 bg-black/60 backdrop-blur-xl px-4 py-1.5 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-full">
+                    {prog.duration}
+                  </div>
+                </div>
 
-          return (
-          <button
-            onClick={scrollToTop}
-            className={`fixed bottom-32 right-6 z-[80] p-3 bg-white/5 text-white/50 hover:bg-[#3A86FF] hover:text-black rounded-full backdrop-blur-md transition-all duration-500 border border-white/10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
-          >
-            <ArrowDown size={20} className="rotate-180" />
-          </button>
-          );
-    };
-
-          const [isMuted, setIsMuted] = useState(false); 
-
-    const handleCheckout = async (pkg: NeoPackage) => {
-            // ... (Checkout Logic remains identical)
-          };
-
-          // Imagini specifice care reflectă pozele furnizate de utilizator
-          const locationImages = [
-          "/DSC04709.jpg",
-          "/DSC08213.jpg"
-          ];
-
-          return (
-          <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
-            <AmbientAudio isMuted={isMuted} />
-            <ParticleBackground />
-
-            {/* Navbar z-index raised to 100 to stay above everything */}
-            {activeView !== 'science' && (
-              <Navbar
-                isMuted={isMuted}
-                setIsMuted={setIsMuted}
-                user={session?.user}
-                onOpenAuth={() => setIsAuthOpen(true)}
-              />
-            )}
-            <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
-            <PaymentSuccessModal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />
-            <ScrollToTop />
-            <CookieBanner />
-
-            {PROGRAMS.map((prog, i) => (
-              <ScrollReveal key={prog.id} delay={i * 100}>
-                <Link
-                  to={`/program/${prog.id}`}
-                  className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-700 cursor-pointer overflow-hidden flex flex-col rounded-[2rem] shadow-2xl block"
-                >
-                  {/* Image Section */}
-                  <div className="relative h-72 overflow-hidden">
-                    <img
-                      src={prog.image}
-                      alt={prog.title}
-                      className="absolute inset-0 w-full h-full object-cover reveal-color transform transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90"></div>
-
-                    <div className={`absolute top-6 left-6 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg`}>
-                      {prog.tag}
-                    </div>
-                    <div className="absolute top-6 right-6 z-10 bg-black/60 backdrop-blur-xl px-4 py-1.5 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-full">
-                      {prog.duration}
-                    </div>
+                <div className="p-10 flex flex-col flex-1 relative z-10 -mt-8 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
+                  <div className="mb-6">
+                    <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
+                      IDEAL: {prog.idealFor}
+                    </span>
+                    <h3 className="text-4xl font-black impact-font text-white mb-3 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter">
+                      {prog.title}
+                    </h3>
                   </div>
 
-                  <div className="p-10 flex flex-col flex-1 relative z-10 -mt-8 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
-                    <div className="mb-6">
-                      <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
-                        IDEAL: {prog.idealFor}
-                      </span>
-                      <h3 className="text-4xl font-black impact-font text-white mb-3 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter">
-                        {prog.title}
-                      </h3>
+                  <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-8 border-l-2 border-[#3A86FF] pl-4">
+                    {prog.subtitle}
+                  </p>
+
+                  <p className="text-white/40 text-sm leading-relaxed mb-10 flex-grow overflow-hidden line-clamp-4">
+                    {prog.description}
+                  </p>
+
+                  <div className="mt-auto pt-8 border-t border-white/5 flex flex-col gap-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-[8px] uppercase text-white/20 font-black tracking-[0.2em] block mb-1">Rezultat</span>
+                        <span className="text-sm font-bold text-white flex items-center gap-2">
+                          {prog.benefit}
+                        </span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-[#3A86FF]/20 group-hover:text-[#3A86FF] transition-all duration-500">
+                        {getIcon(prog.iconId || 'zap')}
+                      </div>
                     </div>
 
-                    <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-8 border-l-2 border-[#3A86FF] pl-4">
-                      {prog.subtitle}
-                    </p>
-
-                    <p className="text-white/40 text-sm leading-relaxed mb-10 flex-grow overflow-hidden line-clamp-4">
-                      {prog.description}
-                    </p>
-
-                    <div className="mt-auto pt-8 border-t border-white/5 flex flex-col gap-6">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <span className="text-[8px] uppercase text-white/20 font-black tracking-[0.2em] block mb-1">Rezultat</span>
-                          <span className="text-sm font-bold text-white flex items-center gap-2">
-                            {prog.benefit}
-                          </span>
-                        </div>
-                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-[#3A86FF]/20 group-hover:text-[#3A86FF] transition-all duration-500">
-                          {getIcon(prog.iconId || 'zap')}
-                        </div>
-                      </div>
-
-                      <div
-                        className="w-full py-4 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center justify-center gap-3 rounded-xl border border-white/10 group-hover:border-[#3A86FF]/30"
-                      >
-                        EXPLOREAZĂ <MoveUpRight size={14} />
-                      </div>
+                    <div
+                      className="w-full py-4 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center justify-center gap-3 rounded-xl border border-white/10 group-hover:border-[#3A86FF]/30"
+                    >
+                      EXPLOREAZĂ <MoveUpRight size={14} />
                     </div>
                   </div>
-                </Link>
-              </ScrollReveal>
-            ))}
+                </div>
+              </Link>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
@@ -2088,7 +2014,6 @@ const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolean; isCo
     setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
   };
 
-  return (
   return (
     <div
       className={`relative w-full h-full group perspective-1000 ${isPowerBox ? 'animate-float' : ''}`}
