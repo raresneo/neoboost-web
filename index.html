@@ -38,28 +38,74 @@
 
     <style>
         :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
             --glass-bg: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 255, 255, 0.05);
-            /* Softer border */
-            --glass-blur: 12px;
-            --neon-accent: #3A86FF;
-            --accent-glow: 0 0 15px rgba(58, 134, 255, 0.15);
-            /* More subtle glow */
-            --deep-black: #050505;
-            /* Slightly softer black for depth */
+            --accent: #3A86FF;
+            --button-text: #000000;
+        }
+
+        body.light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f4f4f5;
+            --text-primary: #09090b;
+            --text-secondary: rgba(0, 0, 0, 0.6);
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --accent: #3A86FF;
+            --button-text: #ffffff;
+        }
+
+        /* Override specific hardcoded utilities for light mode via CSS directly if possible, or use variables in classes */
+        .light-mode .bg-black {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .light-mode .bg-\[\#050505\] {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .light-mode .text-white {
+            color: var(--text-primary) !important;
+        }
+
+        .light-mode .text-white\/60 {
+            color: var(--text-secondary) !important;
+        }
+
+        .light-mode .text-white\/40 {
+            color: var(--text-secondary) !important;
+        }
+
+        .light-mode .text-white\/30 {
+            color: rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .light-mode .text-white\/20 {
+            color: rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .light-mode .border-white\/10 {
+            border-color: var(--glass-border) !important;
+        }
+
+        .light-mode .border-white\/5 {
+            border-color: var(--glass-border) !important;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--deep-black);
-            color: #FFFFFF;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
             cursor: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
-            background-image:
-                radial-gradient(circle at 50% 50%, rgba(58, 134, 255, 0.03) 0%, transparent 60%);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         /* Sophisticated Background Animation (Planning/Thinking) */
@@ -199,33 +245,61 @@
     <style>
         /* Custom Animations for Graphics */
         @keyframes scan-vertical {
-            0% { transform: translateY(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100%); opacity: 0; }
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
         }
+
         .animate-scan-vertical {
             animation: scan-vertical 3s linear infinite;
         }
 
         @keyframes pulse-fast {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 0.4; }
+
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
         }
+
         .animate-pulse-fast {
             animation: pulse-fast 1s ease-in-out infinite;
         }
 
         @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
+
         .animate-spin-slow {
             animation: spin-slow 10s linear infinite;
         }
-        
+
         .radial-gradient-glow {
-            background: radial-gradient(circle, rgba(58,134,255,0.4) 0%, rgba(58,134,255,0) 70%);
+            background: radial-gradient(circle, rgba(58, 134, 255, 0.4) 0%, rgba(58, 134, 255, 0) 70%);
         }
     </style>
 </head>

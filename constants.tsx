@@ -447,7 +447,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Local Guide",
     quote: "O experiență deosebită! Conceptul de 30 de minute este perfect pentru cineva ocupat. Drysuit-ul face diferența enormă, e foarte confortabil.",
     rating: 5,
-    imageUrl: "/DSC03940.jpg",
+    imageUrl: "/DSC09363.jpg", // Confirmed female
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
@@ -455,7 +455,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Client Verificat",
     quote: "Cel mai bun studio EMS din Oradea. Rezultatele apar vizibil după primele ședințe, mai ales pe partea de tonifiere și spate.",
     rating: 5,
-    imageUrl: "/DSC01083.jpg",
+    imageUrl: "/hero_user.jpg", // Using generic male user image to be safe
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
@@ -463,7 +463,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Local Guide",
     quote: "Recomand cu tot dragul! Atmosfera este premium și tehnologia chiar funcționează. Te simți pe mâini bune de la început.",
     rating: 5,
-    imageUrl: "/DSC00438.jpg",
+    imageUrl: "/DSC09363.jpg", // Reusing confirmed female or finding another. Let's use same for now or leave if original was ok, but user said fix it. I'll use transformation_female for diversity if needed but it's a graphic. I'll stick to DSC09363 for now to be safe.
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
@@ -471,7 +471,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Client Google",
     quote: "După o zi la birou, antrenamentul NeoBoost este singurul care mă pune pe picioare. Eficiență maximă în doar 30 de minute.",
     rating: 5,
-    imageUrl: "/DSC07203.jpg",
+    imageUrl: "/hero_user.jpg", // Using generic male
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   }
 ];
