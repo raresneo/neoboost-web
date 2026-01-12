@@ -1533,6 +1533,13 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
               </a>
             ))}
 
+            <Link
+              to="/oferta-speciala"
+              className="px-4 py-1.5 bg-[#3A86FF] text-black text-[9px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all animate-pulse"
+            >
+              OFERTĂ 3+1
+            </Link>
+
             {user ? (
               <div className="flex items-center gap-3 pl-6 border-l border-white/10">
                 <span className="text-white/40 text-xs text-right">
@@ -1647,6 +1654,14 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
                 </span>
               </a>
             ))}
+
+            <Link
+              to="/oferta-speciala"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-6 p-6 bg-[#3A86FF] text-black font-black impact-font text-3xl text-center uppercase shadow-[0_0_30px_rgba(58,134,255,0.4)]"
+            >
+              OFERTĂ 3+1 🔥
+            </Link>
           </div>
 
           <div className="mt-auto pb-12 pt-8 border-t border-white/10 space-y-10 relative z-10">
@@ -1681,7 +1696,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
             </div>
           </div>
         </div>
-      </nav>
+      </nav >
     </>
   );
 };
