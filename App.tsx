@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Lenis from 'lenis';
 import { Link } from 'react-router-dom';
 import { ProgramModal } from './components/ProgramModal';
+import { BookingModal } from './components/BookingModal';
 import {
   X,
   MessageCircle,
@@ -1492,7 +1493,7 @@ const PaymentSuccessModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
   );
 }
 
-const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; setIsMuted: (m: boolean) => void; user: any; onOpenAuth: () => void }) => {
+const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking }: { isMuted: boolean; setIsMuted: (m: boolean) => void; user: any; onOpenAuth: () => void; onOpenBooking: () => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -1588,13 +1589,12 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth }: { isMuted: boolean; s
               </div>
             </button>
 
-            <a
-              href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau o programare.`}
-              target="_blank"
+            <button
+              onClick={onOpenBooking}
               className="hidden xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
             >
               PROGRAMARE
-            </a>
+            </button>
 
             <a
               href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
@@ -2087,7 +2087,9 @@ const App: React.FC = () => {
   // Auth State
   const [session, setSession] = useState<Session | null>(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -2267,8 +2269,10 @@ const App: React.FC = () => {
           setIsMuted={setIsMuted}
           user={session?.user}
           onOpenAuth={() => setIsAuthOpen(true)}
+          onOpenBooking={() => setIsBookingOpen(true)}
         />
       )}
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
       <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
       <PaymentSuccessModal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />
       <ScrollToTop />
@@ -2606,9 +2610,12 @@ const App: React.FC = () => {
             </div>
           </footer>
 
-          <a href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`} target="_blank" className="fixed bottom-20 right-8 z-[100] w-14 h-14 border border-[#3A86FF]/40 text-[#3A86FF] flex items-center justify-center hover:bg-[#3A86FF] hover:text-black transition-all duration-500 bg-black/50 backdrop-blur-md">
+          <button
+            onClick={() => setIsBookingOpen(true)}
+            className="fixed bottom-20 right-8 z-[100] w-14 h-14 border border-[#3A86FF]/40 text-[#3A86FF] flex items-center justify-center hover:bg-[#3A86FF] hover:text-black transition-all duration-500 bg-black/50 backdrop-blur-md"
+          >
             <MessageCircle size={24} />
-          </a>
+          </button>
 
           <StickyBanner />
         </>
