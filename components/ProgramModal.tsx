@@ -53,7 +53,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
     const formConfig = FORM_CONFIGS[program.id];
 
     if (isApplying && formConfig) {
-        return <StepForm config={formConfig} onClose={onClose} />;
+        return <StepForm config={formConfig} onClose={onClose} programId={program.id} />;
     }
 
     const mockBeforeAfter = program.id === 'fit-mamma' ? '/transformation_female_v2.png' : '/transformation_male_v2.png';

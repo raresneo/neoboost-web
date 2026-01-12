@@ -1,16 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FormConfig, FormStep } from './types';
-import { ChevronDown, ChevronUp, Check, Copy, MessageCircle, ArrowRight, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, Copy, MessageCircle, ArrowRight, X, Loader2 } from 'lucide-react';
 import { BRAND } from '../../constants';
+import { getStoredUTMParameters } from '../../lib/utm';
 
 interface StepFormProps {
     config: FormConfig;
     onClose: () => void;
+    programId?: string;
 }
 
-export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
+export const StepForm: React.FC<StepFormProps> = ({ config, onClose, programId }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<Record<string, string>>({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -85,8 +89,43 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
     const finalMessage = constructMessage();
     const whatsappUrl = `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(finalMessage)}`;
 
+    const saveLeadToBackend = async () => {
+        if (submitSuccess) return true; // Already saved
+
+        setIsSubmitting(true);
+        try {
+            const utm = getStoredUTMParameters();
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    programId: programId || config.id,
+                    firstName: answers['name']?.split(' ')[0] || answers['first_name'] || 'Lead',
+                    lastName: answers['name']?.split(' ').slice(1).join(' ') || answers['last_name'] || 'Form',
+                    email: answers['email'] || 'no-email@provided.com',
+                    phone: answers['phone'] || answers['contact'] || '',
+                    formData: answers,
+                    utmSource: utm.source,
+                    utmMedium: utm.medium,
+                    utmCampaign: utm.campaign
+                }),
+            });
+
+            if (!response.ok) throw new Error('Failed to save lead');
+
+            setSubmitSuccess(true);
+            return true;
+        } catch (error) {
+            console.error('Error saving lead:', error);
+            return false;
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     const copyToClipboard = () => {
         navigator.clipboard.writeText(finalMessage);
+        saveLeadToBackend(); // Try to save even if they just copy
         alert('Mesajul a fost copiat! Deschide WhatsApp și dă Paste.');
     };
 
@@ -204,11 +243,8 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                             Formularul tău este completat. Apasă butonul de mai jos pentru a deschide WhatsApp cu toate detaliile gata scrise.
                         </p>
 
-                        <a
-                            href={whatsappUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => {
+                        <button
+                            onClick={async () => {
                                 // Basic tracking for Lead/Contact
                                 if (typeof (window as any).gtag === 'function') {
                                     (window as any).gtag('event', 'generate_lead', { 'event_category': 'form', 'event_label': 'whatsapp_send' });
@@ -216,12 +252,19 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose }) => {
                                 if (typeof (window as any).fbq === 'function') {
                                     (window as any).fbq('track', 'Contact');
                                 }
+
+                                // Save to backend
+                                await saveLeadToBackend();
+
+                                // Open WhatsApp
+                                window.open(whatsappUrl, '_blank');
                             }}
-                            className="w-full block bg-[#3A86FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(0,255,136,0.3)] hover:shadow-[0_0_60px_rgba(0,255,136,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3"
+                            disabled={isSubmitting}
+                            className="w-full bg-[#3A86FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(0,255,136,0.3)] hover:shadow-[0_0_60px_rgba(0,255,136,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-wait"
                         >
-                            <MessageCircle size={28} />
-                            Trimite pe WhatsApp
-                        </a>
+                            {isSubmitting ? <Loader2 size={28} className="animate-spin" /> : <MessageCircle size={28} />}
+                            {isSubmitting ? 'Se Salvează...' : 'Trimite pe WhatsApp'}
+                        </button>
 
                         {/* Fallback */}
                         <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-left">

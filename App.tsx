@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Lenis from 'lenis';
+import { Link } from 'react-router-dom';
 import { ProgramModal } from './components/ProgramModal';
 import {
   X,
@@ -36,7 +37,7 @@ import {
   Microscope,
   Medal,
   Briefcase,
-  Link,
+  Link as LucideLink,
   PlayCircle,
   CheckCheck,
   CreditCard
@@ -1416,9 +1417,12 @@ const ProgramsSection = () => {
                       </span>
                     </div>
 
-                    <button className="w-full py-3 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 rounded-sm group-hover:bg-[#3A86FF] group-hover:text-black glitch-hover">
+                    <Link
+                      to={`/program/${prog.id}`}
+                      className="w-full py-3 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 rounded-sm group-hover:bg-[#3A86FF] group-hover:text-black glitch-hover"
+                    >
                       VEZI DETALII <MoveUpRight size={14} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
