@@ -305,6 +305,7 @@ const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
 };
 
 // --- PARTICLE BACKGROUND (Antigravity Theme) ---
+// --- PARTICLE BACKGROUND (Neuro-Network / Planning Theme) ---
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -316,6 +317,8 @@ const ParticleBackground = () => {
 
     let width = window.innerWidth;
     let height = window.innerHeight;
+    let mouseX = -100;
+    let mouseY = -100;
 
     const setSize = () => {
       width = window.innerWidth;
@@ -326,18 +329,24 @@ const ParticleBackground = () => {
     setSize();
     window.addEventListener('resize', setSize);
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
     // Particles config
-    const particleCount = Math.min(50, Math.floor(width / 15)); // Fewer particles on mobile
-    const particles: { x: number; y: number; dx: number; dy: number; size: number; alpha: number }[] = [];
+    const particleCount = Math.min(80, Math.floor(width / 10)); // Slightly more dense
+    const particles: { x: number; y: number; dx: number; dy: number; size: number; alpha: number; originalX?: number; originalY?: number }[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        dx: (Math.random() - 0.5) * 0.2, // Very slow movement
-        dy: (Math.random() - 0.5) * 0.2,
-        size: Math.random() * 2 + 0.5,
-        alpha: Math.random() * 0.5 + 0.1
+        dx: (Math.random() - 0.5) * 0.3, // Slow drift
+        dy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 1.5 + 0.5, // Smaller, sharper dots
+        alpha: Math.random() * 0.4 + 0.1
       });
     }
 
@@ -346,9 +355,21 @@ const ParticleBackground = () => {
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach(p => {
+      // Update particles
+      particles.forEach((p, index) => {
         p.x += p.dx;
         p.y += p.dy;
+
+        // Mouse interaction (repel)
+        const dx = mouseX - p.x;
+        const dy = mouseY - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const force = (150 - dist) / 150;
+          const angle = Math.atan2(dy, dx);
+          p.x -= Math.cos(angle) * force * 2;
+          p.y -= Math.sin(angle) * force * 2;
+        }
 
         // Wrap around
         if (p.x < 0) p.x = width;
@@ -359,12 +380,26 @@ const ParticleBackground = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(58, 134, 255, ${p.alpha})`; // #3A86FF
+        ctx.fillStyle = `rgba(58, 134, 255, ${p.alpha})`;
         ctx.fill();
-      });
 
-      // Draw connections (optional, keep it subtle/simple like Antigravity)
-      // For "simple", maybe just floating particles is better than heavy mesh
+        // Draw connections
+        for (let j = index + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const distX = p.x - p2.x;
+          const distY = p.y - p2.y;
+          const distance = Math.sqrt(distX * distX + distY * distY);
+
+          if (distance < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(58, 134, 255, ${0.15 * (1 - distance / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      });
 
       animationFrameId = requestAnimationFrame(draw);
     };
@@ -373,11 +408,12 @@ const ParticleBackground = () => {
 
     return () => {
       window.removeEventListener('resize', setSize);
+      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 z-[0] pointer-events-none opacity-60" />;
+  return <canvas ref={canvasRef} className="fixed inset-0 z-[0] pointer-events-none opacity-40 mix-blend-screen" />;
 };
 
 // --- OPTIMIZED BACKGROUNDS (High Performance) ---
@@ -401,16 +437,10 @@ const CinematicBackground: React.FC<{ image: string; opacity?: number }> = ({ im
 );
 
 // --- Benefits Video Background Component (Optimized) ---
-const BenefitsVideoBackground = () => <CinematicBackground image="/ems_training_2.jpg" opacity={0.5} />;
-
-// --- Biohack Video Background Component (Optimized) ---
-const BiohackVideoBackground = () => <CinematicBackground image="/ems_training_4.jpg" opacity={0.4} />;
-
-// --- Technology Video Background Component (Optimized) ---
-const TechnologyVideoBackground = () => <CinematicBackground image="/ems_training_5.jpg" opacity={0.3} />;
-
-// --- Programs Video Background Component (Optimized) ---
-const ProgramsVideoBackground = () => <CinematicBackground image="/ems_training_3.jpg" opacity={0.4} />;
+const BenefitsVideoBackground = () => <CinematicBackground image="/DSC00193.jpg" opacity={0.5} />;
+const BiohackVideoBackground = () => <CinematicBackground image="/DSC00223.jpg" opacity={0.4} />;
+const TechnologyVideoBackground = () => <CinematicBackground image="/DSC00205.jpg" opacity={0.3} />;
+const ProgramsVideoBackground = () => <CinematicBackground image="/DSC04717.jpg" opacity={0.4} />;
 
 
 // --- Benefit Articles Section ---
@@ -1050,7 +1080,7 @@ const EMSEducation = () => {
 const ImmersiveHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const fallbackImage = "/ems_training_5.jpg"; // Strong Hero Image
+  const fallbackImage = "/DSC03919.jpg";
 
   useEffect(() => {
     setIsLoaded(true);
@@ -1200,8 +1230,20 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
           <div className="flex justify-between items-start mb-10">
             <span className="mono-font text-[9px] font-bold text-[#3A86FF]/40 uppercase tracking-[0.4em]">{pkg.duration}</span>
             <div className="text-right">
-              <span className="block text-5xl font-black impact-font text-[#3A86FF] leading-none text-glow">{pkg.sessionCount}</span>
-              <span className="text-[8px] mono-font opacity-40 uppercase font-bold tracking-widest block mt-1">Ședințe</span>
+              {pkg.sessionCount.includes('+') ? (
+                <div className="flex flex-col items-end">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-5xl font-black impact-font text-white leading-none">{pkg.sessionCount.split('+')[0]}</span>
+                    <span className="text-3xl font-black impact-font text-[#3A86FF] leading-none">+{pkg.sessionCount.split('+')[1]}</span>
+                  </div>
+                  <span className="text-[8px] mono-font text-[#3A86FF] uppercase font-black tracking-widest block mt-1">Ședințe (Bonus Inclus)</span>
+                </div>
+              ) : (
+                <>
+                  <span className="block text-5xl font-black impact-font text-[#3A86FF] leading-none text-glow">{pkg.sessionCount}</span>
+                  <span className="text-[8px] mono-font opacity-40 uppercase font-bold tracking-widest block mt-1">Ședințe</span>
+                </>
+              )}
             </div>
           </div>
           <h3 className="text-4xl md:text-5xl font-black impact-font mb-6 transition-colors group-hover:text-[#3A86FF] leading-none uppercase">{pkg.title}</h3>
@@ -1368,60 +1410,67 @@ const ProgramsSection = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {PROGRAMS.map((prog, i) => (
             <ScrollReveal key={prog.id} delay={i * 100}>
               <div
                 onClick={() => setSelectedProgram(prog)}
-                className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col rounded-3xl"
+                className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-700 cursor-pointer overflow-hidden flex flex-col rounded-[2rem] shadow-2xl"
               >
-                {/* Image Placeholder area */}
-                <div className="relative h-60 overflow-hidden bg-white/5">
-                  <div className={`absolute top-4 left-4 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-sm`}>
+                {/* Image Section */}
+                <div className="relative h-72 overflow-hidden">
+                  <img
+                    src={prog.image}
+                    alt={prog.title}
+                    className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-1000"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90"></div>
+
+                  <div className={`absolute top-6 left-6 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg`}>
                     {prog.tag}
                   </div>
-                  <div className="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-sm">
+                  <div className="absolute top-6 right-6 z-10 bg-black/60 backdrop-blur-xl px-4 py-1.5 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-full">
                     {prog.duration}
-                  </div>
-
-                  {/* We use a gradient overlay instead of image if image fails or just as style */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] opacity-90"></div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-100 group-hover:scale-110 group-hover:text-[#3A86FF] transition-all duration-700">
-                    {getIcon(prog.iconId || 'zap')}
                   </div>
                 </div>
 
-                <div className="p-8 flex flex-col flex-1 relative z-10 -mt-10 bg-gradient-to-b from-transparent to-[#0a0a0a]">
-                  <div className="mb-4">
-                    <span className="text-[9px] text-[#3A86FF] font-bold uppercase tracking-wider block mb-1">
-                      Ideal: {prog.idealFor}
+                <div className="p-10 flex flex-col flex-1 relative z-10 -mt-8 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
+                  <div className="mb-6">
+                    <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
+                      IDEAL: {prog.idealFor}
                     </span>
-                    <h3 className="text-3xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors leading-none uppercase">
+                    <h3 className="text-4xl font-black impact-font text-white mb-3 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter">
                       {prog.title}
                     </h3>
                   </div>
 
-                  <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-6 border-l-2 border-[#3A86FF] pl-3">
+                  <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-8 border-l-2 border-[#3A86FF] pl-4">
                     {prog.subtitle}
                   </p>
 
-                  <p className="text-white/60 text-sm leading-relaxed mb-8 flex-grow overflow-y-auto custom-scrollbar max-h-[150px]">
+                  <p className="text-white/40 text-sm leading-relaxed mb-10 flex-grow overflow-hidden line-clamp-4">
                     {prog.description}
                   </p>
 
-                  <div className="mt-auto pt-6 border-t border-white/5 flex flex-col gap-4">
-                    <div>
-                      <span className="text-[8px] uppercase text-white/20 font-bold tracking-widest block mb-1">Beneficiu Principal</span>
-                      <span className="text-sm font-bold text-white flex items-center gap-2">
-                        {prog.benefit}
-                      </span>
+                  <div className="mt-auto pt-8 border-t border-white/5 flex flex-col gap-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-[8px] uppercase text-white/20 font-black tracking-[0.2em] block mb-1">Rezultat</span>
+                        <span className="text-sm font-bold text-white flex items-center gap-2">
+                          {prog.benefit}
+                        </span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-[#3A86FF]/20 group-hover:text-[#3A86FF] transition-all duration-500">
+                        {getIcon(prog.iconId || 'zap')}
+                      </div>
                     </div>
 
                     <Link
                       to={`/program/${prog.id}`}
-                      className="w-full py-3 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 rounded-sm group-hover:bg-[#3A86FF] group-hover:text-black glitch-hover"
+                      onClick={(e) => e.stopPropagation()}
+                      className="w-full py-4 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center justify-center gap-3 rounded-xl border border-white/10 group-hover:border-[#3A86FF]/30"
                     >
-                      VEZI DETALII <MoveUpRight size={14} />
+                      EXPLOREAZĂ <MoveUpRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -1805,7 +1854,7 @@ const ScienceSolutionsSection = () => (
 );
 
 // --- Trial Video Background Component (Optimized) ---
-const TrialVideoBackground = () => <CinematicBackground image="/ems_training_1.jpg" opacity={0.3} />;
+const TrialVideoBackground = () => <CinematicBackground image="/DSC07054.jpg" opacity={0.3} />;
 
 // --- Trial Roadmap Section ---
 const TrialRoadmap = () => {
@@ -2207,9 +2256,9 @@ const App: React.FC = () => {
 
   // Imagini specifice care reflectă pozele furnizate de utilizator
   const locationImages = [
-    // Ramada: Imagine locală (uploaded by user - High Res update)
+    // Ramada: Atmosferă premium (DSC04709 update)
     "/DSC04709.jpg",
-    // GetFit: Lumină naturală abundentă (High Res update)
+    // GetFit: Lumină naturală (DSC08213 update)
     "/DSC08213.jpg"
   ];
 

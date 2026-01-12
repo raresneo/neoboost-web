@@ -38,15 +38,12 @@
 
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            /* Slightly more opaque for better contrast without heavy blur */
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-blur: 10px;
-            /* Reduced from 20px for performance */
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05); /* Softer border */
+            --glass-blur: 12px;
             --neon-accent: #3A86FF;
-            --accent-glow: 0 0 20px rgba(58, 134, 255, 0.2);
-            /* Reduced glow radius */
-            --deep-black: #000000;
+            --accent-glow: 0 0 15px rgba(58, 134, 255, 0.15); /* More subtle glow */
+            --deep-black: #050505; /* Slightly softer black for depth */
         }
 
         body {
@@ -57,34 +54,31 @@
             cursor: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* Removed global box-shadow inset for performance */
             min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(58, 134, 255, 0.03) 0%, transparent 60%);
         }
 
-        @media (max-width: 768px) {
-            body {
-                cursor: auto;
-                box-shadow: inset 0 0 50px rgba(58, 134, 255, 0.1);
-            }
-
-            #custom-cursor {
-                display: none;
-            }
+        /* Sophisticated Background Animation (Planning/Thinking) */
+        @keyframes drift {
+            0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+            100% { transform: translateY(0) translateX(0); opacity: 0.3; }
         }
 
-        h1,
-        h2,
-        h3,
-        .impact-font {
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
-            font-weight: 900;
+        @keyframes breathe {
+             0%, 100% { opacity: 0.4; transform: scale(1); }
+             50% { opacity: 0.7; transform: scale(1.05); }
         }
 
-        .mono-font {
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -0.05em;
+        .planning-dot {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--neon-accent);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: drift 10s infinite ease-in-out;
         }
 
         /* Minimalist Glassmorphism (Refined) */
@@ -93,530 +87,76 @@
             backdrop-filter: blur(var(--glass-blur));
             -webkit-backdrop-filter: blur(var(--glass-blur));
             border: 1px solid var(--glass-border);
-        }
-
-        .glass-dark {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .glass-block {
-            background: #050505;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.015); /* Very subtle */
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .glass-block:hover {
+            border-color: rgba(58, 134, 255, 0.3);
+            background: rgba(58, 134, 255, 0.03);
+            transform: translateY(-2px);
         }
 
-        .glass-neon {
-            background: rgba(58, 134, 255, 0.05);
-            border: 1px solid rgba(58, 134, 255, 0.3);
-            box-shadow: var(--accent-glow);
-        }
-
-        .neon-border {
-            border: 1px solid rgba(58, 134, 255, 0.4);
-            box-shadow: var(--accent-glow);
-        }
-
-        .neon-text {
-            color: var(--neon-accent);
-            text-shadow: 0 0 20px rgba(58, 134, 255, 0.5);
-        }
-
-        /* Clean Divider Lines */
+        /* Clean Divider Lines - Thinner */
         .grid-bg {
-            background-size: 60px 60px;
+            background-size: 80px 80px; /* Larger grid for minimalism */
             background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
-            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 20%, transparent 95%);
+            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 95%);
         }
 
-        .heading-glow {
-            text-shadow: 0 0 40px rgba(58, 134, 255, 0.3);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 15px rgba(58, 134, 255, 0.4);
-        }
-
-        /* Minimal scrollbar */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 2px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--neon-accent);
-        }
-
-        /* Morphing text mask */
-        .text-morph-mask {
-            background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.1) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Lightning Strike Animation - Aggressive flickering */
-        @keyframes lightning-strike {
-
-            0%,
-            85%,
-            90%,
-            95%,
-            100% {
-                text-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
-                filter: brightness(1);
-            }
-
-            88%,
-            93%,
-            98% {
-                text-shadow: 0 0 40px #00F5FF;
-                filter: brightness(2) contrast(1.2);
-            }
-        }
-
-        .lightning-text {
-            animation: lightning-strike 8s infinite;
-            /* Slower loop */
-        }
-
-        /* Ambient Electric Glow */
-        @keyframes electric-glow {
-
-            0%,
-            100% {
-                opacity: 0.05;
-                filter: blur(80px);
-            }
-
-            50% {
-                opacity: 0.15;
-                filter: blur(120px);
-            }
-        }
-
-        .electric-glow {
-            animation: electric-glow 5s infinite ease-in-out;
-        }
-
-        @keyframes scan-fast {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(500%);
-            }
-        }
-
-        .animate-scan-fast {
-            animation: scan-fast 3s infinite linear;
-        }
-
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes pulse-height {
-
-            0%,
-            100% {
-                height: 20%;
-            }
-
-            50% {
-                height: 100%;
-            }
-        }
-
-        @keyframes sound-wave {
-            0% {
-                transform: scaleY(0.5);
-            }
-
-            50% {
-                transform: scaleY(1.2);
-            }
-
-            100% {
-                transform: scaleY(0.5);
-            }
-        }
-
-        .hi-fi-image {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #00F5FF;
-            border-radius: 5px;
-            border: 2px solid #000000;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #00D1DA;
-        }
-
-        /* ===== LASER CLICK EFFECT ===== */
-        .laser-click {
+        .custom-cursor-follower {
             position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 245, 255, 0.8) 0%, rgba(0, 245, 255, 0) 70%);
-            animation: laser-pulse 0.4s ease-out forwards;
-        }
-
-        .laser-click::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 60px;
-            height: 60px;
-            margin: -30px 0 0 -30px;
-            border: 2px solid rgba(0, 245, 255, 0.6);
-            border-radius: 50%;
-            animation: laser-ring 0.5s ease-out forwards;
-        }
-
-        @keyframes laser-pulse {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        @keyframes laser-ring {
-            0% {
-                transform: scale(0.5);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* ===== BEAM ANIMATIONS ===== */
-        @keyframes beam-slide-1 {
-            0% {
-                transform: translateY(-100%) translateX(-100%) rotate(45deg);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 0.6;
-            }
-
-            80% {
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: translateY(100%) translateX(100%) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes beam-slide-2 {
-            0% {
-                transform: translateY(100%) translateX(-100%) rotate(-45deg);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 0.6;
-            }
-
-            80% {
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: translateY(-100%) translateX(100%) rotate(-45deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes beam-pulse {
-
-            0%,
-            100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.7;
-                transform: scale(1.2);
-            }
-        }
-
-        /* Glitch Effect */
-        .glitch-hover:hover {
-            animation: glitch-anim 0.2s infinite;
-            text-shadow: 2px 0 #00F5FF, -2px 0 #ff00ff;
-        }
-
-        @keyframes glitch-anim {
-            0% {
-                transform: translate(0);
-            }
-
-            20% {
-                transform: translate(-2px, 2px);
-            }
-
-            40% {
-                transform: translate(-2px, -2px);
-            }
-
-            60% {
-                transform: translate(2px, 2px);
-            }
-
-            80% {
-                transform: translate(2px, -2px);
-            }
-
-            100% {
-                transform: translate(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .animate-slideUp {
-            animation: slideUp 0.5s ease-out forwards;
-        }
-
-        .glitch-text-hover:hover {
-            position: relative;
-        }
-
-        .glitch-text-hover:hover::before,
-        .glitch-text-hover:hover::after {
-            content: attr(data-text);
-            position: absolute;
             top: 0;
             left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(58, 134, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Disable heavy cursor on touch */
+        @media (hover: hover) {
+            #custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 8px;
+                height: 8px;
+                background: #fff;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                mix-blend-mode: difference;
+            }
+        }
+        
+        .planning-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(58, 134, 255, 0.2), transparent);
+            height: 1px;
             width: 100%;
-            height: 100%;
-            background: transparent;
+            animation: scan-slow 15s infinite linear;
         }
 
-        .glitch-text-hover:hover::before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        @keyframes scan-slow {
+            0% { transform: translateY(-100vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
         }
-
-        .glitch-text-hover:hover::after {
-            left: -2px;
-            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-            animation: glitch-anim-2 1s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim-2 {
-            0% {
-                clip: rect(31px, 9999px, 94px, 0);
-            }
-
-            5% {
-                clip: rect(2px, 9999px, 11px, 0);
-            }
-
-            10% {
-                clip: rect(78px, 9999px, 89px, 0);
-            }
-
-            15% {
-                clip: rect(10px, 9999px, 30px, 0);
-            }
-
-            /* ... more keyframes if needed but keeping it simple ... */
-            100% {
-                clip: rect(67px, 9999px, 50px, 0);
-            }
-        }
-
-        /* ===== MOBILE OPTIMIZATIONS ===== */
-        @media (max-width: 640px) {
-
-            h1,
-            h2,
-            .impact-font {
-                letter-spacing: -0.02em;
-            }
-
-            .glass-block {
-                padding: 1.25rem !important;
-            }
-
-            /* Larger touch targets */
-            a,
-            button {
-                min-height: 44px;
-            }
-
-            /* Better text scaling */
-            .text-7xl {
-                font-size: 3rem !important;
-            }
-
-            .text-6xl {
-                font-size: 2.5rem !important;
-            }
-
-            .text-5xl {
-                font-size: 2rem !important;
-            }
-
-            /* Remove heavy animations on mobile */
-            .animate-bounce,
-            .animate-pulse {
-                animation: none;
-            }
-        }
-
-        /* Touch feedback for mobile */
-        @media (hover: none) {
-
-            a:active,
-            button:active {
-                transform: scale(0.97);
-                transition: transform 0.1s;
-            }
-        }
-
-        /* Haptic feedback class */
-        .haptic-tap {
-            transition: transform 0.08s ease-out;
-        }
-
-        .haptic-tap:active {
-            transform: scale(0.96);
-        }
-    </style>
-    <script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
-</head>
-
-<body>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=2100031940404055&ev=PageView&noscript=1" /></noscript>
-    <div id="custom-cursor"></div>
-    <div id="root"></div>
-    <script>
-        const cursor = document.getElementById('custom-cursor');
-        let mouseX = 0, mouseY = 0;
-        let curX = 0, curY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        }, { passive: true });
-
-        const loop = () => {
-            // Disable on touch devices to save battery/performance
-            if (window.matchMedia('(hover: none)').matches) return;
-
-            curX += (mouseX - curX) * 0.15;
-            curY += (mouseY - curY) * 0.15;
-            cursor.style.transform = `translate3d(${curX - 16}px, ${curY - 16}px, 0)`;
-            requestAnimationFrame(loop);
-        };
-
-        // Only start loop if not a touch device
-        if (window.matchMedia('(hover: hover)').matches) {
-            loop();
-        }
-
-        // ===== LASER CLICK EFFECT + HAPTIC FEEDBACK =====
-        document.addEventListener('click', (e) => {
-            // Create laser effect
-            const laser = document.createElement('div');
-            laser.className = 'laser-click';
-            laser.style.left = (e.clientX - 20) + 'px';
-            laser.style.top = (e.clientY - 20) + 'px';
-            document.body.appendChild(laser);
-
-            // Remove after animation
-            setTimeout(() => laser.remove(), 500);
-
-            // Haptic feedback on mobile (if supported)
-            if (navigator.vibrate) {
-                navigator.vibrate(15); // Short 15ms vibration
-            }
-        });
 
         // ===== GLITCH SOUND EFFECT (Procedural) =====
         const playGlitchSound = () => {

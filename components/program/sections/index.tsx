@@ -56,8 +56,23 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ specialPrice, re
                                 Recomandat
                             </div>
                         )}
-                        <h3 className="text-2xl font-black impact-font uppercase mb-2">{pkg.title}</h3>
-                        <p className="text-sm text-white/60 mb-4">{pkg.duration}</p>
+                        <h3 className="text-2xl font-black impact-font uppercase mb-1">{pkg.title}</h3>
+                        <p className="text-[10px] mono-font text-[#3A86FF] font-black uppercase tracking-widest mb-4 opacity-60">{pkg.duration}</p>
+
+                        <div className="mb-6">
+                            {pkg.sessionCount.includes('+') ? (
+                                <div className="flex items-baseline gap-1">
+                                    <span className="text-4xl font-black impact-font text-white">{pkg.sessionCount.split('+')[0]}</span>
+                                    <span className="text-2xl font-black impact-font text-[#3A86FF]">+{pkg.sessionCount.split('+')[1]}</span>
+                                    <span className="text-[10px] font-bold text-white/40 ml-2 uppercase">Ședințe</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-baseline gap-2">
+                                    <span className="text-4xl font-black impact-font text-white">{pkg.sessionCount}</span>
+                                    <span className="text-[10px] font-bold text-white/40 uppercase">Ședințe</span>
+                                </div>
+                            )}
+                        </div>
                         <p className="text-4xl font-black text-[#3A86FF] mb-6">{pkg.price}</p>
                         <ul className="space-y-2 text-sm text-white/70">
                             {pkg.features.slice(0, 3).map((feature, i) => (
@@ -163,36 +178,46 @@ export const AfterConsultationSection: React.FC<{ text: string }> = ({ text }) =
 // Location Section
 export const LocationSection: React.FC = () => (
     <section className="py-20">
-        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12">
-            UNDE NE GĂSEȘTI?
+        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12 text-[#3A86FF]">
+            ALEGE LOCAȚIA TA
         </h2>
-        <div className="glass-block p-10 border-[#3A86FF]/20 rounded-3xl">
-            <div className="flex items-start gap-4 mb-6">
-                <MapPin size={32} className="text-[#3A86FF] flex-shrink-0" />
-                <div>
-                    <h3 className="text-2xl font-black impact-font uppercase text-white mb-2">
-                        NEOBOOST ORADEA
-                    </h3>
-                    <p className="text-lg text-white/80 mb-4">
-                        <strong>Locații:</strong> Ramada și Lotus<br />
-                        <strong>Program:</strong> L–V 07:00–21:00, S 10:00–14:00, D închis
+        <div className="grid md:grid-cols-2 gap-8">
+            <div className="glass-block overflow-hidden border-white/10 group rounded-3xl">
+                <div className="relative aspect-video">
+                    <img src="/DSC04709.jpg" alt="Ramada Oradea" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] brightness-75" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
+                <div className="p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                        <MapPin className="text-[#3A86FF]" size={20} />
+                        <h3 className="text-2xl font-black impact-font uppercase text-white">HOTEL RAMADA</h3>
+                    </div>
+                    <p className="text-white/60 text-sm mb-6 leading-relaxed italic">
+                        Calea Aradului nr. 9. Atmosferă exclusivistă, liniște și acces premium. Ideal pentru cei care vor maximă discreție.
                     </p>
-                    <div className="flex flex-wrap gap-4">
-                        <a
-                            href={BRAND.googleMapsLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-[#3A86FF] hover:text-white transition-colors"
-                        >
-                            <MapPin size={20} />
-                            Vezi pe Google Maps
-                        </a>
-                        <a
-                            href={`tel:${BRAND.phone}`}
-                            className="inline-flex items-center gap-2 text-[#3A86FF] hover:text-white transition-colors"
-                        >
-                            📞 {BRAND.phone}
-                        </a>
+                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <p className="text-[10px] font-black uppercase text-[#3A86FF] tracking-widest mb-1">PROGRAM</p>
+                        <p className="text-xs text-white/80">L–V 07:00–21:00, S 10:00–14:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="glass-block overflow-hidden border-white/10 group rounded-3xl">
+                <div className="relative aspect-video">
+                    <img src="/DSC08213.jpg" alt="GetFit Oradea" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] brightness-75" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
+                <div className="p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                        <MapPin className="text-[#3A86FF]" size={20} />
+                        <h3 className="text-2xl font-black impact-font uppercase text-white">SALA GETFIT</h3>
+                    </div>
+                    <p className="text-white/60 text-sm mb-6 leading-relaxed italic">
+                        Lotus Center, Nufărului. Lumină naturală din abundență, energie dinamică și acces ultra-facil în cel mai mare centru comercial.
+                    </p>
+                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <p className="text-[10px] font-black uppercase text-[#3A86FF] tracking-widest mb-1">PROGRAM</p>
+                        <p className="text-xs text-white/80">L–V 07:00–21:00, S 10:00–14:00</p>
                     </div>
                 </div>
             </div>

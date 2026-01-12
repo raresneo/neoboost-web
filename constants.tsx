@@ -278,9 +278,10 @@ export const MONTHLY_PACKAGES: NeoPackage[] = [
 export const QUARTERLY_PACKAGES: NeoPackage[] = [
   {
     title: "Health Pro",
-    sessionCount: "12",
-    duration: "3 LUNI / MINIM 1 ȘEDINȚĂ SĂPT.",
+    sessionCount: "12 + 4 BONUS",
+    duration: "4 LUNI (3 PLĂTITE + 1 CADOU)",
     price: "1150 RON",
+    stripePriceId: "price_1SojGiJAtuHj34DefHEYPwsL",
     idealFor: "Sănătate și postură pe termen lung",
     features: [
       "Consolidare postură",
@@ -292,9 +293,10 @@ export const QUARTERLY_PACKAGES: NeoPackage[] = [
   },
   {
     title: "Sculpt Pro",
-    sessionCount: "24",
-    duration: "3 LUNI / 2 ȘEDINȚE SĂPT.",
+    sessionCount: "24 + 8 BONUS",
+    duration: "4 LUNI (3 PLĂTITE + 1 CADOU)",
     price: "1850 RON",
+    stripePriceId: "price_1SojH4JAtuHj34DeHlplwGdS",
     isPremium: true,
     idealFor: "Sculptare și definire sustenabilă",
     features: [
@@ -307,9 +309,10 @@ export const QUARTERLY_PACKAGES: NeoPackage[] = [
   },
   {
     title: "Master Body",
-    sessionCount: "36",
-    duration: "3 LUNI / 3 ȘEDINȚE SĂPT.",
+    sessionCount: "36 + 12 BONUS",
+    duration: "4 LUNI (3 PLĂTITE + 1 CADOU)",
     price: "2400 RON",
+    stripePriceId: "price_1SojHNJAtuHj34DedHtbAwp6",
     idealFor: "Reconstruction totală și performanță",
     features: [
       "Reconstrucție corporală totală",
@@ -441,34 +444,34 @@ export const EMS_SOLUTIONS = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Anamaria Moldovan",
-    role: "Local Guide",
-    quote: "O experiență deosebită! Conceptul de 30 de minute este perfect pentru cineva ocupat. Drysuit-ul face diferența enormă, e foarte confortabil.",
+    role: "Proprietar afacere",
+    quote: "O experiență deosebită! Conceptul de 30 de minute este perfect pentru cineva ocupat. Drysuit-ul face diferența enormă, e foarte confortabil și nu pierd timp cu schimbatul sau dușul excesiv.",
     rating: 5,
-    imageUrl: "https://lh3.googleusercontent.com/a-/ALV-UjV_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z=s64-c-rp-mo-br100",
+    imageUrl: "/DSC03940.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
     name: "Razvan Iancu",
-    role: "Client Fidel",
-    quote: "Cel mai bun studio EMS din Oradea. Rezultatele apar vizibil după primele ședințe, mai ales pe partea de tonifiere și spate.",
+    role: "Manager IT",
+    quote: "Cel mai bun studio EMS din Oradea. Rezultatele apar vizibil după primele ședințe, mai ales pe partea de tonifiere și spate. Tehnologia wireless chiar îți permite să te miști natural.",
     rating: 5,
-    imageUrl: "https://lh3.googleusercontent.com/a-/ALV-UjX_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z=s64-c-rp-mo-br100",
+    imageUrl: "/DSC01083.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
     name: "Camelia Pop",
-    role: "Local Guide",
-    quote: "Recomand cu tot dragul! Atmosfera este premium și tehnologia chiar funcționează. Te simți pe mâini bune de la început.",
+    role: "Medic Proaspăt Mămică",
+    quote: "Recomand cu tot dragul! Atmosfera este premium și tehnologia chiar funcționează. Programul Fit Mamma m-a ajutat enorm să-mi recuperez energia după naștere în deplină siguranță.",
     rating: 5,
-    imageUrl: "https://lh3.googleusercontent.com/a-/ALV-UjY_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z=s64-c-rp-mo-br100",
+    imageUrl: "/DSC00438.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
     name: "Vlad M.",
-    role: "Client Loial",
-    quote: "După o zi la birou, antrenamentul NeoBoost este singurul care mă pune pe picioare. Eficiență maximă în doar 30 de minute.",
+    role: "Freelancer",
+    quote: "După o zi la birou, antrenamentul NeoBoost este singurul care mă pune pe picioare. Eficiență maximă în doar 30 de minute și o postură mult mai dreaptă.",
     rating: 5,
-    imageUrl: "https://lh3.googleusercontent.com/a-/ALV-UjZ_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z_X1Z=s64-c-rp-mo-br100",
+    imageUrl: "/DSC07203.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   }
 ];
