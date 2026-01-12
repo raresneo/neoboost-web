@@ -39,11 +39,14 @@
     <style>
         :root {
             --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.05); /* Softer border */
+            --glass-border: rgba(255, 255, 255, 0.05);
+            /* Softer border */
             --glass-blur: 12px;
             --neon-accent: #3A86FF;
-            --accent-glow: 0 0 15px rgba(58, 134, 255, 0.15); /* More subtle glow */
-            --deep-black: #050505; /* Slightly softer black for depth */
+            --accent-glow: 0 0 15px rgba(58, 134, 255, 0.15);
+            /* More subtle glow */
+            --deep-black: #050505;
+            /* Slightly softer black for depth */
         }
 
         body {
@@ -55,20 +58,40 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 50% 50%, rgba(58, 134, 255, 0.03) 0%, transparent 60%);
         }
 
         /* Sophisticated Background Animation (Planning/Thinking) */
         @keyframes drift {
-            0% { transform: translateY(0) translateX(0); opacity: 0.3; }
-            50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
-            100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
         }
 
         @keyframes breathe {
-             0%, 100% { opacity: 0.4; transform: scale(1); }
-             50% { opacity: 0.7; transform: scale(1.05); }
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
         }
 
         .planning-dot {
@@ -91,12 +114,13 @@
         }
 
         .glass-block {
-            background: rgba(255, 255, 255, 0.015); /* Very subtle */
+            background: rgba(255, 255, 255, 0.015);
+            /* Very subtle */
             border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(10px);
             transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        
+
         .glass-block:hover {
             border-color: rgba(58, 134, 255, 0.3);
             background: rgba(58, 134, 255, 0.03);
@@ -105,7 +129,8 @@
 
         /* Clean Divider Lines - Thinner */
         .grid-bg {
-            background-size: 80px 80px; /* Larger grid for minimalism */
+            background-size: 80px 80px;
+            /* Larger grid for minimalism */
             background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
@@ -142,7 +167,7 @@
                 mix-blend-mode: difference;
             }
         }
-        
+
         .planning-line {
             position: absolute;
             background: linear-gradient(90deg, transparent, rgba(58, 134, 255, 0.2), transparent);
@@ -152,12 +177,26 @@
         }
 
         @keyframes scan-slow {
-            0% { transform: translateY(-100vh); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
+            0% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
 
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
         // ===== GLITCH SOUND EFFECT (Procedural) =====
         const playGlitchSound = () => {
             try {
@@ -189,6 +228,6 @@
         });
     </script>
     <script type="module" src="/index.tsx"></script>
-</body>
+    </body>
 
 </html>
