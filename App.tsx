@@ -1525,344 +1525,343 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
 
   return (
     <>
-      <>
-        <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-12 ${isScrolled || isMenuOpen ? 'py-2 glass-dark shadow-2xl' : 'py-6 md:py-10'}`}>
-          <div className="max-w-[1600px] mx-auto flex justify-between items-center">
-            <div className="flex items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <img src="/logo_white.png" alt="NeoBoost Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform duration-500" />
-              <span className="text-xl md:text-2xl font-black impact-font tracking-tighter text-white">{BRAND.name}</span>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-12 ${isScrolled || isMenuOpen ? 'py-2 glass-dark shadow-2xl' : 'py-6 md:py-10'}`}>
+        <div className="max-w-[1600px] mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <img src="/logo_white.png" alt="NeoBoost Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform duration-500" />
+            <span className="text-xl md:text-2xl font-black impact-font tracking-tighter text-white">{BRAND.name}</span>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-10">
+            {navItems.map(item => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="mono-font text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-[#3A86FF] hover:shadow-[0_0_15px_rgba(0,255,136,0.5)] transition-all duration-300"
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <Link
+              to="/oferta-speciala"
+              className="px-4 py-1.5 bg-[#3A86FF] text-black text-[9px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all animate-pulse"
+            >
+              OFERTĂ 3+1
+            </Link>
+
+            {user ? (
+              <div className="flex items-center gap-3 pl-6 border-l border-white/10">
+                <span className="text-white/40 text-xs text-right">
+                  <div className="mono-font text-[8px] uppercase tracking-widest text-[#3A86FF]">Active</div>
+                  <div className="font-bold">{user.email?.split('@')[0]}</div>
+                </span>
+                <button
+                  onClick={() => supabase.auth.signOut()}
+                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#3A86FF]/20 flex items-center justify-center transition-colors group"
+                >
+                  <LogOut className="text-white/60 group-hover:text-[#3A86FF]" size={18} />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={onOpenAuth}
+                className="ml-6 px-6 py-2 border border-[#3A86FF]/30 flex items-center gap-2 text-[#3A86FF] hover:bg-[#3A86FF] hover:text-black transition-all duration-300 rounded font-bold uppercase text-xs tracking-widest"
+              >
+                <UserCheck size={14} />
+                Contul Meu
+              </button>
+            )}
+
+            <button
+              onClick={() => setIsMuted(!isMuted)}
+              className="group flex items-center gap-3 px-4 py-2 glass hover:glass-neon transition-all duration-500 rounded-full"
+              title={isMuted ? "Activează Sunetul" : "Dezactivează Sunetul"}
+            >
+              <div className="relative w-4 h-4 flex items-center justify-center">
+                {isMuted ? (
+                  <VolumeX size={14} className="text-white/20 group-hover:text-white/40" />
+                ) : (
+                  <>
+                    <Volume2 size={14} className="text-[#3A86FF] animate-pulse" />
+                    <span className="absolute -inset-1 border border-[#3A86FF]/20 rounded-full animate-ping"></span>
+                  </>
+                )}
+              </div>
+            </button>
+
+            {/* Theme Toggle */}
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setIsLight(!isLight)}
+              className="group flex items-center gap-3 px-4 py-2 glass hover:glass-neon transition-all duration-500 rounded-full ml-2"
+              title="Schimbă Tema"
+            >
+              {isLight ? (
+                <Sun size={14} className="text-[#3A86FF]" />
+              ) : (
+                <Moon size={14} className="text-white/40 group-hover:text-[#3A86FF]" />
+              )}
+            </button>
+
+            <button
+              onClick={onOpenBooking}
+              className="hidden xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
+            >
+              PROGRAMARE
+            </button>
+
+            <a
+              href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
+              className="bg-[#3A86FF] text-black px-8 py-3 text-xs font-black tracking-widest impact-font hover:brightness-110 shadow-lg hover:shadow-[#3A86FF]/20 transition-all transform hover:-translate-y-0.5"
+            >
+              PROBĂ GRATUITĂ
+            </a>
+          </div>
+
+          {/* Mobile UI Buttons - FIXED Z-INDEX & VISIBILITY */}
+          <div className="flex lg:hidden items-center gap-3 relative z-[101]">
+            <button
+              onClick={() => setIsMuted(!isMuted)}
+              className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#3A86FF]/20 border-[#3A86FF]/40 text-[#3A86FF]' : 'bg-black/40 text-white/40'}`}
+            >
+              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all backdrop-blur-md border border-white/10 ${isMenuOpen ? 'text-[#3A86FF] bg-black/60' : 'text-white bg-black/40'}`}
+            >
+              {isMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay - SLIDE DOWN FROM TOP */}
+        <div className={`fixed inset-0 bg-black z-[100] transition-all duration-700 ease-[cubic-bezier(0.2,1,0.3,1)] flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+          {/* Dynamic Background Image with Theme Overlay */}
+          <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-105 grayscale contrast-[1.2]"
+              style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
+            </div>
+            {/* Theme Layer: Cyan/Black Mix */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-[#3A86FF]/5"></div>
+          </div>
+
+          {/* Menu Header (Logo/Close) */}
+          <div className="absolute top-8 left-6 right-6 flex justify-between items-center lg:hidden">
+            <div className="flex items-center gap-3">
+              <img src="/logo_white.png" alt="Logo" className="w-8 h-8" />
+              <span className="font-black impact-font text-white">{BRAND.name}</span>
+            </div>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white"
+            >
+              <CloseIcon size={24} />
+            </button>
+          </div>
+
+          {/* Menu Items */}
+          <div className="flex flex-col gap-4 mb-16 relative z-10">
+            {navItems.map((item, idx) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setIsMenuOpen(false)}
+                className="group flex flex-col py-2"
+                style={{ transitionDelay: `${idx * 50}ms` }}
+              >
+                <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest uppercase mb-1">0{idx + 1}</span>
+                <span className="text-4xl md:text-5xl font-black impact-font text-white transition-all group-active:text-[#3A86FF] uppercase">
+                  {item.label}
+                </span>
+              </a>
+            ))}
+
+            <Link
+              to="/oferta-speciala"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-6 p-6 bg-[#3A86FF] text-black font-black impact-font text-3xl text-center uppercase shadow-[0_0_30px_rgba(58,134,255,0.4)]"
+            >
+              OFERTĂ 3+1 🔥
+            </Link>
+          </div>
+
+          <div className="mt-auto pb-12 pt-8 border-t border-white/10 space-y-10 relative z-10">
+            <div className="grid grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Follow Us</p>
+                <div className="flex gap-6">
+                  <a href={BRAND.socials.instagram} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Instagram size={20} /></a>
+                  <a href={BRAND.socials.facebook} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Facebook size={20} /></a>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Contact</p>
+                <a href={`tel:${BRAND.phone}`} className="text-white impact-font text-lg block">{BRAND.phone}</a>
+                <p className="text-white/30 text-[10px] lowercase">{BRAND.email}</p>
+              </div>
             </div>
 
-            <div className="hidden lg:flex items-center gap-10">
-              {navItems.map(item => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className="mono-font text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-[#3A86FF] hover:shadow-[0_0_15px_rgba(0,255,136,0.5)] transition-all duration-300"
-                >
-                  {item.label}
-                </a>
-              ))}
-
-              <Link
-                to="/oferta-speciala"
-                className="px-4 py-1.5 bg-[#3A86FF] text-black text-[9px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-white transition-all animate-pulse"
-              >
-                OFERTĂ 3+1
-              </Link>
-
-              {user ? (
-                <div className="flex items-center gap-3 pl-6 border-l border-white/10">
-                  <span className="text-white/40 text-xs text-right">
-                    <div className="mono-font text-[8px] uppercase tracking-widest text-[#3A86FF]">Active</div>
-                    <div className="font-bold">{user.email?.split('@')[0]}</div>
-                  </span>
-                  <button
-                    onClick={() => supabase.auth.signOut()}
-                    className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#3A86FF]/20 flex items-center justify-center transition-colors group"
-                  >
-                    <LogOut className="text-white/60 group-hover:text-[#3A86FF]" size={18} />
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={onOpenAuth}
-                  className="ml-6 px-6 py-2 border border-[#3A86FF]/30 flex items-center gap-2 text-[#3A86FF] hover:bg-[#3A86FF] hover:text-black transition-all duration-300 rounded font-bold uppercase text-xs tracking-widest"
-                >
-                  <UserCheck size={14} />
-                  Contul Meu
-                </button>
-              )}
-
-              <button
-                onClick={() => setIsMuted(!isMuted)}
-                className="group flex items-center gap-3 px-4 py-2 glass hover:glass-neon transition-all duration-500 rounded-full"
-                title={isMuted ? "Activează Sunetul" : "Dezactivează Sunetul"}
-              >
-                <div className="relative w-4 h-4 flex items-center justify-center">
-                  {isMuted ? (
-                    <VolumeX size={14} className="text-white/20 group-hover:text-white/40" />
-                  ) : (
-                    <>
-                      <Volume2 size={14} className="text-[#3A86FF] animate-pulse" />
-                      <span className="absolute -inset-1 border border-[#3A86FF]/20 rounded-full animate-ping"></span>
-                    </>
-                  )}
-                </div>
-              </button>
-
-              {/* Theme Toggle */}
-              {/* Theme Toggle */}
-              <button
-                onClick={() => setIsLight(!isLight)}
-                className="group flex items-center gap-3 px-4 py-2 glass hover:glass-neon transition-all duration-500 rounded-full ml-2"
-                title="Schimbă Tema"
-              >
-                {isLight ? (
-                  <Sun size={14} className="text-[#3A86FF]" />
-                ) : (
-                  <Moon size={14} className="text-white/40 group-hover:text-[#3A86FF]" />
-                )}
-              </button>
-
-              <button
-                onClick={onOpenBooking}
-                className="hidden xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
-              >
-                PROGRAMARE
-              </button>
-
+            <div className="flex flex-col gap-4">
               <a
                 href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-                className="bg-[#3A86FF] text-black px-8 py-3 text-xs font-black tracking-widest impact-font hover:brightness-110 shadow-lg hover:shadow-[#3A86FF]/20 transition-all transform hover:-translate-y-0.5"
+                className="w-full bg-[#3A86FF] text-black py-6 font-black impact-font text-xl text-center uppercase tracking-widest"
               >
                 PROBĂ GRATUITĂ
               </a>
-            </div>
-
-            {/* Mobile UI Buttons - FIXED Z-INDEX & VISIBILITY */}
-            <div className="flex lg:hidden items-center gap-3 relative z-[101]">
               <button
-                onClick={() => setIsMuted(!isMuted)}
-                className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#3A86FF]/20 border-[#3A86FF]/40 text-[#3A86FF]' : 'bg-black/40 text-white/40'}`}
+                onClick={() => { setIsMenuOpen(false); onOpenAuth(); }}
+                className="w-full border border-white/20 text-white/60 py-4 font-bold text-xs uppercase tracking-widest"
               >
-                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-              </button>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`w-12 h-12 flex items-center justify-center rounded-full transition-all backdrop-blur-md border border-white/10 ${isMenuOpen ? 'text-[#3A86FF] bg-black/60' : 'text-white bg-black/40'}`}
-              >
-                {isMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
+                CONTUL MEU
               </button>
             </div>
           </div>
-
-          {/* Mobile Menu Overlay - SLIDE DOWN FROM TOP */}
-          <div className={`fixed inset-0 bg-black z-[100] transition-all duration-700 ease-[cubic-bezier(0.2,1,0.3,1)] flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
-            {/* Dynamic Background Image with Theme Overlay */}
-            <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
-              <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-105 grayscale contrast-[1.2]"
-                style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
-              </div>
-              {/* Theme Layer: Cyan/Black Mix */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-[#3A86FF]/5"></div>
-            </div>
-
-            {/* Menu Header (Logo/Close) */}
-            <div className="absolute top-8 left-6 right-6 flex justify-between items-center lg:hidden">
-              <div className="flex items-center gap-3">
-                <img src="/logo_white.png" alt="Logo" className="w-8 h-8" />
-                <span className="font-black impact-font text-white">{BRAND.name}</span>
-              </div>
-              <button
-                onClick={() => setIsMenuOpen(false)}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white"
-              >
-                <CloseIcon size={24} />
-              </button>
-            </div>
-
-            {/* Menu Items */}
-            <div className="flex flex-col gap-4 mb-16 relative z-10">
-              {navItems.map((item, idx) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="group flex flex-col py-2"
-                  style={{ transitionDelay: `${idx * 50}ms` }}
-                >
-                  <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest uppercase mb-1">0{idx + 1}</span>
-                  <span className="text-4xl md:text-5xl font-black impact-font text-white transition-all group-active:text-[#3A86FF] uppercase">
-                    {item.label}
-                  </span>
-                </a>
-              ))}
-
-              <Link
-                to="/oferta-speciala"
-                onClick={() => setIsMenuOpen(false)}
-                className="mt-6 p-6 bg-[#3A86FF] text-black font-black impact-font text-3xl text-center uppercase shadow-[0_0_30px_rgba(58,134,255,0.4)]"
-              >
-                OFERTĂ 3+1 🔥
-              </Link>
-            </div>
-
-            <div className="mt-auto pb-12 pt-8 border-t border-white/10 space-y-10 relative z-10">
-              <div className="grid grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Follow Us</p>
-                  <div className="flex gap-6">
-                    <a href={BRAND.socials.instagram} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Instagram size={20} /></a>
-                    <a href={BRAND.socials.facebook} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Facebook size={20} /></a>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Contact</p>
-                  <a href={`tel:${BRAND.phone}`} className="text-white impact-font text-lg block">{BRAND.phone}</a>
-                  <p className="text-white/30 text-[10px] lowercase">{BRAND.email}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <a
-                  href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-                  className="w-full bg-[#3A86FF] text-black py-6 font-black impact-font text-xl text-center uppercase tracking-widest"
-                >
-                  PROBĂ GRATUITĂ
-                </a>
-                <button
-                  onClick={() => { setIsMenuOpen(false); onOpenAuth(); }}
-                  className="w-full border border-white/20 text-white/60 py-4 font-bold text-xs uppercase tracking-widest"
-                >
-                  CONTUL MEU
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav >
-      </>
-      );
+        </div>
+      </nav >
+    </>
+  );
 };
 
 // --- 3D Tilt Image Component ---
 // --- Advanced Tech Displays ---
 
 const PowerBoxLifestyle = () => (
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-        <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.15]">
-          <img
-            src="/powerbox_lifestyle.png"
-            alt="NeoBoost PowerBox & Dock"
-            className="w-full h-full object-cover"
-            style={{
-              // Focused blend on the center geometry
-              objectPosition: 'center center',
-              maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-              WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-              filter: 'contrast(1.1) brightness(1.0)',
-              imageRendering: 'auto'
-            }}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-      );
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.15]">
+      <img
+        src="/powerbox_lifestyle.png"
+        alt="NeoBoost PowerBox & Dock"
+        className="w-full h-full object-cover"
+        style={{
+          // Focused blend on the center geometry
+          objectPosition: 'center center',
+          maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
+          filter: 'contrast(1.1) brightness(1.0)',
+          imageRendering: 'auto'
+        }}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+);
 
 // --- New Competitive Comparison Section ---
 const ComparisonSection = () => (
-      <section className="py-24 bg-[#0a0a0a] border-y border-white/5 relative overflow-hidden">
-        <EvolutionVideoBackground />
-        <div className="container mx-auto px-6 md:px-24 relative z-10">
-          <ScrollReveal>
-            <div className="text-center mb-20 relative z-10">
-              <p className="mono-font text-[9px] tracking-[0.4em] text-[#3A86FF]/60 uppercase mb-4">Tradiție vs Inovație</p>
-              <h2 className="text-4xl md:text-6xl font-black impact-font text-white uppercase heading-glow">
-                EVOLUȚIA <span className="text-[#3A86FF]/80">FITNESS-ULUI</span>
-              </h2>
-            </div>
-          </ScrollReveal>
+  <section className="py-24 bg-[#0a0a0a] border-y border-white/5 relative overflow-hidden">
+    <EvolutionVideoBackground />
+    <div className="container mx-auto px-6 md:px-24 relative z-10">
+      <ScrollReveal>
+        <div className="text-center mb-20 relative z-10">
+          <p className="mono-font text-[9px] tracking-[0.4em] text-[#3A86FF]/60 uppercase mb-4">Tradiție vs Inovație</p>
+          <h2 className="text-4xl md:text-6xl font-black impact-font text-white uppercase heading-glow">
+            EVOLUȚIA <span className="text-[#3A86FF]/80">FITNESS-ULUI</span>
+          </h2>
+        </div>
+      </ScrollReveal>
 
-          <div className="max-w-5xl mx-auto">
-            {/* Table Header */}
-            <div className="grid grid-cols-3 gap-4 mb-8 text-[10px] md:text-xs mono-font uppercase tracking-widest text-white/30 border-b border-white/10 pb-4">
-              <div className="pl-4">Criteriu</div>
-              <div className="text-center">Sală Tradițională</div>
-              <div className="text-center text-[#3A86FF]">NeoBoost System</div>
-            </div>
+      <div className="max-w-5xl mx-auto">
+        {/* Table Header */}
+        <div className="grid grid-cols-3 gap-4 mb-8 text-[10px] md:text-xs mono-font uppercase tracking-widest text-white/30 border-b border-white/10 pb-4">
+          <div className="pl-4">Criteriu</div>
+          <div className="text-center">Sală Tradițională</div>
+          <div className="text-center text-[#3A86FF]">NeoBoost System</div>
+        </div>
 
-            {/* Rows */}
-            <div className="space-y-4">
-              {GYM_VS_EMS.map((item, idx) => (
-                <ScrollReveal key={idx} delay={idx * 50}>
-                  <div className="group grid grid-cols-3 gap-4 items-center p-6 glass-block transition-all duration-300 hover:border-[#3A86FF]/30 hover:shadow-[0_0_20px_rgba(0,255,136,0.05)]">
-                    <div className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#3A86FF] group-hover:scale-110 transition-transform">
-                        {item.icon}
-                      </div>
-                      <span className="font-bold text-white text-sm md:text-lg">{item.feature}</span>
-                    </div>
-
-                    <div className="text-center text-white/40 font-light text-sm md:text-base line-through decoration-white/20 decoration-2">
-                      {item.gym}
-                    </div>
-
-                    <div className="text-center font-black text-[#3A86FF] text-sm md:text-xl shadow-[#3A86FF]/20 drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]">
-                      {item.ems}
-                    </div>
+        {/* Rows */}
+        <div className="space-y-4">
+          {GYM_VS_EMS.map((item, idx) => (
+            <ScrollReveal key={idx} delay={idx * 50}>
+              <div className="group grid grid-cols-3 gap-4 items-center p-6 glass-block transition-all duration-300 hover:border-[#3A86FF]/30 hover:shadow-[0_0_20px_rgba(0,255,136,0.05)]">
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#3A86FF] group-hover:scale-110 transition-transform">
+                    {item.icon}
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
+                  <span className="font-bold text-white text-sm md:text-lg">{item.feature}</span>
+                </div>
 
-            {/* Bottom Callout */}
-            <ScrollReveal delay={300}>
-              <div className="mt-16 text-center">
-                <p className="text-white/60 font-light italic text-lg mb-8">
-                  "De ce să pierzi 4 ore pe săptămână când poți obține rezultate mai bune în 30 de minute?"
-                </p>
+                <div className="text-center text-white/40 font-light text-sm md:text-base line-through decoration-white/20 decoration-2">
+                  {item.gym}
+                </div>
+
+                <div className="text-center font-black text-[#3A86FF] text-sm md:text-xl shadow-[#3A86FF]/20 drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]">
+                  {item.ems}
+                </div>
               </div>
             </ScrollReveal>
-          </div>
+          ))}
         </div>
-      </section>
-      );
+
+        {/* Bottom Callout */}
+        <ScrollReveal delay={300}>
+          <div className="mt-16 text-center">
+            <p className="text-white/60 font-light italic text-lg mb-8">
+              "De ce să pierzi 4 ore pe săptămână când poți obține rezultate mai bune în 30 de minute?"
+            </p>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+);
 
 // --- Science & Solutions Section ---
 const ScienceSolutionsSection = () => (
-      <section className="py-32 bg-zinc-900 border-b border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3A86FF]/20 to-transparent"></div>
-        <div className="container mx-auto px-6 md:px-24">
-          <ScrollReveal>
-            <div className="mb-20 max-w-3xl">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-1 bg-[#3A86FF]"></div>
-                <span className="mono-font text-[#3A86FF] uppercase tracking-widest text-xs font-black">Probleme & Soluții</span>
+  <section className="py-32 bg-zinc-900 border-b border-white/5 relative overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3A86FF]/20 to-transparent"></div>
+    <div className="container mx-auto px-6 md:px-24">
+      <ScrollReveal>
+        <div className="mb-20 max-w-3xl">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-10 h-1 bg-[#3A86FF]"></div>
+            <span className="mono-font text-[#3A86FF] uppercase tracking-widest text-xs font-black">Probleme & Soluții</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black impact-font text-white mb-8 heading-glow">
+            ȘTIINȚA DIN SPATELE <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] to-cyan-600">REZULTATELOR.</span>
+          </h2>
+          <p className="text-white/60 text-lg font-light leading-relaxed">
+            Nu este magie, este bio-inginerie. NeoBoost abordează corpul uman la nivel celular pentru a rezolva probleme specifice.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {EMS_SOLUTIONS.map((sol, i) => (
+          <ScrollReveal key={sol.id} delay={i * 100}>
+            <div className="group relative bg-black border border-white/10 p-8 md:p-12 hover:border-[#3A86FF]/40 transition-all duration-500 overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 scale-150 grayscale group-hover:grayscale-0">
+                {sol.icon}
               </div>
-              <h2 className="text-5xl md:text-7xl font-black impact-font text-white mb-8 heading-glow">
-                ȘTIINȚA DIN SPATELE <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] to-cyan-600">REZULTATELOR.</span>
-              </h2>
-              <p className="text-white/60 text-lg font-light leading-relaxed">
-                Nu este magie, este bio-inginerie. NeoBoost abordează corpul uman la nivel celular pentru a rezolva probleme specifice.
-              </p>
+
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-8 text-[#3A86FF] group-hover:scale-110 transition-transform duration-500">
+                  {sol.icon}
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">
+                  {sol.title}
+                </h3>
+
+                <p className="text-white/70 font-medium mb-6 text-lg">
+                  {sol.description}
+                </p>
+
+                <div className="pl-6 border-l-2 border-[#3A86FF]/30">
+                  <p className="text-white/40 text-sm italic font-light">
+                    "<span className="text-[#3A86FF]">Știința:</span> {sol.science}"
+                  </p>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {EMS_SOLUTIONS.map((sol, i) => (
-              <ScrollReveal key={sol.id} delay={i * 100}>
-                <div className="group relative bg-black border border-white/10 p-8 md:p-12 hover:border-[#3A86FF]/40 transition-all duration-500 overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 scale-150 grayscale group-hover:grayscale-0">
-                    {sol.icon}
-                  </div>
-
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-8 text-[#3A86FF] group-hover:scale-110 transition-transform duration-500">
-                      {sol.icon}
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">
-                      {sol.title}
-                    </h3>
-
-                    <p className="text-white/70 font-medium mb-6 text-lg">
-                      {sol.description}
-                    </p>
-
-                    <div className="pl-6 border-l-2 border-[#3A86FF]/30">
-                      <p className="text-white/40 text-sm italic font-light">
-                        "<span className="text-[#3A86FF]">Știința:</span> {sol.science}"
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      );
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 
 // --- Trial Video Background Component (Optimized) ---
@@ -1873,344 +1872,344 @@ const TrialVideoBackground = () => {
 // --- Trial Roadmap Section ---
 const TrialRoadmap = () => {
   const roadmap = [
-      {step: "01", title: "Consiliere", desc: "Discutăm despre obiectivele tale și starea de sănătate.", icon: <UserCheck size={20} /> },
-      {step: "02", title: "Echipare", desc: "Primești costumul Drysuit bio-optic pregătit special.", icon: <Shirt size={20} /> },
-      {step: "03", title: "Activare", desc: "30 de minute de antrenament ghidat 1-la-1.", icon: <Zap size={20} /> },
-      {step: "04", title: "Recuperare", desc: "Shake proteic și planificare pentru rezultate.", icon: <Droplets size={20} /> }
-      ];
+    { step: "01", title: "Consiliere", desc: "Discutăm despre obiectivele tale și starea de sănătate.", icon: <UserCheck size={20} /> },
+    { step: "02", title: "Echipare", desc: "Primești costumul Drysuit bio-optic pregătit special.", icon: <Shirt size={20} /> },
+    { step: "03", title: "Activare", desc: "30 de minute de antrenament ghidat 1-la-1.", icon: <Zap size={20} /> },
+    { step: "04", title: "Recuperare", desc: "Shake proteic și planificare pentru rezultate.", icon: <Droplets size={20} /> }
+  ];
 
-      return (
-      <section className="py-24 bg-black border-y border-white/5 relative overflow-hidden">
-        <TrialVideoBackground />
-        <div className="container mx-auto px-6 md:px-24 relative z-10">
-          <ScrollReveal>
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-6xl font-black impact-font text-white tracking-tight uppercase">EXPERIENȚA <span className="text-[#3A86FF]">PRIMEI VIZITE.</span></h2>
-              <p className="text-white/40 mt-4 mono-font text-xs tracking-widest uppercase">Simplu, rapid, profesionist.</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {roadmap.map((item, idx) => (
-              <ScrollReveal key={idx} delay={idx * 100}>
-                <div className="relative p-6 sm:p-10 glass rounded-2xl group hover:neon-border transition-all duration-500">
-                  <div className="text-5xl font-black impact-font text-white/5 group-hover:text-[#3A86FF]/10 transition-colors mb-4">{item.step}</div>
-                  <div className="text-[#3A86FF] mb-6 transform group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
-                  <h3 className="text-xl font-black impact-font text-white mb-2 uppercase">{item.title}</h3>
-                  <p className="text-sm text-white/30 font-light leading-relaxed">{item.desc}</p>
-                  {idx < 3 && (
-                    <div className="hidden md:block absolute top-1/2 -right-2 translate-y-1/2">
-                      <ArrowDown className="-rotate-90 text-white/5" size={20} />
-                    </div>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
+  return (
+    <section className="py-24 bg-black border-y border-white/5 relative overflow-hidden">
+      <TrialVideoBackground />
+      <div className="container mx-auto px-6 md:px-24 relative z-10">
+        <ScrollReveal>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black impact-font text-white tracking-tight uppercase">EXPERIENȚA <span className="text-[#3A86FF]">PRIMEI VIZITE.</span></h2>
+            <p className="text-white/40 mt-4 mono-font text-xs tracking-widest uppercase">Simplu, rapid, profesionist.</p>
           </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {roadmap.map((item, idx) => (
+            <ScrollReveal key={idx} delay={idx * 100}>
+              <div className="relative p-6 sm:p-10 glass rounded-2xl group hover:neon-border transition-all duration-500">
+                <div className="text-5xl font-black impact-font text-white/5 group-hover:text-[#3A86FF]/10 transition-colors mb-4">{item.step}</div>
+                <div className="text-[#3A86FF] mb-6 transform group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+                <h3 className="text-xl font-black impact-font text-white mb-2 uppercase">{item.title}</h3>
+                <p className="text-sm text-white/30 font-light leading-relaxed">{item.desc}</p>
+                {idx < 3 && (
+                  <div className="hidden md:block absolute top-1/2 -right-2 translate-y-1/2">
+                    <ArrowDown className="-rotate-90 text-white/5" size={20} />
+                  </div>
+                )}
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
-      </section>
-      );
+      </div>
+    </section>
+  );
 };
 
 // --- Sticky "20 Minute" Banner ---
 const StickyBanner = () => (
-      <div className="fixed bottom-0 left-0 w-full bg-[#3A86FF] text-black py-3 z-[90] overflow-hidden whitespace-nowrap border-t border-black/10 shadow-[0_-10px_40px_rgba(0,255,136,0.3)]">
-        <div className="flex items-center justify-around gap-10 animate-marquee">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="flex items-center gap-4 px-10">
-              <Zap size={14} className="fill-current" />
-              <span className="impact-font text-sm md:text-base font-black tracking-widest uppercase">DOAR 30 MINUTE / MINIM 1 ȘEDINȚĂ SĂPTĂMÂNAL</span>
-              <span className="mono-font text-[10px] font-bold opacity-40 uppercase tracking-widest px-4 border-x border-black/20">Opțiuni flexibile pentru rezultate accelerate</span>
-            </div>
-          ))}
+  <div className="fixed bottom-0 left-0 w-full bg-[#3A86FF] text-black py-3 z-[90] overflow-hidden whitespace-nowrap border-t border-black/10 shadow-[0_-10px_40px_rgba(0,255,136,0.3)]">
+    <div className="flex items-center justify-around gap-10 animate-marquee">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="flex items-center gap-4 px-10">
+          <Zap size={14} className="fill-current" />
+          <span className="impact-font text-sm md:text-base font-black tracking-widest uppercase">DOAR 30 MINUTE / MINIM 1 ȘEDINȚĂ SĂPTĂMÂNAL</span>
+          <span className="mono-font text-[10px] font-bold opacity-40 uppercase tracking-widest px-4 border-x border-black/20">Opțiuni flexibile pentru rezultate accelerate</span>
         </div>
-      </div>
-      );
+      ))}
+    </div>
+  </div>
+);
 
-      const TabletFrame: React.FC<{ children: React.ReactNode }> = ({children}) => (
-      <div className="relative w-[95%] aspect-[4/3] mx-auto bg-[#1a1a1a] rounded-[2.5rem] p-4 shadow-2xl border-[8px] border-[#222] group-hover:scale-[1.02] transition-transform duration-700">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#333] rounded-b-xl"></div>
-        <div className="w-full h-full bg-black rounded-[1.5rem] overflow-hidden relative shadow-inner">
-          {children}
-          {/* Screen Reflection */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.01] pointer-events-none"></div>
-        </div>
-      </div>
-      );
+const TabletFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="relative w-[95%] aspect-[4/3] mx-auto bg-[#1a1a1a] rounded-[2.5rem] p-4 shadow-2xl border-[8px] border-[#222] group-hover:scale-[1.02] transition-transform duration-700">
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#333] rounded-b-xl"></div>
+    <div className="w-full h-full bg-black rounded-[1.5rem] overflow-hidden relative shadow-inner">
+      {children}
+      {/* Screen Reflection */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.01] pointer-events-none"></div>
+    </div>
+  </div>
+);
 
 const EMSAppUI = () => (
-      <div className="w-full h-full flex flex-col p-6 font-sans select-none overflow-hidden">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-[#3A86FF] animate-pulse"></div>
-            <span className="text-[8px] font-bold text-white/40 tracking-widest uppercase">ID-EMS OS v3.4.2</span>
-          </div>
-          <div className="flex items-center gap-6 text-[8px] text-white/20 font-bold uppercase tracking-wider">
-            <span className="text-[#FF3300]">Active Boost</span>
-            <span>Batt: 98%</span>
-          </div>
-        </div>
-
-        {/* Body Displays */}
-        <div className="flex-1 flex justify-around items-center">
-          {/* Front Body */}
-          <div className="relative h-full aspect-[1/2] opacity-80">
-            <div className="absolute inset-0 bg-white/[0.02] blur-3xl rounded-full"></div>
-            <svg viewBox="0 0 100 200" className="h-full w-full">
-              <path d="M50 10 L60 25 L80 40 L85 80 L70 130 L75 190 M50 10 L40 25 L20 40 L15 80 L30 130 L25 190" fill="none" stroke="white" strokeWidth="1" opacity="0.1" />
-              {/* Active Electrodes */}
-              <circle cx="50" cy="40" r="3" fill="#FF3300" className="animate-pulse" />
-              <circle cx="35" cy="70" r="4" fill="#FF3300" />
-              <circle cx="65" cy="70" r="4" fill="#FF3300" />
-              <circle cx="40" cy="110" r="5" fill="#FF3300" opacity="0.6" />
-              <circle cx="60" cy="110" r="5" fill="#FF3300" opacity="0.6" />
-            </svg>
-          </div>
-
-          {/* Stats Column */}
-          <div className="w-32 hidden md:flex flex-col gap-4">
-            {[85, 72, 90].map((val, i) => (
-              <div key={i} className="bg-white/5 p-3 rounded-lg border border-white/5">
-                <div className="text-[6px] text-white/30 uppercase mb-1">Channel {i + 1}</div>
-                <div className="text-sm font-bold text-white">{val}%</div>
-                <div className="h-0.5 bg-white/10 mt-2 rounded-full overflow-hidden">
-                  <div className="h-full bg-[#3A86FF]" style={{ width: `${val}%` }}></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Bar Controls */}
-        <div className="flex gap-2 mt-8">
-          {['Drying', 'Training', 'Recovery', 'Massage'].map((mode, i) => (
-            <div key={mode} className={`flex-1 h-8 rounded border border-white/5 text-[6px] uppercase flex items-center justify-center font-bold tracking-tighter ${i === 1 ? 'bg-[#FF3300] text-white' : 'text-white/20'}`}>
-              {mode}
-            </div>
-          ))}
-        </div>
+  <div className="w-full h-full flex flex-col p-6 font-sans select-none overflow-hidden">
+    {/* Header */}
+    <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
+      <div className="flex items-center gap-3">
+        <div className="w-2 h-2 rounded-full bg-[#3A86FF] animate-pulse"></div>
+        <span className="text-[8px] font-bold text-white/40 tracking-widest uppercase">ID-EMS OS v3.4.2</span>
       </div>
-      );
+      <div className="flex items-center gap-6 text-[8px] text-white/20 font-bold uppercase tracking-wider">
+        <span className="text-[#FF3300]">Active Boost</span>
+        <span>Batt: 98%</span>
+      </div>
+    </div>
+
+    {/* Body Displays */}
+    <div className="flex-1 flex justify-around items-center">
+      {/* Front Body */}
+      <div className="relative h-full aspect-[1/2] opacity-80">
+        <div className="absolute inset-0 bg-white/[0.02] blur-3xl rounded-full"></div>
+        <svg viewBox="0 0 100 200" className="h-full w-full">
+          <path d="M50 10 L60 25 L80 40 L85 80 L70 130 L75 190 M50 10 L40 25 L20 40 L15 80 L30 130 L25 190" fill="none" stroke="white" strokeWidth="1" opacity="0.1" />
+          {/* Active Electrodes */}
+          <circle cx="50" cy="40" r="3" fill="#FF3300" className="animate-pulse" />
+          <circle cx="35" cy="70" r="4" fill="#FF3300" />
+          <circle cx="65" cy="70" r="4" fill="#FF3300" />
+          <circle cx="40" cy="110" r="5" fill="#FF3300" opacity="0.6" />
+          <circle cx="60" cy="110" r="5" fill="#FF3300" opacity="0.6" />
+        </svg>
+      </div>
+
+      {/* Stats Column */}
+      <div className="w-32 hidden md:flex flex-col gap-4">
+        {[85, 72, 90].map((val, i) => (
+          <div key={i} className="bg-white/5 p-3 rounded-lg border border-white/5">
+            <div className="text-[6px] text-white/30 uppercase mb-1">Channel {i + 1}</div>
+            <div className="text-sm font-bold text-white">{val}%</div>
+            <div className="h-0.5 bg-white/10 mt-2 rounded-full overflow-hidden">
+              <div className="h-full bg-[#3A86FF]" style={{ width: `${val}%` }}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Bottom Bar Controls */}
+    <div className="flex gap-2 mt-8">
+      {['Drying', 'Training', 'Recovery', 'Massage'].map((mode, i) => (
+        <div key={mode} className={`flex-1 h-8 rounded border border-white/5 text-[6px] uppercase flex items-center justify-center font-bold tracking-tighter ${i === 1 ? 'bg-[#FF3300] text-white' : 'text-white/20'}`}>
+          {mode}
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 const TabletReal = () => (
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-        <div className="relative w-full h-full scale-[1.2] transition-transform duration-700 group-hover:scale-[1.3]">
-          <img
-            src="/tablet_combo.jpg"
-            alt="NeoBoost Tablet Interface"
-            className="w-full h-full object-cover"
-            style={{
-              // Focused blend on the tablet screen (bottom-center of the photo)
-              objectPosition: '40% 60%',
-              maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-              WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-              filter: 'contrast(1.1) brightness(1.0)',
-              imageRendering: 'auto'
-            }}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-      );
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full scale-[1.2] transition-transform duration-700 group-hover:scale-[1.3]">
+      <img
+        src="/tablet_combo.jpg"
+        alt="NeoBoost Tablet Interface"
+        className="w-full h-full object-cover"
+        style={{
+          // Focused blend on the tablet screen (bottom-center of the photo)
+          objectPosition: '40% 60%',
+          maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
+          filter: 'contrast(1.1) brightness(1.0)',
+          imageRendering: 'auto'
+        }}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+);
 
 const DrysuitLifestyle = () => (
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-        <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.1]">
-          <img
-            src="/studio_session_1.jpg"
-            alt="NeoBoost Drysuit Action"
-            className="w-full h-full object-cover"
-            style={{
-              // Show the athlete with NeoBoost on back more clearly
-              objectPosition: 'center 30%',
-              filter: 'contrast(1.15) brightness(1.05) saturate(1.1)',
-              imageRendering: 'auto'
-            }}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-      );
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.1]">
+      <img
+        src="/studio_session_1.jpg"
+        alt="NeoBoost Drysuit Action"
+        className="w-full h-full object-cover"
+        style={{
+          // Show the athlete with NeoBoost on back more clearly
+          objectPosition: 'center 30%',
+          filter: 'contrast(1.15) brightness(1.05) saturate(1.1)',
+          imageRendering: 'auto'
+        }}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+);
 
-      const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolean; isControlApp?: boolean; isDrysuit?: boolean }> = ({src, alt, isPowerBox, isControlApp, isDrysuit}) => {
+const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolean; isControlApp?: boolean; isDrysuit?: boolean }> = ({ src, alt, isPowerBox, isControlApp, isDrysuit }) => {
   const [transform, setTransform] = useState('');
-      const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
-        const {left, top, width, height} = ref.current.getBoundingClientRect();
-        const x = (e.clientX - left) / width;
-        const y = (e.clientY - top) / height;
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const x = (e.clientX - left) / width;
+    const y = (e.clientY - top) / height;
 
-        const intensity = 15; // Standard intensity
-        const rotateX = (0.5 - y) * intensity;
-        const rotateY = (x - 0.5) * intensity;
+    const intensity = 15; // Standard intensity
+    const rotateX = (0.5 - y) * intensity;
+    const rotateY = (x - 0.5) * intensity;
 
-        setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.1, 1.1, 1.1)`);
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.1, 1.1, 1.1)`);
   };
 
   const handleMouseLeave = () => {
-          setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
+    setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
   };
 
-        return (
-        <div
-          className={`relative w-full h-full group perspective-1000 ${isPowerBox ? 'animate-float' : ''}`}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
+  return (
+    <div
+      className={`relative w-full h-full group perspective-1000 ${isPowerBox ? 'animate-float' : ''}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        ref={ref}
+        className="w-full h-full transition-transform duration-100 ease-out"
+        style={{ transform, transformStyle: 'preserve-3d' }}
+      >
+        {isPowerBox ? (
+          <PowerBoxLifestyle />
+        ) : isControlApp ? (
+          <TabletReal />
+        ) : isDrysuit ? (
+          <DrysuitLifestyle />
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1] reveal-color`}
+            style={{
+              maskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
+              WebkitMaskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
+            }}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        {/* Specular shine reflection (only for images) */}
+        {!isPowerBox && (
           <div
-            ref={ref}
-            className="w-full h-full transition-transform duration-100 ease-out"
-            style={{ transform, transformStyle: 'preserve-3d' }}
-          >
-            {isPowerBox ? (
-              <PowerBoxLifestyle />
-            ) : isControlApp ? (
-              <TabletReal />
-            ) : isDrysuit ? (
-              <DrysuitLifestyle />
-            ) : (
-              <img
-                src={src}
-                alt={alt}
-                className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1] reveal-color`}
-                style={{
-                  maskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
-                  WebkitMaskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
-                }}
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-            {/* Specular shine reflection (only for images) */}
-            {!isPowerBox && (
-              <div
-                className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ mixBlendMode: 'overlay' }}
-              />
-            )}
-          </div>
-        </div>
-        );
+            className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            style={{ mixBlendMode: 'overlay' }}
+          />
+        )}
+      </div>
+    </div>
+  );
 };
 
 const App: React.FC = () => {
   const [activeView, setActiveView] = useState<'home' | 'science' | 'legal'>('home');
-        const [legalType, setLegalType] = useState<'privacy' | 'terms' | 'rules'>('privacy');
-        const [activeArticleId, setActiveArticleId] = useState<string | null>(null);
+  const [legalType, setLegalType] = useState<'privacy' | 'terms' | 'rules'>('privacy');
+  const [activeArticleId, setActiveArticleId] = useState<string | null>(null);
 
-        // Auth State
-        const [session, setSession] = useState<Session | null>(null);
-        const [isAuthOpen, setIsAuthOpen] = useState(false);
+  // Auth State
+  const [session, setSession] = useState<Session | null>(null);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-        const [showSuccessModal, setShowSuccessModal] = useState(false);
-        const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   useEffect(() => {
-          supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-          });
-
-        const {
-          data: {subscription},
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-          setSession(session);
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
     });
 
-        // Check for success payment
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('payment_success')) {
-          setShowSuccessModal(true);
-        trackEvent('Purchase', {
-          currency: 'RON',
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    // Check for success payment
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('payment_success')) {
+      setShowSuccessModal(true);
+      trackEvent('Purchase', {
+        currency: 'RON',
         value: 0 // Ideally get from URL or session
       });
-        window.history.replaceState({ }, '', window.location.pathname);
+      window.history.replaceState({}, '', window.location.pathname);
     }
 
     return () => subscription.unsubscribe();
   }, []);
 
-        const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
     if (isLight) {
-          document.body.classList.add('light-mode');
+      document.body.classList.add('light-mode');
     } else {
-          document.body.classList.remove('light-mode');
+      document.body.classList.remove('light-mode');
     }
   }, [isLight]);
 
-        const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly'>('monthly');
-        const currentPackages = pricingPeriod === 'monthly' ? MONTHLY_PACKAGES : QUARTERLY_PACKAGES;
+  const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly'>('monthly');
+  const currentPackages = pricingPeriod === 'monthly' ? MONTHLY_PACKAGES : QUARTERLY_PACKAGES;
 
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-          duration: 0.8, // Faster scroll response (was 1.2)
+      duration: 0.8, // Faster scroll response (was 1.2)
       easing: (t) => 1 - Math.pow(1 - t, 3), // Simpler ease
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1.2, // Faster scrolling
-        touchMultiplier: 2, // More responsive touch
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.2, // Faster scrolling
+      touchMultiplier: 2, // More responsive touch
     });
 
     const raf = (time: number) => {
-          lenis.raf(time);
-        requestAnimationFrame(raf);
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     };
 
-        requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
 
     // Patch anchor links to work with Lenis
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href')?.substring(1);
-            if (targetId) {
-              const targetElement = document.getElementById(targetId);
-              if (targetElement) {
-                lenis.scrollTo(targetElement);
-              }
-            }
-          });
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href')?.substring(1);
+        if (targetId) {
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            lenis.scrollTo(targetElement);
+          }
+        }
+      });
     });
 
     // Handle Browser Back Button for internal views & Modals
     const handlePopState = (event: PopStateEvent) => {
       const state = event.state;
 
-        if (state?.view) {
-          setActiveView(state.view);
+      if (state?.view) {
+        setActiveView(state.view);
       } else {
-          setActiveView('home');
+        setActiveView('home');
         setIsAuthOpen(false);
       }
     };
 
-        window.addEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', handlePopState);
 
     return () => {
-          lenis.destroy();
-        window.removeEventListener('popstate', handlePopState);
+      lenis.destroy();
+      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
 
   // Sync State with History
   useEffect(() => {
     if (activeView !== 'home') {
-          window.history.pushState({ view: activeView }, '');
+      window.history.pushState({ view: activeView }, '');
     }
   }, [activeView]);
 
   useEffect(() => {
     if (isAuthOpen) {
-          window.history.pushState({ modal: 'auth' }, '');
+      window.history.pushState({ modal: 'auth' }, '');
     }
   }, [isAuthOpen]);
 
@@ -2219,435 +2218,435 @@ const App: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     useEffect(() => {
       const toggle = () => setIsVisible(window.scrollY > 500);
-        window.addEventListener('scroll', toggle);
+      window.addEventListener('scroll', toggle);
       return () => window.removeEventListener('scroll', toggle);
     }, []);
 
     const scrollToTop = () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-        return (
-        <button
-          onClick={scrollToTop}
-          className={`fixed bottom-32 right-6 z-[90] p-4 bg-[#3A86FF] text-black rounded-full shadow-[0_0_20px_rgba(58,134,255,0.4)] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_40px_rgba(58,134,255,0.6)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
-        >
-          <ArrowDown size={20} className="rotate-180" />
-        </button>
-        );
+    return (
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-32 right-6 z-[90] p-4 bg-[#3A86FF] text-black rounded-full shadow-[0_0_20px_rgba(58,134,255,0.4)] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_40px_rgba(58,134,255,0.6)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+      >
+        <ArrowDown size={20} className="rotate-180" />
+      </button>
+    );
   };
 
-        const [isMuted, setIsMuted] = useState(false); // Audio ON by default for immersive experience
+  const [isMuted, setIsMuted] = useState(false); // Audio ON by default for immersive experience
 
   const handleCheckout = async (pkg: NeoPackage) => {
     try {
       const price = parseInt(pkg.price.replace(/\D/g, ''));
-        const isQuarterly = pricingPeriod === 'quarterly';
-        const intervalCount = isQuarterly ? 3 : 1;
+      const isQuarterly = pricingPeriod === 'quarterly';
+      const intervalCount = isQuarterly ? 3 : 1;
 
-        // Use absolute URL for maximum compatibility with iOS/Safari
-        const apiUrl = typeof window !== 'undefined' ? window.location.origin : '';
-        const res = await fetch(`${apiUrl}/api/stripe/create-checkout-session`, {
-          method: 'POST',
-        headers: {'Content-Type': 'application/json' },
+      // Use absolute URL for maximum compatibility with iOS/Safari
+      const apiUrl = typeof window !== 'undefined' ? window.location.origin : '';
+      const res = await fetch(`${apiUrl}/api/stripe/create-checkout-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userId: session?.user?.id,
-        priceId: pkg.stripePriceId,
-        amount: price,
-        productName: `${pkg.title} (${pricingPeriod === 'monthly' ? 'Lunar' : '3 Luni'})`,
-        interval: 'month',
-        intervalCount: intervalCount
+          priceId: pkg.stripePriceId,
+          amount: price,
+          productName: `${pkg.title} (${pricingPeriod === 'monthly' ? 'Lunar' : '3 Luni'})`,
+          interval: 'month',
+          intervalCount: intervalCount
         })
       });
 
-        if (!res.ok) {
+      if (!res.ok) {
         const errorText = await res.text();
         throw new Error(`Server status ${res.status}: ${errorText.substring(0, 50)}`);
       }
 
-        const data = await res.json();
-        if (data.url) {
-          window.location.href = data.url;
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
       } else {
-          alert(`Eroare Stripe: ${data.error || 'Serverul nu a returnat un URL valid.'}`);
+        alert(`Eroare Stripe: ${data.error || 'Serverul nu a returnat un URL valid.'}`);
       }
     } catch (err: any) {
-          console.error('Checkout error:', err);
-        // More descriptive error for debugging
-        const msg = err.message || 'Verifică conexiunea la internet.';
-        alert(`Eroare conexiune: ${msg}`);
+      console.error('Checkout error:', err);
+      // More descriptive error for debugging
+      const msg = err.message || 'Verifică conexiunea la internet.';
+      alert(`Eroare conexiune: ${msg}`);
     }
   };
 
-        // Imagini specifice care reflectă pozele furnizate de utilizator
-        const locationImages = [
-        // Ramada: Sala premium (ramada.jpg update)
-        "/ramada.jpg",
-        // GetFit: Sala GetFit (getfit.jpg update)
-        "/getfit.jpg"
-        ];
+  // Imagini specifice care reflectă pozele furnizate de utilizator
+  const locationImages = [
+    // Ramada: Sala premium (ramada.jpg update)
+    "/ramada.jpg",
+    // GetFit: Sala GetFit (getfit.jpg update)
+    "/getfit.jpg"
+  ];
 
-        return (
-        <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
-          <AmbientAudio isMuted={isMuted} />
-          <ParticleBackground />
+  return (
+    <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
+      <AmbientAudio isMuted={isMuted} />
+      <ParticleBackground />
 
-          {activeView !== 'science' && (
-            <Navbar
-              isMuted={isMuted}
-              setIsMuted={setIsMuted}
-              user={session?.user}
-              onOpenAuth={() => setIsAuthOpen(true)}
-              onOpenBooking={() => setIsBookingOpen(true)}
-              isLight={isLight}
-              setIsLight={setIsLight}
-            />
-          )}
-          <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
-          <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
-          <PaymentSuccessModal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />
-          <ScrollToTop />
-          <CookieBanner />
+      {activeView !== 'science' && (
+        <Navbar
+          isMuted={isMuted}
+          setIsMuted={setIsMuted}
+          user={session?.user}
+          onOpenAuth={() => setIsAuthOpen(true)}
+          onOpenBooking={() => setIsBookingOpen(true)}
+          isLight={isLight}
+          setIsLight={setIsLight}
+        />
+      )}
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
+      <PaymentSuccessModal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />
+      <ScrollToTop />
+      <CookieBanner />
 
-          {/* Conditional Rendering based on View */}
-          {activeView === 'science' ? (
-            <SciencePage
-              onBack={() => setActiveView('home')}
-              initialArticleId={activeArticleId}
-            />
-          ) : activeView === 'legal' ? (
-            <LegalPage
-              type={legalType}
-              onBack={() => setActiveView('home')}
-            />
-          ) : (
-            <>
-              <ImmersiveHero />
+      {/* Conditional Rendering based on View */}
+      {activeView === 'science' ? (
+        <SciencePage
+          onBack={() => setActiveView('home')}
+          initialArticleId={activeArticleId}
+        />
+      ) : activeView === 'legal' ? (
+        <LegalPage
+          type={legalType}
+          onBack={() => setActiveView('home')}
+        />
+      ) : (
+        <>
+          <ImmersiveHero />
 
 
 
-              {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
-              <section id="pentru-cine" className="py-20 md:py-32 bg-[#030303] relative z-10 overflow-hidden">
-                <BenefitsVideoBackground />
-                <div className="container mx-auto px-6 md:px-24 relative z-10">
+          {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
+          <section id="pentru-cine" className="py-20 md:py-32 bg-[#030303] relative z-10 overflow-hidden">
+            <BenefitsVideoBackground />
+            <div className="container mx-auto px-6 md:px-24 relative z-10">
+              <ScrollReveal>
+                <div className="text-center mb-16">
+                  <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Ce Poți Obține</p>
+                  <h2 className="text-4xl md:text-6xl font-black impact-font text-white">
+                    Beneficii <span className="text-[#3A86FF]">reale</span>, nu promisiuni
+                  </h2>
+                </div>
+              </ScrollReveal>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Benefit 1 - Slăbire */}
+                <ScrollReveal delay={0}>
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <Zap size={28} className="text-[#3A86FF]" />
+                    </div>
+                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">SLĂBIRE RAPIDĂ</h3>
+                    <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
+                    <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                      Arzi până la <span className="text-white font-bold">500 kcal</span> în 30 min și activezi metabolismul pentru încă 48h (efect afterburn).
+                    </p>
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                      Vezi explicația științifică <MoveUpRight size={12} />
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                {/* Benefit 2 - Dureri de Spate */}
+                <ScrollReveal delay={100}>
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }} className="glass-block p-8 h-full border-[#3A86FF]/20 hover:border-[#3A86FF]/40 transition-all duration-500 group block cursor-pointer relative overflow-hidden flex flex-col">
+                    <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF]/20 text-[#3A86FF] text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <HeartPulse size={28} className="text-[#3A86FF]" />
+                    </div>
+                    <h3 className="text-2xl font-black impact-font text-[#3A86FF] mb-2">ADIO DURERI DE SPATE</h3>
+                    <p className="text-white/60 text-xs font-bold uppercase tracking-wider mb-3">Fără frică de mișcare</p>
+                    <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                      Clienții noștri spun că după 6-8 ședințe pot sta la birou fără durere lombară.
+                    </p>
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                      Cum funcționează, pas cu pas <MoveUpRight size={12} />
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                {/* Benefit 3 - Tonifiere */}
+                <ScrollReveal delay={200}>
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <Target size={28} className="text-[#3A86FF]" />
+                    </div>
+                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">TONIFIERE</h3>
+                    <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără rușine la sală</p>
+                    <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                      Musculatura se activează 90% simultan. Rezultate vizibile în 4-8 săptămâni.
+                    </p>
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                      Ce înseamnă „tonifiere” în realitate <MoveUpRight size={12} />
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                {/* Benefit 4 - Performanță */}
+                <ScrollReveal delay={300}>
+                  <div onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
+                      <TrendingUp size={28} className="text-[#3A86FF]" />
+                    </div>
+                    <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">FORȚĂ & PERFORMANȚĂ</h3>
+                    <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără risc de accidentare</p>
+                    <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                      Recrutare rapidă a fibrelor musculare, creștere forță fără stres articular.
+                    </p>
+                    <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                      Protocolul care reduce riscul <MoveUpRight size={12} />
+                    </div>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
+          </section>
+
+          <section id="metoda" className="py-24 md:py-60 bg-[#020202] relative z-10 overflow-hidden">
+            <BiohackVideoBackground />
+            <div className="container mx-auto px-6 md:px-24">
+              <div className="grid lg:grid-cols-2 gap-32 items-start">
+                <div className="lg:sticky top-40">
                   <ScrollReveal>
-                    <div className="text-center mb-16">
-                      <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Ce Poți Obține</p>
-                      <h2 className="text-4xl md:text-6xl font-black impact-font text-white">
-                        Beneficii <span className="text-[#3A86FF]">reale</span>, nu promisiuni
-                      </h2>
-                    </div>
+                    <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-6">Protocol de Eficiență</p>
+                    <h2 className="text-7xl md:text-9xl font-black impact-font text-white leading-[0.8]">BIO<br /><span className="text-[#3A86FF]">HACK.</span></h2>
+                    <div className="h-px w-20 bg-[#3A86FF] my-12 opacity-30"></div>
+                    <p className="text-2xl font-light text-white/40 leading-tight max-w-sm">
+                      Rezultate garantate prin stimularea a <span className="text-white italic">90% din fibrele musculare</span> simultan.
+                    </p>
                   </ScrollReveal>
+                </div>
 
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {/* Benefit 1 - Slăbire */}
-                    <ScrollReveal delay={0}>
-                      <div onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
-                        <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                          <Zap size={28} className="text-[#3A86FF]" />
-                        </div>
-                        <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">SLĂBIRE RAPIDĂ</h3>
-                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
-                        <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
-                          Arzi până la <span className="text-white font-bold">500 kcal</span> în 30 min și activezi metabolismul pentru încă 48h (efect afterburn).
-                        </p>
-                        <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
-                          Vezi explicația științifică <MoveUpRight size={12} />
-                        </div>
+                <div className="grid gap-6">
+                  {BENEFITS.map((b, i) => (
+                    <ScrollReveal key={i} delay={i * 100}>
+                      <div className="group p-10 glass-block hover:border-[#3A86FF]/30 transition-all duration-700">
+                        <h3 className="text-3xl font-black impact-font mb-4 text-white group-hover:text-[#3A86FF] transition-colors">{b.title}</h3>
+                        <p className="text-white/40 font-light leading-relaxed">{b.description}</p>
                       </div>
                     </ScrollReveal>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
 
-                    {/* Benefit 2 - Dureri de Spate */}
-                    <ScrollReveal delay={100}>
-                      <div onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }} className="glass-block p-8 h-full border-[#3A86FF]/20 hover:border-[#3A86FF]/40 transition-all duration-500 group block cursor-pointer relative overflow-hidden flex flex-col">
-                        <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF]/20 text-[#3A86FF] text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
-                        <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                          <HeartPulse size={28} className="text-[#3A86FF]" />
-                        </div>
-                        <h3 className="text-2xl font-black impact-font text-[#3A86FF] mb-2">ADIO DURERI DE SPATE</h3>
-                        <p className="text-white/60 text-xs font-bold uppercase tracking-wider mb-3">Fără frică de mișcare</p>
-                        <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
-                          Clienții noștri spun că după 6-8 ședințe pot sta la birou fără durere lombară.
-                        </p>
-                        <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
-                          Cum funcționează, pas cu pas <MoveUpRight size={12} />
-                        </div>
+
+          <div className="grid-bg py-24 border-y border-white/5">
+            <ComparisonSection />
+          </div>
+
+
+
+
+          <TrialRoadmap />
+
+          <ProgramsSection />
+
+
+
+
+
+
+          <section id="tehnologie" className="py-24 md:py-60 bg-black relative z-10 overflow-hidden">
+            <TechnologyVideoBackground />
+            <div className="container mx-auto px-6 md:px-24 relative z-10">
+              <ScrollReveal>
+                <h2 className="text-7xl md:text-[12vw] font-black impact-font text-white mb-32 leading-none uppercase">
+                  PRECIZIE<br /><span className="text-[#3A86FF]">BIO-TECH.</span>
+                </h2>
+              </ScrollReveal>
+
+              <div className="space-y-48">
+                {TECH_COMPONENTS.map((comp, idx) => (
+                  <div key={comp.id} className={`grid lg:grid-cols-2 gap-20 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                    <ScrollReveal className={`${idx % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                      <div className={`relative aspect-video overflow-visible border-none group`}>
+                        <TiltImage
+                          src={comp.image}
+                          alt={comp.title}
+                          isPowerBox={comp.id === 'powerbox'}
+                          isControlApp={comp.id === 'control'}
+                          isDrysuit={['drysuit', 'costum', 'ems-suit'].some(id => comp.id.includes(id))}
+                        />
                       </div>
                     </ScrollReveal>
-
-                    {/* Benefit 3 - Tonifiere */}
-                    <ScrollReveal delay={200}>
-                      <div onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
-                        <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                          <Target size={28} className="text-[#3A86FF]" />
-                        </div>
-                        <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">TONIFIERE</h3>
-                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără rușine la sală</p>
-                        <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
-                          Musculatura se activează 90% simultan. Rezultate vizibile în 4-8 săptămâni.
-                        </p>
-                        <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
-                          Ce înseamnă „tonifiere” în realitate <MoveUpRight size={12} />
-                        </div>
-                      </div>
-                    </ScrollReveal>
-
-                    {/* Benefit 4 - Performanță */}
-                    <ScrollReveal delay={300}>
-                      <div onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }} className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col">
-                        <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                          <TrendingUp size={28} className="text-[#3A86FF]" />
-                        </div>
-                        <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">FORȚĂ & PERFORMANȚĂ</h3>
-                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără risc de accidentare</p>
-                        <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
-                          Recrutare rapidă a fibrelor musculare, creștere forță fără stres articular.
-                        </p>
-                        <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
-                          Protocolul care reduce riscul <MoveUpRight size={12} />
-                        </div>
+                    <ScrollReveal delay={200} className={`space-y-8 ${idx % 2 !== 0 ? 'lg:order-1 lg:text-right' : ''}`}>
+                      <h3 className="text-5xl md:text-7xl font-black impact-font text-white">{comp.title}</h3>
+                      <p className={`text-lg text-white/40 font-light leading-relaxed max-w-xl ${idx % 2 !== 0 ? 'ml-auto' : ''}`}>{comp.description}</p>
+                      <div className={`flex flex-wrap gap-2 ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
+                        {comp.features.map(f => (
+                          <span key={f} className="px-4 py-1.5 border border-white/10 text-[8px] mono-font uppercase tracking-widest text-white/30">
+                            {f}
+                          </span>
+                        ))}
                       </div>
                     </ScrollReveal>
                   </div>
-                </div>
-              </section>
-
-              <section id="metoda" className="py-24 md:py-60 bg-[#020202] relative z-10 overflow-hidden">
-                <BiohackVideoBackground />
-                <div className="container mx-auto px-6 md:px-24">
-                  <div className="grid lg:grid-cols-2 gap-32 items-start">
-                    <div className="lg:sticky top-40">
-                      <ScrollReveal>
-                        <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-6">Protocol de Eficiență</p>
-                        <h2 className="text-7xl md:text-9xl font-black impact-font text-white leading-[0.8]">BIO<br /><span className="text-[#3A86FF]">HACK.</span></h2>
-                        <div className="h-px w-20 bg-[#3A86FF] my-12 opacity-30"></div>
-                        <p className="text-2xl font-light text-white/40 leading-tight max-w-sm">
-                          Rezultate garantate prin stimularea a <span className="text-white italic">90% din fibrele musculare</span> simultan.
-                        </p>
-                      </ScrollReveal>
-                    </div>
-
-                    <div className="grid gap-6">
-                      {BENEFITS.map((b, i) => (
-                        <ScrollReveal key={i} delay={i * 100}>
-                          <div className="group p-10 glass-block hover:border-[#3A86FF]/30 transition-all duration-700">
-                            <h3 className="text-3xl font-black impact-font mb-4 text-white group-hover:text-[#3A86FF] transition-colors">{b.title}</h3>
-                            <p className="text-white/40 font-light leading-relaxed">{b.description}</p>
-                          </div>
-                        </ScrollReveal>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-
-              <div className="grid-bg py-24 border-y border-white/5">
-                <ComparisonSection />
+                ))}
               </div>
 
+              <EMSProtocolSubsection />
+            </div>
+          </section>
 
+          <EMSTimeline />
 
+          <EMSEducation />
 
-              <TrialRoadmap />
-
-              <ProgramsSection />
-
-
-
-
-
-
-              <section id="tehnologie" className="py-24 md:py-60 bg-black relative z-10 overflow-hidden">
-                <TechnologyVideoBackground />
-                <div className="container mx-auto px-6 md:px-24 relative z-10">
-                  <ScrollReveal>
-                    <h2 className="text-7xl md:text-[12vw] font-black impact-font text-white mb-32 leading-none uppercase">
-                      PRECIZIE<br /><span className="text-[#3A86FF]">BIO-TECH.</span>
-                    </h2>
-                  </ScrollReveal>
-
-                  <div className="space-y-48">
-                    {TECH_COMPONENTS.map((comp, idx) => (
-                      <div key={comp.id} className={`grid lg:grid-cols-2 gap-20 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-                        <ScrollReveal className={`${idx % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                          <div className={`relative aspect-video overflow-visible border-none group`}>
-                            <TiltImage
-                              src={comp.image}
-                              alt={comp.title}
-                              isPowerBox={comp.id === 'powerbox'}
-                              isControlApp={comp.id === 'control'}
-                              isDrysuit={['drysuit', 'costum', 'ems-suit'].some(id => comp.id.includes(id))}
-                            />
-                          </div>
-                        </ScrollReveal>
-                        <ScrollReveal delay={200} className={`space-y-8 ${idx % 2 !== 0 ? 'lg:order-1 lg:text-right' : ''}`}>
-                          <h3 className="text-5xl md:text-7xl font-black impact-font text-white">{comp.title}</h3>
-                          <p className={`text-lg text-white/40 font-light leading-relaxed max-w-xl ${idx % 2 !== 0 ? 'ml-auto' : ''}`}>{comp.description}</p>
-                          <div className={`flex flex-wrap gap-2 ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
-                            {comp.features.map(f => (
-                              <span key={f} className="px-4 py-1.5 border border-white/10 text-[8px] mono-font uppercase tracking-widest text-white/30">
-                                {f}
-                              </span>
-                            ))}
-                          </div>
-                        </ScrollReveal>
-                      </div>
-                    ))}
-                  </div>
-
-                  <EMSProtocolSubsection />
+          <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden">
+            <div className="container mx-auto px-6 md:px-24">
+              <ScrollReveal className="mb-24 md:mb-40">
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="w-12 h-px bg-[#3A86FF]"></div>
+                  <span className="mono-font text-[9px] text-[#3A86FF] font-black tracking-[0.6em] uppercase">Experiența Clienților</span>
                 </div>
-              </section>
+                <h2 className="text-7xl md:text-[14vw] font-black impact-font text-white leading-[0.75] tracking-tighter">POVEȘTI.<br /><span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.1)' }}>DE SUCCES.</span></h2>
+              </ScrollReveal>
 
-              <EMSTimeline />
+              <div className="grid lg:grid-cols-2 gap-8">
+                {TESTIMONIALS.map((t, i) => (
+                  <TestimonialCard key={i} testimonial={t} i={i} />
+                ))}
+              </div>
 
-              <EMSEducation />
-
-              <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden">
-                <div className="container mx-auto px-6 md:px-24">
-                  <ScrollReveal className="mb-24 md:mb-40">
-                    <div className="flex items-center gap-6 mb-8">
-                      <div className="w-12 h-px bg-[#3A86FF]"></div>
-                      <span className="mono-font text-[9px] text-[#3A86FF] font-black tracking-[0.6em] uppercase">Experiența Clienților</span>
-                    </div>
-                    <h2 className="text-7xl md:text-[14vw] font-black impact-font text-white leading-[0.75] tracking-tighter">POVEȘTI.<br /><span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.1)' }}>DE SUCCES.</span></h2>
-                  </ScrollReveal>
-
-                  <div className="grid lg:grid-cols-2 gap-8">
-                    {TESTIMONIALS.map((t, i) => (
-                      <TestimonialCard key={i} testimonial={t} i={i} />
-                    ))}
-                  </div>
-
-                  {/* CTA After Testimonials */}
-                  <ScrollReveal delay={400}>
-                    <div className="mt-16 text-center">
-                      <p className="text-white/50 text-lg mb-6">Vrei și tu rezultate similare?</p>
-                      <a
-                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Am văzut recenziile și vreau să aflu mai multe despre EMS.`}
-                        target="_blank"
-                        className="inline-flex items-center gap-3 bg-[#3A86FF] text-black px-8 py-4 text-lg font-black impact-font hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.4)]"
-                      >
-                        <MessageCircle size={20} />
-                        SCRIE-NE PE WHATSAPP
-                      </a>
-                    </div>
-                  </ScrollReveal>
+              {/* CTA After Testimonials */}
+              <ScrollReveal delay={400}>
+                <div className="mt-16 text-center">
+                  <p className="text-white/50 text-lg mb-6">Vrei și tu rezultate similare?</p>
+                  <a
+                    href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Am văzut recenziile și vreau să aflu mai multe despre EMS.`}
+                    target="_blank"
+                    className="inline-flex items-center gap-3 bg-[#3A86FF] text-black px-8 py-4 text-lg font-black impact-font hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.4)]"
+                  >
+                    <MessageCircle size={20} />
+                    SCRIE-NE PE WHATSAPP
+                  </a>
                 </div>
-              </section>
+              </ScrollReveal>
+            </div>
+          </section>
 
-              <section id="abonamente" className="py-24 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden">
-                <div className="absolute inset-0 grid-bg opacity-30"></div>
-                <div className="container mx-auto px-6 md:px-24 relative z-10">
-                  <div className="flex flex-col lg:flex-row justify-between items-end mb-32 gap-10">
-                    <ScrollReveal>
-                      <div className="text-7xl md:text-[14vw] font-black impact-font leading-[0.7] tracking-tighter heading-glow">
-                        <StaggeredText text="TARIFE." />
-                      </div>
-                      <p className="text-[#3A86FF]/50 text-base font-bold tracking-[0.3em] mt-8 border-l-2 border-[#3A86FF]/20 pl-6 uppercase">Program de transformare accelerată.</p>
-                    </ScrollReveal>
-
-                    <ScrollReveal delay={200} className="w-full lg:w-auto">
-                      <div className="relative p-1.5 bg-white/5 border border-white/10 rounded-full flex gap-1 w-fit">
-                        <button onClick={() => setPricingPeriod('monthly')} className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-widest uppercase transition-all duration-700 rounded-full ${pricingPeriod === 'monthly' ? 'text-black' : 'text-white/40'}`}>LUNAR</button>
-                        <button onClick={() => setPricingPeriod('quarterly')} className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-widest uppercase transition-all duration-700 rounded-full ${pricingPeriod === 'quarterly' ? 'text-black' : 'text-white/40'}`}>3 LUNI</button>
-                        <div className={`absolute top-1.5 bottom-1.5 bg-[#3A86FF] rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_20px_rgba(0,245,255,0.4)]`} style={{ left: pricingPeriod === 'monthly' ? '6px' : 'calc(50% + 1px)', width: 'calc(50% - 7px)' }} />
-                      </div>
-                    </ScrollReveal>
+          <section id="abonamente" className="py-24 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden">
+            <div className="absolute inset-0 grid-bg opacity-30"></div>
+            <div className="container mx-auto px-6 md:px-24 relative z-10">
+              <div className="flex flex-col lg:flex-row justify-between items-end mb-32 gap-10">
+                <ScrollReveal>
+                  <div className="text-7xl md:text-[14vw] font-black impact-font leading-[0.7] tracking-tighter heading-glow">
+                    <StaggeredText text="TARIFE." />
                   </div>
+                  <p className="text-[#3A86FF]/50 text-base font-bold tracking-[0.3em] mt-8 border-l-2 border-[#3A86FF]/20 pl-6 uppercase">Program de transformare accelerată.</p>
+                </ScrollReveal>
 
-                  <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
-                    {currentPackages.map((pkg, i) => (
-                      <PackageCard
-                        key={`${pricingPeriod}-${i}`}
-                        pkg={pkg}
-                        i={i}
-                        user={session?.user}
-                        onOpenAuth={() => setIsAuthOpen(true)}
-                        onCheckout={handleCheckout}
-                      />
-                    ))}
+                <ScrollReveal delay={200} className="w-full lg:w-auto">
+                  <div className="relative p-1.5 bg-white/5 border border-white/10 rounded-full flex gap-1 w-fit">
+                    <button onClick={() => setPricingPeriod('monthly')} className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-widest uppercase transition-all duration-700 rounded-full ${pricingPeriod === 'monthly' ? 'text-black' : 'text-white/40'}`}>LUNAR</button>
+                    <button onClick={() => setPricingPeriod('quarterly')} className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-widest uppercase transition-all duration-700 rounded-full ${pricingPeriod === 'quarterly' ? 'text-black' : 'text-white/40'}`}>3 LUNI</button>
+                    <div className={`absolute top-1.5 bottom-1.5 bg-[#3A86FF] rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_20px_rgba(0,245,255,0.4)]`} style={{ left: pricingPeriod === 'monthly' ? '6px' : 'calc(50% + 1px)', width: 'calc(50% - 7px)' }} />
                   </div>
+                </ScrollReveal>
+              </div>
+
+              <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
+                {currentPackages.map((pkg, i) => (
+                  <PackageCard
+                    key={`${pricingPeriod}-${i}`}
+                    pkg={pkg}
+                    i={i}
+                    user={session?.user}
+                    onOpenAuth={() => setIsAuthOpen(true)}
+                    onCheckout={handleCheckout}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="locatii" className="py-24 md:py-60 bg-black relative z-10">
+            <div className="container mx-auto px-6 md:px-24">
+              <ScrollReveal>
+                <div className="text-7xl md:text-[12vw] font-black impact-font text-white leading-none mb-24 uppercase">
+                  <StaggeredText text="LOCAȚII." />
                 </div>
-              </section>
-
-              <section id="locatii" className="py-24 md:py-60 bg-black relative z-10">
-                <div className="container mx-auto px-6 md:px-24">
-                  <ScrollReveal>
-                    <div className="text-7xl md:text-[12vw] font-black impact-font text-white leading-none mb-24 uppercase">
-                      <StaggeredText text="LOCAȚII." />
-                    </div>
-                  </ScrollReveal>
-                  <div className="grid lg:grid-cols-2 gap-24">
-                    {LOCATIONS.map((loc, i) => (
-                      <ScrollReveal key={i} delay={i * 200}>
-                        <div className="group cursor-default">
-                          <div className="relative aspect-video overflow-hidden mb-10 border border-white/5 group-hover:border-[#3A86FF]/30 transition-all duration-700">
-                            <img
-                              src={locationImages[i]}
-                              alt={loc.name}
-                              loading="lazy"
-                              decoding="async"
-                              className={`w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 object-center`}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                          </div>
-                          <h3 className="text-4xl md:text-6xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">{loc.name}</h3>
-                          <div className="flex flex-col gap-2">
-                            <div className="flex items-center gap-4 text-white/30 mono-font text-[10px] uppercase tracking-widest font-bold">
-                              <Target size={14} className="text-[#3A86FF]" /> {loc.address}
-                            </div>
-                            <p className="text-white/20 text-sm font-light leading-relaxed max-w-sm">{loc.description}</p>
-                          </div>
+              </ScrollReveal>
+              <div className="grid lg:grid-cols-2 gap-24">
+                {LOCATIONS.map((loc, i) => (
+                  <ScrollReveal key={i} delay={i * 200}>
+                    <div className="group cursor-default">
+                      <div className="relative aspect-video overflow-hidden mb-10 border border-white/5 group-hover:border-[#3A86FF]/30 transition-all duration-700">
+                        <img
+                          src={locationImages[i]}
+                          alt={loc.name}
+                          loading="lazy"
+                          decoding="async"
+                          className={`w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 object-center`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                      </div>
+                      <h3 className="text-4xl md:text-6xl font-black impact-font text-white mb-4 group-hover:text-[#3A86FF] transition-colors">{loc.name}</h3>
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-center gap-4 text-white/30 mono-font text-[10px] uppercase tracking-widest font-bold">
+                          <Target size={14} className="text-[#3A86FF]" /> {loc.address}
                         </div>
-                      </ScrollReveal>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              <section id="faq" className="py-24 md:py-60 bg-[#050505] relative z-10">
-                <div className="container mx-auto px-6 md:px-24">
-                  <ScrollReveal>
-                    <div className="flex flex-col items-center mb-24">
-                      <div className="flex items-center gap-4 mb-6">
-                        <HelpCircle className="text-[#3A86FF]" size={20} />
-                        <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Informații Tehnice</span>
+                        <p className="text-white/20 text-sm font-light leading-relaxed max-w-sm">{loc.description}</p>
                       </div>
-                      <h2 className="text-7xl md:text-9xl font-black impact-font text-white text-center">ÎNTREBĂRI.</h2>
                     </div>
                   </ScrollReveal>
-                  <div className="max-w-3xl mx-auto border-t border-white/5">
-                    {FAQS.map((faq, i) => (
-                      <FAQItem key={i} item={faq} i={i} />
-                    ))}
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="faq" className="py-24 md:py-60 bg-[#050505] relative z-10">
+            <div className="container mx-auto px-6 md:px-24">
+              <ScrollReveal>
+                <div className="flex flex-col items-center mb-24">
+                  <div className="flex items-center gap-4 mb-6">
+                    <HelpCircle className="text-[#3A86FF]" size={20} />
+                    <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Informații Tehnice</span>
                   </div>
+                  <h2 className="text-7xl md:text-9xl font-black impact-font text-white text-center">ÎNTREBĂRI.</h2>
                 </div>
-              </section>
+              </ScrollReveal>
+              <div className="max-w-3xl mx-auto border-t border-white/5">
+                {FAQS.map((faq, i) => (
+                  <FAQItem key={i} item={faq} i={i} />
+                ))}
+              </div>
+            </div>
+          </section>
 
-              <footer className="py-12 bg-black border-t border-white/5 relative z-10">
-                <div className="container mx-auto px-6 md:px-24">
-                  <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex flex-wrap justify-center md:justify-start gap-6 text-[10px] mono-font uppercase tracking-widest text-white/40">
-                      <button onClick={() => { setActiveView('legal'); setLegalType('privacy'); }} className="hover:text-[#3A86FF] transition-colors">Politică de Confidențialitate</button>
-                      <button onClick={() => { setActiveView('legal'); setLegalType('terms'); }} className="hover:text-[#3A86FF] transition-colors">Termeni și condiții</button>
-                      <button onClick={() => { setActiveView('legal'); setLegalType('rules'); }} className="hover:text-[#3A86FF] transition-colors">Regulament Intern</button>
-                    </div>
-                    <p className="mono-font text-[9px] text-white/20 uppercase tracking-[0.4em]">
-                      © 2025 NeoBoost — Performanță Bio-Electrică Oradea
-                    </p>
-                  </div>
+          <footer className="py-12 bg-black border-t border-white/5 relative z-10">
+            <div className="container mx-auto px-6 md:px-24">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="flex flex-wrap justify-center md:justify-start gap-6 text-[10px] mono-font uppercase tracking-widest text-white/40">
+                  <button onClick={() => { setActiveView('legal'); setLegalType('privacy'); }} className="hover:text-[#3A86FF] transition-colors">Politică de Confidențialitate</button>
+                  <button onClick={() => { setActiveView('legal'); setLegalType('terms'); }} className="hover:text-[#3A86FF] transition-colors">Termeni și condiții</button>
+                  <button onClick={() => { setActiveView('legal'); setLegalType('rules'); }} className="hover:text-[#3A86FF] transition-colors">Regulament Intern</button>
                 </div>
-              </footer>
+                <p className="mono-font text-[9px] text-white/20 uppercase tracking-[0.4em]">
+                  © 2025 NeoBoost — Performanță Bio-Electrică Oradea
+                </p>
+              </div>
+            </div>
+          </footer>
 
-              {/* Duplicate WhatsApp button removed as requested */}
+          {/* Duplicate WhatsApp button removed as requested */}
 
-              <StickyBanner />
-            </>
-          )}
-        </main>
-        );
+          <StickyBanner />
+        </>
+      )}
+    </main>
+  );
 };
 
-        export default App;
+export default App;
