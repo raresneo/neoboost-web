@@ -244,21 +244,49 @@
                 mouseY = e.clientY;
             }, { passive: true });
 
-            const loop = () => {
-                // Disable on touch devices
-                if (window.matchMedia('(hover: none)').matches) return;
+            curX += (mouseX - curX) * 0.15;
+            curY += (mouseY - curY) * 0.15;
+            cursor.style.transform = `translate3d(${curX - 10}px, ${curY - 10}px, 0)`; // Centered
+            requestAnimationFrame(loop);
+        };
 
-                curX += (mouseX - curX) * 0.15;
-                curY += (mouseY - curY) * 0.15;
-                cursor.style.transform = `translate3d(${curX - 10}px, ${curY - 10}px, 0)`; // Centered
-                requestAnimationFrame(loop);
-            };
-
-            if (window.matchMedia('(hover: hover)').matches) {
-                loop();
-            }
+        if (window.matchMedia('(hover: hover)').matches) {
+            loop();
+        }
         }
     </script>
+    <style>
+        /* New Utilities for Interaction */
+        .reveal-color {
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-color:hover,
+        .group:hover .reveal-color {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .scroll-reveal.visible .reveal-color {
+            /* Optional: if we want auto-reveal on scroll, uncomment below */
+            /* filter: grayscale(0%) contrast(1); */
+        }
+
+        /* Airy Glass Effect */
+        .air-glass {
+            background: rgba(255, 255, 255, 0.005);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .air-glass:hover {
+            border-color: rgba(58, 134, 255, 0.2);
+            background: rgba(58, 134, 255, 0.02);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
     <script type="module" src="/index.tsx"></script>
 </body>
 

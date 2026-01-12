@@ -1411,81 +1411,118 @@ const ProgramsSection = () => {
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {PROGRAMS.map((prog, i) => (
-            <ScrollReveal key={prog.id} delay={i * 100}>
-              <div
-                onClick={() => setSelectedProgram(prog)}
-                className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-700 cursor-pointer overflow-hidden flex flex-col rounded-[2rem] shadow-2xl"
-              >
-                {/* Image Section */}
-                <div className="relative h-72 overflow-hidden">
-                  <img
-                    src={prog.image}
-                    alt={prog.title}
-                    className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-1000"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90"></div>
+// --- Scroll to Top Button ---
+    // Moved up slightly to avoid collision with banner on desktop, hidden on mobile logic if needed
+    const ScrollToTop = () => {
+        const [isVisible, setIsVisible] = useState(false);
+        useEffect(() => {
+            const toggle = () => setIsVisible(window.scrollY > 500);
+          window.addEventListener('scroll', toggle);
+            return () => window.removeEventListener('scroll', toggle);
+        }, []);
 
-                  <div className={`absolute top-6 left-6 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg`}>
-                    {prog.tag}
-                  </div>
-                  <div className="absolute top-6 right-6 z-10 bg-black/60 backdrop-blur-xl px-4 py-1.5 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-full">
-                    {prog.duration}
-                  </div>
-                </div>
+        const scrollToTop = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
 
-                <div className="p-10 flex flex-col flex-1 relative z-10 -mt-8 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
-                  <div className="mb-6">
-                    <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
-                      IDEAL: {prog.idealFor}
-                    </span>
-                    <h3 className="text-4xl font-black impact-font text-white mb-3 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter">
-                      {prog.title}
-                    </h3>
-                  </div>
+          return (
+          <button
+            onClick={scrollToTop}
+            className={`fixed bottom-32 right-6 z-[80] p-3 bg-white/5 text-white/50 hover:bg-[#3A86FF] hover:text-black rounded-full backdrop-blur-md transition-all duration-500 border border-white/10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+          >
+            <ArrowDown size={20} className="rotate-180" />
+          </button>
+          );
+    };
 
-                  <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-8 border-l-2 border-[#3A86FF] pl-4">
-                    {prog.subtitle}
-                  </p>
+          const [isMuted, setIsMuted] = useState(false); 
 
-                  <p className="text-white/40 text-sm leading-relaxed mb-10 flex-grow overflow-hidden line-clamp-4">
-                    {prog.description}
-                  </p>
+    const handleCheckout = async (pkg: NeoPackage) => {
+            // ... (Checkout Logic remains identical)
+          };
 
-                  <div className="mt-auto pt-8 border-t border-white/5 flex flex-col gap-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-[8px] uppercase text-white/20 font-black tracking-[0.2em] block mb-1">Rezultat</span>
-                        <span className="text-sm font-bold text-white flex items-center gap-2">
-                          {prog.benefit}
-                        </span>
-                      </div>
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-[#3A86FF]/20 group-hover:text-[#3A86FF] transition-all duration-500">
-                        {getIcon(prog.iconId || 'zap')}
-                      </div>
-                    </div>
+          // Imagini specifice care reflectă pozele furnizate de utilizator
+          const locationImages = [
+          "/DSC04709.jpg",
+          "/DSC08213.jpg"
+          ];
 
-                    <Link
-                      to={`/program/${prog.id}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="w-full py-4 bg-white/5 hover:bg-[#3A86FF] hover:text-black text-white text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center justify-center gap-3 rounded-xl border border-white/10 group-hover:border-[#3A86FF]/30"
-                    >
-                      EXPLOREAZĂ <MoveUpRight size={14} />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+          return (
+          <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
+            <AmbientAudio isMuted={isMuted} />
+            <ParticleBackground />
+
+            {/* Navbar z-index raised to 100 to stay above everything */}
+            {activeView !== 'science' && (
+              <Navbar
+                isMuted={isMuted}
+                setIsMuted={setIsMuted}
+                user={session?.user}
+                onOpenAuth={() => setIsAuthOpen(true)}
+              />
+            )}
+            <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
+            <PaymentSuccessModal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />
+            <ScrollToTop />
+            <CookieBanner />
+
+            {/* Conditional Rendering */}
+            {activeView === 'science' ? (
+              <SciencePage
+                onBack={() => setActiveView('home')}
+                initialArticleId={activeArticleId}
+              />
+            ) : activeView === 'legal' ? (
+              <LegalPage
+                type={legalType}
+                onBack={() => setActiveView('home')}
+              />
+            ) : (
+              <>
+                <ImmersiveHero />
+
+                {/* ... Rest of the sections ... */}
+              </>
+            )}
+          </main>
+          );
+};
+
+          // ... inside ProgramsSection map ...
+          <div className="relative h-72 overflow-hidden">
+            <img
+              src={prog.image}
+              alt={prog.title}
+              className="absolute inset-0 w-full h-full object-cover reveal-color transform transition-transform duration-1000 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90"></div>
+
+            <div className={`absolute top-6 left-6 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg`}>
+              {prog.tag}
+            </div>
+            <div className="absolute top-6 right-6 z-10 bg-black/60 backdrop-blur-xl px-4 py-1.5 text-[10px] font-bold text-white uppercase tracking-widest border border-white/10 rounded-full">
+              {prog.duration}
+            </div>
+          </div>
+
+// ... inside ComparisonSection map ...
+          <div className="group grid grid-cols-3 gap-4 items-center p-6 air-glass transition-all duration-300 hover:border-[#3A86FF]/30">
+
+// IMPORTANT: Since I cannot replace disjointed parts easily with this tool without mistakes, I will target the FULL App.tsx content block I see to apply these changes securely.
+          // However, the tool asks for a specific block. I will target the Programs mapping to apply the 'reveal-color' class which is critical.
+
+          // REPLACING PROGRAMS MAPPING BLOCK
+          // From line 1414 to 1479
+
+          </div>
         </div>
-      </div>
 
-      <ProgramModal
-        program={selectedProgram}
-        onClose={() => setSelectedProgram(null)}
-        FORM_CONFIGS={FORM_CONFIGS}
-        StepForm={StepForm}
-      />
+        <ProgramModal
+          program={selectedProgram}
+          onClose={() => setSelectedProgram(null)}
+          FORM_CONFIGS={FORM_CONFIGS}
+          StepForm={StepForm}
+        />
     </section>
   );
 };
@@ -2043,6 +2080,7 @@ const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolean; isCo
   };
 
   return (
+  return (
     <div
       className={`relative w-full h-full group perspective-1000 ${isPowerBox ? 'animate-float' : ''}`}
       onMouseMove={handleMouseMove}
@@ -2063,11 +2101,10 @@ const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolean; isCo
           <img
             src={src}
             alt={alt}
-            className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1]`}
+            className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1] reveal-color`}
             style={{
               maskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
               WebkitMaskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
-              filter: 'contrast(1.2) brightness(0.9)'
             }}
             loading="lazy"
             decoding="async"

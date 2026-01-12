@@ -592,7 +592,7 @@ export const PROGRAMS = [
     id: "fit-mamma",
     title: "Fit Mamma",
     subtitle: "RECÂȘTIGĂ-ȚI ENERGIA DUPĂ NAȘTERE",
-    image: "/DSC00442.jpg",
+    image: "/DSC00438.jpg", // Female focused image from uploaded assets
     tag: "POST-NATAL SAFE",
     tagColor: "bg-pink-400",
     iconId: "baby",
