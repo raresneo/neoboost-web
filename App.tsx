@@ -49,7 +49,6 @@ import { BRAND, BENEFITS, MONTHLY_PACKAGES, QUARTERLY_PACKAGES, LOCATIONS, FAQS,
 import { supabase, Profile } from './lib/supabase';
 import { AuthModal } from './components/Auth/AuthModal';
 import { Session } from '@supabase/supabase-js';
-import { StepForm } from './components/Forms/StepForm';
 // Removed FORM_CONFIGS to fix missing module error
 import { CookieBanner } from './components/CookieBanner';
 import { AnimatedGraphic } from './components/AnimatedGraphic';
@@ -1495,7 +1494,7 @@ const PaymentSuccessModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
   );
 }
 
-const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight, setIsLight }: { isMuted: boolean; setIsMuted: (m: boolean) => void; user: any; onOpenAuth: () => void; onOpenBooking: () => void, isLight: boolean, setIsLight: (l: boolean) => void }) => {
+const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight, setIsLight }: { isMuted: boolean; setIsMuted: (m: boolean) => void; user: any; onOpenAuth: () => void; onOpenBooking: () => void; isLight: boolean; setIsLight: (l: boolean) => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
