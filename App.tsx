@@ -2697,8 +2697,10 @@ const App: React.FC = () => {
               <StickyBanner />
             </>
           )}
-        </main>
-      );
+        </>
+      )}
+    </main>
+  );
 };
 
-      export default App;
+export default App;
