@@ -91,38 +91,39 @@ export const SpecialOfferPage: React.FC = () => {
         setIsFormOpen(true);
     };
 
-    const handleStripeCheckout = async (answers: Record<string, string>) => {
-        if (!selectedPackage) return;
-
+    const handleDirectPurchase = async (pkg: any) => {
         try {
-            // Mocking the user session as null for guest checkout (as in existing logic)
-            const res = await fetch('/api/checkout', {
+            const price = parseInt(pkg.price.replace(/\D/g, ''));
+            // Use absolute URL for maximum compatibility
+            const apiUrl = typeof window !== 'undefined' ? window.location.origin : '';
+
+            const res = await fetch(`${apiUrl}/api/stripe/create-checkout-session`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    priceId: selectedPackage.stripePriceId,
-                    userId: null,
-                    productName: `${selectedPackage.title} (Oferta Specială 3+1)`,
-                    amount: selectedPackage.price.replace(/\D/g, ''),
+                    userId: null, // Guest checkout for special offer
+                    priceId: pkg.stripePriceId,
+                    amount: price,
+                    productName: `${pkg.title} (Oferta Specială 3+1)`,
                     interval: 'month',
-                    intervalCount: 4, // 3 paid + 1 free usually handled by total price but here we set duration
-                    isSpecialOffer: true,
-                    meta: {
-                        ...answers,
-                        packageTitle: selectedPackage.title
-                    }
+                    intervalCount: 4 // Billed every 4 months
                 })
             });
+
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(`Server status ${res.status}: ${errorText.substring(0, 50)}`);
+            }
 
             const data = await res.json();
             if (data.url) {
                 window.location.href = data.url;
             } else {
-                alert(`Eroare Stripe: ${data.error || 'Încearcă din nou.'}`);
+                alert(`Eroare Stripe: ${data.error || 'Serverul nu a returnat un URL valid.'}`);
             }
-        } catch (err) {
+        } catch (err: any) {
             console.error('Checkout error:', err);
-            alert('A apărut o eroare de conexiune. Verifică WhatsApp pentru ajutor.');
+            alert(`Eroare conexiune: ${err.message || 'Verifică conexiunea la internet.'}`);
         }
     };
 
@@ -238,7 +239,7 @@ export const SpecialOfferPage: React.FC = () => {
 
                                         <div className="grid gap-4">
                                             <button
-                                                onClick={() => handleOpenForm(pkg, 'purchase')}
+                                                onClick={() => handleDirectPurchase(pkg)}
                                                 className="w-full py-5 bg-[#3A86FF] text-black font-black uppercase text-sm tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white transition-all duration-300"
                                             >
                                                 CUMPĂRĂ ACUM <CreditCard size={18} />
@@ -302,9 +303,8 @@ export const SpecialOfferPage: React.FC = () => {
                         whatsappTemplate: HEALTH_FORM_CONFIG.whatsappTemplate.replace('{package}', selectedPackage?.title || '')
                     }}
                     onClose={() => setIsFormOpen(false)}
-                    submitLabel={actionType === 'purchase' ? 'Finalizează & Plătește' : 'Trimite pe WhatsApp'}
-                    submitIcon={actionType === 'purchase' ? <CreditCard size={24} /> : <MessageCircle size={24} />}
-                    onComplete={actionType === 'purchase' ? handleStripeCheckout : undefined}
+                    submitLabel='Trimite pe WhatsApp'
+                    submitIcon={<MessageCircle size={24} />}
                 />
             )}
 
