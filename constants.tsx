@@ -592,7 +592,7 @@ export const PROGRAMS = [
     id: "fit-mamma",
     title: "Fit Mamma",
     subtitle: "RECÂȘTIGĂ-ȚI ENERGIA DUPĂ NAȘTERE",
-    image: "/DSC00438.jpg", // Female focused image from uploaded assets
+    image: "/DSC09363.jpg", // Confirmed female cinematic shot
     tag: "POST-NATAL SAFE",
     tagColor: "bg-pink-400",
     iconId: "baby",
@@ -662,7 +662,7 @@ export const PROGRAMS = [
     id: "vip",
     title: "Invitation-Only (VIP)",
     subtitle: "PREMIUM EXCLUSIV PE INVITAȚIE",
-    image: "/DSC09363.jpg",
+    image: "/DSC04717.jpg",
     tag: "CONCIERGE FITNESS",
     tagColor: "bg-yellow-500",
     iconId: "crown",
