@@ -196,6 +196,12 @@
             }
         }
     </style>
+</head>
+
+<body>
+    <div id="custom-cursor"></div>
+    <div id="root"></div>
+
     <script>
         // ===== GLITCH SOUND EFFECT (Procedural) =====
         const playGlitchSound = () => {
@@ -226,8 +232,34 @@
                 playGlitchSound();
             }
         });
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) {
+            let mouseX = 0, mouseY = 0;
+            let curX = 0, curY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            }, { passive: true });
+
+            const loop = () => {
+                // Disable on touch devices
+                if (window.matchMedia('(hover: none)').matches) return;
+
+                curX += (mouseX - curX) * 0.15;
+                curY += (mouseY - curY) * 0.15;
+                cursor.style.transform = `translate3d(${curX - 10}px, ${curY - 10}px, 0)`; // Centered
+                requestAnimationFrame(loop);
+            };
+
+            if (window.matchMedia('(hover: hover)').matches) {
+                loop();
+            }
+        }
     </script>
     <script type="module" src="/index.tsx"></script>
-    </body>
+</body>
 
 </html>
