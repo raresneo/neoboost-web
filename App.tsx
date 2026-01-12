@@ -1105,7 +1105,7 @@ const ImmersiveHero = () => {
         <CinematicBackground image={fallbackImage} opacity={0.5} />
       </div>
       {/* Content */}
-      <div className={`relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} pt-32`}>
 
         {/* Brand Logo */}
         <div className="relative mb-6">
@@ -1495,7 +1495,7 @@ const PaymentSuccessModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
   );
 }
 
-const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking }: { isMuted: boolean; setIsMuted: (m: boolean) => void; user: any; onOpenAuth: () => void; onOpenBooking: () => void }) => {
+const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight, setIsLight }: { isMuted: boolean; setIsMuted: (m: boolean) => void; user: any; onOpenAuth: () => void; onOpenBooking: () => void, isLight: boolean, setIsLight: (l: boolean) => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -1593,15 +1593,17 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking }: { isMu
               </button>
 
               {/* Theme Toggle */}
+              {/* Theme Toggle */}
               <button
-                onClick={() => {
-                  document.body.classList.toggle('light-mode');
-                }}
+                onClick={() => setIsLight(!isLight)}
                 className="group flex items-center gap-3 px-4 py-2 glass hover:glass-neon transition-all duration-500 rounded-full ml-2"
                 title="Schimbă Tema"
               >
-                <Sun size={14} className="group-hover:text-[#3A86FF] hidden light-mode:block" />
-                <Moon size={14} className="group-hover:text-[#3A86FF] block light-mode:hidden" />
+                {isLight ? (
+                  <Sun size={14} className="text-[#3A86FF]" />
+                ) : (
+                  <Moon size={14} className="text-white/40 group-hover:text-[#3A86FF]" />
+                )}
               </button>
 
               <button
@@ -2131,6 +2133,16 @@ const App: React.FC = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+        const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    if (isLight) {
+          document.body.classList.add('light-mode');
+    } else {
+          document.body.classList.remove('light-mode');
+    }
+  }, [isLight]);
+
         const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly'>('monthly');
         const currentPackages = pricingPeriod === 'monthly' ? MONTHLY_PACKAGES : QUARTERLY_PACKAGES;
 
@@ -2285,6 +2297,8 @@ const App: React.FC = () => {
               user={session?.user}
               onOpenAuth={() => setIsAuthOpen(true)}
               onOpenBooking={() => setIsBookingOpen(true)}
+              isLight={isLight}
+              setIsLight={setIsLight}
             />
           )}
           <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
@@ -2625,12 +2639,7 @@ const App: React.FC = () => {
                 </div>
               </footer>
 
-              <button
-                onClick={() => setIsBookingOpen(true)}
-                className="fixed bottom-16 right-8 z-[100] w-14 h-14 border border-[#3A86FF]/40 text-[#3A86FF] flex items-center justify-center hover:bg-[#3A86FF] hover:text-black transition-all duration-500 bg-black/50 backdrop-blur-md rounded-full shadow-lg"
-              >
-                <MessageCircle size={24} />
-              </button>
+              {/* Duplicate WhatsApp button removed as requested */}
 
               <StickyBanner />
             </>
