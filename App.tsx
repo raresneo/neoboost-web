@@ -1525,7 +1525,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-12 ${isScrolled || isMenuOpen ? 'py-2 glass-dark shadow-2xl' : 'py-6 md:py-10'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-12 py-2 glass-dark shadow-2xl`}>
         <div className="max-w-[1600px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo_white.png" alt="NeoBoost Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform duration-500" />
@@ -2640,7 +2640,13 @@ const App: React.FC = () => {
             </div>
           </footer>
 
-          {/* Duplicate WhatsApp button removed as requested */}
+          <button
+            onClick={() => window.open(`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`, '_blank')}
+            className="fixed bottom-24 right-6 z-[90] w-12 h-12 md:w-14 md:h-14 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all duration-500 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]"
+            aria-label="Contact WhatsApp"
+          >
+            <MessageCircle size={24} />
+          </button>
 
           <StickyBanner />
         </>

@@ -101,7 +101,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             overflow-x: hidden;
-            cursor: none;
+            /* cursor: none; Removed to improve visibility */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
@@ -200,7 +200,7 @@
 
         /* Disable heavy cursor on touch */
         @media (hover: hover) {
-            #custom-cursor {
+            /* #custom-cursor {
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -211,7 +211,7 @@
                 pointer-events: none;
                 z-index: 10000;
                 mix-blend-mode: difference;
-            }
+            } */
         }
 
         .planning-line {
@@ -305,7 +305,7 @@
 </head>
 
 <body>
-    <div id="custom-cursor"></div>
+    <!-- <div id="custom-cursor"></div> -->
     <div id="root"></div>
 
     <script>
