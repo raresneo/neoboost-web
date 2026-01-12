@@ -2227,10 +2227,10 @@ const App: React.FC = () => {
 
   // Imagini specifice care reflectă pozele furnizate de utilizator
   const locationImages = [
-    // Ramada: Atmosferă premium (DSC04709 update)
-    "/DSC04709.jpg",
-    // GetFit: Lumină naturală (DSC08213 update)
-    "/DSC08213.jpg"
+    // Ramada: Sala premium (ramada.jpg update)
+    "/ramada.jpg",
+    // GetFit: Sala GetFit (getfit.jpg update)
+    "/getfit.jpg"
   ];
 
   return (

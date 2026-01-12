@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    CheckCheck, Flame, Zap, ShieldCheck, ArrowRight, Star, AlertCircle, ChevronRight
+    CheckCheck, Flame, Zap, ShieldCheck, ArrowRight, Star, AlertCircle, ChevronRight, MessageCircle, CreditCard
 } from 'lucide-react';
 import { QUARTERLY_PACKAGES, TESTIMONIALS, BRAND } from '../constants';
 import { StepForm } from '../components/Forms/StepForm';
@@ -10,7 +10,7 @@ import { FormConfig } from '../components/Forms/types';
 const HEALTH_FORM_CONFIG: FormConfig = {
     programId: "special-offer-lead",
     title: "Verificare Eligibilitate",
-    whatsappTemplate: "Salut! Doresc oferta 3+1 Luni Cadou.\n\nNume: {name}\nTelefon: {phone}\nObiectiv: {objective}\nProbleme Cardiace: {cardiac}\nEpilepsie: {epilepsy}\nAlte probleme: {issues}",
+    whatsappTemplate: "Salut! Doresc oferta 3+1 Luni Cadou.\n\nPachet: {package}\nNume: {name}\nTelefon: {phone}\nObiectiv: {objective}\nProbleme Cardiace: {cardiac}\nEpilepsie: {epilepsy}\nAlte probleme: {issues}",
     steps: [
         {
             id: "objective",
@@ -60,15 +60,11 @@ export const SpecialOfferPage: React.FC = () => {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [selectedPackageTitle, setSelectedPackageTitle] = useState("");
 
-    // Filter logic: 
-    // 1 session/week -> "12 + 4 BONUS" -> Health Pro
-    // 2 sessions/week -> "24 + 8 BONUS" -> Sculpt Pro
-    // 3 sessions/week -> "36 + 12 BONUS" -> Master Body
     const filteredPackages = selectedFreq
         ? QUARTERLY_PACKAGES.filter(pkg => {
-            if (selectedFreq === 1) return pkg.title.includes("Health");
-            if (selectedFreq === 2) return pkg.title.includes("Sculpt");
-            if (selectedFreq === 3) return pkg.title.includes("Master");
+            if (selectedFreq === 1) return pkg.title.toLowerCase().includes("health");
+            if (selectedFreq === 2) return pkg.title.toLowerCase().includes("sculpt");
+            if (selectedFreq === 3) return pkg.title.toLowerCase().includes("master");
             return true;
         })
         : QUARTERLY_PACKAGES;
@@ -78,184 +74,184 @@ export const SpecialOfferPage: React.FC = () => {
         setIsFormOpen(true);
     };
 
+    const handleWhatsApp = (pkgTitle: string) => {
+        const text = encodeURIComponent(`Salut! Sunt interesat de oferta Specială 3+1 pentru pachetul ${pkgTitle}. Vreau mai multe detalii.`);
+        window.open(`https://wa.me/40770557342?text=${text}`, '_blank');
+    };
+
     return (
-        <div className="min-h-screen bg-black text-white font-sans selection:bg-[#3A86FF] selection:text-black">
+        <div className="min-h-screen bg-black text-white font-sans selection:bg-[#3A86FF] selection:text-black pb-20">
 
             {/* --- HERO SECTION --- */}
             <section className="relative pt-32 pb-20 px-6 md:px-12 overflow-hidden border-b border-white/5">
-                <div className="absolute inset-0 bg-[url('/DSC09363.jpg')] bg-cover bg-center opacity-20 blur-sm pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[url('/DSC09363.jpg')] bg-cover bg-center opacity-30 blur-sm pointer-events-none"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black pointer-events-none"></div>
 
                 <div className="relative z-10 max-w-5xl mx-auto text-center">
-                    <div className="inline-flex items-center gap-2 bg-[#3A86FF]/10 border border-[#3A86FF]/30 px-4 py-1 rounded-full mb-8 backdrop-blur-md">
+                    <div className="inline-flex items-center gap-2 bg-[#3A86FF]/10 border border-[#3A86FF]/30 px-4 py-1.5 rounded-full mb-8 backdrop-blur-md">
                         <span className="w-2 h-2 rounded-full bg-[#3A86FF] animate-pulse"></span>
-                        <span className="text-[#3A86FF] text-xs font-bold tracking-widest uppercase">Oferta Limitată</span>
+                        <span className="text-[#3A86FF] text-[10px] font-black tracking-[0.2em] uppercase">Oferta Limitată 3+1</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-8xl font-black impact-font text-white mb-6 leading-none uppercase">
-                        Plătești 3 Luni <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] to-cyan-400">Primești 4.</span>
+                    <h1 className="text-6xl md:text-9xl font-black impact-font text-white mb-6 leading-[0.9] uppercase tracking-tighter">
+                        SCHIMBĂ-ȚI <br />
+                        <span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>CORPUL COMPLET.</span>
                     </h1>
 
-                    <p className="text-xl text-white/60 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
-                        Cel mai bun moment să începi transformarea. Alege pachetul trimestrial și îți oferim <strong>o lună întreagă CADOU</strong> pentru a-ți consolida rezultatele.
+                    <p className="text-lg md:text-xl text-white/60 font-medium max-w-2xl mx-auto mb-12 leading-relaxed uppercase tracking-wide">
+                        Plătești 3 Luni de antrenament și primești <span className="text-white font-black border-b-2 border-[#3A86FF]">A 4-A LUNĂ CADOU</span>. Cadoul nostru pentru disciplina ta.
                     </p>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                         <button
                             onClick={() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-10 py-4 bg-[#3A86FF] text-black font-black impact-font uppercase text-xl rounded hover:scale-105 transition-transform shadow-[0_0_30px_rgba(58,134,255,0.4)]"
+                            className="px-12 py-5 bg-[#3A86FF] text-black font-black impact-font uppercase text-2xl rounded-none hover:bg-white transition-all duration-300 shadow-[0_0_50px_rgba(58,134,255,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]"
                         >
-                            VREAU OFERTA
+                            VEZI PACHETELE
                         </button>
-                        <p className="text-white/40 text-sm italic">
-                            *Oferta valabilă pentru pachetele Quarterly (3 luni)
-                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* --- FILTER & PACKAGES SECTION --- */}
-            <section id="packages" className="py-24 px-6 md:px-12 bg-zinc-900/30">
+            {/* --- FILTER SECTION --- */}
+            <section id="packages" className="py-20 px-6 md:px-12 relative">
                 <div className="max-w-7xl mx-auto">
-
-                    {/* Filters */}
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-black impact-font uppercase mb-8">Câte ședințe poți face săptămânal?</h2>
+                    <div className="text-center mb-20">
+                        <h2 className="text-4xl md:text-5xl font-black impact-font uppercase mb-10 tracking-tight">Câte ședințe poți aloca săptămânal?</h2>
                         <div className="flex flex-wrap justify-center gap-4">
                             {[1, 2, 3].map(num => (
                                 <button
                                     key={num}
                                     onClick={() => setSelectedFreq(selectedFreq === num ? null : num as 1 | 2 | 3)}
-                                    className={`px-8 py-4 rounded-xl border border-white/10 text-sm md:text-lg font-bold uppercase transition-all duration-300 flex items-center gap-3 ${selectedFreq === num
-                                        ? 'bg-[#3A86FF] text-black shadow-lg scale-105 border-[#3A86FF]'
-                                        : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
+                                    className={`px-10 py-5 rounded-none border-2 transition-all duration-500 font-black uppercase tracking-widest text-sm flex items-center gap-4 ${selectedFreq === num
+                                        ? 'bg-[#3A86FF] border-[#3A86FF] text-black scale-105 shadow-[0_0_30px_rgba(58,134,255,0.4)]'
+                                        : 'bg-transparent border-white/10 text-white/40 hover:border-white/30 hover:text-white'
                                         }`}
                                 >
                                     <Zap size={20} className={selectedFreq === num ? 'fill-black' : ''} />
-                                    {num} {num === 1 ? 'Ședință' : 'Ședințe'} / Săpt.
+                                    {num} {num === 1 ? 'Ședință' : 'Ședințe'}
                                 </button>
                             ))}
                         </div>
-                        {selectedFreq && (
-                            <button
-                                onClick={() => setSelectedFreq(null)}
-                                className="mt-6 text-white/30 text-xs hover:text-white uppercase tracking-widest border-b border-transparent hover:border-white transition-all"
-                            >
-                                Arată Toate Pachetele
-                            </button>
-                        )}
                     </div>
 
-                    {/* Grid */}
+                    {/* --- PACKAGE GRID (DESIGN FROM SCREENSHOT) --- */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {filteredPackages.map((pkg, i) => {
+                            const [mainSessions, bonusSessions] = pkg.sessionCount.split('+').map(s => s.trim().replace(' BONUS', ''));
+                            const totalMonths = 4;
+                            const paidMonths = 3;
+
+                            return (
+                                <div key={i} className="group relative bg-[#080808] border border-white/5 p-1 transition-all duration-700 hover:border-[#3A86FF]/30 flex flex-col min-h-[700px] overflow-hidden">
+
+                                    {/* Large Background Identifier */}
+                                    <div className="absolute -top-10 -right-10 text-[200px] font-black impact-font text-white/[0.03] pointer-events-none select-none leading-none group-hover:text-[#3A86FF]/[0.05] transition-colors duration-700">
+                                        {mainSessions}
+                                    </div>
+
+                                    {/* Subtitle / Header */}
+                                    <div className="px-8 pt-10 pb-6 relative z-10">
+                                        <div className="text-[#3A86FF] text-xs font-black uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
+                                            <div className="w-8 h-[1px] bg-[#3A86FF]"></div>
+                                            {paidMonths + 1} LUNI ({paidMonths} PLĂTITE + 1 CADOU)
+                                        </div>
+
+                                        <div className="flex items-end gap-2 mb-10">
+                                            <span className="text-8xl font-black impact-font text-white leading-none tracking-tighter">{mainSessions}</span>
+                                            <div className="flex flex-col mb-1">
+                                                <span className="text-3xl font-black text-[#3A86FF] leading-none">+{bonusSessions}</span>
+                                                <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-widest">BONUS</span>
+                                            </div>
+                                        </div>
+
+                                        <h3 className="text-5xl font-black impact-font text-white mb-6 uppercase tracking-tight group-hover:text-[#3A86FF] transition-colors">
+                                            {pkg.title.split(' (')[0]}
+                                        </h3>
+
+                                        <div className="bg-[#3A86FF]/5 border border-[#3A86FF]/20 px-6 py-3 mb-10 w-full">
+                                            <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-[0.3em] flex items-center gap-2">
+                                                <Star size={12} className="fill-[#3A86FF]" />
+                                                {pkg.title.includes("Health") ? "SĂNĂTATE ȘI POSTURĂ" :
+                                                    pkg.title.includes("Sculpt") ? "DEFINIRE ȘI TONIȚIERE" : "MASTER MAX PERFORMANCE"}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Features List */}
+                                    <div className="px-8 flex-grow relative z-10">
+                                        <ul className="space-y-4 mb-12">
+                                            {pkg.features.map((feat, idx) => (
+                                                <li key={idx} className="flex items-start gap-4 text-xs font-medium text-white/50 group-hover:text-white/80 transition-colors uppercase tracking-wide">
+                                                    <CheckCheck className="text-[#3A86FF] shrink-0" size={16} />
+                                                    {feat}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Price & Buttons */}
+                                    <div className="px-8 pb-10 mt-auto relative z-10">
+                                        <div className="flex items-start justify-between mb-10">
+                                            <div className="flex flex-col">
+                                                <span className="text-7xl font-black impact-font text-white leading-none tracking-tighter">
+                                                    {pkg.price.replace(' RON', '').replace(' / lună', '')}
+                                                </span>
+                                                <span className="text-2xl font-black text-white tracking-widest mt-1">RON</span>
+                                            </div>
+                                            <span className="text-sm font-black text-[#3A86FF] uppercase tracking-widest mt-3">LEI</span>
+                                        </div>
+
+                                        <div className="grid gap-4">
+                                            <button
+                                                onClick={() => handleOpenForm(pkg.title)}
+                                                className="w-full py-5 bg-[#3A86FF] text-black font-black uppercase text-sm tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white transition-all duration-300"
+                                            >
+                                                CUMPĂRĂ ACUM <CreditCard size={18} />
+                                            </button>
+                                            <button
+                                                onClick={() => handleWhatsApp(pkg.title)}
+                                                className="w-full py-5 border border-white/10 text-white font-black uppercase text-sm tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white/5 transition-all duration-300"
+                                            >
+                                                CONTACT WHATSAPP <MessageCircle size={18} />
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Animated background flare */}
+                                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#3A86FF]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- REVIEWS SECTION (Mentioned in audio) --- */}
+            <section className="py-32 px-6 bg-zinc-950 border-y border-white/5">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center mb-20">
+                        <span className="text-[#3A86FF] font-black uppercase tracking-[0.4em] text-[10px] block mb-4">Părerea clienților</span>
+                        <h2 className="text-5xl font-black impact-font uppercase text-white">Rezultate care vorbesc.</h2>
+                    </div>
+
                     <div className="grid md:grid-cols-3 gap-8">
-                        {filteredPackages.map((pkg, i) => (
-                            <div key={i} className="group relative bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 hover:border-[#3A86FF]/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(58,134,255,0.1)] flex flex-col">
-                                {/* 3+1 Sticker */}
-                                <div className="absolute -top-4 right-8 bg-[#3A86FF] text-black font-black text-xs px-4 py-2 rounded-full uppercase tracking-widest shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform">
-                                    3 + 1 Lună CADOU
+                        {TESTIMONIALS.slice(0, 3).map((t, i) => (
+                            <div key={i} className="bg-white/5 p-10 border border-white/5 hover:border-[#3A86FF]/20 transition-all">
+                                <div className="flex gap-1 mb-6">
+                                    {[1, 2, 3, 4, 5].map(s => <Star key={s} size={14} className="fill-[#3A86FF] text-[#3A86FF]" />)}
                                 </div>
-
-                                <div className="mb-8">
-                                    <h3 className="text-3xl font-black impact-font italic text-white mb-2 uppercase">{pkg.title}</h3>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-bold text-[#3A86FF]">{pkg.price}</span>
-                                        <span className="text-white/30 text-sm line-through decoration-[#3A86FF]/50 decoration-2">
-                                            {parseInt(pkg.price.replace(/\D/g, '')) * 1.33} RON
-                                        </span>
+                                <p className="text-white/60 italic text-sm leading-relaxed mb-8">"{t.text}"</p>
+                                <div className="flex items-center gap-4">
+                                    <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full grayscale" />
+                                    <div>
+                                        <h4 className="font-bold text-white uppercase text-sm">{t.name}</h4>
+                                        <span className="text-[10px] text-white/30 uppercase tracking-widest">{t.role}</span>
                                     </div>
-                                    <p className="text-white/40 text-xs mt-2 font-mono uppercase tracking-wider">
-                                        Economisești ~33%
-                                    </p>
                                 </div>
-
-                                <div className="space-y-4 mb-10 flex-grow">
-                                    <div className="bg-white/5 rounded-lg p-4 border border-white/5">
-                                        <div className="flex justify-between items-center mb-2">
-                                            <span className="text-white/60 text-xs uppercase font-bold">Total Sesiuni</span>
-                                            <span className="text-[#3A86FF] font-black text-xl">{pkg.sessionCount}</span>
-                                        </div>
-                                        <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                                            <div className="bg-[#3A86FF] h-full w-full animate-pulse"></div>
-                                        </div>
-                                        <p className="text-white/30 text-[10px] mt-2 text-right">Include bonusul de 1 lună</p>
-                                    </div>
-
-                                    <ul className="space-y-3">
-                                        {pkg.features.map((feat, idx) => (
-                                            <li key={idx} className="flex items-start gap-3 text-sm text-white/70">
-                                                <CheckCheck className="text-[#3A86FF] shrink-0 mt-0.5" size={16} />
-                                                {feat}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <button
-                                    onClick={() => handleOpenForm(pkg.title)}
-                                    className="w-full py-4 bg-white text-black font-black uppercase tracking-widest rounded transition-all hover:bg-[#3A86FF] group-hover:shadow-lg flex items-center justify-center gap-2"
-                                >
-                                    VREAU PACHETUL <ArrowRight size={18} />
-                                </button>
                             </div>
                         ))}
                     </div>
-
-                </div>
-            </section>
-
-            {/* --- BENEFITS SUMMARY --- */}
-            <section className="py-20 px-6 bg-black border-t border-white/5">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-center text-3xl font-black impact-font uppercase mb-16 text-white">De ce alegi NeoBoost?</h2>
-                    <div className="grid md:grid-cols-4 gap-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-[#3A86FF]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#3A86FF]">
-                                <Flame size={32} />
-                            </div>
-                            <h4 className="font-bold uppercase mb-2">Afterburn Effect</h4>
-                            <p className="text-white/50 text-sm">Arzi calorii 48h după antrenament, chiar și în repaus.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-[#3A86FF]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#3A86FF]">
-                                <ShieldCheck size={32} />
-                            </div>
-                            <h4 className="font-bold uppercase mb-2">Zero Impact</h4>
-                            <p className="text-white/50 text-sm">Protejează articulațiile și coloana. Ideal pentru recuperare.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-[#3A86FF]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#3A86FF]">
-                                <Zap size={32} />
-                            </div>
-                            <h4 className="font-bold uppercase mb-2">Doar 30 Minute</h4>
-                            <p className="text-white/50 text-sm">Echivalentul a 90 de minute de sală clasică.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-[#3A86FF]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#3A86FF]">
-                                <Star size={32} />
-                            </div>
-                            <h4 className="font-bold uppercase mb-2">Premium Service</h4>
-                            <p className="text-white/50 text-sm">Costum drysuit, duș privat, totul inclus.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* --- SECONDARY CTA: TRIAL --- */}
-            <section className="py-24 px-6 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[#3A86FF] opacity-5"></div>
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-4xl font-black impact-font uppercase mb-6 text-white">Nu ești sigur încă?</h2>
-                    <p className="text-lg text-white/60 mb-10">
-                        Înțelegem. Dacă nu ai mai încercat EMS până acum, te invităm la o sesiune de probă gratuită.
-                        Vei simți pe pielea ta cum lucrează 20 de grupe musculare simultan.
-                    </p>
-                    <button
-                        onClick={() => { setSelectedPackageTitle("SEDINTA TEST (GRATUIT)"); setIsFormOpen(true); }}
-                        className="px-10 py-4 border border-white/20 hover:bg-white hover:text-black text-white font-bold uppercase tracking-widest rounded transition-all"
-                    >
-                        Programează o Testare
-                    </button>
                 </div>
             </section>
 
@@ -264,7 +260,7 @@ export const SpecialOfferPage: React.FC = () => {
                 <StepForm
                     config={{
                         ...HEALTH_FORM_CONFIG,
-                        whatsappTemplate: HEALTH_FORM_CONFIG.whatsappTemplate + `\nPachet Dorit: ${selectedPackageTitle}`
+                        whatsappTemplate: HEALTH_FORM_CONFIG.whatsappTemplate.replace('{package}', selectedPackageTitle)
                     }}
                     onClose={() => setIsFormOpen(false)}
                 />
