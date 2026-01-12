@@ -127,9 +127,12 @@ app.post('/api/stripe/create-checkout-session', express.json(), async (req, res)
             mode: interval ? 'subscription' : 'payment',
             success_url: `${frontendUrl}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${frontendUrl}?payment_canceled=true`,
-            client_reference_id: userId,
-            metadata: { supabase_id: userId }
         };
+
+        if (userId) {
+            sessionConfig.client_reference_id = userId;
+            sessionConfig.metadata = { supabase_id: userId };
+        }
 
         const session = await stripe.checkout.sessions.create(sessionConfig);
         res.json({ url: session.url });
