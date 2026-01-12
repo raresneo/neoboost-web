@@ -6,11 +6,13 @@ import { getStoredUTMParameters } from '../../lib/utm';
 
 interface StepFormProps {
     config: FormConfig;
-    onClose: () => void;
     programId?: string;
+    onComplete?: (answers: Record<string, string>, finalMessage: string) => Promise<void>;
+    submitLabel?: string;
+    submitIcon?: React.ReactNode;
 }
 
-export const StepForm: React.FC<StepFormProps> = ({ config, onClose, programId }) => {
+export const StepForm: React.FC<StepFormProps> = ({ config, onClose, programId, onComplete, submitLabel, submitIcon }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<Record<string, string>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -247,23 +249,31 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose, programId }
                             onClick={async () => {
                                 // Basic tracking for Lead/Contact
                                 if (typeof (window as any).gtag === 'function') {
-                                    (window as any).gtag('event', 'generate_lead', { 'event_category': 'form', 'event_label': 'whatsapp_send' });
+                                    (window as any).gtag('event', 'generate_lead', { 'event_category': 'form', 'event_label': onComplete ? 'purchase_start' : 'whatsapp_send' });
                                 }
                                 if (typeof (window as any).fbq === 'function') {
-                                    (window as any).fbq('track', 'Contact');
+                                    (window as any).fbq('track', onComplete ? 'InitiateCheckout' : 'Contact');
                                 }
 
-                                // Save to backend
+                                // Save to backend (Lead Gen)
                                 await saveLeadToBackend();
 
-                                // Open WhatsApp
-                                window.open(whatsappUrl, '_blank');
+                                if (onComplete) {
+                                    await onComplete(answers, finalMessage);
+                                } else {
+                                    // Open WhatsApp
+                                    window.open(whatsappUrl, '_blank');
+                                }
                             }}
                             disabled={isSubmitting}
-                            className="w-full bg-[#3A86FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(0,255,136,0.3)] hover:shadow-[0_0_60px_rgba(0,255,136,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-wait"
+                            className="w-full bg-[#3A86FF] text-black text-xl font-black uppercase tracking-widest py-6 rounded-xl hover:brightness-110 shadow-[0_0_40px_rgba(58,134,255,0.3)] hover:shadow-[0_0_60px_rgba(58,134,255,0.5)] transition-all transform hover:-translate-y-1 mb-8 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-wait"
                         >
-                            {isSubmitting ? <Loader2 size={28} className="animate-spin" /> : <MessageCircle size={28} />}
-                            {isSubmitting ? 'Se Salvează...' : 'Trimite pe WhatsApp'}
+                            {isSubmitting ? (
+                                <Loader2 size={28} className="animate-spin" />
+                            ) : (
+                                submitIcon || <MessageCircle size={28} />
+                            )}
+                            {isSubmitting ? 'Se procesează...' : (submitLabel || 'Trimite pe WhatsApp')}
                         </button>
 
                         {/* Fallback */}

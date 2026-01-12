@@ -1,54 +1,69 @@
 import React, { useState } from 'react';
 import {
-    CheckCheck, Flame, Zap, ShieldCheck, ArrowRight, Star, AlertCircle, ChevronRight, MessageCircle, CreditCard
+    CheckCheck, Flame, Zap, ShieldCheck, ArrowRight, Star, AlertCircle, ChevronRight, MessageCircle, CreditCard, Activity, HeartPulse, History, Target
 } from 'lucide-react';
 import { QUARTERLY_PACKAGES, TESTIMONIALS, BRAND } from '../constants';
 import { StepForm } from '../components/Forms/StepForm';
 import { FormConfig } from '../components/Forms/types';
 
-// --- Configuration for the Health/Lead Form ---
+// --- Improved Form Configuration with Contraindications & Experience ---
 const HEALTH_FORM_CONFIG: FormConfig = {
     programId: "special-offer-lead",
-    title: "Verificare Eligibilitate",
-    whatsappTemplate: "Salut! Doresc oferta 3+1 Luni Cadou.\n\nPachet: {package}\nNume: {name}\nTelefon: {phone}\nObiectiv: {objective}\nProbleme Cardiace: {cardiac}\nEpilepsie: {epilepsy}\nAlte probleme: {issues}",
+    title: "Verificare Eligibilitate & Stil de Viață",
+    whatsappTemplate: "Salut! Doresc oferta 3+1 Luni Cadou.\n\nPachet: {package}\nNume: {name}\nTelefon: {phone}\nObiectiv: {objective}\nFrecvență Sport: {sport_freq}\nTip Sport: {sport_type}\nExperiență EMS: {ems_exp}\nContraindicații: {contra}\nAlte probleme: {issues}",
     steps: [
         {
             id: "objective",
-            question: "Care este obiectivul tău principal?",
+            question: "Care este obiectivul tău principal de transformare?",
             type: "radio",
-            options: ["Slăbire Rapidă", "Tonifiere Musculară", "Scăpare de Dureri Spate", "Creștere Masă Musculară"],
-            subtext: "Ne ajută să îți recomandăm frecvența corectă."
+            options: ["Slăbire & Definire", "Tonifiere & Forță", "Scăpare de Dureri Spate", "Creștere Masă Musculară"],
+            subtext: "Ne ajută să calibrăm frecvența impulsurilor EMS."
         },
         {
-            id: "cardiac",
-            question: "Suferi de afecțiuni cardiace grave sau ai stimulator cardiac?",
+            id: "sport_freq",
+            question: "Cât de des faci mișcare în prezent?",
             type: "radio",
-            options: ["NU", "DA"],
-            subtext: "EMS este contraindicat persoanelor cu stimulator cardiac."
+            options: ["Sedentar (0 ședințe)", "Ocazional (1-2 ședințe)", "Regulat (3+ ședințe)"],
+            subtext: "Nu contează nivelul curent, adaptăm antrenamentul pe loc."
         },
         {
-            id: "epilepsy",
-            question: "Suferi de epilepsie?",
-            type: "radio",
-            options: ["NU", "DA"],
-            subtext: "Epilepsia este o contraindicație absolută pentru antrenamentul EMS."
-        },
-        {
-            id: "issues",
-            question: "Alte probleme de sănătate de care ar trebui să știm?",
-            type: "textarea",
-            placeholder: "Ex: Hernie de disc, operații recente, diabet...",
+            id: "sport_type",
+            question: "Ce tip de activitate sportivă preferi sau ai practicat?",
+            type: "text",
+            placeholder: "Ex: Fitness, Yoga, Alergare sau Nimic...",
             required: false
         },
         {
+            id: "ems_exp",
+            question: "Ai mai încercat antrenamentul EMS înainte?",
+            type: "radio",
+            options: ["NU - Va fi prima dată", "DA - Am mai făcut câteva ședințe", "Sunt Client Existent"],
+            subtext: "EMS este diferit de orice alt tip de sport."
+        },
+        {
+            id: "contra",
+            question: "Există vreo contraindicație medicală majoră?",
+            type: "radio",
+            options: ["NU - Sunt apt pentru efort", "DA - Am anumite afecțiuni"],
+            subtext: "Stimulator cardiac, epilepsie, sarcină sau tumori sunt contraindicații absolute."
+        },
+        {
+            id: "issues",
+            question: "Alte afecțiuni de care ar trebui să știm? (Opțional)",
+            type: "textarea",
+            placeholder: "Ex: Hernie de disc, diabet, tensiune mare, operații recente...",
+            required: false,
+            subtext: "Antrenorul va adapta programul în funcție de aceste detalii."
+        },
+        {
             id: "name",
-            question: "Cum te numesti?",
+            question: "Cum te numești?",
             type: "text",
             placeholder: "Nume și Prenume"
         },
         {
             id: "phone",
-            question: "La ce număr te putem contacta?",
+            question: "La ce număr te putem contacta pentru programare?",
             type: "text",
             placeholder: "07XX XXX XXX"
         }
@@ -58,7 +73,8 @@ const HEALTH_FORM_CONFIG: FormConfig = {
 export const SpecialOfferPage: React.FC = () => {
     const [selectedFreq, setSelectedFreq] = useState<1 | 2 | 3 | null>(null);
     const [isFormOpen, setIsFormOpen] = useState(false);
-    const [selectedPackageTitle, setSelectedPackageTitle] = useState("");
+    const [actionType, setActionType] = useState<'whatsapp' | 'purchase'>('whatsapp');
+    const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
     const filteredPackages = selectedFreq
         ? QUARTERLY_PACKAGES.filter(pkg => {
@@ -69,14 +85,45 @@ export const SpecialOfferPage: React.FC = () => {
         })
         : QUARTERLY_PACKAGES;
 
-    const handleOpenForm = (pkgTitle: string) => {
-        setSelectedPackageTitle(pkgTitle);
+    const handleOpenForm = (pkg: any, type: 'whatsapp' | 'purchase') => {
+        setSelectedPackage(pkg);
+        setActionType(type);
         setIsFormOpen(true);
     };
 
-    const handleWhatsApp = (pkgTitle: string) => {
-        const text = encodeURIComponent(`Salut! Sunt interesat de oferta Specială 3+1 pentru pachetul ${pkgTitle}. Vreau mai multe detalii.`);
-        window.open(`https://wa.me/40770557342?text=${text}`, '_blank');
+    const handleStripeCheckout = async (answers: Record<string, string>) => {
+        if (!selectedPackage) return;
+
+        try {
+            // Mocking the user session as null for guest checkout (as in existing logic)
+            const res = await fetch('/api/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    priceId: selectedPackage.stripePriceId,
+                    userId: null,
+                    productName: `${selectedPackage.title} (Oferta Specială 3+1)`,
+                    amount: selectedPackage.price.replace(/\D/g, ''),
+                    interval: 'month',
+                    intervalCount: 4, // 3 paid + 1 free usually handled by total price but here we set duration
+                    isSpecialOffer: true,
+                    meta: {
+                        ...answers,
+                        packageTitle: selectedPackage.title
+                    }
+                })
+            });
+
+            const data = await res.json();
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                alert(`Eroare Stripe: ${data.error || 'Încearcă din nou.'}`);
+            }
+        } catch (err) {
+            console.error('Checkout error:', err);
+            alert('A apărut o eroare de conexiune. Verifică WhatsApp pentru ajutor.');
+        }
     };
 
     return (
@@ -94,30 +141,30 @@ export const SpecialOfferPage: React.FC = () => {
                     </div>
 
                     <h1 className="text-6xl md:text-9xl font-black impact-font text-white mb-6 leading-[0.9] uppercase tracking-tighter">
-                        SCHIMBĂ-ȚI <br />
-                        <span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>CORPUL COMPLET.</span>
+                        DISCIPLINA <br />
+                        <span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>SE PREMIAZĂ.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/60 font-medium max-w-2xl mx-auto mb-12 leading-relaxed uppercase tracking-wide">
-                        Plătești 3 Luni de antrenament și primești <span className="text-white font-black border-b-2 border-[#3A86FF]">A 4-A LUNĂ CADOU</span>. Cadoul nostru pentru disciplina ta.
+                        Investește în tine 3 luni și noi îți oferim <span className="text-white font-black border-b-2 border-[#3A86FF]">A 4-A LUNĂ CADOU</span>. Schimbă-ți stilul de viață definitiv.
                     </p>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                         <button
                             onClick={() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-12 py-5 bg-[#3A86FF] text-black font-black impact-font uppercase text-2xl rounded-none hover:bg-white transition-all duration-300 shadow-[0_0_50px_rgba(58,134,255,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]"
+                            className="px-12 py-5 bg-[#3A86FF] text-black font-black impact-font uppercase text-2xl rounded-none hover:bg-white transition-all duration-300 shadow-[0_0_50px_rgba(58,134,255,0.3)]"
                         >
-                            VEZI PACHETELE
+                            VREAU OFERTA
                         </button>
                     </div>
                 </div>
             </section>
 
             {/* --- FILTER SECTION --- */}
-            <section id="packages" className="py-20 px-6 md:px-12 relative">
+            <section id="packages" className="py-20 px-6 md:px-12 relative bg-zinc-950/50">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-5xl font-black impact-font uppercase mb-10 tracking-tight">Câte ședințe poți aloca săptămânal?</h2>
+                        <h2 className="text-4xl md:text-5xl font-black impact-font uppercase mb-10 tracking-tight">Selectează frecvența dorită</h2>
                         <div className="flex flex-wrap justify-center gap-4">
                             {[1, 2, 3].map(num => (
                                 <button
@@ -129,32 +176,27 @@ export const SpecialOfferPage: React.FC = () => {
                                         }`}
                                 >
                                     <Zap size={20} className={selectedFreq === num ? 'fill-black' : ''} />
-                                    {num} {num === 1 ? 'Ședință' : 'Ședințe'}
+                                    {num} {num === 1 ? 'Ședință' : 'Ședințe'} / săpt.
                                 </button>
                             ))}
                         </div>
                     </div>
 
-                    {/* --- PACKAGE GRID (DESIGN FROM SCREENSHOT) --- */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredPackages.map((pkg, i) => {
                             const [mainSessions, bonusSessions] = pkg.sessionCount.split('+').map(s => s.trim().replace(' BONUS', ''));
-                            const totalMonths = 4;
                             const paidMonths = 3;
 
                             return (
-                                <div key={i} className="group relative bg-[#080808] border border-white/5 p-1 transition-all duration-700 hover:border-[#3A86FF]/30 flex flex-col min-h-[700px] overflow-hidden">
-
-                                    {/* Large Background Identifier */}
+                                <div key={i} className="group relative bg-[#080808] border border-white/5 p-1 transition-all duration-700 hover:border-[#3A86FF]/30 flex flex-col min-h-[720px] overflow-hidden">
                                     <div className="absolute -top-10 -right-10 text-[200px] font-black impact-font text-white/[0.03] pointer-events-none select-none leading-none group-hover:text-[#3A86FF]/[0.05] transition-colors duration-700">
                                         {mainSessions}
                                     </div>
 
-                                    {/* Subtitle / Header */}
                                     <div className="px-8 pt-10 pb-6 relative z-10">
                                         <div className="text-[#3A86FF] text-xs font-black uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
                                             <div className="w-8 h-[1px] bg-[#3A86FF]"></div>
-                                            {paidMonths + 1} LUNI ({paidMonths} PLĂTITE + 1 CADOU)
+                                            OFERTĂ TRIMESTRIALĂ 3+1
                                         </div>
 
                                         <div className="flex items-end gap-2 mb-10">
@@ -168,21 +210,12 @@ export const SpecialOfferPage: React.FC = () => {
                                         <h3 className="text-5xl font-black impact-font text-white mb-6 uppercase tracking-tight group-hover:text-[#3A86FF] transition-colors">
                                             {pkg.title.split(' (')[0]}
                                         </h3>
-
-                                        <div className="bg-[#3A86FF]/5 border border-[#3A86FF]/20 px-6 py-3 mb-10 w-full">
-                                            <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-[0.3em] flex items-center gap-2">
-                                                <Star size={12} className="fill-[#3A86FF]" />
-                                                {pkg.title.includes("Health") ? "SĂNĂTATE ȘI POSTURĂ" :
-                                                    pkg.title.includes("Sculpt") ? "DEFINIRE ȘI TONIȚIERE" : "MASTER MAX PERFORMANCE"}
-                                            </span>
-                                        </div>
                                     </div>
 
-                                    {/* Features List */}
                                     <div className="px-8 flex-grow relative z-10">
                                         <ul className="space-y-4 mb-12">
                                             {pkg.features.map((feat, idx) => (
-                                                <li key={idx} className="flex items-start gap-4 text-xs font-medium text-white/50 group-hover:text-white/80 transition-colors uppercase tracking-wide">
+                                                <li key={idx} className="flex items-start gap-4 text-xs font-bold text-white/40 group-hover:text-white/80 transition-colors uppercase tracking-widest leading-relaxed">
                                                     <CheckCheck className="text-[#3A86FF] shrink-0" size={16} />
                                                     {feat}
                                                 </li>
@@ -190,35 +223,34 @@ export const SpecialOfferPage: React.FC = () => {
                                         </ul>
                                     </div>
 
-                                    {/* Price & Buttons */}
                                     <div className="px-8 pb-10 mt-auto relative z-10">
-                                        <div className="flex items-start justify-between mb-10">
+                                        <div className="flex items-end justify-between mb-10">
                                             <div className="flex flex-col">
+                                                <span className="text-sm font-black text-white/30 uppercase tracking-[0.2em] mb-2 line-through">
+                                                    {(parseInt(pkg.price.replace(/\D/g, '')) * 1.33).toFixed(0)} LEI
+                                                </span>
                                                 <span className="text-7xl font-black impact-font text-white leading-none tracking-tighter">
                                                     {pkg.price.replace(' RON', '').replace(' / lună', '')}
                                                 </span>
-                                                <span className="text-2xl font-black text-white tracking-widest mt-1">RON</span>
                                             </div>
-                                            <span className="text-sm font-black text-[#3A86FF] uppercase tracking-widest mt-3">LEI</span>
+                                            <span className="text-xl font-bold text-[#3A86FF] mb-1 tracking-widest uppercase">RON</span>
                                         </div>
 
                                         <div className="grid gap-4">
                                             <button
-                                                onClick={() => handleOpenForm(pkg.title)}
+                                                onClick={() => handleOpenForm(pkg, 'purchase')}
                                                 className="w-full py-5 bg-[#3A86FF] text-black font-black uppercase text-sm tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white transition-all duration-300"
                                             >
                                                 CUMPĂRĂ ACUM <CreditCard size={18} />
                                             </button>
                                             <button
-                                                onClick={() => handleWhatsApp(pkg.title)}
+                                                onClick={() => handleOpenForm(pkg, 'whatsapp')}
                                                 className="w-full py-5 border border-white/10 text-white font-black uppercase text-sm tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white/5 transition-all duration-300"
                                             >
-                                                CONTACT WHATSAPP <MessageCircle size={18} />
+                                                CONSULTANȚĂ WHATSAPP <MessageCircle size={18} />
                                             </button>
                                         </div>
                                     </div>
-
-                                    {/* Animated background flare */}
                                     <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#3A86FF]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
                                 </div>
                             );
@@ -227,26 +259,33 @@ export const SpecialOfferPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* --- REVIEWS SECTION (Mentioned in audio) --- */}
-            <section className="py-32 px-6 bg-zinc-950 border-y border-white/5">
+            {/* --- REVIEWS --- */}
+            <section className="py-32 px-6 bg-black">
                 <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-20">
-                        <span className="text-[#3A86FF] font-black uppercase tracking-[0.4em] text-[10px] block mb-4">Părerea clienților</span>
-                        <h2 className="text-5xl font-black impact-font uppercase text-white">Rezultate care vorbesc.</h2>
+                    <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+                        <div className="max-w-2xl">
+                            <span className="text-[#3A86FF] font-black uppercase tracking-[0.4em] text-[10px] block mb-4">RECENZII REALE</span>
+                            <h2 className="text-5xl md:text-7xl font-black impact-font uppercase text-white leading-none">Ce spun membrii <span className="text-[#3A86FF]">NEOBOOST</span>.</h2>
+                        </div>
+                        <div className="flex gap-4">
+                            <Star size={24} className="fill-[#3A86FF] text-[#3A86FF]" />
+                            <Star size={24} className="fill-[#3A86FF] text-[#3A86FF]" />
+                            <Star size={24} className="fill-[#3A86FF] text-[#3A86FF]" />
+                            <Star size={24} className="fill-[#3A86FF] text-[#3A86FF]" />
+                            <Star size={24} className="fill-[#3A86FF] text-[#3A86FF]" />
+                        </div>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {TESTIMONIALS.slice(0, 3).map((t, i) => (
-                            <div key={i} className="bg-white/5 p-10 border border-white/5 hover:border-[#3A86FF]/20 transition-all">
-                                <div className="flex gap-1 mb-6">
-                                    {[1, 2, 3, 4, 5].map(s => <Star key={s} size={14} className="fill-[#3A86FF] text-[#3A86FF]" />)}
-                                </div>
-                                <p className="text-white/60 italic text-sm leading-relaxed mb-8">"{t.text}"</p>
-                                <div className="flex items-center gap-4">
-                                    <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full grayscale" />
+                            <div key={i} className="bg-[#0a0a0a] p-10 border border-white/5 relative overflow-hidden group">
+                                <div className="absolute -top-6 -right-6 text-9xl text-white/[0.03] impact-font opacity-0 group-hover:opacity-100 transition-opacity">"</div>
+                                <p className="text-white/60 italic text-sm leading-relaxed mb-8 relative z-10">"{t.text}"</p>
+                                <div className="flex items-center gap-4 relative z-10">
+                                    <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover grayscale" />
                                     <div>
-                                        <h4 className="font-bold text-white uppercase text-sm">{t.name}</h4>
-                                        <span className="text-[10px] text-white/30 uppercase tracking-widest">{t.role}</span>
+                                        <h4 className="font-bold text-white uppercase text-sm tracking-widest">{t.name}</h4>
+                                        <span className="text-[10px] text-[#3A86FF] uppercase tracking-widest font-black">{t.role}</span>
                                     </div>
                                 </div>
                             </div>
@@ -260,9 +299,12 @@ export const SpecialOfferPage: React.FC = () => {
                 <StepForm
                     config={{
                         ...HEALTH_FORM_CONFIG,
-                        whatsappTemplate: HEALTH_FORM_CONFIG.whatsappTemplate.replace('{package}', selectedPackageTitle)
+                        whatsappTemplate: HEALTH_FORM_CONFIG.whatsappTemplate.replace('{package}', selectedPackage?.title || '')
                     }}
                     onClose={() => setIsFormOpen(false)}
+                    submitLabel={actionType === 'purchase' ? 'Finalizează & Plătește' : 'Trimite pe WhatsApp'}
+                    submitIcon={actionType === 'purchase' ? <CreditCard size={24} /> : <MessageCircle size={24} />}
+                    onComplete={actionType === 'purchase' ? handleStripeCheckout : undefined}
                 />
             )}
 
