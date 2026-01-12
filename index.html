@@ -196,6 +196,38 @@
             }
         }
     </style>
+    <style>
+        /* Custom Animations for Graphics */
+        @keyframes scan-vertical {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        .animate-scan-vertical {
+            animation: scan-vertical 3s linear infinite;
+        }
+
+        @keyframes pulse-fast {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+        .animate-pulse-fast {
+            animation: pulse-fast 1s ease-in-out infinite;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 10s linear infinite;
+        }
+        
+        .radial-gradient-glow {
+            background: radial-gradient(circle, rgba(58,134,255,0.4) 0%, rgba(58,134,255,0) 70%);
+        }
+    </style>
 </head>
 
 <body>

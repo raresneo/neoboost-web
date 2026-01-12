@@ -444,32 +444,32 @@ export const EMS_SOLUTIONS = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Anamaria Moldovan",
-    role: "Proprietar afacere",
-    quote: "O experiență deosebită! Conceptul de 30 de minute este perfect pentru cineva ocupat. Drysuit-ul face diferența enormă, e foarte confortabil și nu pierd timp cu schimbatul sau dușul excesiv.",
+    role: "Local Guide",
+    quote: "O experiență deosebită! Conceptul de 30 de minute este perfect pentru cineva ocupat. Drysuit-ul face diferența enormă, e foarte confortabil.",
     rating: 5,
     imageUrl: "/DSC03940.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
     name: "Razvan Iancu",
-    role: "Manager IT",
-    quote: "Cel mai bun studio EMS din Oradea. Rezultatele apar vizibil după primele ședințe, mai ales pe partea de tonifiere și spate. Tehnologia wireless chiar îți permite să te miști natural.",
+    role: "Client Verificat",
+    quote: "Cel mai bun studio EMS din Oradea. Rezultatele apar vizibil după primele ședințe, mai ales pe partea de tonifiere și spate.",
     rating: 5,
     imageUrl: "/DSC01083.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
     name: "Camelia Pop",
-    role: "Medic Proaspăt Mămică",
-    quote: "Recomand cu tot dragul! Atmosfera este premium și tehnologia chiar funcționează. Programul Fit Mamma m-a ajutat enorm să-mi recuperez energia după naștere în deplină siguranță.",
+    role: "Local Guide",
+    quote: "Recomand cu tot dragul! Atmosfera este premium și tehnologia chiar funcționează. Te simți pe mâini bune de la început.",
     rating: 5,
     imageUrl: "/DSC00438.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
     name: "Vlad M.",
-    role: "Freelancer",
-    quote: "După o zi la birou, antrenamentul NeoBoost este singurul care mă pune pe picioare. Eficiență maximă în doar 30 de minute și o postură mult mai dreaptă.",
+    role: "Client Google",
+    quote: "După o zi la birou, antrenamentul NeoBoost este singurul care mă pune pe picioare. Eficiență maximă în doar 30 de minute.",
     rating: 5,
     imageUrl: "/DSC07203.jpg",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"

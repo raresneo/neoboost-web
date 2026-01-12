@@ -49,6 +49,7 @@ import { Session } from '@supabase/supabase-js';
 import { StepForm } from './components/Forms/StepForm';
 // Removed FORM_CONFIGS to fix missing module error
 import { CookieBanner } from './components/CookieBanner';
+import { AnimatedGraphic } from './components/AnimatedGraphic';
 
 // --- Components ---
 
@@ -752,6 +753,7 @@ const ObjectivesWithSlider = () => {
 
   return (
     <div className="sticky top-40 glass p-8 md:p-12">
+      <AnimatedGraphic type="muscle" className="h-48 w-full mb-8" />
       {/* Header */}
       <div className="mb-8">
         <h4 className="text-2xl font-black impact-font text-white mb-2">OBIECTIVE ȘI REZULTATE</h4>
@@ -906,6 +908,9 @@ const EMSTimeline = () => {
           {/* Active Milestone Display */}
           <div className="lg:col-span-8 relative">
             <div className="relative p-12 md:p-20 glass overflow-hidden group min-h-[400px] flex flex-col justify-center">
+              <div className="absolute inset-0 z-0">
+                <AnimatedGraphic type="tech" className="w-full h-full opacity-40" />
+              </div>
               <div className="absolute top-0 right-0 p-12 text-white/[0.02] scale-[2] pointer-events-none">
                 {EMS_MILESTONES[activeIndex].icon}
               </div>
@@ -1038,6 +1043,9 @@ const EMSEducation = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-[#3A86FF]/5 blur-3xl rounded-full opacity-20"></div>
               <div className="relative glass-block p-10 md:p-14">
+                <div className="mb-8">
+                  <AnimatedGraphic type="energy" className="h-56 w-full" />
+                </div>
                 <div className="mb-10">
                   <Quote className="text-[#3A86FF] mb-6" size={40} />
                   <h3 className="text-2xl md:text-3xl font-bold impact-font text-white uppercase leading-tight mb-6">
