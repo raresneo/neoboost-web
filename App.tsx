@@ -1864,8 +1864,11 @@ const ScienceSolutionsSection = () => (
       </section>
       );
 
+
 // --- Trial Video Background Component (Optimized) ---
-const TrialVideoBackground = () => <CinematicBackground image="/DSC07054.jpg" opacity={0.3} />;
+const TrialVideoBackground = () => {
+  return <CinematicBackground image="/DSC07054.jpg" opacity={0.3} />;
+};
 
 // --- Trial Roadmap Section ---
 const TrialRoadmap = () => {
