@@ -78,8 +78,8 @@ const StaggeredText: React.FC<{ text: string; className?: string; delay?: number
       {text.split(" ").map((word, wIdx) => (
         <span key={wIdx} className="inline-block mr-[0.2em] whitespace-nowrap overflow-hidden align-bottom">
           <span
-            className={`inline-block transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
-            style={{ transitionDelay: `${delay + wIdx * 40}ms` }}
+            className={`inline-block transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
+            style={{ transitionDelay: `${delay + wIdx * 20}ms` }}
           >
             {word}
           </span>
@@ -2128,19 +2128,19 @@ const Preloader = ({ onFinish }: { onFinish: () => void }) => {
         if (prev >= 100) {
           clearInterval(interval);
           setIsFading(true);
-          setTimeout(onFinish, 300); // Faster fade out
+          setTimeout(onFinish, 150); // Ultra-fast fade
           return 100;
         }
-        return prev + Math.random() * 15; // Faster progress
+        return prev + Math.random() * 25; // Much faster progress
       });
-    }, 80); // Faster interval
+    }, 40); // Super fast interval
     return () => clearInterval(interval);
   }, [onFinish]);
 
   if (!isFading && progress >= 100) return null;
 
   return (
-    <div className={`fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center transition-opacity duration-500 ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center transition-opacity duration-200 ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       <div className="relative">
         <div className="absolute inset-0 bg-[#3A86FF] blur-[80px] opacity-30"></div>
         <img src="/logo_white.png" alt="NeoBoost Loading" className="w-20 h-20 md:w-28 md:h-28 object-contain animate-pulse" />
@@ -2210,12 +2210,12 @@ const App: React.FC = () => {
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.12, // Faster, snappier scroll
+      lerp: 0.18, // Super snappy scroll
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.2, // Faster scrolling
-      touchMultiplier: 2, // Responsive touch
+      wheelMultiplier: 1.5, // Very fast scrolling
+      touchMultiplier: 2.5, // Ultra responsive touch
     });
 
     const raf = (time: number) => {
