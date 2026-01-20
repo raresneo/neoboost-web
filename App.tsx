@@ -1994,15 +1994,70 @@ const EMSAppUI = () => (
   </div>
 );
 
+// --- Oscilloscope Animation Component ---
+const Oscilloscope = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let time = 0;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const draw = () => {
+      time += 0.05;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const width = canvas.width;
+      const height = canvas.height;
+      const centerY = height / 2;
+
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(58, 134, 255, 0.4)'; // #3A86FF with low opacity
+      ctx.lineWidth = 1;
+
+      for (let x = 0; x < width; x++) {
+        const y = centerY +
+          Math.sin(x * 0.02 + time) * 15 * Math.sin(time * 0.3) +
+          Math.sin(x * 0.05 + time * 1.5) * 5;
+
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="absolute inset-x-0 bottom-[15%] h-24 w-full pointer-events-none mix-blend-screen opacity-50 z-20" />;
+};
+
 const TabletReal = () => (
-  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden group">
     <div className="relative w-full h-full scale-[1.2] transition-transform duration-700 group-hover:scale-[1.3]">
       <img
         src="/tablet_combo.jpg"
         alt="NeoBoost Tablet Interface"
         className="w-full h-full object-cover"
         style={{
-          // Focused blend on the tablet screen (bottom-center of the photo)
           objectPosition: '40% 60%',
           maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
           WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
@@ -2013,6 +2068,7 @@ const TabletReal = () => (
         decoding="async"
       />
     </div>
+    <Oscilloscope />
   </div>
 );
 
