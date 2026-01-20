@@ -1894,11 +1894,11 @@ const TrialRoadmap = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {roadmap.map((item, idx) => (
             <ScrollReveal key={idx} delay={idx * 100}>
-              <div className="relative p-6 sm:p-10 glass rounded-2xl group hover:neon-border transition-all duration-500">
-                <div className="text-5xl font-black impact-font text-white/5 group-hover:text-[#3A86FF]/10 transition-colors mb-4">{item.step}</div>
-                <div className="text-[#3A86FF] mb-6 transform group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+              <div className="relative p-6 sm:p-10 glass-block bg-black/80 backdrop-blur-xl rounded-2xl group hover:border-[#3A86FF]/50 transition-all duration-500 border border-white/10 shadow-lg">
+                <div className="text-5xl font-black impact-font text-white/10 group-hover:text-[#3A86FF]/20 transition-colors mb-4">{item.step}</div>
+                <div className="text-[#3A86FF] mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_10px_rgba(58,134,255,0.5)]">{item.icon}</div>
                 <h3 className="text-xl font-black impact-font text-white mb-2 uppercase">{item.title}</h3>
-                <p className="text-sm text-white/30 font-light leading-relaxed">{item.desc}</p>
+                <p className="text-sm text-gray-300 font-medium leading-relaxed">{item.desc}</p>
                 {idx < 3 && (
                   <div className="hidden md:block absolute top-1/2 -right-2 translate-y-1/2">
                     <ArrowDown className="-rotate-90 text-white/5" size={20} />
@@ -2781,11 +2781,11 @@ const App: React.FC = () => {
                           </div>
                         </ScrollReveal>
                         <ScrollReveal delay={200} className={`space-y-8 ${idx % 2 !== 0 ? 'lg:order-1 lg:text-right' : ''}`}>
-                          <h3 className="text-5xl md:text-7xl font-black impact-font text-white">{comp.title}</h3>
-                          <p className={`text-lg text-white/40 font-light leading-relaxed max-w-xl ${idx % 2 !== 0 ? 'ml-auto' : ''}`}>{comp.description}</p>
+                          <h3 className="text-5xl md:text-7xl font-black impact-font text-white bg-black/20 backdrop-blur-sm inline-block px-4 py-2 rounded-lg">{comp.title}</h3>
+                          <p className={`text-lg text-gray-200 font-medium leading-relaxed max-w-xl bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/5 ${idx % 2 !== 0 ? 'ml-auto' : ''}`}>{comp.description}</p>
                           <div className={`flex flex-wrap gap-2 ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
                             {comp.features.map(f => (
-                              <span key={f} className="px-4 py-1.5 border border-white/10 text-[8px] mono-font uppercase tracking-widest text-white/30">
+                              <span key={f} className="px-4 py-1.5 border border-white/20 bg-black/60 text-[8px] mono-font uppercase tracking-widest text-white/80 font-bold">
                                 {f}
                               </span>
                             ))}
