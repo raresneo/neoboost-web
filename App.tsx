@@ -2165,6 +2165,7 @@ const App: React.FC = () => {
   // Auth State
   const [session, setSession] = useState<Session | null>(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [activeBenefit, setActiveBenefit] = useState(0);
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -2602,31 +2603,82 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="metoda" className="py-24 md:py-60 bg-[#020202] relative z-10 overflow-hidden">
+              <section id="metoda" className="py-24 md:py-40 bg-[#020202] relative z-10 overflow-hidden">
                 <BiohackVideoBackground />
-                <div className="container mx-auto px-6 md:px-24">
-                  <div className="grid lg:grid-cols-2 gap-32 items-start">
-                    <div className="lg:sticky top-40">
-                      <ScrollReveal>
-                        <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-6">Protocol de Eficiență</p>
-                        <h2 className="text-7xl md:text-9xl font-black impact-font text-white leading-[0.8]">BIO<br /><span className="text-[#3A86FF]">HACK.</span></h2>
-                        <div className="h-px w-20 bg-[#3A86FF] my-12 opacity-30"></div>
-                        <p className="text-2xl font-light text-white/40 leading-tight max-w-sm">
-                          Rezultate garantate prin stimularea a <span className="text-white italic">90% din fibrele musculare</span> simultan.
-                        </p>
-                      </ScrollReveal>
+                <div className="container mx-auto px-6 md:px-24 relative z-20">
+                  <div className="grid lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
+
+                    {/* LEFT COLUMN - Interactive Visual Display */}
+                    <div className="order-2 lg:order-1 relative lg:sticky lg:top-32 h-[500px] md:h-[600px]">
+                      <div className="absolute inset-0 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl transition-all duration-700">
+                        {/* Dynamic Visual content based on activeBenefit */}
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          {/* Visual 0: Drysuit -> Tech Graphic */}
+                          <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                            <AnimatedGraphic type="tech" className="w-full h-full object-cover" />
+                            <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">DRYSUIT</div>
+                          </div>
+
+                          {/* Visual 1: Wireless -> Energy Graphic */}
+                          <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                            <AnimatedGraphic type="energy" className="w-full h-full object-cover" />
+                            <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">WIRELESS</div>
+                          </div>
+
+                          {/* Visual 2: Control -> Muscle Graphic */}
+                          <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 2 ? 'opacity-100' : 'opacity-0'}`}>
+                            <AnimatedGraphic type="muscle" className="w-full h-full object-cover" />
+                            <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">CONTROL</div>
+                          </div>
+
+                          {/* Visual 3: Hygiene -> Tech Graphic (Tinted) */}
+                          <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 3 ? 'opacity-100' : 'opacity-0'}`}>
+                            <AnimatedGraphic type="tech" className="w-full h-full object-cover invert hue-rotate-180" />
+                            <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">PURE</div>
+                          </div>
+
+                          {/* Fallback Overlay text */}
+                          <div className="absolute top-10 right-10 mono-font text-[#3A86FF] tracking-widest text-xs font-bold bg-black/50 px-3 py-1 rounded-full border border-[#3A86FF]/20">
+                            FIG. {activeBenefit + 1}
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="grid gap-6">
-                      {BENEFITS.map((b, i) => (
-                        <ScrollReveal key={i} delay={i * 100}>
-                          <div className="group p-10 glass-block hover:border-[#3A86FF]/30 transition-all duration-700">
-                            <h3 className="text-3xl font-black impact-font mb-4 text-white group-hover:text-[#3A86FF] transition-colors">{b.title}</h3>
-                            <p className="text-white/40 font-light leading-relaxed">{b.description}</p>
+                    {/* RIGHT COLUMN - Text List */}
+                    <div className="order-1 lg:order-2 space-y-2">
+                      <ScrollReveal>
+                        <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-8">Protocol NeoBoost</p>
+                        <h2 className="text-5xl md:text-7xl font-black impact-font text-white leading-[0.9] mb-12">
+                          TEHNOLOGIE<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] to-blue-400">AVANSATĂ.</span>
+                        </h2>
+                      </ScrollReveal>
+
+                      <div className="space-y-4">
+                        {BENEFITS.map((b, i) => (
+                          <div
+                            key={i}
+                            onMouseEnter={() => setActiveBenefit(i)}
+                            className={`group cursor-pointer p-8 rounded-2xl border transition-all duration-500 ease-out relative overflow-hidden ${activeBenefit === i ? 'bg-[#3A86FF] border-[#3A86FF] shadow-[0_0_30px_rgba(58,134,255,0.3)]' : 'bg-black/60 border-white/5 hover:bg-white/5'}`}
+                          >
+                            <div className="flex items-start gap-6 relative z-10">
+                              <div className={`p-3 rounded-lg transition-colors duration-300 ${activeBenefit === i ? 'bg-black/20 text-white' : 'bg-white/5 text-[#3A86FF]'}`}>
+                                {b.icon}
+                              </div>
+                              <div>
+                                <h3 className={`text-xl font-bold uppercase mb-2 transition-colors duration-300 ${activeBenefit === i ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>
+                                  {b.title}
+                                </h3>
+                                <p className={`text-sm leading-relaxed transition-colors duration-300 ${activeBenefit === i ? 'text-white/90' : 'text-white/50 group-hover:text-white/70'}`}>
+                                  {b.description}
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                        </ScrollReveal>
-                      ))}
+                        ))}
+                      </div>
                     </div>
+
                   </div>
                 </div>
               </section>
