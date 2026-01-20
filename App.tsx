@@ -2494,21 +2494,22 @@ const App: React.FC = () => {
                   <div className="grid lg:grid-cols-2 gap-12 items-start">
                     <div className="grid md:grid-cols-2 gap-6 order-2 lg:order-1">
                       {/* Benefit 1 - Slăbire */}
+                      {/* Benefit 1 - Slăbire */}
                       <ScrollReveal delay={0}>
                         <div
                           onMouseEnter={() => setActiveGraphic('energy')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }}
-                          className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col"
+                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'energy' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
                         >
-                          <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                            <Zap size={28} className="text-[#3A86FF]" />
+                          <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'energy' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                            <Zap size={28} />
                           </div>
-                          <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">SLĂBIRE RAPIDĂ</h3>
+                          <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'energy' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>SLĂBIRE RAPIDĂ</h3>
                           <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
-                          <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                          <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
                             Arzi până la <span className="text-white font-bold">500 kcal</span> în 30 min și activezi metabolismul pentru încă 48h (efect afterburn).
                           </p>
-                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Vezi explicația științifică <MoveUpRight size={12} />
                           </div>
                         </div>
@@ -2519,18 +2520,18 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('muscle')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }}
-                          className="glass-block p-8 h-full border-[#3A86FF]/20 hover:border-[#3A86FF]/40 transition-all duration-500 group block cursor-pointer relative overflow-hidden flex flex-col"
+                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
                         >
-                          <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF]/20 text-[#3A86FF] text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
-                          <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                            <HeartPulse size={28} className="text-[#3A86FF]" />
+                          <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF] text-white text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
+                          <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                            <HeartPulse size={28} />
                           </div>
-                          <h3 className="text-2xl font-black impact-font text-[#3A86FF] mb-2">ADIO DURERI DE SPATE</h3>
-                          <p className="text-white/60 text-xs font-bold uppercase tracking-wider mb-3">Fără frică de mișcare</p>
-                          <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                          <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'muscle' ? 'text-white' : 'text-white group-hover:text-white'}`}>ADIO DURERI DE SPATE</h3>
+                          <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără frică de mișcare</p>
+                          <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
                             Clienții noștri spun că după 6-8 ședințe pot sta la birou fără durere lombară.
                           </p>
-                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Cum funcționează, pas cu pas <MoveUpRight size={12} />
                           </div>
                         </div>
@@ -2541,17 +2542,17 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('muscle')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }}
-                          className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col"
+                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
                         >
-                          <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                            <Target size={28} className="text-[#3A86FF]" />
+                          <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                            <Target size={28} />
                           </div>
-                          <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">TONIFIERE</h3>
+                          <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'muscle' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>TONIFIERE</h3>
                           <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără rușine la sală</p>
-                          <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                          <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
                             Musculatura se activează 90% simultan. Rezultate vizibile în 4-8 săptămâni.
                           </p>
-                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Ce înseamnă „tonifiere” în realitate <MoveUpRight size={12} />
                           </div>
                         </div>
@@ -2562,17 +2563,17 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('tech')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }}
-                          className="glass-block p-8 h-full hover:border-[#3A86FF]/30 transition-all duration-500 group block cursor-pointer flex flex-col"
+                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'tech' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
                         >
-                          <div className="w-14 h-14 rounded-full bg-[#3A86FF]/10 flex items-center justify-center mb-6 group-hover:bg-[#3A86FF]/20 transition-colors">
-                            <TrendingUp size={28} className="text-[#3A86FF]" />
+                          <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'tech' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                            <TrendingUp size={28} />
                           </div>
-                          <h3 className="text-2xl font-black impact-font text-white mb-2 group-hover:text-[#3A86FF] transition-colors">FORȚĂ & PERFORMANȚĂ</h3>
+                          <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'tech' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>FORȚĂ & PERFORMANȚĂ</h3>
                           <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără risc de accidentare</p>
-                          <p className="text-white/50 text-sm leading-relaxed mb-6 flex-grow">
+                          <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
                             Recrutare rapidă a fibrelor musculare, creștere forță fără stres articular.
                           </p>
-                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Protocolul care reduce riscul <MoveUpRight size={12} />
                           </div>
                         </div>
