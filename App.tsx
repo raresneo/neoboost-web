@@ -78,8 +78,8 @@ const StaggeredText: React.FC<{ text: string; className?: string; delay?: number
       {text.split(" ").map((word, wIdx) => (
         <span key={wIdx} className="inline-block mr-[0.2em] whitespace-nowrap overflow-hidden align-bottom">
           <span
-            className={`inline-block transition-transform duration-1000 ease-[cubic-bezier(0.2,1,0.3,1)] ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
-            style={{ transitionDelay: `${delay + wIdx * 80}ms` }}
+            className={`inline-block transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
+            style={{ transitionDelay: `${delay + wIdx * 40}ms` }}
           >
             {word}
           </span>
@@ -2103,34 +2103,53 @@ const Preloader = ({ onFinish }: { onFinish: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
+  // Preload critical images during the loading screen
+  useEffect(() => {
+    const criticalImages = [
+      '/logo_white.png',
+      '/DSC00193.jpg',
+      '/DSC00223.jpg',
+      '/DSC00205.jpg',
+      '/DSC04717.jpg',
+      '/DSC01081.jpg',
+      '/ramada.jpg',
+      '/getfit.jpg',
+      '/64f5f987-9c1e-43a8-8bdd-0d6d735fefa0.png'
+    ];
+    criticalImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
           setIsFading(true);
-          setTimeout(onFinish, 500); // Wait for fade out
+          setTimeout(onFinish, 300); // Faster fade out
           return 100;
         }
-        return prev + Math.random() * 10;
+        return prev + Math.random() * 15; // Faster progress
       });
-    }, 150);
+    }, 80); // Faster interval
     return () => clearInterval(interval);
   }, [onFinish]);
 
-  if (!isFading && progress >= 100) return null; // Safety
+  if (!isFading && progress >= 100) return null;
 
   return (
-    <div className={`fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center transition-opacity duration-1000 ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center transition-opacity duration-500 ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       <div className="relative">
-        <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse"></div>
-        <img src="/logo_white.png" alt="NeoBoost Loading" className="w-24 h-24 md:w-32 md:h-32 object-contain animate-bounce" />
+        <div className="absolute inset-0 bg-[#3A86FF] blur-[80px] opacity-30"></div>
+        <img src="/logo_white.png" alt="NeoBoost Loading" className="w-20 h-20 md:w-28 md:h-28 object-contain animate-pulse" />
       </div>
-      <div className="mt-8 w-64 h-1 bg-white/10 rounded-full overflow-hidden">
-        <div className="h-full bg-[#3A86FF] transition-all duration-300 ease-out" style={{ width: `${progress}%` }}></div>
+      <div className="mt-6 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+        <div className="h-full bg-[#3A86FF] transition-all duration-150 ease-out" style={{ width: `${progress}%` }}></div>
       </div>
-      <div className="mt-4 mono-font text-[#3A86FF] text-[10px] tracking-[0.5em] uppercase animate-pulse">
-        System Initializing... {Math.min(100, Math.floor(progress))}%
+      <div className="mt-3 mono-font text-white/60 text-[9px] tracking-[0.3em] uppercase">
+        Se încarcă... {Math.min(100, Math.floor(progress))}%
       </div>
     </div>
   );
@@ -2191,12 +2210,12 @@ const App: React.FC = () => {
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.07, // "Heavy" luxury feel
+      lerp: 0.12, // Faster, snappier scroll
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.9, // Reduced for smoother control
-      touchMultiplier: 1.5, // Slightly dampened touch
+      wheelMultiplier: 1.2, // Faster scrolling
+      touchMultiplier: 2, // Responsive touch
     });
 
     const raf = (time: number) => {
