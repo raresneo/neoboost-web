@@ -4,6 +4,7 @@ import Lenis from 'lenis';
 import { Link } from 'react-router-dom';
 import { ProgramModal } from './components/ProgramModal';
 import { BookingModal } from './components/BookingModal';
+import { SEO } from './components/SEO';
 import {
   X,
   MessageCircle,
@@ -479,7 +480,9 @@ const BenefitArticlesSection: React.FC<{ className?: string }> = ({ className = 
                       </div>
                     )}
 
-                    <h3 className="text-4xl md:text-5xl font-black impact-font text-white mb-2 uppercase">{article.title}</h3>
+                    <Link to={`/articol/${article.id}`} className="block group-hover:text-[#3A86FF] transition-colors">
+                      <h3 className="text-4xl md:text-5xl font-black impact-font text-white mb-2 uppercase group-hover:underline decoration-[#3A86FF]/50 underline-offset-8 decoration-4">{article.title}</h3>
+                    </Link>
                     <p className="text-[#3A86FF] mono-font text-xs font-bold tracking-widest uppercase mb-6">{article.subtitle}</p>
                     <div className="text-white/40 text-sm leading-relaxed font-light">
                       {article.intro}
@@ -2188,13 +2191,12 @@ const App: React.FC = () => {
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.8, // Faster scroll response (was 1.2)
-      easing: (t) => 1 - Math.pow(1 - t, 3), // Simpler ease
+      lerp: 0.07, // "Heavy" luxury feel
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.2, // Faster scrolling
-      touchMultiplier: 2, // More responsive touch
+      wheelMultiplier: 0.9, // Reduced for smoother control
+      touchMultiplier: 1.5, // Slightly dampened touch
     });
 
     const raf = (time: number) => {
@@ -2324,8 +2326,92 @@ const App: React.FC = () => {
     "/getfit.jpg"
   ];
 
+  // SEO Logic
+  const seoProps = useMemo(() => {
+    if (activeView === 'science') {
+      return {
+        title: "Știința EMS — NeoBoost Research",
+        description: "Descoperă studiile și mecanismele bio-electrice din spatele antrenamentelor EMS. Slăbire, tonifiere și recuperare explicate științific.",
+        canonical: "/science"
+      };
+    }
+    if (activeView === 'legal') {
+      const titleMap = {
+        privacy: "Politică de Confidențialitate",
+        terms: "Termeni și Condiții",
+        rules: "Regulament Intern"
+      };
+      return {
+        title: `${titleMap[legalType]} — NeoBoost Legal`,
+        description: "Documente legale, termeni și condiții, politica de confidențialitate NeoBoost EMS Oradea.",
+        canonical: "/legal"
+      };
+    }
+    // Default Home
+    return {
+      title: "NeoBoost — Bio-Electric Performance Oradea",
+      description: "Studio EMS Premium Oradea. Antrenamente de 20 minute cu tehnologie wireless Drysuit. Slăbire rapidă, tonifiere și recuperare medicală.",
+      canonical: "/",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ExerciseGym",
+            "@id": "https://neo-boost.com/#gym",
+            "name": "NeoBoost EMS Oradea",
+            "description": "Studio de antrenament EMS (Electrostimulare Musculară) în Oradea.",
+            "image": "https://neo-boost.com/assets/og-default.jpg",
+            "telephone": BRAND.phone,
+            "email": BRAND.email,
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": BRAND.address,
+              "addressLocality": "Oradea",
+              "addressRegion": "Bihor",
+              "addressCountry": "RO"
+            },
+            "url": "https://neo-boost.com",
+            "priceRange": "$$",
+            "openingHours": "Mo-Fr 07:00-21:00, Sa 10:00-14:00",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Personal Training Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "EMS Personal Training"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Semi-Private Personal Training"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "PersonalTrainer",
+            "@id": "https://neo-boost.com/#trainer",
+            "name": "NeoBoost Personal Training Team",
+            "description": "Servicii de antrenament personal cu tehnologie EMS și instructori certificați în Oradea.",
+            "url": "https://neo-boost.com",
+            "parentOrganization": {
+              "@id": "https://neo-boost.com/#gym"
+            }
+          }
+        ]
+      }
+    };
+  }, [activeView, legalType]);
+
   return (
     <main className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
+      <SEO {...seoProps} />
       <AmbientAudio isMuted={isMuted} />
       <ParticleBackground />
       {isLoading && <Preloader onFinish={() => {

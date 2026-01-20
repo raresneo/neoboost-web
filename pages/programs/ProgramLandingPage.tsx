@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MoveUpRight, Target } from 'lucide-react';
 import { getExtendedProgram } from '../../extendedPrograms';
-import { SEO } from '../../components/seo/SEO';
+import { SEO } from '../../components/SEO';
 import {
     ForWhoSection,
     WorkoutDetailsSection,
@@ -59,9 +59,8 @@ export const ProgramLandingPage: React.FC = () => {
                 <SEO
                     title={program.seo.title}
                     description={program.seo.description}
-                    keywords={program.seo.keywords}
-                    image={program.image}
-                    url={`/program/${program.id}`}
+                    ogImage={program.image}
+                    canonical={`/program/${program.id}`}
                 />
             )}
 

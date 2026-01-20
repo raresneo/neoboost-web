@@ -9,8 +9,12 @@ if (!rootElement) {
 }
 
 const root = ReactDOM.createRoot(rootElement);
+import { HelmetProvider } from 'react-helmet-async';
+
 root.render(
   <React.StrictMode>
-    <AppRouter />
+    <HelmetProvider>
+      <AppRouter />
+    </HelmetProvider>
   </React.StrictMode>
 );

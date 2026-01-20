@@ -5,6 +5,7 @@ import {
 import { QUARTERLY_PACKAGES, TESTIMONIALS, BRAND } from '../constants';
 import { StepForm } from '../components/Forms/StepForm';
 import { FormConfig } from '../components/Forms/types';
+import { SEO } from '../components/SEO';
 
 // --- Improved Form Configuration with Contraindications & Experience ---
 const HEALTH_FORM_CONFIG: FormConfig = {
@@ -129,6 +130,12 @@ export const SpecialOfferPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-black text-white font-sans selection:bg-[#3A86FF] selection:text-black pb-20">
+            <SEO
+                title="Oferta Specială 3+1 Luni - NeoBoost EMS"
+                description="Primește o lună CADOU! Antrenament EMS în Oradea. Cumpără abonamentul pe 3 luni și primești a 4-a lună gratuit. Ofertă limitată."
+                canonical="/oferta-speciala"
+                ogImage="/DSC09363.jpg"
+            />
 
             {/* --- HERO SECTION --- */}
             <section className="relative pt-32 pb-20 px-6 md:px-12 overflow-hidden border-b border-white/5">
@@ -281,9 +288,9 @@ export const SpecialOfferPage: React.FC = () => {
                         {TESTIMONIALS.slice(0, 3).map((t, i) => (
                             <div key={i} className="bg-[#0a0a0a] p-10 border border-white/5 relative overflow-hidden group">
                                 <div className="absolute -top-6 -right-6 text-9xl text-white/[0.03] impact-font opacity-0 group-hover:opacity-100 transition-opacity">"</div>
-                                <p className="text-white/60 italic text-sm leading-relaxed mb-8 relative z-10">"{t.text}"</p>
+                                <p className="text-white/60 italic text-sm leading-relaxed mb-8 relative z-10">"{t.quote}"</p>
                                 <div className="flex items-center gap-4 relative z-10">
-                                    <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover grayscale" />
+                                    <img src={t.imageUrl} alt={t.name} className="w-12 h-12 rounded-full object-cover grayscale" />
                                     <div>
                                         <h4 className="font-bold text-white uppercase text-sm tracking-widest">{t.name}</h4>
                                         <span className="text-[10px] text-[#3A86FF] uppercase tracking-widest font-black">{t.role}</span>

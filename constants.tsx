@@ -163,7 +163,7 @@ export const TECH_COMPONENTS = [
   {
     id: "drysuit",
     title: "Costumul NeoBoost Drysuit",
-    description: "Inima sistemului nostru. Creat dintr-o țesătură inteligentă care nu necesită umezire. Electrozii transmit impulsuri direct pe pielea uscată, oferind libertate totală.",
+    description: "Inima sistemului nostru. Creat dintr-o țesătură inteligentă care nu necesită umezire. Electrozii transmit impulsuri direct pe pielea uscată, oferind libertate totală. Acest sistem permite antrenorului personal să corecteze postura în timp real.",
     image: "/studio_session_1.jpg",
     features: ["Antibacterian", "Fără cabluri", "Compresie Anatomică"]
   },
@@ -196,8 +196,8 @@ export const BENEFITS = [
   },
   {
     icon: <Smartphone className="w-8 h-8" />,
-    title: "Control Digital",
-    description: "Antrenorul tău reglează fin intensitatea fiecărei grupe musculare direct de pe tabletă, pentru rezultate optime."
+    title: "Control Digital & Antrenor Personal",
+    description: "Antrenorul tău personal reglează fin intensitatea fiecărei grupe musculare direct de pe tabletă, pentru rezultate optime. Este fitness-ul viitorului."
   },
   {
     icon: <ShieldCheck className="w-8 h-8" />,
@@ -251,6 +251,7 @@ export const MONTHLY_PACKAGES: NeoPackage[] = [
     idealFor: "Schimbare majoră de formă",
     features: [
       "Transformare corporală intensă",
+      "Antrenor Personal Dedicat",
       "Creștere semnificativă a forței",
       "Reducerea stresului",
       "Prioritate la programări",
@@ -499,7 +500,12 @@ export const BENEFIT_ARTICLES = [
     ],
     science: "Studiile indică faptul că EMS, folosit ca adjuvant, poate îmbunătăți parametri precum forța și, în unele contexte, compoziția corporală, mai ales la persoane sedentare sau în programe structurate.",
     target: ["Persoane cu program încărcat", "Începători care vor un start ghidat", "Persoane care doresc un stimul de forță cu impact articular redus"],
-    expectations: "Un obiectiv realist este îmbunătățirea compoziției corporale în 4–8 săptămâni, cu monitorizare. Slăbirea „rapidă” fără ajustări alimentare este rar sustenabilă."
+    expectations: "Un obiectiv realist este îmbunătățirea compoziției corporale în 4–8 săptămâni, cu monitorizare. Slăbirea „rapidă” fără ajustări alimentare este rar sustenabilă.",
+    seo: {
+      title: "Slăbire Rapidă și Sănătoasă în Oradea | NeoBoost EMS",
+      description: "Află cum tehnologia EMS accelerează metabolismul și arde calorii eficient. Slăbire rapidă, dar controlată, în Oradea. Studii și explicații științifice.",
+      keywords: ["slăbire rapidă oradea", "slăbire ems", "metabolism accelerat", "ardere calorii", "pierdere greutate oradea"]
+    }
   },
   {
     id: "dureri-spate",
@@ -522,7 +528,12 @@ export const BENEFIT_ARTICLES = [
       }
     ],
     science: "Durerea nu este întotdeauna un indicator al „distrugerii” țesutului; pentru mulți oameni, încărcarea progresivă este benefică. Protocolul contează: intensitate, poziții, exerciții.",
-    expectations: "Mulți clienți raportează îmbunătățiri funcționale în câteva săptămâni, dar obiectivul principal este: mai multă funcție, mai puțină evitare, mai mult control."
+    expectations: "Mulți clienți raportează îmbunătățiri funcționale în câteva săptămâni, dar obiectivul principal este: mai multă funcție, mai puțină evitare, mai mult control.",
+    seo: {
+      title: "Scapă de Durerile de Spate în Oradea | Kineto & EMS NeoBoost",
+      description: "Soluții moderne pentru durerile de spate (lombare) în Oradea. Întărirea musculaturii paravertebrale prin EMS și mișcare controlată. Fără durere.",
+      keywords: ["dureri de spate oradea", "tratament dureri spate", "kinetoterapie ems", "hernie de disc exercitii", "dureri lombare oradea"]
+    }
   },
   {
     id: "tonifiere",
@@ -545,7 +556,12 @@ export const BENEFIT_ARTICLES = [
       }
     ],
     science: "Consistența este predictorul principal al „tonifierii”. EMS oferă un cadru de antrenament eficient și privat.",
-    expectations: "Rezultate vizibile apar, de regulă, în 4–8 săptămâni, în funcție de frecvență, somn și alimentație."
+    expectations: "Rezultate vizibile apar, de regulă, în 4–8 săptămâni, în funcție de frecvență, somn și alimentație.",
+    seo: {
+      title: "Tonifiere Musculară și Fermitate | Sala Fitness NeoBoost Oradea",
+      description: "Tonifiere vizibilă și reducere celulită în Oradea. Antrenamente scurte și intense pentru un corp ferm. Tehnologie EMS pentru activare profundă.",
+      keywords: ["tonifiere oradea", "sala fitness oradea", "reducere celulita", "corp ferm", "fitness femei oradea"]
+    }
   },
   {
     id: "forta-performanta",
@@ -569,7 +585,12 @@ export const BENEFIT_ARTICLES = [
     ],
     science: "Progresia graduală a intensității și recuperarea sunt cheia pentru performanță fără accidentări.",
     target: ["Persoane care vor să crească forța", "Sportivi amatori care folosesc EMS ca supliment"],
-    expectations: "Creșteri ale forței pure și explozive, cu recuperare mai rapidă între sesiuni."
+    expectations: "Creșteri ale forței pure și explozive, cu recuperare mai rapidă între sesiuni.",
+    seo: {
+      title: "Forță și Performanță Sportivă | Antrenament Personal Oradea",
+      description: "Crește-ți forța și explozivitatea fără risc de accidentare. Antrenament personal EMS pentru performanță sportivă în Oradea. Recuperare rapidă.",
+      keywords: ["antrenament forta oradea", "performanta sportiva", "recuperare sportivi", "personal trainer oradea"]
+    }
   }
 ];
 
@@ -607,14 +628,14 @@ export const PROGRAMS = [
     title: "Semi-Private Training",
     subtitle: "ATENȚIE PREMIUM, COST OPTIMIZAT",
     image: "/DSC01081.jpg",
-    tag: "GRUP MIC 2-3 PERS",
+    tag: "ANTRENOR PERSONAL GRUP",
     tagColor: "bg-blue-400",
     iconId: "users",
     duration: "FLEXIBIL",
     idealFor: "Cupluri / Prieteni",
     benefit: "Focus 1:1 la jumătate de preț",
-    description: "Eficiența antrenamentului personal în grupuri de 2-3 persoane. Ideal pentru cei care vor ghidaj atent și motivația unei echipe restrânse.",
-    content: "Semi-Private Training\n\nEFICIENȚA ANTRENAMENTULUI PERSONAL, ÎN GRUP MIC – ȘI TE RECOMPENSĂM!\n\nAtenție premium, cost optimizat, comunitate restrânsă.\n\nEști gata să faci o schimbare?\nVrei atenția unui antrenor personal, dar îți place energia unui grup mic? Semi-Private este soluția ideală: max 2-3 persoane, focus maxim pe tine.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru cei care vor ghidaj atent la un preț mai bun decât 1-la-1.\n✔️ Pentru cupluri sau prieteni care vor să se antreneze împreună.\n✔️ Pentru cei care se motivează mai bine într-un grup mic.\n✔️ Pentru cei care au nevoie de programare fixă.\n\nCUM SUNT ANTRENAMENTELE? (2 Opțiuni)\nA) Semi-Private EMS (30 min): Intensitate, tehnologie, rapiditate.\nB) Semi-Private Funcțional (45 min): Mișcare naturală, forță, condiție fizică.\nIndiferent de opțiune, antrenorul este acolo să corecteze fiecare mișcare.\n\nCE INCLUDE PROGRAMUL?\n- Evaluare inițială detaliată.\n- Antrenamente în grup de 2-3 persoane.\n- Plan de progres: Nu facem mișcare la întâmplare.\n- Tracking: Monitorizăm prezența și rezultatele.\n- Reguli clare de rezervare: Sistemul funcționează ceas.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă alegi un pachet de 3 luni și sunteți prezenți constant la sesiuni, vă oferim a 4-a lună CADOU. Fitness-ul e mai bun în echipă!"
+    description: "Eficiența unui antrenor personal la preț de grup. Ideal pentru cei care vor ghidaj atent și motivația unei echipe restrânse într-o sală de fitness modernă.",
+    content: "Semi-Private Training\n\nEFICIENȚA UNUI ANTRENOR PERSONAL, ÎN GRUP MIC – ȘI TE RECOMPENSĂM!\n\nAtenție premium, cost optimizat, comunitate restrânsă.\n\nEști gata să faci o schimbare?\nVrei atenția unui antrenor personal, dar îți place energia unui grup mic? Semi-Private este soluția ideală: max 2-3 persoane, focus maxim pe tine.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru cei care vor ghidaj atent la un preț mai bun decât 1-la-1.\n✔️ Pentru cupluri sau prieteni care vor să se antreneze împreună.\n✔️ Pentru cei care se motivează mai bine într-un grup mic.\n✔️ Pentru cei care au nevoie de programare fixă.\n\nCUM SUNT ANTRENAMENTELE? (2 Opțiuni)\nA) Semi-Private EMS (30 min): Intensitate, tehnologie, rapiditate.\nB) Semi-Private Funcțional (45 min): Mișcare naturală, forță, condiție fizică în sala de fitness.\nIndiferent de opțiune, antrenorul este acolo să corecteze fiecare mișcare.\n\nCE INCLUDE PROGRAMUL?\n- Evaluare inițială detaliată.\n- Antrenamente cu instructor dedicat în grup de 2-3 persoane.\n- Plan de progres: Nu facem mișcare la întâmplare.\n- Tracking: Monitorizăm prezența și rezultatele.\n- Reguli clare de rezervare: Sistemul funcționează ceas.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă alegi un pachet de 3 luni și sunteți prezenți constant la sesiuni, vă oferim a 4-a lună CADOU. Fitness-ul e mai bun în echipă!"
   },
   {
     id: "8-week-transform",

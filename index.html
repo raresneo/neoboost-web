@@ -5,6 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeoBoost — Bio-Electric Performance</title>
+    <meta name="description"
+        content="NeoBoost EMS Training Oradea - 20 de minute pentru rezultate de 4 ore. Teatru, inovație și performanță bio-electrică. Programare gratuită!">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neo-boost.com/">
+    <meta property="og:title" content="NeoBoost — Bio-Electric Performance">
+    <meta property="og:description"
+        content="NeoBoost EMS Training Oradea - Antrenamente personalizate de 20 de minute. Transformă-ți corpul rapid și eficient.">
+    <meta property="og:image" content="https://neo-boost.com/assets/og-default.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://neo-boost.com/">
+    <meta property="twitter:title" content="NeoBoost — Bio-Electric Performance">
+    <meta property="twitter:description"
+        content="NeoBoost EMS Training Oradea - Antrenamente personalizate de 20 de minute.">
+    <meta property="twitter:image" content="https://neo-boost.com/assets/og-default.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -350,15 +368,16 @@
                 mouseY = e.clientY;
             }, { passive: true });
 
-            curX += (mouseX - curX) * 0.15;
-            curY += (mouseY - curY) * 0.15;
-            cursor.style.transform = `translate3d(${curX - 10}px, ${curY - 10}px, 0)`; // Centered
-            requestAnimationFrame(loop);
-        };
+            const loop = () => {
+                curX += (mouseX - curX) * 0.15;
+                curY += (mouseY - curY) * 0.15;
+                cursor.style.transform = `translate3d(${curX - 10}px, ${curY - 10}px, 0)`;
+                requestAnimationFrame(loop);
+            };
 
-        if (window.matchMedia('(hover: hover)').matches) {
-            loop();
-        }
+            if (window.matchMedia('(hover: hover)').matches) {
+                loop();
+            }
         }
     </script>
     <style>
@@ -373,10 +392,7 @@
             filter: grayscale(0%) contrast(1);
         }
 
-        .scroll-reveal.visible .reveal-color {
-            /* Optional: if we want auto-reveal on scroll, uncomment below */
-            /* filter: grayscale(0%) contrast(1); */
-        }
+
 
         /* Airy Glass Effect */
         .air-glass {
@@ -391,6 +407,19 @@
             border-color: rgba(58, 134, 255, 0.2);
             background: rgba(58, 134, 255, 0.02);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Performance Optimizations */
+        .will-change-scroll {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        /* Ensure glass elements are on their own layer */
+        .glass-block,
+        .glass {
+            transform: translate3d(0, 0, 0);
         }
     </style>
     <script type="module" src="/index.tsx"></script>
