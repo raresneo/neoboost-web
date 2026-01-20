@@ -1271,7 +1271,7 @@ const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth:
 
           <div className="space-y-4 mb-12">
             {pkg.features.map((f, idx) => (
-              <div key={idx} className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-white/60">
+              <div key={idx} className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-white/90">
                 <CheckCheck size={14} className="text-[#3A86FF]" /> {f}
               </div>
             ))}
@@ -1346,7 +1346,7 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> = ({ te
         </div>
 
         <div className="relative z-10">
-          <p className="text-lg md:text-xl font-light text-white/50 leading-relaxed mb-12 italic group-hover:text-white/80 transition-colors duration-700">
+          <p className="text-lg md:text-xl font-light text-white/80 leading-relaxed mb-12 italic group-hover:text-white transition-colors duration-700">
             "{testimonial.quote}"
           </p>
         </div>
@@ -1398,7 +1398,7 @@ const ProgramsSection = () => {
                 PROGRAME <br /><span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>ACTIVE.</span>
               </h2>
             </div>
-            <p className="text-white/60 max-w-md text-right text-sm font-light leading-relaxed hidden md:block readable-text">
+            <p className="text-gray-200 max-w-md text-right text-sm font-medium leading-relaxed hidden md:block readable-text bg-black/40 backdrop-blur-sm p-4 rounded-xl border border-white/5">
               Alege programul care se potrivește obiectivelor tale. Fie că vrei slăbire, tonifiere sau performanță, avem o structură dedicată.
             </p>
           </div>
