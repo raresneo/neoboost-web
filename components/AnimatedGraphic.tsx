@@ -52,8 +52,8 @@ export const AnimatedGraphic: React.FC<AnimatedGraphicProps> = ({ type, classNam
       case 'muscle':
         return (
           <>
-            <div className={`absolute top-0 left-0 w-full h-1 bg-[#3A86FF] shadow-[0_0_20px_#3A86FF] opacity-0 ${isVisible ? 'animate-scan-vertical' : ''}`} 
-                 style={{ animationDuration: '3s', animationIterationCount: 'infinite' }} />
+            <div className={`absolute top-0 left-0 w-full h-1 bg-[#3A86FF] shadow-[0_0_20px_#3A86FF] opacity-0 ${isVisible ? 'animate-scan-vertical' : ''}`}
+              style={{ animationDuration: '3s', animationIterationCount: 'infinite' }} />
             <div className={`absolute inset-0 bg-gradient-to-t from-[#3A86FF]/10 to-transparent opacity-0 ${isVisible ? 'animate-pulse' : ''}`} />
           </>
         );
@@ -66,26 +66,21 @@ export const AnimatedGraphic: React.FC<AnimatedGraphicProps> = ({ type, classNam
         );
       case 'tech':
         return (
-          <div className={`absolute inset-0 border-2 border-[#3A86FF]/20 rounded-full ${isVisible ? 'animate-spin-slow' : ''}`} 
-               style={{ borderTopColor: '#3A86FF', borderRightColor: 'transparent' }} />
+          <div className={`absolute inset-0 border-2 border-[#3A86FF]/20 rounded-full ${isVisible ? 'animate-spin-slow' : ''}`}
+            style={{ borderTopColor: '#3A86FF', borderRightColor: 'transparent' }} />
         );
     }
   };
 
   return (
-    <div 
-      ref={ref} 
-      className={`relative overflow-hidden rounded-xl bg-black/20 border border-white/5 backdrop-blur-sm transition-all duration-1000 ${className} ${getAnimationClass()}`}
+    <div
+      ref={ref}
+      className={`relative rounded-xl transition-all duration-1000 ${className} ${getAnimationClass()}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <img 
-        src={getSource()} 
-        alt={`NeoBoost ${type} visualization`} 
-        className={`w-full h-full object-cover mix-blend-screen opacity-80 transition-transform duration-[2s] ${isVisible ? 'scale-100' : 'scale-110'}`} 
-      />
-      
-      {/* Overlay Effects */}
-      <div className="absolute inset-0 pointer-events-none">
+
+      {/* Overlay Effects Only - No Background Image */}
+      <div className="absolute inset-0 pointer-events-none z-10">
         {renderOverlay()}
         {/* Subtle grid overlay for all */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxwYXRoIGQ9Ik0gMSAwIEwgMSAyMCBNIDAgMSBMIDIwIDEiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPC9zdmc+')] opacity-30"></div>
@@ -95,7 +90,7 @@ export const AnimatedGraphic: React.FC<AnimatedGraphicProps> = ({ type, classNam
       <div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1 bg-black/60 border border-[#3A86FF]/30 rounded-full backdrop-blur-md">
         <div className={`w-1.5 h-1.5 rounded-full bg-[#3A86FF] ${isVisible ? 'animate-pulse' : ''}`}></div>
         <span className="text-[9px] font-bold text-[#3A86FF] uppercase tracking-widest mono-font">
-            {type === 'muscle' ? 'Anatomical Scan' : type === 'energy' ? 'Energy Flow' : 'Data Sync'}
+          {type === 'muscle' ? 'Anatomical Scan' : type === 'energy' ? 'Energy Flow' : 'Data Sync'}
         </span>
       </div>
     </div>
