@@ -399,10 +399,19 @@ const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
         }
       }, 50);
     } else {
+      // Fade out logic
+      let currentVol = audio.volume;
+      const originalVol = currentVol;
+
       fadeInterval = setInterval(() => {
-        if (audio.volume > 0.02) {
-          audio.volume = Math.max(0, audio.volume - 0.02);
+        // iOS check: if volume didn't change on first step, volume control is likely not supported
+        // In that case, just pause immediately to ensure it stops.
+        const isVolumeLocked = (audio.volume === originalVol && originalVol > 0);
+
+        if (audio.volume > 0.02 && !isVolumeLocked) {
+          audio.volume = Math.max(0, audio.volume - 0.05); // Faster fade out
         } else {
+          // Finish fade or force stop if locked
           audio.volume = 0;
           audio.pause();
           clearInterval(fadeInterval);
@@ -1719,20 +1728,6 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
                 <Moon size={14} className="text-white/40 group-hover:text-[#3A86FF]" />
               )}
             </button>
-
-            <button
-              onClick={onOpenBooking}
-              className="hidden 2xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
-            >
-              PROGRAMARE
-            </button>
-
-            <a
-              href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-              className="bg-[#3A86FF] text-black px-8 py-3 text-xs font-black tracking-widest impact-font hover:brightness-110 shadow-lg hover:shadow-[#3A86FF]/20 transition-all transform hover:-translate-y-0.5"
-            >
-              PROBĂ GRATUITĂ
-            </a>
           </div>
 
           {/* Mobile UI Buttons - FIXED Z-INDEX & VISIBILITY */}
@@ -1751,91 +1746,70 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu Overlay - SLIDE DOWN FROM TOP */}
-        <div className={`fixed inset-0 bg-black z-[100] transition-all duration-700 ease-[cubic-bezier(0.2,1,0.3,1)] flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
-          {/* Dynamic Background Image with Theme Overlay */}
-          <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-105 grayscale contrast-[1.2]"
-              style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
-            </div>
-            {/* Theme Layer: Cyan/Black Mix */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-[#3A86FF]/5"></div>
+      {/* Mobile Menu Overlay - MOVED OUTSIDE NAV TO ESCAPE BACKDROP-FILTER CONTEXT */}
+      <div className={`fixed inset-0 bg-black z-[90] transition-all duration-700 ease-[cubic-bezier(0.2,1,0.3,1)] flex flex-col pt-32 px-6 md:px-24 overflow-y-auto ${isMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}`}>
+        {/* Dynamic Background Image with Theme Overlay */}
+        <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-105 grayscale contrast-[1.2]"
+            style={{ backgroundImage: 'url(/ems_training_1.jpg)' }}>
+          </div>
+          {/* Theme Layer: Cyan/Black Mix */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-[#3A86FF]/5"></div>
+        </div>
+
+        {/* Menu Header (Logo/Close) */}
+        <div className="absolute top-8 left-6 right-6 flex justify-between items-center lg:hidden">
+          <div className="flex items-center gap-3">
+            <img src="/logo_white.png" alt="Logo" className="w-8 h-8" />
+            <span className="font-black impact-font text-white">{BRAND.name}</span>
           </div>
 
-          {/* Menu Header (Logo/Close) */}
-          <div className="absolute top-8 left-6 right-6 flex justify-between items-center lg:hidden">
-            <div className="flex items-center gap-3">
-              <img src="/logo_white.png" alt="Logo" className="w-8 h-8" />
-              <span className="font-black impact-font text-white">{BRAND.name}</span>
-            </div>
-            <button
+          {/* Close button with high z-index interaction */}
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          >
+            <CloseIcon size={24} />
+          </button>
+        </div>
+
+        {/* Menu Items */}
+        <div className="flex flex-col gap-4 mb-16 relative z-10">
+          {navItems.map((item, idx) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
               onClick={() => setIsMenuOpen(false)}
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white"
+              className="group flex flex-col py-2"
+              style={{ transitionDelay: `${idx * 50}ms` }}
             >
-              <CloseIcon size={24} />
+              <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest uppercase mb-1">0{idx + 1}</span>
+              <span className="text-4xl md:text-5xl font-black impact-font text-white transition-all group-active:text-[#3A86FF] uppercase">
+                {item.label}
+              </span>
+            </a>
+          ))}
+
+          <Link
+            to="/oferta-speciala"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-6 p-6 bg-[#3A86FF] text-black font-black impact-font text-3xl text-center uppercase shadow-[0_0_30px_rgba(58,134,255,0.4)] block rounded-xl"
+          >
+            Ofertă 3+1 Gratuit
+          </Link>
+
+          <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
+            <button onClick={onOpenAuth} className="flex items-center gap-2 text-white/60 hover:text-white uppercase text-xs font-bold tracking-widest">
+              <UserCheck size={16} /> Contul Meu
+            </button>
+            <button onClick={() => setIsMuted(!isMuted)} className="flex items-center gap-2 text-white/60 hover:text-white uppercase text-xs font-bold tracking-widest">
+              {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />} {isMuted ? 'Activează Sunet' : 'Oprește Sunet'}
             </button>
           </div>
-
-          {/* Menu Items */}
-          <div className="flex flex-col gap-4 mb-16 relative z-10">
-            {navItems.map((item, idx) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setIsMenuOpen(false)}
-                className="group flex flex-col py-2"
-                style={{ transitionDelay: `${idx * 50}ms` }}
-              >
-                <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest uppercase mb-1">0{idx + 1}</span>
-                <span className="text-4xl md:text-5xl font-black impact-font text-white transition-all group-active:text-[#3A86FF] uppercase">
-                  {item.label}
-                </span>
-              </a>
-            ))}
-
-            <Link
-              to="/oferta-speciala"
-              onClick={() => setIsMenuOpen(false)}
-              className="mt-6 p-6 bg-[#3A86FF] text-black font-black impact-font text-3xl text-center uppercase shadow-[0_0_30px_rgba(58,134,255,0.4)]"
-            >
-              OFERTĂ 3+1 🔥
-            </Link>
-          </div>
-
-          <div className="mt-auto pb-12 pt-8 border-t border-white/10 space-y-10 relative z-10">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Follow Us</p>
-                <div className="flex gap-6">
-                  <a href={BRAND.socials.instagram} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Instagram size={20} /></a>
-                  <a href={BRAND.socials.facebook} target="_blank" className="text-white/60 active:text-[#3A86FF]"><Facebook size={20} /></a>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <p className="mono-font text-[8px] text-white/30 uppercase tracking-[0.4em]">Contact</p>
-                <a href={`tel:${BRAND.phone}`} className="text-white impact-font text-lg block">{BRAND.phone}</a>
-                <p className="text-white/30 text-[10px] lowercase">{BRAND.email}</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <a
-                href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`}
-                className="w-full bg-[#3A86FF] text-black py-6 font-black impact-font text-xl text-center uppercase tracking-widest"
-              >
-                PROBĂ GRATUITĂ
-              </a>
-              <button
-                onClick={() => { setIsMenuOpen(false); onOpenAuth(); }}
-                className="w-full border border-white/20 text-white/60 py-4 font-bold text-xs uppercase tracking-widest"
-              >
-                CONTUL MEU
-              </button>
-            </div>
-          </div>
         </div>
-      </nav >
+      </div>
     </>
   );
 };
