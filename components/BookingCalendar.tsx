@@ -120,7 +120,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
 
     const handleWhatsAppBooking = () => {
         if (!selectedTime) return;
-        const message = `Salut! 👋%0AVreau să programez o ședință la NeoBoost:%0A%0A📍 *Locație:* ${selectedLocation.name} (${selectedLocation.type})%0A📅 *Data:* ${formatDate(selectedDate)}%0A⏰ *Ora:* ${selectedTime}`;
+        const message = `Salut!%0AVreau să programez o ședință la NeoBoost:%0A%0A*Locație:* ${selectedLocation.name} (${selectedLocation.type})%0A*Data:* ${formatDate(selectedDate)}%0A*Ora:* ${selectedTime}`;
         const whatsappUrl = `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${message}`;
         window.open(whatsappUrl, '_blank');
         onClose();
