@@ -3027,7 +3027,10 @@ const App: React.FC = () => {
                       <ScrollReveal>
                         <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-8">Protocol NeoBoost</p>
                         <h2 className="text-5xl md:text-7xl font-black impact-font text-white leading-[0.9] mb-12">
-                          TEHNOLOGIE<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] via-[#00F0FF] to-[#3A86FF] bg-[200%_auto] animate-gradient">AVANSATĂ.</span>
+                          TEHNOLOGIE EMS <br />
+                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] via-[#00F0FF] to-[#3A86FF] bg-[200%_auto] animate-gradient">
+                            &amp; BIO-TECH.
+                          </span>
                         </h2>
                       </ScrollReveal>
 
@@ -3059,19 +3062,10 @@ const App: React.FC = () => {
 
                   </div>
                 </div>
-              </section>
-
-              {/* MOVED TECHNOLOGY SECTION HERE FOR CONTINUITY */}
-              <section id="tehnologie" className="pt-24 pb-24 bg-[#020202] relative z-10 overflow-hidden">
-                <TechnologyVideoBackground />
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-[#3A86FF]/50 to-transparent"></div>
+                {/* Separation Line / Flow Connector */}
+                <div className="w-px h-32 bg-gradient-to-b from-[#3A86FF]/0 via-[#3A86FF]/50 to-[#3A86FF]/0 mx-auto my-24 hidden lg:block"></div>
 
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
-                  <ScrollReveal>
-                    <h2 className="text-7xl md:text-[10vw] font-black impact-font text-white mb-32 leading-none uppercase text-center md:text-left">
-                      PRECIZIE<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] via-[#00F0FF] to-[#3A86FF] bg-[200%_auto] animate-gradient">BIO-TECH.</span>
-                    </h2>
-                  </ScrollReveal>
 
                   <div className="space-y-48">
                     {TECH_COMPONENTS.map((comp, idx) => (
@@ -3290,8 +3284,9 @@ const App: React.FC = () => {
             </>
           )}
         </>
-      )}
-    </main>
+      )
+      }
+    </main >
   );
 };
 
