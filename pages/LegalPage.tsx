@@ -1,0 +1,110 @@
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { MoveUpRight } from 'lucide-react';
+
+// --- Legal Page Component ---
+export const LegalPage: React.FC = () => {
+    const { type = 'privacy' } = useParams<{ type: 'privacy' | 'terms' | 'rules' }>();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [type]);
+
+    const content = {
+        privacy: {
+            title: "Politică de Confidențialitate",
+            sections: [
+                {
+                    h: "1. Introducere",
+                    p: "La NeoBoost (denumit în continuare „noi”, „site-ul” sau „studioul”), confidențialitatea datelor dumneavoastră este o prioritate. Această politică explică modul în care colectăm, utilizăm și protejăm informațiile dumneavoastră personale în conformitate cu Regulamentul General privind Protecția Datelor (GDPR)."
+                },
+                {
+                    h: "2. Datele pe care le colectăm",
+                    p: "Colectăm informații necesare pentru a vă oferi serviciile noastre, inclusiv: nume, prenume, adresă de email, număr de telefon (pentru programări și contact), date de plată (procesate securizat prin Stripe) și date tehnice (adresa IP, tipul browserului) prin intermediul fișierelor de tip cookie."
+                },
+                {
+                    h: "3. Scopul colectării",
+                    p: "Utilizăm aceste date pentru: prelucrarea programărilor pentru sesiunile EMS, procesarea plăților pentru abonamente, comunicarea detaliilor despre serviciile noastre și, doar cu acordul dumneavoastră explicit, pentru trimiterea de oferte promoționale."
+                },
+                {
+                    h: "4. Partajarea datelor",
+                    p: "Nu vindem și nu închiriem datele dumneavoastră către terți. Datele pot fi accesate de furnizori de servicii esențiale precum Stripe (procesare plăți) și Supabase (stocare baze de date), care respectă standarde stricte de securitate."
+                },
+                {
+                    h: "5. Drepturile dumneavoastră",
+                    p: "Conform legii, aveți dreptul de a solicita accesul la datele dumneavoastră, rectificarea acestora, ștergerea („dreptul de a fi uitat”), restricționarea prelucrării sau portabilitatea datelor. Pentru orice solicitare, ne puteți contacta la contact@neoboost.ro."
+                },
+                {
+                    h: "6. Securitate",
+                    p: "Implementăm măsuri tehnice și organizatorice avansate (criptare SSL, stocare securizată) pentru a proteja datele împotriva accesului neautorizat sau pierderii accidentale."
+                }
+            ]
+        },
+        terms: {
+            title: "Termeni și Condiții",
+            sections: [
+                {
+                    h: "1. Condiții Generale",
+                    p: "Prin accesarea site-ului și utilizarea serviciilor NeoBoost, sunteți de acord cu acești termeni. Serviciile noastre sunt destinate persoanelor cu vârsta peste 18 ani (sau minori cu acord parental)."
+                },
+                {
+                    h: "2. Rezervări și Anulări",
+                    p: "Rezervările pentru sesiunile EMS se fac online sau telefonic. Anularea unei ședințe trebuie făcută cu cel puțin 12 ore înainte, în caz contrar ședința fiind considerată efectuată."
+                },
+                {
+                    h: "3. Plata și Pachete",
+                    p: "Plata se face în avans pentru pachetele de ședințe. Pachetele au o valabilitate limitată conform descrierii fiecărui abonament (30 de zile pentru pachete lunare)."
+                }
+            ]
+        },
+        rules: {
+            title: "Regulament Intern",
+            sections: [
+                {
+                    h: "1. Echipamentul și Igiena",
+                    p: "Utilizarea echipamentului furnizat de NeoBoost este obligatorie. Vă rugăm să veniți cu încălțăminte de schimb curată pentru zona de antrenament."
+                },
+                {
+                    h: "2. Siguranța la Antrenament",
+                    p: "Este obligatoriu să informați antrenorul despre orice problemă de sănătate sau contraindicație medicală înainte de începerea sesiunii EMS."
+                },
+                {
+                    h: "3. Comportament",
+                    p: "NeoBoost promovează un mediu de respect reciproc. Ne rezervăm dreptul de a refuza accesul persoanelor cu un comportament neadecvat."
+                }
+            ]
+        }
+    };
+
+    const current = content[type];
+
+    return (
+        <div className="min-h-screen bg-black text-white relative z-50">
+            <div className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-[#3A86FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_0_30px_rgba(0,245,255,0.1)]">
+                <Link
+                    to="/"
+                    className="relative overflow-hidden flex items-center gap-3 text-[#3A86FF] hover:text-black bg-transparent hover:bg-[#3A86FF] transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/30 hover:border-[#3A86FF] text-xs font-black uppercase tracking-[0.2em] group shadow-[0_0_15px_rgba(58,134,255,0.1)] hover:shadow-[0_0_30px_rgba(58,134,255,0.4)]"
+                >
+                    <span className="relative z-10 flex items-center gap-3">
+                        <MoveUpRight size={16} className="rotate-[225deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
+                        ÎNAPOI
+                    </span>
+                </Link>
+                <div className="mono-font text-[#3A86FF]/60 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase">
+                    LEGAL / {current.title}
+                </div>
+            </div>
+
+            <div className="pt-32 pb-20 container mx-auto px-6 max-w-3xl">
+                <h1 className="text-4xl md:text-6xl font-black impact-font text-white mb-12 uppercase tracking-tight">{current.title}</h1>
+                <div className="space-y-12">
+                    {current.sections.map((s, i) => (
+                        <div key={i} className="space-y-4">
+                            <h2 className="text-xl font-black impact-font text-[#3A86FF] uppercase border-l-2 border-[#3A86FF] pl-4">{s.h}</h2>
+                            <p className="text-white/60 leading-relaxed font-light">{s.p}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
