@@ -286,6 +286,75 @@ const SpotlightCard = ({
   );
 };
 
+// --- Bio-Decryption Text Component ---
+const BioDecryption = ({ text, className = "", revealSpeed = 50 }: { text: string; className?: string; revealSpeed?: number }) => {
+  const [displayText, setDisplayText] = useState(text);
+  const [isHovered, setIsHovered] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    let iteration = 0;
+
+    const startScramble = () => {
+      clearInterval(interval);
+      iteration = 0;
+
+      interval = setInterval(() => {
+        setDisplayText(prev =>
+          text
+            .split("")
+            .map((char, index) => {
+              if (index < iteration) {
+                return text[index];
+              }
+              // Keep spaces or special chars stable sometimes
+              if (char === " ") return " ";
+              return chars[Math.floor(Math.random() * chars.length)];
+            })
+            .join("")
+        );
+
+        if (iteration >= text.length) {
+          clearInterval(interval);
+        }
+
+        iteration += 1 / 2; // Slower reveal for dramatic effect
+      }, revealSpeed);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startScramble();
+        // Optional: disconnect if we only want it to run once. 
+        // Keeping it connected re-runs it on scroll which is cool.
+      }
+    }, { threshold: 0.5 });
+
+    if (elementRef.current) observer.observe(elementRef.current);
+
+    // Also trigger on hover
+    if (isHovered) startScramble();
+
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+    };
+  }, [text, revealSpeed, isHovered]);
+
+  return (
+    <span
+      ref={elementRef}
+      className={`inline-block mono-font ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {displayText}
+    </span>
+  );
+};
+
 const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -1195,17 +1264,17 @@ const ImmersiveHero = () => {
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white/60 text-sm md:text-base">
           <div className="flex items-center gap-2">
             <Star size={18} className="text-yellow-400 fill-yellow-400" />
-            <span><strong className="text-white"><AnimatedCounter value={4.9} duration={1500} suffix="" /></strong> pe Google</span>
+            <span><strong className="text-white"><BioDecryption text="4.9" /></strong> pe Google</span>
           </div>
           <div className="w-px h-5 bg-white/20 hidden md:block"></div>
           <div className="flex items-center gap-2">
             <CheckCircle2 size={18} className="text-[#3A86FF]" />
-            <span><strong className="text-white"><AnimatedCounter value={500} suffix="+" /></strong> clienți activi</span>
+            <span><strong className="text-white"><BioDecryption text="500+" /></strong> clienți activi</span>
           </div>
           <div className="w-px h-5 bg-white/20 hidden md:block"></div>
           <div className="flex items-center gap-2">
             <Zap size={18} className="text-[#3A86FF]" />
-            <span><strong className="text-white"><AnimatedCounter value={3000} suffix="+" /></strong> ședințe EMS</span>
+            <span><strong className="text-white"><BioDecryption text="3000+" /></strong> ședințe EMS</span>
           </div>
         </div>
 
@@ -2781,7 +2850,7 @@ const App: React.FC = () => {
                           <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'energy' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>SLĂBIRE RAPIDĂ</h3>
                           <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
                           <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
-                            Arzi până la <span className="text-white font-bold">500 kcal</span> în 30 min și activezi metabolismul pentru încă 48h (efect afterburn).
+                            Arzi până la <span className="text-white font-bold"><BioDecryption text="500 kcal" /></span> în <BioDecryption text="30 min" className="text-white font-bold" /> și activezi metabolismul pentru încă 48h (efect afterburn).
                           </p>
                           <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Vezi explicația științifică <MoveUpRight size={12} />
