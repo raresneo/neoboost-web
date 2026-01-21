@@ -81,7 +81,7 @@ const formatDate = (date: Date): string => {
 
 const WEEKDAYS = ['Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm', 'Dum'];
 
-export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocationId?: string }> = ({ onClose, preselectedLocationId }) => {
+export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocationId?: string; compact?: boolean }> = ({ onClose, preselectedLocationId, compact = false }) => {
     const [selectedLocation, setSelectedLocation] = useState<LocationSchedule>(() => {
         if (preselectedLocationId) {
             const found = LOCATIONS.find(l => l.id === preselectedLocationId);
@@ -156,67 +156,71 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
     return (
         <div className="bg-[#050505] rounded-3xl border border-white/10 overflow-hidden w-full max-w-5xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-[90vh] md:h-[600px] animate-in fade-in zoom-in duration-300">
 
-            {/* Sidebar / Visual Context */}
-            <div className="md:w-1/3 bg-[#0a0a0a] relative overflow-hidden flex flex-col justify-between p-8 border-r border-white/5">
-                <div className="absolute inset-0 opacity-40">
-                    <img
-                        src={selectedLocation.image}
-                        alt={selectedLocation.name}
-                        className="w-full h-full object-cover grayscale mix-blend-overlay transition-all duration-700"
-                        key={selectedLocation.image} // Force re-render for transition
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                </div>
-
-                <div className="relative z-10">
-                    <h2 className="text-4xl font-black impact-font text-white mb-2 uppercase leading-none">
-                        Programare
-                    </h2>
-                    <p className="text-[#3A86FF] mono-font text-[10px] uppercase tracking-[0.4em] font-bold">
-                        {selectedLocation.name} Experience
-                    </p>
-                </div>
-
-                <div className="relative z-10 space-y-6 mt-12 md:mt-0">
-                    <div className="glass-block p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md">
-                        <div className="flex items-center gap-3 mb-2 text-[#3A86FF]">
-                            {selectedLocation.icon}
-                            <span className="font-bold uppercase tracking-wider text-sm">Locație Selectată</span>
-                        </div>
-                        <p className="text-white font-bold text-lg">{selectedLocation.name}</p>
-                        <p className="text-white/50 text-xs">{selectedLocation.description}</p>
+            {/* Sidebar / Visual Context - Hidden in compact mode */}
+            {!compact && (
+                <div className="md:w-1/3 bg-[#0a0a0a] relative overflow-hidden flex flex-col justify-between p-8 border-r border-white/5">
+                    <div className="absolute inset-0 opacity-40">
+                        <img
+                            src={selectedLocation.image}
+                            alt={selectedLocation.name}
+                            className="w-full h-full object-cover grayscale mix-blend-overlay transition-all duration-700"
+                            key={selectedLocation.image} // Force re-render for transition
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                     </div>
 
-                    {selectedTime && (
-                        <div className="glass-block p-4 rounded-xl border border-[#3A86FF]/30 bg-[#3A86FF]/10 backdrop-blur-md animate-in slide-in-from-bottom duration-500">
-                            <div className="flex items-center gap-3 mb-2 text-white">
-                                <Clock size={18} />
-                                <span className="font-bold uppercase tracking-wider text-sm">Oră Selectată</span>
+                    <div className="relative z-10">
+                        <h2 className="text-4xl font-black impact-font text-white mb-2 uppercase leading-none">
+                            Programare
+                        </h2>
+                        <p className="text-[#3A86FF] mono-font text-[10px] uppercase tracking-[0.4em] font-bold">
+                            {selectedLocation.name} Experience
+                        </p>
+                    </div>
+
+                    <div className="relative z-10 space-y-6 mt-12 md:mt-0">
+                        <div className="glass-block p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md">
+                            <div className="flex items-center gap-3 mb-2 text-[#3A86FF]">
+                                {selectedLocation.icon}
+                                <span className="font-bold uppercase tracking-wider text-sm">Locație Selectată</span>
                             </div>
-                            <p className="text-white font-black text-2xl impact-font tracking-wide">
-                                {formatDate(selectedDate)} <span className="text-[#3A86FF]">/</span> {selectedTime}
-                            </p>
+                            <p className="text-white font-bold text-lg">{selectedLocation.name}</p>
+                            <p className="text-white/50 text-xs">{selectedLocation.description}</p>
                         </div>
-                    )}
+
+                        {selectedTime && (
+                            <div className="glass-block p-4 rounded-xl border border-[#3A86FF]/30 bg-[#3A86FF]/10 backdrop-blur-md animate-in slide-in-from-bottom duration-500">
+                                <div className="flex items-center gap-3 mb-2 text-white">
+                                    <Clock size={18} />
+                                    <span className="font-bold uppercase tracking-wider text-sm">Oră Selectată</span>
+                                </div>
+                                <p className="text-white font-black text-2xl impact-font tracking-wide">
+                                    {formatDate(selectedDate)} <span className="text-[#3A86FF]">/</span> {selectedTime}
+                                </p>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col bg-[#050505] relative">
                 <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar flex-1">
 
-                    {/* Location Tabs */}
-                    <div className="flex bg-white/5 p-1 rounded-xl mb-8 w-fit gap-1">
-                        {LOCATIONS.map(loc => (
-                            <button
-                                key={loc.id}
-                                onClick={() => { setSelectedLocation(loc); setSelectedTime(null); }}
-                                className={`px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedLocation.id === loc.id ? 'bg-[#3A86FF] text-black shadow-[0_0_20px_rgba(58,134,255,0.4)]' : 'text-white/40 hover:text-white hover:bg-white/5'}`}
-                            >
-                                {loc.name}
-                            </button>
-                        ))}
-                    </div>
+                    {/* Location Tabs - Hidden in compact mode */}
+                    {!compact && (
+                        <div className="flex bg-white/5 p-1 rounded-xl mb-8 w-fit gap-1">
+                            {LOCATIONS.map(loc => (
+                                <button
+                                    key={loc.id}
+                                    onClick={() => { setSelectedLocation(loc); setSelectedTime(null); }}
+                                    className={`px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedLocation.id === loc.id ? 'bg-[#3A86FF] text-black shadow-[0_0_20px_rgba(58,134,255,0.4)]' : 'text-white/40 hover:text-white hover:bg-white/5'}`}
+                                >
+                                    {loc.name}
+                                </button>
+                            ))}
+                        </div>
+                    )}
 
                     <div className="space-y-8">
                         {/* Calendar */}

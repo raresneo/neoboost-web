@@ -123,7 +123,7 @@ export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, 
                         <div className="space-y-6">
                             <h3 className="text-2xl font-bold text-white mb-4">Programează-te Acum</h3>
                             <div className="relative w-full h-[600px] bg-[#050505] rounded-2xl overflow-hidden border border-white/10">
-                                <BookingCalendar onClose={onClose} preselectedLocationId={location.id} />
+                                <BookingCalendar onClose={onClose} preselectedLocationId={location.id} compact={true} />
                             </div>
                         </div>
                     </div>
