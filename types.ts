@@ -13,6 +13,8 @@ export interface Location {
   address: string;
   description: string;
   perks: string[];
+  calendlyUrl?: string;
+  gallery?: string[];
 }
 
 export interface FAQItem {
@@ -42,49 +44,49 @@ export interface ExtendedProgram {
   benefit: string;
   description: string;
   content: string;
-  
+
   // Extended fields for landing pages
   forWho: {
     ideal: string[];
     notFor: string[];
   };
-  
+
   workoutDetails: {
     duration: string;
     frequency: string;
     format: string;
     structure: string[];
   };
-  
+
   includes: string[];
-  
+
   pricing: {
     specialPrice?: string;
     referencePackages: boolean;
     details: string;
   };
-  
+
   bonuses: string[];
-  
+
   reward3Plus1: {
     enabled: boolean;
     conditions: string[];
     description: string;
   };
-  
+
   participationConditions: string[];
-  
+
   freeConsultation: {
     title: string;
     description: string;
     calendlyLink: string;
   };
-  
+
   afterConsultation: string;
-  
+
   testimonials?: Testimonial[];
   faq?: FAQItem[];
-  
+
   // SEO
   seo?: {
     title: string;

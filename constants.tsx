@@ -330,13 +330,27 @@ export const LOCATIONS: Location[] = [
     name: "Hotel Ramada",
     address: "Calea Aradului nr. 9, Oradea",
     description: "Un spațiu premium, relaxant, echipat cu cele mai noi stații de antrenament NeoBoost.",
-    perks: ["Parcare privată", "Zonă de relaxare", "Atmosferă exclusivistă"]
+    perks: ["Parcare privată", "Zonă de relaxare", "Atmosferă exclusivistă"],
+    calendlyUrl: "https://calendly.com/neoboost-ramada",
+    gallery: [
+      "/ramada.jpg",
+      "/ramada_2.jpg",
+      "/ramada_3.jpg",
+      "/ramada_equipment.jpg"
+    ]
   },
   {
     name: "Sala GetFit",
     address: "Lotus Center, Nufărului, Oradea",
     description: "O locație energică, plină de lumină naturală, ideală pentru antrenamente dinamice.",
-    perks: ["Locație centrală", "Lumină naturală", "Acces facil"]
+    perks: ["Locație centrală", "Lumină naturală", "Acces facil"],
+    calendlyUrl: "https://calendly.com/neoboost-getfit",
+    gallery: [
+      "/getfit.jpg",
+      "/getfit_2.jpg",
+      "/getfit_3.jpg",
+      "/getfit_equipment.jpg"
+    ]
   }
 ];
 
