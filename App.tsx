@@ -2943,23 +2943,31 @@ const App: React.FC = () => {
                             {activeGraphic === 'energy' ? 'Analiză consum caloric' : activeGraphic === 'muscle' ? 'Harta musculară' : 'Sincronizare impulsuri'}
                           </p>
                         </div>
-                        {/* Dynamic Visualization Layer */}
-                        <div className="absolute inset-0 z-0 overflow-hidden rounded-xl">
+                        {/* Dynamic Visualization Layer - REAL PHOTOS WITH DIGITAL FILTER */}
+                        <div className="absolute inset-0 z-0 overflow-hidden rounded-xl bg-black">
+                          {/* Background Grid for depth */}
+                          <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+
                           <img
                             src={
-                              activeGraphic === 'energy' ? '/ems_slabire.png' :
-                                activeGraphic === 'muscle' ? '/ems_spate.png' :
-                                  '/ems_tonifiere.png'
+                              activeGraphic === 'energy' ? '/ems_training_1.jpg' :
+                                activeGraphic === 'muscle' ? '/ems_training_2.jpg' :
+                                  '/ems_training_3.jpg'
                             }
-                            alt="EMS Visualization"
-                            className="w-full h-full object-cover opacity-60 mix-blend-screen scale-110 transition-all duration-1000 transform hover:scale-105"
+                            alt="EMS Training Real"
+                            className="w-full h-full object-cover opacity-60 mix-blend-luminosity scale-110 transition-all duration-700 transform hover:scale-105 filter grayscale contrast-[1.2] brightness-75"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#020408] via-transparent to-[#020408]/50"></div>
-                          <div className="absolute inset-0 bg-[#3A86FF]/10 mix-blend-overlay"></div>
+
+                          {/* Digital Blue Overlay to create 'Hologram' effect on real photo */}
+                          <div className="absolute inset-0 bg-[#3A86FF] mix-blend-color opacity-50"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#020408] via-transparent to-[#020408]/80"></div>
+
+                          {/* Scanlines for CRT effect */}
+                          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_50%,transparent_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
                         </div>
 
                         {/* HUD Overlay */}
-                        <AnimatedGraphic type={activeGraphic} className="relative z-10 w-full h-full text-[#3A86FF] opacity-90 mix-blend-difference" />
+                        <AnimatedGraphic type={activeGraphic} className="relative z-10 w-full h-full text-[#00F0FF] opacity-100 mix-blend-screen" />
                       </div>
                     </div>
                   </div>
