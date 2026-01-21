@@ -23,12 +23,11 @@ const LOCATIONS: LocationSchedule[] = [
         icon: <TrendingUp size={24} />,
         image: '/getfit.jpg',
         schedule: {
-            1: [{ start: '15:00', end: '20:00' }], // Mon
-            2: [{ start: '07:00', end: '11:30' }], // Tue
-            3: [{ start: '15:00', end: '20:00' }], // Wed
-            4: [{ start: '07:00', end: '11:30' }], // Thu
-            5: [{ start: '15:00', end: '20:00' }], // Fri
-            6: [{ start: '09:30', end: '13:00' }], // Sat
+            1: [{ start: '07:00', end: '10:00' }], // Mon
+            2: [{ start: '16:00', end: '19:00' }], // Tue
+            3: [{ start: '07:00', end: '10:00' }], // Wed
+            4: [{ start: '16:00', end: '19:00' }], // Thu
+            5: [{ start: '07:00', end: '10:00' }], // Fri
         },
     },
     {
@@ -39,11 +38,12 @@ const LOCATIONS: LocationSchedule[] = [
         icon: <Zap size={24} />,
         image: '/ramada.jpg',
         schedule: {
-            1: [{ start: '07:00', end: '10:00' }], // Mon
-            2: [{ start: '16:00', end: '19:00' }], // Tue
-            3: [{ start: '07:00', end: '10:00' }], // Wed
-            4: [{ start: '16:00', end: '19:00' }], // Thu
-            5: [{ start: '07:00', end: '10:00' }], // Fri
+            1: [{ start: '15:00', end: '20:00' }], // Mon
+            2: [{ start: '07:00', end: '11:30' }], // Tue
+            3: [{ start: '15:00', end: '20:00' }], // Wed
+            4: [{ start: '07:00', end: '11:30' }], // Thu
+            5: [{ start: '15:00', end: '20:00' }], // Fri
+            6: [{ start: '09:30', end: '13:00' }], // Sat
         },
     },
 ];
