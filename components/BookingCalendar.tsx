@@ -23,11 +23,11 @@ const LOCATIONS: LocationSchedule[] = [
         icon: <TrendingUp size={24} />,
         image: '/getfit.jpg',
         schedule: {
-            1: [{ start: '07:00', end: '11:00' }],
-            2: [{ start: '16:00', end: '19:00' }],
-            3: [{ start: '07:00', end: '11:00' }],
-            4: [{ start: '16:00', end: '19:00' }],
-            5: [{ start: '07:00', end: '11:00' }],
+            1: [{ start: '07:00', end: '10:00' }], // Mon
+            2: [{ start: '16:00', end: '19:00' }], // Tue
+            3: [{ start: '07:00', end: '10:00' }], // Wed
+            4: [{ start: '16:00', end: '19:00' }], // Thu
+            5: [{ start: '07:00', end: '10:00' }], // Fri
         },
     },
     {
@@ -38,12 +38,12 @@ const LOCATIONS: LocationSchedule[] = [
         icon: <Zap size={24} />,
         image: '/ramada.jpg',
         schedule: {
-            1: [{ start: '15:00', end: '20:00' }],
-            2: [{ start: '07:00', end: '11:00' }],
-            3: [{ start: '15:00', end: '20:00' }],
-            4: [{ start: '07:00', end: '11:00' }],
-            5: [{ start: '15:00', end: '20:00' }],
-            6: [{ start: '10:00', end: '14:00' }],
+            1: [{ start: '15:00', end: '20:00' }], // Mon
+            2: [{ start: '07:00', end: '11:30' }], // Tue
+            3: [{ start: '15:00', end: '20:00' }], // Wed
+            4: [{ start: '07:00', end: '11:30' }], // Thu
+            5: [{ start: '15:00', end: '20:00' }], // Fri
+            6: [{ start: '09:30', end: '13:00' }], // Sat
         },
     },
 ];
@@ -165,12 +165,17 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
         return checkDate < today;
     };
 
-    const [view, setView] = useState<'date' | 'time'>('date');
+    const [view, setView] = useState<'date' | 'time' | 'confirm'>('date');
 
     const handleDateSelect = (date: Date) => {
         setSelectedDate(date);
         setSelectedTime(null);
         setView('time');
+    };
+
+    const handleTimeSelect = (time: string) => {
+        setSelectedTime(time);
+        setView('confirm');
     };
 
     return (
@@ -308,7 +313,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                         {availableSlots.map(time => (
                                             <button
                                                 key={time}
-                                                onClick={() => setSelectedTime(time)}
+                                                onClick={() => handleTimeSelect(time)}
                                                 className={`py-3 rounded-lg text-xs font-bold transition-all duration-200 border ${selectedTime === time
                                                     ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(58,134,255,0.4)] scale-105'
                                                     : 'bg-transparent border-white/10 text-white hover:border-[#3A86FF]/50 hover:bg-[#3A86FF]/5'
@@ -325,6 +330,54 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                 )}
                             </div>
                         )}
+
+                        {/* Confirmation View */}
+                        {view === 'confirm' && (
+                            <div className="animate-in slide-in-from-right duration-300 flex flex-col items-center justify-center h-full py-8">
+                                <button
+                                    onClick={() => setView('time')}
+                                    className="self-start flex items-center gap-2 text-white/50 hover:text-white mb-8 text-xs font-bold uppercase tracking-widest transition-colors"
+                                >
+                                    <ChevronLeft size={16} /> Înapoi la Intervale
+                                </button>
+
+                                <div className="text-center space-y-6 max-w-sm">
+                                    <div className="w-20 h-20 rounded-full bg-[#25D366]/20 flex items-center justify-center mx-auto mb-6 ring-1 ring-[#25D366]/50 shadow-[0_0_30px_rgba(37,211,102,0.2)]">
+                                        <MessageCircle size={40} className="text-[#25D366]" />
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-2xl font-black text-white mb-2 impact-font uppercase">Confirmă Rezervarea</h3>
+                                        <p className="text-white/60">
+                                            Detaliile rezervării tale sunt pregătite. Finalizează programarea rapid pe WhatsApp.
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-white/5 p-6 rounded-xl border border-white/10 w-full">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <span className="text-white/40 text-xs font-bold uppercase">Data</span>
+                                            <span className="text-white font-bold">{formatDate(selectedDate)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center mb-2">
+                                            <span className="text-white/40 text-xs font-bold uppercase">Ora</span>
+                                            <span className="text-[#3A86FF] font-black text-lg">{selectedTime}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-white/40 text-xs font-bold uppercase">Locație</span>
+                                            <span className="text-white font-bold">{selectedLocation.name}</span>
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={handleWhatsAppBooking}
+                                        className="w-full py-4 rounded-xl font-black uppercase text-sm tracking-widest flex items-center justify-center gap-3 transition-all duration-300 bg-[#25D366] text-black hover:brightness-110 shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:scale-105"
+                                    >
+                                        <MessageCircle size={20} />
+                                        Trimite pe WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -333,16 +386,8 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                     <button onClick={onClose} className="text-white/40 hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors">
                         Anulează
                     </button>
-                    <button
-                        onClick={handleWhatsAppBooking}
-                        disabled={!selectedTime}
-                        className={`px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest flex items-center gap-3 transition-all duration-300 ${selectedTime
-                            ? 'bg-[#25D366] text-black hover:brightness-110 shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:scale-105'
-                            : 'bg-white/5 text-white/20 cursor-not-allowed'
-                            }`}
-                    >
-                        <MessageCircle size={18} />
-                        Confirmă Rezervarea
+                    <button onClick={onClose} className="text-white/40 hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors">
+                        Anulează
                     </button>
                 </div>
 
