@@ -878,7 +878,7 @@ const EMSTimeline = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="istoric" className="py-16 md:py-24 bg-[#050505] relative z-10 overflow-hidden scroll-mt-20">
+    <section id="istoric" className="pt-24 md:pt-32 pb-16 md:pb-24 bg-[#050505] relative z-10 overflow-hidden scroll-mt-20">
       <HistoryVideoBackground />
       <div className="container mx-auto px-6 md:px-24">
         <ScrollReveal className="mb-24">
@@ -1385,7 +1385,7 @@ const ProgramsSection = () => {
   };
 
   return (
-    <section id="programe" className="py-32 md:py-60 bg-[#050505] relative z-20 border-t border-white/5 overflow-hidden scroll-mt-20">
+    <section id="programe" className="pt-32 md:pt-40 pb-32 md:pb-60 bg-[#050505] relative z-20 border-t border-white/5 overflow-hidden scroll-mt-20">
       <ProgramsVideoBackground />
       <div className="container mx-auto px-6 md:px-24">
         <ScrollReveal>
@@ -2708,7 +2708,7 @@ const App: React.FC = () => {
 
 
               {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
-              <section id="pentru-cine" className="py-20 md:py-32 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
+              <section id="pentru-cine" className="pt-24 md:pt-32 pb-20 md:pb-32 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
                 <BenefitsVideoBackground />
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <ScrollReveal>
@@ -2728,7 +2728,7 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('energy')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }}
-                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'energy' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
+                          className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'energy' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                         >
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'energy' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
                             <Zap size={28} />
@@ -2749,7 +2749,7 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('muscle')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }}
-                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
+                          className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                         >
                           <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF] text-white text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
@@ -2771,7 +2771,7 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('muscle')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }}
-                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
+                          className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                         >
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
                             <Target size={28} />
@@ -2792,7 +2792,7 @@ const App: React.FC = () => {
                         <div
                           onMouseEnter={() => setActiveGraphic('tech')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }}
-                          className={`p-8 h-full border transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'tech' ? 'bg-[#0a0a0a] border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'bg-black/80 backdrop-blur-md border-white/10 hover:bg-[#0a0a0a]'}`}
+                          className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'tech' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                         >
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'tech' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
                             <TrendingUp size={28} />
@@ -2833,7 +2833,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="metoda" className="py-24 md:py-40 bg-[#020202] relative z-10 overflow-hidden scroll-mt-20">
+              <section id="metoda" className="pt-28 md:pt-40 pb-24 md:pb-40 bg-[#020202] relative z-10 overflow-hidden scroll-mt-20">
                 <BiohackVideoBackground />
                 <div className="container mx-auto px-6 md:px-24 relative z-20">
                   <div className="grid lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
@@ -2889,7 +2889,7 @@ const App: React.FC = () => {
                           <div
                             key={i}
                             onMouseEnter={() => setActiveBenefit(i)}
-                            className={`group cursor-pointer p-8 rounded-2xl border transition-all duration-500 ease-out relative overflow-hidden ${activeBenefit === i ? 'bg-[#3A86FF] border-[#3A86FF] shadow-[0_0_30px_rgba(58,134,255,0.3)]' : 'bg-black/60 border-white/5 hover:bg-white/5'}`}
+                            className={`group cursor-pointer p-8 rounded-2xl transition-all duration-500 ease-out relative overflow-hidden ${activeBenefit === i ? 'bg-[#3A86FF] border border-[#3A86FF] shadow-[0_0_30px_rgba(58,134,255,0.3)]' : 'glass-block'}`}
                           >
                             <div className="flex items-start gap-6 relative z-10">
                               <div className={`p-3 rounded-lg transition-colors duration-300 ${activeBenefit === i ? 'bg-black/20 text-white' : 'bg-white/5 text-[#3A86FF]'}`}>
@@ -2930,7 +2930,7 @@ const App: React.FC = () => {
 
 
 
-              <section id="tehnologie" className="py-24 md:py-60 bg-black relative z-10 overflow-hidden scroll-mt-20">
+              <section id="tehnologie" className="pt-28 md:pt-40 pb-24 md:pb-60 bg-black relative z-10 overflow-hidden scroll-mt-20">
                 <TechnologyVideoBackground />
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <ScrollReveal>
@@ -3009,7 +3009,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="abonamente" className="py-24 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden scroll-mt-20">
+              <section id="abonamente" className="pt-28 md:pt-40 pb-24 md:pb-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden scroll-mt-20">
                 <div className="absolute inset-0 grid-bg opacity-30"></div>
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-32 gap-10">
