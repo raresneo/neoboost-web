@@ -10,11 +10,14 @@ if (!rootElement) {
 
 const root = ReactDOM.createRoot(rootElement);
 import { HelmetProvider } from 'react-helmet-async';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </HelmetProvider>
   </React.StrictMode>
 );

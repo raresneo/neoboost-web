@@ -30,7 +30,7 @@ const trackEvent = (action: string, params: any) => {
 
 export const Layout: React.FC = () => {
     const location = useLocation();
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false); // DEBUG: Disabled preloader
 
     // Theme State
     const [isLight, setIsLight] = useState(false);
