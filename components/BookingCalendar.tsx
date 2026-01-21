@@ -92,7 +92,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [selectedTime, setSelectedTime] = useState<string | null>(null);
     const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
-    const [bookingStep, setBookingStep] = useState<'location' | 'datetime' | 'confirm'>('location'); // Added 'location' step for clearer flow
+
 
     const availableSlots = useMemo(() => {
         const dayOfWeek = getDayOfWeek(selectedDate);
@@ -165,6 +165,14 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
         return checkDate < today;
     };
 
+    const [view, setView] = useState<'date' | 'time'>('date');
+
+    const handleDateSelect = (date: Date) => {
+        setSelectedDate(date);
+        setSelectedTime(null);
+        setView('time');
+    };
+
     return (
         <div className="bg-[#050505] rounded-3xl border border-white/10 overflow-hidden w-full max-w-5xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-[90vh] md:h-[600px] animate-in fade-in zoom-in duration-300">
 
@@ -225,7 +233,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                             {LOCATIONS.map(loc => (
                                 <button
                                     key={loc.id}
-                                    onClick={() => { setSelectedLocation(loc); setSelectedTime(null); }}
+                                    onClick={() => { setSelectedLocation(loc); setSelectedTime(null); setView('date'); }}
                                     className={`px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedLocation.id === loc.id ? 'bg-[#3A86FF] text-black shadow-[0_0_20px_rgba(58,134,255,0.4)]' : 'text-white/40 hover:text-white hover:bg-white/5'}`}
                                 >
                                     {loc.name}
@@ -235,77 +243,88 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                     )}
 
                     <div className="space-y-8">
-                        {/* Calendar */}
-                        <div className="glass p-6 rounded-2xl border border-white/5">
-                            <div className="flex items-center justify-between mb-6">
-                                <h3 className="text-white font-bold flex items-center gap-2">
-                                    <Calendar size={18} className="text-[#3A86FF]" />
-                                    <span className="uppercase tracking-wide text-sm">Selectează Data</span>
-                                </h3>
-                                <div className="flex gap-1">
-                                    <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))} className="p-2 hover:bg-white/10 rounded-lg text-white/60 hover:text-[#3A86FF] transition-colors"><ChevronLeft size={18} /></button>
-                                    <span className="min-w-[100px] text-center font-bold text-white text-sm uppercase py-2">{currentMonth.toLocaleDateString('ro-RO', { month: 'long', year: 'numeric' })}</span>
-                                    <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))} className="p-2 hover:bg-white/10 rounded-lg text-white/60 hover:text-[#3A86FF] transition-colors"><ChevronRight size={18} /></button>
+                        {/* Calendar View */}
+                        {view === 'date' && (
+                            <div className="glass p-6 rounded-2xl border border-white/5 animate-in slide-in-from-left duration-300">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-white font-bold flex items-center gap-2">
+                                        <Calendar size={18} className="text-[#3A86FF]" />
+                                        <span className="uppercase tracking-wide text-sm">Selectează Data</span>
+                                    </h3>
+                                    <div className="flex gap-1">
+                                        <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))} className="p-2 hover:bg-white/10 rounded-lg text-white/60 hover:text-[#3A86FF] transition-colors"><ChevronLeft size={18} /></button>
+                                        <span className="min-w-[100px] text-center font-bold text-white text-sm uppercase py-2">{currentMonth.toLocaleDateString('ro-RO', { month: 'long', year: 'numeric' })}</span>
+                                        <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))} className="p-2 hover:bg-white/10 rounded-lg text-white/60 hover:text-[#3A86FF] transition-colors"><ChevronRight size={18} /></button>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="grid grid-cols-7 gap-1 mb-2">
-                                {WEEKDAYS.map(day => <div key={day} className="text-center text-[10px] text-white/30 font-bold uppercase py-2">{day}</div>)}
-                            </div>
-                            <div className="grid grid-cols-7 gap-1">
-                                {daysInMonth.map((date, i) => {
-                                    const isAvailable = isDateAvailable(date) && !isPastDate(date);
-                                    const isSelected = selectedDate.toDateString() === date.toDateString();
-                                    const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
+                                <div className="grid grid-cols-7 gap-1 mb-2">
+                                    {WEEKDAYS.map(day => <div key={day} className="text-center text-[10px] text-white/30 font-bold uppercase py-2">{day}</div>)}
+                                </div>
+                                <div className="grid grid-cols-7 gap-1">
+                                    {daysInMonth.map((date, i) => {
+                                        const isAvailable = isDateAvailable(date) && !isPastDate(date);
+                                        const isSelected = selectedDate.toDateString() === date.toDateString();
+                                        const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
 
-                                    return (
-                                        <button
-                                            key={i}
-                                            onClick={() => { if (isAvailable && isCurrentMonth) { setSelectedDate(date); setSelectedTime(null); } }}
-                                            disabled={!isAvailable || !isCurrentMonth}
-                                            className={`aspect-square rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-200 relative group
+                                        return (
+                                            <button
+                                                key={i}
+                                                onClick={() => { if (isAvailable && isCurrentMonth) handleDateSelect(date); }}
+                                                disabled={!isAvailable || !isCurrentMonth}
+                                                className={`aspect-square rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-200 relative group
                           ${!isCurrentMonth ? 'opacity-0 pointer-events-none' : ''}
                           ${isSelected ? 'bg-[#3A86FF] text-black shadow-[0_0_15px_rgba(58,134,255,0.5)] scale-110 z-10' :
-                                                    isAvailable ? 'bg-white/5 text-white hover:bg-white/10 hover:border hover:border-[#3A86FF]/50' : 'text-white/10 cursor-not-allowed'}
+                                                        isAvailable ? 'bg-white/5 text-white hover:bg-white/10 hover:border hover:border-[#3A86FF]/50' : 'text-white/10 cursor-not-allowed'}
                         `}
-                                        >
-                                            {date.getDate()}
-                                            {isAvailable && !isSelected && <div className="absolute bottom-1 w-1 h-1 rounded-full bg-[#3A86FF] opacity-50"></div>}
-                                        </button>
-                                    );
-                                })}
+                                            >
+                                                {date.getDate()}
+                                                {isAvailable && !isSelected && <div className="absolute bottom-1 w-1 h-1 rounded-full bg-[#3A86FF] opacity-50"></div>}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                        </div>
+                        )}
 
-                        {/* Time Slots */}
-                        <div className="animate-in slide-in-from-bottom-4 duration-500 fade-in">
-                            <h3 className="text-white font-bold flex items-center gap-2 mb-4">
-                                <Clock size={18} className="text-[#3A86FF]" />
-                                <span className="uppercase tracking-wide text-sm">Intervale Disponibile</span>
-                                <span className="text-xs text-white/30 font-normal normal-case ml-auto">{availableSlots.length > 0 ? `${availableSlots.length} locuri` : 'Niciun loc liber'}</span>
-                            </h3>
+                        {/* Time Slots View */}
+                        {view === 'time' && (
+                            <div className="animate-in slide-in-from-right duration-300">
+                                <button
+                                    onClick={() => setView('date')}
+                                    className="flex items-center gap-2 text-white/50 hover:text-white mb-6 text-xs font-bold uppercase tracking-widest transition-colors"
+                                >
+                                    <ChevronLeft size={16} /> Înapoi la Calendar
+                                </button>
 
-                            {availableSlots.length > 0 ? (
-                                <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
-                                    {availableSlots.map(time => (
-                                        <button
-                                            key={time}
-                                            onClick={() => setSelectedTime(time)}
-                                            className={`py-2 rounded-lg text-xs font-bold transition-all duration-200 border ${selectedTime === time
-                                                ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(58,134,255,0.4)] scale-105'
-                                                : 'bg-transparent border-white/10 text-white hover:border-[#3A86FF]/50 hover:bg-[#3A86FF]/5'
-                                                }`}
-                                        >
-                                            {time}
-                                        </button>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="p-8 border border-dashed border-white/10 rounded-xl text-center text-white/30 text-sm">
-                                    Nu sunt intervale disponibile pentru această dată.
-                                </div>
-                            )}
-                        </div>
+                                <h3 className="text-white font-bold flex items-center gap-2 mb-4">
+                                    <Clock size={18} className="text-[#3A86FF]" />
+                                    <span className="uppercase tracking-wide text-sm">Intervale pentru {formatDate(selectedDate)}</span>
+                                    <span className="text-xs text-white/30 font-normal normal-case ml-auto">{availableSlots.length > 0 ? `${availableSlots.length} locuri` : 'Niciun loc liber'}</span>
+                                </h3>
+
+                                {availableSlots.length > 0 ? (
+                                    <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
+                                        {availableSlots.map(time => (
+                                            <button
+                                                key={time}
+                                                onClick={() => setSelectedTime(time)}
+                                                className={`py-3 rounded-lg text-xs font-bold transition-all duration-200 border ${selectedTime === time
+                                                    ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(58,134,255,0.4)] scale-105'
+                                                    : 'bg-transparent border-white/10 text-white hover:border-[#3A86FF]/50 hover:bg-[#3A86FF]/5'
+                                                    }`}
+                                            >
+                                                {time}
+                                            </button>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="p-8 border border-dashed border-white/10 rounded-xl text-center text-white/30 text-sm">
+                                        Nu sunt intervale disponibile pentru acestă dată.
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
 
