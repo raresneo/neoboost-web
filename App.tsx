@@ -2943,7 +2943,23 @@ const App: React.FC = () => {
                             {activeGraphic === 'energy' ? 'Analiză consum caloric' : activeGraphic === 'muscle' ? 'Harta musculară' : 'Sincronizare impulsuri'}
                           </p>
                         </div>
-                        <AnimatedGraphic type={activeGraphic} className="w-full h-full object-cover opacity-80" />
+                        {/* Dynamic Visualization Layer */}
+                        <div className="absolute inset-0 z-0 overflow-hidden rounded-xl">
+                          <img
+                            src={
+                              activeGraphic === 'energy' ? '/ems_slabire.png' :
+                                activeGraphic === 'muscle' ? '/ems_spate.png' :
+                                  '/ems_tonifiere.png'
+                            }
+                            alt="EMS Visualization"
+                            className="w-full h-full object-cover opacity-60 mix-blend-screen scale-110 transition-all duration-1000 transform hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#020408] via-transparent to-[#020408]/50"></div>
+                          <div className="absolute inset-0 bg-[#3A86FF]/10 mix-blend-overlay"></div>
+                        </div>
+
+                        {/* HUD Overlay */}
+                        <AnimatedGraphic type={activeGraphic} className="relative z-10 w-full h-full text-[#3A86FF] opacity-90 mix-blend-difference" />
                       </div>
                     </div>
                   </div>
