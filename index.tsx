@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AppRouter } from './AppRouter';
+import App from './App';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -14,7 +14,7 @@ import { HelmetProvider } from 'react-helmet-async';
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <AppRouter />
+      <App />
     </HelmetProvider>
   </React.StrictMode>
 );
