@@ -242,6 +242,50 @@ const AnimatedCounter: React.FC<{ value: number; duration?: number; suffix?: str
   return <span ref={ref}>{count.toFixed(decimals)}{suffix}</span>;
 };
 
+// --- Spotlight Card Component ---
+const SpotlightCard = ({
+  children,
+  className = "",
+  spotlightColor = "rgba(0, 240, 255, 0.15)", // Default to Cyan glow for premium feel
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { spotlightColor?: string }) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setOpacity(1);
+    props.onMouseMove?.(e);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    setOpacity(0);
+    props.onMouseLeave?.(e);
+  };
+
+  return (
+    <div
+      ref={divRef}
+      {...props}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`relative overflow-hidden ${className}`}
+    >
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-0"
+        style={{
+          opacity,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
+        }}
+      />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+};
+
 const AmbientAudio: React.FC<{ isMuted: boolean }> = ({ isMuted }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -2725,10 +2769,11 @@ const App: React.FC = () => {
                       {/* Benefit 1 - Slăbire */}
                       {/* Benefit 1 - Slăbire */}
                       <ScrollReveal delay={0}>
-                        <div
+                        <SpotlightCard
                           onMouseEnter={() => setActiveGraphic('energy')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('slabire-rapida'); }}
                           className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'energy' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                          spotlightColor="rgba(0, 240, 255, 0.2)"
                         >
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'energy' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
                             <Zap size={28} />
@@ -2741,15 +2786,16 @@ const App: React.FC = () => {
                           <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Vezi explicația științifică <MoveUpRight size={12} />
                           </div>
-                        </div>
+                        </SpotlightCard>
                       </ScrollReveal>
 
                       {/* Benefit 2 - Dureri de Spate */}
                       <ScrollReveal delay={100}>
-                        <div
+                        <SpotlightCard
                           onMouseEnter={() => setActiveGraphic('muscle')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('dureri-spate'); }}
                           className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                          spotlightColor="rgba(0, 240, 255, 0.2)"
                         >
                           <div className="absolute top-3 right-3 px-2 py-1 bg-[#3A86FF] text-white text-[8px] font-black uppercase tracking-wider rounded">Popular</div>
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
@@ -2763,15 +2809,16 @@ const App: React.FC = () => {
                           <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Cum funcționează, pas cu pas <MoveUpRight size={12} />
                           </div>
-                        </div>
+                        </SpotlightCard>
                       </ScrollReveal>
 
                       {/* Benefit 3 - Tonifiere */}
                       <ScrollReveal delay={200}>
-                        <div
+                        <SpotlightCard
                           onMouseEnter={() => setActiveGraphic('muscle')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('tonifiere'); }}
                           className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                          spotlightColor="rgba(0, 240, 255, 0.2)"
                         >
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
                             <Target size={28} />
@@ -2784,15 +2831,16 @@ const App: React.FC = () => {
                           <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Ce înseamnă „tonifiere” în realitate <MoveUpRight size={12} />
                           </div>
-                        </div>
+                        </SpotlightCard>
                       </ScrollReveal>
 
                       {/* Benefit 4 - Performanță */}
                       <ScrollReveal delay={300}>
-                        <div
+                        <SpotlightCard
                           onMouseEnter={() => setActiveGraphic('tech')}
                           onClick={() => { setActiveView('science'); setActiveArticleId('forta-performanta'); }}
                           className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'tech' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                          spotlightColor="rgba(0, 240, 255, 0.2)"
                         >
                           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'tech' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
                             <TrendingUp size={28} />
@@ -2805,7 +2853,7 @@ const App: React.FC = () => {
                           <div className="flex items-center gap-2 text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
                             Protocolul care reduce riscul <MoveUpRight size={12} />
                           </div>
-                        </div>
+                        </SpotlightCard>
                       </ScrollReveal>
                     </div>
 
@@ -2886,10 +2934,11 @@ const App: React.FC = () => {
 
                       <div className="space-y-4">
                         {BENEFITS.map((b, i) => (
-                          <div
+                          <SpotlightCard
                             key={i}
                             onMouseEnter={() => setActiveBenefit(i)}
                             className={`group cursor-pointer p-8 rounded-2xl transition-all duration-500 ease-out relative overflow-hidden ${activeBenefit === i ? 'bg-[#3A86FF] border border-[#3A86FF] shadow-[0_0_30px_rgba(58,134,255,0.3)]' : 'glass-block'}`}
+                            spotlightColor="rgba(58, 134, 255, 0.25)"
                           >
                             <div className="flex items-start gap-6 relative z-10">
                               <div className={`p-3 rounded-lg transition-colors duration-300 ${activeBenefit === i ? 'bg-black/20 text-white' : 'bg-white/5 text-[#3A86FF]'}`}>
@@ -2904,7 +2953,7 @@ const App: React.FC = () => {
                                 </p>
                               </div>
                             </div>
-                          </div>
+                          </SpotlightCard>
                         ))}
                       </div>
                     </div>
