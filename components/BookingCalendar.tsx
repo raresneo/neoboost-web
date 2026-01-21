@@ -81,8 +81,14 @@ const formatDate = (date: Date): string => {
 
 const WEEKDAYS = ['Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm', 'Dum'];
 
-export const BookingCalendar: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const [selectedLocation, setSelectedLocation] = useState<LocationSchedule>(LOCATIONS[0]);
+export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocationId?: string }> = ({ onClose, preselectedLocationId }) => {
+    const [selectedLocation, setSelectedLocation] = useState<LocationSchedule>(() => {
+        if (preselectedLocationId) {
+            const found = LOCATIONS.find(l => l.id === preselectedLocationId);
+            if (found) return found;
+        }
+        return LOCATIONS[0];
+    });
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [selectedTime, setSelectedTime] = useState<string | null>(null);
     const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
@@ -270,8 +276,8 @@ export const BookingCalendar: React.FC<{ onClose: () => void }> = ({ onClose }) 
                                             key={time}
                                             onClick={() => setSelectedTime(time)}
                                             className={`py-2 rounded-lg text-xs font-bold transition-all duration-200 border ${selectedTime === time
-                                                    ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(58,134,255,0.4)] scale-105'
-                                                    : 'bg-transparent border-white/10 text-white hover:border-[#3A86FF]/50 hover:bg-[#3A86FF]/5'
+                                                ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(58,134,255,0.4)] scale-105'
+                                                : 'bg-transparent border-white/10 text-white hover:border-[#3A86FF]/50 hover:bg-[#3A86FF]/5'
                                                 }`}
                                         >
                                             {time}
@@ -296,8 +302,8 @@ export const BookingCalendar: React.FC<{ onClose: () => void }> = ({ onClose }) 
                         onClick={handleWhatsAppBooking}
                         disabled={!selectedTime}
                         className={`px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest flex items-center gap-3 transition-all duration-300 ${selectedTime
-                                ? 'bg-[#25D366] text-black hover:brightness-110 shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:scale-105'
-                                : 'bg-white/5 text-white/20 cursor-not-allowed'
+                            ? 'bg-[#25D366] text-black hover:brightness-110 shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:scale-105'
+                            : 'bg-white/5 text-white/20 cursor-not-allowed'
                             }`}
                     >
                         <MessageCircle size={18} />

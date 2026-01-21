@@ -145,7 +145,7 @@ export const Layout: React.FC = () => {
     const isSpecialPage = location.pathname.startsWith('/science') || location.pathname.startsWith('/legal');
 
     return (
-        <div className="relative min-h-screen bg-black overflow-hidden selection:bg-[#3A86FF] selection:text-black">
+        <div className="relative min-h-screen bg-black selection:bg-[#3A86FF] selection:text-black">
             {/* Default Global SEO - Pages can override */}
             <SEO
                 title="NeoBoost — Bio-Electric Performance Oradea"

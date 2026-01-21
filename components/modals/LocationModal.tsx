@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, MapPin, CheckCircle2, Calendar, MessageCircle, Target } from 'lucide-react';
+import { BookingCalendar } from '../BookingCalendar';
 import { LOCATIONS, BRAND } from '../../constants';
 
 // --- Location Modal Component ---
@@ -118,39 +119,12 @@ export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, 
                             </div>
                         </div>
 
-                        {/* Right Column: Calendly */}
+                        {/* Right Column: Custom Calendar */}
                         <div className="space-y-6">
                             <h3 className="text-2xl font-bold text-white mb-4">Programează-te Acum</h3>
-
-                            {/* Calendly Embed */}
-                            {location.calendlyUrl ? (
-                                <div className="relative w-full h-[600px] bg-white rounded-2xl overflow-hidden border border-white/10">
-                                    <iframe
-                                        src={location.calendlyUrl}
-                                        width="100%"
-                                        height="100%"
-                                        frameBorder="0"
-                                        className="rounded-2xl"
-                                    />
-                                </div>
-                            ) : (
-                                <div className="flex flex-col items-center justify-center h-[600px] bg-black/40 border border-white/10 rounded-2xl p-12 text-center">
-                                    <Calendar size={48} className="text-[#3A86FF] mb-6" />
-                                    <h4 className="text-2xl font-bold text-white mb-4">Programare Telefonică</h4>
-                                    <p className="text-white/60 mb-8">
-                                        Contactează-ne direct pentru a programa o sesiune la {location.name}
-                                    </p>
-                                    <a
-                                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez o sesiune la ${location.name}.`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-3 bg-[#3A86FF] text-black px-8 py-4 rounded-lg font-black hover:brightness-110 transition-all shadow-lg shadow-[#3A86FF]/30"
-                                    >
-                                        <MessageCircle size={20} />
-                                        PROGRAMEAZĂ PE WHATSAPP
-                                    </a>
-                                </div>
-                            )}
+                            <div className="relative w-full h-[600px] bg-[#050505] rounded-2xl overflow-hidden border border-white/10">
+                                <BookingCalendar onClose={onClose} preselectedLocationId={location.id} />
+                            </div>
                         </div>
                     </div>
                 </div>
