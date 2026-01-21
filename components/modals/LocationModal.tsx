@@ -44,6 +44,7 @@ export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, 
             <div
                 className="relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl animate-scale-in"
                 onClick={(e) => e.stopPropagation()}
+                data-lenis-prevent
             >
                 {/* Close Button */}
                 <button

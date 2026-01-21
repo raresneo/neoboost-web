@@ -99,10 +99,22 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
         const daySchedule = selectedLocation.schedule[dayOfWeek];
         if (!daySchedule) return [];
 
-        const slots: string[] = [];
+        let slots: string[] = [];
         daySchedule.forEach(({ start, end }) => {
             slots.push(...generateTimeSlots(start, end));
         });
+
+        // Filter out past times if selected date is today
+        const now = new Date();
+        if (selectedDate.toDateString() === now.toDateString()) {
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+            slots = slots.filter(slot => {
+                const [h, m] = slot.split(':').map(Number);
+                const slotMinutes = h * 60 + m;
+                return slotMinutes > currentMinutes;
+            });
+        }
+
         return slots;
     }, [selectedDate, selectedLocation]);
 
