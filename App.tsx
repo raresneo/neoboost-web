@@ -3039,29 +3039,15 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-
-              <div className="grid-bg py-24 border-y border-white/5">
-                <ComparisonSection />
-              </div>
-
-
-
-
-              <TrialRoadmap />
-
-              <ProgramsSection />
-
-
-
-
-
-
-              <section id="tehnologie" className="pt-28 md:pt-40 pb-24 md:pb-60 bg-black relative z-10 overflow-hidden scroll-mt-20">
+              {/* MOVED TECHNOLOGY SECTION HERE FOR CONTINUITY */}
+              <section id="tehnologie" className="pt-24 pb-24 bg-[#020202] relative z-10 overflow-hidden">
                 <TechnologyVideoBackground />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-[#3A86FF]/50 to-transparent"></div>
+
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <ScrollReveal>
-                    <h2 className="text-7xl md:text-[12vw] font-black impact-font text-white mb-32 leading-none uppercase">
-                      PRECIZIE<br /><span className="text-[#3A86FF]">BIO-TECH.</span>
+                    <h2 className="text-7xl md:text-[10vw] font-black impact-font text-white mb-32 leading-none uppercase text-center md:text-left">
+                      PRECIZIE<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] via-[#00F0FF] to-[#3A86FF] bg-[200%_auto] animate-gradient">BIO-TECH.</span>
                     </h2>
                   </ScrollReveal>
 
@@ -3097,6 +3083,25 @@ const App: React.FC = () => {
                   <EMSProtocolSubsection />
                 </div>
               </section>
+
+
+              <div className="grid-bg py-24 border-y border-white/5">
+                <ComparisonSection />
+              </div>
+
+
+
+
+              <TrialRoadmap />
+
+              <ProgramsSection />
+
+
+
+
+
+
+
 
               <EMSTimeline />
 
