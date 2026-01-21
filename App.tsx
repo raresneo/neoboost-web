@@ -2943,31 +2943,15 @@ const App: React.FC = () => {
                             {activeGraphic === 'energy' ? 'Analiză consum caloric' : activeGraphic === 'muscle' ? 'Harta musculară' : 'Sincronizare impulsuri'}
                           </p>
                         </div>
-                        {/* Dynamic Visualization Layer - REAL PHOTOS WITH DIGITAL FILTER */}
-                        <div className="absolute inset-0 z-0 overflow-hidden rounded-xl bg-black">
-                          {/* Background Grid for depth */}
-                          <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
-
-                          <img
-                            src={
-                              activeGraphic === 'energy' ? '/ems_training_1.jpg' :
-                                activeGraphic === 'muscle' ? '/ems_training_2.jpg' :
-                                  '/ems_training_3.jpg'
-                            }
-                            alt="EMS Training Real"
-                            className="w-full h-full object-cover opacity-60 mix-blend-luminosity scale-110 transition-all duration-700 transform hover:scale-105 filter grayscale contrast-[1.2] brightness-75"
-                          />
-
-                          {/* Digital Blue Overlay to create 'Hologram' effect on real photo */}
-                          <div className="absolute inset-0 bg-[#3A86FF] mix-blend-color opacity-50"></div>
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#020408] via-transparent to-[#020408]/80"></div>
-
-                          {/* Scanlines for CRT effect */}
-                          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_50%,transparent_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
-                        </div>
-
-                        {/* HUD Overlay */}
-                        <AnimatedGraphic type={activeGraphic} className="relative z-10 w-full h-full text-[#00F0FF] opacity-100 mix-blend-screen" />
+                        <AnimatedGraphic
+                          type={activeGraphic}
+                          bgImage={
+                            activeGraphic === 'energy' ? '/ems_training_1.jpg' :
+                              activeGraphic === 'muscle' ? '/ems_training_2.jpg' :
+                                '/ems_training_3.jpg'
+                          }
+                          className="w-full h-full"
+                        />
                       </div>
                     </div>
                   </div>
@@ -2986,25 +2970,25 @@ const App: React.FC = () => {
                         <div className="relative w-full h-full flex items-center justify-center">
                           {/* Visual 0: Drysuit -> Tech Graphic */}
                           <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 0 ? 'opacity-100' : 'opacity-0'}`}>
-                            <AnimatedGraphic type="tech" className="w-full h-full object-cover" />
+                            <AnimatedGraphic type="tech" bgImage="/drysuit_pro.png" className="w-full h-full" />
                             <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">DRYSUIT</div>
                           </div>
 
                           {/* Visual 1: Wireless -> Energy Graphic */}
                           <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 1 ? 'opacity-100' : 'opacity-0'}`}>
-                            <AnimatedGraphic type="energy" className="w-full h-full object-cover" />
+                            <AnimatedGraphic type="energy" bgImage="/powerbox_pro_v2.jpg" className="w-full h-full" />
                             <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">WIRELESS</div>
                           </div>
 
                           {/* Visual 2: Control -> Muscle Graphic */}
                           <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 2 ? 'opacity-100' : 'opacity-0'}`}>
-                            <AnimatedGraphic type="muscle" className="w-full h-full object-cover" />
+                            <AnimatedGraphic type="muscle" bgImage="/control_app_pro.png" className="w-full h-full" />
                             <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">CONTROL</div>
                           </div>
 
                           {/* Visual 3: Hygiene -> Tech Graphic (Tinted) */}
                           <div className={`absolute inset-0 transition-opacity duration-700 ${activeBenefit === 3 ? 'opacity-100' : 'opacity-0'}`}>
-                            <AnimatedGraphic type="tech" className="w-full h-full object-cover invert hue-rotate-180" />
+                            <AnimatedGraphic type="tech" bgImage="/drysuit_rack.png" className="w-full h-full" />
                             <div className="absolute bottom-10 left-10 text-4xl font-black text-white mix-blend-overlay opacity-50">PURE</div>
                           </div>
 
