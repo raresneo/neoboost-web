@@ -56,13 +56,25 @@
 
     <style>
         :root {
-            --bg-primary: #050505;
-            --bg-secondary: #0a0a0a;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.9);
-            --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.05);
+            /* DEEP COSMIC PALETTE */
+            --bg-primary: #020408;
+            /* Midnight Blue-Black */
+            --bg-secondary: #050a14;
+            /* Slightly lighter deep blue */
+            --text-primary: #f0f4ff;
+            /* Moonlight White (cool tinted) */
+            --text-secondary: rgba(220, 230, 255, 0.85);
+            /* High contrast cool gray */
+
+            --glass-bg: rgba(10, 20, 40, 0.4);
+            /* Blue-tinted glass */
+            --glass-border: rgba(100, 150, 255, 0.1);
+            /* Subtle glowing border */
+
             --accent: #3A86FF;
+            /* Keeping base blue but intended for gradients */
+            --accent-glow: #00F0FF;
+            /* Cyan glow color */
             --button-text: #000000;
         }
 
@@ -295,22 +307,24 @@
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #3A86FF;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         /* Minimalist Glassmorphism (Refined) */
         .glass {
-            background: rgba(20, 20, 20, 0.6);
+            background: var(--glass-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 5, 20, 0.4);
         }
 
         .glass-block {
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(5, 10, 25, 0.7);
+            /* Deep Blue-Black Tint */
             /* Darker for better text contrast */
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(12px);
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -389,6 +403,24 @@
                 transform: translateY(100vh);
                 opacity: 0;
             }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animate-gradient {
+            animation: gradient 3s ease infinite;
         }
     </style>
     <style>

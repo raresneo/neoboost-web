@@ -2880,7 +2880,7 @@ const App: React.FC = () => {
                       <ScrollReveal>
                         <p className="mono-font text-[9px] tracking-[0.6em] text-[#3A86FF] font-bold uppercase mb-8">Protocol NeoBoost</p>
                         <h2 className="text-5xl md:text-7xl font-black impact-font text-white leading-[0.9] mb-12">
-                          TEHNOLOGIE<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] to-blue-400">AVANSATĂ.</span>
+                          TEHNOLOGIE<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A86FF] via-[#00F0FF] to-[#3A86FF] bg-[200%_auto] animate-gradient">AVANSATĂ.</span>
                         </h2>
                       </ScrollReveal>
 
