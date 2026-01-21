@@ -22,7 +22,7 @@ export const ImmersiveHero = () => {
                 <CinematicBackground image={fallbackImage} opacity={0.5} />
             </div>
             {/* Content */}
-            <div className={`relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} pt-32`}>
+            <div className={`relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} pt-32`}>
 
                 {/* Brand Logo */}
                 <div className="relative mb-6">

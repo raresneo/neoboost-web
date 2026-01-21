@@ -18,8 +18,8 @@ const LOCATIONS: LocationSchedule[] = [
     {
         id: 'getfit',
         name: 'GetFit',
-        type: 'Functional',
-        description: 'Antrenament Funcțional & Cardio',
+        type: 'Functional & EMS (La Cerere)',
+        description: 'Locație parteneră în GetFit Gym (Lotus Center). Focus pe antrenamente funcționale și cardio pe suprafețe generoase. *EMS disponibil doar la cerere, în limita echipamentelor mobile.*',
         icon: <TrendingUp size={24} />,
         image: '/getfit.jpg',
         schedule: {
@@ -33,8 +33,8 @@ const LOCATIONS: LocationSchedule[] = [
     {
         id: 'ramada',
         name: 'Ramada',
-        type: 'EMS',
-        description: 'Tehnologie Wireless EMS',
+        type: 'EMS Studio',
+        description: 'Studioul principal NeoBoost, în incinta Hotel Ramada (Calea Aradului). Spațiu exclusivist dedicat tehnologiei EMS Wireless, cu vestiare private și dușuri.',
         icon: <Zap size={24} />,
         image: '/ramada.jpg',
         schedule: {
