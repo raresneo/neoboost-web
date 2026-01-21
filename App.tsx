@@ -1844,23 +1844,27 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
 // --- Advanced Tech Displays ---
 
 const PowerBoxLifestyle = () => (
-  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-black/80 rounded-2xl">
+    {/* Grid Background */}
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+
     <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.15]">
       <img
         src="/powerbox_lifestyle.png"
         alt="NeoBoost PowerBox & Dock"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75"
         style={{
-          // Focused blend on the center geometry
           objectPosition: 'center center',
-          maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-          filter: 'contrast(1.1) brightness(1.0)',
-          imageRendering: 'auto'
+          maskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
         }}
         loading="lazy"
         decoding="async"
       />
+      {/* Holographic Overlay */}
+      <div className="absolute inset-0 bg-[#3A86FF] mix-blend-color opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_50%,transparent_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
     </div>
   </div>
 );
@@ -2165,43 +2169,54 @@ const Oscilloscope = () => {
 };
 
 const TabletReal = () => (
-  <div className="relative w-full h-full flex items-center justify-center overflow-hidden group">
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden group bg-black/80 rounded-2xl">
+    {/* Grid Background */}
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+
     <div className="relative w-full h-full scale-[1.2] transition-transform duration-700 group-hover:scale-[1.3]">
       <img
         src="/tablet_combo.jpg"
         alt="NeoBoost Tablet Interface"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75"
         style={{
           objectPosition: '40% 60%',
-          maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-          filter: 'contrast(1.1) brightness(1.0)',
-          imageRendering: 'auto'
+          maskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
         }}
         loading="lazy"
         decoding="async"
       />
+      {/* Holographic Overlay */}
+      <div className="absolute inset-0 bg-[#3A86FF] mix-blend-color opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_50%,transparent_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
     </div>
     <Oscilloscope />
   </div>
 );
 
 const DrysuitLifestyle = () => (
-  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-black/80 rounded-2xl">
+    {/* Grid Background */}
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+
     <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.1]">
       <img
         src="/studio_session_1.jpg"
         alt="NeoBoost Drysuit Action"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75"
         style={{
-          // Show the athlete with NeoBoost on back more clearly
           objectPosition: 'center 30%',
-          filter: 'contrast(1.15) brightness(1.05) saturate(1.1)',
-          imageRendering: 'auto'
+          maskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)',
         }}
         loading="lazy"
         decoding="async"
       />
+      {/* Holographic Overlay */}
+      <div className="absolute inset-0 bg-[#3A86FF] mix-blend-color opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_50%,transparent_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
     </div>
   </div>
 );
@@ -2245,17 +2260,24 @@ const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolean; isCo
         ) : isDrysuit ? (
           <DrysuitLifestyle />
         ) : (
-          <img
-            src={src}
-            alt={alt}
-            className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1] reveal-color`}
-            style={{
-              maskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
-              WebkitMaskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)',
-            }}
-            loading="lazy"
-            decoding="async"
-          />
+          <div className="relative w-full h-full bg-black/80 rounded-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+            <img
+              src={src}
+              alt={alt}
+              className={`w-full h-full object-contain mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75 transition-all duration-500 will-change-transform group-hover:scale-[1.1]`}
+              style={{
+                maskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
+                WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
+              }}
+              loading="lazy"
+              decoding="async"
+            />
+            {/* Holographic Overlay */}
+            <div className="absolute inset-0 bg-[#3A86FF] mix-blend-color opacity-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_50%,transparent_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
+          </div>
         )}
         {/* Specular shine reflection (only for images) */}
         {!isPowerBox && (
