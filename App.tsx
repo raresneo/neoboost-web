@@ -878,7 +878,7 @@ const EMSTimeline = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="istoric" className="py-32 md:py-60 bg-[#050505] relative z-10 overflow-hidden">
+    <section id="istoric" className="py-16 md:py-24 bg-[#050505] relative z-10 overflow-hidden scroll-mt-20">
       <HistoryVideoBackground />
       <div className="container mx-auto px-6 md:px-24">
         <ScrollReveal className="mb-24">
@@ -892,9 +892,9 @@ const EMSTimeline = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Milestone Selection (Years) */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-3">
             {EMS_MILESTONES.map((m, idx) => (
               <div
                 key={idx}
@@ -1385,7 +1385,7 @@ const ProgramsSection = () => {
   };
 
   return (
-    <section id="programe" className="py-32 md:py-60 bg-[#050505] relative z-20 border-t border-white/5 overflow-hidden">
+    <section id="programe" className="py-32 md:py-60 bg-[#050505] relative z-20 border-t border-white/5 overflow-hidden scroll-mt-20">
       <ProgramsVideoBackground />
       <div className="container mx-auto px-6 md:px-24">
         <ScrollReveal>
@@ -1529,7 +1529,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-12 py-2 glass-dark shadow-2xl`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-12 py-2 bg-black/80 backdrop-blur-xl border-b border-white/5 shadow-2xl`}>
         <div className="max-w-[1600px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo_white.png" alt="NeoBoost Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform duration-500" />
@@ -2708,7 +2708,7 @@ const App: React.FC = () => {
 
 
               {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
-              <section id="pentru-cine" className="py-20 md:py-32 bg-[#030303] relative z-10 overflow-hidden">
+              <section id="pentru-cine" className="py-20 md:py-32 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
                 <BenefitsVideoBackground />
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <ScrollReveal>
@@ -2833,7 +2833,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="metoda" className="py-24 md:py-40 bg-[#020202] relative z-10 overflow-hidden">
+              <section id="metoda" className="py-24 md:py-40 bg-[#020202] relative z-10 overflow-hidden scroll-mt-20">
                 <BiohackVideoBackground />
                 <div className="container mx-auto px-6 md:px-24 relative z-20">
                   <div className="grid lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
@@ -2930,7 +2930,7 @@ const App: React.FC = () => {
 
 
 
-              <section id="tehnologie" className="py-24 md:py-60 bg-black relative z-10 overflow-hidden">
+              <section id="tehnologie" className="py-24 md:py-60 bg-black relative z-10 overflow-hidden scroll-mt-20">
                 <TechnologyVideoBackground />
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <ScrollReveal>
@@ -2976,7 +2976,7 @@ const App: React.FC = () => {
 
               <EMSEducation />
 
-              <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden">
+              <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
                 <div className="container mx-auto px-6 md:px-24">
                   <ScrollReveal className="mb-24 md:mb-40">
                     <div className="flex items-center gap-6 mb-8">
@@ -3009,7 +3009,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="abonamente" className="py-24 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden">
+              <section id="abonamente" className="py-24 md:py-60 bg-black text-white relative z-20 rounded-t-[5vw] overflow-hidden scroll-mt-20">
                 <div className="absolute inset-0 grid-bg opacity-30"></div>
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-32 gap-10">
@@ -3044,7 +3044,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="locatii" className="py-24 md:py-60 bg-black relative z-10">
+              <section id="locatii" className="py-24 md:py-60 bg-black relative z-10 scroll-mt-20">
                 <div className="container mx-auto px-6 md:px-24">
                   <ScrollReveal>
                     <div className="text-7xl md:text-[12vw] font-black impact-font text-white leading-none mb-24 uppercase">
@@ -3091,7 +3091,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="faq" className="py-24 md:py-60 bg-[#050505] relative z-10">
+              <section id="faq" className="py-24 md:py-60 bg-[#050505] relative z-10 scroll-mt-20">
                 <div className="container mx-auto px-6 md:px-24">
                   <ScrollReveal>
                     <div className="flex flex-col items-center mb-24">
