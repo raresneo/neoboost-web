@@ -1580,7 +1580,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
             <span className="text-xl md:text-2xl font-black impact-font tracking-tighter text-white">{BRAND.name}</span>
           </div>
 
-          <div className="hidden xl:flex items-center gap-6">
+          <div className="hidden 2xl:flex items-center gap-6">
             {navItems.map(item => (
               <a
                 key={item.id}
@@ -1653,7 +1653,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
 
             <button
               onClick={onOpenBooking}
-              className="hidden xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
+              className="hidden 2xl:flex items-center gap-2 bg-transparent text-white px-6 py-3 text-xs font-black tracking-widest impact-font hover:text-[#3A86FF] border border-white/10 hover:border-[#3A86FF] rounded transition-all"
             >
               PROGRAMARE
             </button>
@@ -1667,7 +1667,7 @@ const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, isLight,
           </div>
 
           {/* Mobile UI Buttons - FIXED Z-INDEX & VISIBILITY */}
-          <div className="flex xl:hidden items-center gap-3 relative z-[101]">
+          <div className="flex 2xl:hidden items-center gap-3 relative z-[101]">
             <button
               onClick={() => setIsMuted(!isMuted)}
               className={`w-10 h-10 flex items-center justify-center rounded-full border border-white/10 backdrop-blur-md transition-all ${!isMuted ? 'bg-[#3A86FF]/20 border-[#3A86FF]/40 text-[#3A86FF]' : 'bg-black/40 text-white/40'}`}
