@@ -23,11 +23,12 @@ const LOCATIONS: LocationSchedule[] = [
         icon: <TrendingUp size={24} />,
         image: '/getfit.jpg',
         schedule: {
-            1: [{ start: '07:00', end: '10:00' }], // Mon
-            2: [{ start: '16:00', end: '19:00' }], // Tue
-            3: [{ start: '07:00', end: '10:00' }], // Wed
-            4: [{ start: '16:00', end: '19:00' }], // Thu
-            5: [{ start: '07:00', end: '10:00' }], // Fri
+            1: [{ start: '15:00', end: '20:00' }], // Mon
+            2: [{ start: '07:00', end: '11:30' }], // Tue
+            3: [{ start: '15:00', end: '20:00' }], // Wed
+            4: [{ start: '07:00', end: '11:30' }], // Thu
+            5: [{ start: '15:00', end: '20:00' }], // Fri
+            6: [{ start: '09:30', end: '13:00' }], // Sat
         },
     },
     {
@@ -38,12 +39,11 @@ const LOCATIONS: LocationSchedule[] = [
         icon: <Zap size={24} />,
         image: '/ramada.jpg',
         schedule: {
-            1: [{ start: '15:00', end: '20:00' }], // Mon
-            2: [{ start: '07:00', end: '11:30' }], // Tue
-            3: [{ start: '15:00', end: '20:00' }], // Wed
-            4: [{ start: '07:00', end: '11:30' }], // Thu
-            5: [{ start: '15:00', end: '20:00' }], // Fri
-            6: [{ start: '09:30', end: '13:00' }], // Sat
+            1: [{ start: '07:00', end: '10:00' }], // Mon
+            2: [{ start: '16:00', end: '19:00' }], // Tue
+            3: [{ start: '07:00', end: '10:00' }], // Wed
+            4: [{ start: '16:00', end: '19:00' }], // Thu
+            5: [{ start: '07:00', end: '10:00' }], // Fri
         },
     },
 ];
@@ -383,9 +383,6 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
 
                 {/* Footer Actions */}
                 <div className="p-6 border-t border-white/10 bg-[#050505] flex justify-between items-center">
-                    <button onClick={onClose} className="text-white/40 hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors">
-                        Anulează
-                    </button>
                     <button onClick={onClose} className="text-white/40 hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors">
                         Anulează
                     </button>
