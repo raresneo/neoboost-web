@@ -34,30 +34,32 @@ export const ImmersiveHero = () => {
 
                 {/* Headline & Subheadline */}
                 <div className="mb-10">
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                        Antrenament EMS Premium în Oradea
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Nu ai timp de sală? <br />
+                        <span className="text-white/80 font-medium">Antrenează-te inteligent în 20 de minute.</span>
                     </h2>
                     <p className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto leading-relaxed readable-text">
-                        Slăbire, tonus muscular și postură mai bună în doar <span className="text-[#3A86FF] font-semibold">30 de minute pe săptămână</span>.
+                        Obține rezultatele a <span className="text-[#3A86FF] font-bold">4 ore de fitness clasic</span> într-o singură sesiune scurtă.
+                        Este soluția ideală dacă vrei să slăbești rapid și să scapi de durerile de spate, fără să pierzi ore întregi în trafic.
                     </p>
                 </div>
 
                 {/* 2 CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
                     <MagneticButton
-                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez o probă gratuită EMS.`}
+                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să știu dacă EMS este potrivit pentru mine. Vreau o probă gratuită.`}
                         className="bg-[#3A86FF] text-black px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-black impact-font tracking-tight hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.5)] hover:shadow-[0_0_50px_rgba(0,245,255,0.7)] active:scale-95 inline-flex items-center gap-3"
                     >
                         <MessageCircle size={22} />
-                        PROBĂ GRATUITĂ
+                        VREAU SĂ ÎNCERC GRATUIT
                     </MagneticButton>
 
                     <a
-                        href="#abonamente"
+                        href="#faq"
                         className="border-2 border-white/30 text-white px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-bold impact-font tracking-tight hover:bg-white/10 hover:border-white/50 transition-all inline-flex items-center gap-3"
                     >
                         <Zap size={20} />
-                        VEZI ABONAMENTE
+                        CUM FUNCȚIONEAZĂ?
                     </a>
                 </div>
 

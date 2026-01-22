@@ -181,18 +181,18 @@ export const TECH_COMPONENTS = [
 export const BENEFITS = [
   {
     icon: <Wind className="w-8 h-8" />,
-    title: "Tehnologie Drysuit",
-    description: "Costum complet uscat. Fără apă, fără senzații neplăcute, doar confort și eficiență maximă de la prima secundă."
+    title: "De ce să aleg Drysuit?",
+    description: "Pentru că meriți confort. Spre deosebire de tehnologia veche, costumul nostru este complet uscat. Nu te udăm, nu îți este frig, pur și simplu te echipezi în 30 de secunde și începi."
   },
   {
     icon: <Cpu className="w-8 h-8" />,
-    title: "Power Box Wireless",
-    description: "Sistem magnetic ultra-ușor care elimină necesitatea cablurilor greoaie, permițând orice tip de mișcare."
+    title: "Cum mă ajută Wireless?",
+    description: "Libertate totală. Fără cabluri care să te țină legat de aparat, putem face exerciții dinamice, sărituri sau mișcări complexe pentru rezultate mai bune."
   },
   {
     icon: <Smartphone className="w-8 h-8" />,
-    title: "Control Digital & Antrenor Personal",
-    description: "Antrenorul tău personal reglează fin intensitatea fiecărei grupe musculare direct de pe tabletă, pentru rezultate optime. Este fitness-ul viitorului."
+    title: "Am nevoie de antrenor?",
+    description: "Da, și îl ai inclus. Antrenorul tău personal reglează fin intensitatea pe tabletă și se asigură că execuți corect fiecare mișcare. Nu ești niciodată singur."
   },
   {
     icon: <ShieldCheck className="w-8 h-8" />,
@@ -364,39 +364,39 @@ export const LOCATIONS: Location[] = [
 
 export const FAQS: NeoFAQItem[] = [
   {
-    question: "Cum sunt curățate costumele?",
-    answer: "După fiecare utilizare, costumele sunt spălate profesional folosind programe dedicate pentru echipamente tehnice și detergenți antibacterieni care protejează electrozii.",
-    icon: <RefreshCw size={24} />
+    question: "Chiar funcționează în doar 20 de minute?",
+    answer: "Da, și iată de ce: într-o sală normală lucrezi fiecare grupă musculară pe rând. La NeoBoost, impulsul EMS activează toate cele 20 de grupe musculare simultan, la fiecare contracție. Practic, faci 4 ore de contracții în 20 de minute.",
+    icon: <Zap size={24} />
   },
   {
-    question: "Cum funcționează fără să fie udat?",
-    answer: "Tehnologia noastră folosește electrozi speciali cu fibre de carbon care nu necesită apă pentru conductivitate. Aceasta oferă un grad superior de confort.",
-    icon: <ZapOff size={24} />
-  },
-  {
-    question: "Este antrenamentul EMS sigur?",
-    answer: "Absolut. EMS este o tehnologie sigură, fiind utilizată de zeci de ani în medicină. Există însă contraindicații (stimulator cardiac, sarcină, epilepsie), despre care vom discuta la prima evaluare.",
-    icon: <ShieldAlert size={24} />
-  },
-  {
-    question: "Ajută la scăderea în greutate?",
-    answer: "Categoric. Activarea simultană a 90% din masa musculară arde calorii într-un ritm mult mai alert decât fitness-ul clasic, continuând procesul 48-72h după sesiune.",
+    question: "Voi slăbi dacă fac doar EMS?",
+    answer: "Vei slăbi dacă ești în deficit caloric, iar EMS accelerază masiv acest proces. Arzi calorii în timpul antrenamentului, dar marele secret este efectul 'Afterburn': metabolismul tău rămâne ridicat 48h după sesiune pentru a reface fibrele musculare.",
     icon: <Flame size={24} />
   },
   {
-    question: "Pot face EMS dacă am dureri de spate?",
-    answer: "Este chiar recomandat. EMS întărește mușchii stabilizatori profunzi ai coloanei, fiind o metodă excelentă pentru eliminarea durerilor lombare.",
-    icon: <Accessibility size={24} />
+    question: "Este curentul periculos pentru inimă?",
+    answer: "Nu. Folosim joasă frecvență care lucrează strict pe musculatura scheletică. Nu afectează inima sau organele interne. Totuși, dacă ai stimulator cardiac (pacemaker), nu putem face antrenamentul.",
+    icon: <ShieldCheck size={24} />
   },
   {
-    question: "Cât de des mă pot antrena?",
-    answer: "Recomandăm minim o ședință pe săptămână pentru întreținere, sau 2-3 ședințe pentru rezultate accelerate de transformare corporală. Mușchii tăi au nevoie de timp să se refacă.",
+    question: "Mă vor durea mușchii după?",
+    answer: "Probabil vei simți o febră musculară plăcută, semn că antrenamentul a fost eficient și corpul se transformă. Este dovada că ai activat mușchi pe care nu i-ai mai folosit de mult.",
+    icon: <Activity size={24} />
+  },
+  {
+    question: "De ce costă mai mult decât o sală normală?",
+    answer: "Pentru că nu plătești doar accesul la aparate. Plătești tehnologia de vârf, intimitatea studioului și, cel mai important, antrenorul personal care stă cu tine secundă de secundă. Este un serviciu premium, totul inclus.",
+    icon: <Crown size={24} />
+  },
+  {
+    question: "Trebuie să îmi aduc haine de schimb?",
+    answer: "Nu! Îți oferim noi tot echipamentul necesar. Tu trebuie să vii doar cu încălțăminte sport curată. Este ideal dacă vii în pauza de masă sau între întâlniri.",
+    icon: <Shirt size={24} />
+  },
+  {
+    question: "Cât de repede văd rezultate?",
+    answer: "Clienții noștri simt diferența de tonus după 3-4 ședințe. Rezultatele vizibile (haine mai largi, siluetă definită) apar de obicei după un abonament intensiv de 8 săptămâni (Starter sau Progress).",
     icon: <Calendar size={24} />
-  },
-  {
-    question: "Am nevoie de haine speciale?",
-    answer: "Nu, NeoBoost îți pune la dispoziție tot echipamentul. Ai nevoie doar de încălțăminte sport și dorința de a te transforma.",
-    icon: <UserCheck size={24} />
   }
 ];
 
