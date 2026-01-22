@@ -12,12 +12,14 @@ interface LocationModalProps {
 
 export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, onClose }) => {
     const [activeImage, setActiveImage] = useState(0);
+    const [isZoomed, setIsZoomed] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
+            setIsZoomed(false);
         }
         return () => {
             document.body.style.overflow = 'unset';
@@ -26,11 +28,14 @@ export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, 
 
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
+            if (e.key === 'Escape') {
+                if (isZoomed) setIsZoomed(false);
+                else onClose();
+            }
         };
         window.addEventListener('keydown', handleEsc);
         return () => window.removeEventListener('keydown', handleEsc);
-    }, [onClose]);
+    }, [onClose, isZoomed]);
 
     if (!isOpen || !location) return null;
 
@@ -39,10 +44,36 @@ export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, 
     return (
         <div
             className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-fade-in"
-            onClick={onClose}
+            onClick={(e) => {
+                if (isZoomed) setIsZoomed(false);
+                else onClose();
+            }}
         >
+            {/* Zoom Overlay */}
+            {isZoomed && (
+                <div
+                    className="fixed inset-0 z-[1000] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out animate-in fade-in duration-200"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsZoomed(false);
+                    }}
+                >
+                    <img
+                        src={gallery[activeImage] || location.gallery?.[0] || '/ramada.jpg'}
+                        alt="Zoomed view"
+                        className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                    />
+                    <button
+                        onClick={() => setIsZoomed(false)}
+                        className="absolute top-6 right-6 p-4 bg-black/50 hover:bg-[#3A86FF] text-white rounded-full transition-colors"
+                    >
+                        <X size={32} />
+                    </button>
+                </div>
+            )}
+
             <div
-                className="relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl animate-scale-in"
+                className={`relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl animate-scale-in ${isZoomed ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 onClick={(e) => e.stopPropagation()}
                 data-lenis-prevent
             >
@@ -75,12 +106,18 @@ export const LocationModal: React.FC<LocationModalProps> = ({ location, isOpen, 
                             <h3 className="text-2xl font-bold text-white mb-4">Galerie Foto</h3>
 
                             {/* Main Image */}
-                            <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 group">
+                            <div
+                                className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 group cursor-zoom-in"
+                                onClick={() => setIsZoomed(true)}
+                            >
                                 <img
                                     src={gallery[activeImage] || location.gallery?.[0] || '/ramada.jpg'}
                                     alt={`${location.name} - ${activeImage + 1}`}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 pointer-events-none">
+                                    <span className="bg-black/80 text-white text-xs px-3 py-1 rounded-full backdrop-blur-md">Click pentru Zoom</span>
+                                </div>
                             </div>
 
                             {/* Thumbnail Gallery */}
