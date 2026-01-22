@@ -61,6 +61,28 @@ export const ProgramLandingPage: React.FC = () => {
                     description={program.seo.description}
                     ogImage={program.image}
                     canonical={`/program/${program.id}`}
+                    jsonLd={{
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": program.title,
+                        "description": program.description,
+                        "image": `https://neo-boost.com${program.image}`,
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "NeoBoost"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "url": `https://neo-boost.com/program/${program.id}`,
+                            "priceCurrency": "RON",
+                            "price": program.pricing?.specialPrice ? program.pricing.specialPrice.replace(/\D/g, '') : "0",
+                            "availability": "https://schema.org/InStock",
+                            "seller": {
+                                "@type": "Organization",
+                                "name": "NeoBoost EMS"
+                            }
+                        }
+                    }}
                 />
             )}
 

@@ -23,7 +23,10 @@ export const SEO: React.FC<SEOProps> = ({
   jsonLd,
 }) => {
   const siteUrl = 'https://neo-boost.com';
-  const fullCanonical = canonical ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`) : siteUrl;
+  const fullCanonical = canonical
+    ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`)
+    : (typeof window !== 'undefined' ? window.location.href : siteUrl);
+
   const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
   return (

@@ -38,9 +38,34 @@ export const ArticlePage: React.FC = () => {
                     title={article.seo.title}
                     description={article.seo.description}
                     keywords={article.seo.keywords}
-                    image={article.image}
-                    url={`/articol/${article.id}`}
-                    type="article"
+                    ogImage={article.image}
+                    canonical={`/articol/${article.id}`}
+                    ogType="article"
+                    jsonLd={{
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": article.title,
+                        "image": [
+                            `https://neo-boost.com${article.image}`
+                        ],
+                        "author": {
+                            "@type": "Organization",
+                            "name": "NeoBoost EMS"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "NeoBoost",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://neo-boost.com/assets/logo.png"
+                            }
+                        },
+                        "description": article.seo.description,
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": `https://neo-boost.com/articol/${article.id}`
+                        }
+                    }}
                 />
             )}
 

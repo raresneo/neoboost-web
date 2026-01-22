@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage';
 import { ProgramLandingPage } from './pages/programs/ProgramLandingPage';
 import { SpecialOfferPage } from './pages/SpecialOfferPage';
 import { ArticlePage } from './pages/ArticlePage';
+import { SeoLandingPage } from './pages/SeoLandingPage';
 import { captureUTMParameters } from './lib/utm';
 
 // Lazy Load Secondary Pages
@@ -37,6 +38,9 @@ const App: React.FC = () => {
           <Route path="program/:programId" element={<ProgramLandingPage />} />
           <Route path="oferta-speciala" element={<SpecialOfferPage />} />
           <Route path="articol/:articleId" element={<ArticlePage />} />
+
+          {/* Dynamic SEO Pages (Must be last before 404/Fallback) */}
+          <Route path=":slug" element={<SeoLandingPage />} />
 
           {/* Fallback */}
           <Route path="*" element={<HomePage />} />

@@ -41,6 +41,7 @@ import { SpotlightCard } from '../components/ui/SpotlightCard';
 import { BioDecryption } from '../components/ui/BioDecryption';
 import { AnimatedGraphic } from '../components/AnimatedGraphic';
 import { StickyBanner } from '../components/ui/StickyBanner';
+import { SEO } from '../components/SEO';
 
 // --- Backgrounds ---
 import { BenefitsVideoBackground, BiohackVideoBackground } from '../components/backgrounds/CinematicBackground';
@@ -117,6 +118,23 @@ export const HomePage: React.FC = () => {
 
     return (
         <>
+            <SEO
+                title="Bio-Electric Performance"
+                description="NeoBoost EMS Oradea. Antrenamente de 20 min = 4 ore de sală. Tehnologie EMS wireless Neo Boost pentru slăbire și tonifiere rapidă."
+                canonical="/"
+                jsonLd={{
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": FAQS.map(faq => ({
+                        "@type": "Question",
+                        "name": faq.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": faq.answer
+                        }
+                    }))
+                }}
+            />
             <ImmersiveHero />
 
             {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
