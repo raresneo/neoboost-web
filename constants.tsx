@@ -349,7 +349,16 @@ export const LOCATIONS: Location[] = [
       "/getfit.jpg",
       "/getfit_2.jpg",
       "/getfit_3.jpg",
-      "/getfit_equipment.jpg"
+      "/getfit_equipment.jpg",
+      "/getfit_ems_1.jpg",
+      "/getfit_ems_2.jpg",
+      "/getfit_ems_3.jpg",
+      "/getfit_ems_4.jpg",
+      "/getfit_ems_5.jpg",
+      "/getfit_ems_6.jpg",
+      "/getfit_ems_7.jpg",
+      "/getfit_ems_8.jpg",
+      "/getfit_ems_9.jpg"
     ]
   }
 ];
