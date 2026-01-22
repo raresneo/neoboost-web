@@ -402,8 +402,7 @@ export const HomePage: React.FC = () => {
 
             <ProgramsSection />
 
-            <EMSTimeline />
-
+            {/* <EMSTimeline /> - Removed as duplicate/legacy */}
             <EMSEducation />
 
             <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
