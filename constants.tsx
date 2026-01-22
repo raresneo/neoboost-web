@@ -336,7 +336,12 @@ export const LOCATIONS: Location[] = [
       "/ramada.jpg",
       "/ramada_2.jpg",
       "/ramada_3.jpg",
-      "/ramada_equipment.jpg"
+      "/ramada_equipment.jpg",
+      "/ramada_ems_1.jpg",
+      "/ramada_ems_2.jpg",
+      "/ramada_ems_3.jpg",
+      "/ramada_ems_4.jpg",
+      "/ramada_ems_5.jpg"
     ]
   },
   {
