@@ -334,9 +334,6 @@ export const LOCATIONS: Location[] = [
     calendlyUrl: "https://calendly.com/neoboost-ramada",
     gallery: [
       "/ramada.jpg",
-      "/ramada_2.jpg",
-      "/ramada_3.jpg",
-      "/ramada_equipment.jpg",
       "/ramada_ems_1.jpg",
       "/ramada_ems_2.jpg",
       "/ramada_ems_3.jpg",
@@ -355,9 +352,6 @@ export const LOCATIONS: Location[] = [
     calendlyUrl: "https://calendly.com/neoboost-getfit",
     gallery: [
       "/getfit.jpg",
-      "/getfit_2.jpg",
-      "/getfit_3.jpg",
-      "/getfit_equipment.jpg",
       "/getfit_ems_1.jpg",
       "/getfit_ems_2.jpg",
       "/getfit_ems_3.jpg",
