@@ -327,6 +327,7 @@ export const QUARTERLY_PACKAGES: NeoPackage[] = [
 
 export const LOCATIONS: Location[] = [
   {
+    id: "ramada",
     name: "Hotel Ramada",
     address: "Calea Aradului nr. 9, Oradea",
     description: "Un spațiu premium, relaxant, echipat cu cele mai noi stații de antrenament NeoBoost.",
@@ -345,6 +346,7 @@ export const LOCATIONS: Location[] = [
     ]
   },
   {
+    id: "getfit",
     name: "Sala GetFit",
     address: "Lotus Center, Nufărului, Oradea",
     description: "O locație energică, plină de lumină naturală, ideală pentru antrenamente dinamice.",
