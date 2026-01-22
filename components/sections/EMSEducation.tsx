@@ -10,7 +10,6 @@ export const EMSEducation = () => {
         <section className="py-32 md:py-60 bg-[#080808] relative z-10 overflow-hidden">
             <div className="container mx-auto px-6 md:px-24">
 
-                {/* Evolution Section */}
                 <ScrollReveal className="mb-40">
                     <div className="flex items-center gap-6 mb-8">
                         <History className="text-[#3A86FF]" size={20} />
@@ -19,145 +18,109 @@ export const EMSEducation = () => {
                     <div className="text-6xl md:text-8xl font-black impact-font text-white mb-20 leading-[0.8] uppercase">
                         <StaggeredText text="Evoluția" className="inline-block mr-4" />
                         <StaggeredText text="EMS." className="inline-block text-[#3A86FF]" delay={200} />
-                        <span className="text-white/30 text-4xl md:text-5xl tracking-normal normal-case font-light block mt-6">De unde a început și de ce contează azi.</span>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                        {/* Stage 0: 1780 Bioelectricity */}
-                        <div className="group relative h-[450px] rounded-2xl overflow-hidden border border-white/10 hover:border-[#3A86FF] transition-all duration-500">
-                            <div className="absolute inset-0 z-0">
+                    <div className="space-y-32">
+                        {/* 1780 */}
+                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                            <div className="md:w-1/2 order-2 md:order-1 relative">
+                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
                                 <img
                                     src="/ems-1780.png"
-                                    alt="Luigi Galvani Bioelectricity"
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 sepia-[0.5]"
+                                    alt="1780 Bioelectricity"
+                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
                                 />
-                                <div className="absolute inset-0 bg-[#3A86FF]/60 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                             </div>
-
-                            <div className="relative z-10 p-6 h-full flex flex-col justify-end">
-                                <span className="text-[#3A86FF] font-black impact-font text-5xl mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">1780</span>
-                                <h3 className="text-white font-bold text-xl uppercase mb-2 leading-tight">Bio<br />Electricitate</h3>
-                                <div className="w-12 h-1 bg-[#3A86FF] mb-3"></div>
-                                <p className="text-white/70 text-xs leading-relaxed mb-4 font-light">
-                                    Luigi Galvani descoperă că impulsurile electrice mișcă mușchii. Experimentele pe broaște deschid era bioelectricității.
+                            <div className="md:w-1/2 order-1 md:order-2 space-y-6">
+                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">1780</span>
+                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Bioelectricitatea</h3>
+                                <p className="text-white/60 text-lg leading-relaxed max-w-md">
+                                    Luigi Galvani descoperă că impulsurile electrice pot activa mușchii. Experimentele sale fundamentale pe broaște deschid era bioelectricității și a înțelegerii sistemului nervos.
                                 </p>
-                                <ul className="space-y-1 text-[10px] mono-font text-white/40 uppercase tracking-wider">
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Luigi Galvani</li>
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Prima Scânteie</li>
-                                </ul>
                             </div>
                         </div>
 
-                        {/* Stage 0.5: 1960 Space & Sport */}
-                        <div className="group relative h-[450px] rounded-2xl overflow-hidden border border-white/10 hover:border-[#3A86FF] transition-all duration-500">
-                            <div className="absolute inset-0 z-0">
+                        {/* 1960 */}
+                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                            <div className="md:w-1/2 order-1 space-y-6 text-right">
+                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">1960</span>
+                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Spațiu & Performanță</h3>
+                                <p className="text-white/60 text-lg leading-relaxed max-w-md ml-auto">
+                                    "Curenții Rusești" dezvoltați de Dr. Yakov Kots sunt utilizați pentru atleții olimpici sovietici și în programele spațiale pentru a preveni atrofia musculară în microgravitație.
+                                </p>
+                            </div>
+                            <div className="md:w-1/2 order-2 relative">
+                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
                                 <img
                                     src="/ems-1960.png"
-                                    alt="Soviet Space Sport Science"
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                    alt="1960 Space Race"
+                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
+                                    style={{ animationDelay: '1s' }}
                                 />
-                                <div className="absolute inset-0 bg-[#3A86FF]/60 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                            </div>
-
-                            <div className="relative z-10 p-6 h-full flex flex-col justify-end">
-                                <span className="text-[#3A86FF] font-black impact-font text-5xl mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">1960</span>
-                                <h3 className="text-white font-bold text-xl uppercase mb-2 leading-tight">Spațiu &<br />Performanță</h3>
-                                <div className="w-12 h-1 bg-[#3A86FF] mb-3"></div>
-                                <p className="text-white/70 text-xs leading-relaxed mb-4 font-light">
-                                    "Curenții Rusești" (Kots) folosiți pentru atleții de elită sovietici și programele spațiale pentru a preveni atrofia în microgravitație.
-                                </p>
-                                <ul className="space-y-1 text-[10px] mono-font text-white/40 uppercase tracking-wider">
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Dr. Yakov Kots</li>
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Programul Spațial</li>
-                                </ul>
                             </div>
                         </div>
 
-                        {/* Stage 1: 1980s Medical */}
-                        <div className="group relative h-[450px] rounded-2xl overflow-hidden border border-white/10 hover:border-[#3A86FF] transition-all duration-500">
-                            {/* Image Background & Effects */}
-                            <div className="absolute inset-0 z-0">
+                        {/* 1980 */}
+                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                            <div className="md:w-1/2 order-2 md:order-1 relative">
+                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
                                 <img
                                     src="/ems-1980.png"
-                                    alt="Medical EMS 1980"
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                    alt="1980 Medical Era"
+                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
+                                    style={{ animationDelay: '2s' }}
                                 />
-                                {/* Blue Overlay - Disappears on hover */}
-                                <div className="absolute inset-0 bg-[#3A86FF]/60 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
-                                {/* Gradient for readability */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                             </div>
-
-                            {/* Content */}
-                            <div className="relative z-10 p-6 h-full flex flex-col justify-end">
-                                <span className="text-[#3A86FF] font-black impact-font text-5xl mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">1980</span>
-                                <h3 className="text-white font-bold text-xl uppercase mb-2 leading-tight">Origini <br />Medicale</h3>
-                                <div className="w-12 h-1 bg-[#3A86FF] mb-3"></div>
-                                <p className="text-white/70 text-xs leading-relaxed mb-4 font-light">
-                                    Utilizat inițial exclusiv în fizioterapie și de către NASA pentru prevenirea atrofiei musculare. Static, dar eficient.
+                            <div className="md:w-1/2 order-1 md:order-2 space-y-6">
+                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">1980</span>
+                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Standard Medical</h3>
+                                <p className="text-white/60 text-lg leading-relaxed max-w-md">
+                                    EMS devine un instrument esențial în fizioterapie. Este folosit pe scară largă în spitale pentru recuperarea post-traumatică rapidă și prevenirea atrofiei la pacienții imobilizați.
                                 </p>
-                                <ul className="space-y-1 text-[10px] mono-font text-white/40 uppercase tracking-wider">
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Recuperare post-trauma</li>
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Atrofie musculară</li>
-                                </ul>
                             </div>
                         </div>
 
-                        {/* Stage 2: 2010s Wired */}
-                        <div className="group relative h-[450px] rounded-2xl overflow-hidden border border-white/10 hover:border-[#3A86FF] transition-all duration-500">
-                            <div className="absolute inset-0 z-0">
+                        {/* 2010 */}
+                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                            <div className="md:w-1/2 order-1 space-y-6 text-right">
+                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">2010</span>
+                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Era cu Cabluri</h3>
+                                <p className="text-white/60 text-lg leading-relaxed max-w-md ml-auto">
+                                    Tehnologia intră în fitness-ul comercial. Apar primele studiouri, însă costumele sunt grele, umezite cu apă și conectate prin cabluri groase de o consolă fixă.
+                                </p>
+                            </div>
+                            <div className="md:w-1/2 order-2 relative">
+                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
                                 <img
                                     src="/ems-wired.png"
-                                    alt="Wired EMS 2010"
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                    alt="2010 Wired EMS"
+                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
+                                    style={{ animationDelay: '3s' }}
                                 />
-                                <div className="absolute inset-0 bg-[#3A86FF]/60 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                            </div>
-
-                            <div className="relative z-10 p-6 h-full flex flex-col justify-end">
-                                <span className="text-[#3A86FF] font-black impact-font text-5xl mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">2010</span>
-                                <h3 className="text-white font-bold text-xl uppercase mb-2 leading-tight">Era <br />Cu Cabluri</h3>
-                                <div className="w-12 h-1 bg-[#3A86FF] mb-3"></div>
-                                <p className="text-white/70 text-xs leading-relaxed mb-4 font-light">
-                                    Expansiunea în fitness comercial (ex. tehnologia clasică). Puternic, dar restrictiv din cauza cablurilor groase și a consolei fixe.
-                                </p>
-                                <ul className="space-y-1 text-[10px] mono-font text-white/40 uppercase tracking-wider">
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Antrenament static</li>
-                                    <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#3A86FF]"></div> Recrutare musculară</li>
-                                </ul>
                             </div>
                         </div>
 
-                        {/* Stage 3: Present Wireless */}
-                        <div className="group relative h-[450px] rounded-2xl overflow-hidden border border-[#3A86FF]/50 shadow-[0_0_30px_rgba(58,134,255,0.1)] hover:shadow-[0_0_50px_rgba(58,134,255,0.3)] transition-all duration-500">
-                            <div className="absolute inset-0 z-0">
+                        {/* Present */}
+                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                            <div className="md:w-1/2 order-2 md:order-1 relative">
+                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-40 animate-pulse-fast"></div>
                                 <img
                                     src="/ems-wireless.png"
-                                    alt="Wireless EMS Present"
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                    alt="Present Wireless"
+                                    className="relative z-10 w-full rounded-2xl border-2 border-[#3A86FF] shadow-[0_0_50px_rgba(58,134,255,0.3)] animate-float"
+                                    style={{ animationDelay: '4s' }}
                                 />
-                                <div className="absolute inset-0 bg-[#3A86FF]/60 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                             </div>
-
-                            <div className="relative z-10 p-6 h-full flex flex-col justify-end">
-                                <div className="absolute top-6 right-6 p-2 rounded-full bg-[#3A86FF] text-black animate-pulse">
-                                    <Zap size={20} fill="currentColor" />
+                            <div className="md:w-1/2 order-1 md:order-2 space-y-6">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3A86FF]/20 text-[#3A86FF] border border-[#3A86FF]/50 mb-4">
+                                    <Zap size={16} fill="currentColor" />
+                                    <span className="text-xs font-bold uppercase tracking-widest">Generația Nouă</span>
                                 </div>
-                                <span className="text-[#3A86FF] font-black impact-font text-5xl mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">PREZENT</span>
-                                <h3 className="text-white font-bold text-xl uppercase mb-2 leading-tight">Libertate <br />Wireless</h3>
-                                <div className="w-12 h-1 bg-[#3A86FF] mb-3"></div>
-                                <p className="text-white/90 text-xs leading-relaxed mb-4 font-light">
-                                    NeoBoost & Symbiont. Fără cabluri, fără umezire, date biometrice live. Libertate totală de mișcare pentru antrenamente funcționale reale.
+                                <span className="text-white font-black impact-font text-6xl md:text-8xl block mb-4">PREZENT</span>
+                                <h3 className="text-3xl text-white font-bold uppercase leading-none text-[#3A86FF]">Libertate Wireless</h3>
+                                <p className="text-white/80 text-lg leading-relaxed max-w-md">
+                                    NeoBoost transformă industria cu tehnologia DrySuit Wireless. Fără apă, fără cabluri, cu monitorizare biometrică în timp real. Antrenament funcțional adevărat, fără limite.
                                 </p>
-                                <ul className="space-y-1 text-[10px] mono-font text-[#3A86FF] uppercase tracking-wider font-bold">
-                                    <li className="flex items-center gap-2"><CheckCircle2 size={12} /> Dry Suit (Fără apă)</li>
-                                    <li className="flex items-center gap-2"><CheckCircle2 size={12} /> Biosemnale Live</li>
-                                    <li className="flex items-center gap-2"><CheckCircle2 size={12} /> Mișcare Nelimitată</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
