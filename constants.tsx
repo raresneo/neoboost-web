@@ -54,12 +54,7 @@ export interface Milestone {
 }
 
 export const EMS_MILESTONES: Milestone[] = [
-  {
-    year: "1780",
-    title: "Bioelectricitatea",
-    description: "Luigi Galvani descoperă că impulsurile electrice pot activa mușchii, punând bazele științei electrostimulării.",
-    icon: <Microscope size={20} />
-  },
+
   {
     year: "1960",
     title: "Performanță Olimpică",

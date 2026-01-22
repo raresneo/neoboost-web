@@ -21,24 +21,7 @@ export const EMSEducation = () => {
                     </div>
 
                     <div className="space-y-32">
-                        {/* 1780 */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                            <div className="md:w-1/2 order-2 md:order-1 relative">
-                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
-                                <img
-                                    src="/ems-1780.png"
-                                    alt="1780 Bioelectricity"
-                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
-                                />
-                            </div>
-                            <div className="md:w-1/2 order-1 md:order-2 space-y-6">
-                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">1780</span>
-                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Bioelectricitatea</h3>
-                                <p className="text-white/60 text-lg leading-relaxed max-w-md">
-                                    Luigi Galvani descoperă că impulsurile electrice pot activa mușchii. Experimentele sale fundamentale pe broaște deschid era bioelectricității și a înțelegerii sistemului nervos.
-                                </p>
-                            </div>
-                        </div>
+
 
                         {/* 1960 */}
                         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">

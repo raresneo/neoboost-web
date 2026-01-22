@@ -1,4 +1,30 @@
+# NeoBoost EMS Oradea - robots.txt
+# Optimized for maximum Google indexing
+
+# Allow all search engines
 User-agent: *
 Allow: /
 
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Allow Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow mobile indexing
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Block admin/private paths (if any)
+Disallow: /api/
+Disallow: /_private/
+Disallow: /admin/
+
+# Host declaration
+Host: https://neo-boost.com
+
+# Sitemap locations
 Sitemap: https://neo-boost.com/sitemap.xml
