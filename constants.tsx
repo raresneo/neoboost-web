@@ -736,17 +736,17 @@ export const PROGRAMS = [
 export const TRANSFORMATIONS = [
   {
     id: 1,
-    name: "Alexandru P.",
-    duration: "12 Săptămâni",
+    name: "Alex D.",
+    duration: "2 Luni și jumătate",
     package: "Master Body",
-    imageBefore: "/transformation_male.png",
-    imageAfter: "/transformation_male_v2.png",
+    imageBefore: "/transformation_real_before.jpg",
+    imageAfter: "/transformation_real_after.png",
     metrics: {
-      weight: { start: 94, end: 86, unit: "kg" },
-      bodyFat: { start: 28, end: 19, unit: "%" },
-      muscle: { start: 34, end: 39, unit: "%" }
+      weight: { start: 106.3, end: 93.4, unit: "kg" },
+      bodyFat: { start: 38.5, end: 24.1, unit: "%" },
+      muscle: { start: 30.1, end: 35.6, unit: "%" }
     },
-    quote: "Nu credeam că pot arăta așa cu doar 2 antrenamente pe săptămână."
+    quote: "Rezultatele vorbesc de la sine. Grăsimea s-a topit, iar masa musculară a crescut vizibil."
   },
   {
     id: 2,
