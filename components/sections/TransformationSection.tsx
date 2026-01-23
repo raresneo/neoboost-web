@@ -53,7 +53,11 @@ export const TransformationSection = () => {
                                         className="w-full h-full object-cover"
                                         style={{
                                             ...data.styleAfter,
-                                            transform: (data as any).shouldFlipAfter ? 'scaleX(-1)' : undefined
+                                            transform: [
+                                                (data as any).shouldFlipAfter ? 'scaleX(-1)' : '',
+                                                // If it's a sprite (same URL), shift left by 50% to show right half
+                                                data.imageBefore === data.imageAfter ? 'translateX(-50%)' : ''
+                                            ].filter(Boolean).join(' ') || undefined
                                         }}
                                         loading="lazy"
                                     />
