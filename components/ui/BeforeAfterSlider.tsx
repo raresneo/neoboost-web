@@ -63,7 +63,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImag
     return (
         <div
             ref={containerRef}
-            className={`relative w-full aspect-[3/4] overflow-hidden rounded-2xl select-none cursor-ew-resize border border-white/10 ${className}`}
+            className={`relative w-full aspect-[9/16] max-h-[80vh] overflow-hidden rounded-2xl select-none cursor-ew-resize border border-white/10 ${className}`}
             onMouseDown={handleMouseDown}
             onTouchStart={handleMouseDown}
         >
@@ -71,7 +71,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImag
             <img
                 src={afterImage}
                 alt="After"
-                className="absolute inset-0 w-full h-full object-cover object-top"
+                className="absolute inset-0 w-full h-full object-contain object-top bg-[#050505]"
                 draggable={false}
                 style={afterStyle}
             />
@@ -93,10 +93,10 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImag
                     <img
                         src={beforeImage}
                         alt="Before"
-                        className="absolute top-0 left-0 h-full object-cover object-top max-w-none"
+                        className="absolute top-0 left-0 h-full object-contain object-top max-w-none bg-[#050505]"
                         style={{
-                            width: '100%', // Default to filling the static container
-                            ...beforeStyle // Allow 200% override to work against the static containerWidth
+                            width: '100%',
+                            ...beforeStyle
                         }}
                     />
                 </div>
