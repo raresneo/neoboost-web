@@ -4,6 +4,9 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 import { StaggeredText } from '../ui/StaggeredText';
 import { AnimatedGraphic } from '../AnimatedGraphic';
 
+import { BioDecryption } from '../ui/BioDecryption';
+import { EMS_MILESTONES } from '../../constants';
+
 // --- EMSEducation Component ---
 export const EMSEducation = () => {
     return (
@@ -21,91 +24,37 @@ export const EMSEducation = () => {
                     </div>
 
                     <div className="space-y-32">
-
-
-                        {/* 1960 */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                            <div className="md:w-1/2 order-1 space-y-6 text-right">
-                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">1960</span>
-                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Spațiu & Performanță</h3>
-                                <p className="text-white/60 text-lg leading-relaxed max-w-md ml-auto">
-                                    "Curenții Rusești" dezvoltați de Dr. Yakov Kots sunt utilizați pentru atleții olimpici sovietici și în programele spațiale pentru a preveni atrofia musculară în microgravitație.
-                                </p>
-                            </div>
-                            <div className="md:w-1/2 order-2 relative">
-                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
-                                <img
-                                    src="/ems-1960.png"
-                                    alt="1960 Space Race"
-                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
-                                    style={{ animationDelay: '1s' }}
-                                />
-                            </div>
-                        </div>
-
-                        {/* 1980 */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                            <div className="md:w-1/2 order-2 md:order-1 relative">
-                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
-                                <img
-                                    src="/ems-1980.png"
-                                    alt="1980 Medical Era"
-                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
-                                    style={{ animationDelay: '2s' }}
-                                />
-                            </div>
-                            <div className="md:w-1/2 order-1 md:order-2 space-y-6">
-                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">1980</span>
-                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Standard Medical</h3>
-                                <p className="text-white/60 text-lg leading-relaxed max-w-md">
-                                    EMS devine un instrument esențial în fizioterapie. Este folosit pe scară largă în spitale pentru recuperarea post-traumatică rapidă și prevenirea atrofiei la pacienții imobilizați.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* 2010 */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                            <div className="md:w-1/2 order-1 space-y-6 text-right">
-                                <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">2010</span>
-                                <h3 className="text-4xl text-white font-bold uppercase leading-none">Era cu Cabluri</h3>
-                                <p className="text-white/60 text-lg leading-relaxed max-w-md ml-auto">
-                                    Tehnologia intră în fitness-ul comercial. Apar primele studiouri, însă costumele sunt grele, umezite cu apă și conectate prin cabluri groase de o consolă fixă.
-                                </p>
-                            </div>
-                            <div className="md:w-1/2 order-2 relative">
-                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-20 animate-pulse-fast"></div>
-                                <img
-                                    src="/ems-wired.png"
-                                    alt="2010 Wired EMS"
-                                    className="relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700"
-                                    style={{ animationDelay: '3s' }}
-                                />
-                            </div>
-                        </div>
-
-                        {/* Present */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                            <div className="md:w-1/2 order-2 md:order-1 relative">
-                                <div className="absolute inset-0 bg-[#3A86FF] blur-[100px] opacity-40 animate-pulse-fast"></div>
-                                <img
-                                    src="/ems-wireless.png"
-                                    alt="Present Wireless"
-                                    className="relative z-10 w-full rounded-2xl border-2 border-[#3A86FF] shadow-[0_0_50px_rgba(58,134,255,0.3)] animate-float"
-                                    style={{ animationDelay: '4s' }}
-                                />
-                            </div>
-                            <div className="md:w-1/2 order-1 md:order-2 space-y-6">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3A86FF]/20 text-[#3A86FF] border border-[#3A86FF]/50 mb-4">
-                                    <Zap size={16} fill="currentColor" />
-                                    <span className="text-xs font-bold uppercase tracking-widest">Generația Nouă</span>
+                        {EMS_MILESTONES.map((milestone, idx) => (
+                            <div key={milestone.year} className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                                {/* Text Column */}
+                                <div className={`md:w-1/2 space-y-6 ${idx % 2 === 0 ? 'order-1 text-right' : 'order-1 md:order-2 text-left'}`}>
+                                    {milestone.isNeo && (
+                                        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3A86FF]/20 text-[#3A86FF] border border-[#3A86FF]/50 mb-4 ${idx % 2 === 0 ? 'ml-auto' : ''}`}>
+                                            <Zap size={16} fill="currentColor" />
+                                            <span className="text-xs font-bold uppercase tracking-widest">Generația Nouă</span>
+                                        </div>
+                                    )}
+                                    <span className="text-[#3A86FF] font-black impact-font text-8xl md:text-9xl opacity-50 block mb-4">
+                                        <BioDecryption text={milestone.year} />
+                                    </span>
+                                    <h3 className={`text-3xl md:text-4xl text-white font-bold uppercase leading-none ${milestone.isNeo ? 'text-[#3A86FF]' : ''}`}>{milestone.title}</h3>
+                                    <p className={`text-white/60 text-lg leading-relaxed max-w-md ${idx % 2 === 0 ? 'ml-auto' : ''}`}>
+                                        {milestone.description}
+                                    </p>
                                 </div>
-                                <span className="text-white font-black impact-font text-6xl md:text-8xl block mb-4">PREZENT</span>
-                                <h3 className="text-3xl text-white font-bold uppercase leading-none text-[#3A86FF]">Libertate Wireless</h3>
-                                <p className="text-white/80 text-lg leading-relaxed max-w-md">
-                                    NeoBoost transformă industria cu tehnologia DrySuit Wireless. Fără apă, fără cabluri, cu monitorizare biometrică în timp real. Antrenament funcțional adevărat, fără limite.
-                                </p>
+
+                                {/* Image Column */}
+                                <div className={`md:w-1/2 relative ${idx % 2 === 0 ? 'order-2' : 'order-2 md:order-1'}`}>
+                                    <div className={`absolute inset-0 bg-[#3A86FF] blur-[100px] animate-pulse-fast ${milestone.isNeo ? 'opacity-40' : 'opacity-20'}`}></div>
+                                    <img
+                                        src={milestone.image || "/ems-placeholder.jpg"}
+                                        alt={`${milestone.year} - ${milestone.title}`}
+                                        className={`relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700 ${milestone.isNeo ? 'border-2 border-[#3A86FF] shadow-[0_0_50px_rgba(58,134,255,0.3)]' : ''}`}
+                                        style={{ animationDelay: `${(idx + 1)}s` }}
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </ScrollReveal>
 

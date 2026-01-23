@@ -37,7 +37,7 @@ export const ImmersiveHero = () => {
                         <span className="text-[#3A86FF]">slăbire și tonifiere rapidă.</span>
                     </h1>
                     <p className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed readable-text">
-                        Antrenamente de <span className="text-white font-medium">doar 20 de minute</span>, de 1–2 ori pe săptămână, cu <span className="text-white font-medium">antrenor dedicat</span> și costum EMS de ultimă generație – în studio-ul NeoBoost EMS din Oradea.
+                        Antrenamente de <span className="text-white font-medium">doar <BioDecryption text="20" /> de minute</span>, de 1–2 ori pe săptămână, cu <span className="text-white font-medium">antrenor dedicat</span> și costum EMS de ultimă generație – în studio-ul NeoBoost EMS din Oradea.
                     </p>
                 </div>
 

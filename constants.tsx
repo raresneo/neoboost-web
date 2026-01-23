@@ -55,27 +55,33 @@ export interface Milestone {
 }
 
 export const EMS_MILESTONES: Milestone[] = [
-
+  {
+    year: "1780",
+    title: "Descoperirea Bioelectricității",
+    description: "Luigi Galvani demonstrează că celulele musculare sunt activate de impulsuri electrice, punând bazele științifice ale EMS.",
+    icon: <Microscope size={20} />,
+    image: "/ems-1780.png"
+  },
   {
     year: "1960",
     title: "Performanță Olimpică",
     description: "Oamenii de știință din URSS utilizează EMS pentru a crește forța atleților olimpici cu până la 40%.",
     icon: <Medal size={20} />,
-    image: "/history_russian.jpg"
+    image: "/ems-1960.png"
   },
   {
     year: "1990",
     title: "Standard Medical",
     description: "EMS devine un instrument esențial în kinetoterapie pentru recuperarea post-traumatică rapidă.",
     icon: <Briefcase size={20} />,
-    image: "/history_medical.jpg"
+    image: "/ems-1980.png"
   },
   {
     year: "2010",
     title: "Fitness Comercial",
     description: "Apar primele studiouri EMS de masă, folosind însă sisteme rigide cu cabluri și costume umede.",
     icon: <Dumbbell size={20} />,
-    image: "/history_commercial.jpg"
+    image: "/ems-wired.png"
   },
   {
     year: "2024+",
@@ -83,7 +89,7 @@ export const EMS_MILESTONES: Milestone[] = [
     description: "Tehnologie Wireless, Drysuit și antrenament eficient de 30 de minute, minim o dată pe săptămână în Oradea.",
     icon: <Zap size={20} />,
     isNeo: true,
-    image: "/neoboost_athlete_run.jpg"
+    image: "/ems-wireless.png"
   }
 ];
 

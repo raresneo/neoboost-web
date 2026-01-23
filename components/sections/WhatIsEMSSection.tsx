@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Clock, Users, ShieldCheck } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 
+import { BioDecryption } from '../ui/BioDecryption';
+
 export const WhatIsEMSSection = () => {
     return (
         <section className="py-20 md:py-32 bg-[#020202] relative z-10 overflow-hidden">
@@ -28,7 +30,7 @@ export const WhatIsEMSSection = () => {
                                     <div>
                                         <h3 className="text-white font-bold text-xl mb-2">Eficiență Maximă</h3>
                                         <p className="text-white/60 text-base leading-relaxed">
-                                            Doar 20 de minute, de 1-2 ori pe săptămână. Echivalentul a 4 ore de fitness convențional, activând 90% din musculatură.
+                                            Doar <strong className="text-white"><BioDecryption text="20" /> de minute</strong>, de 1-2 ori pe săptămână. Echivalentul a 4 ore de fitness convențional, activând <strong className="text-white"><BioDecryption text="90%" /></strong> din musculatură.
                                         </p>
                                     </div>
                                 </div>
