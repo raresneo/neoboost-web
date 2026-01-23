@@ -7,8 +7,12 @@ import { TRANSFORMATIONS } from '../../constants';
 import { Quote } from 'lucide-react';
 
 export const TransformationSection = () => {
-    const [activeId, setActiveId] = useState(TRANSFORMATIONS[0].id);
-    const activeData = TRANSFORMATIONS.find(t => t.id === activeId) || TRANSFORMATIONS[0];
+    const [visibleCount, setVisibleCount] = useState(4);
+    const visibleData = TRANSFORMATIONS.slice(0, visibleCount);
+
+    const handleLoadMore = () => {
+        setVisibleCount(prev => prev + 4);
+    };
 
     return (
         <section id="rezultate" className="py-24 md:py-40 bg-[#020202] relative z-10 scroll-mt-20 border-t border-white/5">
@@ -21,72 +25,99 @@ export const TransformationSection = () => {
                     </h2>
                 </ScrollReveal>
 
-                {/* Tabs / Switcher if multiple */}
-                <div className="flex justify-center mb-16 gap-4">
-                    {TRANSFORMATIONS.map((t) => (
-                        <button
-                            key={t.id}
-                            onClick={() => setActiveId(t.id)}
-                            className={`px-6 py-2 rounded-full border transition-all duration-300 text-sm font-bold uppercase tracking-wider ${activeId === t.id ? 'bg-[#3A86FF] border-[#3A86FF] text-black' : 'bg-transparent border-white/20 text-white/50 hover:border-white/50'}`}
-                        >
-                            {t.name}
-                        </button>
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-24">
+                    {visibleData.map((data, idx) => (
+                        <div key={data.id} className="group">
+                            {/* Slider */}
+                            <BeforeAfterSlider
+                                beforeImage={data.imageBefore}
+                                afterImage={data.imageAfter}
+                                beforeStyle={data.styleBefore}
+                                afterStyle={data.styleAfter}
+                                className="mb-8 shadow-2xl"
+                            />
+
+                            {/* Info */}
+                            <div className="space-y-6 px-2">
+                                <div className="flex justify-between items-start">
+                                    <div>
+                                        <h3 className="text-2xl font-black text-white mb-2">{data.name}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-wider">
+                                            <span className="bg-[#3A86FF]/10 px-2 py-1 rounded text-[#3A86FF] border border-[#3A86FF]/20">
+                                                {data.package}
+                                            </span>
+                                            <span className="bg-white/5 px-2 py-1 rounded text-white/60">
+                                                {data.duration}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {/* Mini Metrics Summary */}
+                                    <div className="text-right">
+                                        <div className="text-xs text-white/40 font-bold uppercase tracking-wider mb-1">Rezultat</div>
+                                        <div className="text-[#00F5FF] font-black text-lg">
+                                            {/* Show the most impressive metric diff if available, else generic */}
+                                            Done
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p className="text-white/60 italic text-sm leading-relaxed border-l-2 border-[#3A86FF] pl-4 relative">
+                                    "{data.quote}"
+                                </p>
+
+                                {/* Compact Metrics */}
+                                <div className="space-y-3 pt-2">
+                                    {Object.entries(data.metrics).map(([key, metric]) => {
+                                        if (!metric) return null;
+                                        // Calculate diff relative to start: End - Start. 
+                                        // Negative = Loss (Good for weight), Positive = Gain (Good for muscle)
+                                        const diff = metric.end - metric.start;
+                                        const isPositive = diff > 0;
+
+                                        // Format: e.g. -4.1 or +2.5
+                                        const formattedDiff = `${isPositive ? '+' : ''}${diff.toFixed(1)}`;
+
+                                        // Color logic: 
+                                        // If Muscle => Gain is Good (Blue - #00F5FF), Loss is Bad/Neutral
+                                        // If Fat/Weight => Loss is Good (Blue), Gain is Bad (Red maybe? or just White)
+                                        // For simplicity, let's keep Blue for "Good" direction if we can infer it, otherwise neutral.
+                                        // Actually, let's just color the difference distinctively regardless of good/bad for now, or match the user's "Cool" aesthetic.
+                                        // User screenshot had NEGATIVE in BLUE. Alex D had POSITIVE in BLUE.
+                                        // So let's make the difference ALWAYS Blue (#00F5FF) for consistency with the design language.
+
+                                        return (
+                                            <div key={key} className="flex justify-between items-center text-xs">
+                                                <span className="text-white/40 uppercase font-bold w-20">{metric.label || key}</span>
+                                                <div className="flex-1 mx-3 h-1 bg-white/10 rounded-full overflow-hidden">
+                                                    <div
+                                                        className="h-full bg-[#3A86FF]"
+                                                        style={{ width: `${(metric.end / metric.start) * 100}%` }}
+                                                    ></div>
+                                                </div>
+                                                <span className="text-white font-mono">
+                                                    {metric.end} {metric.unit}
+                                                    <span className="text-[#00F5FF] ml-1">({formattedDiff})</span>
+                                                </span>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                {visibleCount < TRANSFORMATIONS.length && (
+                    <div className="mt-20 flex justify-center">
+                        <button
+                            onClick={handleLoadMore}
+                            className="bg-transparent border border-[#3A86FF] text-[#3A86FF] hover:bg-[#3A86FF] hover:text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest transition-all duration-300 transform hover:scale-105"
+                        >
+                            Vezi mai multe
+                        </button>
+                    </div>
+                )}
 
-                    {/* Left: Slider */}
-                    <ScrollReveal>
-                        <BeforeAfterSlider
-                            beforeImage={activeData.imageBefore}
-                            afterImage={activeData.imageAfter}
-                            beforeStyle={activeData.styleBefore}
-                            afterStyle={activeData.styleAfter}
-                        />
-                        <div className="flex justify-between mt-4 text-xs font-bold mono-font text-white/40 uppercase tracking-widest">
-                            <span>Start</span>
-                            <span>{activeData.duration}</span>
-                        </div>
-                    </ScrollReveal>
-
-                    {/* Right: Data */}
-                    <ScrollReveal delay={200}>
-                        <div className="space-y-8">
-                            <div>
-                                <h3 className="text-3xl font-black text-white mb-2">{activeData.name}</h3>
-                                <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-wider">
-                                    <span className="bg-white/10 px-3 py-1 rounded text-[#3A86FF] border border-[#3A86FF]/20">
-                                        Pachet: {activeData.package}
-                                    </span>
-                                    <span className="bg-white/5 px-3 py-1 rounded text-white/60">
-                                        Durata: {activeData.duration}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <p className="text-white/60 italic text-lg leading-relaxed border-l-2 border-[#3A86FF] pl-6 relative">
-                                <Quote className="absolute -top-2 -left-2 text-[#3A86FF] opacity-20" size={24} />
-                                "{activeData.quote}"
-                            </p>
-
-                            <BioMetricsGraph
-                                weight={activeData.metrics.weight}
-                                bodyFat={activeData.metrics.bodyFat}
-                                muscle={activeData.metrics.muscle}
-                            />
-
-                            <div className="flex items-center gap-3 bg-[#3A86FF]/10 border border-[#3A86FF]/20 p-4 rounded-xl">
-                                <div className="w-2 h-2 bg-[#00F5FF] rounded-full animate-pulse"></div>
-                                <p className="text-[#00F5FF] text-xs font-bold uppercase tracking-wide">
-                                    Rezultat verificat prin analiză corporală 3D
-                                </p>
-                            </div>
-
-                        </div>
-                    </ScrollReveal>
-
-                </div>
             </div>
         </section>
     );

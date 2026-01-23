@@ -770,15 +770,15 @@ export const TRANSFORMATIONS = [
   },
   {
     id: 3,
-    name: "Clientă NeoBoost",
+    name: "Maria T.",
     duration: "4 Luni",
     package: "Weight Loss",
     imageBefore: "/transformation_3.png",
     imageAfter: "/transformation_3.png",
     metrics: {
-      weight: { start: 95, end: 86, unit: "cm", label: "Abdomen" },
-      bodyFat: { start: 80, end: 72, unit: "cm", label: "Talie" },
-      muscle: { start: 62.6, end: 58.5, unit: "kg", label: "Greutate" }
+      weight: { start: 62.6, end: 58.5, unit: "kg", label: "Greutate" },
+      bodyFat: { start: 95, end: 86, unit: "cm", label: "Abdomen" },
+      muscle: { start: 80, end: 72, unit: "cm", label: "Talie" }
     },
     // Combined image split logic
     styleBefore: { width: '200%', maxWidth: 'none', objectPosition: '0% 0%' },

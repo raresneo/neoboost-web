@@ -85,15 +85,18 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImag
                 className="absolute inset-0 h-full overflow-hidden border-r-2 border-[#3A86FF] shadow-[0_0_20px_rgba(58,134,255,0.5)] z-10"
                 style={{ width: `${sliderPos}%` }}
             >
-                <div className="relative w-full h-full">
+                <div
+                    className="relative h-full"
+                    style={{ width: containerWidth }}
+                >
                     {/* The image inside must be full width of container, not the clipped parent */}
                     <img
                         src={beforeImage}
                         alt="Before"
                         className="absolute top-0 left-0 h-full object-cover object-top max-w-none"
                         style={{
-                            width: containerWidth || '100vw', // Fallback
-                            ...beforeStyle
+                            width: '100%', // Default to filling the static container
+                            ...beforeStyle // Allow 200% override to work against the static containerWidth
                         }}
                     />
                 </div>
