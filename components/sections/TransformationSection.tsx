@@ -29,42 +29,36 @@ export const TransformationSection = () => {
                     {visibleData.map((data, idx) => (
                         <div key={data.id} className="group">
                             {/* Slider */}
-                            {idx === 0 ? (
-                                <BeforeAfterSlider
-                                    beforeImage={data.imageBefore}
-                                    afterImage={data.imageAfter}
-                                    beforeStyle={data.styleBefore}
-                                    afterStyle={data.styleAfter}
-                                    aspectRatio={data.aspectRatio}
-                                    className="mb-8 shadow-2xl"
-                                />
-                            ) : (
-                                <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} overflow-hidden rounded-2xl mb-8 shadow-2xl border border-white/10`}>
-                                    {/* If it's a combined image (same URL), just show it once full width */}
-                                    {data.imageBefore === data.imageAfter ? (
-                                        <img
-                                            src={data.imageBefore}
-                                            alt={data.name}
-                                            className="w-full h-full object-cover"
-                                            loading="lazy"
-                                        />
-                                    ) : (
-                                        // If distinct before/after but user wants 'simple', maybe show After only? Or side-by-side?
-                                        // User said "put image simple". Usually transform pics are side-by-side in one file (like the combined ones).
-                                        // If they represent separate files, showing just AFTER might be misleading for a "Transformation" section.
-                                        // But wait, the combined ones (Maria & Andreea) ARE single files containing both.
-                                        // So for those, we just render the IMG.
-                                        // For Alex D (idx 0), we keep slider.
-                                        // What if there are others later?
-                                        // Let's assume non-slider ones are single images (sprites).
-                                        <img
-                                            src={data.imageAfter} // Fallback if regular image, but Logic suggests we treat them as single display
-                                            alt={data.name}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    )}
+                            <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-[#3A86FF]/30 transition-colors`}>
+                                {/* Left Half - BEFORE */}
+                                <div className="w-1/2 h-full relative overflow-hidden border-r border-white/10">
+                                    <div className="absolute top-3 left-3 z-10 bg-black/60 backdrop-blur px-2 py-0.5 rounded text-[9px] tracking-widest text-white/60 font-bold border border-white/10">BEFORE</div>
+                                    <img
+                                        src={data.imageBefore}
+                                        alt={`${data.name} Before`}
+                                        className="w-full h-full object-cover"
+                                        style={{
+                                            ...data.styleBefore,
+                                            transform: (data as any).shouldFlipBefore ? 'scaleX(-1)' : undefined
+                                        }}
+                                        loading="lazy"
+                                    />
                                 </div>
-                            )}
+                                {/* Right Half - AFTER */}
+                                <div className="w-1/2 h-full relative overflow-hidden">
+                                    <div className="absolute top-3 right-3 z-10 bg-[#3A86FF]/90 px-2 py-0.5 rounded text-[9px] tracking-widest text-white font-bold shadow-[0_0_10px_rgba(58,134,255,0.4)]">AFTER</div>
+                                    <img
+                                        src={data.imageAfter}
+                                        alt={`${data.name} After`}
+                                        className="w-full h-full object-cover"
+                                        style={{
+                                            ...data.styleAfter,
+                                            transform: (data as any).shouldFlipAfter ? 'scaleX(-1)' : undefined
+                                        }}
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </div>
 
                             {/* Info */}
                             <div className="space-y-6 px-2">
