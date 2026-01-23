@@ -364,38 +364,38 @@ export const LOCATIONS: Location[] = [
 
 export const FAQS: NeoFAQItem[] = [
   {
-    question: "Chiar funcționează în doar 20 de minute?",
-    answer: "Da, și iată de ce: într-o sală normală lucrezi fiecare grupă musculară pe rând. La NeoBoost, impulsul EMS activează toate cele 20 de grupe musculare simultan, la fiecare contracție. Practic, faci 4 ore de contracții în 20 de minute.",
+    question: "Chiar pot obține rezultate în doar 30 de minute?",
+    answer: "Da. Secretul este densitatea efortului. Într-o oră de sală convențională, lucrezi efectiv 15-20 de minute (restul e pauză între serii). La NeoBoost, fiecare secundă din cele 30 de minute este contracție musculară pură, simultană pe toată musculatura. Comprimăm volumul de muncă de 4 ore într-o sesiune intensă.",
     icon: <Zap size={24} />
   },
   {
-    question: "Voi slăbi dacă fac doar EMS?",
-    answer: "Vei slăbi dacă ești în deficit caloric, iar EMS accelerază masiv acest proces. Arzi calorii în timpul antrenamentului, dar marele secret este efectul 'Afterburn': metabolismul tău rămâne ridicat 48h după sesiune pentru a reface fibrele musculare.",
+    question: "Este EMS o soluție pentru slăbit?",
+    answer: "Absolut. Este un accelerator metabolic. Pe lângă cele ~500 kcal arse în antrenament, activezi efectul EPOC (Afterburn). Corpul tău va continua să ardă calorii accelerat timp de 48 de ore după efort pentru a reface fibrele musculare profunde. Este cel mai eficient mod de a maximiza consumul caloric cu minim de timp investit.",
     icon: <Flame size={24} />
   },
   {
-    question: "Este curentul periculos pentru inimă?",
-    answer: "Nu. Folosim joasă frecvență care lucrează strict pe musculatura scheletică. Nu afectează inima sau organele interne. Totuși, dacă ai stimulator cardiac (pacemaker), nu putem face antrenamentul.",
-    icon: <ShieldCheck size={24} />
-  },
-  {
-    question: "Mă vor durea mușchii după?",
-    answer: "Probabil vei simți o febră musculară plăcută, semn că antrenamentul a fost eficient și corpul se transformă. Este dovada că ai activat mușchi pe care nu i-ai mai folosit de mult.",
-    icon: <Activity size={24} />
-  },
-  {
-    question: "De ce costă mai mult decât o sală normală?",
-    answer: "Pentru că nu plătești doar accesul la aparate. Plătești tehnologia de vârf, intimitatea studioului și, cel mai important, antrenorul personal care stă cu tine secundă de secundă. Este un serviciu premium, totul inclus.",
+    question: "De ce este o investiție mai bună decât sala clasică?",
+    answer: "Gândește-te ce primești de fapt. La o sală comercială plătești 'chiria' aparatelor. Aici investești într-un SISTEM complet: Antrenor Personal Dedicat 1-la-1 (care singur ar costa dublu în altă parte), Echipament Privat, Tehnologie de 15.000€ și Timpul Tău (salvezi 6-8 ore pe săptămână). Nu cumperi un abonament, cumperi rezultatul garantat.",
     icon: <Crown size={24} />
   },
   {
-    question: "Trebuie să îmi aduc haine de schimb?",
-    answer: "Nu! Îți oferim noi tot echipamentul necesar. Tu trebuie să vii doar cu încălțăminte sport curată. Este ideal dacă vii în pauza de masă sau între întâlniri.",
+    question: "Este sigur pentru sănătate?",
+    answer: "100% Sigur. Tehnologia EMS este aprobată medical și folosită de decenii în recuperare. Impulsul este de joasă frecvență și lucrează strict musculatura, fără a afecta inima sau organele. Mai mult, fiindcă nu folosim greutăți mari, protejezi articulațiile și coloana vertebrală de accidentări.",
+    icon: <ShieldCheck size={24} />
+  },
+  {
+    question: "Cum mă voi simți după antrenament?",
+    answer: "Vei simți o activare musculară profundă, acea senzație de 'lucrat' pe care o ai doar după antrenamente foarte grele. Vei avea energie (datorită oxigenării) și o tonifiere imediată a pielii. Majoritatea clienților spun că se simt 'ușori' și revigorați.",
+    icon: <Activity size={24} />
+  },
+  {
+    question: "Ce trebuie să aduc cu mine?",
+    answer: "Doar dorința de schimbare și o pereche de încălțăminte sport. Noi ne ocupăm de restul: îți oferim echipamentul tehnic steril, prosoape, apă și produse de igienă. Poți veni direct de la birou, fără geantă grea.",
     icon: <Shirt size={24} />
   },
   {
-    question: "Cât de repede văd rezultate?",
-    answer: "Clienții noștri simt diferența de tonus după 3-4 ședințe. Rezultatele vizibile (haine mai largi, siluetă definită) apar de obicei după un abonament intensiv de 8 săptămâni (Starter sau Progress).",
+    question: "Cât de repede voi vedea transformarea?",
+    answer: "Vei SIMȚI diferența de tonus chiar după prima săptămână. Postura se corectează imediat. Rezultatele estetice vizibile (haine mai largi, musculatură definită) apar constant după primele 4-6 săptămâni de consecvență. Este știință, nu magie.",
     icon: <Calendar size={24} />
   }
 ];
