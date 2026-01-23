@@ -22,23 +22,22 @@ export const ImmersiveHero = () => {
             {/* Content */}
             <div className={`relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} pt-32`}>
 
-                {/* Brand Logo */}
+                {/* Brand Logo - Visual Only */}
                 <div className="relative mb-6">
                     <div className="absolute inset-0 bg-[#3A86FF]/10 electric-glow pointer-events-none blur-3xl opacity-50"></div>
-                    <h1 className="text-[16vw] md:text-[10vw] font-black impact-font leading-[0.85] tracking-tighter select-none text-white uppercase relative z-10 px-4 heading-glow glitch-hover">
+                    <div className="text-[16vw] md:text-[10vw] font-black impact-font leading-[0.85] tracking-tighter select-none text-white uppercase relative z-10 px-4 heading-glow glitch-hover">
                         NEOBOOST
-                    </h1>
+                    </div>
                 </div>
 
-                {/* Headline & Subheadline */}
+                {/* Headline & Subheadline - SEO Optimized */}
                 <div className="mb-10">
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                        Nu ai timp de sală? <br />
-                        <span className="text-white/80 font-medium">Antrenează-te inteligent în 20 de minute.</span>
-                    </h2>
-                    <p className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto leading-relaxed readable-text">
-                        Obține rezultatele a <span className="text-[#3A86FF] font-bold">4 ore de fitness clasic</span> într-o singură sesiune scurtă.
-                        Este soluția ideală dacă vrei să slăbești rapid și să scapi de durerile de spate, fără să pierzi ore întregi în trafic.
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
+                        Antrenament EMS în Oradea pentru <br className="hidden md:block" />
+                        <span className="text-[#3A86FF]">slăbire și tonifiere rapidă.</span>
+                    </h1>
+                    <p className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed readable-text">
+                        Antrenamente de <span className="text-white font-medium">doar 20 de minute</span>, de 1–2 ori pe săptămână, cu <span className="text-white font-medium">antrenor dedicat</span> și echipament EMS de ultimă generație – în studio-ul NeoBoost EMS din Oradea.
                     </p>
                 </div>
 

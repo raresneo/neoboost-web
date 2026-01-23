@@ -5,7 +5,7 @@ import { BRAND } from '../constants';
 interface LocationSchedule {
     id: 'getfit' | 'ramada';
     name: string;
-    type: 'Functional' | 'EMS';
+    type: string;
     icon: React.ReactNode;
     description: string;
     image: string; // Add visual context
@@ -118,9 +118,16 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
         return slots;
     }, [selectedDate, selectedLocation]);
 
+    const [trainingType, setTrainingType] = useState<'EMS' | 'Functional' | 'Unsure'>('EMS');
+
     const handleWhatsAppBooking = () => {
         if (!selectedTime) return;
-        const message = `Salut!%0AVreau să programez o ședință la NeoBoost:%0A%0A*Locație:* ${selectedLocation.name} (${selectedLocation.type})%0A*Data:* ${formatDate(selectedDate)}%0A*Ora:* ${selectedTime}`;
+
+        let typeText = "EMS (Cu Costum)";
+        if (trainingType === 'Functional') typeText = "Funcțional (Fără Costum)";
+        if (trainingType === 'Unsure') typeText = "Vreau o recomandare";
+
+        const message = `Salut!%0AVreau să programez o ședință la NeoBoost:%0A%0A*Locație:* ${selectedLocation.name}%0A*Data:* ${formatDate(selectedDate)}%0A*Ora:* ${selectedTime}%0A*Tip Antrenament:* ${typeText}`;
         const whatsappUrl = `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${message}`;
         window.open(whatsappUrl, '_blank');
         onClose();
@@ -331,6 +338,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                             </div>
                         )}
 
+
                         {/* Confirmation View */}
                         {view === 'confirm' && (
                             <div className="animate-in slide-in-from-right duration-300 flex flex-col items-center justify-center h-full py-8">
@@ -341,7 +349,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                     <ChevronLeft size={16} /> Înapoi la Intervale
                                 </button>
 
-                                <div className="text-center space-y-6 max-w-sm">
+                                <div className="text-center space-y-6 max-w-sm w-full">
                                     <div className="w-20 h-20 rounded-full bg-[#25D366]/20 flex items-center justify-center mx-auto mb-6 ring-1 ring-[#25D366]/50 shadow-[0_0_30px_rgba(37,211,102,0.2)]">
                                         <MessageCircle size={40} className="text-[#25D366]" />
                                     </div>
@@ -349,22 +357,45 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                     <div>
                                         <h3 className="text-2xl font-black text-white mb-2 impact-font uppercase">Confirmă Rezervarea</h3>
                                         <p className="text-white/60">
-                                            Detaliile rezervării tale sunt pregătite. Finalizează programarea rapid pe WhatsApp.
+                                            Detaliile rezervării tale sunt pregătite. Alege tipul de antrenament și finalizează pe WhatsApp.
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 p-6 rounded-xl border border-white/10 w-full">
-                                        <div className="flex justify-between items-center mb-2">
-                                            <span className="text-white/40 text-xs font-bold uppercase">Data</span>
-                                            <span className="text-white font-bold">{formatDate(selectedDate)}</span>
+                                    <div className="bg-white/5 p-6 rounded-xl border border-white/10 w-full text-left space-y-3">
+                                        <div className="flex justify-between items-center pb-3 border-b border-white/5">
+                                            <span className="text-white/40 text-xs font-bold uppercase">Data & Ora</span>
+                                            <div className="text-right">
+                                                <div className="text-white font-bold">{formatDate(selectedDate)}</div>
+                                                <div className="text-[#3A86FF] font-black">{selectedTime}</div>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center mb-2">
-                                            <span className="text-white/40 text-xs font-bold uppercase">Ora</span>
-                                            <span className="text-[#3A86FF] font-black text-lg">{selectedTime}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-white/40 text-xs font-bold uppercase">Locație</span>
-                                            <span className="text-white font-bold">{selectedLocation.name}</span>
+
+                                        {/* Training Type Selector */}
+                                        <div className="pt-2">
+                                            <label className="text-white/40 text-xs font-bold uppercase block mb-2">Tip Antrenament Preferat</label>
+                                            <div className="grid grid-cols-1 gap-2">
+                                                <button
+                                                    onClick={() => setTrainingType('EMS')}
+                                                    className={`w-full px-4 py-3 rounded-lg text-xs font-bold uppercase text-left flex justify-between items-center transition-all ${trainingType === 'EMS' ? 'bg-[#3A86FF] text-black' : 'bg-black/40 text-white/60 hover:bg-white/10'}`}
+                                                >
+                                                    <span>EMS (Cu Costum)</span>
+                                                    {trainingType === 'EMS' && <Check size={16} />}
+                                                </button>
+                                                <button
+                                                    onClick={() => setTrainingType('Functional')}
+                                                    className={`w-full px-4 py-3 rounded-lg text-xs font-bold uppercase text-left flex justify-between items-center transition-all ${trainingType === 'Functional' ? 'bg-[#3A86FF] text-black' : 'bg-black/40 text-white/60 hover:bg-white/10'}`}
+                                                >
+                                                    <span>Funcțional (Fără Costum)</span>
+                                                    {trainingType === 'Functional' && <Check size={16} />}
+                                                </button>
+                                                <button
+                                                    onClick={() => setTrainingType('Unsure')}
+                                                    className={`w-full px-4 py-3 rounded-lg text-xs font-bold uppercase text-left flex justify-between items-center transition-all ${trainingType === 'Unsure' ? 'bg-[#3A86FF] text-black' : 'bg-black/40 text-white/60 hover:bg-white/10'}`}
+                                                >
+                                                    <span>Nu știu încă (Vreau sfat)</span>
+                                                    {trainingType === 'Unsure' && <Check size={16} />}
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 

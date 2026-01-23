@@ -31,6 +31,8 @@ import { ProgramsSection } from '../components/sections/ProgramsSection';
 import { EMSTimeline } from '../components/sections/EMSTimeline';
 import { EMSEducation } from '../components/sections/EMSEducation';
 import { TransformationSection } from '../components/sections/TransformationSection';
+import { WhatIsEMSSection } from '../components/sections/WhatIsEMSSection';
+import { NoSuitSection } from '../components/sections/NoSuitSection';
 
 // --- UI Components ---
 import { PackageCard } from '../components/ui/PackageCard';
@@ -66,7 +68,7 @@ type OutletContextType = {
 };
 
 export const HomePage: React.FC = () => {
-    const { session, onOpenAuth, onOpenLocation } = useOutletContext<OutletContextType>();
+    const { session, onOpenAuth, onOpenLocation, onOpenBooking } = useOutletContext<OutletContextType>();
     const navigate = useNavigate();
 
     const [activeGraphic, setActiveGraphic] = useState<'muscle' | 'energy' | 'tech'>('muscle');
@@ -139,6 +141,7 @@ export const HomePage: React.FC = () => {
                 }}
             />
             <ImmersiveHero />
+            <WhatIsEMSSection />
 
             {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
             <section id="pentru-cine" className="pt-24 md:pt-32 pb-20 md:pb-32 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
@@ -398,6 +401,7 @@ export const HomePage: React.FC = () => {
             </section>
 
             <ComparisonSection />
+            <NoSuitSection onOpenBooking={onOpenBooking} />
 
             <ScienceSolutionsSection />
 

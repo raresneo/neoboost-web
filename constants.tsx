@@ -364,39 +364,39 @@ export const LOCATIONS: Location[] = [
 
 export const FAQS: NeoFAQItem[] = [
   {
-    question: "Chiar pot obține rezultate în doar 30 de minute?",
-    answer: "Da. Secretul este densitatea efortului. Într-o oră de sală convențională, lucrezi efectiv 15-20 de minute (restul e pauză între serii). La NeoBoost, fiecare secundă din cele 30 de minute este contracție musculară pură, simultană pe toată musculatura. Comprimăm volumul de muncă de 4 ore într-o sesiune intensă.",
+    question: "Ce este antrenamentul EMS?",
+    answer: "Antrenamentul EMS folosește un costum special care trimite impulsuri electrice ușoare către mușchi, în timp ce faci exerciții simple alături de un antrenor. Astfel, se activează mai multe grupe musculare în același timp și obții un antrenament intens în doar 20 de minute.",
     icon: <Zap size={24} />
   },
   {
-    question: "Este EMS o soluție pentru slăbit?",
-    answer: "Absolut. Este un accelerator metabolic. Pe lângă cele ~500 kcal arse în antrenament, activezi efectul EPOC (Afterburn). Corpul tău va continua să ardă calorii accelerat timp de 48 de ore după efort pentru a reface fibrele musculare profunde. Este cel mai eficient mod de a maximiza consumul caloric cu minim de timp investit.",
-    icon: <Flame size={24} />
+    question: "Cât durează o ședință și cât de des vin la antrenament?",
+    answer: "O ședință de antrenament EMS durează aproximativ 20 de minute. Majoritatea clienților vin de 1–2 ori pe săptămână, în funcție de obiectiv (slăbire, tonifiere, revenire după pauză etc.).",
+    icon: <Clock size={24} />
   },
   {
-    question: "De ce este o investiție mai bună decât sala clasică?",
-    answer: "Gândește-te ce primești de fapt. La o sală comercială plătești 'chiria' aparatelor. Aici investești într-un SISTEM complet: Antrenor Personal Dedicat 1-la-1 (care singur ar costa dublu în altă parte), Echipament Privat, Tehnologie de 15.000€ și Timpul Tău (salvezi 6-8 ore pe săptămână). Nu cumperi un abonament, cumperi rezultatul garantat.",
-    icon: <Crown size={24} />
+    question: "Pot să fac antrenament și fără costumul EMS?",
+    answer: "Da. Dacă preferi să începi fără costum sau ai recomandare să eviți electrostimularea, putem lucra prin antrenamente funcționale clasice, fără costum. Lucrăm 1-la-1 sau în grupuri mici, cu exerciții adaptate nivelului tău.",
+    icon: <Dumbbell size={24} />
   },
   {
-    question: "Este sigur pentru sănătate?",
-    answer: "100% Sigur. Tehnologia EMS este aprobată medical și folosită de decenii în recuperare. Impulsul este de joasă frecvență și lucrează strict musculatura, fără a afecta inima sau organele. Mai mult, fiindcă nu folosim greutăți mari, protejezi articulațiile și coloana vertebrală de accidentări.",
+    question: "Ce rezultate pot să aștept de la antrenamentul EMS?",
+    answer: "Vei vedea rezultate vizibile în câteva săptămâni, cu 1–2 antrenamente EMS pe săptămână și o alimentație echilibrată. Clienții noștri raportează slăbire, tonifiere accelerată și reducerea durerilor de spate, printr-un stil de viață consistent, nu prin magie.",
+    icon: <Target size={24} />
+  },
+  {
+    question: "Este antrenamentul EMS sigur?",
+    answer: "Da, tehnologia este folosită de decenii în recuperare medicală. Impulsurile sunt de joasă frecvență și lucrează musculatura fără a pune presiune pe articulații. Antrenorul tău certificat supraveghează permanent intensitatea.",
     icon: <ShieldCheck size={24} />
   },
   {
-    question: "Cum mă voi simți după antrenament?",
-    answer: "Vei simți o activare musculară profundă, acea senzație de 'lucrat' pe care o ai doar după antrenamente foarte grele. Vei avea energie (datorită oxigenării) și o tonifiere imediată a pielii. Majoritatea clienților spun că se simt 'ușori' și revigorați.",
-    icon: <Activity size={24} />
+    question: "Pentru cine este potrivit antrenamentul EMS?",
+    answer: "Este ideal pentru persoanele ocupate care vor eficiență maximă, pentru cei care vor să slăbească sau să se tonifieze rapid, dar și pentru cei care au dureri de spate sau articulații sensibile și nu pot ridica greutăți mari.",
+    icon: <UserCheck size={24} />
   },
   {
-    question: "Ce trebuie să aduc cu mine?",
-    answer: "Doar dorința de schimbare și o pereche de încălțăminte sport. Noi ne ocupăm de restul: îți oferim echipamentul tehnic steril, prosoape, apă și produse de igienă. Poți veni direct de la birou, fără geantă grea.",
-    icon: <Shirt size={24} />
-  },
-  {
-    question: "Cât de repede voi vedea transformarea?",
-    answer: "Vei SIMȚI diferența de tonus chiar după prima săptămână. Postura se corectează imediat. Rezultatele estetice vizibile (haine mai largi, musculatură definită) apar constant după primele 4-6 săptămâni de consecvență. Este știință, nu magie.",
-    icon: <Calendar size={24} />
+    question: "Cine NU ar trebui să facă antrenament EMS?",
+    answer: "Nu este recomandat persoanelor cu stimulator cardiac (pacemaker), femeilor însărcinate, persoanelor cu epilepsie, tromboză sau boli cardiovasculare severe. La prima discuție completăm un chestionar de sănătate pentru siguranța ta.",
+    icon: <ShieldAlert size={24} />
   }
 ];
 
