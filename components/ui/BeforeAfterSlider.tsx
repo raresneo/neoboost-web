@@ -63,7 +63,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImag
     return (
         <div
             ref={containerRef}
-            className={`relative w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-2xl select-none cursor-ew-resize border border-white/10 ${className}`}
+            className={`relative w-full aspect-[3/4] overflow-hidden rounded-2xl select-none cursor-ew-resize border border-white/10 ${className}`}
             onMouseDown={handleMouseDown}
             onTouchStart={handleMouseDown}
         >
