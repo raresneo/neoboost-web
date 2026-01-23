@@ -767,5 +767,22 @@ export const TRANSFORMATIONS = [
     styleBefore: { width: '200%', maxWidth: 'none', objectPosition: '0% 0%' },
     styleAfter: { width: '200%', maxWidth: 'none', objectPosition: '100% 0%' },
     quote: "Mi-am recăpătat talia după sarcină. E incredibil (-9cm în talie!)."
+  },
+  {
+    id: 3,
+    name: "Clientă NeoBoost",
+    duration: "4 Luni",
+    package: "Weight Loss",
+    imageBefore: "/transformation_3.png",
+    imageAfter: "/transformation_3.png",
+    metrics: {
+      weight: { start: 95, end: 86, unit: "cm", label: "Abdomen" },
+      bodyFat: { start: 80, end: 72, unit: "cm", label: "Talie" },
+      muscle: { start: 62.6, end: 58.5, unit: "kg", label: "Greutate" }
+    },
+    // Combined image split logic
+    styleBefore: { width: '200%', maxWidth: 'none', objectPosition: '0% 0%' },
+    styleAfter: { width: '200%', maxWidth: 'none', objectPosition: '100% 0%' },
+    quote: "M-am simțit mai ușoară încă din prima lună. Talia s-a subțiat vizibil, fără diete extreme."
   }
 ];
