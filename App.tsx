@@ -14,6 +14,9 @@ const SciencePage = lazy(() => import('./pages/SciencePage').then(module => ({ d
 const LegalPage = lazy(() => import('./pages/LegalPage').then(module => ({ default: module.LegalPage })));
 const ResultsPage = lazy(() => import('./pages/ResultsPage').then(module => ({ default: module.ResultsPage })));
 
+import { SmoothScroll } from './components/ui/SmoothScroll';
+import { CustomCursor } from './components/ui/CustomCursor';
+
 const App: React.FC = () => {
   useEffect(() => {
     captureUTMParameters();
@@ -21,37 +24,40 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="science" element={
-            <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING RESEARCH DATA...</div>}>
-              <SciencePage />
-            </Suspense>
-          } />
-          <Route path="legal/:type?" element={
-            <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING LEGAL DATA...</div>}>
-              <LegalPage />
-            </Suspense>
-          } />
-          <Route path="rezultate" element={
-            <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING RESULTS...</div>}>
-              <ResultsPage />
-            </Suspense>
-          } />
+      <SmoothScroll>
+        <CustomCursor />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="science" element={
+              <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING RESEARCH DATA...</div>}>
+                <SciencePage />
+              </Suspense>
+            } />
+            <Route path="legal/:type?" element={
+              <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING LEGAL DATA...</div>}>
+                <LegalPage />
+              </Suspense>
+            } />
+            <Route path="rezultate" element={
+              <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING RESULTS...</div>}>
+                <ResultsPage />
+              </Suspense>
+            } />
 
-          {/* Legacy/Marketing Routes */}
-          <Route path="program/:programId" element={<ProgramLandingPage />} />
-          <Route path="oferta-speciala" element={<SpecialOfferPage />} />
-          <Route path="articol/:articleId" element={<ArticlePage />} />
+            {/* Legacy/Marketing Routes */}
+            <Route path="program/:programId" element={<ProgramLandingPage />} />
+            <Route path="oferta-speciala" element={<SpecialOfferPage />} />
+            <Route path="articol/:articleId" element={<ArticlePage />} />
 
-          {/* Dynamic SEO Pages (Must be last before 404/Fallback) */}
-          <Route path=":slug" element={<SeoLandingPage />} />
+            {/* Dynamic SEO Pages (Must be last before 404/Fallback) */}
+            <Route path=":slug" element={<SeoLandingPage />} />
 
-          {/* Fallback */}
-          <Route path="*" element={<HomePage />} />
-        </Route>
-      </Routes>
+            {/* Fallback */}
+            <Route path="*" element={<HomePage />} />
+          </Route>
+        </Routes>
+      </SmoothScroll>
     </BrowserRouter>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Zap, Star, CheckCircle2, ArrowDown } from 'lucide-react';
-import { CinematicBackground } from '../backgrounds/CinematicBackground';
+import { HeroCarousel } from '../backgrounds/HeroCarousel';
 import { MagneticButton } from '../ui/MagneticButton';
 import { BioDecryption } from '../ui/BioDecryption';
 import { BRAND } from '../../constants';
@@ -8,7 +8,6 @@ import { BRAND } from '../../constants';
 // --- Immersive Morph Hero ---
 export const ImmersiveHero = () => {
     const [isLoaded, setIsLoaded] = useState(false);
-    const fallbackImage = "/DSC03919.jpg";
 
     useEffect(() => {
         setIsLoaded(true);
@@ -17,10 +16,9 @@ export const ImmersiveHero = () => {
     return (
         <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-black py-20">
 
-            {/* Background Visual */}
-            <div className="absolute inset-0 z-0">
-                <CinematicBackground image={fallbackImage} opacity={0.5} />
-            </div>
+            {/* Background Visual - Carousel */}
+            <HeroCarousel />
+            <div className="absolute inset-0 z-10 bg-black/40 md:bg-black/30 backdrop-blur-[2px]"></div>
             {/* Content */}
             <div className={`relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} pt-32`}>
 

@@ -23,6 +23,12 @@ export const TransformationSection = () => {
                     <h2 className="text-5xl md:text-7xl font-black impact-font text-white uppercase tracking-tight">
                         Transformare <span className="text-transparent" style={{ WebkitTextStroke: '1px #3A86FF' }}>Vizibilă.</span>
                     </h2>
+                    <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                        Nu promitem miracole peste noapte, ci <span className="text-white font-medium">rezultate măsurabile</span>.
+                        <br className="hidden md:block" />
+                        Acestea sunt reușitele celor care au respectat planul NeoBoost.
+                        Fără filtre, fără scurtături—doar știință și disciplină.
+                    </p>
                 </ScrollReveal>
 
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-24">
