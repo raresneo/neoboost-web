@@ -757,8 +757,8 @@ export const TRANSFORMATIONS = [
     name: "Andreea M.",
     duration: "2 Luni",
     package: "Fit Mamma",
-    imageBefore: "/transformation_female_real_combined.jpg",
-    imageAfter: "/transformation_female_real_combined.jpg",
+    imageBefore: "/andreea_m_fixed.jpg",
+    imageAfter: "/andreea_m_fixed.jpg",
     metrics: {
       weight: { start: 70, end: 61, unit: "cm", label: "Talie" },
       bodyFat: { start: 77, end: 66, unit: "cm", label: "Abdomen" },
