@@ -746,6 +746,9 @@ export const TRANSFORMATIONS = [
       bodyFat: { start: 38.5, end: 24.1, unit: "%" },
       muscle: { start: 30.1, end: 35.6, unit: "%" }
     },
+    // Manual alignment for pixel-perfect comparison
+    styleBefore: { objectPosition: 'center top' },
+    styleAfter: { objectPosition: 'center top' },
     quote: "Rezultatele vorbesc de la sine. Grăsimea s-a topit, iar masa musculară a crescut vizibil."
   },
   {

@@ -41,10 +41,12 @@ export const TransformationSection = () => {
                         <BeforeAfterSlider
                             beforeImage={activeData.imageBefore}
                             afterImage={activeData.imageAfter}
+                            beforeStyle={activeData.styleBefore}
+                            afterStyle={activeData.styleAfter}
                         />
                         <div className="flex justify-between mt-4 text-xs font-bold mono-font text-white/40 uppercase tracking-widest">
-                            <span>Săptămâna 1</span>
-                            <span>Săptămâna {parseInt(activeData.duration)}</span>
+                            <span>Start</span>
+                            <span>{activeData.duration}</span>
                         </div>
                     </ScrollReveal>
 
