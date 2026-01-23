@@ -754,15 +754,18 @@ export const TRANSFORMATIONS = [
   {
     id: 2,
     name: "Andreea M.",
-    duration: "8 Săptămâni",
+    duration: "2 Luni",
     package: "Fit Mamma",
-    imageBefore: "/transformation_female.png",
-    imageAfter: "/transformation_female_v2.png",
+    imageBefore: "/transformation_female_real_combined.jpg",
+    imageAfter: "/transformation_female_real_combined.jpg",
     metrics: {
-      weight: { start: 68, end: 62, unit: "kg" },
-      bodyFat: { start: 32, end: 24, unit: "%" },
-      muscle: { start: 28, end: 32, unit: "%" }
+      weight: { start: 70, end: 61, unit: "cm", label: "Talie" },
+      bodyFat: { start: 77, end: 66, unit: "cm", label: "Abdomen" },
+      muscle: { start: 105, end: 100, unit: "cm", label: "Spate" }
     },
-    quote: "Mi-am recăpătat talia după sarcină. E incredibil."
+    // Combined image split logic: Zoom 200% and shift
+    styleBefore: { width: '200%', maxWidth: 'none', objectPosition: '0% 0%' },
+    styleAfter: { width: '200%', maxWidth: 'none', objectPosition: '100% 0%' },
+    quote: "Mi-am recăpătat talia după sarcină. E incredibil (-9cm în talie!)."
   }
 ];

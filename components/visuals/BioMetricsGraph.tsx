@@ -5,6 +5,7 @@ interface Metrics {
     start: number;
     end: number;
     unit: string;
+    label?: string; // Optional custom label
 }
 
 interface BioMetricsGraphProps {
@@ -22,12 +23,9 @@ export const BioMetricsGraph: React.FC<BioMetricsGraphProps> = ({ weight, bodyFa
 
     const MetricItem = ({ label, metric, color, inverse = false }: { label: string, metric: Metrics, color: string, inverse?: boolean }) => {
         const change = calculateChange(metric);
-        const isPositive = inverse ? change < 0 : change > 0; // For fat, negative is good
+        const isPositive = inverse ? change < 0 : change > 0; // For fat/cm, negative is good
 
         // Visual width calc (clamped for visual purposes)
-        // Let's assume max bar is 100%. 
-        // We show Start vs End bar comparison.
-
         const maxVal = Math.max(metric.start, metric.end);
         const startPercent = (metric.start / maxVal) * 100;
         const endPercent = (metric.end / maxVal) * 100;
@@ -71,9 +69,9 @@ export const BioMetricsGraph: React.FC<BioMetricsGraphProps> = ({ weight, bodyFa
                 Bio-Metrics
             </h4>
 
-            <MetricItem label="Greutate" metric={weight} color="bg-white/80" inverse={true} />
-            <MetricItem label="Grăsime Corporală" metric={bodyFat} color="bg-[#3A86FF]" inverse={true} />
-            <MetricItem label="Masă Musculară" metric={muscle} color="bg-[#00F0FF]" />
+            <MetricItem label={weight.label || "Greutate"} metric={weight} color="bg-white/80" inverse={true} />
+            <MetricItem label={bodyFat.label || "Grăsime Corporală"} metric={bodyFat} color="bg-[#3A86FF]" inverse={true} />
+            <MetricItem label={muscle.label || "Masă Musculară"} metric={muscle} color="bg-[#00F0FF]" />
 
         </div>
     );
