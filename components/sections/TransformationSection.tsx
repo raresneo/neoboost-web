@@ -38,7 +38,10 @@ export const TransformationSection = () => {
                                         className="w-full h-full object-cover"
                                         style={{
                                             ...data.styleBefore,
-                                            transform: (data as any).shouldFlipBefore ? 'scaleX(-1)' : undefined
+                                            transform: [
+                                                data.styleBefore?.transform || '',
+                                                (data as any).shouldFlipBefore ? 'scaleX(-1)' : ''
+                                            ].filter(Boolean).join(' ') || undefined
                                         }}
                                         loading="lazy"
                                     />
@@ -55,6 +58,7 @@ export const TransformationSection = () => {
                                         style={{
                                             ...data.styleAfter,
                                             transform: [
+                                                data.styleAfter?.transform || '',
                                                 (data as any).shouldFlipAfter ? 'scaleX(-1)' : '',
                                                 data.imageBefore === data.imageAfter ? 'translateX(-50%)' : ''
                                             ].filter(Boolean).join(' ') || undefined

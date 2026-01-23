@@ -765,7 +765,6 @@ export const TRANSFORMATIONS = [
       muscle: { start: 105, end: 100, unit: "cm", label: "Spate" }
     },
     aspectRatio: "aspect-[4/5]",
-    shouldFlipBefore: true,
     // Combined image split logic: Zoom 200% and shift
     styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
@@ -803,7 +802,8 @@ export const TRANSFORMATIONS = [
     },
     aspectRatio: "aspect-[4/5]",
     // Combined image split logic
-    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
+    // Scaling UP Before to match the "zoomed" look of After
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover', transform: 'scale(1.08)' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
     quote: "Minus 27cm în talie și abdomen. Cifrele vorbesc de la sine."
   },
