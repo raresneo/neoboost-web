@@ -764,8 +764,8 @@ export const TRANSFORMATIONS = [
       muscle: { start: 105, end: 100, unit: "cm", label: "Spate" }
     },
     // Combined image split logic: Zoom 200% and shift
-    styleBefore: { width: '200%', maxWidth: 'none', objectPosition: '0% 0%' },
-    styleAfter: { width: '200%', maxWidth: 'none', objectPosition: '100% 0%' },
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
+    styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
     quote: "Mi-am recăpătat talia după sarcină. E incredibil (-9cm în talie!)."
   },
   {
@@ -781,8 +781,8 @@ export const TRANSFORMATIONS = [
       muscle: { start: 80, end: 72, unit: "cm", label: "Talie" }
     },
     // Combined image split logic
-    styleBefore: { width: '200%', maxWidth: 'none', objectPosition: '0% 0%' },
-    styleAfter: { width: '200%', maxWidth: 'none', objectPosition: '100% 0%' },
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
+    styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
     quote: "M-am simțit mai ușoară încă din prima lună. Talia s-a subțiat vizibil, fără diete extreme."
   }
 ];
