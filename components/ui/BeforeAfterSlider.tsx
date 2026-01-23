@@ -7,9 +7,10 @@ interface BeforeAfterSliderProps {
     className?: string;
     beforeStyle?: React.CSSProperties;
     afterStyle?: React.CSSProperties;
+    aspectRatio?: string;
 }
 
-export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afterImage, className = '', beforeStyle, afterStyle }) => {
+export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afterImage, className = '', beforeStyle, afterStyle, aspectRatio = 'aspect-[3/4]' }) => {
     const [sliderPos, setSliderPos] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
     const [containerWidth, setContainerWidth] = useState(0);
@@ -63,7 +64,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImag
     return (
         <div
             ref={containerRef}
-            className={`relative w-full aspect-[9/16] max-h-[80vh] overflow-hidden rounded-2xl select-none cursor-ew-resize border border-white/10 ${className}`}
+            className={`relative w-full ${aspectRatio} max-h-[80vh] overflow-hidden rounded-2xl select-none cursor-ew-resize border border-white/10 ${className}`}
             onMouseDown={handleMouseDown}
             onTouchStart={handleMouseDown}
         >

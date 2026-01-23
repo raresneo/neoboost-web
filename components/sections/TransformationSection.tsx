@@ -34,6 +34,7 @@ export const TransformationSection = () => {
                                 afterImage={data.imageAfter}
                                 beforeStyle={data.styleBefore}
                                 afterStyle={data.styleAfter}
+                                aspectRatio={data.aspectRatio}
                                 className="mb-8 shadow-2xl"
                             />
 

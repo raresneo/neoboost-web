@@ -746,6 +746,7 @@ export const TRANSFORMATIONS = [
       bodyFat: { start: 38.5, end: 24.1, unit: "%" },
       muscle: { start: 30.1, end: 35.6, unit: "%" }
     },
+    aspectRatio: "aspect-[9/16]",
     // Manual alignment for pixel-perfect comparison
     styleBefore: { objectPosition: 'center top' },
     styleAfter: { objectPosition: 'center top' },
@@ -763,6 +764,7 @@ export const TRANSFORMATIONS = [
       bodyFat: { start: 77, end: 66, unit: "cm", label: "Abdomen" },
       muscle: { start: 105, end: 100, unit: "cm", label: "Spate" }
     },
+    aspectRatio: "aspect-[4/5]",
     // Combined image split logic: Zoom 200% and shift
     styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
@@ -780,6 +782,7 @@ export const TRANSFORMATIONS = [
       bodyFat: { start: 95, end: 86, unit: "cm", label: "Abdomen" },
       muscle: { start: 80, end: 72, unit: "cm", label: "Talie" }
     },
+    aspectRatio: "aspect-[4/5]",
     // Combined image split logic
     styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
