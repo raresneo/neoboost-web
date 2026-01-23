@@ -732,3 +732,34 @@ export const PROGRAMS = [
     content: "Invitation-Only Experience (VIP)\n\nEXPERIENȚĂ PREMIUM, DISCREȚIE ȘI REZULTATE – PE BAZĂ DE INVITAȚIE\n\nNu pentru toată lumea. Doar pentru cei care prețuiesc timpul și calitatea supremă.\n\nEști gata să faci o schimbare?\nDacă cauți un mediu privat, fără aglomerație, cu programare prioritară și atenție 100% dedicată, ai ajuns unde trebuie.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Antreprenori, manageri, persoane publice care au nevoie de discreție.\n✔️ Cei cu un program extrem de volatil.\n✔️ Cei care vor cea mai înaltă calitate a serviciului.\n✔️ Accesibil doar pe bază de recomandare sau aplicație.\n\nCUM SUNT ANTRENAMENTELE?\nComplet personalizate. EMS, Funcțional, Recuperare, Stretching asistat. Totul se învârte în jurul tău.\n\nCE INCLUDE PROGRAMUL?\n- Acces Exclusiv: Sloturi blocate doar pentru tine.\n- Concierge Fitness: Ne ocupăm de tot (prosoape, echipament, apă).\n- Discreție Totală: Spațiu privat.\n- Monitorizare Avansată: Postură, stres, parametri bio.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nExcelența se recompensează. Dacă atingi obiectivele de sănătate stabilite, primești o lună de menținere CADOU."
   }
 ];
+
+export const TRANSFORMATIONS = [
+  {
+    id: 1,
+    name: "Alexandru P.",
+    duration: "12 Săptămâni",
+    package: "Master Body",
+    imageBefore: "/transformation_male.png",
+    imageAfter: "/transformation_male_v2.png",
+    metrics: {
+      weight: { start: 94, end: 86, unit: "kg" },
+      bodyFat: { start: 28, end: 19, unit: "%" },
+      muscle: { start: 34, end: 39, unit: "%" }
+    },
+    quote: "Nu credeam că pot arăta așa cu doar 2 antrenamente pe săptămână."
+  },
+  {
+    id: 2,
+    name: "Andreea M.",
+    duration: "8 Săptămâni",
+    package: "Fit Mamma",
+    imageBefore: "/transformation_female.png",
+    imageAfter: "/transformation_female_v2.png",
+    metrics: {
+      weight: { start: 68, end: 62, unit: "kg" },
+      bodyFat: { start: 32, end: 24, unit: "%" },
+      muscle: { start: 28, end: 32, unit: "%" }
+    },
+    quote: "Mi-am recăpătat talia după sarcină. E incredibil."
+  }
+];

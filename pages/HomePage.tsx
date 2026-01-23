@@ -30,6 +30,7 @@ import { TrialRoadmap } from '../components/sections/TrialRoadmap';
 import { ProgramsSection } from '../components/sections/ProgramsSection';
 import { EMSTimeline } from '../components/sections/EMSTimeline';
 import { EMSEducation } from '../components/sections/EMSEducation';
+import { TransformationSection } from '../components/sections/TransformationSection';
 
 // --- UI Components ---
 import { PackageCard } from '../components/ui/PackageCard';
@@ -404,6 +405,8 @@ export const HomePage: React.FC = () => {
 
             {/* <EMSTimeline /> - Removed as duplicate/legacy */}
             <EMSEducation />
+
+            <TransformationSection />
 
             <section id="recenzii" className="py-24 md:py-60 bg-[#030303] relative z-10 overflow-hidden scroll-mt-20">
                 <div className="container mx-auto px-6 md:px-24">
