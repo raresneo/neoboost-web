@@ -793,8 +793,8 @@ export const TRANSFORMATIONS = [
     name: "Emanuel H.",
     duration: "7 Luni",
     package: "Master Body",
-    imageBefore: "/emanuel_h_aligned.png",
-    imageAfter: "/emanuel_h_aligned.png",
+    imageBefore: "/emanuel_h.png",
+    imageAfter: "/emanuel_h.png",
     metrics: {
       weight: { start: 107, end: 80, unit: "cm", label: "Talie" },
       bodyFat: { start: 115, end: 88, unit: "cm", label: "Abdomen" },
@@ -802,8 +802,8 @@ export const TRANSFORMATIONS = [
     },
     aspectRatio: "aspect-[4/5]",
     // Combined image split logic
-    // Using AI-aligned image, no scale needed
-    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
+    // Scaling UP Before to match the "zoomed" look of After
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover', transform: 'scale(1.08)' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
     quote: "Minus 27cm în talie și abdomen. Cifrele vorbesc de la sine."
   },
@@ -812,8 +812,8 @@ export const TRANSFORMATIONS = [
     name: "Dani P.",
     duration: "2 Luni",
     package: "Master Body",
-    imageBefore: "/dani_p.png",
-    imageAfter: "/dani_p.png",
+    imageBefore: "/dani_p_aligned.png",
+    imageAfter: "/dani_p_aligned.png",
     metrics: {
       weight: { start: 116, end: 106, unit: "kg", label: "Greutate" },
       bodyFat: { start: 25, end: 17, unit: "%", label: "Grăsime" },
