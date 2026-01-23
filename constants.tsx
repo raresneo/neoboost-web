@@ -466,35 +466,51 @@ export const EMS_SOLUTIONS = [
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Anamaria Moldovan",
-    role: "Local Guide",
-    quote: "O experiență deosebită! Conceptul de 30 de minute este perfect pentru cineva ocupat. Drysuit-ul face diferența enormă, e foarte confortabil.",
+    name: "Patricia Lata",
+    role: "Slăbire Localizată",
+    quote: "A fost foarte fain, am slăbit din zona abdomenului. Antrenamentele scurte și eficiente. Antrenorii foarte implicați și atenți.",
     rating: 5,
-    imageUrl: "/DSC09363.jpg", // Confirmed female
+    imageUrl: "https://ui-avatars.com/api/?name=Patricia+Lata&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
-    name: "Razvan Iancu",
-    role: "Client Verificat",
-    quote: "Cel mai bun studio EMS din Oradea. Rezultatele apar vizibil după primele ședințe, mai ales pe partea de tonifiere și spate.",
+    name: "Mustafa Dalkilic",
+    role: "Transformare (-18kg)",
+    quote: "Echipa super serioasa si punctuala, locatia super curata. In 3 luni am ajuns de la 139 kg la 120.5! Recomand cu incredere, odata incercat provoaca dependenta.",
     rating: 5,
-    imageUrl: "/hero_user.jpg", // Using generic male user image to be safe
+    imageUrl: "https://ui-avatars.com/api/?name=Mustafa+Dalkilic&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
-    name: "Camelia Pop",
-    role: "Local Guide",
-    quote: "Recomand cu tot dragul! Atmosfera este premium și tehnologia chiar funcționează. Te simți pe mâini bune de la început.",
+    name: "Maria Marc",
+    role: "Rezultate (-15kg)",
+    quote: "Recomand cu încredere acest centru. Pe mine m-a ajutat sa slăbesc 15 kg în 7 luni. Personalul este dedicat și implicat în atingerea obiectivelor tale.",
     rating: 5,
-    imageUrl: "/DSC09363.jpg", // Reusing confirmed female or finding another. Let's use same for now or leave if original was ok, but user said fix it. I'll use transformation_female for diversity if needed but it's a graphic. I'll stick to DSC09363 for now to be safe.
+    imageUrl: "https://ui-avatars.com/api/?name=Maria+Marc&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   },
   {
-    name: "Vlad M.",
-    role: "Client Google",
-    quote: "După o zi la birou, antrenamentul NeoBoost este singurul care mă pune pe picioare. Eficiență maximă în doar 30 de minute.",
+    name: "Denisa Bara",
+    role: "Profesionalism",
+    quote: "Personal profesionist, cu atitudine de mentor. Antrenorii nu sunt simple prezențe care doar “asistă”, ci se implica activ în corectarea posturii.",
     rating: 5,
-    imageUrl: "/hero_user.jpg", // Using generic male
+    imageUrl: "https://ui-avatars.com/api/?name=Denisa+Bara&background=3A86FF&color=fff&size=128",
+    link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
+  },
+  {
+    name: "Chirodea Mihai",
+    role: "Client Fidel",
+    quote: "Vin la acest studio de 4 luni si nu am regretat o zi. Pe langa antrenorii foarte prietenosi si seriosi, programul este exact ce aveam nevoie.",
+    rating: 5,
+    imageUrl: "https://ui-avatars.com/api/?name=Chirodea+Mihai&background=3A86FF&color=fff&size=128",
+    link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
+  },
+  {
+    name: "Boglarka Kiraly",
+    role: "Experiență Premium",
+    quote: "Imi place sa vin la Neo, sunt multumita de conditiile pe care le ofera. Imi plac echipamentele, antrenamentele EMS, echipa și tot centrul in sine.",
+    rating: 5,
+    imageUrl: "https://ui-avatars.com/api/?name=Boglarka+Kiraly&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
   }
 ];
