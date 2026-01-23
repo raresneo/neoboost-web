@@ -806,5 +806,23 @@ export const TRANSFORMATIONS = [
     styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
     quote: "Minus 27cm în talie și abdomen. Cifrele vorbesc de la sine."
+  },
+  {
+    id: 5,
+    name: "Dani P.",
+    duration: "2 Luni",
+    package: "Master Body",
+    imageBefore: "/dani_p.png",
+    imageAfter: "/dani_p.png",
+    metrics: {
+      weight: { start: 116, end: 106, unit: "kg", label: "Greutate" },
+      bodyFat: { start: 25, end: 17, unit: "%", label: "Grăsime" },
+      muscle: { start: 39, end: 41.5, unit: "%", label: "Muschi" }
+    },
+    aspectRatio: "aspect-[9/16]",
+    // Combined image split logic
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
+    styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
+    quote: "Rezultate validate în doar 2 luni. Scădere masivă în greutate și creștere musculară."
   }
 ];

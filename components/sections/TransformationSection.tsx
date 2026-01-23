@@ -32,7 +32,6 @@ export const TransformationSection = () => {
                             <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-[#3A86FF]/30 transition-colors`}>
                                 {/* Left Half - BEFORE */}
                                 <div className="w-1/2 h-full relative overflow-hidden border-r border-white/10">
-                                    <div className="absolute top-3 left-3 z-10 bg-black/60 backdrop-blur px-2 py-0.5 rounded text-[9px] tracking-widest text-white/60 font-bold border border-white/10">BEFORE</div>
                                     <img
                                         src={data.imageBefore}
                                         alt={`${data.name} Before`}
@@ -43,10 +42,12 @@ export const TransformationSection = () => {
                                         }}
                                         loading="lazy"
                                     />
+                                    <div className="absolute bottom-3 left-0 right-0 text-center z-10">
+                                        <span className="bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] tracking-[0.2em] text-white/50 font-medium">BEFORE</span>
+                                    </div>
                                 </div>
                                 {/* Right Half - AFTER */}
                                 <div className="w-1/2 h-full relative overflow-hidden">
-                                    <div className="absolute top-3 right-3 z-10 bg-[#3A86FF]/90 px-2 py-0.5 rounded text-[9px] tracking-widest text-white font-bold shadow-[0_0_10px_rgba(58,134,255,0.4)]">AFTER</div>
                                     <img
                                         src={data.imageAfter}
                                         alt={`${data.name} After`}
@@ -55,12 +56,14 @@ export const TransformationSection = () => {
                                             ...data.styleAfter,
                                             transform: [
                                                 (data as any).shouldFlipAfter ? 'scaleX(-1)' : '',
-                                                // If it's a sprite (same URL), shift left by 50% to show right half
                                                 data.imageBefore === data.imageAfter ? 'translateX(-50%)' : ''
                                             ].filter(Boolean).join(' ') || undefined
                                         }}
                                         loading="lazy"
                                     />
+                                    <div className="absolute bottom-3 left-0 right-0 text-center z-10">
+                                        <span className="bg-[#3A86FF]/80 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] tracking-[0.2em] text-white font-bold shadow-lg">AFTER</span>
+                                    </div>
                                 </div>
                             </div>
 
