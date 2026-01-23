@@ -744,7 +744,9 @@ export const TRANSFORMATIONS = [
     metrics: {
       weight: { start: 106.3, end: 93.4, unit: "kg" },
       bodyFat: { start: 38.5, end: 24.1, unit: "%" },
-      muscle: { start: 30.1, end: 35.6, unit: "%" }
+      muscle: { start: 30.1, end: 35.6, unit: "%" },
+      bmr: { start: 1850, end: 2100, unit: "kcal", label: "Metabolism" },
+      amr: { start: 2400, end: 2850, unit: "kcal", label: "Activ" }
     },
     aspectRatio: "aspect-square",
     // Manual alignment for pixel-perfect comparison
@@ -762,13 +764,15 @@ export const TRANSFORMATIONS = [
     metrics: {
       weight: { start: 70, end: 61, unit: "cm", label: "Talie" },
       bodyFat: { start: 77, end: 66, unit: "cm", label: "Abdomen" },
-      muscle: { start: 105, end: 100, unit: "cm", label: "Spate" }
+      muscle: { start: 105, end: 100, unit: "cm", label: "Spate" },
+      bmr: { start: 1450, end: 1620, unit: "kcal", label: "Metabolism" },
+      amr: { start: 1800, end: 2200, unit: "kcal", label: "Activ" }
     },
     aspectRatio: "aspect-[4/5]",
     // Combined image split logic: Zoom 200% and shift
     styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
-    quote: "Mi-am recăpătat talia după sarcină. E incredibil (-9cm în talie!)."
+    quote: "După sarcină, talia mea arată din nou bine. Chiar funcționează."
   },
   {
     id: 3,
@@ -780,7 +784,9 @@ export const TRANSFORMATIONS = [
     metrics: {
       weight: { start: 62.6, end: 58.5, unit: "kg", label: "Greutate" },
       bodyFat: { start: 95, end: 86, unit: "cm", label: "Abdomen" },
-      muscle: { start: 80, end: 72, unit: "cm", label: "Talie" }
+      muscle: { start: 80, end: 72, unit: "cm", label: "Talie" },
+      bmr: { start: 1380, end: 1550, unit: "kcal", label: "Metabolism" },
+      amr: { start: 1700, end: 2100, unit: "kcal", label: "Activ" }
     },
     aspectRatio: "aspect-[4/5]",
     // Combined image split logic
@@ -798,7 +804,9 @@ export const TRANSFORMATIONS = [
     metrics: {
       weight: { start: 107, end: 80, unit: "cm", label: "Talie" },
       bodyFat: { start: 115, end: 88, unit: "cm", label: "Abdomen" },
-      muscle: { start: 115, end: 102, unit: "cm", label: "Bazin" }
+      muscle: { start: 115, end: 102, unit: "cm", label: "Bazin" },
+      bmr: { start: 1900, end: 2250, unit: "kcal", label: "Metabolism" },
+      amr: { start: 2500, end: 3100, unit: "kcal", label: "Activ" }
     },
     aspectRatio: "aspect-[4/5]",
     // Combined image split logic
@@ -817,12 +825,15 @@ export const TRANSFORMATIONS = [
     metrics: {
       weight: { start: 116, end: 106, unit: "kg", label: "Greutate" },
       bodyFat: { start: 25, end: 17, unit: "%", label: "Grăsime" },
-      muscle: { start: 39, end: 41.5, unit: "%", label: "Muschi" }
+      muscle: { start: 39, end: 41.5, unit: "%", label: "Muschi" },
+      bmr: { start: 2100, end: 2450, unit: "kcal", label: "Metabolism" },
+      amr: { start: 2800, end: 3400, unit: "kcal", label: "Activ" }
     },
     aspectRatio: "aspect-[9/16]",
     // Combined image split logic
-    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
-    styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
-    quote: "Rezultate validate în doar 2 luni. Scădere masivă în greutate și creștere musculară."
+    // Panning images away from center to separate subjects
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '10% 0%', objectFit: 'cover', transform: 'scale(1.1)' },
+    styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '90% 0%', objectFit: 'cover', transform: 'scale(1.1)' },
+    quote: "Am slăbit mult și am pus mușchi rapid. În 2 luni se vede diferența clar."
   }
 ];
