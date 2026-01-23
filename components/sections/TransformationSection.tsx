@@ -29,14 +29,42 @@ export const TransformationSection = () => {
                     {visibleData.map((data, idx) => (
                         <div key={data.id} className="group">
                             {/* Slider */}
-                            <BeforeAfterSlider
-                                beforeImage={data.imageBefore}
-                                afterImage={data.imageAfter}
-                                beforeStyle={data.styleBefore}
-                                afterStyle={data.styleAfter}
-                                aspectRatio={data.aspectRatio}
-                                className="mb-8 shadow-2xl"
-                            />
+                            {idx === 0 ? (
+                                <BeforeAfterSlider
+                                    beforeImage={data.imageBefore}
+                                    afterImage={data.imageAfter}
+                                    beforeStyle={data.styleBefore}
+                                    afterStyle={data.styleAfter}
+                                    aspectRatio={data.aspectRatio}
+                                    className="mb-8 shadow-2xl"
+                                />
+                            ) : (
+                                <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} overflow-hidden rounded-2xl mb-8 shadow-2xl border border-white/10`}>
+                                    {/* If it's a combined image (same URL), just show it once full width */}
+                                    {data.imageBefore === data.imageAfter ? (
+                                        <img
+                                            src={data.imageBefore}
+                                            alt={data.name}
+                                            className="w-full h-full object-cover"
+                                            loading="lazy"
+                                        />
+                                    ) : (
+                                        // If distinct before/after but user wants 'simple', maybe show After only? Or side-by-side?
+                                        // User said "put image simple". Usually transform pics are side-by-side in one file (like the combined ones).
+                                        // If they represent separate files, showing just AFTER might be misleading for a "Transformation" section.
+                                        // But wait, the combined ones (Maria & Andreea) ARE single files containing both.
+                                        // So for those, we just render the IMG.
+                                        // For Alex D (idx 0), we keep slider.
+                                        // What if there are others later?
+                                        // Let's assume non-slider ones are single images (sprites).
+                                        <img
+                                            src={data.imageAfter} // Fallback if regular image, but Logic suggests we treat them as single display
+                                            alt={data.name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    )}
+                                </div>
+                            )}
 
                             {/* Info */}
                             <div className="space-y-6 px-2">
