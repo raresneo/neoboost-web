@@ -788,5 +788,23 @@ export const TRANSFORMATIONS = [
     styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
     styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
     quote: "M-am simțit mai ușoară încă din prima lună. Talia s-a subțiat vizibil, fără diete extreme."
+  },
+  {
+    id: 4,
+    name: "Emanuel H.",
+    duration: "7 Luni",
+    package: "Master Body",
+    imageBefore: "/emanuel_h.png",
+    imageAfter: "/emanuel_h.png",
+    metrics: {
+      weight: { start: 107, end: 80, unit: "cm", label: "Talie" },
+      bodyFat: { start: 115, end: 88, unit: "cm", label: "Abdomen" },
+      muscle: { start: 115, end: 102, unit: "cm", label: "Bazin" }
+    },
+    aspectRatio: "aspect-[4/5]",
+    // Combined image split logic
+    styleBefore: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '0% 0%', objectFit: 'cover' },
+    styleAfter: { width: '200%', height: '100%', maxWidth: 'none', objectPosition: '100% 0%', objectFit: 'cover' },
+    quote: "Minus 27cm în talie și abdomen. Cifrele vorbesc de la sine."
   }
 ];
