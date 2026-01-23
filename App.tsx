@@ -12,6 +12,7 @@ import { captureUTMParameters } from './lib/utm';
 // Lazy Load Secondary Pages
 const SciencePage = lazy(() => import('./pages/SciencePage').then(module => ({ default: module.SciencePage })));
 const LegalPage = lazy(() => import('./pages/LegalPage').then(module => ({ default: module.LegalPage })));
+const ResultsPage = lazy(() => import('./pages/ResultsPage').then(module => ({ default: module.ResultsPage })));
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -31,6 +32,11 @@ const App: React.FC = () => {
           <Route path="legal/:type?" element={
             <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING LEGAL DATA...</div>}>
               <LegalPage />
+            </Suspense>
+          } />
+          <Route path="rezultate" element={
+            <Suspense fallback={<div className="bg-black min-h-screen flex items-center justify-center text-[#3A86FF] font-bold">LOADING RESULTS...</div>}>
+              <ResultsPage />
             </Suspense>
           } />
 

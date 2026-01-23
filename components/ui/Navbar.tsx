@@ -28,6 +28,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
     const navItems = [
         { label: 'Pentru Cine', id: 'pentru-cine' },
         { label: 'Metodă', id: 'metoda' },
+        { label: 'Rezultate', id: 'rezultate', isPage: true }, // Added new item
         { label: 'Programe', id: 'programe' },
         { label: 'Abonamente', id: 'abonamente' },
         { label: 'Locații', id: 'locatii' },
@@ -47,7 +48,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
                         {navItems.map(item => (
                             <Link
                                 key={item.id}
-                                to={`/#${item.id}`}
+                                to={item.isPage ? `/${item.id}` : `/#${item.id}`} // Conditional link target
                                 className="mono-font text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-[#3A86FF] hover:shadow-[0_0_15px_rgba(0,255,136,0.5)] transition-all duration-300"
                             >
                                 {item.label}
@@ -165,7 +166,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
                     {navItems.map((item, idx) => (
                         <Link
                             key={item.id}
-                            to={`/#${item.id}`}
+                            to={item.isPage ? `/${item.id}` : `/#${item.id}`} // Conditional link target
                             onClick={() => setIsMenuOpen(false)}
                             className="group flex flex-col py-2"
                             style={{ transitionDelay: `${idx * 50}ms` }}
