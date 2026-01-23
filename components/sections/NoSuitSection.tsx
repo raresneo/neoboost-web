@@ -28,22 +28,22 @@ export const NoSuitSection: React.FC<NoSuitSectionProps> = ({ onOpenBooking }) =
 
                                 <h2 className="text-3xl md:text-4xl font-black impact-font text-white mb-6">
                                     Preferi fără costum? <br />
-                                    <span className="text-gray-400">Putem începe cu antrenamente funcționale clasice.</span>
+                                    <span className="text-gray-400">Antrenamente funcționale clasice, la fel de atent ghidate.</span>
                                 </h2>
 
                                 <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mb-8">
-                                    Dacă nu ești pregătit(ă) din prima pentru costumul EMS sau ai recomandarea să eviți electrostimularea, la <strong>NeoBoost</strong> putem lucra și prin antrenamente funcționale clasice. Folosim exerciții simple, cu greutatea corpului sau cu accesorii ușoare, adaptate nivelului tău.
+                                    Dacă preferi să începi fără costum sau ai recomandarea să eviți electrostimularea, la <strong>NeoBoost</strong> poți opta pentru antrenamente funcționale clasice. Lucrăm 1-la-1 sau în grupuri restrânse, folosind greutatea propriului corp și accesorii moderne (kettlebells, TRX, benzi elastice). Totul sub supravegherea atentă a antrenorilor noștri.
                                 </p>
 
                                 <p className="text-sm text-gray-500 font-medium italic border-l-2 border-[#3A86FF]/30 pl-4 mb-8">
-                                    * Selectează opțiunea "Funcțional fără costum" în formularul de programare și te ghidăm noi.
+                                    * Selectează opțiunea "Funcțional (Fără Costum)" în formularul de programare.
                                 </p>
 
                                 <button
                                     onClick={onOpenBooking}
                                     className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl transition-all duration-300 group"
                                 >
-                                    <span className="font-bold tracking-wide uppercase text-sm">Programează o discuție</span>
+                                    <span className="font-bold tracking-wide uppercase text-sm">Programează o ședință</span>
                                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform text-[#3A86FF]" />
                                 </button>
                             </div>

@@ -37,26 +37,26 @@ export const ImmersiveHero = () => {
                         <span className="text-[#3A86FF]">slăbire și tonifiere rapidă.</span>
                     </h1>
                     <p className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed readable-text">
-                        Antrenamente de <span className="text-white font-medium">doar 20 de minute</span>, de 1–2 ori pe săptămână, cu <span className="text-white font-medium">antrenor dedicat</span> și echipament EMS de ultimă generație – în studio-ul NeoBoost EMS din Oradea.
+                        Antrenamente de <span className="text-white font-medium">doar 20 de minute</span>, de 1–2 ori pe săptămână, cu <span className="text-white font-medium">antrenor dedicat</span> și costum EMS de ultimă generație – în studio-ul NeoBoost EMS din Oradea.
                     </p>
                 </div>
 
                 {/* 2 CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
                     <MagneticButton
-                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să știu dacă EMS este potrivit pentru mine. Vreau o probă gratuită.`}
+                        href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez prima ședință.`}
                         className="bg-[#3A86FF] text-black px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-black impact-font tracking-tight hover:brightness-110 transition-all shadow-[0_0_30px_rgba(0,245,255,0.5)] hover:shadow-[0_0_50px_rgba(0,245,255,0.7)] active:scale-95 inline-flex items-center gap-3"
                     >
                         <MessageCircle size={22} />
-                        VREAU SĂ ÎNCERC GRATUIT
+                        PROGRAMEAZĂ PRIMA ȘEDINȚĂ
                     </MagneticButton>
 
                     <a
-                        href="#faq"
+                        href="#metoda"
                         className="border-2 border-white/30 text-white px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-bold impact-font tracking-tight hover:bg-white/10 hover:border-white/50 transition-all inline-flex items-center gap-3"
                     >
                         <Zap size={20} />
-                        CUM FUNCȚIONEAZĂ?
+                        AFLĂ CUM FUNCȚIONEAZĂ EMS
                     </a>
                 </div>
 

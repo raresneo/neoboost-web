@@ -123,9 +123,9 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
     const handleWhatsAppBooking = () => {
         if (!selectedTime) return;
 
-        let typeText = "EMS (Cu Costum)";
-        if (trainingType === 'Functional') typeText = "Funcțional (Fără Costum)";
-        if (trainingType === 'Unsure') typeText = "Vreau o recomandare";
+        let typeText = "EMS (cu costum)";
+        if (trainingType === 'Functional') typeText = "Funcțional fără costum";
+        if (trainingType === 'Unsure') typeText = "Nu știu încă, vreau să mă sfătuiți voi";
 
         const message = `Salut!%0AVreau să programez o ședință la NeoBoost:%0A%0A*Locație:* ${selectedLocation.name}%0A*Data:* ${formatDate(selectedDate)}%0A*Ora:* ${selectedTime}%0A*Tip Antrenament:* ${typeText}`;
         const whatsappUrl = `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${message}`;
@@ -186,11 +186,11 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
     };
 
     return (
-        <div className="bg-[#050505] rounded-3xl border border-white/10 overflow-hidden w-full max-w-5xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-[90vh] md:h-[600px] animate-in fade-in zoom-in duration-300">
+        <div className="bg-[#050505] rounded-3xl border border-white/10 overflow-hidden w-full max-w-5xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-auto min-h-[500px] md:h-auto md:min-h-[550px] animate-in fade-in zoom-in duration-300">
 
             {/* Sidebar / Visual Context - Hidden in compact mode */}
             {!compact && (
-                <div className="md:w-1/3 bg-[#0a0a0a] relative overflow-hidden flex flex-col justify-between p-8 border-r border-white/5">
+                <div className="md:w-1/3 bg-[#0a0a0a] relative overflow-hidden flex flex-col justify-between p-6 border-r border-white/5">
                     <div className="absolute inset-0 opacity-40">
                         <img
                             src={selectedLocation.image}
@@ -237,7 +237,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
 
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col bg-[#050505] relative">
-                <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar flex-1">
+                <div className="p-4 md:p-6 overflow-y-auto custom-scrollbar flex-1">
 
                     {/* Location Tabs - Hidden in compact mode */}
                     {!compact && (
@@ -378,21 +378,21 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                                     onClick={() => setTrainingType('EMS')}
                                                     className={`w-full px-4 py-3 rounded-lg text-xs font-bold uppercase text-left flex justify-between items-center transition-all ${trainingType === 'EMS' ? 'bg-[#3A86FF] text-black' : 'bg-black/40 text-white/60 hover:bg-white/10'}`}
                                                 >
-                                                    <span>EMS (Cu Costum)</span>
+                                                    <span>EMS (cu costum)</span>
                                                     {trainingType === 'EMS' && <Check size={16} />}
                                                 </button>
                                                 <button
                                                     onClick={() => setTrainingType('Functional')}
                                                     className={`w-full px-4 py-3 rounded-lg text-xs font-bold uppercase text-left flex justify-between items-center transition-all ${trainingType === 'Functional' ? 'bg-[#3A86FF] text-black' : 'bg-black/40 text-white/60 hover:bg-white/10'}`}
                                                 >
-                                                    <span>Funcțional (Fără Costum)</span>
+                                                    <span>Funcțional fără costum</span>
                                                     {trainingType === 'Functional' && <Check size={16} />}
                                                 </button>
                                                 <button
                                                     onClick={() => setTrainingType('Unsure')}
                                                     className={`w-full px-4 py-3 rounded-lg text-xs font-bold uppercase text-left flex justify-between items-center transition-all ${trainingType === 'Unsure' ? 'bg-[#3A86FF] text-black' : 'bg-black/40 text-white/60 hover:bg-white/10'}`}
                                                 >
-                                                    <span>Nu știu încă (Vreau sfat)</span>
+                                                    <span>Nu știu încă, vreau să mă sfătuiți voi</span>
                                                     {trainingType === 'Unsure' && <Check size={16} />}
                                                 </button>
                                             </div>

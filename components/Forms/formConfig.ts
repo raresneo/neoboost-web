@@ -120,6 +120,7 @@ export const FORM_CONFIGS: Record<string, FormConfig> = {
         title: 'Start Smart Onboarding',
         steps: [
             { id: 'blocaj', question: 'Ce te-a oprit să începi până acum?', type: 'text', placeholder: 'Ex: Nu știu ce să fac, mi-e frică de febră...' },
+            { id: 'tip_antrenament', question: 'Ce tip de antrenament preferi?', type: 'radio', options: ['EMS (Cu Costum)', 'Funcțional (Fără Costum)', 'Nu știu încă'] },
             { id: 'ems_experienta', question: 'Ai mai încercat EMS?', type: 'radio', options: ['Da', 'Nu', 'Am auzit doar'] },
             { id: 'pachet', question: 'Ce pachet de onboarding preferi?', type: 'radio', options: ['2 ședințe (Test)', '4 ședințe (Complet 14 zile)'] },
             { id: 'programare', question: 'Preferi o programare fixă sau flexibilă?', type: 'radio', options: ['Slot Fix (Recomandat)', 'Flexibil'] },
@@ -134,7 +135,7 @@ export const FORM_CONFIGS: Record<string, FormConfig> = {
             { id: 'email', question: 'Email:', type: 'text' },
             { id: 'observatii', question: 'Alte detalii:', type: 'textarea', required: false }
         ],
-        whatsappTemplate: `Bună, vreau: Start Smart Onboarding (14 zile)%0A%0ANume: {nume} {prenume}%0ATelefon: {telefon}%0AEmail: {email}%0A%0ALocație preferată: {locatie}%0A%0ADisponibilitate (zile/interval): {disponibilitate}%0A%0ACând vreau să încep: {start}%0ACe m-a oprit până acum: {blocaj}%0A%0AExperiență EMS: {ems_experienta}%0A%0APachet onboarding: {pachet}%0A%0APrefer programare: {programare}%0A%0AObiectiv: {obiectiv}%0A%0AContraindicații EMS: {contraindicatii}%0AObservații (opțional): {observatii}%0AVreau consultația gratuită și să setăm calendarul pe 14 zile.`
+        whatsappTemplate: `Bună, vreau: Start Smart Onboarding (14 zile)%0A%0ANume: {nume} {prenume}%0ATelefon: {telefon}%0AEmail: {email}%0A%0ALocație preferată: {locatie}%0A%0ADisponibilitate (zile/interval): {disponibilitate}%0A%0ACând vreau să încep: {start}%0ATip Antrenament: {tip_antrenament}%0ACe m-a oprit până acum: {blocaj}%0A%0AExperiență EMS: {ems_experienta}%0A%0APachet onboarding: {pachet}%0A%0APrefer programare: {programare}%0A%0AObiectiv: {obiectiv}%0A%0AContraindicații EMS: {contraindicatii}%0AObservații (opțional): {observatii}%0AVreau consultația gratuită și să setăm calendarul pe 14 zile.`
     },
     'vip': {
         programId: 'vip',

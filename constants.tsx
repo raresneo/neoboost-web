@@ -51,6 +51,7 @@ export interface Milestone {
   description: string;
   icon: React.ReactNode;
   isNeo?: boolean;
+  image?: string;
 }
 
 export const EMS_MILESTONES: Milestone[] = [
@@ -59,58 +60,56 @@ export const EMS_MILESTONES: Milestone[] = [
     year: "1960",
     title: "Performanță Olimpică",
     description: "Oamenii de știință din URSS utilizează EMS pentru a crește forța atleților olimpici cu până la 40%.",
-    icon: <Medal size={20} />
+    icon: <Medal size={20} />,
+    image: "/history_russian.jpg"
   },
   {
     year: "1990",
     title: "Standard Medical",
     description: "EMS devine un instrument esențial în kinetoterapie pentru recuperarea post-traumatică rapidă.",
-    icon: <Briefcase size={20} />
+    icon: <Briefcase size={20} />,
+    image: "/history_medical.jpg"
   },
   {
     year: "2010",
     title: "Fitness Comercial",
     description: "Apar primele studiouri EMS de masă, folosind însă sisteme rigide cu cabluri și costume umede.",
-    icon: <Dumbbell size={20} />
+    icon: <Dumbbell size={20} />,
+    image: "/history_commercial.jpg"
   },
   {
     year: "2024+",
     title: "Revoluția NeoBoost",
     description: "Tehnologie Wireless, Drysuit și antrenament eficient de 30 de minute, minim o dată pe săptămână în Oradea.",
     icon: <Zap size={20} />,
-    isNeo: true
+    isNeo: true,
+    image: "/neoboost_athlete_run.jpg"
   }
 ];
 
 export const EMS_STEPS = [
   {
     id: "01",
-    title: "Echipare Drysuit",
-    description: "Te îmbraci în costumul tehnic special. Spre deosebire de sistemele vechi, acesta este complet uscat și antibacterian.",
-    icon: <Shirt size={20} />
+    title: "Discuție inițială",
+    description: "Fiecare ședință începe cu o scurtă discuție despre obiectivul tău și eventualele limitări medicale.",
+    icon: <Users size={20} />
   },
   {
     id: "02",
-    title: "Conectare Wireless",
-    description: "Atașăm unitatea centrală Power Box pe lateralul costumului. Fără cabluri care să îți limiteze mișcarea.",
-    icon: <Link size={20} />
+    title: "Echipare & Calibrare",
+    description: "Îmbraci costumul EMS peste hainele speciale, iar antrenorul îți setează intensitatea în funcție de cum te simți.",
+    icon: <Shirt size={20} />
   },
   {
     id: "03",
-    title: "Calibrare Personalizată",
-    description: "Antrenorul configurează intensitatea pe fiecare grupă musculară în funcție de obiectivele și pragul tău de confort.",
-    icon: <Smartphone size={20} />
+    title: "Antrenament 20 min",
+    description: "Faci exerciții simple, ghidate 1-la-1, în timp ce impulsurile electrice ușoare îți activează mușchii.",
+    icon: <Zap size={20} />
   },
   {
     id: "04",
-    title: "Antrenament Activ",
-    description: "30 de minute de exerciții funcționale asistate. Musculatura este activată bio-electric la capacitate maximă.",
-    icon: <PlayCircle size={20} />
-  },
-  {
-    id: "05",
-    title: "Rezultate Afterburn",
-    description: "Corpul continuă să ardă calorii intens în următoarele 48h. Protocolul tău de transformare a început.",
+    title: "Feedback & Plan",
+    description: "Discutăm cum te-ai simțit, oferim recomandări și programăm următoarea ședință pentru consistență.",
     icon: <CheckCheck size={20} />
   }
 ];
@@ -374,9 +373,14 @@ export const FAQS: NeoFAQItem[] = [
     icon: <Clock size={24} />
   },
   {
-    question: "Pot să fac antrenament și fără costumul EMS?",
-    answer: "Da. Dacă preferi să începi fără costum sau ai recomandare să eviți electrostimularea, putem lucra prin antrenamente funcționale clasice, fără costum. Lucrăm 1-la-1 sau în grupuri mici, cu exerciții adaptate nivelului tău.",
-    icon: <Dumbbell size={24} />
+    question: "De ce merită să investești în antrenamentul EMS?",
+    answer: "Investești în cel mai de preț activ al tău: timpul. În doar 20 de minute obții beneficiile a 4 ore de sală convențională, protejându-ți articulațiile și coloana. Este soluția ideală pentru viața modernă, oferindu-ți energie, tonus și sănătate fără a sacrifica zeci de ore pe drumuri și antrenamente ineficiente.",
+    icon: <Crown size={24} />
+  },
+  {
+    question: "De ce merită să investești în antrenamente personalizate?",
+    answer: "Pentru siguranță, motivație și rezultate garantate. Nu închiriezi doar un aparat, ci angajezi un expert care se asigură că fiecare mișcare este corectă și eficientă. Antrenorul tău adaptează fiecare sesiune la nivelul tău de energie și la obiectivele tale, eliminând riscul de accidentare și plafonare.",
+    icon: <Users size={24} />
   },
   {
     question: "Ce rezultate pot să aștept de la antrenamentul EMS?",
@@ -395,8 +399,18 @@ export const FAQS: NeoFAQItem[] = [
   },
   {
     question: "Cine NU ar trebui să facă antrenament EMS?",
-    answer: "Nu este recomandat persoanelor cu stimulator cardiac (pacemaker), femeilor însărcinate, persoanelor cu epilepsie, tromboză sau boli cardiovasculare severe. La prima discuție completăm un chestionar de sănătate pentru siguranța ta.",
+    answer: "Antrenamentul EMS nu este recomandat persoanelor cu stimulator cardiac (pacemaker), femeilor însărcinate, persoanelor cu epilepsie, tromboză sau boli cardiovasculare severe. Dacă ai dubii, cel mai bine este să discuți cu medicul tău înainte și să ne spui la prima ședință.",
     icon: <ShieldAlert size={24} />
+  },
+  {
+    question: "Pot să fac antrenament și fără costumul EMS?",
+    answer: "Da. Dacă preferi să începi fără costum sau ai recomandare medicală să eviți electrostimularea, poți alege antrenamente funcționale clasice, fără costum. Lucrăm cu greutatea corpului și accesorii, adaptate nivelului tău.",
+    icon: <Dumbbell size={24} />
+  },
+  {
+    question: "Ce se întâmplă în prima mea ședință la NeoBoost?",
+    answer: "Prima ședință începe cu o discuție despre obiectivele tale. Apoi te echipăm cu costumul, facem o calibrare ușoară și trecem prin 15-20 de minute de exerciții. La final, discutăm cum te-ai simțit și îți propunem planul potrivit.",
+    icon: <HelpCircle size={24} />
   }
 ];
 

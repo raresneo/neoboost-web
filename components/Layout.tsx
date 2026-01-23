@@ -88,12 +88,12 @@ export const Layout: React.FC = () => {
     // Initialize Lenis
     useEffect(() => {
         const lenis = new Lenis({
-            lerp: 0.18,
+            lerp: 0.5,
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 1.5,
-            touchMultiplier: 2.5,
+            wheelMultiplier: 2.2,
+            touchMultiplier: 3.0,
         });
 
         const raf = (time: number) => {

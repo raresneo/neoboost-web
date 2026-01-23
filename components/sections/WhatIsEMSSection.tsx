@@ -1,5 +1,6 @@
 import React from 'react';
-import { Zap, Clock, UserCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Clock, Users, ShieldCheck } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const WhatIsEMSSection = () => {
@@ -14,61 +15,71 @@ export const WhatIsEMSSection = () => {
 
                     {/* Text Content */}
                     <ScrollReveal>
-                        <div className="space-y-8">
-                            <div className="flex items-center gap-3 mb-2 text-[#3A86FF]">
-                                <Zap size={20} />
-                                <span className="mono-font text-[10px] tracking-[0.4em] font-bold uppercase">Tehnologie Explicată</span>
-                            </div>
-
+                        <div className="space-y-10">
                             <h2 className="text-3xl md:text-5xl font-black impact-font text-white leading-tight">
-                                Ce este antrenamentul EMS și de ce funcționează în <span className="text-[#3A86FF]">doar 20 de minute</span>?
+                                De ce să alegi antrenamentul EMS la <span className="text-[#3A86FF]">NeoBoost Oradea</span>?
                             </h2>
 
-                            <div className="space-y-6 text-lg text-gray-300 font-light leading-relaxed">
-                                <p>
-                                    <strong className="text-white font-bold">EMS (Electro Muscle Stimulation)</strong> este un tip de antrenament revoluționar în care mușchii tăi sunt stimulați cu impulsuri electrice ușoare, printr-un costum special tehnologizat.
-                                </p>
-                                <p>
-                                    În loc să lucrezi fiecare grupă musculară separat (ca la sala clasică), tehnologia noastră activează <strong>simultan peste 90% din fibrele musculare</strong>, în timp ce faci exerciții simple, ghidate de un antrenor personal certificat.
-                                </p>
-                                <p>
-                                    O ședință durează aproximativ 20 de minute și este echivalentă cu un antrenament convențional de 90 de minute, datorită densității efortului. La <strong>NeoBoost EMS Oradea</strong>, antrenamentele sunt 1-la-1 sau în grupuri mici, cu atenție maximă pe siguranță și execuție corectă.
-                                </p>
+                            <div className="space-y-8">
+                                <div className="flex gap-5">
+                                    <div className="w-12 h-12 rounded-full bg-[#3A86FF]/10 flex items-center justify-center shrink-0 text-[#3A86FF]">
+                                        <Clock size={24} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white font-bold text-xl mb-2">Eficiență Maximă</h3>
+                                        <p className="text-white/60 text-base leading-relaxed">
+                                            Doar 20 de minute, de 1-2 ori pe săptămână. Echivalentul a 4 ore de fitness convențional, activând 90% din musculatură.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-5">
+                                    <div className="w-12 h-12 rounded-full bg-[#3A86FF]/10 flex items-center justify-center shrink-0 text-[#3A86FF]">
+                                        <Users size={24} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white font-bold text-xl mb-2">Antrenor Personal 1-la-1</h3>
+                                        <p className="text-white/60 text-base leading-relaxed">
+                                            Nu ești niciodată singur. Fiecare antrenament este ghidat de un specialist certificat care îți corectează postura și ajustează intensitatea.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-5">
+                                    <div className="w-12 h-12 rounded-full bg-[#3A86FF]/10 flex items-center justify-center shrink-0 text-[#3A86FF]">
+                                        <ShieldCheck size={24} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white font-bold text-xl mb-2">Siguranță pentru Articulații</h3>
+                                        <p className="text-white/60 text-base leading-relaxed">
+                                            Lucrăm fără greutăți mari, protejând coloana și genunchii, ideal pentru recuperare sau pentru cei cu dureri de spate.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="grid md:grid-cols-2 gap-6 pt-4">
-                                <div className="glass-block p-6 rounded-xl border border-white/5 bg-white/[0.02]">
-                                    <Clock className="text-[#3A86FF] mb-4" size={28} />
-                                    <h4 className="text-white font-bold mb-2">Eficiență Maximă</h4>
-                                    <p className="text-sm text-gray-400">20 minute de 1-2 ori pe săptămână pentru rezultate vizibile.</p>
-                                </div>
-                                <div className="glass-block p-6 rounded-xl border border-white/5 bg-white/[0.02]">
-                                    <UserCheck className="text-[#3A86FF] mb-4" size={28} />
-                                    <h4 className="text-white font-bold mb-2">Personalizat 100%</h4>
-                                    <p className="text-sm text-gray-400">Antrenorul ajustează intensitatea pentru confortul și obiectivele tale.</p>
-                                </div>
+                            <div className="pt-4">
+                                <Link to="/science" className="text-[#3A86FF] font-bold tracking-widest uppercase text-sm border-b border-[#3A86FF] pb-1 hover:text-white hover:border-white transition-all">
+                                    VEZI EXPLICAȚIA ȘTIINȚIFICĂ
+                                </Link>
                             </div>
                         </div>
                     </ScrollReveal>
 
-                    {/* Visual / Image */}
+                    {/* Image / Visual */}
                     <ScrollReveal delay={200}>
-                        <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+                        <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
                             <img
-                                src="/studio_session_1.jpg"
-                                alt="Antrenament EMS la NeoBoost Oradea"
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                src="/ems_training_2.jpg"
+                                alt="Antrenament EMS NeoBoost Oradea"
+                                className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
-                            <div className="absolute bottom-8 left-8 right-8">
-                                <div className="bg-white/10 backdrop-blur-md border border-white/10 p-6 rounded-xl">
-                                    <p className="text-white font-medium text-lg italic">
-                                        "Este incredibil cât de intens lucrezi în doar 20 de minute. Recomand oricui are programul încărcat."
-                                    </p>
-                                    <p className="text-[#3A86FF] font-bold mt-4 text-sm uppercase tracking-wider">
-                                        — Experiența NeoBoost
-                                    </p>
+                            <div className="absolute bottom-6 left-6 right-6">
+                                <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+                                    <p className="text-[#3A86FF] font-black text-4xl impact-font mb-1">20 MIN</p>
+                                    <p className="text-white text-xs uppercase tracking-widest font-bold opacity-80">Durata unei ședințe complete</p>
                                 </div>
                             </div>
                         </div>
