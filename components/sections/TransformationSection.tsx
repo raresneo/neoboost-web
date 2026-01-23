@@ -6,7 +6,7 @@ import { BioMetricsGraph } from '../visuals/BioMetricsGraph';
 import { TRANSFORMATIONS } from '../../constants';
 import { Quote } from 'lucide-react';
 
-export const TransformationSection = () => {
+export const TransformationSection = ({ showHeader = true }: { showHeader?: boolean }) => {
     const [visibleCount, setVisibleCount] = useState(4);
     const visibleData = TRANSFORMATIONS.slice(0, visibleCount);
 
@@ -18,18 +18,20 @@ export const TransformationSection = () => {
         <section id="rezultate" className="py-24 md:py-40 bg-[#020202] relative z-10 scroll-mt-20 border-t border-white/5">
             <div className="container mx-auto px-6 md:px-24">
 
-                <ScrollReveal className="mb-20 text-center">
-                    <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Rezultate Validate</p>
-                    <h2 className="text-5xl md:text-7xl font-black impact-font text-white uppercase tracking-tight">
-                        Transformare <span className="text-transparent" style={{ WebkitTextStroke: '1px #3A86FF' }}>Vizibilă.</span>
-                    </h2>
-                    <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                        Nu promitem miracole peste noapte, ci <span className="text-white font-medium">rezultate măsurabile</span>.
-                        <br className="hidden md:block" />
-                        Acestea sunt reușitele celor care au respectat planul NeoBoost.
-                        Fără filtre, fără scurtături—doar știință și disciplină.
-                    </p>
-                </ScrollReveal>
+                {showHeader && (
+                    <ScrollReveal className="mb-20 text-center">
+                        <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Rezultate Validate</p>
+                        <h2 className="text-5xl md:text-7xl font-black impact-font text-white uppercase tracking-tight">
+                            Transformare <span className="text-transparent" style={{ WebkitTextStroke: '1px #3A86FF' }}>Vizibilă.</span>
+                        </h2>
+                        <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                            Nu promitem miracole peste noapte, ci <span className="text-white font-medium">rezultate măsurabile</span>.
+                            <br className="hidden md:block" />
+                            Acestea sunt reușitele celor care au respectat planul NeoBoost.
+                            Fără filtre, fără scurtături—doar știință și disciplină.
+                        </p>
+                    </ScrollReveal>
+                )}
 
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-24">
                     {visibleData.map((data, idx) => (
