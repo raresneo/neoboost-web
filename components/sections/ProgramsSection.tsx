@@ -1,7 +1,11 @@
-// ... imports
-import { useOutletContext, Link } from 'react-router-dom'; // Ensure useOutletContext is imported
-import { useStripeCheckout } from '../../lib/useStripeCheckout'; // Import hook
-import { Session } from '@supabase/supabase-js'; // Import Session type
+import React from 'react';
+import { useOutletContext, Link } from 'react-router-dom';
+import { Target, Zap, MoveUpRight, Baby, Users, Dumbbell, Calendar, Crown } from 'lucide-react';
+import { ScrollReveal } from '../ui/ScrollReveal';
+import { ProgramsVideoBackground } from '../backgrounds/CinematicBackground';
+import { PROGRAMS } from '../../constants';
+import { useStripeCheckout } from '../../lib/useStripeCheckout';
+import { Session } from '@supabase/supabase-js';
 
 // ... Inside component
 export const ProgramsSection = () => {
