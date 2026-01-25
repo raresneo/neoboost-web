@@ -88,13 +88,13 @@ export const Layout: React.FC = () => {
     // Handle incoming hash on load (delegating smooth scroll logic to SmoothScroll context if needed, but simple element.scrollIntoView works too if native smooth scroll is off, but here we just rely on standard behavior or add a simple effect)
     useEffect(() => {
         if (location.hash) {
-           const targetId = location.hash.substring(1);
-           setTimeout(() => {
-               const targetElement = document.getElementById(targetId);
-               if (targetElement) {
-                   targetElement.scrollIntoView({ behavior: 'smooth' });
-               }
-           }, 500);
+            const targetId = location.hash.substring(1);
+            setTimeout(() => {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
         }
     }, [location.hash]);
 
@@ -106,11 +106,11 @@ export const Layout: React.FC = () => {
     const isSpecialPage = location.pathname.startsWith('/science') || location.pathname.startsWith('/legal');
 
     return (
-        <div className="relative min-h-screen bg-black selection:bg-[#3A86FF] selection:text-black">
+        <div className="relative min-h-screen selection:bg-[#3A86FF] selection:text-black">
             {/* Default Global SEO - Pages can override */}
             <SEO
                 title="NeoBoost — Bio-Electric Performance Oradea"
-                description="Studio EMS Premium Oradea. Antrenamente de 20 minute cu tehnologie wireless Drysuit."
+                description="Studio EMS Premium Oradea. Antrenamente de 30 minute cu tehnologie wireless Drysuit."
                 canonical="/"
             />
 

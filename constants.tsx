@@ -108,7 +108,7 @@ export const EMS_STEPS = [
   },
   {
     id: "03",
-    title: "Antrenament 20 min",
+    title: "Antrenament 30 min",
     description: "Faci exerciții simple, ghidate 1-la-1, în timp ce impulsurile electrice ușoare îți activează mușchii.",
     icon: <Zap size={20} />
   },
@@ -370,17 +370,17 @@ export const LOCATIONS: Location[] = [
 export const FAQS: NeoFAQItem[] = [
   {
     question: "Ce este antrenamentul EMS?",
-    answer: "Antrenamentul EMS folosește un costum special care trimite impulsuri electrice ușoare către mușchi, în timp ce faci exerciții simple alături de un antrenor. Astfel, se activează mai multe grupe musculare în același timp și obții un antrenament intens în doar 20 de minute.",
+    answer: "Antrenamentul EMS folosește un costum special care trimite impulsuri electrice ușoare către mușchi, în timp ce faci exerciții simple alături de un antrenor. Astfel, se activează mai multe grupe musculare în același timp și obții un antrenament intens în doar 30 de minute.",
     icon: <Zap size={24} />
   },
   {
     question: "Cât durează o ședință și cât de des vin la antrenament?",
-    answer: "O ședință de antrenament EMS durează aproximativ 20 de minute. Majoritatea clienților vin de 1–2 ori pe săptămână, în funcție de obiectiv (slăbire, tonifiere, revenire după pauză etc.).",
+    answer: "O ședință de antrenament EMS durează aproximativ 30 de minute. Majoritatea clienților vin de 1–2 ori pe săptămână, în funcție de obiectiv (slăbire, tonifiere, revenire după pauză etc.).",
     icon: <Clock size={24} />
   },
   {
     question: "De ce merită să investești în antrenamentul EMS?",
-    answer: "Investești în cel mai de preț activ al tău: timpul. În doar 20 de minute obții beneficiile a 4 ore de sală convențională, protejându-ți articulațiile și coloana. Este soluția ideală pentru viața modernă, oferindu-ți energie, tonus și sănătate fără a sacrifica zeci de ore pe drumuri și antrenamente ineficiente.",
+    answer: "Investești în cel mai de preț activ al tău: timpul. În doar 30 de minute obții beneficiile a 4 ore de sală convențională, protejându-ți articulațiile și coloana. Este soluția ideală pentru viața modernă, oferindu-ți energie, tonus și sănătate fără a sacrifica zeci de ore pe drumuri și antrenamente ineficiente.",
     icon: <Crown size={24} />
   },
   {
@@ -415,7 +415,7 @@ export const FAQS: NeoFAQItem[] = [
   },
   {
     question: "Ce se întâmplă în prima mea ședință la NeoBoost?",
-    answer: "Prima ședință începe cu o discuție despre obiectivele tale. Apoi te echipăm cu costumul, facem o calibrare ușoară și trecem prin 15-20 de minute de exerciții. La final, discutăm cum te-ai simțit și îți propunem planul potrivit.",
+    answer: "Prima ședință începe cu o discuție despre obiectivele tale. Apoi te echipăm cu costumul, facem o calibrare ușoară și trecem prin 15-30 de minute de exerciții. La final, discutăm cum te-ai simțit și îți propunem planul potrivit.",
     icon: <HelpCircle size={24} />
   }
 ];

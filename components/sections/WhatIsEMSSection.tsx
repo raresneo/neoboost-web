@@ -7,9 +7,9 @@ import { BioDecryption } from '../ui/BioDecryption';
 
 export const WhatIsEMSSection = () => {
     return (
-        <section className="py-20 md:py-32 bg-[#020202] relative z-10 overflow-hidden">
+        <section className="py-20 md:py-32 bg-transparent relative z-10 overflow-hidden">
             {/* Ambient Background */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-[#050505] to-[#020202] -z-10"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#050505]/50 to-transparent -z-10"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#3A86FF]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 md:px-24">
@@ -33,7 +33,7 @@ export const WhatIsEMSSection = () => {
                                     <div>
                                         <h3 className="text-white font-bold text-xl mb-2 group-hover:text-red-400 transition-colors">Eficiență Maximă</h3>
                                         <p className="text-white/60 text-base leading-relaxed">
-                                            Doar <strong className="text-white"><BioDecryption text="20" /> de minute</strong>, de 1-2 ori pe săptămână. Echivalentul a 4 ore de fitness convențional, activând <strong className="text-white"><BioDecryption text="90%" /></strong> din musculatură.
+                                            Doar <strong className="text-white"><BioDecryption text="30" /> de minute</strong>, de 1-2 ori pe săptămână. Echivalentul a 4 ore de fitness convențional, activând <strong className="text-white"><BioDecryption text="90%" /></strong> din musculatură.
                                         </p>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@ export const WhatIsEMSSection = () => {
 
                     {/* Image / Visual - Dual Tone Logic */}
                     <ScrollReveal delay={200}>
-                        <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
+                        <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group gradient-border-spin">
                             {/* Dual Tone Glows - Background */}
                             <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-r from-red-600/20 to-transparent mix-blend-overlay z-10 pointer-events-none"></div>
                             <div className="absolute top-0 bottom-0 right-0 w-1/2 bg-gradient-to-l from-[#3A86FF]/20 to-transparent mix-blend-overlay z-10 pointer-events-none"></div>
@@ -91,7 +91,7 @@ export const WhatIsEMSSection = () => {
                                 <div className="bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 flex items-center justify-between group-hover:border-white/30 transition-colors">
                                     <div>
                                         <p className="text-white font-black text-4xl impact-font mb-1 flex items-baseline gap-2">
-                                            20 <span className="text-sm font-bold text-[#3A86FF] tracking-widest">MINUTE</span>
+                                            30 <span className="text-sm font-bold text-[#3A86FF] tracking-widest">MINUTE</span>
                                         </p>
                                         <p className="text-white/60 text-xs uppercase tracking-widest font-bold">Durata unei ședințe complete</p>
                                     </div>

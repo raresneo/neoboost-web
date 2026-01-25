@@ -125,7 +125,7 @@ export const HomePage: React.FC = () => {
         <>
             <SEO
                 title="Bio-Electric Performance"
-                description="NeoBoost EMS Oradea. Antrenamente de 20 min = 4 ore de sală. Tehnologie EMS wireless Neo Boost pentru slăbire și tonifiere rapidă."
+                description="NeoBoost EMS Oradea. Antrenamente de 30 min = 4 ore de sală. Tehnologie EMS wireless Neo Boost pentru slăbire și tonifiere rapidă."
                 canonical="/"
                 jsonLd={{
                     "@context": "https://schema.org",
