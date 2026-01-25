@@ -49,14 +49,20 @@ export const NoSuitSection: React.FC<NoSuitSectionProps> = ({ onOpenBooking }) =
                             </div>
                         </ScrollReveal>
 
-                        <div className="hidden lg:block relative h-full min-h-[300px]">
-                            {/* Abstract graphic or simple cleaner look */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="relative w-full aspect-square max-w-[300px] border border-white/10 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#3A86FF] rounded-full blur-[2px]"></div>
-                                </div>
-                                <div className="absolute w-[200px] h-[200px] border border-dashed border-white/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-                                <Dumbbell size={64} className="text-white/20" />
+                        <div className="hidden lg:block relative h-full min-h-[400px]">
+                            <div className="absolute inset-0 rounded-2xl overflow-hidden border border-white/10 group">
+                                <img
+                                    src="/functional_training.png"
+                                    alt="Antrenament Funcțional NeoBoost"
+                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
+                            </div>
+
+                            {/* Floating Badge */}
+                            <div className="absolute bottom-6 right-6 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-lg flex items-center gap-3">
+                                <div className="w-2 h-2 bg-[#3A86FF] rounded-full animate-pulse"></div>
+                                <span className="text-white text-xs font-bold uppercase tracking-wider">Antrenor Personal</span>
                             </div>
                         </div>
                     </div>

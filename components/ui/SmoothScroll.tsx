@@ -7,10 +7,11 @@ export const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Keep the quart easings, they are nice.
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
+            wheelMultiplier: 1.5, // Faster scroll
             touchMultiplier: 2,
         });
 

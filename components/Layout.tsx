@@ -85,57 +85,18 @@ export const Layout: React.FC = () => {
         }
     }, []);
 
-    // Initialize Lenis
+    // Handle incoming hash on load (delegating smooth scroll logic to SmoothScroll context if needed, but simple element.scrollIntoView works too if native smooth scroll is off, but here we just rely on standard behavior or add a simple effect)
     useEffect(() => {
-        const lenis = new Lenis({
-            lerp: 0.5,
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 2.2,
-            touchMultiplier: 3.0,
-        });
-
-        const raf = (time: number) => {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        };
-
-        requestAnimationFrame(raf);
-
-        // Patch anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // e.preventDefault(); // Default behavior is often fine with pure CSS scroll-behavior, but Lenis needs help sometimes.
-                // However, if we use react-router hash links, we might not need this manual handling if we handle it properly.
-                // For now, let's keep the manual patch only if it targets ID on current page.
-                const href = this.getAttribute('href');
-                if (href?.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        lenis.scrollTo(targetElement);
-                    }
-                }
-            });
-        });
-
-        // Handle incoming hash on load
         if (location.hash) {
-            const targetId = location.hash.substring(1);
-            setTimeout(() => {
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    lenis.scrollTo(targetElement);
-                }
-            }, 100); // Slight delay for render
+           const targetId = location.hash.substring(1);
+           setTimeout(() => {
+               const targetElement = document.getElementById(targetId);
+               if (targetElement) {
+                   targetElement.scrollIntoView({ behavior: 'smooth' });
+               }
+           }, 500);
         }
-
-        return () => {
-            lenis.destroy();
-        };
-    }, [location.hash]); // Re-run if hash changes
+    }, [location.hash]);
 
     const handleOpenLocation = (loc: typeof LOCATIONS[0]) => {
         setSelectedLocation(loc);

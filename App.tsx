@@ -17,6 +17,8 @@ const ResultsPage = lazy(() => import('./pages/ResultsPage').then(module => ({ d
 import { SmoothScroll } from './components/ui/SmoothScroll';
 import { CustomCursor } from './components/ui/CustomCursor';
 
+import { SpeedScrollEffect } from './components/ui/SpeedScrollEffect';
+
 const App: React.FC = () => {
   useEffect(() => {
     captureUTMParameters();
@@ -26,6 +28,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <SmoothScroll>
         <CustomCursor />
+        <SpeedScrollEffect />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
