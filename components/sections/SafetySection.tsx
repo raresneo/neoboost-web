@@ -13,14 +13,14 @@ export const SafetySection = () => {
                             <span className="text-[#3A86FF] font-bold uppercase tracking-widest text-xs">Siguranță & Eligibilitate</span>
                         </div>
                         <h2 className="text-3xl md:text-5xl font-black impact-font text-white uppercase mb-6">
-                            ESTE EMS MYX <span className="text-[#3A86FF]">POTRIVIT PENTRU TINE?</span>
+                            ESTE EMS <span className="text-[#3A86FF]">POTRIVIT PENTRU TINE?</span>
                         </h2>
                     </div>
                 </ScrollReveal>
 
-                <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-12">
+                <div className="flex flex-col md:grid md:grid-cols-2 landscape:flex-row landscape:overflow-x-auto gap-6 md:gap-12 landscape:gap-6 landscape:pb-8 md:pb-0 landscape:snap-x landscape:snap-mandatory no-scrollbar">
                     {/* Suitable For */}
-                    <ScrollReveal delay={100} className="w-full">
+                    <ScrollReveal delay={100} className="w-full landscape:min-w-[85vw] landscape:w-auto landscape:snap-center">
                         <div className="h-full glass-block p-8 rounded-3xl border border-white/10 hover:border-[#3A86FF]/30 transition-all flex flex-col">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-10 h-10 rounded-full bg-[#3A86FF]/20 flex items-center justify-center text-[#3A86FF] flex-shrink-0">
@@ -50,7 +50,7 @@ export const SafetySection = () => {
                     </ScrollReveal>
 
                     {/* Not Suitable For */}
-                    <ScrollReveal delay={200} className="w-full">
+                    <ScrollReveal delay={200} className="w-full landscape:min-w-[85vw] landscape:w-auto landscape:snap-center">
                         <div className="h-full glass-block p-8 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all flex flex-col">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 flex-shrink-0">
@@ -88,12 +88,12 @@ export const SafetySection = () => {
                     </div>
                 </ScrollReveal>
 
-                {/* MYX Tech Explanation Box */}
+                {/* EMS Tech Explanation Box */}
                 <ScrollReveal delay={400}>
                     <div className="mt-16 glass-block p-8 rounded-2xl bg-[#0a0a0a]/50 border border-white/5">
-                        <h4 className="text-lg font-bold text-white mb-4">Cum funcționează tehnologia MYX?</h4>
+                        <h4 className="text-lg font-bold text-white mb-4">Cum funcționează tehnologia EMS?</h4>
                         <p className="text-white/60 leading-relaxed text-sm md:text-base">
-                            MYX este o tehnologie de electrostimulare musculară care stimulează fibrele musculare prin impulsuri electrice controlate. Asta înseamnă că într-un antrenament de ~20 de minute poți obține un nivel de activare musculară similar cu o sesiune mult mai lungă în sala clasică. Toate ședințele sunt supravegheate 1 la 1, iar intensitatea este adaptată nivelului tău.
+                            EMS (Electrostimulare Musculară) este o tehnologie care stimulează fibrele musculare prin impulsuri electrice controlate. Asta înseamnă că într-un antrenament de ~20 de minute poți obține un nivel de activare musculară similar cu o sesiune mult mai lungă în sala clasică. Toate ședințele sunt supravegheate 1 la 1, iar intensitatea este adaptată nivelului tău.
                         </p>
                     </div>
                 </ScrollReveal>

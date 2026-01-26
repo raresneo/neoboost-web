@@ -70,35 +70,35 @@ export const ProgramsSection = () => {
                                     </div>
                                 </Link>
 
-                                <div className="p-10 flex flex-col flex-1 relative z-10 -mt-8 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
-                                    <div className="mb-6">
+                                <div className="p-6 md:p-10 landscape:p-6 flex flex-col flex-1 relative z-10 -mt-4 md:-mt-8 landscape:-mt-4 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
+                                    <div className="mb-4 md:mb-6 landscape:mb-4">
                                         <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
                                             OBIECTIV: {prog.idealFor}
                                         </span>
                                         <Link to={`/program/${prog.id}`}>
-                                            <h3 className="text-4xl font-black impact-font text-white mb-3 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter cursor-pointer hover:underline decoration-[#3A86FF] decoration-2 underline-offset-4">
+                                            <h3 className="text-3xl md:text-4xl landscape:text-3xl font-black impact-font text-white mb-2 md:mb-3 landscape:mb-2 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter cursor-pointer hover:underline decoration-[#3A86FF] decoration-2 underline-offset-4">
                                                 {prog.title}
                                             </h3>
                                         </Link>
                                     </div>
 
-                                    <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-8 border-l-2 border-[#3A86FF] pl-4">
+                                    <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-4 md:mb-8 landscape:mb-4 border-l-2 border-[#3A86FF] pl-4">
                                         {prog.subtitle}
                                     </p>
 
-                                    <p className="text-white/40 text-sm leading-relaxed mb-6 flex-grow overflow-hidden line-clamp-4">
+                                    <p className="text-white/40 text-sm leading-relaxed mb-4 md:mb-6 landscape:mb-4 flex-grow overflow-hidden line-clamp-3 md:line-clamp-4 landscape:line-clamp-3">
                                         {prog.description}
                                     </p>
 
                                     {/* Price Display */}
                                     {prog.price && (
-                                        <div className="mb-6 flex items-center gap-2">
+                                        <div className="mb-4 md:mb-6 landscape:mb-4 flex items-center gap-2">
                                             <span className="text-2xl font-black text-white">{prog.price}</span>
                                             {prog.stripePriceId && <span className="text-xs text-[#3A86FF] font-bold uppercase tracking-wider bg-[#3A86FF]/10 px-2 py-1 rounded">Online</span>}
                                         </div>
                                     )}
 
-                                    <div className="mt-auto pt-8 border-t border-white/5 flex flex-col gap-6">
+                                    <div className="mt-auto pt-4 md:pt-8 landscape:pt-4 border-t border-white/5 flex flex-col gap-4 md:gap-6 landscape:gap-4">
                                         <div className="flex items-center justify-between">
                                             <div>
                                                 <span className="text-[8px] uppercase text-white/20 font-black tracking-[0.2em] block mb-1">Rezultat</span>

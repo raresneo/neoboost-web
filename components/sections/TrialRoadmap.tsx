@@ -13,7 +13,7 @@ const TrialVideoBackground = () => {
 export const TrialRoadmap = () => {
     const roadmap = [
         { step: "01", title: "Discuție Obiective", desc: "Discutăm 5-10 min despre ce vrei să obții (slăbire, tonifiere, postură).", icon: <UserCheck size={20} /> },
-        { step: "02", title: "Analiză & Echipare", desc: "Verificăm eligibilitatea pentru MYX și te echipăm cu costumul DrySuit.", icon: <Shirt size={20} /> },
+        { step: "02", title: "Analiză & Echipare", desc: "Verificăm eligibilitatea pentru EMS și te echipăm cu costumul DrySuit.", icon: <Shirt size={20} /> },
         { step: "03", title: "Antrenament Test", desc: "Simți pe pielea ta cum lucrează fibra musculară în 15-20 min ghidate.", icon: <Zap size={20} /> },
         { step: "04", title: "Plan Personalizat", desc: "Primești o recomandare clară de pachet adaptat stilului tău de viață.", icon: <Droplets size={20} /> }
     ];
