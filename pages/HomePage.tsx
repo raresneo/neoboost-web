@@ -9,9 +9,9 @@ import { useStripeCheckout } from '../lib/useStripeCheckout';
 // --- UI Components ---
 import { FAQItem } from '../components/ui/FAQItem';
 import { SpotlightCard } from '../components/ui/SpotlightCard';
-import { Footer } from '../components/ui/Footer';
+import { Footer } from '../components/Footer';
 import { BioDecryption } from '../components/ui/BioDecryption';
-import { AnimatedGraphic } from '../components/visuals/AnimatedGraphic';
+import { AnimatedGraphic } from '../components/AnimatedGraphic';
 
 // --- Iconic Lucide ---
 import { Zap, HeartPulse, Target, TrendingUp, Clock, UserCheck, ShieldCheck, Layers, ArrowRight } from 'lucide-react';
@@ -34,7 +34,7 @@ const locationImages = [
     '/getfit.jpg'
 ];
 
-export default function HomePage() {
+export const HomePage = () => {
     const navigate = useNavigate();
     const { session, onOpenBooking, onOpenLocation } = useOutletContext<{
         session: Session | null;
