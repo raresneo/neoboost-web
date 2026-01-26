@@ -11,7 +11,9 @@ export const PowerBoxLifestyle = () => (
             <img
                 src="/powerbox_lifestyle.png"
                 alt="NeoBoost PowerBox & Dock"
-                className="w-full h-full object-cover mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75"
+                src="/powerbox_lifestyle.png"
+                alt="NeoBoost PowerBox & Dock"
+                className="w-full h-full object-cover brightness-90"
                 style={{
                     objectPosition: 'center center',
                     maskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
@@ -159,7 +161,9 @@ export const TabletReal = () => (
             <img
                 src="/tablet_combo.jpg"
                 alt="NeoBoost Tablet Interface"
-                className="w-full h-full object-cover mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75"
+                src="/tablet_combo.jpg"
+                alt="NeoBoost Tablet Interface"
+                className="w-full h-full object-cover brightness-90"
                 style={{
                     objectPosition: '40% 60%',
                     maskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
@@ -186,7 +190,9 @@ export const DrysuitLifestyle = () => (
             <img
                 src="/studio_session_1.jpg"
                 alt="NeoBoost Drysuit Action"
-                className="w-full h-full object-cover mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75"
+                src="/studio_session_1.jpg"
+                alt="NeoBoost Drysuit Action"
+                className="w-full h-full object-cover brightness-90"
                 style={{
                     objectPosition: 'center 30%',
                     maskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)',
@@ -247,7 +253,9 @@ export const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolea
                         <img
                             src={src}
                             alt={alt}
-                            className={`w-full h-full object-contain mix-blend-luminosity filter grayscale contrast-[1.2] brightness-75 transition-all duration-500 will-change-transform group-hover:scale-[1.1]`}
+                            src={src}
+                            alt={alt}
+                            className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1]`}
                             style={{
                                 maskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',
                                 WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 90%)',

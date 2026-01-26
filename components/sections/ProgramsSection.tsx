@@ -49,15 +49,16 @@ export const ProgramsSection = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {PROGRAMS.map((prog, i) => (
                         <ScrollReveal key={prog.id} delay={i * 100}>
-                            <div className="group relative h-full bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-700 cursor-default overflow-hidden flex flex-col rounded-[2rem] shadow-2xl block">
+                            <div className="group relative h-full bg-[#0a0a0a] border-none hover:border-none transition-all duration-700 cursor-default overflow-hidden flex flex-col rounded-[2rem] shadow-2xl block gradient-border-spin">
                                 {/* Image Section - Link to details */}
-                                <Link to={`/program/${prog.id}`} className="relative h-72 overflow-hidden block cursor-pointer">
+                                <Link to={`/program/${prog.id}`} className="relative h-72 overflow-hidden block cursor-pointer rounded-t-[2rem]">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-transparent to-blue-900/40 mix-blend-overlay z-20 pointer-events-none"></div>
                                     <img
                                         src={prog.image}
                                         alt={prog.title}
                                         className="absolute inset-0 w-full h-full object-cover reveal-color transform transition-transform duration-1000 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 z-20"></div>
 
                                     <div className={`absolute top-6 left-6 z-10 ${prog.tagColor || 'bg-[#3A86FF]'} text-black px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg`}>
                                         {prog.tag}
