@@ -145,7 +145,7 @@ export const HomePage: React.FC = () => {
 
             {/* ===== PENTRU CINE ESTE NEOBOOST ===== */}
             <section id="pentru-cine" className="pt-24 md:pt-32 pb-20 md:pb-32 bg-transparent relative z-10 overflow-hidden scroll-mt-20">
-                <BenefitsVideoBackground />
+
                 <div className="container mx-auto px-6 md:px-24 relative z-10">
                     <ScrollReveal>
                         <div className="text-center mb-16">
@@ -281,7 +281,7 @@ export const HomePage: React.FC = () => {
             </section>
 
             <section id="metoda" className="pt-28 md:pt-40 pb-24 md:pb-40 bg-transparent relative z-10 overflow-hidden scroll-mt-20">
-                <BiohackVideoBackground />
+
                 <div className="container mx-auto px-6 md:px-24 relative z-20">
                     <div className="grid lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
 
