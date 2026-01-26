@@ -44,7 +44,6 @@ export interface ExtendedProgram {
   idealFor: string;
   benefit: string;
   description: string;
-  description: string;
   content: string;
   price?: string;
   stripePriceId?: string;

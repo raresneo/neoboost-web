@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserCheck, Shirt, Zap, Droplets, ArrowDown } from 'lucide-react';
+import { useDraggableScroll } from '../../lib/useDraggableScroll';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { CinematicBackground } from '../backgrounds/CinematicBackground';
 
@@ -17,6 +18,8 @@ export const TrialRoadmap = () => {
         { step: "04", title: "Plan Personalizat", desc: "Primești o recomandare clară de pachet adaptat stilului tău de viață.", icon: <Droplets size={20} /> }
     ];
 
+    const scrollRef = useDraggableScroll();
+
     return (
         <section className="py-24 bg-transparent border-y border-white/5 relative overflow-hidden">
 
@@ -31,10 +34,10 @@ export const TrialRoadmap = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div ref={scrollRef} className="flex gap-6 overflow-x-auto pb-8 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar overscroll-x-contain cursor-grab active:cursor-grabbing">
                     {roadmap.map((item, idx) => (
-                        <ScrollReveal key={idx} delay={idx * 100}>
-                            <div className="relative p-6 sm:p-10 glass-block bg-black/80 backdrop-blur-xl rounded-2xl group hover:border-[#3A86FF]/50 transition-all duration-500 border border-white/10 shadow-lg">
+                        <ScrollReveal key={idx} delay={idx * 100} className="min-w-[85vw] md:min-w-[300px] flex-shrink-0 snap-center">
+                            <div className="relative p-6 sm:p-10 h-full glass-block bg-black/80 backdrop-blur-xl rounded-2xl group hover:border-[#3A86FF]/50 transition-all duration-500 border border-white/10 shadow-lg flex flex-col">
                                 <div className="text-5xl font-black impact-font text-white/10 group-hover:text-[#3A86FF]/20 transition-colors mb-4">{item.step}</div>
                                 <div className="text-[#3A86FF] mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_10px_rgba(58,134,255,0.5)]">{item.icon}</div>
                                 <h3 className="text-xl font-black impact-font text-white mb-2 uppercase">{item.title}</h3>

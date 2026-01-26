@@ -11,8 +11,6 @@ export const PowerBoxLifestyle = () => (
             <img
                 src="/powerbox_lifestyle.png"
                 alt="NeoBoost PowerBox & Dock"
-                src="/powerbox_lifestyle.png"
-                alt="NeoBoost PowerBox & Dock"
                 className="w-full h-full object-cover brightness-90"
                 style={{
                     objectPosition: 'center center',
@@ -161,8 +159,6 @@ export const TabletReal = () => (
             <img
                 src="/tablet_combo.jpg"
                 alt="NeoBoost Tablet Interface"
-                src="/tablet_combo.jpg"
-                alt="NeoBoost Tablet Interface"
                 className="w-full h-full object-cover brightness-90"
                 style={{
                     objectPosition: '40% 60%',
@@ -188,8 +184,6 @@ export const DrysuitLifestyle = () => (
 
         <div className="relative w-full h-full scale-[1.05] transition-transform duration-700 group-hover:scale-[1.1]">
             <img
-                src="/studio_session_1.jpg"
-                alt="NeoBoost Drysuit Action"
                 src="/studio_session_1.jpg"
                 alt="NeoBoost Drysuit Action"
                 className="w-full h-full object-cover brightness-90"
@@ -251,8 +245,6 @@ export const TiltImage: React.FC<{ src: string; alt: string; isPowerBox?: boolea
                     <div className="relative w-full h-full bg-black/80 rounded-2xl overflow-hidden">
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(58,134,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(58,134,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
                         <img
-                            src={src}
-                            alt={alt}
                             src={src}
                             alt={alt}
                             className={`w-full h-full object-contain transition-all duration-500 will-change-transform group-hover:scale-[1.1]`}

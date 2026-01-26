@@ -6,11 +6,13 @@ import { ProgramsVideoBackground } from '../backgrounds/CinematicBackground';
 import { PROGRAMS } from '../../constants';
 import { useStripeCheckout } from '../../lib/useStripeCheckout';
 import { Session } from '@supabase/supabase-js';
+import { useDraggableScroll } from '../../lib/useDraggableScroll';
 
 // ... Inside component
 export const ProgramsSection = () => {
     const { session } = useOutletContext<{ session: Session | null }>();
     const { handleCheckout, isLoading } = useStripeCheckout();
+    const scrollRef = useDraggableScroll();
 
     const getIcon = (iconId: string) => {
         switch (iconId) {
@@ -26,7 +28,7 @@ export const ProgramsSection = () => {
     };
 
     return (
-        <section id="programe" className="pt-32 md:pt-40 pb-32 md:pb-60 bg-transparent relative z-20 border-t border-white/5 scroll-mt-20">
+        <section id="programe" className="py-24 md:py-32 bg-transparent relative z-20 border-t border-white/5 scroll-mt-20">
 
             <div className="container mx-auto px-6 md:px-24">
                 <ScrollReveal>
@@ -46,9 +48,9 @@ export const ProgramsSection = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div ref={scrollRef} className="flex gap-6 md:gap-10 overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar overscroll-x-contain cursor-grab active:cursor-grabbing">
                     {PROGRAMS.map((prog, i) => (
-                        <ScrollReveal key={prog.id} delay={i * 100}>
+                        <ScrollReveal key={prog.id} delay={i * 100} className="min-w-[85vw] md:min-w-[400px] flex-shrink-0 snap-center">
                             <div className="group relative h-full bg-[#0a0a0a] border-none hover:border-none transition-all duration-700 cursor-default overflow-hidden flex flex-col rounded-[2rem] shadow-2xl block gradient-border-spin">
                                 {/* Image Section - Link to details */}
                                 <Link to={`/program/${prog.id}`} className="relative h-72 overflow-hidden block cursor-pointer rounded-t-[2rem]">

@@ -5,36 +5,20 @@ import { MessageCircle, MoveUpRight, Zap, Target, HeartPulse, TrendingUp } from 
 
 // --- Sections ---
 import { ImmersiveHero } from '../components/sections/ImmersiveHero';
-import { BenefitArticlesSection } from '../components/sections/BenefitArticlesSection'; // Note: Not used directly in new Home? Wait, it was imported in App.tsx but seemingly unused in the main render block? 
-// Checking App.tsx trace... It was imported but I don't see <BenefitArticlesSection /> in the `activeView !== 'science' ...` block. 
-// Ah, `ComparisonSection` etc are there.
-// Let's re-read the App.tsx render block in my head.
-// Line 625: <EMSProtocolSubsection />
-// Line 629: <ComparisonSection />
-// Line 631: <ScienceSolutionsSection />
-// Line 633: <TrialRoadmap />
-// Line 635: <ProgramsSection />
-// Line 637: <EMSTimeline />
-// Line 639: <EMSEducation />
-// Line 597: TECH_COMPONENTS...
-// Line 374: BenefitsVideoBackground...
-// It seems `BenefitArticlesSection` was NOT used in the Home view in the provided snippet?
-// Wait, looking at line 16 of App.tsx: import { BenefitArticlesSection } ...
-// Maybe it was used inside `activeView === 'science'` ? No, `SciencePage` is used there.
-// I will keep it if it's needed, otherwise drop.
+// BenefitArticlesSection removed (unused here)
 
-import { EMSProtocolSubsection } from '../components/sections/EMSProtocolSubsection';
-import { ComparisonSection } from '../components/sections/ComparisonSection';
-import { ScienceSolutionsSection } from '../components/sections/ScienceSolutionsSection';
-import { TrialRoadmap } from '../components/sections/TrialRoadmap';
-import { ProgramsSection } from '../components/sections/ProgramsSection';
-import { EMSTimeline } from '../components/sections/EMSTimeline';
-import { EMSEducation } from '../components/sections/EMSEducation';
-import { TransformationSection } from '../components/sections/TransformationSection';
 import { WhatIsEMSSection } from '../components/sections/WhatIsEMSSection';
-import { NoSuitSection } from '../components/sections/NoSuitSection';
-import { SafetySection } from '../components/sections/SafetySection';
 import { MixHealthSection } from '../components/sections/MixHealthSection';
+
+// Lazy Load heavy sections below the fold
+const ComparisonSection = React.lazy(() => import('../components/sections/ComparisonSection').then(module => ({ default: module.ComparisonSection })));
+const ScienceSolutionsSection = React.lazy(() => import('../components/sections/ScienceSolutionsSection').then(module => ({ default: module.ScienceSolutionsSection })));
+const TrialRoadmap = React.lazy(() => import('../components/sections/TrialRoadmap').then(module => ({ default: module.TrialRoadmap })));
+const ProgramsSection = React.lazy(() => import('../components/sections/ProgramsSection').then(module => ({ default: module.ProgramsSection })));
+const EMSEducation = React.lazy(() => import('../components/sections/EMSEducation').then(module => ({ default: module.EMSEducation })));
+const TransformationSection = React.lazy(() => import('../components/sections/TransformationSection').then(module => ({ default: module.TransformationSection })));
+const NoSuitSection = React.lazy(() => import('../components/sections/NoSuitSection').then(module => ({ default: module.NoSuitSection })));
+const SafetySection = React.lazy(() => import('../components/sections/SafetySection').then(module => ({ default: module.SafetySection })));
 
 // --- UI Components ---
 import { PackageCard } from '../components/ui/PackageCard';
@@ -330,9 +314,11 @@ export const HomePage: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><SafetySection /></div>
+                <React.Suspense fallback={<div className="w-[100vw] h-full shrink-0 flex items-center justify-center"><div className="w-10 h-10 border-2 border-[#3A86FF] border-t-transparent rounded-full animate-spin"></div></div>}>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><SafetySection /></div>
+                </React.Suspense>
 
-                {/* MYX SECTION - Full Screen Expandable */}
+                {/* MYX SECTION - Full Screen Expandable (Eager) */}
                 <MixHealthSection />
 
                 {/* Method Section - Custom Wrap */}
@@ -361,18 +347,20 @@ export const HomePage: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><ComparisonSection /></div>
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><NoSuitSection onOpenBooking={onOpenBooking} /></div>
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><ScienceSolutionsSection /></div>
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TrialRoadmap /></div>
+                <React.Suspense fallback={<div className="w-[100vw] h-full shrink-0 flex items-center justify-center"><div className="w-10 h-10 border-2 border-[#3A86FF] border-t-transparent rounded-full animate-spin"></div></div>}>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><ComparisonSection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><NoSuitSection onOpenBooking={onOpenBooking} /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><ScienceSolutionsSection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TrialRoadmap /></div>
 
-                {/* Programs - Might need width adjustment if cards are too cramped. Using 100vw for now */}
-                <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto no-scrollbar px-6 md:px-24 flex items-center justify-center snap-center">
-                    <ProgramsSection />
-                </div>
+                    {/* Programs - Might need width adjustment if cards are too cramped. Using 100vw for now */}
+                    <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto no-scrollbar px-6 md:px-24 flex items-center justify-center snap-center">
+                        <ProgramsSection />
+                    </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><EMSEducation /></div>
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TransformationSection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><EMSEducation /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TransformationSection /></div>
+                </React.Suspense>
 
                 {/* Reviews */}
                 <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar">

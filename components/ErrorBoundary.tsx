@@ -16,6 +16,14 @@ export class ErrorBoundary extends Component<Props, State> {
         error: null,
     };
 
+    // Explicitly define props to satisfy TS if Component inference fails
+    readonly props: Readonly<Props>;
+
+    constructor(props: Props) {
+        super(props);
+        this.props = props;
+    }
+
 
 
     public static getDerivedStateFromError(error: Error): State {

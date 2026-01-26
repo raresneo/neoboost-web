@@ -5,10 +5,13 @@ import { BeforeAfterSlider } from '../ui/BeforeAfterSlider';
 import { BioMetricsGraph } from '../visuals/BioMetricsGraph';
 import { TRANSFORMATIONS } from '../../constants';
 import { Quote } from 'lucide-react';
+import { useDraggableScroll } from '../../lib/useDraggableScroll';
 
 export const TransformationSection = ({ showHeader = true }: { showHeader?: boolean }) => {
     const [visibleCount, setVisibleCount] = useState(4);
     const visibleData = TRANSFORMATIONS.slice(0, visibleCount);
+
+    const scrollRef = useDraggableScroll();
 
     const handleLoadMore = () => {
         setVisibleCount(prev => prev + 4);
@@ -33,9 +36,9 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
                     </ScrollReveal>
                 )}
 
-                <div className="grid md:grid-cols-2 gap-x-12 gap-y-24">
+                <div ref={scrollRef} className="flex gap-6 md:gap-12 overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar overscroll-x-contain cursor-grab active:cursor-grabbing items-start">
                     {visibleData.map((data, idx) => (
-                        <div key={data.id} className="group">
+                        <div key={data.id} className="group min-w-[85vw] md:min-w-[600px] snap-center flex-shrink-0">
                             {/* Slider */}
                             <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-2xl border-none transition-colors gradient-border-spin`}>
                                 {/* Left Half - BEFORE */}
