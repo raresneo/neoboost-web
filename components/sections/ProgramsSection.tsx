@@ -26,7 +26,7 @@ export const ProgramsSection = () => {
     };
 
     return (
-        <section id="programe" className="pt-32 md:pt-40 pb-32 md:pb-60 bg-transparent relative z-20 border-t border-white/5 overflow-hidden scroll-mt-20">
+        <section id="programe" className="pt-32 md:pt-40 pb-32 md:pb-60 bg-transparent relative z-20 border-t border-white/5 scroll-mt-20">
 
             <div className="container mx-auto px-6 md:px-24">
                 <ScrollReveal>

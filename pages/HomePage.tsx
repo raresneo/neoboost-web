@@ -123,6 +123,71 @@ export const HomePage: React.FC = () => {
         }
     };
 
+    // --- Scroll Logic ---
+    const containerRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const isVerticallyScrollable = (element: HTMLElement) => {
+            return element.scrollHeight > element.clientHeight;
+        };
+
+        const handleWheel = (e: WheelEvent) => {
+            // Check if we are hovering over a scrollable element
+            const path = e.composedPath();
+            let isOverScrollable = false;
+
+            for (const node of path) {
+                if (node instanceof HTMLElement && node !== container && isVerticallyScrollable(node)) {
+                    const style = window.getComputedStyle(node);
+                    if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
+                        // Check bounds
+                        const atBottom = Math.abs(node.scrollHeight - node.scrollTop - node.clientHeight) < 1;
+                        const atTop = node.scrollTop <= 0;
+
+                        if (e.deltaY > 0 && !atBottom) {
+                            isOverScrollable = true;
+                            break;
+                        } else if (e.deltaY < 0 && !atTop) {
+                            isOverScrollable = true;
+                            break;
+                        }
+                    }
+                }
+                if (node === container) break;
+            }
+
+            if (isOverScrollable) return; // Let native vertical scroll happen
+
+            // Otherwise, hijack for horizontal
+            // Check if it's a "touchpad" smooth scroll vs a "mouse" clicky wheel?
+            // Hard to detect perfectly, but we can just map delta.
+            e.preventDefault();
+
+            // "Efect scrol viteza" - slightly higher multiplier + smoothing via CSS scroll-behavior
+            const velocity = 2.5;
+            container.scrollLeft += e.deltaY * velocity;
+        };
+
+        container.addEventListener('wheel', handleWheel, { passive: false });
+        // Clean up
+        return () => container.removeEventListener('wheel', handleWheel);
+    }, []);
+
+    const scrollNext = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+        }
+    };
+
+    const scrollPrev = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+        }
+    };
+
     return (
         <>
             <SEO
@@ -144,10 +209,10 @@ export const HomePage: React.FC = () => {
             />
 
             {/* HORIZONTAL WRAPPER */}
-            <div className="flex flex-row h-screen w-max overflow-x-auto no-scrollbar">
+            <div ref={containerRef} className="flex flex-row h-screen w-max overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
 
                 {/* HERO - Full Width */}
-                <div className="w-[100vw] h-full shrink-0 relative overflow-hidden">
+                <div className="w-[100vw] h-full shrink-0 relative overflow-hidden snap-center">
                     <ImmersiveHero />
 
                     {/* Hero Specific Hint - Initial Guide */}
@@ -302,7 +367,7 @@ export const HomePage: React.FC = () => {
                 <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TrialRoadmap /></div>
 
                 {/* Programs - Might need width adjustment if cards are too cramped. Using 100vw for now */}
-                <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto no-scrollbar px-6 md:px-24 flex items-center justify-center">
+                <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto no-scrollbar px-6 md:px-24 flex items-center justify-center snap-center">
                     <ProgramsSection />
                 </div>
 
@@ -382,17 +447,23 @@ export const HomePage: React.FC = () => {
 
             {/* --- FIXED NAVIGATION ARROWS --- */}
             {/* Right Arrow - Always enticing user to scroll right */}
-            <div className="fixed top-1/2 right-4 -translate-y-1/2 z-[60] pointer-events-none hidden md:flex flex-col items-center gap-2 animate-pulse">
-                <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-[#3A86FF] flex items-center justify-center shadow-[0_0_20px_rgba(58,134,255,0.4)]">
-                    <MoveUpRight size={24} className="text-[#3A86FF] rotate-45" />
+            <div
+                onClick={scrollNext}
+                className="fixed top-1/2 right-4 -translate-y-1/2 z-[60] cursor-pointer hidden md:flex flex-col items-center gap-2 group"
+            >
+                <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-[#3A86FF] flex items-center justify-center shadow-[0_0_20px_rgba(58,134,255,0.4)] group-hover:scale-110 group-hover:bg-[#3A86FF] group-hover:text-black transition-all duration-300">
+                    <MoveUpRight size={24} className="text-[#3A86FF] group-hover:text-black rotate-45 transition-colors" />
                 </div>
-                <span className="text-[9px] mono-font text-[#3A86FF] font-bold uppercase tracking-widest -rotate-90 origin-center translate-y-8">NEXT</span>
+                <span className="text-[9px] mono-font text-[#3A86FF] group-hover:text-white font-bold uppercase tracking-widest -rotate-90 origin-center translate-y-8 transition-colors">NEXT</span>
             </div>
 
             {/* Left Hint - Appears visually to balance */}
-            <div className="fixed top-1/2 left-4 -translate-y-1/2 z-[60] pointer-events-none hidden md:flex flex-col items-center gap-2 opacity-30">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                    <MoveUpRight size={16} className="text-white -rotate-[135deg]" />
+            <div
+                onClick={scrollPrev}
+                className="fixed top-1/2 left-4 -translate-y-1/2 z-[60] cursor-pointer hidden md:flex flex-col items-center gap-2 group opacity-50 hover:opacity-100 transition-opacity"
+            >
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 group-hover:bg-white group-hover:text-black transition-all">
+                    <MoveUpRight size={16} className="text-white group-hover:text-black -rotate-[135deg] transition-colors" />
                 </div>
             </div>
 
