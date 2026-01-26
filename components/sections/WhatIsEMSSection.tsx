@@ -79,8 +79,8 @@ export const WhatIsEMSSection = () => {
 
 
                             <img
-                                src="/ems_training_cyber.png"
-                                alt="Antrenament EMS NeoBoost Oradea Cyber Style"
+                                src="/hero_new.jpg"
+                                alt="Antrenament EMS NeoBoost Oradea Red Blue Style"
                                 className="object-cover w-full h-full grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
                             />
 

@@ -14,11 +14,11 @@ export const ImmersiveHero = () => {
     }, []);
 
     return (
-        <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-black py-20">
+        <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-transparent py-20">
 
             {/* Background Visual - Carousel */}
             <HeroCarousel />
-            <div className="absolute inset-0 z-10 bg-black/40 md:bg-black/30 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 z-10 bg-black/20 md:bg-black/10 backdrop-blur-[1px]"></div>
             {/* Content */}
             <div className={`relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto transition-all duration-700 ease-out ${isLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'} pt-32`}>
 
