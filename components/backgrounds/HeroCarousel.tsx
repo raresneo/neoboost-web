@@ -20,7 +20,7 @@ export const HeroCarousel = () => {
     }, []);
 
     return (
-        <div className="absolute inset-0 z-0 overflow-hidden bg-black select-none pointer-events-none">
+        <div className="absolute inset-0 z-0 overflow-hidden bg-transparent select-none pointer-events-none">
             {HERO_IMAGES.map((img, index) => (
                 <div
                     key={img}

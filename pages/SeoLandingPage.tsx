@@ -30,7 +30,7 @@ export const SeoLandingPage: React.FC = () => {
 
     if (!pageConfig) {
         return (
-            <div className="min-h-screen bg-black text-white flex items-center justify-center">
+            <div className="min-h-screen bg-transparent text-white flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-4xl font-black mb-4">Pagina nu a fost găsită</h1>
                     <button onClick={() => navigate('/')} className="text-[#3A86FF] hover:underline">
@@ -42,7 +42,7 @@ export const SeoLandingPage: React.FC = () => {
     }
 
     return (
-        <div className="bg-black min-h-screen text-white selection:bg-[#3A86FF] selection:text-black">
+        <div className="bg-transparent min-h-screen text-white selection:bg-[#3A86FF] selection:text-black">
             <SEO
                 title={pageConfig.title}
                 description={pageConfig.description}
