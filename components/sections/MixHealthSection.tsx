@@ -5,7 +5,7 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 export const MixHealthSection = () => {
     return (
         <React.Fragment>
-            {/* SLIDE 1: BRAND INTRO (Dark Mode) */}
+            {/* SLIDE 1: BRAND INTRO (Dark Mode) - MYX NUTRITION */}
             <div className="w-[100vw] h-screen shrink-0 relative bg-[#050a14] text-white flex items-center justify-center snap-center overflow-hidden">
                 {/* Background Textures */}
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
@@ -18,7 +18,7 @@ export const MixHealthSection = () => {
                                 <div className="p-3 bg-white/5 border border-white/10 rounded-full">
                                     <FlaskConical size={24} className="text-[#00F0FF]" />
                                 </div>
-                                <span className="text-[#00F0FF] font-bold uppercase tracking-[0.3em] text-xs">Division</span>
+                                <span className="text-[#00F0FF] font-bold uppercase tracking-[0.3em] text-xs">Suplimente Premium</span>
                             </div>
 
                             <ScrollReveal>
@@ -26,14 +26,14 @@ export const MixHealthSection = () => {
                                     MYX.
                                 </h2>
                                 <p className="text-2xl md:text-4xl text-white/60 font-light mb-10">
-                                    Nutrition Optimized for <span className="text-white font-bold">Recovery</span>.
+                                    Nutriție Optimizată pentru <span className="text-white font-bold">Performanță</span>.
                                 </p>
                             </ScrollReveal>
 
                             <div className="h-px w-24 bg-[#00F0FF] mb-10"></div>
 
                             <div className="flex gap-12 text-sm font-bold uppercase tracking-widest text-white/40">
-                                <div className="flex items-center gap-3"><Zap size={16} className="text-[#00F0FF]" /> Metabolic Support</div>
+                                <div className="flex items-center gap-3"><Zap size={16} className="text-[#00F0FF]" /> Energy Matrix</div>
                                 <div className="flex items-center gap-3"><Leaf size={16} className="text-[#00F0FF]" /> Pure Ingredients</div>
                             </div>
                         </div>
@@ -59,16 +59,16 @@ export const MixHealthSection = () => {
                         {/* Text Content */}
                         <ScrollReveal>
                             <div className="flex items-center gap-4 mb-8">
-                                <span className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">The Science</span>
+                                <span className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">Divizia de Nutriție</span>
                             </div>
 
                             <h2 className="text-5xl md:text-7xl font-black mb-8 leading-[0.9] tracking-tighter text-slate-900">
-                                POTENȚIAL.<br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008080] to-[#00F0FF]">AMPLIFICAT.</span>
+                                FORMULA.<br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008080] to-[#00F0FF]">AVANSATĂ.</span>
                             </h2>
 
                             <p className="text-slate-600 text-lg leading-relaxed mb-12 font-medium">
-                                Antrenamentul EMS și nutriția MYX funcționează în sinergie perfectă. Nu sunt două direcții separate, ci două puteri care se completează pentru a-ți accelera rezultatele.
+                                Gama MYX este complet separată de serviciile EMS și reprezintă standardul nostru în suplimente nutritive. Create în laborator pentru a susține efortul fizic, indiferent de tipul de antrenament.
                             </p>
 
                             <div className="grid gap-6">
@@ -76,14 +76,14 @@ export const MixHealthSection = () => {
                                     <div className="p-3 bg-white rounded-xl shadow-sm h-fit text-[#008080]"><Milk size={20} /></div>
                                     <div>
                                         <h4 className="font-bold text-lg uppercase mb-1 text-slate-800">Iso-Whey MYX</h4>
-                                        <p className="text-sm text-slate-500">Absorbție ultra-rapidă. Zero zahăr. Ideal imediat după efort.</p>
+                                        <p className="text-sm text-slate-500">Izolat proteic pur. Absorbție rapidă. Zero adaosuri inutile.</p>
                                     </div>
                                 </div>
                                 <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex gap-5 hover:shadow-lg transition-all duration-300">
                                     <div className="p-3 bg-white rounded-xl shadow-sm h-fit text-[#008080]"><Zap size={20} /></div>
                                     <div>
                                         <h4 className="font-bold text-lg uppercase mb-1 text-slate-800">Energy Matrix</h4>
-                                        <p className="text-sm text-slate-500">Electroliți și BCAA pentru hidratare celulară și focus mental.</p>
+                                        <p className="text-sm text-slate-500">Complex de aminoacizi și electroliți pentru hidratare și focus.</p>
                                     </div>
                                 </div>
                             </div>
