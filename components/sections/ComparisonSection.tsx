@@ -10,7 +10,7 @@ const EvolutionVideoBackground = () => (
 
 // --- New Competitive Comparison Section ---
 export const ComparisonSection = () => (
-    <section className="py-24 bg-[#0a0a0a] border-y border-white/5 relative overflow-hidden">
+    <section className="py-24 bg-transparent border-y border-white/5 relative overflow-hidden">
         <EvolutionVideoBackground />
         <div className="container mx-auto px-6 md:px-24 relative z-10">
             <ScrollReveal>

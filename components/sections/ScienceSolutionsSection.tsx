@@ -4,7 +4,7 @@ import { EMS_SOLUTIONS } from '../../constants';
 
 // --- Science & Solutions Section ---
 export const ScienceSolutionsSection = () => (
-    <section className="py-32 bg-zinc-900 border-b border-white/5 relative overflow-hidden">
+    <section className="py-32 bg-transparent border-b border-white/5 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3A86FF]/20 to-transparent"></div>
         <div className="container mx-auto px-6 md:px-24">
             <ScrollReveal>

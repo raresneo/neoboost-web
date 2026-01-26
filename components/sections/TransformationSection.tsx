@@ -15,7 +15,7 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
     };
 
     return (
-        <section id="rezultate" className="py-24 md:py-40 bg-[#020202] relative z-10 scroll-mt-20 border-t border-white/5">
+        <section id="rezultate" className="py-24 md:py-40 bg-transparent relative z-10 scroll-mt-20 border-t border-white/5">
             <div className="container mx-auto px-6 md:px-24">
 
                 {showHeader && (

@@ -10,7 +10,7 @@ import { EMS_MILESTONES } from '../../constants';
 // --- EMSEducation Component ---
 export const EMSEducation = () => {
     return (
-        <section className="py-32 md:py-60 bg-[#080808] relative z-10 overflow-hidden">
+        <section className="py-32 md:py-60 bg-transparent relative z-10 overflow-hidden">
             <div className="container mx-auto px-6 md:px-24">
 
                 <ScrollReveal className="mb-40">

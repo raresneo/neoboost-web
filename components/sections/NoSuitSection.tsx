@@ -8,7 +8,7 @@ interface NoSuitSectionProps {
 
 export const NoSuitSection: React.FC<NoSuitSectionProps> = ({ onOpenBooking }) => {
     return (
-        <section className="py-20 bg-[#050505] relative border-y border-white/5">
+        <section className="py-24 bg-transparent border-y border-white/5 relative overflow-hidden">
             <div className="container mx-auto px-6 md:px-24">
                 <div className="glass-block rounded-3xl p-8 md:p-16 border border-white/10 relative overflow-hidden">
 

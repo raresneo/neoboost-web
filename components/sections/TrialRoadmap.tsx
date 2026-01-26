@@ -18,7 +18,7 @@ export const TrialRoadmap = () => {
     ];
 
     return (
-        <section className="py-24 bg-black border-y border-white/5 relative overflow-hidden">
+        <section className="py-24 bg-transparent border-y border-white/5 relative overflow-hidden">
             <TrialVideoBackground />
             <div className="container mx-auto px-6 md:px-24 relative z-10">
                 <ScrollReveal>
