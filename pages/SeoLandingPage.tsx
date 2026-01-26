@@ -142,13 +142,13 @@ export const SeoLandingPage: React.FC = () => {
                             {pageConfig.description}
                         </p>
                         <p>
-                            Tehnologia EMS (Electrical Muscle Stimulation) este o inovație care permite antrenarea completă a corpului în doar 20 de minute.
+                            Tehnologia EMS (Electrical Muscle Stimulation) este o inovație care permite antrenarea completă a corpului în doar 30 de minute.
                             La NeoBoost Oradea, folosim sistemul Wireless DrySuit, care elimină necesitatea umezirii costumului și oferă o igienă impecabilă.
                         </p>
 
                         <h3 className="text-2xl font-bold text-white mt-12 mb-6">De ce să alegi NeoBoost?</h3>
                         <ul className="list-disc pl-6 space-y-4 text-gray-300">
-                            <li><strong>Timp Economisit:</strong> 20 min EMS = 90 min sală clasică.</li>
+                            <li><strong>Timp Economisit:</strong> 30 min EMS = 90 min sală clasică.</li>
                             <li><strong>Siguranță:</strong> Fără greutăți mari, deci zero presiune pe articulații.</li>
                             <li><strong>Intimitate:</strong> Studio privat, ești doar tu și antrenorul.</li>
                         </ul>

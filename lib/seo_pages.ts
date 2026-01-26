@@ -19,7 +19,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
         intent: 'local',
         cluster: 'antrenament',
         title: 'Antrenament EMS Oradea — Sala Fitness NeoBoost',
-        description: 'Cel mai eficient antrenament din Oradea. 20 de minute de EMS echivalează cu 4 ore de fitness clasic. Studio central, parcare gratuită.',
+        description: 'Cel mai eficient antrenament din Oradea. 30 de minute de EMS echivalează cu 4 ore de fitness clasic. Studio central, parcare gratuită.',
         priority: 'H',
         secondaryKeywords: [
             'antrenament EMS lângă mine',
@@ -30,7 +30,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
             'EMS pentru bărbați',
             'EMS pentru spate Oradea',
             'EMS personalizat Oradea',
-            'antrenament EMS 20 minute',
+            'antrenament EMS 30 minute',
             'EMS fitness lângă mine',
             'antrenament EMS 2x săptămână',
             'antrenament EMS eficace',
@@ -47,7 +47,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
         intent: 'commercial',
         cluster: 'slăbire',
         title: 'Slăbire EMS în Oradea — Arzi Grăsime Rapid',
-        description: 'Program specializat de slăbire cu electrostimulare. Elimină celulita și țesutul adipos în ședințe scurte de 20 de minute.',
+        description: 'Program specializat de slăbire cu electrostimulare. Elimină celulita și țesutul adipos în ședințe scurte de 30 de minute.',
         priority: 'H',
         secondaryKeywords: [
             'EMS slăbire Oradea',
@@ -212,7 +212,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
         intent: 'commercial',
         cluster: 'program',
         title: 'Programare EMS Oradea — Rezervă Locul Tău',
-        description: 'Program flexibil 07:00 - 21:00. Rezervă-ți sesiunea de 20 de minute online sau telefonic. NeoBoost se adaptează orarului tău.',
+        description: 'Program flexibil 07:00 - 21:00. Rezervă-ți sesiunea de 30 de minute online sau telefonic. NeoBoost se adaptează orarului tău.',
         priority: 'H',
         secondaryKeywords: [
             'program EMS Oradea',
