@@ -33,7 +33,7 @@ export const ImmersiveHero = () => {
                 {/* Headline & Subheadline - SEO Optimized */}
                 <div className="mb-10">
                     <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
-                        Slăbești și te tonifiezi în doar 20 de minute <br className="hidden md:block" />
+                        Slăbești și te tonifiezi în doar 30 de minute <br className="hidden md:block" />
                         <span className="text-[#3A86FF]">cu antrenamente EMS MYX, 1 la 1.</span>
                     </h1>
                     <p className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed readable-text mb-8">

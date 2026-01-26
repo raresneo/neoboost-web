@@ -75,7 +75,8 @@ export const WhatIsEMSSection = () => {
                     <ScrollReveal delay={200}>
                         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group gradient-border-spin">
                             {/* Dual Tone Glows - Background */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-red-900/60 via-transparent to-blue-900/60 mix-blend-overlay z-20 pointer-events-none"></div>
+                            {/* Dual Tone Glows - Background */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-red-900/60 via-cyan-500/30 to-blue-900/60 mix-blend-overlay z-20 pointer-events-none"></div>
 
                             <img
                                 src="/hero_user.jpg"

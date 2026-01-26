@@ -34,6 +34,7 @@ import { TransformationSection } from '../components/sections/TransformationSect
 import { WhatIsEMSSection } from '../components/sections/WhatIsEMSSection';
 import { NoSuitSection } from '../components/sections/NoSuitSection';
 import { SafetySection } from '../components/sections/SafetySection';
+import { SupplementsSection } from '../components/sections/SupplementsSection';
 
 // --- UI Components ---
 import { PackageCard } from '../components/ui/PackageCard';
@@ -282,6 +283,7 @@ export const HomePage: React.FC = () => {
             </section>
 
             <SafetySection />
+            <SupplementsSection />
 
             <section id="metoda" className="pt-28 md:pt-40 pb-24 md:pb-40 bg-transparent relative z-10 overflow-hidden scroll-mt-20">
 
