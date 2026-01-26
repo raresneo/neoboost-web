@@ -50,7 +50,7 @@ export const ParticleBackground = () => {
             ctx.clearRect(0, 0, width, height);
 
             // Update particles
-            particles.forEach((p, index) => {
+            particles.forEach((p) => {
                 p.x += p.dx;
                 p.y += p.dy;
 
@@ -71,28 +71,11 @@ export const ParticleBackground = () => {
                 if (p.y < 0) p.y = height;
                 if (p.y > height) p.y = 0;
 
-                // Draw particle
+                // Draw particle (Gray Flake)
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(58, 134, 255, ${p.alpha})`;
+                ctx.fillStyle = `rgba(200, 200, 200, ${p.alpha})`; // Gray/White flakes
                 ctx.fill();
-
-                // Draw connections
-                for (let j = index + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const distX = p.x - p2.x;
-                    const distY = p.y - p2.y;
-                    const distance = Math.sqrt(distX * distX + distY * distY);
-
-                    if (distance < 120) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(58, 134, 255, ${0.15 * (1 - distance / 120)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
             });
 
             animationFrameId = requestAnimationFrame(draw);

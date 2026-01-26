@@ -497,13 +497,13 @@ export const HomePage: React.FC = () => {
                                     onClick={() => onOpenLocation(loc)}
                                     className="group cursor-pointer transition-all duration-500 hover:scale-[1.02]"
                                 >
-                                    <div className="relative aspect-video overflow-hidden mb-10 border border-white/5 group-hover:border-[#3A86FF]/50 transition-all duration-700 rounded-2xl">
+                                    <div className="relative aspect-video overflow-hidden mb-10 border border-white/10 group-hover:border-white/40 transition-all duration-700 rounded-2xl">
                                         <img
                                             src={locationImages[i]}
                                             alt={loc.name}
                                             loading="lazy"
                                             decoding="async"
-                                            className={`w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 object-center`}
+                                            className={`w-full h-full object-cover transition-all duration-1000 object-center`}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
 

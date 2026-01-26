@@ -75,8 +75,8 @@ export const WhatIsEMSSection = () => {
                     <ScrollReveal delay={200}>
                         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group gradient-border-spin">
                             {/* Dual Tone Glows - Background */}
-                            <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-r from-red-600/20 to-transparent mix-blend-overlay z-10 pointer-events-none"></div>
-                            <div className="absolute top-0 bottom-0 right-0 w-1/2 bg-gradient-to-l from-[#3A86FF]/20 to-transparent mix-blend-overlay z-10 pointer-events-none"></div>
+
+
 
                             <img
                                 src="/ems_training_cyber.png"

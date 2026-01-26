@@ -578,8 +578,11 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, #150202 0%, #020515 50%, #001515 100%);
-      background-attachment: fixed;
+      /* Aurora Borealis Effect - Red, Blue, Turquoise */
+      background: linear-gradient(-45deg, #2b0505, #05052e, #002b2b, #1a051a);
+      background-size: 400% 400%;
+      animation: aurora 15s ease infinite;
+
       color: var(--text-primary);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -589,6 +592,20 @@
       font-size: 16px;
       line-height: 1.7;
       letter-spacing: 0.01em;
+    }
+
+    @keyframes aurora {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     /* Gradient Animation for Circular/Border Effects */
