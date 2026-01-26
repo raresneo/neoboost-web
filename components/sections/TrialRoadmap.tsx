@@ -11,10 +11,10 @@ const TrialVideoBackground = () => {
 // --- Trial Roadmap Section ---
 export const TrialRoadmap = () => {
     const roadmap = [
-        { step: "01", title: "Consiliere", desc: "Discutăm despre obiectivele tale și starea de sănătate.", icon: <UserCheck size={20} /> },
-        { step: "02", title: "Echipare", desc: "Primești costumul Drysuit bio-optic pregătit special.", icon: <Shirt size={20} /> },
-        { step: "03", title: "Activare", desc: "30 de minute de antrenament ghidat 1-la-1.", icon: <Zap size={20} /> },
-        { step: "04", title: "Recuperare", desc: "Shake proteic și planificare pentru rezultate.", icon: <Droplets size={20} /> }
+        { step: "01", title: "Discuție Obiective", desc: "Discutăm 5-10 min despre ce vrei să obții (slăbire, tonifiere, postură).", icon: <UserCheck size={20} /> },
+        { step: "02", title: "Analiză & Echipare", desc: "Verificăm eligibilitatea pentru MYX și te echipăm cu costumul DrySuit.", icon: <Shirt size={20} /> },
+        { step: "03", title: "Antrenament Test", desc: "Simți pe pielea ta cum lucrează fibra musculară în 15-20 min ghidate.", icon: <Zap size={20} /> },
+        { step: "04", title: "Plan Personalizat", desc: "Primești o recomandare clară de pachet adaptat stilului tău de viață.", icon: <Droplets size={20} /> }
     ];
 
     return (
@@ -23,8 +23,11 @@ export const TrialRoadmap = () => {
             <div className="container mx-auto px-6 md:px-24 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-6xl font-black impact-font text-white tracking-tight uppercase">EXPERIENȚA <span className="text-[#3A86FF]">PRIMEI VIZITE.</span></h2>
+                        <h2 className="text-4xl md:text-6xl font-black impact-font text-white tracking-tight uppercase">CE SE ÎNTÂMPLĂ LA <span className="text-[#3A86FF]">ȘEDINȚA GRATUITĂ?</span></h2>
                         <p className="text-white/40 mt-4 mono-font text-xs tracking-widest uppercase">Simplu, rapid, profesionist.</p>
+                        <p className="mt-8 text-white/70 italic text-sm max-w-xl mx-auto">
+                            Nu te obligă la nimic. Dacă simți că nu e pentru tine, pleci doar cu experiența în plus și cu mai multă claritate.
+                        </p>
                     </div>
                 </ScrollReveal>
 

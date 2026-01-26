@@ -1,0 +1,104 @@
+import React from 'react';
+import { ShieldCheck, HeartPulse, AlertTriangle } from 'lucide-react';
+import { ScrollReveal } from '../ui/ScrollReveal';
+
+export const SafetySection = () => {
+    return (
+        <section className="py-24 bg-transparent border-y border-white/5 relative overflow-hidden">
+            <div className="container mx-auto px-6 md:px-24">
+                <ScrollReveal>
+                    <div className="text-center mb-16">
+                        <div className="flex items-center justify-center gap-4 mb-4">
+                            <ShieldCheck className="text-[#3A86FF]" size={24} />
+                            <span className="text-[#3A86FF] font-bold uppercase tracking-widest text-xs">Siguranță & Eligibilitate</span>
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-black impact-font text-white uppercase mb-6">
+                            ESTE EMS MYX <span className="text-[#3A86FF]">POTRIVIT PENTRU TINE?</span>
+                        </h2>
+                    </div>
+                </ScrollReveal>
+
+                <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                    {/* Suitable For */}
+                    <ScrollReveal delay={100}>
+                        <div className="h-full glass-block p-8 rounded-3xl border border-white/10 hover:border-[#3A86FF]/30 transition-all">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-10 h-10 rounded-full bg-[#3A86FF]/20 flex items-center justify-center text-[#3A86FF]">
+                                    <HeartPulse size={20} />
+                                </div>
+                                <h3 className="text-xl font-black text-white uppercase">ESTE PENTRU TINE DACĂ...</h3>
+                            </div>
+                            <ul className="space-y-4 text-white/70">
+                                <li className="flex gap-3">
+                                    <span className="text-[#3A86FF] font-bold">✓</span>
+                                    <span>Ești adult fără afecțiuni cardiace grave diagnosticate.</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <span className="text-[#3A86FF] font-bold">✓</span>
+                                    <span>Nu ai implanturi electronice active (ex: pacemaker).</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <span className="text-[#3A86FF] font-bold">✓</span>
+                                    <span>Vrei să accelerezi rezultate de slăbire / tonifiere sau să îți susții coloana și postura.</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <span className="text-[#3A86FF] font-bold">✓</span>
+                                    <span>Cauți o metodă eficientă care protejează articulațiile.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </ScrollReveal>
+
+                    {/* Not Suitable For */}
+                    <ScrollReveal delay={200}>
+                        <div className="h-full glass-block p-8 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500">
+                                    <AlertTriangle size={20} />
+                                </div>
+                                <h3 className="text-xl font-black text-white uppercase">NU ESTE INDICAT DACĂ...</h3>
+                            </div>
+                            <ul className="space-y-4 text-white/70">
+                                <li className="flex gap-3">
+                                    <span className="text-red-500 font-bold">✕</span>
+                                    <span>Ai un dispozitiv medical electronic implantat (ex: stimulator cardiac).</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <span className="text-red-500 font-bold">✕</span>
+                                    <span>Ești însărcinată.</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <span className="text-red-500 font-bold">✕</span>
+                                    <span>Ai epilepsie sau tulburări neurologice severe.</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <span className="text-red-500 font-bold">✕</span>
+                                    <span>Ești în perioada imediată de recuperare după o operație (fără acordul medicului).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </ScrollReveal>
+                </div>
+
+                <ScrollReveal delay={300}>
+                    <div className="mt-12 text-center max-w-2xl mx-auto">
+                        <p className="text-white/50 text-sm italic border-l-2 border-[#3A86FF]/30 pl-4 py-2">
+                            "În caz de dubiu, te rugăm să ne spui înainte de ședință – antrenorii noștri verifică mereu siguranța înainte de orice antrenament și adaptează intensitatea."
+                        </p>
+                    </div>
+                </ScrollReveal>
+
+                {/* MYX Tech Explanation Box */}
+                <ScrollReveal delay={400}>
+                    <div className="mt-16 glass-block p-8 rounded-2xl bg-[#0a0a0a]/50 border border-white/5">
+                        <h4 className="text-lg font-bold text-white mb-4">Cum funcționează tehnologia MYX?</h4>
+                        <p className="text-white/60 leading-relaxed text-sm md:text-base">
+                            MYX este o tehnologie de electrostimulare musculară care stimulează fibrele musculare prin impulsuri electrice controlate. Asta înseamnă că într-un antrenament de ~20 de minute poți obține un nivel de activare musculară similar cu o sesiune mult mai lungă în sala clasică. Toate ședințele sunt supravegheate 1 la 1, iar intensitatea este adaptată nivelului tău.
+                        </p>
+                    </div>
+                </ScrollReveal>
+
+            </div>
+        </section>
+    );
+};

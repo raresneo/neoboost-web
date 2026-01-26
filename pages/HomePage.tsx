@@ -33,6 +33,7 @@ import { EMSEducation } from '../components/sections/EMSEducation';
 import { TransformationSection } from '../components/sections/TransformationSection';
 import { WhatIsEMSSection } from '../components/sections/WhatIsEMSSection';
 import { NoSuitSection } from '../components/sections/NoSuitSection';
+import { SafetySection } from '../components/sections/SafetySection';
 
 // --- UI Components ---
 import { PackageCard } from '../components/ui/PackageCard';
@@ -124,7 +125,7 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <SEO
-                title="Bio-Electric Performance"
+                title="Antrenamente EMS cu tehnologie MYX în Oradea – slăbești și te tonifiezi în 20 de minute | Neo-BOOST"
                 description="NeoBoost EMS Oradea. Antrenamente de 30 min = 4 ore de sală. Tehnologie EMS wireless Neo Boost pentru slăbire și tonifiere rapidă."
                 canonical="/"
                 jsonLd={{
@@ -279,6 +280,8 @@ export const HomePage: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            <SafetySection />
 
             <section id="metoda" className="pt-28 md:pt-40 pb-24 md:pb-40 bg-transparent relative z-10 overflow-hidden scroll-mt-20">
 
