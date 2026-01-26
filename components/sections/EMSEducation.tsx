@@ -44,14 +44,17 @@ export const EMSEducation = () => {
                                 </div>
 
                                 {/* Image Column */}
+                                {/* Image Column */}
                                 <div className={`md:w-1/2 relative ${idx % 2 === 0 ? 'order-2' : 'order-2 md:order-1'}`}>
-                                    <div className={`absolute inset-0 bg-[#3A86FF] blur-[100px] animate-pulse-fast ${milestone.isNeo ? 'opacity-40' : 'opacity-20'}`}></div>
-                                    <img
-                                        src={milestone.image || "/ems-placeholder.jpg"}
-                                        alt={`${milestone.year} - ${milestone.title}`}
-                                        className={`relative z-10 w-full rounded-2xl border border-white/10 shadow-2xl animate-float grayscale hover:grayscale-0 transition-all duration-700 ${milestone.isNeo ? 'border-2 border-[#3A86FF] shadow-[0_0_50px_rgba(58,134,255,0.3)]' : ''}`}
-                                        style={{ animationDelay: `${(idx + 1)}s` }}
-                                    />
+                                    {/* Removed blue blur overlay */}
+                                    <div className="relative z-10 w-full rounded-2xl border-none shadow-2xl animate-float transition-all duration-700 gradient-border-spin p-0">
+                                        <img
+                                            src={milestone.image || "/ems-placeholder.jpg"}
+                                            alt={`${milestone.year} - ${milestone.title}`}
+                                            className="block w-full h-full object-cover rounded-2xl"
+                                            style={{ animationDelay: `${(idx + 1)}s` }}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         ))}

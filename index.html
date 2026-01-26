@@ -624,18 +624,37 @@
 
     .gradient-border-spin {
       position: relative;
+      /* Remove overflow hidden from here if it clips the border */
+      /* overflow: hidden; */
+      /* But usually we want smooth border radius. */
+      isolation: isolate;
     }
 
     .gradient-border-spin::before {
       content: "";
       position: absolute;
-      inset: -3px;
+      inset: -5px;
+      /* THICKER BORDER to be visible */
       z-index: -1;
-      background: conic-gradient(from 0deg, #ff0000, #0000ff, #40e0d0, #ff0000);
-      border-radius: 1rem;
-      /* Aproximativ rounded-2xl */
+      /* Use the new Red-Blue-Turquoise gradient */
+      background: conic-gradient(from 0deg, #ff0000, #4a0404, #0000ff, #40e0d0, #ff0000);
+      border-radius: inherit;
+      /* Matches parent border-radius */
       animation: spin-gradient 4s linear infinite;
-      opacity: 0.8;
+      opacity: 1;
+      /* Make it fully visible */
+    }
+
+    /* Optional: An inner background to hide the center of the conic gradient if the element is transparent */
+    .gradient-border-spin::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      /* Inner spacing to create the "border" width appearance */
+      background: #000;
+      /* Or base color */
+      border-radius: inherit;
+      z-index: -1;
     }
 
     /* Better Typography for Readability */

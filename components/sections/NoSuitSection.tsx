@@ -50,13 +50,13 @@ export const NoSuitSection: React.FC<NoSuitSectionProps> = ({ onOpenBooking }) =
                         </ScrollReveal>
 
                         <div className="hidden lg:block relative h-full min-h-[400px]">
-                            <div className="absolute inset-0 rounded-2xl overflow-hidden border border-white/10 group">
+                            <div className="absolute inset-0 rounded-2xl overflow-hidden gradient-border-spin group">
                                 <img
                                     src="/functional_training.png"
                                     alt="Antrenament Funcțional NeoBoost"
-                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                                    className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105 rounded-2xl"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
+                                {/* Removed overlay */}
                             </div>
 
                             {/* Floating Badge */}

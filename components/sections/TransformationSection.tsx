@@ -37,9 +37,9 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
                     {visibleData.map((data, idx) => (
                         <div key={data.id} className="group">
                             {/* Slider */}
-                            <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-[#3A86FF]/30 transition-colors`}>
+                            <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-2xl border-none transition-colors gradient-border-spin`}>
                                 {/* Left Half - BEFORE */}
-                                <div className="w-1/2 h-full relative overflow-hidden border-r border-white/10">
+                                <div className="w-1/2 h-full relative overflow-hidden border-r border-white/10 rounded-l-2xl">
                                     <img
                                         src={data.imageBefore}
                                         alt={`${data.name} Before`}
@@ -58,7 +58,7 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
                                     </div>
                                 </div>
                                 {/* Right Half - AFTER */}
-                                <div className="w-1/2 h-full relative overflow-hidden">
+                                <div className="w-1/2 h-full relative overflow-hidden rounded-r-2xl">
                                     <img
                                         src={data.imageAfter}
                                         alt={`${data.name} After`}
