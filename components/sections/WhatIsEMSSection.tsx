@@ -75,13 +75,12 @@ export const WhatIsEMSSection = () => {
                     <ScrollReveal delay={200}>
                         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group gradient-border-spin">
                             {/* Dual Tone Glows - Background */}
-
-
+                            <div className="absolute inset-0 bg-gradient-to-r from-red-900/60 via-transparent to-blue-900/60 mix-blend-overlay z-20 pointer-events-none"></div>
 
                             <img
-                                src="/what_is_ems.jpg"
+                                src="/hero_user.jpg"
                                 alt="Antrenament EMS NeoBoost Oradea Red Blue Style"
-                                className="object-cover w-full h-full grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
+                                className="object-cover w-full h-full grayscale-[0%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
                             />
 
                             {/* Overlay Gradient */}
