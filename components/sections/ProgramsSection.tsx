@@ -34,14 +34,14 @@ export const ProgramsSection = () => {
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <Target className="text-[#3A86FF]" size={20} />
-                                <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Start Your Journey</span>
+                                <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Începe Transformarea</span>
                             </div>
                             <h2 className="text-7xl md:text-9xl font-black impact-font text-white uppercase leading-[0.8] heading-glow">
-                                PROGRAME <br /><span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>ACTIVE.</span>
+                                ALEGE <br /><span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>OBIECTIVUL.</span>
                             </h2>
                         </div>
                         <p className="text-gray-200 max-w-md text-right text-sm font-medium leading-relaxed hidden md:block readable-text bg-black/40 backdrop-blur-sm p-4 rounded-xl border border-white/5">
-                            Alege programul care se potrivește obiectivelor tale. Fie că vrei slăbire, tonifiere sau performanță, avem o structură dedicată.
+                            Fie că vrei să slăbești, să scapi de dureri sau să crești masa musculară, avem un plan exact pentru tine.
                         </p>
                     </div>
                 </ScrollReveal>
@@ -71,7 +71,7 @@ export const ProgramsSection = () => {
                                 <div className="p-10 flex flex-col flex-1 relative z-10 -mt-8 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
                                     <div className="mb-6">
                                         <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
-                                            IDEAL: {prog.idealFor}
+                                            OBIECTIV: {prog.idealFor}
                                         </span>
                                         <Link to={`/program/${prog.id}`}>
                                             <h3 className="text-4xl font-black impact-font text-white mb-3 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter cursor-pointer hover:underline decoration-[#3A86FF] decoration-2 underline-offset-4">
@@ -124,7 +124,7 @@ export const ProgramsSection = () => {
                                                     disabled={isLoading}
                                                     className="w-full py-4 bg-[#3A86FF] hover:bg-[#3A86FF]/90 text-black text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 rounded-xl shadow-[0_0_20px_rgba(58,134,255,0.3)] hover:shadow-[0_0_30px_rgba(58,134,255,0.5)]"
                                                 >
-                                                    {isLoading ? '...' : 'Cumpără'} <MoveUpRight size={14} />
+                                                    {isLoading ? '...' : 'Alege'} <MoveUpRight size={14} />
                                                 </button>
                                             ) : (
                                                 <a
@@ -133,7 +133,7 @@ export const ProgramsSection = () => {
                                                     rel="noreferrer"
                                                     className="w-full py-4 bg-[#3A86FF] hover:bg-[#3A86FF]/90 text-black text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 rounded-xl"
                                                 >
-                                                    Oferta <MoveUpRight size={14} />
+                                                    Cere Ofertă <MoveUpRight size={14} />
                                                 </a>
                                             )}
                                         </div>

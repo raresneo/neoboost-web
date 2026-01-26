@@ -57,8 +57,8 @@ export const ComparisonSection = () => (
                 {/* Bottom Callout */}
                 <ScrollReveal delay={300}>
                     <div className="mt-16 text-center">
-                        <p className="text-white/60 font-light italic text-lg mb-8">
-                            "De ce să pierzi 4 ore pe săptămână când poți obține rezultate mai bune în 30 de minute?"
+                        <p className="text-white/60 font-light italic text-lg mb-8 max-w-2xl mx-auto">
+                            "De ce să te antrenezi 4 ore, când poți avea aceleași rezultate în doar 30 de minute?"
                         </p>
                     </div>
                 </ScrollReveal>

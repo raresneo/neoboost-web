@@ -34,7 +34,7 @@ export const ImmersiveHero = () => {
                 <div className="mb-10">
                     <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
                         Slăbești și te tonifiezi în doar 30 de minute <br className="hidden md:block" />
-                        <span className="text-[#3A86FF]">cu antrenamente EMS MYX, 1 la 1.</span>
+                        <span className="text-[#3A86FF]">cu antrenamente EMS și Nutriție MYX.</span>
                     </h1>
                     <p className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed readable-text mb-8">
                         Programe gândite pentru oameni ocupați din Oradea care vor rezultate vizibile, fără ore pierdute la sală.
