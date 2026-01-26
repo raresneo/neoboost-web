@@ -7,10 +7,10 @@ import { BioDecryption } from '../ui/BioDecryption';
 
 export const WhatIsEMSSection = () => {
     return (
-        <section className="py-20 md:py-32 bg-transparent relative z-10 overflow-hidden">
-            {/* Ambient Background */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#050505]/50 to-transparent -z-10"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#3A86FF]/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <section className="py-12 md:py-24 bg-transparent relative z-10 overflow-hidden">
+            {/* Ambient Background - More transparent to let body aurora through */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-black/20 to-transparent -z-10"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#3A86FF]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 md:px-24">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -81,7 +81,7 @@ export const WhatIsEMSSection = () => {
                             <img
                                 src="/hero_user.jpg"
                                 alt="Antrenament EMS NeoBoost Oradea Red Blue Style"
-                                className="object-cover w-full h-full grayscale-[0%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
+                                className="object-cover w-full h-full transition-all duration-700 scale-105 group-hover:scale-110"
                             />
 
                             {/* Overlay Gradient */}

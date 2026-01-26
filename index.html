@@ -506,43 +506,43 @@
       scrollbar-width: none;
     }
 
+    /* Custom visible scrollbar for vertical content */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #3A86FF;
+      border-radius: 10px;
+    }
+
     :root {
       /* DEEP COSMIC PALETTE */
-      --bg-primary: #020408;
-      /* Midnight Blue-Black */
+      --bg-primary: #010103;
       --bg-secondary: #050a14;
-      /* Slightly lighter deep blue */
-      --text-primary: #f0f4ff;
-      /* Moonlight White (cool tinted) */
-      --text-secondary: rgba(220, 230, 255, 0.85);
-      /* High contrast cool gray */
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
 
-      --glass-bg: rgba(10, 20, 40, 0.4);
-      /* Blue-tinted glass */
-      --glass-border: rgba(100, 150, 255, 0.1);
-      /* Subtle glowing border */
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
 
       --accent: #3A86FF;
-      /* Keeping base blue but intended for gradients */
       --accent-glow: #00F0FF;
-      /* Cyan glow color */
       --button-text: #000000;
     }
 
     body.light-mode {
       --bg-primary: #F9FAFB;
-      /* Premium Off-White */
       --bg-secondary: #F3F4F6;
-      /* Soft Gray */
       --text-primary: #111827;
-      /* Deep Charcoal */
       --text-secondary: #6B7280;
-      /* Cool Gray */
 
       --glass-bg: rgba(255, 255, 255, 0.65);
-      /* Frosted White */
       --glass-border: rgba(0, 0, 0, 0.06);
-      /* Delicate Border */
 
       --accent: #3A86FF;
       --accent-glow: rgba(58, 134, 255, 0.5);
@@ -552,13 +552,12 @@
       animation: none;
     }
 
-    /* Override specific hardcoded utilities for light mode via CSS directly if possible, or use variables in classes */
-    .light-mode .bg-black {
+    /* Override specific hardcoded utilities for light mode */
+    .light-mode .bg-black,
+    .light-mode .bg-\[\#050505\],
+    .light-mode .bg-gradient-to-b {
       background-color: var(--bg-primary) !important;
-    }
-
-    .light-mode .bg-\[\#050505\] {
-      background-color: var(--bg-primary) !important;
+      background-image: none !important;
     }
 
     .light-mode .text-white {
@@ -573,38 +572,21 @@
       color: var(--text-secondary) !important;
     }
 
-    .light-mode .text-white\/30 {
-      color: rgba(0, 0, 0, 0.3) !important;
-    }
-
-    .light-mode .text-white\/20 {
-      color: rgba(0, 0, 0, 0.2) !important;
-    }
-
-    .light-mode .border-white\/10 {
-      border-color: var(--glass-border) !important;
-    }
-
-    .light-mode .border-white\/5 {
-      border-color: var(--glass-border) !important;
-    }
-
     body {
       font-family: 'Inter', sans-serif;
-      /* Aurora Borealis Effect - Red, Blue, Turquoise with stronger Red */
-      background: linear-gradient(-45deg, #4a0404, #05052e, #002b2b, #2e051a);
+      /* Aurora Borealis Effect - Enhanced Red & Blue as requested */
+      background: linear-gradient(-45deg, #4a0404, #05052e, #0e2a3b, #2b051a);
       background-size: 400% 400%;
-      animation: aurora 15s ease infinite;
+      animation: aurora 20s ease infinite;
 
       color: var(--text-primary);
-      overflow-x: hidden;
+      overflow: hidden;
+      /* Main body should not scroll, only the slides */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      height: 100vh;
       min-height: 100vh;
       transition: background-color 0.3s ease, color 0.3s ease;
-      font-size: 16px;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
     }
 
     @keyframes aurora {

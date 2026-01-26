@@ -124,12 +124,14 @@ export const HomePage: React.FC = () => {
             let isOverScrollable = false;
 
             for (const node of path) {
-                if (node instanceof HTMLElement && node !== container && isVerticallyScrollable(node)) {
+                if (node instanceof HTMLElement && node !== container) {
                     const style = window.getComputedStyle(node);
-                    if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
-                        // Check bounds
-                        const atBottom = Math.abs(node.scrollHeight - node.scrollTop - node.clientHeight) < 1;
-                        const atTop = node.scrollTop <= 0;
+                    const canScrollVertically = (style.overflowY === 'auto' || style.overflowY === 'scroll') && node.scrollHeight > node.clientHeight;
+
+                    if (canScrollVertically) {
+                        // Check bounds with a small tolerance
+                        const atBottom = Math.abs(node.scrollHeight - node.scrollTop - node.clientHeight) < 2;
+                        const atTop = node.scrollTop <= 1;
 
                         if (e.deltaY > 0 && !atBottom) {
                             isOverScrollable = true;
@@ -210,53 +212,53 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 {/* What Is EMS */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
                     <WhatIsEMSSection />
                 </div>
 
                 {/* Benefits / Pentru Cine - with custom bg/styling preservation */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar bg-transparent relative z-10">
-                    <section id="pentru-cine" className="py-24 md:py-32 relative min-h-full">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent relative z-10">
+                    <section id="pentru-cine" className="py-12 md:py-24 relative min-h-full">
                         <div className="container mx-auto px-6 md:px-24 relative z-10">
-                            <div className="text-center mb-16">
+                            <div className="text-center mb-12">
                                 <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Ce Câștigi</p>
                                 <h2 className="text-4xl md:text-6xl font-black impact-font text-white">
                                     Beneficii <span className="text-[#3A86FF]">reale</span>, nu promisiuni
                                 </h2>
                             </div>
 
-                            <div className="grid lg:grid-cols-2 gap-12 items-start">
-                                <div className="grid md:grid-cols-2 gap-6 order-2 lg:order-1">
+                            <div className="grid lg:grid-cols-2 gap-8 items-start">
+                                <div className="grid md:grid-cols-2 gap-4 lg:gap-6 order-2 lg:order-1">
                                     {/* Benefit 1 */}
                                     <SpotlightCard
                                         onMouseEnter={() => setActiveGraphic('energy')}
                                         onClick={() => navigate('/science')}
-                                        className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'energy' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                                        className={`p-6 lg:p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'energy' ? 'bg-black/40 border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                                         spotlightColor="rgba(0, 240, 255, 0.2)"
                                     >
-                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'energy' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
-                                            <Zap size={28} />
+                                        <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center mb-4 lg:mb-6 transition-colors ${activeGraphic === 'energy' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                                            <Zap size={24} />
                                         </div>
-                                        <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'energy' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>SLĂBIRE RAPIDĂ</h3>
-                                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără dietă extremă</p>
-                                        <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
+                                        <h3 className={`text-xl lg:text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'energy' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>SLĂBIRE RAPIDĂ</h3>
+                                        <p className="text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider mb-2 lg:mb-3">Fără dietă extremă</p>
+                                        <p className="text-gray-300 text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6 flex-grow font-medium">
                                             Arzi până la <span className="text-white font-bold"><BioDecryption text="500 kcal" /></span> în <BioDecryption text="30 min" className="text-white font-bold" />.
                                         </p>
                                     </SpotlightCard>
-
+                                    {/* ... rest of cards similarly optimized to take less height/padding ... */}
                                     {/* Benefit 2 */}
                                     <SpotlightCard
                                         onMouseEnter={() => setActiveGraphic('muscle')}
                                         onClick={() => navigate('/science')}
-                                        className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                                        className={`p-6 lg:p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-black/40 border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                                         spotlightColor="rgba(0, 240, 255, 0.2)"
                                     >
-                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
-                                            <HeartPulse size={28} />
+                                        <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center mb-4 lg:mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                                            <HeartPulse size={24} />
                                         </div>
-                                        <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'muscle' ? 'text-white' : 'text-white group-hover:text-white'}`}>ADIO DURERI</h3>
-                                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Spate protejat</p>
-                                        <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
+                                        <h3 className={`text-xl lg:text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'muscle' ? 'text-white' : 'text-white group-hover:text-white'}`}>ADIO DURERI</h3>
+                                        <p className="text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider mb-2 lg:mb-3">Spate protejat</p>
+                                        <p className="text-gray-300 text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6 flex-grow font-medium">
                                             Soluție dovedită pentru dureri lombare și postură incorectă.
                                         </p>
                                     </SpotlightCard>
@@ -265,15 +267,15 @@ export const HomePage: React.FC = () => {
                                     <SpotlightCard
                                         onMouseEnter={() => setActiveGraphic('muscle')}
                                         onClick={() => navigate('/science')}
-                                        className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                                        className={`p-6 lg:p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'muscle' ? 'bg-black/40 border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                                         spotlightColor="rgba(0, 240, 255, 0.2)"
                                     >
-                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
-                                            <Target size={28} />
+                                        <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center mb-4 lg:mb-6 transition-colors ${activeGraphic === 'muscle' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                                            <Target size={24} />
                                         </div>
-                                        <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'muscle' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>TONIFIERE</h3>
-                                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fermitate</p>
-                                        <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
+                                        <h3 className={`text-xl lg:text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'muscle' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>TONIFIERE</h3>
+                                        <p className="text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider mb-2 lg:mb-3">Fermitate</p>
+                                        <p className="text-gray-300 text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6 flex-grow font-medium">
                                             Activare musculară profundă pentru un corp definit.
                                         </p>
                                     </SpotlightCard>
@@ -282,22 +284,22 @@ export const HomePage: React.FC = () => {
                                     <SpotlightCard
                                         onMouseEnter={() => setActiveGraphic('tech')}
                                         onClick={() => navigate('/science')}
-                                        className={`p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'tech' ? 'bg-[#0a0a0a] border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
+                                        className={`p-6 lg:p-8 h-full transition-all duration-500 group block cursor-pointer flex flex-col rounded-2xl relative overflow-hidden ${activeGraphic === 'tech' ? 'bg-black/40 border border-[#3A86FF] shadow-lg shadow-[#3A86FF]/10' : 'glass-block'}`}
                                         spotlightColor="rgba(0, 240, 255, 0.2)"
                                     >
-                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-colors ${activeGraphic === 'tech' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
-                                            <TrendingUp size={28} />
+                                        <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center mb-4 lg:mb-6 transition-colors ${activeGraphic === 'tech' ? 'bg-[#3A86FF] text-white' : 'bg-white/10 text-[#3A86FF] group-hover:bg-[#3A86FF]/20'}`}>
+                                            <TrendingUp size={24} />
                                         </div>
-                                        <h3 className={`text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'tech' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>PERFORMANȚĂ</h3>
-                                        <p className="text-[#3A86FF] text-xs font-bold uppercase tracking-wider mb-3">Fără risc</p>
-                                        <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow font-medium">
+                                        <h3 className={`text-xl lg:text-2xl font-black impact-font mb-2 transition-colors ${activeGraphic === 'tech' ? 'text-white' : 'text-white/90 group-hover:text-white'}`}>PERFORMANȚĂ</h3>
+                                        <p className="text-[#3A86FF] text-[10px] font-bold uppercase tracking-wider mb-2 lg:mb-3">Fără risc</p>
+                                        <p className="text-gray-300 text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6 flex-grow font-medium">
                                             Crește forța și explozivitatea fără a uzura articulațiile.
                                         </p>
                                     </SpotlightCard>
                                 </div>
                                 <div className="hidden lg:block sticky top-32 order-1 lg:order-2 h-[400px]">
                                     {/* Reduced Interactive Graphic - Kept simpler for Horizontal View */}
-                                    <div className="relative w-full h-full glass-block p-2 border-[#3A86FF]/20 bg-black/40">
+                                    <div className="relative w-full h-full glass-block p-2 border-[#3A86FF]/20 bg-black/20">
                                         <AnimatedGraphic
                                             type={activeGraphic}
                                             bgImage={
@@ -315,15 +317,15 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 <React.Suspense fallback={<div className="w-[100vw] h-full shrink-0 flex items-center justify-center"><div className="w-10 h-10 border-2 border-[#3A86FF] border-t-transparent rounded-full animate-spin"></div></div>}>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><SafetySection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><SafetySection /></div>
                 </React.Suspense>
 
                 {/* MYX SECTION - Full Screen Expandable (Eager) */}
                 <MixHealthSection />
 
                 {/* Method Section - Custom Wrap */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar relative z-10 transition-all">
-                    <section id="metoda" className="pt-28 md:pt-40 pb-24 md:pb-40 bg-transparent relative z-10 overflow-hidden">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar relative z-10 transition-all bg-transparent">
+                    <section id="metoda" className="pt-20 md:pt-32 pb-20 md:pb-32 bg-transparent relative z-10 overflow-hidden">
                         <div className="container mx-auto px-6 md:px-24">
                             {/* Simplified Method Layout for Horizontal consistency */}
                             <div className="flex flex-col gap-10">
@@ -335,7 +337,7 @@ export const HomePage: React.FC = () => {
                                 </ScrollReveal>
                                 <div className="grid md:grid-cols-2 gap-6">
                                     {BENEFITS.map((b, i) => (
-                                        <div key={i} className="glass-block p-6 rounded-xl border border-white/5">
+                                        <div key={i} className="glass-block p-6 rounded-xl border border-white/5 bg-black/10">
                                             <div className="text-[#3A86FF] mb-4">{b.icon}</div>
                                             <h3 className="text-white font-bold uppercase mb-2">{b.title}</h3>
                                             <p className="text-white/60 text-sm">{b.description}</p>
@@ -348,22 +350,22 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 <React.Suspense fallback={<div className="w-[100vw] h-full shrink-0 flex items-center justify-center"><div className="w-10 h-10 border-2 border-[#3A86FF] border-t-transparent rounded-full animate-spin"></div></div>}>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><ComparisonSection /></div>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><NoSuitSection onOpenBooking={onOpenBooking} /></div>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><ScienceSolutionsSection /></div>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TrialRoadmap /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><ComparisonSection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><NoSuitSection onOpenBooking={onOpenBooking} /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><ScienceSolutionsSection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><TrialRoadmap /></div>
 
                     {/* Programs - Might need width adjustment if cards are too cramped. Using 100vw for now */}
-                    <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto no-scrollbar px-6 md:px-24 flex items-center justify-center snap-center">
+                    <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto custom-scrollbar px-6 md:px-24 flex items-center justify-center snap-center bg-transparent">
                         <ProgramsSection />
                     </div>
 
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><EMSEducation /></div>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar"><TransformationSection /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><EMSEducation /></div>
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><TransformationSection /></div>
                 </React.Suspense>
 
                 {/* Reviews */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
                     <section id="recenzii" className="py-24 bg-transparent relative z-10">
                         <div className="container mx-auto px-6 md:px-24">
                             <h2 className="text-6xl font-black impact-font text-white mb-16">RECENZII.</h2>
@@ -377,7 +379,7 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 {/* Pricing - Wrapped */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar bg-black/80">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
                     <section id="abonamente" className="py-24 relative z-20">
                         <div className="container mx-auto px-6 md:px-24">
                             <div className="mb-16">
@@ -396,7 +398,7 @@ export const HomePage: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
                     <section id="locatii" className="py-24 relative z-10">
                         <div className="container mx-auto px-6 md:px-24">
                             <h2 className="text-6xl font-black impact-font text-white mb-16">LOCAȚII.</h2>
@@ -416,7 +418,7 @@ export const HomePage: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto no-scrollbar bg-black">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
                     <section id="faq" className="py-24">
                         <div className="container mx-auto px-6 md:px-24">
                             <h2 className="text-6xl font-black impact-font text-white mb-16 text-center">ÎNTREBĂRI.</h2>
