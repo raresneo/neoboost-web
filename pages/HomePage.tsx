@@ -144,12 +144,13 @@ export const HomePage: React.FC = () => {
             />
 
             {/* HORIZONTAL WRAPPER */}
-            <div className="flex flex-row h-screen w-max overflow-hidden">
+            <div className="flex flex-row h-screen w-max overflow-x-auto no-scrollbar">
 
                 {/* HERO - Full Width */}
                 <div className="w-[100vw] h-full shrink-0 relative overflow-hidden">
                     <ImmersiveHero />
-                    {/* Swipe/Scroll Hint Overlay */}
+
+                    {/* Hero Specific Hint - Initial Guide */}
                     <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center gap-2 animate-pulse text-white/50">
                         <div className="flex items-center gap-4">
                             <span className="mono-font text-[10px] uppercase tracking-[0.2em]">{activeGraphic === 'tech' ? 'SWIPE' : 'SCROLL'}</span>
@@ -378,6 +379,22 @@ export const HomePage: React.FC = () => {
 
             </div>
             {/* END HORIZONTAL WRAPPER */}
+
+            {/* --- FIXED NAVIGATION ARROWS --- */}
+            {/* Right Arrow - Always enticing user to scroll right */}
+            <div className="fixed top-1/2 right-4 -translate-y-1/2 z-[60] pointer-events-none hidden md:flex flex-col items-center gap-2 animate-pulse">
+                <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-[#3A86FF] flex items-center justify-center shadow-[0_0_20px_rgba(58,134,255,0.4)]">
+                    <MoveUpRight size={24} className="text-[#3A86FF] rotate-45" />
+                </div>
+                <span className="text-[9px] mono-font text-[#3A86FF] font-bold uppercase tracking-widest -rotate-90 origin-center translate-y-8">NEXT</span>
+            </div>
+
+            {/* Left Hint - Appears visually to balance */}
+            <div className="fixed top-1/2 left-4 -translate-y-1/2 z-[60] pointer-events-none hidden md:flex flex-col items-center gap-2 opacity-30">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                    <MoveUpRight size={16} className="text-white -rotate-[135deg]" />
+                </div>
+            </div>
 
             <button
                 onClick={() => window.open(`https://wa.me/${BRAND.phone.replace(/\s/g, '')}`, '_blank')}
