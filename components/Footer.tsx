@@ -12,7 +12,7 @@ export const Footer = () => {
                         <Link to="/legal/rules" className="hover:text-[#3A86FF] transition-colors">Regulament Intern</Link>
                     </div>
                     <p className="mono-font text-[9px] text-white/20 uppercase tracking-[0.4em]">
-                        © 2025 NeoBoost — Performanță Bio-Electrică Oradea
+                        © 2025 NeoBoost — Performanță Bio-Electrică Oradea <span className="text-white/10 ml-2">v1.1</span>
                     </p>
                 </div>
             </div>
