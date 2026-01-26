@@ -355,83 +355,52 @@ export const HomePage: React.FC = () => {
                     <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><ScienceSolutionsSection /></div>
                     <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><TrialRoadmap /></div>
 
-                    {/* Programs - Might need width adjustment if cards are too cramped. Using 100vw for now */}
-                    <div className="min-w-[100vw] w-fit h-full shrink-0 overflow-y-auto custom-scrollbar px-6 md:px-24 flex items-center justify-center snap-center bg-transparent">
+                    {/* Consolidated Programs & Pricing */}
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
                         <ProgramsSection />
                     </div>
 
                     <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><EMSEducation /></div>
-                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent"><TransformationSection /></div>
+
+                    {/* Consolidated Results & Reviews */}
+                    <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
+                        <TransformationSection />
+                    </div>
                 </React.Suspense>
 
-                {/* Reviews */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
-                    <section id="recenzii" className="py-8 lg:py-[5vh] bg-transparent relative z-10">
-                        <div className="container mx-auto px-6 md:px-24">
-                            <h2 className="text-4xl md:text-6xl font-black impact-font text-white mb-8">RECENZII.</h2>
-                            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-                                {TESTIMONIALS.slice(0, 4).map((t, i) => (
-                                    <TestimonialCard key={i} testimonial={t} i={i} />
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                {/* Pricing - Wrapped */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
-                    <section id="abonamente" className="py-8 lg:py-[5vh] relative z-20">
-                        <div className="container mx-auto px-6 md:px-24">
-                            <div className="mb-8">
-                                <h2 className="text-4xl md:text-6xl font-black impact-font text-white uppercase">TARIFE.</h2>
-                                <div className="flex gap-4 mt-6">
-                                    <button onClick={() => setPricingPeriod('monthly')} className={`px-6 py-2 rounded-full font-bold uppercase ${pricingPeriod === 'monthly' ? 'bg-[#3A86FF] text-black' : 'bg-white/10 text-white'}`}>Lunar</button>
-                                    <button onClick={() => setPricingPeriod('quarterly')} className={`px-6 py-2 rounded-full font-bold uppercase ${pricingPeriod === 'quarterly' ? 'bg-[#3A86FF] text-black' : 'bg-white/10 text-white'}`}>3 Luni</button>
-                                </div>
-                            </div>
-                            <div className="grid xl:grid-cols-4 lg:grid-cols-2 gap-6">
-                                {currentPackages.map((pkg, i) => (
-                                    <PackageCard key={`${pricingPeriod}-${i}`} pkg={pkg} i={i} user={session?.user} onOpenAuth={onOpenAuth} onCheckout={handleCheckout} />
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
-                    <section id="locatii" className="py-8 lg:py-[5vh] relative z-10">
-                        <div className="container mx-auto px-6 md:px-24">
-                            <h2 className="text-4xl md:text-6xl font-black impact-font text-white mb-8 uppercase">LOCAȚII.</h2>
-                            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                {/* INFO & CONTACT (Locations + FAQ) */}
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
+                    <div className="container mx-auto px-6 md:px-24 py-8 lg:py-[5vh]">
+                        {/* LOCATIONS */}
+                        <section id="locatii" className="mb-16">
+                            <h2 className="text-3xl md:text-5xl font-black impact-font text-white mb-6 uppercase">LOCAȚII.</h2>
+                            <div className="grid lg:grid-cols-2 gap-6">
                                 {LOCATIONS.map((loc, i) => (
-                                    <div key={i} onClick={() => onOpenLocation(loc)} className="cursor-pointer group">
-                                        <div className="aspect-video relative rounded-2xl overflow-hidden mb-6 border border-white/10">
-                                            <img src={locationImages[i]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={loc.name} />
-                                            <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+                                    <div key={i} onClick={() => onOpenLocation(loc)} className="cursor-pointer group flex gap-4 items-center bg-white/5 p-4 rounded-xl border border-white/10 hover:border-[#3A86FF]/50 transition-all">
+                                        <div className="w-16 h-16 relative rounded-lg overflow-hidden shrink-0">
+                                            <img src={locationImages[i]} className="w-full h-full object-cover" alt={loc.name} />
                                         </div>
-                                        <h3 className="text-3xl font-black text-white">{loc.name}</h3>
-                                        <p className="text-white/50">{loc.address}</p>
+                                        <div>
+                                            <h3 className="text-xl font-black text-white">{loc.name}</h3>
+                                            <p className="text-white/50 text-xs">{loc.address}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    </section>
-                </div>
+                        </section>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
-                    <section id="faq" className="py-8 lg:py-[5vh]">
-                        <div className="container mx-auto px-6 md:px-24">
-                            <h2 className="text-4xl md:text-6xl font-black impact-font text-white mb-8 text-center uppercase">ÎNTREBĂRI.</h2>
-                            <div className="max-w-3xl mx-auto">
+                        {/* FAQ */}
+                        <section id="faq">
+                            <h2 className="text-3xl md:text-5xl font-black impact-font text-white mb-6 uppercase">ÎNTREBĂRI.</h2>
+                            <div className="max-w-3xl">
                                 {FAQS.map((faq, i) => (
                                     <FAQItem key={i} item={faq} i={i} />
                                 ))}
                             </div>
-                        </div>
-                    </section>
-                    <Footer />
+                        </section>
+                    </div>
                 </div>
-
+                <Footer />
             </div>
             {/* END HORIZONTAL WRAPPER */}
 
