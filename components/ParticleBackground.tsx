@@ -37,10 +37,10 @@ export const ParticleBackground = () => {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                dx: (Math.random() - 0.5) * 0.3, // Slow drift
-                dy: (Math.random() - 0.5) * 0.3,
-                size: Math.random() * 1.5 + 0.5, // Smaller, sharper dots
-                alpha: Math.random() * 0.4 + 0.1
+                dx: (Math.random() - 0.5) * 0.2, // Slower drift
+                dy: (Math.random() - 0.5) * 0.2,
+                size: Math.random() * 2 + 0.5, // Varied sizes like ash flakes
+                alpha: Math.random() * 0.5 + 0.1
             });
         }
 
