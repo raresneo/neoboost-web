@@ -27,3 +27,4 @@ server/.env
 *.sln
 *.sw?
 public/*.mp4
+.vercel

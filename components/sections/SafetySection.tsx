@@ -18,9 +18,9 @@ export const SafetySection = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="flex md:grid md:grid-cols-2 gap-6 md:gap-12 overflow-x-auto md:overflow-visible pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar snap-x snap-mandatory">
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-12">
                     {/* Suitable For */}
-                    <ScrollReveal delay={100} className="min-w-[85vw] md:min-w-0 snap-center">
+                    <ScrollReveal delay={100} className="w-full">
                         <div className="h-full glass-block p-8 rounded-3xl border border-white/10 hover:border-[#3A86FF]/30 transition-all flex flex-col">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-10 h-10 rounded-full bg-[#3A86FF]/20 flex items-center justify-center text-[#3A86FF] flex-shrink-0">
@@ -50,7 +50,7 @@ export const SafetySection = () => {
                     </ScrollReveal>
 
                     {/* Not Suitable For */}
-                    <ScrollReveal delay={200} className="min-w-[85vw] md:min-w-0 snap-center">
+                    <ScrollReveal delay={200} className="w-full">
                         <div className="h-full glass-block p-8 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all flex flex-col">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 flex-shrink-0">

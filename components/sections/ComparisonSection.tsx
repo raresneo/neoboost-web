@@ -31,9 +31,9 @@ export const ComparisonSection = () => (
                 </div>
 
                 {/* Rows / Mobile Cards */}
-                <div className="flex md:block overflow-x-auto md:overflow-visible gap-4 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar snap-x snap-mandatory">
+                <div className="flex flex-col md:block gap-4">
                     {GYM_VS_EMS.map((item, idx) => (
-                        <ScrollReveal key={idx} delay={idx * 50} className="min-w-[75vw] md:min-w-0 snap-center flex-shrink-0">
+                        <ScrollReveal key={idx} delay={idx * 50} className="w-full md:min-w-0 flex-shrink-0">
                             <div className="h-full group grid md:grid-cols-3 gap-4 items-center p-6 glass-block transition-all duration-300 hover:border-[#3A86FF]/30 hover:shadow-[0_0_20px_rgba(0,255,136,0.05)] rounded-2xl md:rounded-none">
                                 {/* Feature Header (Mobile & Desktop) */}
                                 <div className="flex items-center gap-4 mb-4 md:mb-0">
