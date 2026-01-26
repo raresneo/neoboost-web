@@ -22,13 +22,13 @@ export const EMSEducation = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
 
                 <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-[#3A86FF] font-black impact-font text-5xl opacity-80 block mb-1">
+                    <span className="text-[#3A86FF] font-black impact-font text-3xl opacity-80 block mb-1">
                         {milestone.year}
                     </span>
-                    <h3 className="text-xl md:text-2xl text-white font-bold uppercase leading-none mb-2">{milestone.title}</h3>
+                    <h3 className="text-lg md:text-xl text-white font-bold uppercase leading-none mb-1">{milestone.title}</h3>
                 </div>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed border-l border-[#3A86FF]/50 pl-4">
+            <p className="text-white/60 text-[11px] md:text-sm leading-relaxed border-l border-[#3A86FF]/50 pl-4">
                 {milestone.description}
             </p>
         </div>
@@ -38,13 +38,13 @@ export const EMSEducation = () => {
         <React.Fragment>
             {/* SLIDE 1: ORIGINS (1780 - 1960) */}
             <div className="w-[100vw] h-screen shrink-0 relative bg-[#050a14] text-white flex items-center justify-center snap-center overflow-y-auto no-scrollbar">
-                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-24">
-                    <ScrollReveal className="mb-12 text-center">
+                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-8 lg:py-[5vh]">
+                    <ScrollReveal className="mb-6 text-center">
                         <div className="flex items-center justify-center gap-4 mb-4">
                             <History size={20} className="text-[#3A86FF]" />
                             <span className="text-[#3A86FF] font-bold uppercase tracking-widest text-xs">Chapter 1: Origins</span>
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-black impact-font uppercase text-white">
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black impact-font uppercase text-white">
                             GENEZA <span className="text-transparent" style={{ WebkitTextStroke: '1px #3A86FF' }}>EMS.</span>
                         </h2>
                     </ScrollReveal>
@@ -53,7 +53,7 @@ export const EMSEducation = () => {
                         {/* 1780 */}
                         {renderMilestone(EMS_MILESTONES[0], true)}
                         {/* 1960 */}
-                        <div className="md:mt-24">
+                        <div className="md:mt-8">
                             {renderMilestone(EMS_MILESTONES[1], false)}
                         </div>
                     </div>
@@ -63,10 +63,10 @@ export const EMSEducation = () => {
             {/* SLIDE 2: MODERN ERA (1990 - 2010) */}
             <div className="w-[100vw] h-screen shrink-0 relative bg-[#050a14] text-white flex items-center justify-center snap-center overflow-y-auto no-scrollbar">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-24 relative z-10">
-                    <ScrollReveal className="mb-12 text-center">
+                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-8 lg:py-[5vh] relative z-10">
+                    <ScrollReveal className="mb-6 text-center">
                         <span className="text-[#3A86FF] font-bold uppercase tracking-widest text-xs mb-4 block">Chapter 2: Evolution</span>
-                        <h2 className="text-5xl md:text-7xl font-black impact-font uppercase text-white">
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black impact-font uppercase text-white">
                             STANDARDIZARE.
                         </h2>
                     </ScrollReveal>
@@ -75,7 +75,7 @@ export const EMSEducation = () => {
                         {/* 1990 */}
                         {renderMilestone(EMS_MILESTONES[2], true)}
                         {/* 2010 */}
-                        <div className="md:mt-24">
+                        <div className="md:mt-8">
                             {renderMilestone(EMS_MILESTONES[3], false)}
                         </div>
                     </div>
@@ -87,7 +87,7 @@ export const EMSEducation = () => {
                 {/* Gradient Background for "New Era" */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#3A86FF]/20 via-transparent to-black z-0"></div>
 
-                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-24 relative z-10">
+                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-8 lg:py-[5vh] relative z-10">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         {/* 2024 Milestone Highlight */}
                         <div className="relative">
@@ -98,25 +98,25 @@ export const EMSEducation = () => {
                         {/* NeoBoost Difference Text */}
                         <div className="space-y-8">
                             <div>
-                                <h2 className="text-5xl md:text-6xl font-black impact-font text-white mb-6 leading-[0.9]">
+                                <h2 className="text-3xl md:text-5xl font-black impact-font text-white mb-4 leading-[0.9]">
                                     TRANSFORMARE<br />
                                     <span className="text-[#3A86FF]">PERSONALIZATĂ.</span>
                                 </h2>
-                                <p className="text-white/60 text-lg leading-relaxed">
+                                <p className="text-white/60 text-base md:text-lg leading-relaxed">
                                     La NeoBoost, EMS nu e despre a împinge corpul la limită, ci despre a construi o transformare sustenabilă, într-un cadru de siguranță totală.
                                 </p>
                             </div>
 
                             <div className="space-y-6 border-l border-white/10 pl-8">
                                 <div>
-                                    <h4 className="text-white font-bold impact-font text-xl uppercase mb-2 text-[#3A86FF]">Costumul = Interfața</h4>
-                                    <p className="text-white/40 text-sm font-light leading-relaxed">
+                                    <h4 className="text-white font-bold impact-font text-lg md:text-xl uppercase mb-1 text-[#3A86FF]">Costumul = Interfața</h4>
+                                    <p className="text-white/40 text-[11px] md:text-xs font-light leading-relaxed">
                                         Fiecare costum este calea prin care semnalul ajunge în corp. Ajustarea lui nu este un detaliu logistic, ci baza personalizării.
                                     </p>
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-bold impact-font text-xl uppercase mb-2 text-[#3A86FF]">Personalizare Reală</h4>
-                                    <p className="text-white/40 text-sm font-light leading-relaxed">
+                                    <h4 className="text-white font-bold impact-font text-lg md:text-xl uppercase mb-1 text-[#3A86FF]">Personalizare Reală</h4>
+                                    <p className="text-white/40 text-[11px] md:text-xs font-light leading-relaxed">
                                         Nu doar intensitate. Configurăm frecvența, profunzimea stimulării și parametrii pe grupe musculare. Două persoane pot face "același antrenament" cu setări complet diferite.
                                     </p>
                                 </div>

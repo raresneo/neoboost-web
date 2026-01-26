@@ -365,11 +365,11 @@ export const HomePage: React.FC = () => {
                 </React.Suspense>
 
                 {/* Reviews */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
-                    <section id="recenzii" className="py-24 bg-transparent relative z-10">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
+                    <section id="recenzii" className="py-8 lg:py-[5vh] bg-transparent relative z-10">
                         <div className="container mx-auto px-6 md:px-24">
-                            <h2 className="text-6xl font-black impact-font text-white mb-16">RECENZII.</h2>
-                            <div className="grid lg:grid-cols-2 gap-8">
+                            <h2 className="text-4xl md:text-6xl font-black impact-font text-white mb-8">RECENZII.</h2>
+                            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
                                 {TESTIMONIALS.slice(0, 4).map((t, i) => (
                                     <TestimonialCard key={i} testimonial={t} i={i} />
                                 ))}
@@ -379,11 +379,11 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 {/* Pricing - Wrapped */}
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
-                    <section id="abonamente" className="py-24 relative z-20">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
+                    <section id="abonamente" className="py-8 lg:py-[5vh] relative z-20">
                         <div className="container mx-auto px-6 md:px-24">
-                            <div className="mb-16">
-                                <h2 className="text-6xl font-black impact-font text-white">TARIFE.</h2>
+                            <div className="mb-8">
+                                <h2 className="text-4xl md:text-6xl font-black impact-font text-white uppercase">TARIFE.</h2>
                                 <div className="flex gap-4 mt-6">
                                     <button onClick={() => setPricingPeriod('monthly')} className={`px-6 py-2 rounded-full font-bold uppercase ${pricingPeriod === 'monthly' ? 'bg-[#3A86FF] text-black' : 'bg-white/10 text-white'}`}>Lunar</button>
                                     <button onClick={() => setPricingPeriod('quarterly')} className={`px-6 py-2 rounded-full font-bold uppercase ${pricingPeriod === 'quarterly' ? 'bg-[#3A86FF] text-black' : 'bg-white/10 text-white'}`}>3 Luni</button>
@@ -398,11 +398,11 @@ export const HomePage: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
-                    <section id="locatii" className="py-24 relative z-10">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
+                    <section id="locatii" className="py-8 lg:py-[5vh] relative z-10">
                         <div className="container mx-auto px-6 md:px-24">
-                            <h2 className="text-6xl font-black impact-font text-white mb-16">LOCAȚII.</h2>
-                            <div className="grid lg:grid-cols-2 gap-12">
+                            <h2 className="text-4xl md:text-6xl font-black impact-font text-white mb-8 uppercase">LOCAȚII.</h2>
+                            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
                                 {LOCATIONS.map((loc, i) => (
                                     <div key={i} onClick={() => onOpenLocation(loc)} className="cursor-pointer group">
                                         <div className="aspect-video relative rounded-2xl overflow-hidden mb-6 border border-white/10">
@@ -418,10 +418,10 @@ export const HomePage: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent">
-                    <section id="faq" className="py-24">
+                <div className="w-[100vw] h-full shrink-0 overflow-y-auto custom-scrollbar bg-transparent flex flex-col justify-center">
+                    <section id="faq" className="py-8 lg:py-[5vh]">
                         <div className="container mx-auto px-6 md:px-24">
-                            <h2 className="text-6xl font-black impact-font text-white mb-16 text-center">ÎNTREBĂRI.</h2>
+                            <h2 className="text-4xl md:text-6xl font-black impact-font text-white mb-8 text-center uppercase">ÎNTREBĂRI.</h2>
                             <div className="max-w-3xl mx-auto">
                                 {FAQS.map((faq, i) => (
                                     <FAQItem key={i} item={faq} i={i} />

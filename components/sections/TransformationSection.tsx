@@ -18,19 +18,17 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
     };
 
     return (
-        <section id="rezultate" className="py-24 md:py-40 bg-transparent relative z-10 scroll-mt-20 border-t border-white/5">
+        <section id="rezultate" className="py-8 lg:py-[5vh] bg-transparent relative z-10 scroll-mt-20 border-t border-white/5 h-full flex flex-col justify-center">
             <div className="container mx-auto px-6 md:px-24">
 
                 {showHeader && (
-                    <ScrollReveal className="mb-20 text-center">
-                        <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-4">Rezultate Validate</p>
-                        <h2 className="text-5xl md:text-7xl font-black impact-font text-white uppercase tracking-tight">
+                    <ScrollReveal className="mb-8 text-center">
+                        <p className="mono-font text-[9px] tracking-[0.5em] text-[#3A86FF] font-bold uppercase mb-2">Rezultate Validate</p>
+                        <h2 className="text-3xl md:text-5xl font-black impact-font text-white uppercase tracking-tight">
                             Transformare <span className="text-transparent" style={{ WebkitTextStroke: '1px #3A86FF' }}>Vizibilă.</span>
                         </h2>
-                        <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                        <p className="mt-4 text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                             Nu promitem miracole peste noapte, ci <span className="text-white font-medium">rezultate măsurabile</span>.
-                            <br className="hidden md:block" />
-                            Acestea sunt reușitele celor care au respectat planul NeoBoost.
                             Fără filtre, fără scurtături—doar știință și disciplină.
                         </p>
                     </ScrollReveal>
@@ -38,9 +36,9 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
 
                 <div ref={scrollRef} className="flex gap-6 md:gap-12 overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar overscroll-x-contain cursor-grab active:cursor-grabbing items-start">
                     {visibleData.map((data, idx) => (
-                        <div key={data.id} className="group min-w-[85vw] md:min-w-[600px] snap-center flex-shrink-0">
+                        <div key={data.id} className="group min-w-[85vw] md:min-w-[450px] snap-center flex-shrink-0">
                             {/* Slider */}
-                            <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-2xl border-none transition-colors gradient-border-spin`}>
+                            <div className={`relative w-full ${data.aspectRatio || 'aspect-[4/5]'} flex rounded-[2rem] border-none transition-colors gradient-border-spin overflow-hidden`}>
                                 {/* Left Half - BEFORE */}
                                 <div className="w-1/2 h-full relative overflow-hidden border-r border-white/10 rounded-l-2xl">
                                     <img
@@ -86,12 +84,12 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
                             <div className="space-y-6 px-2">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <h3 className="text-2xl font-black text-white mb-2">{data.name}</h3>
-                                        <div className="flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-wider">
-                                            <span className="bg-[#3A86FF]/10 px-2 py-1 rounded text-[#3A86FF] border border-[#3A86FF]/20">
+                                        <h3 className="text-xl font-black text-white mb-1 uppercase impact-font tracking-tight">{data.name}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[9px] font-bold uppercase tracking-wider">
+                                            <span className="bg-[#3A86FF]/10 px-2 py-0.5 rounded text-[#3A86FF] border border-[#3A86FF]/20">
                                                 {data.package}
                                             </span>
-                                            <span className="bg-white/5 px-2 py-1 rounded text-white/60">
+                                            <span className="bg-white/5 px-2 py-0.5 rounded text-white/60">
                                                 {data.duration}
                                             </span>
                                         </div>
@@ -106,7 +104,7 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
                                     </div>
                                 </div>
 
-                                <p className="text-white/60 italic text-sm leading-relaxed border-l-2 border-[#3A86FF] pl-4 relative">
+                                <p className="text-white/60 italic text-xs leading-relaxed border-l-2 border-[#3A86FF] pl-4 relative">
                                     "{data.quote}"
                                 </p>
 
@@ -153,10 +151,10 @@ export const TransformationSection = ({ showHeader = true }: { showHeader?: bool
                 </div>
 
                 {visibleCount < TRANSFORMATIONS.length && (
-                    <div className="mt-20 flex justify-center">
+                    <div className="mt-8 flex justify-center">
                         <button
                             onClick={handleLoadMore}
-                            className="bg-transparent border border-[#3A86FF] text-[#3A86FF] hover:bg-[#3A86FF] hover:text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest transition-all duration-300 transform hover:scale-105"
+                            className="bg-transparent border border-[#3A86FF] text-[#3A86FF] hover:bg-[#3A86FF] hover:text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all duration-300 transform hover:scale-105"
                         >
                             Vezi mai multe
                         </button>

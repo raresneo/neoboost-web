@@ -28,21 +28,21 @@ export const ProgramsSection = () => {
     };
 
     return (
-        <section id="programe" className="py-24 md:py-32 bg-transparent relative z-20 border-t border-white/5 scroll-mt-20">
+        <section id="programe" className="py-8 lg:py-[5vh] bg-transparent relative z-20 border-t border-white/5 scroll-mt-20 h-full flex flex-col justify-center">
 
             <div className="container mx-auto px-6 md:px-24">
                 <ScrollReveal>
-                    <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-10">
+                    <div className="mb-8 lg:mb-[5vh] flex flex-col md:flex-row justify-between items-end gap-6">
                         <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <Target className="text-[#3A86FF]" size={20} />
+                            <div className="flex items-center gap-4 mb-4">
+                                <Target className="text-[#3A86FF]" size={16} />
                                 <span className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase">Începe Transformarea</span>
                             </div>
-                            <h2 className="text-7xl md:text-9xl font-black impact-font text-white uppercase leading-[0.8] heading-glow">
+                            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black impact-font text-white uppercase leading-[0.8] heading-glow">
                                 ALEGE <br /><span className="text-transparent" style={{ WebkitTextStroke: '2px #3A86FF' }}>OBIECTIVUL.</span>
                             </h2>
                         </div>
-                        <p className="text-gray-200 max-w-md text-right text-sm font-medium leading-relaxed hidden md:block readable-text bg-black/40 backdrop-blur-sm p-4 rounded-xl border border-white/5">
+                        <p className="text-gray-200 max-w-md text-right text-xs lg:text-sm font-medium leading-relaxed hidden md:block readable-text bg-black/40 backdrop-blur-sm p-4 rounded-xl border border-white/5">
                             Fie că vrei să slăbești, să scapi de dureri sau să crești masa musculară, avem un plan exact pentru tine.
                         </p>
                     </div>
@@ -53,7 +53,7 @@ export const ProgramsSection = () => {
                         <ScrollReveal key={prog.id} delay={i * 100} className="min-w-[85vw] md:min-w-[400px] flex-shrink-0 snap-center">
                             <div className="group relative h-full bg-[#0a0a0a] border-none hover:border-none transition-all duration-700 cursor-default overflow-hidden flex flex-col rounded-[2rem] shadow-2xl block gradient-border-spin">
                                 {/* Image Section - Link to details */}
-                                <Link to={`/program/${prog.id}`} className="relative h-72 overflow-hidden block cursor-pointer rounded-t-[2rem]">
+                                <Link to={`/program/${prog.id}`} className="relative h-48 lg:h-64 overflow-hidden block cursor-pointer rounded-t-[2rem]">
                                     <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-transparent to-blue-900/40 mix-blend-overlay z-20 pointer-events-none"></div>
                                     <img
                                         src={prog.image}
@@ -70,19 +70,19 @@ export const ProgramsSection = () => {
                                     </div>
                                 </Link>
 
-                                <div className="p-6 md:p-10 landscape:p-6 flex flex-col flex-1 relative z-10 -mt-4 md:-mt-8 landscape:-mt-4 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
-                                    <div className="mb-4 md:mb-6 landscape:mb-4">
-                                        <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-2">
+                                <div className="p-6 lg:p-8 landscape:p-4 flex flex-col flex-1 relative z-10 -mt-4 lg:-mt-6 landscape:-mt-2 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a] backdrop-blur-md rounded-t-[2rem]">
+                                    <div className="mb-4 lg:mb-4 landscape:mb-2">
+                                        <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.2em] block mb-1 lg:mb-2">
                                             OBIECTIV: {prog.idealFor}
                                         </span>
                                         <Link to={`/program/${prog.id}`}>
-                                            <h3 className="text-3xl md:text-4xl landscape:text-3xl font-black impact-font text-white mb-2 md:mb-3 landscape:mb-2 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter cursor-pointer hover:underline decoration-[#3A86FF] decoration-2 underline-offset-4">
+                                            <h3 className="text-2xl md:text-3xl landscape:text-2xl font-black impact-font text-white mb-1 lg:mb-2 landscape:mb-1 group-hover:text-[#3A86FF] transition-colors leading-none uppercase tracking-tighter cursor-pointer hover:underline decoration-[#3A86FF] decoration-2 underline-offset-4">
                                                 {prog.title}
                                             </h3>
                                         </Link>
                                     </div>
 
-                                    <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-4 md:mb-8 landscape:mb-4 border-l-2 border-[#3A86FF] pl-4">
+                                    <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.2em] mb-4 lg:mb-6 landscape:mb-2 border-l-2 border-[#3A86FF] pl-3 lg:pl-4">
                                         {prog.subtitle}
                                     </p>
 
