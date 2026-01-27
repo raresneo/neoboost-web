@@ -27,6 +27,7 @@ import { ComparisonSection } from '../components/sections/ComparisonSection';
 import { NoSuitSection } from '../components/sections/NoSuitSection';
 import { ScienceSolutionsSection } from '../components/sections/ScienceSolutionsSection';
 import { TrialRoadmap } from '../components/sections/TrialRoadmap';
+import { MixHealthSection } from '../components/sections/MixHealthSection';
 
 // Asset Maps
 const locationImages = [
@@ -174,6 +175,9 @@ export const HomePage = () => {
 
             {/* EDUCATION */}
             <EMSEducation />
+
+            {/* SUPPLEMENTS */}
+            <MixHealthSection />
 
             {/* TRANSFORMATIONS & REVIEWS */}
             <TransformationSection />

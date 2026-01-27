@@ -11,7 +11,7 @@ interface InlineTestimonialProps {
 }
 
 // --- Testimonial Card for inline use ---
-const InlineTestimonial = ({ testimonial, index }: InlineTestimonialProps) => (
+const InlineTestimonial: React.FC<InlineTestimonialProps> = ({ testimonial, index }) => (
     <div key={index} className="bg-white/5 border border-white/10 p-4 rounded-xl flex flex-col gap-3 min-w-[280px] md:min-w-[350px]">
         <div className="flex gap-1">
             {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[#3A86FF] text-[#3A86FF]" />)}

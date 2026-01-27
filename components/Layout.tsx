@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Lenis from 'lenis';
 import { Session } from '@supabase/supabase-js';
 
 // --- Components ---
