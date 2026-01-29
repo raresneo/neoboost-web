@@ -6,12 +6,12 @@ export const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.0, // Slightly faster reaction
+            duration: 0.7, // Snappier response (was 1.0)
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 2.5, // Much faster scroll
-            touchMultiplier: 3, // Very responsive swipe
+            wheelMultiplier: 3, // Faster scroll speed
+            touchMultiplier: 3.5, // Very responsive swipe
         });
 
         lenisRef.current = lenis;

@@ -3,6 +3,7 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
+import { TeamPage } from './pages/TeamPage';
 import { ProgramLandingPage } from './pages/programs/ProgramLandingPage';
 import { SpecialOfferPage } from './pages/SpecialOfferPage';
 import { ArticlePage } from './pages/ArticlePage';
@@ -47,6 +48,7 @@ const App: React.FC = () => {
                 <ResultsPage />
               </Suspense>
             } />
+            <Route path="echipa" element={<TeamPage />} />
 
             {/* Legacy/Marketing Routes */}
             <Route path="program/:programId" element={<ProgramLandingPage />} />

@@ -63,8 +63,8 @@ export const BioMetricsGraph: React.FC<BioMetricsGraphProps> = ({ weight, bodyFa
     };
 
     return (
-        <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8">
-            <h4 className="text-white font-bold impact-font uppercase text-xl mb-6 flex items-center gap-2">
+        <div className="bg-[var(--bg-primary)]/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8">
+            <h4 className="text-white font-display font-bold uppercase text-xl mb-6 flex items-center gap-2">
                 <div className="w-2 h-2 bg-[#3A86FF] rounded-full animate-pulse"></div>
                 Bio-Metrics
             </h4>

@@ -52,44 +52,43 @@ export interface Milestone {
   icon: React.ReactNode;
   isNeo?: boolean;
   image?: string;
+  details?: { name: string; description: string; icon?: React.ReactNode }[];
 }
 
 export const EMS_MILESTONES: Milestone[] = [
   {
     year: "1780",
-    title: "Descoperirea Bioelectricității",
-    description: "Luigi Galvani demonstrează că celulele musculare sunt activate de impulsuri electrice, punând bazele științifice ale EMS.",
+    title: "Geneza",
+    description: "Luigi Galvani descoperă bioelectricitatea. Începutul studiului impulsurilor nervoase.",
     icon: <Microscope size={20} />,
-    image: "/ems-1780.png"
+    image: "/ems_1780.png"
   },
   {
     year: "1960",
-    title: "Performanță Olimpică",
-    description: "Oamenii de știință din URSS utilizează EMS pentru a crește forța atleților olimpici cu până la 40%.",
+    title: "Știința",
+    description: "Cercetătorii ruși folosesc EMS pentru atleții olimpici, obținând creșteri de 40% în forță.",
     icon: <Medal size={20} />,
-    image: "/ems-1960.png"
-  },
-  {
-    year: "1990",
-    title: "Standard Medical",
-    description: "EMS devine un instrument esențial în kinetoterapie pentru recuperarea post-traumatică rapidă.",
-    icon: <Briefcase size={20} />,
-    image: "/ems-1980.png"
+    image: "/ems_1960.png"
   },
   {
     year: "2010",
-    title: "Fitness Comercial",
-    description: "Apar primele studiouri EMS de masă, folosind însă sisteme rigide cu cabluri și costume umede.",
+    title: "Standard",
+    description: "Apar primele sisteme comerciale, dar limitate de cabluri și necesitatea apei.",
     icon: <Dumbbell size={20} />,
-    image: "/ems-wired.png"
+    image: "/ems_2010.png"
   },
   {
     year: "2024+",
-    title: "Revoluția NeoBoost",
-    description: "Tehnologie Wireless, Drysuit și antrenament eficient de 30 de minute, minim o dată pe săptămână în Oradea.",
+    title: "Revoluția",
+    description: "NeoBoost introduce Drysuit Wireless: libertate totală fără apă sau fire.",
     icon: <Zap size={20} />,
     isNeo: true,
-    image: "/ems-wireless.png"
+    image: "/powerbox_lifestyle.png",
+    details: [
+      { name: "PowerBox (Cassette)", description: "Creierul sistemului. Ultra-ușor, atașare magnetică, fără fire." },
+      { name: "DrySuit (Costum)", description: "A doua piele. Igienic, personal, nu necesită umezire." },
+      { name: "Control Unit (Tablet)", description: "Centrul de Comandă. Ajustare precisă în timp real." }
+    ]
   }
 ];
 
@@ -128,10 +127,10 @@ export const EMS_OBJECTIVES = [
   { title: "Recuperare Medicală", level: 75, color: "#3A86FF", icon: <ShieldCheck size={16} /> }
 ];
 
-export const IMS_PROTOCOL = {
-  title: "Tehnologia Drysuit IMS",
+export const EMS_PROTOCOL = {
+  title: "Tehnologia Drysuit EMS",
   subtitle: "Standardul de Elită în Antrenamentul EMS Wireless",
-  description: "NeoBoost redefinește stimularea musculară prin eliminarea barierei de apă. Tehnologia noastră Integrated Muscle Stimulation permite antrenamente dinamice, fără cabluri, pe un costum complet uscat.",
+  description: "NeoBoost redefinește stimularea musculară prin eliminarea barierei de apă. Tehnologia noastră Electrical Muscle Stimulation permite antrenamente dinamice, fără cabluri, pe un costum complet uscat.",
   comparisons: [
     {
       label: "Uscat vs Umed",
@@ -183,26 +182,121 @@ export const TECH_COMPONENTS = [
   }
 ];
 
-export const BENEFITS = [
+// Merged Benefits & Solutions Data
+export const UNIFIED_BENEFITS = [
   {
-    icon: <Wind className="w-8 h-8" />,
-    title: "De ce să aleg Drysuit?",
-    description: "Pentru că meriți confort. Spre deosebire de tehnologia veche, costumul nostru este complet uscat. Nu te udăm, nu îți este frig, pur și simplu te echipezi în 30 de secunde și începi."
+    id: "slabire",
+    title: "Slăbire & Metabolism",
+    subtitle: "ARDERE CALORICĂ ACCELERATĂ",
+    icon: <Flame className="w-8 h-8" />,
+    desc: "Arzi 500+ Kcal în 30 min. Metabolism accelerat timp de 72h după antrenament.",
+    image: "/DSC03924.jpg",
+    content: {
+      intro: "Vrei să slăbești eficient? EMS accelerează arderea caloriilor prin activarea simultană a 90% din musculatură. Nu este magie, este un consum caloric masiv într-un timp scurt.",
+      science: "Fenomenul EPOC (Excess Post-exercise Oxygen Consumption): corpul continuă să ardă calorii pentru a se recupera după impulsurile intense.",
+      mechanisms: [
+        "Metabolismul bazal crește datorită activării fibrelor musculare profunde.",
+        "Consum caloric ridicat în timpul și după sesiune.",
+        "Reducerea țesutului adipos visceral."
+      ],
+      expectations: "Rezultate vizibile în 4-6 săptămâni cu 2 sesiuni/săptămână și nutriție echilibrată."
+    },
+    cta: "Programează o Evaluare"
   },
   {
-    icon: <Cpu className="w-8 h-8" />,
-    title: "Cum mă ajută Wireless?",
-    description: "Libertate totală. Fără cabluri care să te țină legat de aparat, putem face exerciții dinamice, sărituri sau mișcări complexe pentru rezultate mai bune."
-  },
-  {
-    icon: <Smartphone className="w-8 h-8" />,
-    title: "Am nevoie de antrenor?",
-    description: "Da, și îl ai inclus. Antrenorul tău personal reglează fin intensitatea pe tabletă și se asigură că execuți corect fiecare mișcare. Nu ești niciodată singur."
-  },
-  {
+    id: "dureri",
+    title: "Adio Dureri de Spate",
+    subtitle: "POSTURĂ & STABILITATE",
     icon: <ShieldCheck className="w-8 h-8" />,
-    title: "Igienă Garantată",
-    description: "Toate costumele trec printr-un protocol riguros de spălare și dezinfectare profesională după fiecare utilizare."
+    desc: "Întărește musculatura paravertebrală profundă care susține coloana. Scapă de dureri.",
+    image: "/DSC04030.jpg",
+    content: {
+      intro: "Durerile de spate sunt adesea cauzate de o musculatură slabă. EMS ajunge acolo unde exercițiile clasice nu pot: la mușchii stabilizatori profunzi.",
+      science: "Stimularea electrică activează direct mușchii multifizi și erectori spinali, creând un 'corset' natural de susținere.",
+      mechanisms: [
+        "Decompresia coloanei vertebrale prin întărire musculară.",
+        "Corectarea asimetriilor posturale.",
+        "Eliminarea contracturilor musculare dureroase."
+      ],
+      expectations: "Reducerea semnificativă a durerilor după doar 3-4 sesiuni."
+    },
+    cta: "Scapă de Dureri Azi"
+  },
+  {
+    id: "tonifiere",
+    title: "Tonifiere & Celulită",
+    subtitle: "PIELE FERMĂ & ASPECT SCULPTAT",
+    icon: <Target className="w-8 h-8" />,
+    desc: "Redă fermitatea pielii și sculptează formele corpului. Reduce aspectul de coajă de portocală.",
+    image: "/DSC07624.jpg",
+    content: {
+      intro: "Obține acel aspect 'fit' și tonifiat. Impulsurile electrice stimulează intens circulația și fibrele musculare, netezind pielea.",
+      science: "Activarea circulației limfatice și sanguine ajută la eliminarea toxinelor și reducerea retenției de apă, atacând direct celulita.",
+      mechanisms: [
+        "Drenaj limfatic accelerat.",
+        "Creșterea tonusului pielii prin vascularizare.",
+        "Definire musculară fără hipertrofie exagerată."
+      ],
+      expectations: "Piele mai fermă și reducere în centimetri în zonele problemă."
+    },
+    cta: "Începe Tonifierea"
+  },
+  {
+    id: "performanta",
+    title: "Forță & Explozivitate",
+    subtitle: "PERFORMANȚĂ ATLETICĂ",
+    icon: <Zap className="w-8 h-8" />,
+    desc: "Crește forța și explozivitatea fără a uza articulațiile. Recrutare musculară maximă.",
+    image: "/DSC07811.jpg",
+    content: {
+      intro: "Pentru sportivi amatori sau pro. EMS îți permite să îți depășești limitele genetice prin recrutarea fibrelor rapide (Type II).",
+      science: "Sistemul nervos învață să recruteze mai multe unități motorii simultan, crescând forța pură fără a pune presiune pe tendoane.",
+      mechanisms: [
+        "Recrutarea a 90% din fibrele musculare.",
+        "Îmbunătățirea vitezei de reacție.",
+        "Antrenament de forță fără greutăți mari."
+      ],
+      expectations: "Creșterea explozivității și a forței maxime în câteva săptămâni."
+    },
+    cta: "Crește Performanța"
+  },
+  {
+    id: "timp",
+    title: "Eficiență Maximă",
+    subtitle: "30 MINUTE = 90 MINUTE SALĂ",
+    icon: <Clock className="w-8 h-8" />,
+    desc: "Rezultate superioare în timp record. Ideal pentru oamenii ocupați care vor eficiență.",
+    image: "/DSC04229.jpg",
+    content: {
+      intro: "Timpul este cea mai prețioasă resursă. Cu NeoBoost, transformi orele pierdute la sală în 30 de minute intense și eficiente.",
+      science: "Densitatea antrenamentului este cheia. Prin stimularea simultană a tuturor grupelor musculare, volumul de muncă este comprimat extrem.",
+      mechanisms: [
+        "Lucru simultan Agonist-Antagonist.",
+        "Pauze minime, intensitate maximă.",
+        "Stimulare metabolică ridicată."
+      ],
+      expectations: "Mai mult timp liber pentru tine, fără a sacrifica rezultatele fizice."
+    },
+    cta: "Salvează Timp"
+  },
+  {
+    id: "uscat",
+    title: "Confort Drysuit",
+    subtitle: "TEHNOLOGIE FĂRĂ APĂ",
+    icon: <Wind className="w-8 h-8" />, // Using Wind instead of TShirt for 'Airy/Comfort' feel if Shirt not avail
+    desc: "Fără apă, fără senzație de rece. Igienic, personal și extrem de confortabil.",
+    image: "/studio_session_1.jpg",
+    content: {
+      intro: "Uită de costumele reci și ude. Tehnologia noastră Drysuit folosește materiale antibacteriene care nu necesită umezire.",
+      science: "Conductivitatea este asigurată de fibre speciale de carbon, eliminând disconfortul termic și bariera psihologică a echipamentului ud.",
+      mechanisms: [
+        "Senzație plăcută pe piele.",
+        "Echipare rapidă (sub 30 secunde).",
+        "Libertate totală de mișcare wireless."
+      ],
+      expectations: "O experiență de antrenament premium, curată și plăcută."
+    },
+    cta: "Încearcă Drysuit"
   }
 ];
 
@@ -539,115 +633,113 @@ export const BENEFIT_ARTICLES = [
   {
     id: "slabire-rapida",
     title: "Slăbire Rapidă",
-    subtitle: "Fără dietă extremă",
+    subtitle: "Metabolism Accelerat & Arderea Grăsimilor",
     image: "/DSC03924.jpg",
-    intro: "În contextul antrenamentelor EMS (Electrical Muscle Stimulation), „slăbire rapidă” trebuie înțeleasă ca o accelerare a cheltuielii energetice și a adaptărilor metabolice atunci când EMS este integrat întrun program coerent.",
+    intro: "Cum poți să slăbești eficient și să îți menții masa musculară? Tehnologia EMS la NeoBoost Oradea activează simultan 90% din musculatură, generând un consum caloric masiv și un efect metabolic prelungit (EPOC). Nu este magie, este fiziologie pură aplicată pentru rezultate rapide.",
     mechanisms: [
       {
-        title: "Recrutare musculară amplificată",
-        desc: "EMS poate activa simultan un număr mare de unități motorii, inclusiv fibre cu prag mai înalt, ceea ce crește solicitarea musculară pentru un timp relativ scurt."
+        title: "Activare Metabolică Totală",
+        desc: "EMS recrutează fibrele musculare profunde care sunt greu de activat prin antrenament convențional, crescând rata metabolică bazală."
       },
       {
-        title: "Cost energetic și EPOC",
-        desc: "După efort, organismul menține un consum crescut de oxigen (EPOC), asociat cu refacerea rezervelor energetice, termoreglare și reparare tisulară."
+        title: "Efectul Afterburn (EPOC)",
+        desc: "Organismul continuă să ardă calorii timp de pana la 72 de ore după antrenament pentru a reface rezervele de energie și a repara țesutul muscular."
       },
       {
-        title: "Compoziție corporală",
-        desc: "Menținerea/creșterea masei slabe în timpul unui proces de slăbire este un predictor important pentru rezultate estetice și funcționale."
+        title: "Deficit Caloric Fără Epuizare",
+        desc: "Obții consumul caloric a 90 de minute de cardio în doar 30 de minute, protejând articulațiile și economisind timp."
       }
     ],
-    science: "Studiile indică faptul că EMS, folosit ca adjuvant, poate îmbunătăți parametri precum forța și, în unele contexte, compoziția corporală, mai ales la persoane sedentare sau în programe structurate.",
-    target: ["Persoane cu program încărcat", "Începători care vor un start ghidat", "Persoane care doresc un stimul de forță cu impact articular redus"],
-    expectations: "Un obiectiv realist este îmbunătățirea compoziției corporale în 4–8 săptămâni, cu monitorizare. Slăbirea „rapidă” fără ajustări alimentare este rar sustenabilă.",
+    science: "Studiile clinice demonstrează că antrenamentul EMS de tip Whole-Body (WB-EMS) este o metodă superioară pentru reducerea grăsimii viscerale și subcutanate comparativ cu antrenamentul convențional, datorită intensității metabolice ridicate.",
+    expectations: "O reducere vizibilă a circumferinței taliei și a procentului de grăsime corporală în 4-6 săptămâni, cu doar 2 sesiuni pe săptămână, în condițiile unui deficit caloric moderat.",
     seo: {
-      title: "Slăbire Rapidă și Sănătoasă în Oradea | NeoBoost EMS",
-      description: "Află cum tehnologia EMS accelerează metabolismul și arde calorii eficient. Slăbire rapidă, dar controlată, în Oradea. Studii și explicații științifice.",
-      keywords: ["slăbire rapidă oradea", "slăbire ems", "metabolism accelerat", "ardere calorii", "pierdere greutate oradea"]
+      title: "Slăbire Rapidă Oradea | Antrenament EMS pentru Ardere Grăsimi",
+      description: "Descoperă secretul slăbirii rapide și eficiente în Oradea. Antrenamentul EMS NeoBoost accelerează metabolismul și arde grăsimile în doar 30 de minute.",
+      keywords: ["slabire rapida oradea", "ardere grasimi ems", "antrenament slabire", "metabolism accelerat", "fitness oradea slabire", "neoboost slabire"]
     }
   },
   {
-    id: "dureri-spate",
-    title: "Adio Dureri de Spate",
-    subtitle: "Fără frică de mișcare",
-    image: "/DSC04030.jpg",
-    intro: "Durerea lombară nespecifică este una dintre cele mai comune probleme. Intervențiile moderne pun accent pe mișcare progresivă și pe recâștigarea încrederii în corp.",
-    mechanisms: [
-      {
-        title: "Creșterea capacității musculare",
-        desc: "Întărirea musculaturii stabilizatoare poate reduce „costul” postural al activităților zilnice."
-      },
-      {
-        title: "Modulare neuromusculară",
-        desc: "Stimularea electrică poate îmbunătăți recrutarea și coordonarea în anumite contexte."
-      },
-      {
-        title: "Reducerea fricii de mișcare",
-        desc: "Expunerea gradată la efort, într-un cadru controlat, poate scădea kineziofobia și poate îmbunătăți funcția."
-      }
-    ],
-    science: "Durerea nu este întotdeauna un indicator al „distrugerii” țesutului; pentru mulți oameni, încărcarea progresivă este benefică. Protocolul contează: intensitate, poziții, exerciții.",
-    expectations: "Mulți clienți raportează îmbunătățiri funcționale în câteva săptămâni, dar obiectivul principal este: mai multă funcție, mai puțină evitare, mai mult control.",
-    seo: {
-      title: "Scapă de Durerile de Spate în Oradea | Kineto & EMS NeoBoost",
-      description: "Soluții moderne pentru durerile de spate (lombare) în Oradea. Întărirea musculaturii paravertebrale prin EMS și mișcare controlată. Fără durere.",
-      keywords: ["dureri de spate oradea", "tratament dureri spate", "kinetoterapie ems", "hernie de disc exercitii", "dureri lombare oradea"]
-    }
-  },
-  {
-    id: "tonifiere",
-    title: "Tonifiere",
-    subtitle: "Fără rușine la sală",
+    id: "tonifiere-sculptare",
+    title: "Tonifiere & Sculptare",
+    subtitle: "Definire Musculară & Fermitate",
     image: "/DSC07624.jpg",
-    intro: "„Tonifierea” este o combinație între creșterea masei musculare și reducerea stratului adipos. EMS poate susține componenta de forță/hipertrofie, mai ales când este combinat cu exerciții active.",
+    intro: "Obține un corp sculptat și ferm fără a dezvolta masă musculară excesivă. Programul de Tonifiere NeoBoost vizează densitatea musculară și eliminarea aspectului de coajă de portocală, oferindu-ți pielea fermă și formele definite pe care le dorești.",
     mechanisms: [
       {
-        title: "Activare musculară intensă",
-        desc: "Utilă pentru persoane care nu au aderență la antrenamente lungi."
+        title: "Stimulare a Circulației",
+        desc: "Impulsurile electrice îmbunătățesc masiv circulația sanguină și limfatică la nivelul pielii, ajutând la eliminarea toxinelor și reducerea celulitei."
       },
       {
-        title: "Stimul de forță cu control fin",
-        desc: "Intensitatea se poate ajusta pe grupe musculare specific."
+        title: "Densitate Musculară",
+        desc: "Creșterea tonusului muscular fără hipertrofie exagerată (creștere în volum), rezultând un aspect 'fit' și atletic."
       },
       {
-        title: "Componenta psihologică",
-        desc: "Bariera majoră nu este fiziologia, ci contextul. Un cadru privat reduce stresul și crește probabilitatea de a menține rutina."
+        title: "Activare Gluteală & Abdominală",
+        desc: "Focus specific pe zonele problemă (fese, abdomen, coapse) pentru ridicare și conturare rapidă."
       }
     ],
-    science: "Consistența este predictorul principal al „tonifierii”. EMS oferă un cadru de antrenament eficient și privat.",
-    expectations: "Rezultate vizibile apar, de regulă, în 4–8 săptămâni, în funcție de frecvență, somn și alimentație.",
+    science: "EMS îmbunătățește calitatea pielii și a țesutului conjunctiv prin creșterea producției de colagen și elastină, simultan cu tonifierea musculaturii subiacente.",
+    expectations: "Piele mai fină și mai fermă după 4 săptămâni. Ridicarea feselor și definirea taliei devin vizibile rapid datorită activării musculare intense și localizate.",
     seo: {
-      title: "Tonifiere Musculară și Fermitate | Sala Fitness NeoBoost Oradea",
-      description: "Tonifiere vizibilă și reducere celulită în Oradea. Antrenamente scurte și intense pentru un corp ferm. Tehnologie EMS pentru activare profundă.",
-      keywords: ["tonifiere oradea", "sala fitness oradea", "reducere celulita", "corp ferm", "fitness femei oradea"]
+      title: "Tonifiere și Sculptare Corporală Oradea | Eliminare Celulită EMS",
+      description: "Sculptează-ți corpul și scapă de celulită cu antrenamentul EMS NeoBoost Oradea. Tonifiere musculară și piele fermă fără ore nesfârșite la sală.",
+      keywords: ["tonifiere oradea", "sculptare corporala", "eliminare celulita oradea", "fese bombate", "abdomen plat", "fitness femei oradea"]
     }
   },
   {
-    id: "forta-performanta",
-    title: "Forță & Performanță",
-    subtitle: "Fără risc de accidentare",
-    image: "/DSC07811.jpg",
-    intro: "EMS poate fi o unealtă utilă pentru dezvoltarea forței dacă este folosită corect. Nu există „fără risc”, există reducerea riscului prin dozaj și tehnică.",
+    id: "terapie-spate",
+    title: "Terapie Spate",
+    subtitle: "Scapă de Dureri & Corectează Postura",
+    image: "/DSC04030.jpg",
+    intro: "Durerile de spate (lombare, cervicale) sunt boala secolului XXI. NeoBoost oferă singura soluție care activează direct musculatura profundă paravertebrală, creând un corset natural care susține coloana și elimină presiunea de pe discurile intervertebrale.",
     mechanisms: [
       {
-        title: "Recrutare de unități motorii",
-        desc: "EMS poate crește activarea musculară și poate completa antrenamentul de forță."
+        title: "Activare Profundă (Multifidus)",
+        desc: "EMS ajunge la mușchii stabilizatori ai coloanei (M. Multifidus) care sunt aproape imposibil de antrenat voluntar prin exerciții clasice."
       },
       {
-        title: "Încărcare articulară redusă",
-        desc: "Unele protocoale EMS pot oferi stimul muscular cu sarcini externe reduse, protejând articulațiile."
+        title: "Decompresie Vertebrală",
+        desc: "Prin întărirea mușchilor spatelui și abdomenului, se reduce presiunea gravitațională asupra vertebrelor și discurilor."
       },
       {
-        title: "Transfer funcțional",
-        desc: "Când EMS este combinat cu mișcări multiarticulare, adaptările pot fi relevante pentru viața reală și sport."
+        title: "Relaxare și Detensionare",
+        desc: "Impulsurile de joasă frecvență relaxează contracturile musculare dureroase, oferind un efect analgezic imediat."
       }
     ],
-    science: "Progresia graduală a intensității și recuperarea sunt cheia pentru performanță fără accidentări.",
-    target: ["Persoane care vor să crească forța", "Sportivi amatori care folosesc EMS ca supliment"],
-    expectations: "Creșteri ale forței pure și explozive, cu recuperare mai rapidă între sesiuni.",
+    science: "Cercetările Universității din Bayreuth (Germania) arată că 88% dintre participanți au scăpat de durerile cronice de spate după 6 săptămâni de antrenament EMS.",
+    expectations: "Reducerea semnificativă a durerii încă de la prima ședință. Corectarea posturii și dispariția durerilor cronice după un ciclu de 10 ședințe.",
     seo: {
-      title: "Forță și Performanță Sportivă | Antrenament Personal Oradea",
-      description: "Crește-ți forța și explozivitatea fără risc de accidentare. Antrenament personal EMS pentru performanță sportivă în Oradea. Recuperare rapidă.",
-      keywords: ["antrenament forta oradea", "performanta sportiva", "recuperare sportivi", "personal trainer oradea"]
+      title: "Tratament Dureri de Spate Oradea | Recuperare Posturală EMS",
+      description: "Scapă de durerile de spate și corectează postura la NeoBoost Oradea. Terapie EMS pentru hernie de disc, scolioză și dureri lombare. Rezultate dovedite.",
+      keywords: ["dureri spate oradea", "tratament hernie disc", "recuperare spate", "postura corecta", "kinetoterapie ems", "dureri lombare"]
+    }
+  },
+  {
+    id: "recuperare-post-natal",
+    title: "Recuperare Post-Natal",
+    subtitle: "Refacere Abdomen & Planșeu Pelvin",
+    image: "/DSC09363.jpg", // Using the FitMamma image
+    intro: "Sarcina este o provocare majoră pentru corpul femeii. Programul Post-Natal NeoBoost este conceput special pentru mămici, vizând refacerea peretelui abdominal (diastază), întărirea planșeului pelvin și recâștigarea energiei, totul într-un mod sigur și blând.",
+    mechanisms: [
+      {
+        title: "Închiderea Diastazei Abdominale",
+        desc: "Activarea blândă și profundă a mușchiului Transvers Abdominal ajută la apropierea drepților abdominali fără a pune presiune intra-abdominală periculoasă."
+      },
+      {
+        title: "Reeducare Perineală",
+        desc: "Stimularea musculaturii planșeului pelvin previne și tratează incontinența urinară și prolapsul, probleme frecvente după naștere."
+      },
+      {
+        title: "Timp Eficient pentru Mămici",
+        desc: "Știm că timpul tău este limitat. 30 de minute sunt suficiente pentru a-ți recăpăta corpul și energia, fără a lipsi mult de lângă bebe."
+      }
+    ],
+    science: "EMS este singura metodă care poate antrena eficient mușchii abdominali profunzi și planșeul pelvin simultan, fără a necesita mișcări solicitante sau greutăți, fiind standardul de aur în recuperarea post-natală modernă.",
+    expectations: "Recâștigarea tonusului abdominal și reducerea diastazei în 6-8 săptămâni. Îmbunătățirea semnificativă a controlului pelvin și a posturii.",
+    seo: {
+      title: "Recuperare După Naștere Oradea | Fitness Post-Natal Diastază",
+      description: "Recuperare rapidă și sigură după naștere la NeoBoost Oradea. Tratează diastaza abdominală și întărește podeaua pelvină cu antrenamente EMS specializate.",
+      keywords: ["recuperare dupa nastere", "fitness mamici oradea", "diastaza abdominala exercitii", "slabire dupa sarcina", "exercitii kegel ems"]
     }
   }
 ];
@@ -666,8 +758,8 @@ export const PROGRAMS = [
     benefit: "2–4 kg în 6 săptămâni",
     price: "1250 RON",
     stripePriceId: "price_1Sn27VJAtuHj34Deu1Rg7QZm", // Reusing Transform package ID for now
-    description: "Simplu, eficient, măsurabil. Programul ideal pentru cei ocupați care vor să scadă în greutate sănătos și să fie recompensați pentru efort.",
-    content: "6 Week Kickstart (EMS)\n\nSLĂBEȘTE 2–4 KG ÎN 6 SĂPTĂMÂNI ȘI TE RECOMPENSĂM!\n\n2–4 kilograme în 6 săptămâni (realist, în funcție de punctul de start și consistență).\n\nEști gata să faci o schimbare?\nDacă te-ai săturat de promisiuni goale și vrei un sistem care chiar funcționează pentru oameni ocupați, acesta este momentul tău. Simplu, eficient, măsurabil.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru tine dacă vrei să slăbești 2–4 kg într-un mod controlat și sănătos.\n✔️ Dacă ești \"time-poor\" și nu ai timp de ore întregi în sală.\n✔️ Dacă vrei un reset de disciplină și o pauză de la mâncatul emoțional.\n✔️ Dacă ai nevoie de responsabilitate și urmărire (nu doar un abonament nefolosit).\n\nNU ESTE PENTRU...\n❌ Cei care caută \"pastila magică\" fără pic de efort.\n❌ Cei care nu pot respecta 3 ședințe pe săptămână timp de 6 săptămâni.\n❌ Cei care nu sunt dispuși să țină un jurnal alimentar simplu.\n\nCUM SUNT ANTRENAMENTELE?\nProgramul se bazează pe EMS (Electrostimulare Musculară) – 30 de minute per ședință.\n- Eficient: Activăm 90% din musculatură simultan.\n- Sigur: Fără greutăți mari care să îți pună presiune pe articulații.\n- Structurat: 3 ședințe pe săptămână (sau 2, în varianta light) pentru consistență maximă.\n\nCE INCLUDE PROGRAMUL?\n- 18 sesiuni EMS (variantă 3/săpt) SAU 12 sesiuni EMS (variantă 2/săpt).\n- Nutriție personalizată: Plan simplu, jurnal alimentar cu feedback real.\n- Monitorizare: Măsurători la start și la fiecare 2 săptămâni.\n- Comunitate: Grup de suport WhatsApp pentru motivație zilnică.\n- Mini-workshop: \"Cum oprim mâncatul emoțional\".\n- Bonus: Ghid video \"3 exerciții acasă pentru spate puternic\".\n\nBONUS EXCLUSIV!\n- Ghid video pentru sănătatea spatelui\n- Acces prioritar la evenimente NeoBoost\n- Consultanță Nutriție Express\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă după acest program decizi să continui și cumperi un pachet de 3 luni, iar pe parcursul celor 3 luni menții prezența și atingi obiectivele punctate împreună, primești încă 1 lună CADOU. Recompensăm disciplina!"
+    description: "Slăbește sănătos 2–4 kg în 6 săptămâni. Un program structurat pentru oameni ocupați, cu recompense reale pentru disciplină.",
+    content: "6 Week Kickstart (EMS)\n\nSLĂBEȘTE 2–4 KG ÎN 6 SĂPTĂMÂNI ȘI TE RECOMPENSĂM!\n\nProgramul ideal pentru cei care vor rezultate vizibile, rapid și sănătos.\n\nEști gata să faci o schimbare?\nAi nevoie de un start puternic? Kickstart este soluția completă: antrenament, nutriție simplă și responsabilitate.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Scazi 2–4 kg (grăsime, nu doar apă).\n✔️ Înveți să mănânci corect, fără să te înfometezi.\n✔️ Te simți mai energic și mai ușor.\n\nCE INCLUDE?\n- 18 Sesiuni EMS (30 min) – Activare metabolică maximă.\n- Plan Nutrițional Personalizat – Simplu și sustenabil.\n- Monitorizare Biometrică – Vedem progresul clar.\n- Grup de Suport – Motivație zilnică.\n\nBONUS: RECOMPENSA 3+1\nTe ții de treabă? Dacă continui cu un abonament de 3 luni, a 4-a lună este din partea noastră. Premiem seriozitatea!"
   },
   {
     id: "fit-mamma",
@@ -682,8 +774,8 @@ export const PROGRAMS = [
     benefit: "Core, Postură & Energie",
     price: "1150 RON",
     stripePriceId: "price_1SojGiJAtuHj34DefHEYPwsL", // Reusing Health Pro ID
-    description: "Revenire blândă și sigură în propriul corp. Ne concentrăm pe refacerea posturii și a tonusului într-un mediu privat și suportiv.",
-    content: "Fit Mamma (EMS + postnatal safe)\n\nRECÂȘTIGĂ-ȚI ENERGIA ȘI POSTURA DUPĂ NAȘTERE – ȘI TE RECOMPENSĂM!\n\nRevenire blândă, controlată, fără presiune.\n\nEști gata să faci o schimbare?\nȘtim cum e. Timp puțin, oboseală multă. Fit Mamma nu e despre \"slăbit rapid\", ci despre a te simți din nou puternică în propriul corp.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru proaspete mămici care au acordul medicului pentru mișcare.\n✔️ Dacă vrei să îți corectezi postura și să întărești zona core.\n✔️ Dacă ai nevoie de energie și un moment doar pentru tine.\n✔️ Dacă eviți sălile aglomerate și vrei intimitate.\n\nCUM SUNT ANTRENAMENTELE?\n- Durată: 8 săptămâni.\n- Structură: 2 ședințe pe săptămână.\n- Format: EMS 30 min + exerciții funcționale low-impact.\n- Focus: Core, respirație, mobilitate, activare fesieri. Totul controlat, fără sărituri riscante.\n\nCE INCLUDE PROGRAMUL?\n- 16 sesiuni personalizate (EMS + Funcțional).\n- Screening inițial: Evaluare respirație și diastază (bază).\n- Nutriție: Ghid simplu pentru energie, fără diete restrictive.\n- Comunitate: Alte mămici care te înțeleg.\n- Educație: Cum să fii consistentă cu un bebe acasă.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă după programul de 8 săptămâni continui cu un pachet de 3 luni și menții prezența, primești încă 1 lună CADOU. Recompensăm grija față de corp, nu doar cântarul."
+    description: "Energie și tonus după naștere. Reface postura și zona abdominală într-un ritm blând, controlat și sigur.",
+    content: "Fit Mamma (Post-Natal Safe)\n\nRECÂȘTIGĂ-ȚI ENERGIA ȘI CORPUL DUPĂ NAȘTERE\n\nUn program special conceput pentru mămici: blând cu articulațiile, eficient pentru tonus.\n\nEști gata să faci o schimbare?\nȘtim că timpul tău este prețios. Fit Mamma îți oferă momentul tău de respiro și reconstrucție fizică.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Întărirea zonei 'Core' și a spatelui.\n✔️ Corectarea posturii afectate de sarcină.\n✔️ Mai multă energie pentru tine și bebe.\n\nCE INCLUDE?\n- 16 Sesiuni Hibrid (EMS + Funcțional) – Adaptate post-natal.\n- Evaluare Diastază & Postură – Siguranța primează.\n- Ghid de Nutriție pentru Energie – Fără diete restrictive.\n- Comunitate de Mămici – Nu ești singură în această călătorie.\n\nBONUS: RECOMPENSA 3+1\nContinuitatea contează. Alege un pachet de 3 luni după program și primești o lună cadou!"
   },
   {
     id: "semi-private",
@@ -698,8 +790,8 @@ export const PROGRAMS = [
     benefit: "Focus 1:1 la jumătate de preț",
     price: "500 RON / Pers",
     stripePriceId: "price_1Sn26zJAtuHj34DejlSl8LTE", // Reusing Starter ID
-    description: "Eficiența unui antrenor personal la preț de grup. Ideal pentru cei care vor ghidaj atent și motivația unei echipe restrânse într-o sală de fitness modernă.",
-    content: "Semi-Private Training\n\nEFICIENȚA UNUI ANTRENOR PERSONAL, ÎN GRUP MIC – ȘI TE RECOMPENSĂM!\n\nAtenție premium, cost optimizat, comunitate restrânsă.\n\nEști gata să faci o schimbare?\nVrei atenția unui antrenor personal, dar îți place energia unui grup mic? Semi-Private este soluția ideală: max 2-3 persoane, focus maxim pe tine.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru cei care vor ghidaj atent la un preț mai bun decât 1-la-1.\n✔️ Pentru cupluri sau prieteni care vor să se antreneze împreună.\n✔️ Pentru cei care se motivează mai bine într-un grup mic.\n✔️ Pentru cei care au nevoie de programare fixă.\n\nCUM SUNT ANTRENAMENTELE? (2 Opțiuni)\nA) Semi-Private EMS (30 min): Intensitate, tehnologie, rapiditate.\nB) Semi-Private Funcțional (45 min): Mișcare naturală, forță, condiție fizică în sala de fitness.\nIndiferent de opțiune, antrenorul este acolo să corecteze fiecare mișcare.\n\nCE INCLUDE PROGRAMUL?\n- Evaluare inițială detaliată.\n- Antrenamente cu instructor dedicat în grup de 2-3 persoane.\n- Plan de progres: Nu facem mișcare la întâmplare.\n- Tracking: Monitorizăm prezența și rezultatele.\n- Reguli clare de rezervare: Sistemul funcționează ceas.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă alegi un pachet de 3 luni și sunteți prezenți constant la sesiuni, vă oferim a 4-a lună CADOU. Fitness-ul e mai bun în echipă!"
+    description: "Antrenament personal la preț de grup. Împarte sesiunea cu 1-2 persoane și bucură-te de atenție premium și cost optimizat.",
+    content: "Semi-Private Training\n\nANTRENAMENT PERSONAL, ÎN GRUP MIC\n\nBucură-te de atenția unui antrenor personal, împărțind costul cu încă o persoană.\n\nEști gata să faci o schimbare?\nIdeal pentru cupluri, prieteni sau pur și simplu pentru a te motiva alături de cineva, fără a pierde calitatea ghidajului.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Atenție 1:1 la un preț redus.\n✔️ Motivație extra din partea grupului.\n✔️ Flexibilitate în programare.\n\nCE INCLUDE?\n- Antrenamente EMS sau Funcționale în grup de 2-3.\n- Evaluare și Monitorizare pentru fiecare participant.\n- Acces la facilitățile Premium NeoBoost.\n\nBONUS: RECOMPENSA 3+1\nAntrenați-vă constant timp de 3 luni și a 4-a lună este gratuită pentru amândoi!"
   },
   {
     id: "8-week-transform",
@@ -714,8 +806,8 @@ export const PROGRAMS = [
     benefit: "Arzi grăsime + Construiești mușchi",
     price: "1750 RON",
     stripePriceId: "price_1SojH4JAtuHj34DeHlplwGdS", // Reusing Sculpt Pro ID
-    description: "Amestecul ideal între Tehnologie EMS (x2/săpt) și Antrenament Funcțional (x1/săpt) pentru rezultate estetice și funcționale complete.",
-    content: "8-Week Transformation (Hybrid)\n\nRECOMPOZIȚIE CORPORALĂ ÎN 8 SĂPTĂMÂNI – ȘI TE RECOMPENSĂM!\n\nMixul perfect: Tehnologie EMS + Antrenament Funcțional Clasic.\n\nEști gata să faci o schimbare?\nVrei rezultate vizibile? Combinația Hybrid atacă grăsimea și construiește mușchi în același timp. Este protocolul nostru cel mai complet.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru cei care vor totul: eficiența EMS și plăcerea mișcării clasice.\n✔️ Pentru cei blocați la un anumit platou de slăbire.\n✔️ Dacă vrei să arăți \"fit\", nu doar \"slab\".\n✔️ Dacă poți dedica 3 ore pe săptămână pentru tine.\n\nCUM SUNT ANTRENAMENTELE?\nRitm: 3 ședințe pe săptămână.\n- 2 x EMS (30 min): Intensitate metabolică, tonifiere profundă.\n- 1 x Funcțional (45 min): Mobilitate, forță, cardio clasic.\nTotal: 24 de antrenamente intense și variate în 8 săptămâni.\n\nCE INCLUDE PROGRAMUL?\n- Nutriție personalizată: Plan adaptat pentru susținerea efortului hibrid.\n- Măsurători complete: Start, Săptămâna 4, Final.\n- Jurnal alimentar: Feedback săptămânal de la antrenor.\n- Comunitate: Grup dedicat transformării.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nVrei să continui după cele 8 săptămâni? Dacă alegi un abonament de 3 luni și atingi obiectivele stabilite, ai o lună extra cadou. Excelența se premiază!"
+    description: "Transformare totală. Combinația ideală de EMS și Antrenament Funcțional pentru a arde grăsime și a defini musculatura.",
+    content: "8-Week Transformation (Hybrid)\n\nRECOMPOZIȚIE CORPORALĂ COMPLETĂ\n\nCel mai complex protocol NeoBoost: Tehnologie EMS + Forță Funcțională.\n\nEști gata să faci o schimbare?\nDacă vrei rezultate maxime, ai nevoie de abordarea Hybrid. Atacăm grăsimea și construim mușchi simultan.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Scădere în greutate și definire musculară.\n✔️ Creșterea rezistenței și a forței.\n✔️ Corp atletic și funcțional.\n\nCE INCLUDE?\n- 24 Sesiuni Intense (2x EMS + 1x Funcțional / săpt).\n- Plan Nutrițional pentru Recompoziție.\n- Monitorizare Biometrică Completă (Start, Mijloc, Final).\n- Suport prioritar din partea antrenorilor.\n\nBONUS: RECOMPENSA 3+1\nTransformarea continuă! După cele 8 săptămâni, intră într-un abonament de 3 luni și primești o lună cadou."
   },
   {
     id: "30-day-lifestyle",
@@ -730,8 +822,8 @@ export const PROGRAMS = [
     benefit: "Reset Mental și Fizic",
     price: "710 RON",
     stripePriceId: "price_1Sn27EJAtuHj34De3fuwYpS6", // Reusing Progress Package (8 sessions) - Perfect Match
-    description: "Fără promisiuni exagerate. Doar disciplină, energie și o rutină sănătoasă recâștigată într-o singură lună de focus total.",
-    content: "30-day Lifestyle Transformation\n\nRESET DE OBICEIURI ÎN 30 DE ZILE – ȘI TE RECOMPENSĂM!\n\nFără promisiuni exagerate. Doar disciplină, energie și o rutină sănătoasă recâștigată.\n\nEști gata să faci o schimbare?\nUneori ai nevoie doar de un impuls scurt să ieși din inerție. 30 de zile sunt suficiente să simți diferența.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru cei care vor să \"reînceapă\" după o pauză lungă.\n✔️ Dacă te simți lipsit de energie și rigid.\n✔️ Dacă vrei un angajament scurt înainte de a decide pe termen lung.\n✔️ Oameni foarte ocupați (low friction).\n\nCUM SUNT ANTRENAMENTELE?\nLa alegere, un singur traseu pentru simplitate:\n- Opțiunea A: 8 ședințe EMS (30 min)\n- Opțiunea B: 8 ședințe Funcțional (45 min)\n\nCE INCLUDE PROGRAMUL?\n- Protocol Zilnic de 10 Minute (acasă).\n- Jurnal Alimentar Simplu: 3 reguli de bază.\n- Check-in Săptămânal: Scurt și la obiect.\n- Comunitate WhatsApp: Nu ești singur.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă decizi să transformi acest restart de 30 de zile într-un stil de viață și alegi un pachet de 3 luni, beneficiezi de 1 lună CADOU."
+    description: "Reset rapid. 30 de zile de disciplină și mișcare pentru a-ți recăpăta energia și ritmul de viață sănătos.",
+    content: "30-day Lifestyle Reset\n\nRECÂȘTIGĂ-ȚI RITMUL ÎN 30 DE ZILE\n\nUn impuls scurt și puternic pentru a ieși din inerție și a-ți reactiva corpul.\n\nEști gata să faci o schimbare?\nNu ai nevoie de ani de zile să te simți bine. În 30 de zile poți schimba totul.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Energie de la prima oră a dimineții.\n✔️ Somn mai odihnitor.\n✔️ Tonus muscular îmbunătățit.\n\nCE INCLUDE?\n- 8 Sesiuni la alegere (EMS sau Funcțional).\n- Protocol de 'Rutină de Dimineață'.\n- Ghid de Nutriție Simplificat.\n- Check-in săptămânal.\n\nBONUS: RECOMPENSA 3+1\nTransformă reset-ul în stil de viață. Continuă cu un pachet de 3 luni și primești o lună gratuit."
   },
   {
     id: "on-boarding",
@@ -746,8 +838,8 @@ export const PROGRAMS = [
     benefit: "Evaluare, Planificare, Testare",
     price: "250 RON",
     stripePriceId: "price_1Sn26zJAtuHj34DejlSl8LTE", // Reusing Starter for now (or needs separate)
-    description: "Scoatem haosul din început. 14 zile pentru a afla exact cum funcționează corpul tău înainte de a începe un abonament lung.",
-    content: "Pachet On-Boarding (Start Smart)\n\nSTART INTELIGENT: 14 ZILE SĂ SETĂM SISTEMUL – ȘI TE RECOMPENSĂM!\n\nScoatem haosul din început. Evaluare, planificare, testare.\n\nEști gata să faci o schimbare?\nMajoritatea renunță la sală pentru că încep haotic. Start Smart este fundația ta solidă.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Pentru oricine este nou la NeoBoost.\n✔️ Dacă vrei să înveți CUM să te antrenezi înainte să cumperi un abonament lung.\n✔️ Dacă vrei claritate și structură.\n\nCUM SUNT ANTRENAMENTELE?\nMix de învățare și execuție: 2–4 ședințe EMS sau Funcțional. Scopul este însușirea tehnicii și setarea intensității corecte.\n\nCE INCLUDE PROGRAMUL?\n- Consultație Inițială Extinsă.\n- Analiză Corporală Detaliată.\n- Sesiuni de calibrare.\n- Sesiune Educațională (15 min).\n- Setare Obiective și Calendar.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nDacă absolvi etapa On-Boarding și intri într-un abonament de 3 luni, a 4-a lună este oferită GRATUIT. Un start bun merită premiat!"
+    description: "Start inteligent. 14 zile de evaluare și învățare pentru a te asigura că pornești corect la drum cu NeoBoost.",
+    content: "On-Boarding (Start Smart)\n\nFUNDAȚIA SUCCESULUI TĂU\n\n14 Zile în care învățăm despre corpul tău și setăm planul perfect.\n\nEști gata să faci o schimbare?\nNu ghici, planifică. Start Smart este garanția că investiția ta va da roade.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Înțelegi exact de ce are nevoie corpul tău.\n✔️ Înveți tehnica corectă de execuție.\n✔️ Stabilești obiective realiste.\n\nCE INCLUDE?\n- Consultație și Analiză Corporală Avansată.\n- 2-4 Sesiuni de Calibrare și Învățare.\n- Plan de Acțiune Personalizat.\n\nBONUS: RECOMPENSA 3+1\nIntră direct într-un abonament de 3 luni după On-Boarding și primești a 4-a lună CADOU."
   },
   {
     id: "vip",
@@ -762,8 +854,102 @@ export const PROGRAMS = [
     benefit: "Atenție 100% dedicată",
     price: "CUSTOM",
     // No stripePriceId for VIP - Enquiry Only
-    description: "Experiență premium pentru cei care prețuiesc timpul și calitatea supremă. Spațiu privat, antrenor dedicat și prioritate absolută.",
-    content: "Invitation-Only Experience (VIP)\n\nEXPERIENȚĂ PREMIUM, DISCREȚIE ȘI REZULTATE – PE BAZĂ DE INVITAȚIE\n\nNu pentru toată lumea. Doar pentru cei care prețuiesc timpul și calitatea supremă.\n\nEști gata să faci o schimbare?\nDacă cauți un mediu privat, fără aglomerație, cu programare prioritară și atenție 100% dedicată, ai ajuns unde trebuie.\n\n[WHATSAPP_LINK]\n\nPENTRU CINE ESTE PROGRAMUL?\n✔️ Antreprenori, manageri, persoane publice care au nevoie de discreție.\n✔️ Cei cu un program extrem de volatil.\n✔️ Cei care vor cea mai înaltă calitate a serviciului.\n✔️ Accesibil doar pe bază de recomandare sau aplicație.\n\nCUM SUNT ANTRENAMENTELE?\nComplet personalizate. EMS, Funcțional, Recuperare, Stretching asistat. Totul se învârte în jurul tău.\n\nCE INCLUDE PROGRAMUL?\n- Acces Exclusiv: Sloturi blocate doar pentru tine.\n- Concierge Fitness: Ne ocupăm de tot (prosoape, echipament, apă).\n- Discreție Totală: Spațiu privat.\n- Monitorizare Avansată: Postură, stres, parametri bio.\n\nRECOMPENSA 3+1 LUNĂ CADOU\nExcelența se recompensează. Dacă atingi obiectivele de sănătate stabilite, primești o lună de menținere CADOU."
+    description: "Experiență exclusivistă. Discreție totală, program flexibil și servicii complete de tip concierge pentru cei mai exigenți clienți.",
+    content: "Invitation-Only (VIP)\n\nFITNESS LA CEL MAI ÎNALT NIVEL\n\nServicii de concierge fitness, intimitate totală și rezultate excepționale.\n\nEști gata să faci o schimbare?\nPentru cei care nu fac compromisuri. Timpul tău, regulile tale, expertiza noastră.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Programare prioritară și flexibilă.\n✔️ Spațiu complet privat.\n✔️ Servicii All-Inclusive (echipament, prosoape, shake-uri).\n\nCE INCLUDE?\n- Antrenament 100% Personalizat (Orice tip).\n- Monitorizare continuă a sănătății și performanței.\n- Acces direct la Head Coach.\n\nBONUS: RECOMPENSA 3+1\nExcelența este standardul. Menține standardul timp de 3 luni și primești o lună de menținere cadou."
+  }
+];
+
+export const RICH_TRANSFORMATIONS = [
+  {
+    id: "alex-d",
+    name: "ALEX D.",
+    program: "MASTER BODY",
+    duration: "2 LUNI ȘI JUMĂTATE",
+    quote: "Rezultatele vorbesc de la sine. Grăsimea s-a topit, iar masa musculară a crescut vizibil. Nu am crezut că 30 min pot face asta.",
+    images: {
+      before: "/transformation_real_before.jpg",
+      after: "/transformation_real_after.png",
+      isCombined: false
+    },
+    stats: [
+      { label: "WEIGHT", start: 106.3, end: 93.4, change: "-12.9", unit: "kg", color: "text-blue-500" },
+      { label: "BODY FAT", start: 38.5, end: 24.1, change: "-14.4", unit: "%", color: "text-green-500" },
+      { label: "MUSCLE", start: 30.1, end: 35.6, change: "+5.5", unit: "%", color: "text-purple-500" },
+      { label: "METABOLISM", start: 1850, end: 2100, change: "+250", unit: "kcal", color: "text-orange-500" }
+    ]
+  },
+  {
+    id: "maria-t",
+    name: "MARIA T.",
+    program: "WEIGHT LOSS",
+    duration: "4 LUNI",
+    quote: "M-am simțit mai ușoară încă din prima lună. Talia s-a subțiat vizibil, fără diete extreme.",
+    images: {
+      combined: "/transformation_3.png",
+      isCombined: true,
+      styleBefore: { objectPosition: '0% center' },
+      styleAfter: { objectPosition: '100% center' }
+    },
+    stats: [
+      { label: "WEIGHT", start: 62.6, end: 58.5, change: "-4.1", unit: "kg", color: "text-blue-500" },
+      { label: "ABDOMEN", start: 95, end: 86, change: "-9", unit: "cm", color: "text-blue-400" },
+      { label: "WAIST", start: 80, end: 72, change: "-8", unit: "cm", color: "text-pink-500" },
+      { label: "METABOLISM", start: 1380, end: 1550, change: "+170", unit: "kcal", color: "text-orange-500" }
+    ]
+  },
+  {
+    id: "andreea-m",
+    name: "ANDREEA M.",
+    program: "FIT MAMMA",
+    duration: "2 LUNI",
+    quote: "După sarcină, talia mea arată din nou bine. Chiar funcționează! Mușchii profunzi s-au activat imediat.",
+    images: {
+      combined: "/transformation_female_real_combined.jpg",
+      isCombined: true,
+      styleBefore: { objectPosition: '0% center' },
+      styleAfter: { objectPosition: '100% center' }
+    },
+    stats: [
+      { label: "WAIST", start: 70, end: 61, change: "-9", unit: "cm", color: "text-pink-500" },
+      { label: "ABDOMEN", start: 77, end: 66, change: "-11", unit: "cm", color: "text-blue-400" },
+      { label: "BACK", start: 105, end: 100, change: "-5", unit: "cm", color: "text-purple-500" }
+    ]
+  },
+  {
+    id: "emanuel-h",
+    name: "EMANUEL H.",
+    program: "MASTER BODY",
+    duration: "7 LUNI",
+    quote: "Minus 27cm în talie și abdomen. Cifrele vorbesc de la sine. EMS este viitorul antrenamentului eficient.",
+    images: {
+      combined: "/emanuel_h_aligned.png",
+      isCombined: true,
+      styleBefore: { objectPosition: '0% center', transform: 'scale(1.08)' },
+      styleAfter: { objectPosition: '100% center' }
+    },
+    stats: [
+      { label: "WAIST", start: 107, end: 80, change: "-27", unit: "cm", color: "text-blue-500" },
+      { label: "ABDOMEN", start: 115, end: 88, change: "-27", unit: "cm", color: "text-red-500" },
+      { label: "HIPS", start: 115, end: 102, change: "-13", unit: "cm", color: "text-purple-500" }
+    ]
+  },
+  {
+    id: "dani-p",
+    name: "DANI P.",
+    program: "MASTER BODY",
+    duration: "2 LUNI",
+    quote: "Am slăbit mult și am pus mușchi rapid. În 2 luni se vede diferența clar. Recomand programul Hybrid.",
+    images: {
+      combined: "/dani_p_aligned.png",
+      isCombined: true,
+      styleBefore: { objectPosition: '10% center', transform: 'scale(1.1)' },
+      styleAfter: { objectPosition: '90% center', transform: 'scale(1.1)' }
+    },
+    stats: [
+      { label: "WEIGHT", start: 116, end: 106, change: "-10", unit: "kg", color: "text-blue-500" },
+      { label: "BODY FAT", start: 25, end: 17, change: "-8", unit: "%", color: "text-green-500" },
+      { label: "MUSCLE", start: 39, end: 41.5, change: "+2.5", unit: "%", color: "text-purple-500" }
+    ]
   }
 ];
 

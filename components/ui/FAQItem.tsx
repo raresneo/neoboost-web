@@ -29,14 +29,14 @@ export const FAQItem: React.FC<{ item: NeoFAQItem; i: number }> = ({ item, i }) 
                 </div>
                 <div className="flex-1">
                     <div className="flex justify-between items-center">
-                        <h3 className={`text-base md:text-lg font-bold impact-font tracking-wide transition-all duration-500 ${isExpanded ? 'text-white' : 'text-white/30'}`}>
+                        <h3 className={`text-base md:text-lg font-bold font-display tracking-wide transition-all duration-500 ${isExpanded ? 'text-white' : 'text-white/30'}`}>
                             {item.question}
                         </h3>
                         <div className={`transition-all duration-500 ${isExpanded ? 'opacity-100 rotate-180' : 'opacity-0'}`}>
                             <ChevronDown size={18} className="text-[#3A86FF]" />
                         </div>
                     </div>
-                    <div className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${isExpanded ? 'max-h-[300px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
+                    <div className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
                         <p className="text-white/50 font-light leading-relaxed text-sm md:text-base border-l border-[#3A86FF]/20 pl-6 py-2">
                             {item.answer}
                         </p>

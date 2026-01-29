@@ -33,7 +33,7 @@ export const Preloader = ({ onFinish }: { onFinish: () => void }) => {
                     setTimeout(onFinish, 150); // Ultra-fast fade
                     return 100;
                 }
-                return prev + Math.random() * 25; // Much faster progress
+                return prev + Math.random() * 45; // Ultra fast progress
             });
         }, 40); // Super fast interval
         return () => clearInterval(interval);

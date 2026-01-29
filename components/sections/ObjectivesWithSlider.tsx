@@ -35,7 +35,7 @@ export const ObjectivesWithSlider = () => {
             <AnimatedGraphic type="muscle" className="h-48 w-full mb-8" />
             {/* Header */}
             <div className="mb-8">
-                <h4 className="text-2xl font-black impact-font text-white mb-2">OBIECTIVE ȘI REZULTATE</h4>
+                <h4 className="text-2xl font-display font-bold text-white mb-2">OBIECTIVE ȘI REZULTATE</h4>
                 <p className="text-sm text-white/30 font-light italic">Ajustează intensitatea pentru a vedea impactul.</p>
             </div>
 
@@ -45,12 +45,12 @@ export const ObjectivesWithSlider = () => {
                     <div>
                         <p className="mono-font text-[8px] text-white/30 uppercase tracking-widest mb-1">Ședințe / Săptămână</p>
                         <div className="flex items-baseline gap-2">
-                            <span className="text-5xl font-black impact-font text-[#3A86FF]">{sessions}</span>
+                            <span className="text-5xl font-display font-bold text-[#3A86FF]">{sessions}</span>
                             <span className="mono-font text-[10px] text-white/20">× 30 min</span>
                         </div>
                     </div>
                     <div className="text-right">
-                        <p className={`text-xl font-black impact-font ${currentLabel.color}`}>{currentLabel.title}</p>
+                        <p className={`text-xl font-display font-bold ${currentLabel.color}`}>{currentLabel.title}</p>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@ export const ObjectivesWithSlider = () => {
                                 onClick={() => setSessions(step)}
                                 className={`w-6 h-6 rounded-full border-2 transition-all duration-300 flex items-center justify-center text-[9px] font-black ${sessions >= step
                                     ? 'bg-[#3A86FF] border-[#3A86FF] text-black shadow-[0_0_15px_rgba(0,255,136,0.5)]'
-                                    : 'bg-black border-white/20 text-white/30 hover:border-white/40'
+                                    : 'bg-[var(--bg-primary)] border-white/20 text-white/30 hover:border-white/40'
                                     }`}
                             >
                                 {step}

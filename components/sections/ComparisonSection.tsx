@@ -10,14 +10,13 @@ const EvolutionVideoBackground = () => (
 
 // --- New Competitive Comparison Section ---
 export const ComparisonSection = () => (
-    <section className="py-8 lg:py-[5vh] bg-transparent border-y border-white/5 relative overflow-hidden h-full flex flex-col justify-center">
-
+    <section className="py-20 md:py-32 bg-transparent border-y border-white/5 relative z-10">
         <div className="container mx-auto px-6 md:px-24 relative z-10">
             <ScrollReveal>
-                <div className="text-center mb-8 relative z-10">
-                    <p className="mono-font text-[8px] tracking-[0.4em] text-[#3A86FF]/60 uppercase mb-2">Tradiție vs Inovație</p>
-                    <h2 className="text-2xl md:text-4xl font-black impact-font text-white uppercase heading-glow">
-                        EVOLUȚIA <span className="text-[#3A86FF]/80">FITNESS-ULUI</span>
+                <div className="text-center mb-16 relative z-10">
+                    <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase mb-4">Tradiție vs Inovație</p>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-white uppercase italic heading-glow">
+                        CUM SE COMPARĂ CU <span className="text-[#3A86FF]">FITNESS-UL TRADIȚIONAL</span>
                     </h2>
                 </div>
             </ScrollReveal>
@@ -31,9 +30,9 @@ export const ComparisonSection = () => (
                 </div>
 
                 {/* Rows / Mobile Cards */}
-                <div className="flex flex-col md:block landscape:flex-row landscape:overflow-x-auto gap-4 landscape:pb-8 md:pb-0 landscape:snap-x landscape:snap-mandatory no-scrollbar">
+                <div className="flex overflow-x-auto gap-4 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:block snap-x snap-mandatory no-scrollbar items-stretch">
                     {GYM_VS_EMS.map((item, idx) => (
-                        <ScrollReveal key={idx} delay={idx * 50} className="w-full md:min-w-0 landscape:min-w-[75vw] landscape:w-auto landscape:snap-center flex-shrink-0">
+                        <ScrollReveal key={idx} delay={idx * 50} className="min-w-[85vw] md:min-w-0 md:w-full snap-center flex-shrink-0">
                             <div className="h-full group grid md:grid-cols-3 gap-4 items-center p-4 glass-block transition-all duration-300 hover:border-[#3A86FF]/30 hover:shadow-[0_0_20px_rgba(0,255,136,0.05)] rounded-2xl md:rounded-none">
                                 {/* Feature Header (Mobile & Desktop) */}
                                 <div className="flex items-center gap-4 mb-4 md:mb-0">

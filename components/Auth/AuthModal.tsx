@@ -72,7 +72,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                className="absolute inset-0 bg-[var(--bg-primary)]/80 backdrop-blur-sm"
                 onClick={onClose}
             />
 
@@ -90,7 +90,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 </button>
 
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-black impact-font text-white mb-2">
+                    <h2 className="text-3xl font-display font-bold text-white mb-2">
                         {isLogin ? 'BINE AI VENIT' : 'ALĂTURĂ-TE'}
                     </h2>
                     <p className="text-white/60 text-sm">

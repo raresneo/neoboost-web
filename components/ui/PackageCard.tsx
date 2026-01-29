@@ -8,7 +8,7 @@ import { NeoPackage, BRAND } from '../../constants';
 export const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOpenAuth: () => void; onCheckout: (pkg: NeoPackage) => void }> = ({ pkg, i, user, onOpenAuth, onCheckout }) => {
     return (
         <ScrollReveal delay={i * 100}>
-            <div className={`group relative p-8 md:p-12 border transition-all duration-700 h-full flex flex-col justify-between overflow-hidden cursor-default ${pkg.isPremium ? 'bg-black text-white shadow-2xl border-[#3A86FF]/50 shadow-[#3A86FF]/10' : 'bg-[#0a0a0a] text-white border-white/5 hover:border-[#3A86FF]/30'}`}>
+            <div className={`group relative p-8 md:p-12 border transition-all duration-700 h-full flex flex-col justify-between overflow-hidden cursor-default ${pkg.isPremium ? 'bg-[var(--bg-primary)] text-white shadow-2xl border-[#3A86FF]/50 shadow-[#3A86FF]/10' : 'bg-[var(--bg-secondary)] text-white border-white/5 hover:border-[#3A86FF]/30'}`}>
 
                 {/* Animated Background Element */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#3A86FF]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
@@ -21,7 +21,7 @@ export const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOp
                 )}
 
                 <div className="absolute -top-12 -left-8 opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-1000 pointer-events-none text-[#3A86FF]">
-                    <span className="text-[280px] font-black impact-font leading-none">{pkg.sessionCount}</span>
+                    <span className="text-[280px] font-bold font-display leading-none">{pkg.sessionCount}</span>
                 </div>
 
                 <div className="relative z-10">
@@ -31,20 +31,20 @@ export const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOp
                             {pkg.sessionCount.includes('+') ? (
                                 <div className="flex flex-col items-end">
                                     <div className="flex items-baseline gap-1">
-                                        <span className="text-5xl font-black impact-font text-white leading-none">{pkg.sessionCount.split('+')[0]}</span>
-                                        <span className="text-3xl font-black impact-font text-[#3A86FF] leading-none">+{pkg.sessionCount.split('+')[1]}</span>
+                                        <span className="text-5xl font-bold font-display text-white leading-none">{pkg.sessionCount.split('+')[0]}</span>
+                                        <span className="text-3xl font-bold font-display text-[#3A86FF] leading-none">+{pkg.sessionCount.split('+')[1]}</span>
                                     </div>
                                     <span className="text-[8px] mono-font text-[#3A86FF] uppercase font-black tracking-widest block mt-1">Ședințe (Bonus Inclus)</span>
                                 </div>
                             ) : (
                                 <>
-                                    <span className="block text-5xl font-black impact-font text-[#3A86FF] leading-none text-glow">{pkg.sessionCount}</span>
+                                    <span className="block text-5xl font-bold font-display text-[#3A86FF] leading-none text-glow">{pkg.sessionCount}</span>
                                     <span className="text-[8px] mono-font opacity-40 uppercase font-bold tracking-widest block mt-1">Ședințe</span>
                                 </>
                             )}
                         </div>
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-black impact-font mb-6 transition-colors group-hover:text-[#3A86FF] leading-none uppercase">{pkg.title}</h3>
+                    <h3 className="text-4xl md:text-5xl font-bold font-display mb-6 transition-colors group-hover:text-[#3A86FF] leading-none uppercase">{pkg.title}</h3>
 
                     {/* Ideal For Label */}
                     {pkg.idealFor && (
@@ -66,7 +66,7 @@ export const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOp
                 <div className="relative z-10 mt-auto pt-8 flex flex-col gap-4 border-t border-white/5">
                     <div className="mb-6">
                         <div className="flex items-baseline gap-2">
-                            <span className="text-6xl font-black impact-font text-white">{pkg.price}</span>
+                            <span className="text-6xl font-bold font-display text-white">{pkg.price}</span>
                             <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest">LEI</span>
                         </div>
                         {pkg.pricePerSession && (

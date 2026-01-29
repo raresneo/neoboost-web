@@ -17,7 +17,7 @@ export const WorkoutDetailsSection: React.FC<WorkoutDetailsSectionProps> = ({
     return (
         <section className="py-20">
             <div className="mb-16">
-                <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-6">
+                <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-6">
                     CUM SUNT ANTRENAMENTELE?
                 </h2>
             </div>
@@ -43,7 +43,7 @@ export const WorkoutDetailsSection: React.FC<WorkoutDetailsSectionProps> = ({
             </div>
 
             <div className="glass-block p-10 border-[#3A86FF]/20 rounded-3xl">
-                <h3 className="text-2xl font-black impact-font uppercase text-white mb-6">
+                <h3 className="text-2xl font-display font-bold uppercase text-white mb-6">
                     STRUCTURA ANTRENAMENTELOR
                 </h3>
                 <ul className="space-y-4">

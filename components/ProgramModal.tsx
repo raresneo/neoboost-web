@@ -88,7 +88,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         <a
                             href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să aflu mai multe despre programul ${program.title}.`}
                             target="_blank"
-                            className="inline-flex items-center gap-4 bg-[#25D366] text-white px-10 py-5 rounded-2xl font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(37,211,102,0.3)]"
+                            className="inline-flex items-center gap-4 bg-[#25D366] text-white px-10 py-5 rounded-2xl font-bold font-display text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(37,211,102,0.3)]"
                         >
                             <MessageCircle size={24} />
                             DISCUTĂ CU NOI PE WHATSAPP
@@ -107,11 +107,11 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
     };
     return (
         <div
-            className={`fixed inset-0 z-[99999] flex flex-col bg-black/60 backdrop-blur-sm transition-all duration-300 ${program ? 'opacity-100 visible' : 'opacity-0 invisible'} h-[100dvh] w-screen overflow-hidden overscroll-none`}
+            className={`fixed inset-0 z-[99999] flex flex-col bg-[var(--bg-primary)]/60 backdrop-blur-sm transition-all duration-300 ${program ? 'opacity-100 visible' : 'opacity-0 invisible'} h-[100dvh] w-screen overflow-hidden overscroll-none`}
             onClick={handleOutsideClick}
         >
             {/* Header - Fixed Height for Mobile Visibility */}
-            <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-black/90 backdrop-blur-3xl z-[100000]">
+            <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-[var(--bg-primary)]/90 backdrop-blur-3xl z-[100000]">
                 <button
                     onClick={onClose}
                     className="relative overflow-hidden flex items-center gap-3 text-[#3A86FF] hover:text-black bg-transparent hover:bg-[#3A86FF] transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/30 hover:border-[#3A86FF] text-xs font-black uppercase tracking-[0.2em] group shadow-[0_0_15px_rgba(58,134,255,0.1)] hover:shadow-[0_0_30px_rgba(58,134,255,0.4)]"
@@ -121,14 +121,14 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         ÎNAPOI
                     </span>
                 </button>
-                <h3 className="impact-font text-lg md:text-2xl text-white uppercase tracking-tighter truncate max-w-[50%]">{program.title}</h3>
+                <h3 className="font-display font-bold text-lg md:text-2xl text-white uppercase tracking-tighter truncate max-w-[50%]">{program.title}</h3>
                 <div className="w-[80px] hidden md:block"></div>
             </div>
 
             {/* Main Content Area - Scrollable */}
             <div
                 ref={modalRef}
-                className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar bg-black mx-auto w-full max-w-5xl"
+                className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar bg-[var(--bg-primary)] mx-auto w-full max-w-5xl"
                 style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
             >
                 <div className="container mx-auto max-w-5xl px-6 py-10 md:py-20 text-white">
@@ -143,7 +143,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         <div className="absolute bottom-10 left-10">
                             <span className="mono-font text-[10px] text-[#3A86FF] font-black uppercase tracking-[0.5em] mb-4 block">{program.tag}</span>
-                            <h2 className="text-5xl md:text-8xl font-black impact-font uppercase leading-none tracking-tighter">{program.title}</h2>
+                            <h2 className="text-5xl md:text-8xl font-display font-bold uppercase leading-none tracking-tighter">{program.title}</h2>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                             <section>
                                 <div className="flex items-center gap-6 mb-10">
                                     <Target size={32} className="text-[#3A86FF]" />
-                                    <h4 className="text-3xl font-black impact-font uppercase italic tracking-wider">Impactul Programului</h4>
+                                    <h4 className="text-3xl font-display font-bold uppercase italic tracking-wider">Impactul Programului</h4>
                                 </div>
                                 <div className="text-white/60 text-lg font-light leading-relaxed space-y-10">
                                     {renderContent(program.content)}
@@ -163,14 +163,14 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                             <section>
                                 <div className="flex items-center gap-6 mb-10">
                                     <Cpu size={32} className="text-[#3A86FF]" />
-                                    <h4 className="text-3xl font-black impact-font uppercase italic tracking-wider">Tehnologia NeoBoost</h4>
+                                    <h4 className="text-3xl font-display font-bold uppercase italic tracking-wider">Tehnologia NeoBoost</h4>
                                 </div>
                                 <div className="grid md:grid-cols-2 gap-8 items-center bg-white/5 rounded-3xl overflow-hidden border border-white/10">
                                     <div className="aspect-square">
                                         <img src="/Cems1.jpg" alt="EMS Suit Detail" className="w-full h-full object-cover hi-fi-image" />
                                     </div>
                                     <div className="p-10 space-y-6">
-                                        <h5 className="text-2xl font-black impact-font uppercase text-white italic">Costumul Tehnic Pro</h5>
+                                        <h5 className="text-2xl font-display font-bold uppercase text-white italic">Costumul Tehnic Pro</h5>
                                         <p className="text-white/60 font-light leading-relaxed">
                                             Vei folosi exact acest echipament profesional de ultimă generație. Drysuit-ul nostru este antibacterian, ultra-ușor și permite o libertate de mișcare totală, oferind în același timp o contracție musculară mult mai precisă și profundă decât sistemele clasice.
                                         </p>
@@ -187,11 +187,11 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                             <section>
                                 <div className="flex items-center gap-6 mb-10">
                                     <History size={32} className="text-[#3A86FF]" />
-                                    <h4 className="text-3xl font-black impact-font uppercase italic tracking-wider">Rezultate Vizibile</h4>
+                                    <h4 className="text-3xl font-display font-bold uppercase italic tracking-wider">Rezultate Vizibile</h4>
                                 </div>
                                 <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] group">
                                     <img src={mockBeforeAfter} alt="Before After" className="w-full grayscale group-hover:grayscale-0 transition-all duration-1000 hi-fi-image" />
-                                    <div className="p-8 bg-black/40 backdrop-blur-md border-t border-white/5 text-center">
+                                    <div className="p-8 bg-[var(--bg-primary)]/40 backdrop-blur-md border-t border-white/5 text-center">
                                         <p className="mono-font text-[11px] text-[#3A86FF] uppercase tracking-[0.4em] font-black">
                                             Evoluție Recomandată după protocolul NeoBoost Oradea
                                         </p>
@@ -204,25 +204,25 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                             <div className="glass-block p-10 border-[#3A86FF]/20 space-y-8 rounded-[2rem] shadow-2xl">
                                 <div>
                                     <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-[0.4em] block mb-4">Focus Obiectiv</span>
-                                    <div className="font-bold impact-font text-4xl uppercase italic text-white leading-none">{program.benefit}</div>
+                                    <div className="font-bold font-display text-4xl uppercase italic text-white leading-none">{program.benefit}</div>
                                 </div>
                                 <div>
                                     <span className="text-[10px] font-black text-[#3A86FF] uppercase tracking-[0.4em] block mb-4">Durată Estimată</span>
-                                    <div className="font-bold impact-font text-4xl uppercase italic text-white leading-none">{program.duration}</div>
+                                    <div className="font-bold font-display text-4xl uppercase italic text-white leading-none">{program.duration}</div>
                                 </div>
                                 <hr className="border-white/10" />
                                 <div className="space-y-4">
                                     <a
                                         href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să rezerv un loc pentru programul ${program.title}.`}
                                         target="_blank"
-                                        className="w-full bg-[#3A86FF] text-black py-7 font-black impact-font text-2xl uppercase tracking-[0.2em] shadow-[0_0_50px_rgba(0,245,255,0.4)] text-center block hover:scale-[1.02] transition-transform"
+                                        className="w-full bg-[#3A86FF] text-black py-7 font-bold font-display text-2xl uppercase tracking-[0.2em] shadow-[0_0_50px_rgba(0,245,255,0.4)] text-center block hover:scale-[1.02] transition-transform"
                                     >
                                         REZERVĂ UN LOC
                                     </a>
                                     <a
                                         href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să discutăm despre programul ${program.title}.`}
                                         target="_blank"
-                                        className="w-full border border-[#25D366]/50 text-[#25D366] py-5 font-black impact-font text-xl uppercase tracking-[0.1em] text-center block hover:bg-[#25D366]/5 transition-colors"
+                                        className="w-full border border-[#25D366]/50 text-[#25D366] py-5 font-bold font-display text-xl uppercase tracking-[0.1em] text-center block hover:bg-[#25D366]/5 transition-colors"
                                     >
                                         DISCUTĂ CU NOI
                                     </a>
@@ -234,17 +234,17 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
                     <section className="mb-32">
                         <div className="flex items-center gap-6 mb-16">
                             <Users size={32} className="text-[#3A86FF]" />
-                            <h4 className="text-4xl md:text-6xl font-black impact-font uppercase mt-0 italic tracking-tighter">ANTRENORII TĂI.</h4>
+                            <h4 className="text-4xl md:text-6xl font-display font-bold uppercase mt-0 italic tracking-tighter">ANTRENORII TĂI.</h4>
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                             {trainers.map((t, idx) => (
-                                <div key={idx} className="group overflow-hidden rounded-[1.5rem] bg-[#0a0a0a] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-500">
+                                <div key={idx} className="group overflow-hidden rounded-[1.5rem] bg-[var(--bg-primary)] border border-white/5 hover:border-[#3A86FF]/40 transition-all duration-500">
                                     <div className="aspect-square relative overflow-hidden">
                                         <img src={t.image} alt={t.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                                     </div>
                                     <div className="p-8 relative z-10 bg-gradient-to-t from-black via-black/80 to-transparent">
-                                        <h5 className="font-bold impact-font text-2xl leading-none mb-1 text-white">{t.name.toUpperCase()}</h5>
+                                        <h5 className="font-bold font-display text-2xl leading-none mb-1 text-white">{t.name.toUpperCase()}</h5>
                                         <span className="text-[10px] text-[#3A86FF] font-black uppercase tracking-widest">{t.role}</span>
                                     </div>
                                 </div>

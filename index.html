@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- PRIMARY SEO META TAGS -->
-  <title>NeoBoost EMS | Slăbire Rapidă & Tonifiere în 30 Minute</title>
+  <title>NeoBoost — Transformare Corporală EMS Fitness Oradea</title>
   <link rel="icon" type="image/png" href="/logo_white.png" />
   <link rel="apple-touch-icon" href="/logo_white.png" />
   <meta name="description"
@@ -468,7 +468,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
     rel="stylesheet">
 
   <!-- Google Ads & Meta Pixel (Unchanged) -->
@@ -521,83 +521,176 @@
     }
 
     :root {
-      /* DEEP COSMIC PALETTE */
-      --bg-primary: #010103;
-      --bg-secondary: #050a14;
-      --text-primary: #ffffff;
-      --text-secondary: rgba(255, 255, 255, 0.7);
+      /* --- 1.1 Paleta de Culori --- */
 
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
+      /* Culori Principale */
+      --bg-primary: #0A0A0A;
+      /* Fundal principal - charcoal profund */
+      --bg-secondary: #111111;
+      /* Fundal carduri/secțiuni alternate */
+      --bg-tertiary: #1A1A1A;
+      /* Fundal hover states, inputs */
 
-      --accent: #3A86FF;
-      --accent-glow: #00F0FF;
-      --button-text: #000000;
+      /* Accent */
+      --accent-primary: #3A86FF;
+      /* Electric Blue - CTA-uri principale */
+      --accent-secondary: #60A5FA;
+      /* Blue deschis - hover states */
+      /* Gradientul este definit ca o clasă utilitară sau variabilă separată dacă e nevoie */
+
+      /* Text */
+      --text-primary: #FFFFFF;
+      /* Titluri, text important */
+      --text-secondary: #E0E0E0;
+      /* Body text */
+      --text-muted: #9CA3AF;
+      /* Text secundar, labels */
+      --text-disabled: #6B7280;
+      /* Text dezactivat */
+
+      /* Funcționale */
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+
+      /* Borders & Dividers */
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-visible: rgba(255, 255, 255, 0.15);
+
+      /* --- 1.3 Spacing System (selection) --- */
+      /* Section Padding */
+      --section-padding-y: 96px;
+      /* Desktop */
+      --section-padding-y-mobile: 64px;
+      /* Mobile */
+      --section-padding-x: 24px;
+
+      /* --- 1.4 Border Radius --- */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-2xl: 24px;
+      --radius-full: 9999px;
+
+      /* --- 1.5 Shadows & Effects --- */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 30px rgba(58, 134, 255, 0.3);
+
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+
+      /* --- Transitions --- */
+      --transition-fast: 100ms ease;
+      --transition-normal: 200ms ease;
+      --transition-slow: 300ms ease;
     }
 
-    body.light-mode {
-      --bg-primary: #F9FAFB;
-      --bg-secondary: #F3F4F6;
-      --text-primary: #111827;
-      --text-secondary: #6B7280;
+    [data-theme="light"] {
+      /* --- Light Mode Colors --- */
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F1F5F9;
+      --bg-tertiary: #E2E8F0;
 
-      --glass-bg: rgba(255, 255, 255, 0.65);
-      --glass-border: rgba(0, 0, 0, 0.06);
+      --text-primary: #020617;
+      /* Much darker for better contrast */
+      --text-secondary: #1e293b;
+      /* Dark slate */
+      --text-muted: #475569;
+      --text-disabled: #94A3B8;
 
-      --accent: #3A86FF;
-      --accent-glow: rgba(58, 134, 255, 0.5);
-      --button-text: #ffffff;
+      --accent-primary: #2563EB;
+      /* Slightly darker blue for better contrast on white */
 
-      background: var(--bg-primary) !important;
-      animation: none;
-    }
+      --border-subtle: rgba(0, 0, 0, 0.1);
+      --border-visible: rgba(0, 0, 0, 0.2);
 
-    /* Override specific hardcoded utilities for light mode */
-    .light-mode .bg-black,
-    .light-mode .bg-\[\#050505\],
-    .light-mode .bg-gradient-to-b {
-      background-color: var(--bg-primary) !important;
-      background-image: none !important;
-    }
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      /* More opaque for better readability */
+      --glass-border: rgba(0, 0, 0, 0.1);
 
-    .light-mode .text-white {
-      color: var(--text-primary) !important;
-    }
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.2);
 
-    .light-mode .text-white\/60 {
-      color: var(--text-secondary) !important;
-    }
-
-    .light-mode .text-white\/40 {
-      color: var(--text-secondary) !important;
+      /* Force dark mode specific text colors to invert or be handled elsewhere */
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      /* Aurora Borealis Effect - Enhanced Red & Blue as requested */
-      background: linear-gradient(-45deg, #4a0404, #05052e, #0e2a3b, #2b051a);
-      background-size: 400% 400%;
-      animation: aurora 20s ease infinite;
-
+      background-color: var(--bg-primary);
       color: var(--text-primary);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      /* Faster Theme Switch */
+      /* Smooth Theme Switch */
+      /* Eliminam vechiul gradient radial complex pentru un look mai "clean" */
+      background-image: none;
     }
 
-    @keyframes aurora {
-      0% {
-        background-position: 0% 50%;
+    /* Font Utility Classes */
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Legacy Utility Overrides for quick adaptation */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .glass-neon {
+      background: var(--glass-bg);
+      border: 1px solid var(--accent-primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Tipografie Headings - Global Defaults */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
 
-      50% {
-        background-position: 100% 50%;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      100% {
-        background-position: 0% 50%;
-      }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.5s ease-out forwards;
     }
 
     /* Gradient Animation for Circular/Border Effects */
@@ -705,13 +798,62 @@
     @keyframes slideInLeft {
       from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-50px);
       }
 
       to {
         opacity: 1;
         transform: translateX(0);
       }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-slide-in-left {
+      opacity: 0;
+      animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-slide-in-right {
+      opacity: 0;
+      animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Text Glow Effects */
+    .text-glow {
+      text-shadow: 0 0 20px rgba(58, 134, 255, 0.5);
+    }
+
+    .text-glow-subtle {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    [data-theme="light"] .text-glow {
+      text-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+
+    [data-theme="light"] .text-glow-subtle {
+      text-shadow: none;
+      /* Cleaner look on white */
+    }
+
+    /* ScrollReveal Helper Integration */
+    .scroll-reveal.visible .reveal-left {
+      animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .scroll-reveal.visible .reveal-right {
+      animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes scaleIn {

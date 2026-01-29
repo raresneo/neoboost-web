@@ -186,11 +186,11 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
     };
 
     return (
-        <div className="bg-[#050505] rounded-3xl border border-white/10 overflow-hidden w-full max-w-5xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-auto min-h-[500px] md:h-auto md:min-h-[550px] animate-in fade-in zoom-in duration-300">
+        <div className="bg-[var(--bg-primary)] rounded-3xl border border-white/10 overflow-hidden w-full max-w-5xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-auto min-h-[500px] md:h-auto md:min-h-[550px] animate-in fade-in zoom-in duration-300">
 
             {/* Sidebar / Visual Context - Hidden in compact mode */}
             {!compact && (
-                <div className="md:w-1/3 bg-[#0a0a0a] relative overflow-hidden flex flex-col justify-between p-6 border-r border-white/5">
+                <div className="md:w-1/3 bg-[var(--bg-secondary)] relative overflow-hidden flex flex-col justify-between p-6 border-r border-white/5">
                     <div className="absolute inset-0 opacity-40">
                         <img
                             src={selectedLocation.image}
@@ -202,7 +202,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                     </div>
 
                     <div className="relative z-10">
-                        <h2 className="text-4xl font-black impact-font text-white mb-2 uppercase leading-none">
+                        <h2 className="text-4xl font-display font-bold text-white mb-2 uppercase leading-none">
                             Programare
                         </h2>
                         <p className="text-[#3A86FF] mono-font text-[10px] uppercase tracking-[0.4em] font-bold">
@@ -226,7 +226,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                     <Clock size={18} />
                                     <span className="font-bold uppercase tracking-wider text-sm">Oră Selectată</span>
                                 </div>
-                                <p className="text-white font-black text-2xl impact-font tracking-wide">
+                                <p className="text-white font-bold text-2xl font-display tracking-wide">
                                     {formatDate(selectedDate)} <span className="text-[#3A86FF]">/</span> {selectedTime}
                                 </p>
                             </div>
@@ -236,7 +236,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
             )}
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col bg-[#050505] relative">
+            <div className="flex-1 flex flex-col bg-[var(--bg-primary)] relative">
                 <div className="p-4 md:p-6 overflow-y-auto custom-scrollbar flex-1">
 
                     {/* Location Tabs - Hidden in compact mode */}
@@ -355,7 +355,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                                     </div>
 
                                     <div>
-                                        <h3 className="text-2xl font-black text-white mb-2 impact-font uppercase">Confirmă Rezervarea</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-2 font-display uppercase">Confirmă Rezervarea</h3>
                                         <p className="text-white/60">
                                             Detaliile rezervării tale sunt pregătite. Alege tipul de antrenament și finalizează pe WhatsApp.
                                         </p>
@@ -413,7 +413,7 @@ export const BookingCalendar: React.FC<{ onClose: () => void; preselectedLocatio
                 </div>
 
                 {/* Footer Actions */}
-                <div className="p-6 border-t border-white/10 bg-[#050505] flex justify-between items-center">
+                <div className="p-6 border-t border-white/10 bg-[var(--bg-primary)] flex justify-between items-center">
                     <button onClick={onClose} className="text-white/40 hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors">
                         Anulează
                     </button>

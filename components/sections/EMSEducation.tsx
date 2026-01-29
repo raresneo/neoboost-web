@@ -9,122 +9,101 @@ import { EMS_MILESTONES } from '../../constants';
 
 // --- EMSEducation Component ---
 export const EMSEducation = () => {
-    // Helper to render a milestone
-    const renderMilestone = (milestone: any, isLeft: boolean) => (
-        <div key={milestone.year} className="flex flex-col gap-6 relative group">
-            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <img
-                    src={milestone.image}
-                    alt={milestone.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-
-                <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-[#3A86FF] font-black impact-font text-3xl opacity-80 block mb-1">
-                        {milestone.year}
-                    </span>
-                    <h3 className="text-lg md:text-xl text-white font-bold uppercase leading-none mb-1">{milestone.title}</h3>
-                </div>
-            </div>
-            <p className="text-white/60 text-[11px] md:text-sm leading-relaxed border-l border-[#3A86FF]/50 pl-4">
-                {milestone.description}
-            </p>
-        </div>
-    );
-
     return (
-        <React.Fragment>
-            {/* SLIDE 1: ORIGINS (1780 - 1960) */}
-            <div className="w-[100vw] h-screen shrink-0 relative bg-[#050a14] text-white flex items-center justify-center snap-center overflow-y-auto no-scrollbar">
-                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-8 lg:py-[5vh]">
-                    <ScrollReveal className="mb-6 text-center">
-                        <div className="flex items-center justify-center gap-4 mb-4">
-                            <History size={20} className="text-[#3A86FF]" />
-                            <span className="text-[#3A86FF] font-bold uppercase tracking-widest text-xs">Chapter 1: Origins</span>
-                        </div>
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black impact-font uppercase text-white">
-                            GENEZA <span className="text-transparent" style={{ WebkitTextStroke: '1px #3A86FF' }}>EMS.</span>
-                        </h2>
-                    </ScrollReveal>
+        <section id="metoda" className="py-20 md:py-32 bg-[var(--bg-secondary)] relative overflow-hidden">
+            <div className="container mx-auto px-6 md:px-24">
+                {/* Section Header */}
+                <ScrollReveal className="text-center mb-20">
+                    <p className="mono-font text-[10px] tracking-[0.5em] text-[#3A86FF] font-black uppercase mb-4">Istorie & Tehnologie</p>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-white uppercase italic">
+                        CUM <span className="text-[#3A86FF]">FUNCȚIONEAZĂ?</span>
+                    </h2>
+                </ScrollReveal>
 
-                    <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
-                        {/* 1780 */}
-                        {renderMilestone(EMS_MILESTONES[0], true)}
-                        {/* 1960 */}
-                        <div className="md:mt-8">
-                            {renderMilestone(EMS_MILESTONES[1], false)}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {/* History Stages */}
+                <div className="grid md:grid-cols-4 gap-8 mb-32 relative">
+                    <div className="absolute top-1/2 left-0 w-full h-px bg-white/5 -translate-y-1/2 hidden md:block"></div>
 
-            {/* SLIDE 2: MODERN ERA (1990 - 2010) */}
-            <div className="w-[100vw] h-screen shrink-0 relative bg-[#050a14] text-white flex items-center justify-center snap-center overflow-y-auto no-scrollbar">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-8 lg:py-[5vh] relative z-10">
-                    <ScrollReveal className="mb-6 text-center">
-                        <span className="text-[#3A86FF] font-bold uppercase tracking-widest text-xs mb-4 block">Chapter 2: Evolution</span>
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black impact-font uppercase text-white">
-                            STANDARDIZARE.
-                        </h2>
-                    </ScrollReveal>
-
-                    <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
-                        {/* 1990 */}
-                        {renderMilestone(EMS_MILESTONES[2], true)}
-                        {/* 2010 */}
-                        <div className="md:mt-8">
-                            {renderMilestone(EMS_MILESTONES[3], false)}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* SLIDE 3: NEOBOOST REVOLUTION (2024+) */}
-            <div className="w-[100vw] h-screen shrink-0 relative bg-black text-white flex items-center justify-center snap-center overflow-y-auto no-scrollbar">
-                {/* Gradient Background for "New Era" */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3A86FF]/20 via-transparent to-black z-0"></div>
-
-                <div className="container mx-auto px-6 md:px-24 h-full flex flex-col justify-center py-8 lg:py-[5vh] relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
-                        {/* 2024 Milestone Highlight */}
-                        <div className="relative">
-                            <div className="absolute -inset-4 bg-[#3A86FF]/20 blur-3xl rounded-full"></div>
-                            {renderMilestone(EMS_MILESTONES[4], true)}
-                        </div>
-
-                        {/* NeoBoost Difference Text */}
-                        <div className="space-y-8">
-                            <div>
-                                <h2 className="text-3xl md:text-5xl font-black impact-font text-white mb-4 leading-[0.9]">
-                                    TRANSFORMARE<br />
-                                    <span className="text-[#3A86FF]">PERSONALIZATĂ.</span>
-                                </h2>
-                                <p className="text-white/60 text-base md:text-lg leading-relaxed">
-                                    La NeoBoost, EMS nu e despre a împinge corpul la limită, ci despre a construi o transformare sustenabilă, într-un cadru de siguranță totală.
-                                </p>
-                            </div>
-
-                            <div className="space-y-6 border-l border-white/10 pl-8">
-                                <div>
-                                    <h4 className="text-white font-bold impact-font text-lg md:text-xl uppercase mb-1 text-[#3A86FF]">Costumul = Interfața</h4>
-                                    <p className="text-white/40 text-[11px] md:text-xs font-light leading-relaxed">
-                                        Fiecare costum este calea prin care semnalul ajunge în corp. Ajustarea lui nu este un detaliu logistic, ci baza personalizării.
-                                    </p>
+                    {[
+                        { year: "1780", title: "GENEZA", desc: "Luigi Galvani descoperă bioelectricitatea. Începutul studiului impulsurilor nervoase.", icon: <History size={20} /> },
+                        { year: "1960", title: "ȘTIINȚA", desc: "Cercetătorii ruși folosesc EMS pentru atleții olimpici, obținând creșteri de 40% în forță.", icon: <Zap size={20} /> },
+                        { year: "2010", title: "STANDARD", desc: "Apar primele sisteme comerciale, dar limitate de cabluri și necesitatea apei.", icon: <Target size={20} /> },
+                        { year: "2024+", title: "REVOLUȚIA", desc: "NeoBoost introduce Drysuit Wireless: libertate totală fără apă sau fire.", icon: <CheckCircle2 size={20} />, isNeo: true }
+                    ].map((stage, i) => (
+                        <ScrollReveal key={stage.year} delay={i * 100}>
+                            <div className={`relative p-8 rounded-2xl border ${stage.isNeo ? 'bg-[#3A86FF]/10 border-[#3A86FF]/30 shadow-[0_0_30px_rgba(58,134,255,0.1)]' : 'bg-white/5 border-white/10'} hover:translate-y--2 transition-all duration-500`}>
+                                <div className={`w-12 h-12 rounded-full mb-6 flex items-center justify-center ${stage.isNeo ? 'bg-[#3A86FF] text-black' : 'bg-white/5 text-[#3A86FF]'}`}>
+                                    {stage.icon}
                                 </div>
-                                <div>
-                                    <h4 className="text-white font-bold impact-font text-lg md:text-xl uppercase mb-1 text-[#3A86FF]">Personalizare Reală</h4>
-                                    <p className="text-white/40 text-[11px] md:text-xs font-light leading-relaxed">
-                                        Nu doar intensitate. Configurăm frecvența, profunzimea stimulării și parametrii pe grupe musculare. Două persoane pot face "același antrenament" cu setări complet diferite.
-                                    </p>
+                                <span className={`text-4xl font-display font-bold block mb-2 ${stage.isNeo ? 'text-[#3A86FF]' : 'text-white/20'}`}>{stage.year}</span>
+                                <h3 className="text-xl font-bold text-white mb-3 uppercase">{stage.title}</h3>
+                                <p className="text-white/40 text-sm leading-relaxed">{stage.desc}</p>
+                            </div>
+                        </ScrollReveal>
+                    ))}
+                </div>
+
+                {/* Equipment Showcase */}
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <ScrollReveal>
+                        <div className="relative group">
+                            <div className="absolute -inset-4 bg-[#3A86FF]/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <img
+                                src="/powerbox_real.jpg"
+                                alt="Echipament NeoBoost EMS"
+                                className="w-full h-auto rounded-[2rem] border border-white/10 shadow-2xl relative z-10"
+                            />
+                            <div className="absolute bottom-8 left-8 z-20">
+                                <div className="bg-black/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10">
+                                    <p className="text-[#3A86FF] font-display font-bold text-3xl uppercase">Drysuit Wireless</p>
+                                    <p className="text-white/60 text-xs font-bold tracking-widest uppercase">Tehnologie de ultimă generație</p>
                                 </div>
                             </div>
                         </div>
+                    </ScrollReveal>
+
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-6 uppercase">ECHIPAMENTUL <span className="text-[#3A86FF]">NOSTRU</span></h3>
+                            <p className="text-white/60 text-lg leading-relaxed">
+                                Folosim cele mai avansate sisteme Wireless care îți permit o <strong className="text-white">mobilitate 100%</strong>. Fără cabluri care să te limiteze, antrenamentul devine dinamic, interactiv și mult mai plăcut.
+                            </p>
+                        </div>
+
+                        <ul className="space-y-6">
+                            <li className="flex gap-4 items-start">
+                                <div className="w-6 h-6 rounded bg-[#3A86FF]/20 flex items-center justify-center text-[#3A86FF] shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h4 className="text-white font-bold uppercase">MOBILITATE FĂRĂ FIRE</h4>
+                                    <p className="text-white/40 text-sm">Transfer de date prin Bluetooth ultra-rapid pentru o libertate de mișcare totală în studio.</p>
+                                </div>
+                            </li>
+                            <li className="flex gap-4 items-start">
+                                <div className="w-6 h-6 rounded bg-[#3A86FF]/20 flex items-center justify-center text-[#3A86FF] shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h4 className="text-white font-bold uppercase">COSTUM USCAT (DRYSUIT)</h4>
+                                    <p className="text-white/40 text-sm">Nu necesită umezire. Te echipezi rapid și începi antrenamentul într-un mediu igienic și confortabil.</p>
+                                </div>
+                            </li>
+                            <li className="flex gap-4 items-start">
+                                <div className="w-6 h-6 rounded bg-[#3A86FF]/20 flex items-center justify-center text-[#3A86FF] shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h4 className="text-white font-bold uppercase">OPȚIUNE FĂRĂ COSTUM</h4>
+                                    <p className="text-white/40 text-sm">Dacă preferi antrenamentele funcționale clasice, avem echipament dedicat și pentru sesiunile fără electrostimulare.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div className="pt-6 border-t border-white/10">
+                            <p className="text-white/50 text-sm mb-4">Disponibil în ambele locații:</p>
+                            <div className="flex gap-4">
+                                <span className="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-white font-bold text-xs uppercase tracking-widest">Hotel Ramada</span>
+                                <span className="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-white font-bold text-xs uppercase tracking-widest">Sala GetFit</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </section>
     );
 };

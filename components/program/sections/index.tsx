@@ -11,7 +11,7 @@ import { MONTHLY_PACKAGES, BRAND } from '../../../constants';
 // Includes Section
 export const IncludesSection: React.FC<{ includes: string[] }> = ({ includes }) => (
     <section className="py-20">
-        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12">
+        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-12">
             CE INCLUDE PROGRAMUL?
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
@@ -34,7 +34,7 @@ interface PricingSectionProps {
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ specialPrice, referencePackages, details }) => (
     <section className="py-20">
-        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12">
+        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-12">
             PREȚURI & OPȚIUNI
         </h2>
 
@@ -56,19 +56,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ specialPrice, re
                                 Recomandat
                             </div>
                         )}
-                        <h3 className="text-2xl font-black impact-font uppercase mb-1">{pkg.title}</h3>
+                        <h3 className="text-2xl font-display font-bold uppercase mb-1">{pkg.title}</h3>
                         <p className="text-[10px] mono-font text-[#3A86FF] font-black uppercase tracking-widest mb-4 opacity-60">{pkg.duration}</p>
 
                         <div className="mb-6">
                             {pkg.sessionCount.includes('+') ? (
                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-4xl font-black impact-font text-white">{pkg.sessionCount.split('+')[0]}</span>
-                                    <span className="text-2xl font-black impact-font text-[#3A86FF]">+{pkg.sessionCount.split('+')[1]}</span>
+                                    <span className="text-4xl font-display font-bold text-white">{pkg.sessionCount.split('+')[0]}</span>
+                                    <span className="text-2xl font-display font-bold text-[#3A86FF]">+{pkg.sessionCount.split('+')[1]}</span>
                                     <span className="text-[10px] font-bold text-white/40 ml-2 uppercase">Ședințe</span>
                                 </div>
                             ) : (
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-4xl font-black impact-font text-white">{pkg.sessionCount}</span>
+                                    <span className="text-4xl font-display font-bold text-white">{pkg.sessionCount}</span>
                                     <span className="text-[10px] font-bold text-white/40 uppercase">Ședințe</span>
                                 </div>
                             )}
@@ -89,7 +89,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ specialPrice, re
 // Bonuses Section
 export const BonusesSection: React.FC<{ bonuses: string[] }> = ({ bonuses }) => (
     <section className="py-20">
-        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12">
+        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-12">
             BONUS EXCLUSIV!
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
@@ -106,7 +106,7 @@ export const BonusesSection: React.FC<{ bonuses: string[] }> = ({ bonuses }) => 
 // Conditions Section
 export const ConditionsSection: React.FC<{ conditions: string[] }> = ({ conditions }) => (
     <section className="py-20">
-        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12">
+        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-12">
             CONDIȚII DE PARTICIPARE
         </h2>
         <div className="glass-block p-10 border-[#3A86FF]/20 rounded-3xl">
@@ -133,7 +133,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ title,
     <section className="py-20">
         <div className="glass-block p-12 md:p-16 border-[#3A86FF]/30 rounded-[3rem] text-center">
             <Calendar size={48} className="text-[#3A86FF] mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-black impact-font uppercase tracking-tighter mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tighter mb-6">
                 {title}
             </h2>
             <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-3xl mx-auto">
@@ -144,7 +144,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ title,
                     href={calendlyLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-3 bg-[#3A86FF] text-black px-10 py-5 rounded-2xl font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(58,134,255,0.3)]"
+                    className="inline-flex items-center justify-center gap-3 bg-[#3A86FF] text-black px-10 py-5 rounded-2xl font-display font-bold text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(58,134,255,0.3)]"
                 >
                     <Calendar size={24} />
                     REZERVĂ UN LOC
@@ -153,7 +153,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ title,
                     href={`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez consultația gratuită.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-3 bg-[#25D366] text-white px-10 py-5 rounded-2xl font-black impact-font text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(37,211,102,0.3)]"
+                    className="inline-flex items-center justify-center gap-3 bg-[#25D366] text-white px-10 py-5 rounded-2xl font-display font-bold text-xl uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(37,211,102,0.3)]"
                 >
                     <MessageCircle size={24} />
                     DISCUTĂ PE WHATSAPP
@@ -167,7 +167,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ title,
 export const AfterConsultationSection: React.FC<{ text: string }> = ({ text }) => (
     <section className="py-12">
         <div className="glass-block p-8 border-[#3A86FF]/20 rounded-2xl">
-            <h3 className="text-2xl font-black impact-font uppercase text-[#3A86FF] mb-4">
+            <h3 className="text-2xl font-display font-bold uppercase text-[#3A86FF] mb-4">
                 CE SE ÎNTÂMPLĂ DUPĂ CONSULTAȚIE?
             </h3>
             <p className="text-lg text-white/80 leading-relaxed">{text}</p>
@@ -178,7 +178,7 @@ export const AfterConsultationSection: React.FC<{ text: string }> = ({ text }) =
 // Location Section
 export const LocationSection: React.FC = () => (
     <section className="py-20">
-        <h2 className="text-4xl md:text-6xl font-black impact-font uppercase tracking-tighter mb-12 text-[#3A86FF]">
+        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-12 text-[#3A86FF]">
             ALEGE LOCAȚIA TA
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
@@ -190,7 +190,7 @@ export const LocationSection: React.FC = () => (
                 <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
                         <MapPin className="text-[#3A86FF]" size={20} />
-                        <h3 className="text-2xl font-black impact-font uppercase text-white">HOTEL RAMADA</h3>
+                        <h3 className="text-2xl font-display font-bold uppercase text-white">HOTEL RAMADA</h3>
                     </div>
                     <p className="text-white/60 text-sm mb-6 leading-relaxed italic">
                         Calea Aradului nr. 9. Atmosferă exclusivistă, liniște și acces premium. Ideal pentru cei care vor maximă discreție.
@@ -210,7 +210,7 @@ export const LocationSection: React.FC = () => (
                 <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
                         <MapPin className="text-[#3A86FF]" size={20} />
-                        <h3 className="text-2xl font-black impact-font uppercase text-white">SALA GETFIT</h3>
+                        <h3 className="text-2xl font-display font-bold uppercase text-white">SALA GETFIT</h3>
                     </div>
                     <p className="text-white/60 text-sm mb-6 leading-relaxed italic">
                         Lotus Center, Nufărului. Lumină naturală din abundență, energie dinamică și acces ultra-facil în cel mai mare centru comercial.

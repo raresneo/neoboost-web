@@ -8,7 +8,7 @@ export const StickyBanner = () => (
             {[...Array(6)].map((_, i) => (
                 <div key={i} className="flex items-center gap-4 px-10">
                     <Zap size={14} className="fill-current" />
-                    <span className="impact-font text-sm md:text-base font-black tracking-widest uppercase">DOAR 30 MINUTE / MINIM 1 ȘEDINȚĂ SĂPTĂMÂNAL</span>
+                    <span className="font-display font-bold text-sm md:text-base tracking-widest uppercase">DOAR 30 MINUTE / MINIM 1 ȘEDINȚĂ SĂPTĂMÂNAL</span>
                     <span className="mono-font text-[10px] font-bold opacity-40 uppercase tracking-widest px-4 border-x border-black/20">Opțiuni flexibile pentru rezultate accelerate</span>
                 </div>
             ))}

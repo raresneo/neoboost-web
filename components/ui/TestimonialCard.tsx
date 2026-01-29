@@ -40,7 +40,7 @@ export const TestimonialCard: React.FC<{ testimonial: Testimonial; i: number }> 
                         <img src={testimonial.imageUrl} alt={testimonial.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                     </div>
                     <div>
-                        <h4 className="text-white font-bold impact-font text-xl group-hover:text-[#3A86FF] transition-colors">{testimonial.name.toUpperCase()}</h4>
+                        <h4 className="text-white font-bold font-display text-xl group-hover:text-[#3A86FF] transition-colors">{testimonial.name.toUpperCase()}</h4>
                         <p className="mono-font text-[9px] text-white/20 uppercase tracking-widest mt-1">{testimonial.role}</p>
                     </div>
                 </div>

@@ -132,11 +132,11 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose, programId, 
     };
 
     return (
-        <div className="fixed inset-0 z-[100000] bg-black text-white flex flex-col h-[100dvh] w-screen overscroll-none" style={{ touchAction: 'pan-y' }}>
+        <div className="fixed inset-0 z-[100000] bg-[var(--bg-primary)] text-white flex flex-col h-[100dvh] w-screen overscroll-none" style={{ touchAction: 'pan-y' }}>
             {/* Header */}
-            <div className="flex justify-between items-center p-4 md:p-6 border-b border-white/10 bg-black z-50">
+            <div className="flex justify-between items-center p-4 md:p-6 border-b border-white/10 bg-[var(--bg-primary)] z-50">
                 <div>
-                    <h2 className="text-xl md:text-2xl font-black impact-font uppercase text-[#3A86FF]">{config.title}</h2>
+                    <h2 className="text-xl md:text-2xl font-display font-bold uppercase text-[#3A86FF]">{config.title}</h2>
                     <div className="flex gap-1 mt-2">
                         {config.steps.map((_, idx) => (
                             <div
@@ -234,13 +234,13 @@ export const StepForm: React.FC<StepFormProps> = ({ config, onClose, programId, 
                 {/* Final Step: Review & Send */}
                 <div
                     ref={el => stepsRef.current[config.steps.length] = el}
-                    className="h-full min-h-[calc(100vh-100px)] w-full flex flex-col justify-center items-center p-6 md:p-20 snap-start bg-[#0a0a0a]"
+                    className="h-full min-h-[calc(100vh-100px)] w-full flex flex-col justify-center items-center p-6 md:p-20 snap-start bg-[var(--bg-primary)]"
                 >
                     <div className="max-w-xl w-full text-center">
                         <div className="w-20 h-20 bg-[#3A86FF]/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
                             <MessageCircle size={40} className="text-[#3A86FF]" />
                         </div>
-                        <h3 className="text-4xl md:text-5xl font-black impact-font uppercase mb-6">Gata de Start!</h3>
+                        <h3 className="text-4xl md:text-5xl font-display font-bold uppercase mb-6">Gata de Start!</h3>
                         <p className="text-white/60 text-lg mb-10 leading-relaxed">
                             Formularul tău este completat. Apasă butonul de mai jos pentru a deschide WhatsApp cu toate detaliile gata scrise.
                         </p>

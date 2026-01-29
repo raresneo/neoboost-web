@@ -148,9 +148,9 @@ export const SeoLandingPage: React.FC = () => {
 
                         <h3 className="text-2xl font-bold text-white mt-12 mb-6">De ce să alegi NeoBoost?</h3>
                         <ul className="list-disc pl-6 space-y-4 text-gray-300">
-                            <li><strong>Timp Economisit:</strong> 30 min EMS = 90 min sală clasică.</li>
-                            <li><strong>Siguranță:</strong> Fără greutăți mari, deci zero presiune pe articulații.</li>
-                            <li><strong>Intimitate:</strong> Studio privat, ești doar tu și antrenorul.</li>
+                            <li><strong>Timp Câștigat:</strong> 30 minute intense în loc de ore pierdute la sală.</li>
+                            <li><strong>Protecție Articulară:</strong> Lucrezi mușchii la maxim, fără să îți uzezi spatele sau genunchii.</li>
+                            <li><strong>Atenție Exclusivă:</strong> Ești singur în studio cu antrenorul tău. Fără aglomerație.</li>
                         </ul>
 
                         <div className="my-12 p-8 bg-[#3A86FF]/10 border border-[#3A86FF] rounded-2xl text-center">

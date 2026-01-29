@@ -1,107 +1,98 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Users, ShieldCheck } from 'lucide-react';
-import { ScrollReveal } from '../ui/ScrollReveal';
-
-import { BioDecryption } from '../ui/BioDecryption';
+import { Clock, Users, ShieldCheck, Zap } from 'lucide-react';
+import { Button } from '../ui/Button';
 
 export const WhatIsEMSSection = () => {
     return (
-        <section className="py-4 lg:py-[4vh] bg-transparent relative z-10 overflow-hidden h-full flex items-center">
-            {/* Ambient Background - More transparent to let body aurora through */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-black/20 to-transparent -z-10"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#3A86FF]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <section className="py-24 bg-[var(--bg-secondary)] relative overflow-hidden">
+            <div className="container mx-auto px-6 lg:px-24">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-            <div className="container mx-auto px-6 md:px-24">
-                <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
-
-                    {/* Text Content - Left Side (Red-ish Accent hint) */}
-                    <ScrollReveal>
-                        <div className="space-y-6 relative">
-                            {/* Subtle Red Glow behind text */}
-                            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[200px] h-[200px] bg-red-600/10 rounded-full blur-[60px] pointer-events-none -z-10"></div>
-
-                            <h2 className="text-xl md:text-3xl lg:text-4xl font-black impact-font text-white leading-tight uppercase">
-                                De ce să alegi antrenamentul EMS la <span className="text-[#3A86FF]">NeoBoost Oradea</span>?
-                            </h2>
-
-                            <div className="space-y-4 lg:space-y-6">
-                                <div className="flex gap-5 group hover:translate-x-2 transition-transform duration-300">
-                                    <div className="w-12 h-12 rounded-full bg-red-600/20 group-hover:bg-red-600/30 flex items-center justify-center shrink-0 text-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)]">
-                                        <Clock size={24} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-white font-bold text-lg lg:text-xl mb-1 group-hover:text-red-400 transition-colors leading-tight">Eficiență Maximă</h3>
-                                        <p className="text-white/60 text-sm lg:text-base leading-relaxed">
-                                            Doar <strong className="text-white"><BioDecryption text="30" /> de minute</strong>, de 1-2 ori pe săptămână. Echivalentul a 4 ore de fitness convențional, activând <strong className="text-white"><BioDecryption text="90%" /></strong> din musculatură.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-5 group hover:translate-x-2 transition-transform duration-300">
-                                    <div className="w-12 h-12 rounded-full bg-[#3A86FF]/20 group-hover:bg-[#3A86FF]/30 flex items-center justify-center shrink-0 text-[#3A86FF] shadow-[0_0_15px_rgba(58,134,255,0.4)]">
-                                        <Users size={24} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-white font-bold text-lg lg:text-xl mb-1 group-hover:text-[#3A86FF] transition-colors leading-tight">Antrenor Personal 1-la-1</h3>
-                                        <p className="text-white/60 text-sm lg:text-base leading-relaxed">
-                                            Nu ești niciodată singur. Fiecare antrenament este ghidat de un specialist certificat care îți corectează postura și ajustează intensitatea.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-5 group hover:translate-x-2 transition-transform duration-300">
-                                    <div className="w-12 h-12 rounded-full bg-cyan-500/20 group-hover:bg-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
-                                        <ShieldCheck size={24} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-white font-bold text-lg lg:text-xl mb-1 group-hover:text-cyan-400 transition-colors leading-tight">Siguranță pentru Articulații</h3>
-                                        <p className="text-white/60 text-sm lg:text-base leading-relaxed">
-                                            Lucrăm fără greutăți mari, protejând coloana și genunchii, ideal pentru recuperare sau pentru cei cu dureri de spate.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="pt-4">
-                                <Link to="/science" className="text-[#3A86FF] font-bold tracking-widest uppercase text-sm border-b border-[#3A86FF] pb-1 hover:text-white hover:border-white transition-all">
-                                    VEZI EXPLICAȚIA ȘTIINȚIFICĂ
-                                </Link>
-                            </div>
+                    {/* Left Content */}
+                    <div className="relative z-10">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] text-xs font-bold tracking-widest uppercase mb-6">
+                            <Zap size={14} />
+                            <span>Tehnologie Avansată</span>
                         </div>
-                    </ScrollReveal>
 
-                    {/* Image / Visual - Dual Tone Logic */}
-                    <ScrollReveal delay={200}>
-                        <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group gradient-border-spin">
-                            {/* Dual Tone Glows - Background */}
-                            {/* Dual Tone Glows - Background */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-red-900/60 via-cyan-500/30 to-blue-900/60 mix-blend-overlay z-20 pointer-events-none"></div>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                            De ce <span className="text-[var(--accent-primary)]">EMS?</span>
+                        </h2>
 
-                            <img
-                                src="/hero_user.jpg"
-                                alt="Antrenament EMS NeoBoost Oradea Red Blue Style"
-                                className="object-cover w-full h-full transition-all duration-700 scale-105 group-hover:scale-110"
-                            />
+                        <p className="text-[var(--text-secondary)] text-lg leading-relaxed mb-10">
+                            Electro-Stimularea Musculară (EMS) este cea mai eficientă metodă de antrenament a secolului 21.
+                            Activează 90% din musculatură simultan, oferind rezultate superioare în timp record.
+                        </p>
 
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-20"></div>
+                        <div className="space-y-8">
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 shrink-0 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--accent-primary)] border border-[var(--border-subtle)]">
+                                    <Clock size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-display font-bold text-white mb-2">Eficiență Maximă</h3>
+                                    <p className="text-[var(--text-muted)] leading-relaxed">
+                                        Doar 30 de minute, o dată pe săptămână. Echivalentul a 4 ore de fitness convențional.
+                                    </p>
+                                </div>
+                            </div>
 
-                            <div className="absolute bottom-6 left-6 right-6 z-30">
-                                <div className="bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 flex items-center justify-between group-hover:border-white/30 transition-colors">
-                                    <div>
-                                        <p className="text-white font-black text-4xl impact-font mb-1 flex items-baseline gap-2">
-                                            30 <span className="text-sm font-bold text-[#3A86FF] tracking-widest">MINUTE</span>
-                                        </p>
-                                        <p className="text-white/60 text-xs uppercase tracking-widest font-bold">Durata unei ședințe complete</p>
-                                    </div>
-                                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center animate-pulse">
-                                        <div className="w-2 h-2 bg-red-500 rounded-full show-status"></div>
-                                    </div>
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 shrink-0 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--accent-primary)] border border-[var(--border-subtle)]">
+                                    <Users size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-display font-bold text-white mb-2">Personal Training 1-la-1</h3>
+                                    <p className="text-[var(--text-muted)] leading-relaxed">
+                                        Antrenor dedicat care îți corectează postura și personalizează intensitatea fiecărui impuls.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 shrink-0 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--accent-primary)] border border-[var(--border-subtle)]">
+                                    <ShieldCheck size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-display font-bold text-white mb-2">Zero Impact Articular</h3>
+                                    <p className="text-[var(--text-muted)] leading-relaxed">
+                                        Ideal pentru recuperare și prevenție. Protejează articulațiile și coloana vertebrală.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </ScrollReveal>
+
+                        <div className="mt-12">
+                            <Link to="/science">
+                                <Button variant="ghost" className="pl-0 hover:bg-transparent hover:text-[var(--accent-primary)]">
+                                    VEZI EXPLICAȚIA ȘTIINȚIFICĂ &rarr;
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* Right Image - Clean & Professional */}
+                    <div className="relative lg:h-[600px] h-[400px] rounded-2xl overflow-hidden border border-[var(--border-subtle)] group">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent z-10"></div>
+                        <img
+                            src="/hero_user.jpg"
+                            alt="Antrenament EMS Profesional"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        {/* Floating Stats Card in Image */}
+                        <div className="absolute bottom-8 left-8 z-20 bg-[var(--bg-primary)]/80 backdrop-blur-md p-6 rounded-xl border border-[var(--border-visible)]">
+                            <div className="flex items-center gap-4">
+                                <span className="text-4xl font-display font-bold text-white">30</span>
+                                <div className="h-10 w-px bg-white/20"></div>
+                                <div className="flex flex-col">
+                                    <span className="text-[var(--accent-primary)] text-xs font-bold tracking-widest uppercase">Minute</span>
+                                    <span className="text-[var(--text-muted)] text-xs">Durata Ședinței</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

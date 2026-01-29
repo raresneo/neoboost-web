@@ -5,6 +5,7 @@ import { Session } from '@supabase/supabase-js';
 
 // --- Components ---
 import { Navbar } from './ui/Navbar';
+import { QuickNav } from './ui/QuickNav';
 import { Preloader } from './ui/Preloader';
 import { ScrollToTop } from './ui/ScrollToTop';
 import { AmbientAudio } from './AmbientAudio';
@@ -31,15 +32,38 @@ export const Layout: React.FC = () => {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(false); // DEBUG: Disabled preloader
 
-    // Theme State
-    const [isLight, setIsLight] = useState(false);
+    // Theme State - Smart Auto-Switching
+    // Default: Light mode during day (06:00 - 17:00), Dark mode otherwise (17:01 - 05:59)
+    // Users can manually toggle, and preference overrides time.
+    const [isLight, setIsLight] = useState(() => {
+        // 1. Check if user has a manual preference saved
+        const savedTheme = localStorage.getItem('theme-preference');
+        if (savedTheme) {
+            return savedTheme === 'light';
+        }
+
+        // 2. If no preference, check time of day
+        const hour = new Date().getHours();
+        const isDayTime = hour >= 6 && hour < 17; // 6 AM to 5 PM (17:00)
+        return isDayTime;
+    });
+
+    // Effect to apply theme and save preference changes
     useEffect(() => {
         if (isLight) {
-            document.body.classList.add('light-mode');
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme-preference', 'light');
         } else {
-            document.body.classList.remove('light-mode');
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme-preference', 'dark');
         }
     }, [isLight]);
+
+    // Optional: Auto-update if specific time thresholds are crossed while app is open, 
+    // ONLY IF the user hasn't manually set a preference during this session? 
+    // For simplicity and user control, we stick to:
+    // - Init: Time based (unless saved)
+    // - Toggle: Manual override (saved forever)
 
     // Auth State
     const [session, setSession] = useState<Session | null>(null);
@@ -108,7 +132,7 @@ export const Layout: React.FC = () => {
         <div className="relative min-h-screen selection:bg-[#3A86FF] selection:text-black">
             {/* Default Global SEO - Pages can override */}
             <SEO
-                title="NeoBoost — Bio-Electric Performance Oradea"
+                title="NeoBoost — Transformare Corporală EMS Fitness Oradea"
                 description="Studio EMS Premium Oradea. Antrenamente de 30 minute cu tehnologie wireless Drysuit."
                 canonical="/"
             />
@@ -146,13 +170,17 @@ export const Layout: React.FC = () => {
                     <ScrollToTop />
                     <CookieBanner />
 
-                    {/* Outlet for Pages */}
-                    <Outlet context={{
-                        session,
-                        onOpenAuth: () => setIsAuthOpen(true),
-                        onOpenBooking: () => setIsBookingOpen(true),
-                        onOpenLocation: handleOpenLocation
-                    }} />
+                    <main className="flex-1 relative">
+                        <QuickNav />
+                        <Outlet context={{
+                            session,
+                            onOpenAuth: () => setIsAuthOpen(true),
+                            onOpenBooking: () => setIsBookingOpen(true),
+                            onOpenLocation: handleOpenLocation,
+                            isLight,
+                            isMuted
+                        }} />
+                    </main>
                 </>
             )}
         </div>
