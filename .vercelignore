@@ -1,0 +1,20 @@
+# Large video files
+*.MP4
+*.MOV
+*.mp4
+*.mov
+public/RAL1663.MP4
+public/review doamna Florina.mp4
+public/new suit 1.mp4
+public/neo-costum2-fara-text.mp4
+public/review Mihai Chirodea.MOV
+public/neo-costum3-fara-text.mp4
+public/neo_review.mp4
+public/the powerbox .MP4
+
+# Build artifacts
+dist/
+
+# Dev files
+node_modules/
+.git/

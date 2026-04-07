@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.google.com">
+
+  <!-- PRIMARY SEO META TAGS -->
+  <title>NeoBoost Oradea – Antrenament EMS & Transformare corporală</title>
+  <link rel="icon" type="image/png" href="/logo_white.png" />
+  <link rel="apple-touch-icon" href="/logo_white.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="description"
+    content="NeoBoost EMS Oradea: Slăbește și tonifiază-ți corpul în doar 30 de minute. Antrenamente EMS personalizate cu tehnologie wireless în locații premium din Oradea.">
+  <meta name="keywords"
+    content="ems oradea, antrenament ems, slabire rapida oradea, tonifiere, fitness oradea, neoboost">
+
+  <!-- EXTRA SEO META TAGS -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="NeoBoost EMS Oradea">
+  <meta name="language" content="Romanian">
+  <meta name="geo.region" content="RO-BH">
+  <meta name="geo.placename" content="Oradea">
+  <meta name="geo.position" content="47.0514;21.9213">
+
+  <!-- MOBILE APP LINKS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="NeoBoost EMS">
+  <meta name="application-name" content="NeoBoost EMS Oradea">
+  <meta name="theme-color" content="#3A86FF">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:url" content="https://neo-boost.com/">
+  <meta property="og:title" content="NeoBoost EMS Oradea – Antrenament EMS pentru Slăbire și Tonifiere">
+  <meta property="og:description"
+    content="Cel mai avansat studio EMS din Oradea ⚡ Antrenamente de 30 minute = 4 ore sală. Tehnologie wireless, rezultate rapide. Programează ședința GRATUITĂ!">
+  <meta property="og:image" content="https://neo-boost.com/assets/og-default.jpg">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="NeoBoost EMS Oradea">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://neo-boost.com/#organization",
+          "name": "NeoBoost EMS",
+          "url": "https://neo-boost.com",
+          "logo": "https://neo-boost.com/assets/logo.png",
+          "sameAs": [
+            "https://www.instagram.com/neoboost.ems",
+            "https://www.facebook.com/neoboost.ems",
+            "https://www.tiktok.com/@neoboost.ems"
+          ]
+        },
+        {
+          "@type": ["LocalBusiness", "HealthAndBeautyBusiness", "SportsActivityLocation"],
+          "@id": "https://neo-boost.com/#localbusiness",
+          "name": "NeoBoost EMS Oradea",
+          "description": "Cel mai avansat studio de electrostimulare musculară din Oradea. Antrenamente personalizate de 30 minute. Slăbire, tonifiere și recuperare.",
+          "image": "https://neo-boost.com/assets/og-default.jpg",
+          "url": "https://neo-boost.com",
+          "telephone": "+40769124019",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calea Aradului nr. 9 (Hotel Ramada)",
+            "addressLocality": "Oradea",
+            "addressRegion": "Bihor",
+            "postalCode": "410223",
+            "addressCountry": "RO"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.0514,
+            "longitude": 21.9213
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "07:00",
+              "closes": "21:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "10:00",
+              "closes": "14:00"
+            }
+          ],
+          "priceRange": "$$"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://neo-boost.com/#website",
+          "url": "https://neo-boost.com",
+          "name": "NeoBoost EMS Oradea",
+          "description": "Studio de antrenament EMS cu tehnologie wireless în Oradea",
+          "publisher": { "@id": "https://neo-boost.com/#organization" },
+          "inLanguage": "ro-RO",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://neo-boost.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://neo-boost.com/#webpage",
+          "url": "https://neo-boost.com",
+          "name": "NeoBoost EMS Oradea – Antrenament EMS & Transformare corporală",
+          "isPartOf": { "@id": "https://neo-boost.com/#website" },
+          "about": { "@id": "https://neo-boost.com/#localbusiness" },
+          "description": "Cel mai avansat studio de antrenament EMS din Oradea. Rezultate în 30 minute. Slăbire rapidă, tonifiere, reducere dureri spate.",
+          "inLanguage": "ro-RO",
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://neo-boost.com/assets/og-default.jpg"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Acasă",
+              "item": "https://neo-boost.com/"
+            }]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://neo-boost.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Ce este antrenamentul EMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Antrenamentul EMS folosește un costum special care trimite impulsuri electrice ușoare către mușchi, în timp ce faci exerciții simple alături de un antrenor. Astfel, se activează mai multe grupe musculare în același timp și obții un antrenament intens în doar 30 de minute."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Cât durează o ședință și cât de des vin la antrenament?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "O ședință de antrenament EMS durează aproximativ 30 de minute. Majoritatea clienților vin de 1–2 ori pe săptămână, în funcție de obiectiv (slăbire, tonifiere, revenire după pauză etc.)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "De ce merită să investești în antrenamentul EMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Investești în cel mai de preț activ al tău: timpul. În doar 30 de minute obții beneficiile a 4 ore de sală convențională, protejându-ți articulațiile și coloana. Este soluția ideală pentru viața modernă."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "De ce merită să investești în antrenamente personalizate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Pentru siguranță, motivație și rezultate garantate. Nu închiriezi doar un aparat, ci angajezi un expert care se asigură că fiecare mișcare este corectă și eficientă. Antrenorul tău adaptează fiecare sesiune la nivelul tău."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Pot să fac antrenament și fără costumul EMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Da. Dacă preferi să începi fără costum sau ai recomandare medicală să eviți electrostimularea, poți alege antrenamente funcționale clasice, fără costum. Lucrăm cu greutatea corpului și accesorii, adaptate nivelului tău."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Ce rezultate pot să aștept de la antrenamentul EMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vei vedea rezultate vizibile în câteva săptămâni, cu 1–2 antrenamente EMS pe săptămână și o alimentație echilibrată. Clienții noștri raportează slăbire, tonifiere accelerată și reducerea durerilor de spate."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Este antrenamentul EMS sigur?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Da, tehnologia este folosită de decenii în recuperare medicală. Impulsurile sunt de joasă frecvență și lucrează musculatura fără a pune presiune pe articulații. Antrenorul tău certificat supraveghează permanent intensitatea."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Pentru cine este potrivit antrenamentul EMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Este ideal pentru persoanele ocupate care vor eficiență maximă, pentru cei care vor să slăbească sau să se tonifieze rapid, dar și pentru cei care au dureri de spate sau articulații sensibile."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Cine NU ar trebui să facă antrenament EMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Antrenamentul EMS nu este recomandat persoanelor cu stimulator cardiac (pacemaker), femeilor însărcinate, persoanelor cu epilepsie, tromboză sau boli cardiovasculare severe. Dacă ai dubii, discută cu medicul tău."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Ce se întâmplă în prima mea ședință la NeoBoost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Prima ședință începe cu o discuție despre obiectivele tale. Apoi te echipăm cu costumul, facem o calibrare ușoară și trecem prin 15-30 de minute de exerciții. La final, discutăm cum te-ai simțit și îți propunem planul potrivit."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "Product",
+          "@id": "https://neo-boost.com/#product",
+          "name": "Antrenament EMS NeoBoost Oradea",
+          "description": "Sesiune de antrenament EMS cu tehnologie wireless - 30 minute echivalent cu 4 ore de sală",
+          "brand": {
+            "@type": "Brand",
+            "name": "NeoBoost EMS"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "price": "0",
+            "priceCurrency": "RON",
+            "priceValidUntil": "2026-12-31",
+            "description": "Prima ședință GRATUITĂ"
+          }
+        }
+      ]
+    }
+    </script>
+
+  <!-- ADDITIONAL STRUCTURED DATA: How-To for better featured snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Cum să începi antrenamentul EMS la NeoBoost Oradea",
+      "description": "Ghid pas cu pas pentru prima ta ședință EMS gratuită la NeoBoost",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "RON",
+        "value": "0"
+      },
+      "totalTime": "PT25M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Programează ședința gratuită",
+          "text": "Contactează-ne la 0769 124 019 sau completează formularul online pentru a programa prima ședință gratuită.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Vino la studio",
+          "text": "Prezintă-te la NeoBoost EMS pe Calea Aradului 9 (Hotel Ramada) cu 10 minute înainte. Echipamentul EMS este oferit de noi.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Antrenament personalizat",
+          "text": "Antrenorul tău certificat va personaliza intensitatea și exercițiile pentru obiectivele tale: slăbire, tonifiere sau recuperare.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Simte rezultatele",
+          "text": "În doar 30 de minute vei activa peste 90% din mușchi. După 4-6 ședințe vei observa primele rezultate vizibile!",
+          "position": 4
+        }
+      ]
+    }
+    </script>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet">
+  </noscript>
+
+  <!-- DNS prefetching for analytics and tags -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+
+  <!-- Google Ads & Meta Pixel (Unchanged) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-416910177"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-416910177');
+    gtag('config', 'G-C6GL4L0J8N');
+  </script>
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2100031940404055');
+    fbq('track', 'PageView');
+  </script>
+</head>
+
+<body>
+  <!-- <div id="custom-cursor"></div> -->
+  <div id="root"></div>
+
+  <script>
+    // ===== GLITCH SOUND EFFECT (Procedural) =====
+    const playGlitchSound = () => {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(Math.random() * 400 + 50, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(Math.random() * 1000 + 100, ctx.currentTime + 0.1);
+
+        gain.gain.setValueAtTime(0.05, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+      } catch (e) { console.warn('Audio Context not allowed yet'); }
+    };
+
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button, a, .glitch-hover')) {
+        playGlitchSound();
+      }
+    });
+
+    // Custom Cursor Logic
+    const cursor = document.getElementById('custom-cursor');
+    if (cursor) {
+      let mouseX = 0, mouseY = 0;
+      let curX = 0, curY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      }, { passive: true });
+
+      const loop = () => {
+        curX += (mouseX - curX) * 0.15;
+        curY += (mouseY - curY) * 0.15;
+        cursor.style.transform = `translate3d(${curX - 10}px, ${curY - 10}px, 0)`;
+        requestAnimationFrame(loop);
+      };
+
+      if (window.matchMedia('(hover: hover)').matches) {
+        loop();
+      }
+    }
+  </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

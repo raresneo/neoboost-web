@@ -1,0 +1,10 @@
+components/sections/ImmersiveHero.tsx(7,10): error TS2459: Module '"../ui/ParticleNetwork"' declares 'ParticleNetwork' locally, but it is not exported.
+components/sections/ScienceSolutionsSection.tsx(8,14): error TS2304: Cannot find name 'ScrollReveal'.
+components/sections/ScienceSolutionsSection.tsx(23,15): error TS2304: Cannot find name 'ScrollReveal'.
+components/sections/ScienceSolutionsSection.tsx(26,18): error TS2304: Cannot find name 'EMS_SOLUTIONS'.
+components/sections/ScienceSolutionsSection.tsx(27,22): error TS2304: Cannot find name 'ScrollReveal'.
+components/sections/ScienceSolutionsSection.tsx(53,23): error TS2304: Cannot find name 'ScrollReveal'.
+components/sections/ServiceSplitSection.tsx(222,36): error TS2322: Type '{ key: string; zone: { id: string; title: string; subtitle: string; description: string; video: string; image: string; icon: any; features: string[]; color: string; cta: string; stats: { forță: number; cardio: number; tonifiere: number; postură: number; energie: number; }; technical: { ...; }; }; }' is not assignable to type '{ zone: { id: string; title: string; subtitle: string; description: string; video: string; image: string; icon: any; features: string[]; color: string; cta: string; stats: { forță: number; cardio: number; tonifiere: number; postură: number; energie: number; }; technical: { ...; }; }; }'.
+  Property 'key' does not exist on type '{ zone: { id: string; title: string; subtitle: string; description: string; video: string; image: string; icon: any; features: string[]; color: string; cta: string; stats: { forță: number; cardio: number; tonifiere: number; postură: number; energie: number; }; technical: { ...; }; }; }'.
+components/ui/ScrollTextReveal.tsx(24,27): error TS2322: Type '{ children: any; key: any; progress: MotionValue<number>; range: [number, number]; }' is not assignable to type '{ children: string; progress: any; range: [number, number]; }'.
+  Property 'key' does not exist on type '{ children: string; progress: any; range: [number, number]; }'.
