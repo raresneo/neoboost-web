@@ -233,7 +233,6 @@ export const TargetAudienceSection = () => {
                             <div className="space-y-8 relative z-10">
                                 <div className="p-4 bg-[var(--warning)]/10 rounded-xl border border-[var(--warning)]/30">
                                     <p className="text-[var(--text-secondary)] mb-4 font-medium text-sm text-yellow-600">
-                                        <em>Acest text trebuie validat intern cu protocolul MYX / medicul înainte de a fi finalizat.</em><br /><br />
                                         Antrenamentul EMS NU este recomandat în anumite situații medicale. Înainte să te programezi, este important să discuți cu medicul tău dacă:
                                     </p>
                                     <ul className="space-y-3">
@@ -251,7 +250,7 @@ export const TargetAudienceSection = () => {
                                         </li>
                                         <li className="flex items-center gap-3">
                                             <div className="w-1.5 h-1.5 bg-[var(--error)] rounded-full"></div>
-                                            <span className="text-[var(--text-secondary)] text-sm">ești însărcinată sau alăptezi în primele luni (de detaliat intern);</span>
+                                            <span className="text-[var(--text-secondary)] text-sm">ești însărcinată sau alăptezi în primele luni;</span>
                                         </li>
                                         <li className="flex items-center gap-3">
                                             <div className="w-1.5 h-1.5 bg-[var(--error)] rounded-full"></div>

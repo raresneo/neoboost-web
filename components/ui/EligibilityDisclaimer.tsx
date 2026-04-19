@@ -30,7 +30,7 @@ export const EligibilityDisclaimer: React.FC = () => {
                         "ai stimulator cardiac (pacemaker) sau alte dispozitive electronice implantate;",
                         "ai avut recent intervenții chirurgicale majore;",
                         "ai afecțiuni cardiace grave sau tulburări severe de ritm;",
-                        "ești însărcinată sau alăptezi în primele luni (de detaliat intern);",
+                        "ești însărcinată sau alăptezi în primele luni;",
                         "ai alte probleme medicale serioase pentru care medicul nu recomandă efort fizic."
                     ].map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3">
