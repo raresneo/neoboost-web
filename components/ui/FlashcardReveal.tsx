@@ -41,17 +41,17 @@ export const FlashcardReveal: React.FC<FlashcardRevealProps> = ({
     const getTransform = () => {
         if (isVisible) return 'translate3d(0, 0, 0)';
         switch (direction) {
-            case 'left': return 'translate3d(-50px, 0, 0)';
-            case 'right': return 'translate3d(50px, 0, 0)';
-            case 'top': return 'translate3d(0, -50px, 0)';
-            case 'bottom': default: return 'translate3d(0, 50px, 0)';
+            case 'left': return 'translate3d(-24px, 0, 0)';
+            case 'right': return 'translate3d(24px, 0, 0)';
+            case 'top': return 'translate3d(0, -24px, 0)';
+            case 'bottom': default: return 'translate3d(0, 24px, 0)';
         }
     };
 
     const style: React.CSSProperties = {
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
-        transition: `opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) ${delay}ms, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) ${delay}ms`,
+        transition: `opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) ${delay}ms, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) ${delay}ms`,
         willChange: 'opacity, transform'
     };
 

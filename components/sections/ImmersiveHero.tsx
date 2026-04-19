@@ -64,7 +64,7 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                     style={{ border: 0 }}
                 />
                 {/* Gradient Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-[var(--bg-primary)]/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/90 to-[var(--bg-primary)]/40"></div>
             </motion.div>
 
             {/* Ambient Glow - Subtle for Light Mode */}
@@ -98,7 +98,7 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                         mode="char"
                         stagger={0.03}
                         delay={0.5}
-                        className="font-display font-black text-white text-5xl md:text-8xl lg:text-[7rem] leading-[0.85] tracking-tighter uppercase drop-shadow-2xl justify-center italic mb-8"
+                        className="font-display font-black text-gray-900 text-5xl md:text-8xl lg:text-[7rem] leading-[0.85] tracking-tighter uppercase drop-shadow-sm justify-center italic mb-8"
                     />
 
                     <motion.div
@@ -107,8 +107,8 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                         transition={{ duration: 1.2, delay: 1.2, ease: [0.33, 1, 0.68, 1] }}
                         className="text-center"
                     >
-                        <p className="text-xl md:text-2xl text-white/80 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
-                            Descoperă tehnologia <span className="text-white font-bold border-b-2 border-brand/50">Wireless EMS</span> în Oradea.
+                        <p className="text-xl md:text-2xl text-gray-600 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+                            Descoperă tehnologia <span className="text-gray-900 font-bold border-b-2 border-brand/50">Wireless EMS</span> în Oradea.
                             20 de minute pentru rezultate vizibile, fără efortul inutil al antrenamentelor clasice.
                         </p>
                     </motion.div>
