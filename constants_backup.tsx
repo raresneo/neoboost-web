@@ -590,7 +590,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Mustafa Dalkilic",
     role: "Transformare (-18kg)",
-    quote: "Echipa super serioasa si punctuala, locatia super curata. In 3 luni am ajuns de la 139 kg la 120.5! Recomand cu incredere, odata incercat provoaca dependenta.",
+    quote: "Echipa super serioasă și punctuală, locația super curată. În 3 luni am ajuns de la 139 kg la 120.5! Recomand cu încredere, odată încercat provoacă dependență.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Mustafa+Dalkilic&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
@@ -598,7 +598,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Maria Marc",
     role: "Rezultate (-15kg)",
-    quote: "Recomand cu încredere acest centru. Pe mine m-a ajutat sa slăbesc 15 kg în 7 luni. Personalul este dedicat și implicat în atingerea obiectivelor tale.",
+    quote: "Recomand cu încredere acest centru. Pe mine m-a ajutat să slăbesc 15 kg în 7 luni. Personalul este dedicat și implicat în atingerea obiectivelor tale.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Maria+Marc&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
@@ -614,7 +614,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Chirodea Mihai",
     role: "Client Fidel",
-    quote: "Vin la acest studio de 4 luni si nu am regretat o zi. Pe langa antrenorii foarte prietenosi si seriosi, programul este exact ce aveam nevoie.",
+    quote: "Vin la acest studio de 4 luni și nu am regretat o zi. Pe lângă antrenorii foarte prietenoși și serioși, programul este exact ce aveam nevoie.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Chirodea+Mihai&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"
@@ -622,7 +622,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Boglarka Kiraly",
     role: "Experiență Premium",
-    quote: "Imi place sa vin la Neo, sunt multumita de conditiile pe care le ofera. Imi plac echipamentele, antrenamentele EMS, echipa și tot centrul in sine.",
+    quote: "Îmi place să vin la Neo, sunt mulțumită de condițiile pe care le oferă. Îmi plac echipamentele, antrenamentele EMS, echipa și tot centrul în sine.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Boglarka+Kiraly&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii"

@@ -20,7 +20,7 @@ const STEPS = [
     {
         icon: <CalendarCheck size={28} />,
         title: "2. Fii constant 3 luni",
-        description: "Antrenează-te regulat, urmează planul cu antrenorul tău. Noi urmărim progresul și te ținem responsabil."
+        description: "Urmează planul împreună cu antrenorul tău. Ne ocupăm noi să-ți urmărim progresul și să te ținem responsabil."
     },
     {
         icon: <Gift size={28} />,
@@ -252,17 +252,19 @@ export const OfertaTreiPlusUnuPage: React.FC = () => {
                                             </div>
 
                                             <div className="grid gap-3">
-                                                <div className="relative w-full">
-                                                    <button
-                                                        onClick={() => handleDirectPurchase(pkg)}
-                                                        disabled={isLoading === pkg.stripePriceId}
-                                                        className={`w-full py-4 font-black uppercase text-sm tracking-widest flex items-center justify-center gap-2 rounded-xl transition-all shadow-md active:scale-95 ${pkg.isPremium ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-500/20 hover:shadow-blue-500/40' : 'bg-gray-900 text-white hover:bg-gray-800'}`}
-                                                    >
-                                                        {isLoading === pkg.stripePriceId ? 'Se procesează...' : (
-                                                            <><CreditCard size={16} /> CUMPĂRĂ ACUM</>
-                                                        )}
-                                                    </button>
-                                                </div>
+                                                {pkg.isPremium && (
+                                                    <div className="relative w-full">
+                                                        <button
+                                                            onClick={() => handleDirectPurchase(pkg)}
+                                                            disabled={isLoading === pkg.stripePriceId}
+                                                            className={`w-full py-4 font-black uppercase text-sm tracking-widest flex items-center justify-center gap-2 rounded-xl transition-all shadow-md active:scale-95 bg-blue-600 text-white hover:bg-blue-700 shadow-blue-500/20 hover:shadow-blue-500/40`}
+                                                        >
+                                                            {isLoading === pkg.stripePriceId ? 'Se procesează...' : (
+                                                                <><CreditCard size={16} /> CUMPĂRĂ ACUM</>
+                                                            )}
+                                                        </button>
+                                                    </div>
+                                                )}
                                                 <button
                                                     onClick={() => handleWhatsApp(pkg.title)}
                                                     className="w-full py-4 border border-gray-200 text-gray-600 font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 rounded-xl hover:bg-gray-50 transition-all active:scale-95"

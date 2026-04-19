@@ -28,3 +28,4 @@ server/.env
 *.sw?
 public/*.mp4
 .vercel
+.env*.local

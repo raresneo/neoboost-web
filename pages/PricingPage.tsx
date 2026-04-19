@@ -5,6 +5,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { BRAND, MONTHLY_PACKAGES } from '../constants';
 import { Button } from '../components/ui/Button';
+import { EligibilityDisclaimer } from '../components/ui/EligibilityDisclaimer';
 
 export const PricingPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState<string | null>(null);
@@ -78,7 +79,7 @@ export const PricingPage: React.FC = () => {
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
                                     </span>
-                                    Ofertă Excluvivă Online
+                                    Ofertă Exclusivă Online
                                 </div>
                                 <h3 className="text-3xl md:text-4xl font-black text-gray-900 impact-font uppercase italic leading-none mb-3">
                                     TRANSFORMARE <span className="text-brand">3 + 1 GRATUIT</span>
@@ -115,7 +116,7 @@ export const PricingPage: React.FC = () => {
                             <h4 className="text-[var(--text-primary)] font-display font-bold text-xl mb-1 uppercase tracking-wide relative z-10">{pkg.title}</h4>
                             <p className="text-brand text-xs font-bold uppercase tracking-widest mb-4 relative z-10">{pkg.sessionCount} Ședințe / lună</p>
                             <div className="flex items-baseline gap-1 mb-8">
-                                <span className="text-3xl font-bold text-[var(--text-primary)]">{pkg.price}</span>
+                                <span className="text-3xl font-bold text-[var(--text-primary)]">{pkg.price.replace(/ RON/i, '')}</span>
                                 <span className="text-xs font-bold text-gray-400 uppercase">RON</span>
                             </div>
 
@@ -129,14 +130,16 @@ export const PricingPage: React.FC = () => {
                             </ul>
 
                             <div className="flex flex-col gap-3 relative z-10 mt-auto">
-                                <Button
-                                    variant={pkg.isRecommended ? 'primary' : 'secondary'}
-                                    className={`w-full justify-center font-bold uppercase tracking-widest text-xs ${pkg.isRecommended ? 'shadow-lg shadow-brand/20' : 'bg-gray-900 text-white border-gray-900 hover:bg-gray-800'}`}
-                                    onClick={() => handleCheckout(pkg.stripePriceId, parseInt(pkg.price.replace(/[^0-9]/g, '')), pkg.title)}
-                                    isLoading={isLoading === pkg.stripePriceId}
-                                >
-                                    Cumpără Acum
-                                </Button>
+                                {pkg.isRecommended && (
+                                    <Button
+                                        variant="primary"
+                                        className="w-full justify-center font-bold uppercase tracking-widest text-xs shadow-lg shadow-brand/20"
+                                        onClick={() => handleCheckout(pkg.stripePriceId, parseInt(pkg.price.replace(/[^0-9]/g, '')), pkg.title)}
+                                        isLoading={isLoading === pkg.stripePriceId}
+                                    >
+                                        Cumpără Acum
+                                    </Button>
+                                )}
                                 <button
                                     onClick={() => window.open(`https://wa.me/${BRAND.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Salut! Vreau să discut despre abonamentul ${pkg.title} (${pkg.sessionCount} ședințe/lună).`)}`, '_blank')}
                                     className="w-full py-3 border border-gray-200 text-gray-600 font-bold uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 rounded-xl hover:bg-gray-50 transition-all active:scale-95"
@@ -146,6 +149,11 @@ export const PricingPage: React.FC = () => {
                             </div>
                         </SpotlightCard>
                     ))}
+                </div>
+
+                {/* Eligibility Disclaimer Section */}
+                <div className="mt-16 sm:mt-24">
+                    <EligibilityDisclaimer />
                 </div>
             </div>
         </div>

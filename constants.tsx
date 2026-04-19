@@ -71,7 +71,7 @@ export const EMS_MILESTONES: Milestone[] = [
   {
     year: "1960",
     title: "Secretul sovieticilor",
-    description: "Rușii folosesc electrostimularea pe sportivi și obțin creșteri de 40% în forță 💪. Tehnologia era ținută secret 🤫.",
+    description: "Rușii folosesc electrostimularea pe sportivi și obțin creșteri de 40% în forță 💪. Tehnologia era ținută secretă 🤫.",
     icon: <Medal size={20} />,
     image: "/ems_1960.webp"
   },
@@ -84,7 +84,7 @@ export const EMS_MILESTONES: Milestone[] = [
   },
   {
     year: "2024+",
-    title: "Cum arătă azi",
+    title: "Cum arată azi",
     description: "La NeoBoost avem costum uscat, wireless, fără cabluri 🚀. Te echipezi în 30 secunde și ești gata ⏱️.",
     icon: <Zap size={20} />,
     isNeo: true,
@@ -113,7 +113,7 @@ export const EMS_STEPS = [
   {
     id: "03",
     title: "Antrenamentul (30 min) ⏱️",
-    description: "Faci exerciții simple ghidate de antrenor în timp ce costumul îți lucrează mușchii. Nu e Șoc, nu doare 💆.",
+    description: "Faci exerciții simple, ghidate de antrenor, timp în care costumul îți lucrează mușchii. Nu e șoc, nu doare 💆.",
     icon: <Zap size={20} />
   },
   {
@@ -159,7 +159,7 @@ export const EMS_PROTOCOL = {
     }
   ],
   techDetails: [
-    "Fibre de argint și carbon integrate direct în țesătură pentru conductivitate optimă pe pielea uscată ⚡.",
+    "Fibre de argint și carbon integrate direct în țesătură pentru conductivitate optimă pe pielea uscată.",
     "Power Box lateral cu algoritmi de frecvență variabilă pentru a preveni adaptarea musculară 🧠.",
     "Sistem de compresie anatomică ce garantează contactul perfect al celor 20 de electrozi 🎯."
   ]
@@ -202,8 +202,8 @@ export const UNIFIED_BENEFITS = [
     desc: "Nu te înfometa 🍔🚫. Pune-ți corpul să ardă singur. După 30 de minute aici, metabolismul tău rămâne ridicat până la 3 zile ⏳.",
     image: "/Antrenament Metabolic.webp",
     content: {
-      intro: "Nu credem în diete de înfometare. Credem în a-ți accelera metabolismul 🚀 astfel încât corpul să ardă grasimi chiar și când dormi 😴.",
-      science: "Se cheamă efectul EPOC – corpul consuma oxigen suplimentar după antrenament și arde calorii pentru a se reface. Noi îl declanșăm la maxim 💯.",
+      intro: "Nu credem în diete de înfometare. Credem în a-ți accelera metabolismul 🚀 astfel încât corpul să ardă grăsimi chiar și când dormi 😴.",
+      science: "Se cheamă efectul EPOC – corpul consumă oxigen suplimentar după antrenament și arde calorii pentru a se reface. Noi îl declanșăm la maxim 💯.",
       mechanisms: [
         "Metabolism accelerat chiar și în zilele de pauză 🛋️.",
         "Consum de 400-600 calorii pe ședință 🔥.",
@@ -287,7 +287,7 @@ export const UNIFIED_BENEFITS = [
         "Zero timp pierdut cu așteptat ⏱️.",
         "Efect hormonal similar cu antrenamentul clasic 🧬."
       ],
-      expectations: "Mai mult timp pentru ce contează, cu un corp mai fit decât oricind ✨."
+      expectations: "Mai mult timp pentru ce contează, cu un corp mai fit decât oricând ✨."
     },
     cta: "Vreau eficiență",
     badge: "⚡ ECONOMISEȘTI TIMP"
@@ -475,7 +475,7 @@ export const LOCATIONS: Location[] = [
 export const FAQS: NeoFAQItem[] = [
   {
     question: "Cât durează o ședință EMS?",
-    answer: "O ședință completă durează aproximativ 30 de minute. Din acestea, 20–25 de minute sunt efectiv antrenament sub supravegherea antrenorului, iar restul timp este pentru evaluare, echipare și scurte recomandări la final.",
+    answer: "O ședință completă durează aproximativ 30 de minute. Din acestea, 20–25 de minute sunt efectiv antrenament sub supravegherea antrenorului, iar restul timpului este pentru evaluare, echipare și scurte recomandări la final.",
     icon: <Clock size={24} />
   },
   {
@@ -569,7 +569,7 @@ export const EMS_SOLUTIONS = [
     id: "performance",
     title: "Forță & Explozivitate",
     description: "Atinge-ți potențialul genetic maxim în timp record.",
-    science: "EMS recrutează fibrele musculare rapide (Type 2) de la prima contracție, crescând forța pură fără a uza articulațiilor.",
+    science: "EMS recrutează fibrele musculare rapide (Type II) de la prima contracție, crescând forța pură fără a uza articulațiile.",
     icon: <Zap size={32} className="text-[#00F5FF]" />
   }
 ];
@@ -588,7 +588,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Mustafa Dalkilic",
     role: "Transformare (-18kg)",
-    quote: "Echipa super serioasa si punctuala, locatia super curata. In 3 luni am ajuns de la 139 kg la 120.5! Recomand cu incredere, odata incercat provoaca dependenta.",
+    quote: "Echipa super serioasă și punctuală, locația super curată. În 3 luni am ajuns de la 139 kg la 120.5! Recomand cu încredere, odată încercat provoacă dependență.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Mustafa+Dalkilic&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -598,7 +598,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Maria Marc",
     role: "Rezultate (-15kg)",
-    quote: "Recomand cu încredere acest centru. Pe mine m-a ajutat sa slăbesc 15 kg în 7 luni. Personalul este dedicat și implicat în atingerea obiectivelor tale.",
+    quote: "Recomand cu încredere acest centru. Pe mine m-a ajutat să slăbesc 15 kg în 7 luni. Personalul este dedicat și implicat în atingerea obiectivelor tale.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Maria+Marc&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -608,7 +608,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Denisa Bara",
     role: "Profesionalism",
-    quote: "Personal profesionist, cu atitudine de mentor. Antrenorii nu sunt simple prezențe care doar “asistă”, ci se implica activ în corectarea posturii.",
+    quote: "Personal profesionist, cu atitudine de mentor. Antrenorii nu sunt simple prezențe care doar „asistă”, ci se implică activ în corectarea posturii.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Denisa+Bara&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -618,7 +618,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Chirodea Mihai",
     role: "Client Fidel",
-    quote: "Vin la acest studio de 4 luni si nu am regretat o zi. Pe langa antrenorii foarte prietenosi si seriosi, programul este exact ce aveam nevoie.",
+    quote: "Vin la acest studio de 4 luni și nu am regretat o zi. Pe lângă antrenorii foarte prietenoși și serioși, programul este exact ce aveam nevoie.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Chirodea+Mihai&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -628,7 +628,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Boglarka Kiraly",
     role: "Experiență Premium",
-    quote: "Imi place sa vin la Neo, sunt multumita de conditiile pe care le ofera. Imi plac echipamentele, antrenamentele EMS, echipa și tot centrul in sine.",
+    quote: "Îmi place să vin la Neo, sunt mulțumită de condițiile pe care le oferă. Îmi plac echipamentele, antrenamentele EMS, echipa și tot centrul în sine.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Boglarka+Kiraly&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -666,7 +666,7 @@ export const MIXED_REVIEWS: Testimonial[] = [
   {
     name: "Mustafa Dalkilic",
     role: "Transformare (-18kg)",
-    quote: "Echipa super serioasa si punctuala. In 3 luni am ajuns de la 139 kg la 120.5! Recomand cu incredere.",
+    quote: "Echipa super serioasă și punctuală. În 3 luni am ajuns de la 139 kg la 120.5! Recomand cu încredere.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Mustafa+Dalkilic&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -679,7 +679,7 @@ export const MIXED_REVIEWS: Testimonial[] = [
   {
     name: "Maria Marc",
     role: "Rezultate (-15kg)",
-    quote: "Recomand cu încredere. M-a ajutat sa slăbesc 15 kg în 7 luni. Personal dedicat.",
+    quote: "Recomand cu încredere. M-a ajutat să slăbesc 15 kg în 7 luni. Personal dedicat.",
     rating: 5,
     imageUrl: "https://ui-avatars.com/api/?name=Maria+Marc&background=3A86FF&color=fff&size=128",
     link: "https://www.google.com/search?q=neoboost+oradea+recenzii",
@@ -741,11 +741,11 @@ export const BENEFIT_ARTICLES = [
     subtitle: "ADEVĂRUL DIN SPATELE MITURILOR",
     image: "/DSC08275.webp",
     infographic: "/info_myths.webp",
-    intro: "Antrenamentele EMS au devenit tot mai populare, dar o dată cu ele au apărut și miturile. Unii le consideră 'pentru leneși', alții 'periculoase'. Scopul acestui articol este de a răspunde întrebării 'Sunt antrenamentele EMS periculoase?' aducând argumente reale, transparente și validate științific.",
+    intro: "Antrenamentele EMS au devenit tot mai populare, dar odată cu ele au apărut și miturile. Unii le consideră 'pentru leneși', alții 'periculoase'. Scopul acestui articol este de a răspunde întrebării 'Sunt antrenamentele EMS periculoase?' aducând argumente reale, transparente și validate științific.",
     mechanisms: [
       {
         title: "Mit: 'Fentează' Mușchiul",
-        desc: "ADEVĂR: Greșit. Impulsul electric este doar declanșatorul. Contracția musculară este reală, physiologică și extrem de intensă. Nu 'păcălești' efortul, îl amplifici."
+        desc: "ADEVĂR: Greșit. Impulsul electric este doar declanșatorul. Contracția musculară este reală, fiziologică și extrem de intensă. Nu 'păcălești' efortul, îl amplifici."
       },
       {
         title: "Mit: 'Periculos pentru Inimă'",
@@ -815,7 +815,7 @@ export const BENEFIT_ARTICLES = [
       },
       {
         title: "Efectul Afterburn (EPOC)",
-        desc: "Organismul continuă să ardă calorii timp de pana la 72 de ore după antrenament pentru a reface rezervele de energie și a repara țesutul muscular."
+        desc: "Organismul continuă să ardă calorii timp de până la 72 de ore după antrenament pentru a reface rezervele de energie și a repara țesutul muscular."
       },
       {
         title: "Deficit Caloric Fără Epuizare",
@@ -827,7 +827,7 @@ export const BENEFIT_ARTICLES = [
     seo: {
       title: "Slăbire Inteligentă în Oradea | Activare Metabolică NeoBoost",
       description: "Nu doar slăbire, ci recompoziție corporală. Află cum tehnologia EMS NeoBoost Oradea arde calorii timp de 72h după antrenament. Știință, nu magie.",
-      keywords: ["slabire inteligenta oradea", "ardere grasimi ems", "metabolism accelerat", "remodelare corporala", "fitness eficient oradea"]
+      keywords: ["slabire inteligenta oradea", "ardere grăsimi ems", "metabolism accelerat", "remodelare corporala", "fitness eficient oradea"]
     }
   },
   {
@@ -966,7 +966,7 @@ export const BENEFIT_ARTICLES = [
     mechanisms: [
       {
         title: "Secretul Confortului: Curentul Bipolar",
-        desc: "Spre deosebire de tehnologiile vechi, noi folosim curent bipolar. Asta înseamnă că impulsul nu 'înțeapă' și nu irită pielea, ci se simte ca o contracție naturală, profundă. Elimina acumularea de sarcini electrice sub electrozi, permițând sesiuni mai lungi fără niciun disconfort."
+        desc: "Spre deosebire de tehnologiile vechi, noi folosim curent bipolar. Asta înseamnă că impulsul nu 'înțeapă' și nu irită pielea, ci se simte ca o contracție naturală, profundă. Elimină acumularea de sarcini electrice sub electrozi, permițând sesiuni mai lungi fără niciun disconfort."
       },
       {
         title: "Frecvențe Inteligente pentru Fiecare Obiectiv",
@@ -1360,7 +1360,7 @@ export const PROGRAMS = [
     price: "250 RON",
     stripePriceId: "price_1Sn26zJAtuHj34DejlSl8LTE", // Reusing Starter for now (or needs separate)
     description: "Start inteligent. 14 zile de evaluare și învățare pentru a te asigura că pornești corect la drum cu NeoBoost.",
-    content: "On-Boarding (Start Smart)\n\nFUNDAȚIA SUCCESULUI TĂU\n\n14 Zile în care învățăm despre corpul tău și setăm planul perfect.\n\nEști gata să faci o schimbare?\nNu ghici, planifică. Start Smart este garanția că investiția ta va da roade.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Înțelegi exact de ce are nevoie corpul tău.\n✔️ Înveți tehnica corectă de execuție.\n✔️ Stabilești obiective realiste.\n\nCE INCLUDE?\n- Consultație și Analiză Corporală Avansată.\n- 2-4 Sesiuni de Calibrare și Învățare.\n- Plan de Acțiune Personalizat.\n\nBONUS: RECOMPENSA 3+1\nIntră direct întrun abonament de 3 luni după On-Boarding și primești a 4-a lună CADOU."
+    content: "On-Boarding (Start Smart)\n\nFUNDAȚIA SUCCESULUI TĂU\n\n14 Zile în care învățăm despre corpul tău și setăm planul perfect.\n\nEști gata să faci o schimbare?\nNu ghici, planifică. Start Smart este garanția că investiția ta va da roade.\n\n[WHATSAPP_LINK]\n\nBENEFICII CHEIE:\n✔️ Înțelegi exact de ce are nevoie corpul tău.\n✔️ Înveți tehnica corectă de execuție.\n✔️ Stabilești obiective realiste.\n\nCE INCLUDE?\n- Consultație și Analiză Corporală Avansată.\n- 2-4 Sesiuni de Calibrare și Învățare.\n- Plan de Acțiune Personalizat.\n\nBONUS: RECOMPENSA 3+1\nIntră direct într-un abonament de 3 luni după On-Boarding și primești a 4-a lună CADOU."
   },
   {
     id: "vip",
@@ -1530,7 +1530,7 @@ export const TRANSFORMATIONS = [
     metrics: {
       weight: { start: 116, end: 106, unit: "kg", label: "Greutate" },
       bodyFat: { start: 25, end: 17, unit: "%", label: "Grăsime" },
-      muscle: { start: 39, end: 41.5, unit: "%", label: "Muschi" },
+      muscle: { start: 39, end: 41.5, unit: "%", label: "Mușchi" },
       bmr: { start: 2100, end: 2450, unit: "kcal", label: "Metabolism" },
       amr: { start: 2800, end: 3400, unit: "kcal", label: "Activ" }
     },
