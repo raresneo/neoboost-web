@@ -127,20 +127,20 @@ export const EMSEducation = () => {
                                 </div>
 
                                 <div className="relative z-20 mt-52 w-full flex flex-col items-center">
-                                    <h4 className="text-4xl font-black text-white uppercase mb-1 tracking-tighter drop-shadow-2xl">The PowerBox</h4>
-                                    <p className="text-blue-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-8 drop-shadow-md">Creierul Sistemului</p>
+                                    <h4 className="text-4xl md:text-5xl font-black text-white uppercase mb-1 tracking-tighter drop-shadow-2xl">The PowerBox</h4>
+                                    <p className="text-blue-300 text-[10px] font-bold tracking-[0.4em] uppercase mb-8 drop-shadow-md">Creierul Sistemului</p>
 
-                                    <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 mx-2 shadow-2xl relative overflow-hidden group-hover:border-blue-500/20 transition-all duration-700">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                                        <p className="text-zinc-400 text-sm leading-relaxed font-bold relative z-10 group-hover:text-zinc-200 transition-colors">
+                                    <div className="bg-black/40 backdrop-blur-2xl rounded-3xl p-6 border border-white/20 mx-2 shadow-2xl relative overflow-hidden group-hover:border-blue-500/40 transition-all duration-700">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                        <p className="text-zinc-100 text-sm leading-relaxed font-bold relative z-10">
                                             Cel mai mic și puternic generator EMS de pe piață.
                                             Transmisie Bluetooth 5.0 pentru libertate totală.
                                         </p>
                                     </div>
 
                                     <div className="flex gap-3 mt-8">
-                                        <span className="px-5 py-2 bg-blue-600/90 rounded-full text-[9px] font-black text-white border border-blue-400/50 shadow-[0_0_20px_rgba(37,99,235,0.4)] uppercase tracking-widest translate-x-1">Wireless</span>
-                                        <span className="px-5 py-2 bg-white/5 rounded-full text-[9px] font-black text-white border border-white/10 shadow-xl uppercase tracking-widest -translate-x-1">Ultra-Light</span>
+                                        <span className="px-5 py-2 bg-blue-600 rounded-full text-[9px] font-black text-white border border-blue-400 shadow-[0_0_20px_rgba(37,99,235,0.4)] uppercase tracking-widest translate-x-1">Wireless</span>
+                                        <span className="px-5 py-2 bg-white/10 rounded-full text-[9px] font-black text-white border border-white/20 shadow-xl uppercase tracking-widest -translate-x-1">Ultra-Light</span>
                                     </div>
                                 </div>
                             </div>
@@ -169,20 +169,20 @@ export const EMSEducation = () => {
                                 </div>
 
                                 <div className="relative z-20 mt-52 w-full flex flex-col items-center">
-                                    <h4 className="text-4xl font-black text-white uppercase mb-1 tracking-tighter drop-shadow-2xl">The DrySuit</h4>
-                                    <p className="text-blue-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-8 drop-shadow-md">Armura Ta</p>
+                                    <h4 className="text-4xl md:text-5xl font-black text-white uppercase mb-1 tracking-tighter drop-shadow-2xl">The DrySuit</h4>
+                                    <p className="text-blue-300 text-[10px] font-bold tracking-[0.4em] uppercase mb-8 drop-shadow-md">Armura Ta</p>
 
-                                    <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 mx-2 shadow-2xl relative overflow-hidden group-hover:border-blue-500/20 transition-all duration-700">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                                        <p className="text-zinc-400 text-sm leading-relaxed font-bold relative z-10 group-hover:text-zinc-200 transition-colors">
+                                    <div className="bg-black/40 backdrop-blur-2xl rounded-3xl p-6 border border-white/20 mx-2 shadow-2xl relative overflow-hidden group-hover:border-blue-500/40 transition-all duration-700">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                        <p className="text-zinc-100 text-sm leading-relaxed font-bold relative z-10">
                                             Nu necesită umezire. Material antibacterian.
                                             Se mulează perfect pe corp pentru libertate totală.
                                         </p>
                                     </div>
 
                                     <div className="flex gap-3 mt-8">
-                                        <span className="px-5 py-2 bg-blue-600/90 rounded-full text-[9px] font-black text-white border border-blue-400/50 shadow-[0_0_20px_rgba(37,99,235,0.4)] uppercase tracking-widest translate-x-1">No Water</span>
-                                        <span className="px-5 py-2 bg-white/5 rounded-full text-[9px] font-black text-white border border-white/10 shadow-xl uppercase tracking-widest -translate-x-1">Antibacterial</span>
+                                        <span className="px-5 py-2 bg-blue-600 rounded-full text-[9px] font-black text-white border border-blue-400 shadow-[0_0_20px_rgba(37,99,235,0.4)] uppercase tracking-widest translate-x-1">No Water</span>
+                                        <span className="px-5 py-2 bg-white/10 rounded-full text-[9px] font-black text-white border border-white/20 shadow-xl uppercase tracking-widest -translate-x-1">Antibacterial</span>
                                     </div>
                                 </div>
                             </div>
@@ -211,20 +211,20 @@ export const EMSEducation = () => {
                                 </div>
 
                                 <div className="relative z-20 mt-52 w-full flex flex-col items-center">
-                                    <h4 className="text-4xl font-black text-white uppercase mb-1 tracking-tighter drop-shadow-2xl">The Control</h4>
-                                    <p className="text-blue-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-8 drop-shadow-md">Unitate de Comandă</p>
+                                    <h4 className="text-4xl md:text-5xl font-black text-white uppercase mb-1 tracking-tighter drop-shadow-2xl">The Control</h4>
+                                    <p className="text-blue-300 text-[10px] font-bold tracking-[0.4em] uppercase mb-8 drop-shadow-md">Unitate de Comandă</p>
 
-                                    <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 mx-2 shadow-2xl relative overflow-hidden group-hover:border-blue-500/20 transition-all duration-700">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                                        <p className="text-zinc-400 text-sm leading-relaxed font-bold relative z-10 group-hover:text-zinc-200 transition-colors">
+                                    <div className="bg-black/40 backdrop-blur-2xl rounded-3xl p-6 border border-white/20 mx-2 shadow-2xl relative overflow-hidden group-hover:border-blue-500/40 transition-all duration-700">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                        <p className="text-zinc-100 text-sm leading-relaxed font-bold relative z-10">
                                             Personalizare absolută a fiecărui impuls.
                                             Monitorizare în timp real și ajustare instantanee.
                                         </p>
                                     </div>
 
                                     <div className="flex gap-3 mt-8">
-                                        <span className="px-5 py-2 bg-blue-600/90 rounded-full text-[9px] font-black text-white border border-blue-400/50 shadow-[0_0_20px_rgba(37,99,235,0.4)] uppercase tracking-widest translate-x-1">Cloud Data</span>
-                                        <span className="px-5 py-2 bg-white/5 rounded-full text-[9px] font-black text-white border border-white/10 shadow-xl uppercase tracking-widest -translate-x-1">Precision UI</span>
+                                        <span className="px-5 py-2 bg-blue-600 rounded-full text-[9px] font-black text-white border border-blue-400 shadow-[0_0_20px_rgba(37,99,235,0.4)] uppercase tracking-widest translate-x-1">Cloud Data</span>
+                                        <span className="px-5 py-2 bg-white/10 rounded-full text-[9px] font-black text-white border border-white/20 shadow-xl uppercase tracking-widest -translate-x-1">Precision UI</span>
                                     </div>
                                 </div>
                             </div>

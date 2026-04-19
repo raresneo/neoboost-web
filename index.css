@@ -166,22 +166,35 @@ body {
   }
 }
 
-/* Tipografie Headings - Global Defaults */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text-primary);
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-primary);
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
 }
 
-p {
-  color: var(--text-secondary);
-  line-height: 1.7;
+/* Impact-style headings used across the site */
+.impact-font {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-style: italic;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
 }
 
 /* Animations */

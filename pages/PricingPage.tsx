@@ -130,16 +130,14 @@ export const PricingPage: React.FC = () => {
                             </ul>
 
                             <div className="flex flex-col gap-3 relative z-10 mt-auto">
-                                {pkg.isRecommended && (
-                                    <Button
-                                        variant="primary"
-                                        className="w-full justify-center font-bold uppercase tracking-widest text-xs shadow-lg shadow-brand/20"
-                                        onClick={() => handleCheckout(pkg.stripePriceId, parseInt(pkg.price.replace(/[^0-9]/g, '')), pkg.title)}
-                                        isLoading={isLoading === pkg.stripePriceId}
-                                    >
-                                        Cumpără Acum
-                                    </Button>
-                                )}
+                                <Button
+                                    variant="primary"
+                                    className="w-full justify-center font-bold uppercase tracking-widest text-xs shadow-lg shadow-brand/20"
+                                    onClick={() => handleCheckout(pkg.stripePriceId, parseInt(pkg.price.replace(/[^0-9]/g, '')), pkg.title)}
+                                    isLoading={isLoading === pkg.stripePriceId}
+                                >
+                                    Cumpără Acum
+                                </Button>
                                 <button
                                     onClick={() => window.open(`https://wa.me/${BRAND.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Salut! Vreau să discut despre abonamentul ${pkg.title} (${pkg.sessionCount} ședințe/lună).`)}`, '_blank')}
                                     className="w-full py-3 border border-gray-200 text-gray-600 font-bold uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 rounded-xl hover:bg-gray-50 transition-all active:scale-95"

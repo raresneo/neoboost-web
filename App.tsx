@@ -18,9 +18,11 @@ const PricingPage = lazy(() => import('./pages/PricingPage').then(module => ({ d
 const OfertaTreiPlusUnuPage = lazy(() => import('./pages/OfertaTreiPlusUnuPage').then(module => ({ default: module.OfertaTreiPlusUnuPage })));
 import { captureUTMParameters } from './lib/utm';
 import { SmoothScroll } from './components/ui/SmoothScroll';
-import { CustomCursor } from './components/ui/CustomCursor';
-import { SpeedScrollEffect } from './components/ui/SpeedScrollEffect';
-import { FilmGrain } from './components/ui/FilmGrain';
+// Performance: Disabled heavy global overlays (CustomCursor, SpeedScrollEffect, FilmGrain)
+// Each added a full-screen GPU layer + requestAnimationFrame loop, causing scroll/cursor jank
+// import { CustomCursor } from './components/ui/CustomCursor';
+// import { SpeedScrollEffect } from './components/ui/SpeedScrollEffect';
+// import { FilmGrain } from './components/ui/FilmGrain';
 
 import { SkeletonLoader } from './components/ui/SkeletonLoader';
 import { GamificationProvider } from './context/GamificationContext';
@@ -32,9 +34,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <GamificationProvider>
         <SmoothScroll>
-          <CustomCursor />
-          <FilmGrain />
-          <SpeedScrollEffect />
+          {/* Performance: Removed heavy global overlays */}
 
           <Routes>
             <Route path="/" element={<Layout />}>

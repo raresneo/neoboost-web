@@ -1454,6 +1454,42 @@ export const RICH_TRANSFORMATIONS = [
       { label: "BODY FAT", start: 25, end: 17, change: "-8", unit: "%", color: "text-green-500" },
       { label: "MUSCLE", start: 39, end: 41.5, change: "+2.5", unit: "%", color: "text-purple-500" }
     ]
+  },
+  {
+    id: "elena-d",
+    name: "ELENA D.",
+    program: "6 WEEK KICKSTART",
+    duration: "6 SĂPTĂMÂNI",
+    quote: "M-am pregătit pentru nuntă cu băieții de la NeoBoost. Rezultate fulger pe tonifierea brațelor și picioarelor, fix ce-mi doream!",
+    images: {
+      combined: "/transformation_3.webp",
+      isCombined: true,
+      styleBefore: { objectPosition: '0% center', transform: 'scale(1.05)' },
+      styleAfter: { objectPosition: '100% center', transform: 'scale(1.05)' }
+    },
+    stats: [
+      { label: "WEIGHT", start: 68, end: 63.5, change: "-4.5", unit: "kg", color: "text-blue-500" },
+      { label: "HIPS", start: 102, end: 94, change: "-8", unit: "cm", color: "text-pink-500" },
+      { label: "ARMS", start: 30, end: 26, change: "-4", unit: "cm", color: "text-purple-500" }
+    ]
+  },
+  {
+    id: "alex-r",
+    name: "ALEX R.",
+    program: "HEALTH PRO",
+    duration: "3 LUNI",
+    quote: "Aproape 10 ani de muncă la birou m-au adus la dureri cronice lombare. În 3 luni mi-am corectat postura și am uitat de ele.",
+    images: {
+      combined: "/dani_p_aligned.webp",
+      isCombined: true,
+      styleBefore: { objectPosition: '10% center' },
+      styleAfter: { objectPosition: '90% center' }
+    },
+    stats: [
+      { label: "STRENGTH SCORE", start: 45, end: 92, change: "+47", unit: "%", color: "text-green-500" },
+      { label: "BACK PAIN", start: 8, end: 0, change: "-8", unit: "/10", color: "text-blue-400" },
+      { label: "WAIST", start: 95, end: 85, change: "-10", unit: "cm", color: "text-orange-500" }
+    ]
   }
 ];
 
