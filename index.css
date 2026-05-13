@@ -82,13 +82,28 @@
   --accent: var(--accent-primary);
 }
 
-/* Dark Mode overrides if needed in future, but for now enforcing Light Mode cleanliness */
-/* Enforcing Light Mode cleanliness */
 [data-theme="dark"] {
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F9FAFB;
-  --text-primary: #111827;
-  --text-secondary: #4B5563;
+  --bg-primary: #0B0F1A;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1E293B;
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-disabled: #64748B;
+
+  --accent-primary: #60A5FA;
+  --accent-secondary: #3B82F6;
+  --accent-glow: rgba(96, 165, 250, 0.25);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 12px 24px -6px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 30px rgba(96, 165, 250, 0.2);
+
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 body {
@@ -1108,4 +1123,126 @@ body {
   60% {
     opacity: 1;
   }
+}
+
+/* === DARK MODE COMPONENT OVERRIDES === */
+
+[data-theme="dark"] .glass-block {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .glass-block:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .air-glass {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .air-glass:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .text-glow {
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+}
+
+[data-theme="dark"] .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* === DARK MODE GLOBAL BACKGROUND & TEXT OVERRIDES ===
+   These map common Tailwind bg/text classes so sections don't need individual changes */
+
+/* Section & card backgrounds */
+[data-theme="dark"] .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .bg-gray-50,
+[data-theme="dark"] .bg-slate-50 {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .bg-gray-100,
+[data-theme="dark"] .bg-slate-100 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* Border colors */
+[data-theme="dark"] .border-gray-100,
+[data-theme="dark"] .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .border-slate-100,
+[data-theme="dark"] .border-slate-200 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Text - dark grays become light in dark mode */
+[data-theme="dark"] .text-gray-900,
+[data-theme="dark"] .text-slate-900 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-slate-800 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-slate-700 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-slate-600 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-slate-500 {
+  color: var(--text-muted) !important;
+}
+
+/* Hover text colors — keep blue accents, adapt grays */
+[data-theme="dark"] .hover\:text-gray-900:hover,
+[data-theme="dark"] .hover\:text-gray-800:hover {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .hover\:text-gray-700:hover {
+  color: var(--text-secondary) !important;
+}
+
+/* Hover backgrounds */
+[data-theme="dark"] .hover\:bg-white:hover {
+  background-color: var(--bg-tertiary) !important;
+}
+
+[data-theme="dark"] .hover\:bg-gray-50:hover,
+[data-theme="dark"] .hover\:bg-gray-100:hover {
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* White text on dark cards should stay white */
+[data-theme="dark"] .text-white {
+  color: #ffffff !important;
+}
+
+/* Footer stays dark (it's already slate-950) */
+[data-theme="dark"] footer.bg-slate-950,
+[data-theme="dark"] .bg-slate-950 {
+  background-color: #030712 !important;
 }

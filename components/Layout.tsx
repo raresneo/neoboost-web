@@ -48,15 +48,9 @@ export const Layout: React.FC = () => {
         return false;
     });
 
-    // Effect to apply theme and save preference changes
     useEffect(() => {
-        if (isLight) {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme-preference', 'light');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('theme-preference', 'dark');
-        }
+        document.documentElement.setAttribute('data-theme', isLight ? 'light' : 'dark');
+        localStorage.setItem('theme-preference', isLight ? 'light' : 'dark');
     }, [isLight]);
 
     // Auth State
@@ -134,14 +128,9 @@ export const Layout: React.FC = () => {
             <AmbientAudio isMuted={isMuted} />
             <ParticleBackground />
 
-            {/* --- GLOBAL ATMOSPHERIC GLOWS (Holo AI Style) --- */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                {/* Top Right - Blue/Purple Orb */}
-                <div className="absolute -top-[20%] -right-[10%] w-[70vw] h-[70vw] bg-blue-500/10 rounded-full blur-[120px] mix-blend-multiply opacity-60 animate-blob"></div>
-                {/* Bottom Left - Orange/Red Orb */}
-                <div className="absolute -bottom-[20%] -left-[10%] w-[70vw] h-[70vw] bg-orange-500/10 rounded-full blur-[120px] mix-blend-multiply opacity-60 animate-blob animation-delay-2000"></div>
-                {/* Center - Gentle White Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/40 blur-[100px] pointer-events-none"></div>
+                <div className={`absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full blur-[80px] opacity-40 ${isLight ? 'bg-blue-500/10 mix-blend-multiply' : 'bg-blue-500/15 mix-blend-screen'}`} />
+                <div className={`absolute -bottom-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full blur-[80px] opacity-40 ${isLight ? 'bg-orange-500/10 mix-blend-multiply' : 'bg-indigo-500/15 mix-blend-screen'}`} />
             </div>
 
             {isLoading && <Preloader onFinish={() => setIsLoading(false)} />}
@@ -188,10 +177,10 @@ export const Layout: React.FC = () => {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={location.pathname}
-                                initial={{ opacity: 0, scale: 0.98, filter: 'blur(5px)' }}
-                                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                                exit={{ opacity: 0, scale: 1.02, filter: 'blur(5px)' }}
-                                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -8 }}
+                                transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
                                 className="w-full h-full"
                             >
                                 <Outlet context={{

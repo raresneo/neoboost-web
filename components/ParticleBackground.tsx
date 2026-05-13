@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
+const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+
 export const ParticleBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const scrollRef = useRef({ y: 0, speed: 0, lastY: 0 });
@@ -98,11 +100,12 @@ export const ParticleBackground = () => {
                 if (p.y > height + 10) p.y = -10;
                 if (p.y < -10) p.y = height + 10;
 
-                // Draw Flake (Soft circle)
+                // Draw Flake — color adapts to theme
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-                // Removed shadowBlur for performance
+                ctx.fillStyle = isDark()
+                    ? `rgba(255, 255, 255, ${p.alpha})`
+                    : `rgba(58, 134, 255, ${p.alpha * 0.5})`;
                 ctx.fill();
             });
 
@@ -118,5 +121,5 @@ export const ParticleBackground = () => {
         };
     }, []);
 
-    return <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none mix-blend-screen" />;
+    return <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none" style={{ mixBlendMode: isDark() ? 'screen' : 'multiply', opacity: 0.6 }} />;
 };

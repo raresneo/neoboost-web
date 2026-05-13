@@ -163,7 +163,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth,
                         <Link
                             to="/"
                             onClick={(e) => handleItemTap('Home', e)}
-                            className={`flex flex-col items-center gap-1 p-2 transition-all duration-300 ${isActive('/') ? 'text-blue-600' : 'text-gray-400 hover:text-gray-700'}`}
+                            className={`flex flex-col items-center gap-1 p-2 transition-all duration-300 ${isActive('/') ? 'text-blue-600' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
                         >
                             <motion.div
                                 animate={activeItem === 'Home' ? { rotate: [0, -15, 15, 0], scale: [1, 1.3, 1] } : {}}
@@ -192,7 +192,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth,
                                     window.location.href = '/#locatii';
                                 }
                             }}
-                            className="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-gray-700 transition-all"
+                            className="flex flex-col items-center gap-1 p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all"
                         >
                             <motion.div
                                 animate={activeItem === 'Locații' ? {
@@ -258,14 +258,14 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth,
                                 </AnimatePresence>
                             </motion.button>
 
-                            <span className="block text-center text-[10px] font-bold text-gray-700 mt-1">Rezervă</span>
+                            <span className="block text-center text-[10px] font-bold text-[var(--text-secondary)] mt-1">Rezervă</span>
                         </div>
 
                         {/* Science / Știință */}
                         <Link
                             to="/science"
                             onClick={(e) => handleItemTap('Știință', e)}
-                            className={`flex flex-col items-center gap-1 p-2 transition-all ${isActive('/science') ? 'text-blue-600' : 'text-gray-400 hover:text-gray-700'}`}
+                            className={`flex flex-col items-center gap-1 p-2 transition-all ${isActive('/science') ? 'text-blue-600' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
                         >
                             <motion.div
                                 animate={activeItem === 'Știință' ? {
@@ -285,7 +285,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth,
                                 handleItemTap('Cont', e);
                                 if (!user) onOpenAuth();
                             }}
-                            className="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-gray-700 transition-all"
+                            className="flex flex-col items-center gap-1 p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all"
                         >
                             <motion.div
                                 animate={activeItem === 'Cont' ? {
