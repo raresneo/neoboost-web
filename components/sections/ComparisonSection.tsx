@@ -13,21 +13,21 @@ const EvolutionVideoBackground = () => (
 
 // --- New Competitive Comparison Section ---
 export const ComparisonSection = () => (
-    <section className="py-20 md:py-32 bg-white relative z-10">
+    <section className="py-20 md:py-32 bg-[var(--bg-primary)] relative z-10">
         <div className="container mx-auto px-6 md:px-24 relative z-10">
             <ScrollReveal>
                 <div className="text-center mb-16 relative z-10">
                     <p className="mono-font text-[10px] tracking-[0.5em] text-blue-600 font-bold uppercase mb-4">Sală vs NeoBoost</p>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-gray-900 uppercase italic">
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-primary)] uppercase italic">
                         DE CE SĂ ALEGI EMS ÎN LOCUL <span className="text-blue-600">SĂLII CLASICE</span>
                     </h2>
                 </div>
             </ScrollReveal>
 
             <div className="max-w-5xl mx-auto">
-                <div className="bg-gray-50 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-200 overflow-hidden">
+                <div className="bg-[var(--bg-secondary)] rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-[var(--border-subtle)] overflow-hidden">
                     {/* Header */}
-                    <div className="grid grid-cols-12 bg-gray-100 border-b border-gray-200">
+                    <div className="grid grid-cols-12 bg-[var(--bg-secondary)] border-b border-[var(--border-subtle)]">
                         <div className="col-span-12 md:col-span-4 p-6 text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">
                             Criteriu
                         </div>
@@ -56,7 +56,7 @@ export const ComparisonSection = () => (
                                     hidden: { opacity: 0, x: -20 },
                                     visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
                                 }}
-                                className="grid grid-cols-12 group hover:bg-gray-50 transition-colors"
+                                className="grid grid-cols-12 group hover:bg-[var(--bg-primary)] transition-colors"
                             >
 
                                 {/* Feature */}
@@ -64,7 +64,7 @@ export const ComparisonSection = () => (
                                     <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                                         {item.icon}
                                     </div>
-                                    <span className="font-bold text-gray-900 text-sm">{item.feature}</span>
+                                    <span className="font-bold text-[var(--text-primary)] text-sm">{item.feature}</span>
                                 </div>
 
                                 {/* Gym (Negative) */}

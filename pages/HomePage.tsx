@@ -77,7 +77,7 @@ export const HomePage = () => {
             <TargetAudienceSection />
 
             {/* BENEFITS SECTION */}
-            <section id="beneficii" className="py-24 md:py-36 relative border-t border-gray-100 z-10 scroll-mt-24 bg-white">
+            <section id="beneficii" className="py-24 md:py-36 relative border-t border-[var(--border-subtle)] z-10 scroll-mt-24 bg-[var(--bg-secondary)]">
                 <div className="container mx-auto px-6 md:px-24">
                     <FlashcardReveal direction="left">
                         <div className="text-center mb-20">
@@ -161,7 +161,7 @@ export const HomePage = () => {
             </section>
 
             {/* LOCATIONS & FAQ (INFO SLIDE EQUIVALENT) */}
-            <section id="contact-info" className="py-24 md:py-36 border-t border-gray-100 bg-white relative z-10 scroll-mt-24">
+            <section id="contact-info" className="py-24 md:py-36 border-t border-[var(--border-subtle)] bg-[var(--bg-secondary)] relative z-10 scroll-mt-24">
                 <div className="container mx-auto px-6 md:px-24">
                     <div className="grid lg:grid-cols-2 gap-16 items-start">
                         {/* LOCATIONS */}

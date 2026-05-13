@@ -70,7 +70,7 @@ export const PackageCard: React.FC<{ pkg: NeoPackage; i: number; user: any; onOp
                             <span className="mono-font text-[10px] text-[#3A86FF] font-black tracking-widest">LEI</span>
                         </div>
                         {pkg.pricePerSession && (
-                            <p className="mono-font text-[11px] mt-2 text-white/30 italic">
+                            <p className="mono-font text-[11px] mt-2 text-[var(--text-muted)] italic">
                                 ≈ {pkg.pricePerSession} lei / ședință
                             </p>
                         )}

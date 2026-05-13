@@ -16,6 +16,7 @@ const ProgramsPage = lazy(() => import('./pages/ProgramsPage').then(module => ({
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(module => ({ default: module.ServicesPage })));
 const PricingPage = lazy(() => import('./pages/PricingPage').then(module => ({ default: module.PricingPage })));
 const OfertaTreiPlusUnuPage = lazy(() => import('./pages/OfertaTreiPlusUnuPage').then(module => ({ default: module.OfertaTreiPlusUnuPage })));
+const BookingPage = lazy(() => import('./pages/BookingPage').then(module => ({ default: module.BookingPage })));
 import { captureUTMParameters } from './lib/utm';
 import { SmoothScroll } from './components/ui/SmoothScroll';
 // Performance: Disabled heavy global overlays (CustomCursor, SpeedScrollEffect, FilmGrain)
@@ -37,6 +38,12 @@ const App: React.FC = () => {
           {/* Performance: Removed heavy global overlays */}
 
           <Routes>
+            {/* Standalone booking page — no navbar/footer, shareable link for Instagram */}
+            <Route path="/programare" element={
+              <Suspense fallback={<SkeletonLoader />}>
+                <BookingPage />
+              </Suspense>
+            } />
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="science" element={

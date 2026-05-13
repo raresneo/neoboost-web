@@ -18,7 +18,7 @@ export const TransformationSection = () => {
     // show all by default in carousel
 
     return (
-        <section className="py-24 bg-white relative z-20 border-t border-gray-100">
+        <section className="py-24 bg-[var(--bg-primary)] relative z-20 border-t border-[var(--border-subtle)]">
             <div className="container mx-auto px-6 lg:px-24 relative z-30">
 
                 {/* Header */}
@@ -43,7 +43,7 @@ export const TransformationSection = () => {
                     <SnapCarousel itemWidth="min-w-[90vw] md:min-w-[900px]">
                         {RICH_TRANSFORMATIONS.map((item, idx) => (
                             <div key={item.id} className="pb-8 pl-1">
-                                <div className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all h-full flex flex-col lg:flex-row">
+                                <div className="group relative bg-[var(--bg-secondary)] rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all h-full flex flex-col lg:flex-row">
 
                                     {/* Image Area - 55% */}
                                     <div className="lg:w-[55%] relative h-[400px] md:h-[500px] lg:h-auto overflow-hidden bg-gray-50">
@@ -75,11 +75,11 @@ export const TransformationSection = () => {
                                     </div>
 
                                     {/* Content Area - 45% */}
-                                    <div className="lg:w-[45%] p-5 md:p-10 flex flex-col justify-between relative bg-white">
+                                    <div className="lg:w-[45%] p-5 md:p-10 flex flex-col justify-between relative bg-[var(--bg-secondary)]">
 
                                         <div className="relative z-10">
                                             <div className="flex items-center gap-4 mb-6">
-                                                <h3 className="text-2xl md:text-3xl font-display font-bold text-gray-900 uppercase">{item.name}</h3>
+                                                <h3 className="text-2xl md:text-3xl font-display font-bold text-[var(--text-primary)] uppercase">{item.name}</h3>
                                                 <div className="flex gap-2">
                                                     <span className="px-3 py-1 bg-brand/10 text-brand border border-brand/20 rounded text-[10px] font-bold uppercase tracking-wider">{item.program}</span>
                                                     <span className="px-3 py-1 bg-gray-50 text-gray-500 border border-gray-100 rounded text-[10px] font-bold uppercase tracking-wider">{item.duration}</span>

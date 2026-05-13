@@ -17,7 +17,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
     const currentPackages = MONTHLY_PACKAGES;
 
     return (
-        <section id="programe" className="py-24 scroll-mt-32 bg-gray-50 relative z-20">
+        <section id="programe" className="py-24 scroll-mt-32 bg-[var(--bg-secondary)] relative z-20">
             <div className="container mx-auto px-6 lg:px-24">
 
                 {/* Header */}
@@ -31,7 +31,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
                         as="h2"
                         mode="char"
                         stagger={0.03}
-                        className="text-4xl md:text-5xl font-display font-black text-gray-900 mb-6 leading-tight uppercase italic"
+                        className="text-4xl md:text-5xl font-display font-black text-[var(--text-primary)] mb-6 leading-tight uppercase italic"
                     />
                     <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto mb-12">
                         Alege pachetul de electrostimulare musculară care ți se potrivește. Fără costuri ascunse.
@@ -46,7 +46,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
                         <SpotlightCard
                             key={i}
                             spotlightColor={pkg.isRecommended ? "rgba(59, 130, 246, 0.15)" : "rgba(0, 0, 0, 0.03)"}
-                            className={`p-6 md:p-10 rounded-[2.5rem] flex flex-col transition-all duration-500 relative overflow-hidden ${pkg.isRecommended ? 'bg-gradient-to-b from-white to-blue-50/30 border border-blue-200 shadow-[0_30px_60px_-15px_rgba(59,130,246,0.15)] md:scale-105 z-10' : 'bg-white/80 backdrop-blur-xl border border-gray-200/50 shadow-premium hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:border-gray-300/50'}`}
+                            className={`p-6 md:p-10 rounded-[2.5rem] flex flex-col transition-all duration-500 relative overflow-hidden ${pkg.isRecommended ? 'bg-[var(--bg-secondary)] border border-blue-500/30 shadow-[0_30px_60px_-15px_rgba(59,130,246,0.15)] md:scale-105 z-10' : 'bg-[var(--bg-secondary)] backdrop-blur-xl border border-[var(--border-subtle)] shadow-premium hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:border-blue-500/30'}`}
                         >
                             {pkg.isRecommended && (
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand text-white text-[10px] font-bold uppercase px-4 py-1.5 rounded-full shadow-lg tracking-widest border border-white">
@@ -69,7 +69,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
 
                             <ul className="space-y-4 mb-10 flex-grow">
                                 {pkg.features.map((f, fi) => (
-                                    <li key={fi} className="flex items-start gap-3 text-sm font-medium text-gray-600 leading-relaxed">
+                                    <li key={fi} className="flex items-start gap-3 text-sm font-medium text-[var(--text-secondary)] leading-relaxed">
                                         <Check size={16} className="text-brand shrink-0 mt-0.5" />
                                         {f}
                                     </li>
@@ -79,7 +79,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
                             <div className="flex flex-col gap-3 mt-auto pt-6 border-t border-gray-100/50">
                                 <Button
                                     variant={pkg.isRecommended ? 'primary' : 'outline'}
-                                    className={`w-full justify-center ${pkg.isRecommended ? 'shadow-lg' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}
+                                    className={`w-full justify-center ${pkg.isRecommended ? 'shadow-lg' : 'border-[var(--border-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-primary)]'}`}
                                     onClick={() => handleCheckout(pkg.stripePriceId, pkg.price, pkg.title, session)}
                                     isLoading={isLoading}
                                 >
@@ -87,7 +87,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
                                 </Button>
                                 <button
                                     onClick={() => window.open(`https://wa.me/${BRAND.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Salut! Vreau să discut despre abonamentul ${pkg.title} (${pkg.sessionCount} ședințe/lună).`)}`, '_blank')}
-                                    className="w-full py-3 border border-transparent text-gray-500 font-bold uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 rounded-xl hover:bg-gray-50/80 hover:text-gray-900 transition-all active:scale-95"
+                                    className="w-full py-3 border border-transparent text-[var(--text-muted)] font-bold uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 rounded-xl hover:bg-[var(--bg-primary)] hover:text-[var(--text-primary)] transition-all active:scale-95"
                                 >
                                     💬 Discută despre abonament
                                 </button>
@@ -114,7 +114,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
 
                         <div className="grid lg:grid-cols-1 gap-12">
                             {PROGRAMS.map((prog, i) => (
-                                <SpotlightCard key={prog.id} spotlightColor="rgba(59, 130, 246, 0.1)" className="group bg-white border border-gray-100 rounded-[2.5rem] flex flex-col md:flex-row hover:border-brand/30 transition-all shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] overflow-hidden">
+                                <SpotlightCard key={prog.id} spotlightColor="rgba(59, 130, 246, 0.1)" className="group bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-[2.5rem] flex flex-col md:flex-row hover:border-brand/30 transition-all shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] overflow-hidden">
 
                                     {/* Image */}
                                     <Link to={`/program/${prog.id}`} className="block relative md:w-2/5 lg:w-1/3 min-h-[300px] md:min-h-0 overflow-hidden">
@@ -147,7 +147,7 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
                                                 {prog.subtitle}
                                             </p>
 
-                                            <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-2xl font-medium">
+                                            <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-8 max-w-2xl font-medium">
                                                 {prog.description}
                                             </p>
                                         </div>

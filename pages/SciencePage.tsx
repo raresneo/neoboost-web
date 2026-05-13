@@ -20,9 +20,9 @@ export const SciencePage: React.FC = () => {
     }, [location]);
 
     return (
-        <div className="min-h-screen bg-white text-gray-900 relative z-50">
+        <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] relative z-50">
             {/* Fixed Navigation Header */}
-            <div className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-6 py-4 flex items-center justify-between shadow-sm">
+            <div className="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)]/95 backdrop-blur-md border-b border-[var(--border-subtle)] px-6 py-4 flex items-center justify-between shadow-sm">
                 <div className="flex items-center gap-4">
                     <Link
                         to="/"
@@ -45,8 +45,8 @@ export const SciencePage: React.FC = () => {
             </div>
 
             {/* Footer minimal for this page */}
-            <div className="py-10 border-t border-gray-100 text-center">
-                <p className="text-gray-400 text-xs">© 2024 NeoBoost Oradea. Science & Research.</p>
+            <div className="py-10 border-t border-[var(--border-subtle)] text-center">
+                <p className="text-[var(--text-muted)] text-xs">© 2024 NeoBoost Oradea. Science & Research.</p>
             </div>
         </div>
     );

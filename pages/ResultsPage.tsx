@@ -6,7 +6,7 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 
 export const ResultsPage = () => {
     return (
-        <div className="bg-white min-h-screen text-gray-900">
+        <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)]">
             <Helmet>
                 <title>Rezultate Clienți & Transformări Reale | NeoBoost Oradea</title>
                 <meta name="description" content="Vezi transformările reale ale clienților NeoBoost Oradea. Slăbire, tonifiere și corecția posturii prin tehnologia EMS Wireless. Rezultate validate prin măsurători bio-metrice." />
@@ -18,11 +18,11 @@ export const ResultsPage = () => {
                     <p className="mono-font text-xs tracking-[0.3em] text-blue-600 uppercase font-bold mb-4">
                         POVĂȘTI DE SUCCES
                     </p>
-                    <h1 className="text-5xl md:text-7xl font-black impact-font uppercase leading-none mb-6 text-gray-900">
+                    <h1 className="text-5xl md:text-7xl font-black impact-font uppercase leading-none mb-6 text-[var(--text-primary)]">
                         TRANSFORMĂRI <br />
-                        <span className="text-transparent" style={{ WebkitTextStroke: '1px #111827' }}>REALE.</span>
+                        <span className="text-transparent" style={{ WebkitTextStroke: '1px currentColor', opacity: 0.3 }}>REALE.</span>
                     </h1>
-                    <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+                    <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg font-light leading-relaxed">
                         Nu promitem miracole peste noapte. Promitem rezultate măsurabile pentru cei care respectă planul. Iată ce au reușit clienții noștri.
                     </p>
                 </ScrollReveal>

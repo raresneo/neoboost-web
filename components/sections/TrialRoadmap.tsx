@@ -90,7 +90,7 @@ export const TrialRoadmap = () => {
     ];
 
     return (
-        <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-[var(--bg-primary)] relative overflow-hidden">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_center,rgba(59,130,246,0.03),transparent_70%)] pointer-events-none"></div>
 
@@ -105,9 +105,9 @@ export const TrialRoadmap = () => {
                             text="CUM DECURGE O ȘEDINȚĂ DE 30 DE MINUTE"
                             highlightText="30 DE MINUTE"
                             highlightColor="text-blue-600"
-                            className="text-3xl md:text-5xl font-display font-bold text-gray-900 tracking-tight uppercase italic mb-6"
+                            className="text-3xl md:text-5xl font-display font-bold text-[var(--text-primary)] tracking-tight uppercase italic mb-6"
                         />
-                        <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto leading-relaxed">
                             De la prima intrare în studio până la senzația de după antrenament. Totul este gândit pentru a fi simplu, eficient și adaptat ritmului tău.
                         </p>
                     </div>
@@ -133,7 +133,7 @@ export const TrialRoadmap = () => {
                             {/* Content Card */}
                             <div className="flex-1 md:pl-12 md:pr-0 pl-16">
                                 <div className={`
-                                    group relative bg-white rounded-3xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-100
+                                    group relative bg-[var(--bg-secondary)] rounded-3xl p-8 border border-[var(--border-subtle)] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/30
                                     ${idx % 2 === 0 ? 'md:text-left' : 'md:text-left'}
                                 `}>
                                     {/* Number Watermark */}
@@ -147,17 +147,17 @@ export const TrialRoadmap = () => {
                                             <div className={`${item.color}`}>{item.icon}</div>
                                         </div>
 
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-2 uppercase font-display">{item.title}</h3>
+                                        <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 uppercase font-display">{item.title}</h3>
                                         <p className={`text-xs font-bold uppercase tracking-widest mb-4 ${item.color}`}>{item.subtitle}</p>
 
-                                        <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                                        <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6">
                                             {item.desc}
                                         </p>
 
                                         {/* Checklist */}
                                         <ul className="space-y-2">
                                             {item.details.map((detail, dIdx) => (
-                                                <li key={dIdx} className="flex items-start gap-3 text-sm text-gray-600">
+                                                <li key={dIdx} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
                                                     <CheckCircle2 size={16} className={`${item.color} shrink-0 mt-0.5`} />
                                                     <span>{detail}</span>
                                                 </li>
