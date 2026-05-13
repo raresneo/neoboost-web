@@ -38,8 +38,7 @@ import { FreeSessionSection } from '../components/sections/FreeSessionSection';
 import { RevealText } from '../components/ui/RevealText';
 import { FlashcardReveal } from '../components/ui/FlashcardReveal';
 import { ObjectiveSelector } from '../components/ui/ObjectiveSelector';
-import { QuestTracker } from '../components/gamification/QuestTracker';
-import { useGamification } from '../context/GamificationContext';
+// QuestTracker removed — not useful for visitors
 
 // Asset Maps
 const locationImages = [
@@ -55,43 +54,8 @@ export const HomePage = () => {
         onOpenLocation: (loc: any) => void;
     }>();
 
-    // Gamification Triggers
-    const { addXP, activeMission, completeMission } = useGamification();
-    const [viewedSections, setViewedSections] = useState<string[]>([]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['beneficii', 'tech', 'comparatie', 'metoda'];
-
-            sections.forEach(id => {
-                const element = document.getElementById(id);
-                if (element && !viewedSections.includes(id)) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top >= 0 && rect.bottom <= window.innerHeight + 200) {
-                        setViewedSections(prev => [...prev, id]);
-                        if (id === 'beneficii') addXP(50, 'Explorator: Beneficii Descoperite');
-                        if (id === 'metoda') addXP(50, 'Savant: Metoda Analizată');
-                    }
-                }
-            });
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [viewedSections, addXP]);
-
-    // Mission Progress Mock (Simulating steps)
-    useEffect(() => {
-        if (viewedSections.length >= 2 && activeMission?.id === 'mission-1' && activeMission.currentStep < 2) {
-            // This is a hacky way to prevent loop, in real app context should handle 'updateStep'
-            // For now, let's just assume viewing 2 sections completes the mission for demo purposes
-            // In a real implementation we would have an updateStep function
-        }
-    }, [viewedSections, activeMission]);
-
     return (
-        <main className="relative bg-white min-h-screen">
-            <QuestTracker />
+        <main className="relative min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
 
             {/* HERO */}
             <ImmersiveHero onOpenBooking={onOpenBooking} />

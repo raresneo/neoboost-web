@@ -1161,88 +1161,15 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* === DARK MODE GLOBAL BACKGROUND & TEXT OVERRIDES ===
-   These map common Tailwind bg/text classes so sections don't need individual changes */
 
-/* Section & card backgrounds */
-[data-theme="dark"] .bg-white {
-  background-color: var(--bg-secondary) !important;
+/* Cards/panels that use explicit white bg — scoped to known card wrappers */
+[data-theme="dark"] .package-card,
+[data-theme="dark"] .card-panel {
+  background-color: var(--bg-secondary);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-[data-theme="dark"] .bg-gray-50,
-[data-theme="dark"] .bg-slate-50 {
-  background-color: var(--bg-secondary) !important;
-}
-
-[data-theme="dark"] .bg-gray-100,
-[data-theme="dark"] .bg-slate-100 {
-  background-color: var(--bg-tertiary) !important;
-}
-
-/* Border colors */
-[data-theme="dark"] .border-gray-100,
-[data-theme="dark"] .border-gray-200 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-[data-theme="dark"] .border-slate-100,
-[data-theme="dark"] .border-slate-200 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Text - dark grays become light in dark mode */
-[data-theme="dark"] .text-gray-900,
-[data-theme="dark"] .text-slate-900 {
-  color: var(--text-primary) !important;
-}
-
-[data-theme="dark"] .text-gray-800,
-[data-theme="dark"] .text-slate-800 {
-  color: var(--text-primary) !important;
-}
-
-[data-theme="dark"] .text-gray-700,
-[data-theme="dark"] .text-slate-700 {
-  color: var(--text-secondary) !important;
-}
-
-[data-theme="dark"] .text-gray-600,
-[data-theme="dark"] .text-slate-600 {
-  color: var(--text-secondary) !important;
-}
-
-[data-theme="dark"] .text-gray-500,
-[data-theme="dark"] .text-slate-500 {
-  color: var(--text-muted) !important;
-}
-
-/* Hover text colors — keep blue accents, adapt grays */
-[data-theme="dark"] .hover\:text-gray-900:hover,
-[data-theme="dark"] .hover\:text-gray-800:hover {
-  color: var(--text-primary) !important;
-}
-
-[data-theme="dark"] .hover\:text-gray-700:hover {
-  color: var(--text-secondary) !important;
-}
-
-/* Hover backgrounds */
-[data-theme="dark"] .hover\:bg-white:hover {
-  background-color: var(--bg-tertiary) !important;
-}
-
-[data-theme="dark"] .hover\:bg-gray-50:hover,
-[data-theme="dark"] .hover\:bg-gray-100:hover {
-  background-color: var(--bg-tertiary) !important;
-}
-
-/* White text on dark cards should stay white */
-[data-theme="dark"] .text-white {
-  color: #ffffff !important;
-}
-
-/* Footer stays dark (it's already slate-950) */
-[data-theme="dark"] footer.bg-slate-950,
-[data-theme="dark"] .bg-slate-950 {
-  background-color: #030712 !important;
+/* Footer stays dark */
+[data-theme="dark"] footer {
+  background-color: #030712;
 }

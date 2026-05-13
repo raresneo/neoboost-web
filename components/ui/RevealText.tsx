@@ -23,7 +23,13 @@ export const RevealText: React.FC<RevealTextProps> = ({
     const ref = useRef(null);
     const isInView = useInView(ref, { once, margin: "-20%" });
 
-    const items = mode === 'word' ? text.split(" ") : text.split("");
+    // For char mode, group by word so we can wrap at word boundaries only
+    const items = mode === 'word'
+        ? text.split(" ")
+        : text.split(" ").flatMap((word, wi, arr) => [
+            ...word.split(""),
+            ...(wi < arr.length - 1 ? [" "] : [])
+          ]);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -53,17 +59,22 @@ export const RevealText: React.FC<RevealTextProps> = ({
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className={`${className} overflow-hidden`}
+            style={mode === 'char' ? { wordBreak: 'keep-all', overflowWrap: 'normal' } : undefined}
         >
             {items.map((item, index) => (
-                <span key={index} className={`relative overflow-hidden inline-block ${mode === 'word' ? 'mr-[0.25em]' : ''} py-1`}>
-                    <motion.span
-                        variants={itemVariants}
-                        className="inline-block"
-                        style={{ willChange: "transform" }}
-                    >
-                        {item === " " ? "\u00A0" : item}
-                    </motion.span>
-                </span>
+                item === " " ? (
+                    <span key={index} className="inline-block" style={{ width: '0.3em' }} aria-hidden="true" />
+                ) : (
+                    <span key={index} className={`relative inline-block ${mode === 'word' ? 'mr-[0.25em]' : ''} py-2`}>
+                        <motion.span
+                            variants={itemVariants}
+                            className="inline-block"
+                            style={{ willChange: "transform" }}
+                        >
+                            {item}
+                        </motion.span>
+                    </span>
+                )
             ))}
         </MotionComponent>
     );
