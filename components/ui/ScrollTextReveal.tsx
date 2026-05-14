@@ -31,11 +31,10 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({ children, cl
 };
 
 const Word: React.FC<{ children: string; progress: any; range: [number, number] }> = ({ children, progress, range }) => {
-    const opacity = useTransform(progress, range, [0.1, 1]);
+    const opacity = useTransform(progress, range, [0.15, 1]);
     return (
         <span className="relative mr-[12px] mt-[12px]">
-            <span className="absolute opacity-10">{children}</span>
-            <motion.span style={{ opacity: opacity }}>{children}</motion.span>
+            <motion.span style={{ opacity }}>{children}</motion.span>
         </span>
     );
 };

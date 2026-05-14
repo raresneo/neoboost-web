@@ -31,9 +31,9 @@ export const TransformationSection = () => {
                         text="Rezultate reale ale clienților NeoBoost"
                         highlightText="NeoBoost"
                         highlightColor="text-brand"
-                        className="text-4xl md:text-6xl font-display font-black text-gray-900 mb-6 leading-tight tracking-tight"
+                        className="text-4xl md:text-6xl font-display font-black text-[var(--text-primary)] mb-6 leading-tight tracking-tight"
                     />
-                    <p className="text-gray-600 text-xl max-w-2xl mx-auto font-medium">
+                    <p className="text-[var(--text-secondary)] text-xl max-w-2xl mx-auto font-medium">
                         Clienții NeoBoost vin cu obiective diferite – de la slăbire și tonifiere, până la revenirea în formă după perioade mai sedentare. Mai jos sunt câteva exemple de transformări obținute cu ajutorul antrenamentelor EMS.
                     </p>
                 </ScrollReveal>
@@ -82,25 +82,25 @@ export const TransformationSection = () => {
                                                 <h3 className="text-2xl md:text-3xl font-display font-bold text-[var(--text-primary)] uppercase">{item.name}</h3>
                                                 <div className="flex gap-2">
                                                     <span className="px-3 py-1 bg-brand/10 text-brand border border-brand/20 rounded text-[10px] font-bold uppercase tracking-wider">{item.program}</span>
-                                                    <span className="px-3 py-1 bg-gray-50 text-gray-500 border border-gray-100 rounded text-[10px] font-bold uppercase tracking-wider">{item.duration}</span>
+                                                    <span className="px-3 py-1 bg-[var(--bg-primary)] text-[var(--text-muted)] border border-[var(--border-subtle)] rounded text-[10px] font-bold uppercase tracking-wider">{item.duration}</span>
                                                 </div>
                                             </div>
 
                                             <div className="relative mb-8 pl-6 border-l-2 border-brand">
-                                                <Quote size={20} className="absolute -top-3 -left-2.5 text-brand bg-white" />
-                                                <p className="text-base text-gray-500 italic font-light leading-relaxed">"{item.quote}"</p>
+                                                <Quote size={20} className="absolute -top-3 -left-2.5 text-brand bg-[var(--bg-secondary)]" />
+                                                <p className="text-base text-[var(--text-secondary)] italic font-light leading-relaxed">"{item.quote}"</p>
                                             </div>
                                         </div>
 
                                         {/* Stats Grid */}
                                         <div className="grid grid-cols-2 gap-3 relative z-10">
                                             {item.stats.map((stat, sIdx) => (
-                                                <div key={sIdx} className="bg-gray-50 p-4 rounded-2xl hover:bg-brand/5 transition-colors">
-                                                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-400 mb-1">{stat.label}</div>
+                                                <div key={sIdx} className="bg-[var(--bg-primary)] p-4 rounded-2xl hover:bg-brand/5 transition-colors">
+                                                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-muted)] mb-1">{stat.label}</div>
                                                     <div className="flex items-baseline gap-2">
-                                                        <span className={`text-xs font-medium text-gray-300 line-through`}>{stat.start}</span>
-                                                        <ArrowDown size={12} className="text-gray-400 -rotate-90" />
-                                                        <div className={`text-lg font-bold ${stat.color === 'text-[#3A86FF]' ? 'text-brand' : 'text-gray-900'} flex items-center`}>
+                                                        <span className="text-xs font-medium text-[var(--text-muted)] line-through opacity-60">{stat.start}</span>
+                                                        <ArrowDown size={12} className="text-[var(--text-muted)] -rotate-90" />
+                                                        <div className={`text-lg font-bold ${stat.color === 'text-[#3A86FF]' ? 'text-brand' : 'text-[var(--text-primary)]'} flex items-center`}>
                                                             <CountUp start={stat.start} end={Number(stat.end)} suffix={stat.unit ? ` ${stat.unit}` : ''} />
                                                         </div>
                                                     </div>
@@ -115,7 +115,7 @@ export const TransformationSection = () => {
                 </div>
 
                 {/* REVIEWS SECTION */}
-                <div className="border-t border-gray-100 pt-24">
+                <div className="border-t border-[var(--border-subtle)] pt-24">
                     <ScrollReveal className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-bold tracking-widest uppercase mb-6">
                             <Star size={14} fill="currentColor" />

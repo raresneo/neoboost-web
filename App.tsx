@@ -17,6 +17,8 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage').then(module => ({
 const PricingPage = lazy(() => import('./pages/PricingPage').then(module => ({ default: module.PricingPage })));
 const OfertaTreiPlusUnuPage = lazy(() => import('./pages/OfertaTreiPlusUnuPage').then(module => ({ default: module.OfertaTreiPlusUnuPage })));
 const BookingPage = lazy(() => import('./pages/BookingPage').then(module => ({ default: module.BookingPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(module => ({ default: module.ContactPage })));
+const DespreNoiPage = lazy(() => import('./pages/DespreNoiPage').then(module => ({ default: module.DespreNoiPage })));
 import { captureUTMParameters } from './lib/utm';
 import { SmoothScroll } from './components/ui/SmoothScroll';
 // Performance: Disabled heavy global overlays (CustomCursor, SpeedScrollEffect, FilmGrain)
@@ -94,6 +96,16 @@ const App: React.FC = () => {
               <Route path="oferta-3-plus-1" element={
                 <Suspense fallback={<SkeletonLoader />}>
                   <OfertaTreiPlusUnuPage />
+                </Suspense>
+              } />
+              <Route path="contact" element={
+                <Suspense fallback={<SkeletonLoader />}>
+                  <ContactPage />
+                </Suspense>
+              } />
+              <Route path="despre-noi" element={
+                <Suspense fallback={<SkeletonLoader />}>
+                  <DespreNoiPage />
                 </Suspense>
               } />
 
