@@ -135,6 +135,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
                         {/* Mute Toggle */}
                         <button
                             onClick={() => setIsMuted(!isMuted)}
+                            aria-label={isMuted ? "Activează sunetul ambient" : "Dezactivează sunetul ambient"}
                             className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors border ${isLight ? 'bg-gray-50 hover:bg-gray-100 text-gray-500 hover:text-gray-900 border-transparent hover:border-gray-200' : 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border-white/10'}`}
                         >
                             {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
@@ -187,7 +188,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
                                 variant="primary"
                                 size="sm"
                                 onClick={onOpenBooking}
-                                className={`relative rounded-full shadow-lg shadow-blue-500/20 transition-all ${isScrolled ? '!px-6 !py-2.5' : '!px-8 !py-3'}`}
+                                className={`relative rounded-full shadow-lg shadow-blue-500/20 transition-all whitespace-nowrap ${isScrolled ? '!px-6 !py-2.5' : '!px-8 !py-3'}`}
                             >
                                 <span className="mr-1.5">⚡</span> Programează-te
                             </Button>
@@ -204,6 +205,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
                         </button>
                         <button
                             onClick={() => setIsMuted(!isMuted)}
+                            aria-label={isMuted ? "Activează sunetul ambient" : "Dezactivează sunetul ambient"}
                             className={`w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full transition-all duration-300 ${!isMuted ? 'text-blue-500 bg-blue-50' : isLight ? 'text-gray-600 bg-white/50 hover:bg-gray-100' : 'text-gray-300 bg-white/10 hover:bg-white/20'}`}
                         >
                             {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}

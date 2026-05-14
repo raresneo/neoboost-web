@@ -64,7 +64,6 @@ export const ProgramsSection = ({ showSpecializedPrograms = true }: { showSpecia
                             <p className="text-brand text-xs font-bold uppercase tracking-widest mb-4 relative z-10">{pkg.sessionCount} Ședințe / lună</p>
                             <div className="flex items-baseline gap-1 mb-8">
                                 <span className="text-3xl font-bold text-[var(--text-primary)]">{pkg.price}</span>
-                                <span className="text-xs font-bold text-gray-400 uppercase">RON</span>
                             </div>
 
                             <ul className="space-y-4 mb-10 flex-grow">

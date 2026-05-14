@@ -54,7 +54,7 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
             {/* Background Video with Parallax - Optimized */}
             <motion.div
                 style={{ y: yParallax, opacity: opacityParallax }}
-                className={`absolute -inset-y-[15%] inset-x-0 z-0 bg-black transition-opacity duration-1000 origin-center will-change-transform ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className="absolute -inset-y-[15%] inset-x-0 z-0 bg-black origin-center will-change-transform"
             >
                 <iframe
                     src="https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
@@ -70,8 +70,8 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
             {/* Ambient Glow - Subtle for Light Mode */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-100 to-red-100 rounded-full blur-[100px] pointer-events-none z-10 opacity-60"></div>
 
-            {/* Content */}
-            <div className={`relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-6xl mx-auto transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {/* Content — always visible immediately */}
+            <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-6xl mx-auto">
 
                 {/* TECH TAGS - Top Row */}
                 <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -98,7 +98,7 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                         mode="char"
                         stagger={0.03}
                         delay={0.5}
-                        className="font-display font-black text-gray-900 text-5xl md:text-8xl lg:text-[7rem] leading-[0.85] tracking-tighter uppercase drop-shadow-sm justify-center italic mb-8"
+                        className="font-display font-black text-white text-5xl md:text-8xl lg:text-[7rem] leading-[0.85] tracking-tighter uppercase drop-shadow-sm justify-center italic mb-8"
                     />
 
                     <motion.div
@@ -107,8 +107,8 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                         transition={{ duration: 1.2, delay: 1.2, ease: [0.33, 1, 0.68, 1] }}
                         className="text-center"
                     >
-                        <p className="text-xl md:text-2xl text-gray-600 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
-                            Descoperă tehnologia <span className="text-gray-900 font-bold border-b-2 border-brand/50">Wireless EMS</span> în Oradea.
+                        <p className="text-xl md:text-2xl text-white/80 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+                            Descoperă tehnologia <span className="text-white font-bold border-b-2 border-brand/50">Wireless EMS</span> în Oradea.
                             20 de minute pentru rezultate vizibile, fără efortul inutil al antrenamentelor clasice.
                         </p>
                     </motion.div>
@@ -127,13 +127,13 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                                 { word: "sală.", icon: <Clock className="text-rose-500 w-6 h-6 inline ml-1" />, color: "#f43f5e" },
                                 { word: "maxim.", icon: <Zap className="text-orange-500 w-6 h-6 inline ml-1" />, color: "#f97316" }
                             ]}
-                            className="text-xl md:text-3xl font-display font-bold text-gray-900 md:text-gray-800 leading-relaxed justify-center drop-shadow-sm"
+                            className="text-xl md:text-3xl font-display font-bold text-white/90 leading-relaxed justify-center drop-shadow-sm"
                         />
                     </div>
                 </ScrollReveal>
 
                 {/* Energy Button */}
-                <div className="flex flex-col md:flex-row items-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <div className="flex flex-col md:flex-row items-center gap-4">
                     <Button
                         variant="energy"
                         size="lg"
@@ -146,16 +146,14 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                     >
                         Programează o ședință de 30 minute
                     </Button>
-                    <Button
-                        variant="outline"
-                        size="lg"
-                        className="px-8 py-5 bg-white backdrop-blur-md text-gray-900 border-white/50 hover:bg-white/90 text-sm md:text-base min-w-[280px] shadow-lg shadow-white/10"
+                    <button
+                        className="px-8 py-5 rounded-full bg-white text-gray-900 font-bold text-sm md:text-base min-w-[280px] shadow-lg border border-white/30 hover:bg-gray-50 transition-all"
                         onClick={() => {
                             window.open(`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Aș vrea o discuție de 10 minute să văd dacă antrenamentul EMS mi se potrivește.`, '_blank');
                         }}
                     >
-                        Află dacă ți se potrivește (discuție scurtă)
-                    </Button>
+                        Află dacă ți se potrivește
+                    </button>
                 </div>
 
             </div>

@@ -102,9 +102,6 @@ export const HomePage = () => {
                 <FlashcardReveal direction="right">
                     <ComparisonSection />
                 </FlashcardReveal>
-                <div className="container mx-auto px-6">
-                    <QuickBookingCTA />
-                </div>
             </section>
 
             {/* SAFETY - REMOVED (Merged into TargetAudience) */}
@@ -143,9 +140,6 @@ export const HomePage = () => {
             {/* EDUCATION */}
             <section id="metoda" className="relative scroll-mt-24">
                 <EMSEducation />
-                <div className="container mx-auto px-6">
-                    <QuickBookingCTA />
-                </div>
             </section>
 
             {/* SUPPLEMENTS */}
