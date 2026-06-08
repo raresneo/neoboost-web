@@ -40,17 +40,23 @@ export const QuickNav = () => {
     };
 
     return (
-        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-4">
+        <div className="fixed right-4 top-1/2 z-[60] hidden -translate-y-1/2 flex-col gap-3.5 2xl:flex">
             {SECTIONS.map((section) => (
                 <button
                     key={section.id}
                     onClick={() => scrollTo(section.id)}
-                    className="group flex items-center justify-end gap-3"
+                    aria-label={section.label}
+                    className="group flex items-center justify-end gap-2.5"
                 >
-                    <span className={`text-[10px] font-black uppercase tracking-widest transition-all duration-300 opacity-0 group-hover:opacity-100 ${activeSection === section.id ? 'text-[#3A86FF] opacity-100' : 'text-white/40'}`}>
+                    <span className="rounded-md bg-[var(--bg-secondary)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] opacity-0 shadow-sm transition-opacity duration-200 group-hover:opacity-100">
                         {section.label}
                     </span>
-                    <div className={`w-2 h-2 rounded-full border transition-all duration-300 ${activeSection === section.id ? 'bg-[#3A86FF] border-[#3A86FF] scale-125' : 'border-white/20 bg-transparent'}`} />
+                    <div
+                        className={`h-2 w-2 rounded-full transition-all duration-200 ${activeSection === section.id
+                            ? 'scale-125 bg-[var(--accent-primary)]'
+                            : 'bg-[var(--text-disabled)] group-hover:bg-[var(--text-muted)]'
+                            }`}
+                    />
                 </button>
             ))}
         </div>

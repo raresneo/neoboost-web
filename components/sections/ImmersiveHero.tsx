@@ -1,172 +1,172 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Timer, ShoppingBag, Clock, Rocket, Target, UserCheck } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { ScrollReveal } from '../ui/ScrollReveal';
-import { TypewriterText } from '../ui/TypewriterText';
-import { ScrollRevealText } from '../ui/ScrollRevealText';
-import { triggerConfetti } from '../ui/ConfettiTrigger';
+import React from 'react';
+import { MessageCircle, Star, ArrowRight, MapPin, Check, Zap } from 'lucide-react';
 import { BRAND } from '../../constants';
-import { RevealText } from '../ui/RevealText';
-// import { DualToneImage } from '../ui/DualToneImage'; // Not used in this concept
+
+const WA = (text: string) =>
+    `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(text)}`;
+
+const STATS = [
+    { value: '30', unit: 'min', label: 'pe ședință' },
+    { value: '90', unit: '%', label: 'mușchi activați' },
+    { value: '1:1', unit: '', label: 'cu antrenor' },
+];
 
 export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void }) => {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [videoLoaded, setVideoLoaded] = useState(false);
-    const heroRef = useRef(null);
-
-    const { scrollYProgress } = useScroll({
-        target: heroRef,
-        offset: ["start start", "end start"]
-    });
-
-    const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-    const opacityParallax = useTransform(scrollYProgress, [0, 0.8], [0.6, 0.2]);
-
-    useEffect(() => {
-        setIsLoaded(true);
-        // Delay video load until page is interactive
-        const timer = setTimeout(() => setVideoLoaded(true), 2000);
-        return () => clearTimeout(timer);
-    }, []);
-
-    // ... (animations stay same) ...
-    // Custom CSS for floating animation
-    const floatingAnimation = `
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        @keyframes float-medium {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes float-fast {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-        .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
-        .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
-    `;
+    const openBooking = () => {
+        if (onOpenBooking) onOpenBooking();
+        else window.open(WA('Salut! Vreau să programez ședința EMS gratuită de 30 de minute.'), '_blank');
+    };
 
     return (
-        <div ref={heroRef} className="relative min-h-[90vh] w-full overflow-hidden flex flex-col items-center justify-center bg-[var(--bg-primary)] mt-[72px]">
-            <style>{floatingAnimation}</style>
+        <section className="relative w-full overflow-hidden bg-[var(--bg-primary)] pt-28 pb-16 md:pt-36 md:pb-24">
+            {/* Subtle structural grid — cheap, no blur */}
+            <div
+                className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                style={{
+                    backgroundImage:
+                        'linear-gradient(var(--text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--text-primary) 1px, transparent 1px)',
+                    backgroundSize: '64px 64px',
+                    maskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent)',
+                }}
+            />
 
-            {/* Background Video with Parallax - Lazy Loaded */}
-            <motion.div
-                style={{ y: yParallax, opacity: opacityParallax }}
-                className="absolute -inset-y-[15%] inset-x-0 z-0 bg-black origin-center will-change-transform"
-            >
-                {videoLoaded && (
-                    <iframe
-                        src="https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
-                        title="Hero Video"
-                        className="absolute top-1/2 left-1/2 w-full aspect-[9/16] -translate-x-1/2 -translate-y-1/2 object-cover opacity-60 filter contrast-110 scale-[1.35] pointer-events-none"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        style={{ border: 0 }}
-                    />
-                )}
-                {/* Gradient Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/90 to-[var(--bg-primary)]/40"></div>
-            </motion.div>
-
-            {/* Ambient Glow - Reduced blur for performance */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-100 to-red-100 rounded-full blur-[60px] pointer-events-none z-10 opacity-40"></div>
-
-            {/* Content — always visible immediately */}
-            <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-6xl mx-auto">
-
-                {/* TECH TAGS - Top Row */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/50 backdrop-blur-md">
-                        <Timer size={14} className="text-[#00D9FF]" />
-                        <span className="text-[10px] font-bold text-[var(--text-primary)] tracking-widest uppercase">Efect Intens în 30 Min</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/50 backdrop-blur-md">
-                        <Target size={14} className="text-[#00FF88]" />
-                        <span className="text-[10px] font-bold text-[var(--text-primary)] tracking-widest uppercase">Program Personalizat</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/50 backdrop-blur-md">
-                        <UserCheck size={14} className="text-[#3A86FF]" />
-                        <span className="text-[10px] font-bold text-[var(--text-primary)] tracking-widest uppercase">Ghidaj 1-la-1 cu Antrenor</span>
-                    </div>
-                </div>
-
-
-                {/* CENTRAL HERO CONTENT */}
-                <div className="flex flex-col items-center max-w-5xl mx-auto">
-                    <RevealText
-                        text="ANTRENAMENTUL VIITORULUI."
-                        as="h1"
-                        mode="char"
-                        stagger={0.03}
-                        delay={0.5}
-                        className="font-display font-black text-white text-5xl md:text-8xl lg:text-[7rem] leading-[0.85] tracking-tighter uppercase drop-shadow-sm justify-center italic mb-8"
-                    />
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, delay: 1.2, ease: [0.33, 1, 0.68, 1] }}
-                        className="text-center"
+            <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12 lg:gap-10 lg:px-10">
+                {/* ---------- LEFT: editorial copy ---------- */}
+                <div className="lg:col-span-7">
+                    {/* Eyebrow */}
+                    <div
+                        className="hero-rise mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-3.5 py-1.5"
+                        style={{ animationDelay: '0ms' }}
                     >
-                        <p className="text-xl md:text-2xl text-white/80 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
-                            Descoperă tehnologia <span className="text-white font-bold border-b-2 border-brand/50">Wireless EMS</span> în Oradea.
-                            20 de minute pentru rezultate vizibile, fără efortul inutil al antrenamentelor clasice.
-                        </p>
-                    </motion.div>
+                        <span className="relative flex h-2 w-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--success)] opacity-60" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--success)]" />
+                        </span>
+                        <MapPin size={13} className="text-[var(--text-muted)]" />
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-secondary)]">
+                            Oradea · Ramada &amp; GetFit
+                        </span>
+                    </div>
+
+                    {/* Headline with kinetic rotator — fixed-height line, no overlap */}
+                    <h1
+                        className="hero-rise font-display text-[2.6rem] font-black uppercase italic leading-[0.95] tracking-tight text-[var(--text-primary)] sm:text-6xl lg:text-7xl xl:text-[5rem]"
+                        style={{ animationDelay: '60ms' }}
+                    >
+                        <span className="block">30 de minute și</span>
+                        <span className="hero-rotator text-[var(--accent-primary)]">
+                            <span>slăbești.</span>
+                            <span>te tonifiezi.</span>
+                            <span>ai energie.</span>
+                        </span>
+                        <span className="block text-[var(--text-muted)]">Fără să trăiești în sală.</span>
+                    </h1>
+
+                    {/* Subhead */}
+                    <p
+                        className="hero-rise mt-7 max-w-xl text-lg leading-relaxed text-[var(--text-secondary)] md:text-xl"
+                        style={{ animationDelay: '140ms' }}
+                    >
+                        Antrenament <strong className="font-semibold text-[var(--text-primary)]">EMS wireless</strong>,
+                        ghidat 1-la-1 de un antrenor. Echivalentul a 4 ore de sală, condensat în 30 de minute care
+                        chiar îți schimbă corpul.
+                    </p>
+
+                    {/* CTAs */}
+                    <div
+                        className="hero-rise mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+                        style={{ animationDelay: '220ms' }}
+                    >
+                        <button
+                            onClick={openBooking}
+                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-transform duration-150 hover:-translate-y-0.5 hover:bg-[var(--accent-secondary)] active:translate-y-0"
+                        >
+                            <Zap size={17} className="fill-current" />
+                            Rezervă ședința GRATUITĂ
+                            <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-1" />
+                        </button>
+                        <a
+                            href={WA('Salut! Aș vrea o discuție de 10 minute să văd dacă antrenamentul EMS mi se potrivește.')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-7 py-4 text-sm font-bold text-[var(--text-primary)] transition-colors duration-150 hover:border-[#25D366] hover:text-[#1ebe57]"
+                        >
+                            <MessageCircle size={17} className="text-[#25D366]" />
+                            Scrie-ne pe WhatsApp
+                        </a>
+                    </div>
+
+                    {/* Trust row */}
+                    <div
+                        className="hero-rise mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-[var(--text-muted)]"
+                        style={{ animationDelay: '300ms' }}
+                    >
+                        <a
+                            href={BRAND.googleMapsLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--text-primary)]"
+                        >
+                            <span className="flex">
+                                {[0, 1, 2, 3, 4].map((i) => (
+                                    <Star key={i} size={15} className="fill-amber-400 text-amber-400" />
+                                ))}
+                            </span>
+                            <strong className="font-semibold text-[var(--text-primary)]">5.0</strong> · 127 recenzii Google
+                        </a>
+                        <span className="inline-flex items-center gap-1.5">
+                            <Check size={15} className="text-[var(--success)]" />
+                            Prima ședință e gratuită
+                        </span>
+                    </div>
                 </div>
 
-                <ScrollReveal delay={200}>
-                    <div className="mb-12 max-w-4xl mx-auto relative group">
-                        {/* Shadow box for better readability on video */}
-                        <div className="absolute -inset-4 bg-white/5 backdrop-blur-[2px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                        <ScrollRevealText
-                            text="Timpul tău este prețios. De aceea, la NeoBoost îți oferim ședințe EMS 1-la-1, ghidate pas cu pas de antrenor. Obții rezultate vizibile, energie și un tonus de invidiat, fără să pierzi ore întregi la sală. Doar tu, antrenorul și 30 de minute de impact maxim."
-                            highlights={[
-                                { word: "prețios.", icon: <Star className="text-amber-500 w-6 h-6 inline ml-1" />, color: "#f59e0b" },
-                                { word: "antrenor.", icon: <UserCheck className="text-blue-500 w-6 h-6 inline ml-1" />, color: "#3b82f6" },
-                                { word: "vizibile,", icon: <TrendingDown className="text-emerald-500 w-6 h-6 inline ml-1" />, color: "#10b981" },
-                                { word: "sală.", icon: <Clock className="text-rose-500 w-6 h-6 inline ml-1" />, color: "#f43f5e" },
-                                { word: "maxim.", icon: <Zap className="text-orange-500 w-6 h-6 inline ml-1" />, color: "#f97316" }
-                            ]}
-                            className="text-xl md:text-3xl font-display font-bold text-white/90 leading-relaxed justify-center drop-shadow-sm"
+                {/* ---------- RIGHT: hero image (instant, no third-party embed) ---------- */}
+                <div className="lg:col-span-5">
+                    <div
+                        className="hero-rise relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-subtle)] bg-[var(--bg-tertiary)] shadow-[var(--shadow-lg)] lg:max-w-none"
+                        style={{ animationDelay: '160ms' }}
+                    >
+                        <img
+                            src="/hero-ems.webp"
+                            alt="Antrenament EMS cu antrenor personal la NeoBoost Oradea"
+                            width={1100}
+                            height={1375}
+                            // @ts-ignore — fetchpriority is valid HTML, not yet in React types
+                            fetchpriority="high"
+                            decoding="async"
+                            className="absolute inset-0 h-full w-full object-cover"
                         />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+
+                        {/* Floating stat badge */}
+                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl border border-white/15 bg-black/55 px-4 py-3 backdrop-blur-md">
+                            <span className="text-xs font-medium uppercase tracking-wide text-white/70">
+                                Tehnologie EMS Wireless
+                            </span>
+                            <span className="text-sm font-bold text-white">90% mușchi / sesiune</span>
+                        </div>
                     </div>
-                </ScrollReveal>
-
-                {/* Energy Button */}
-                <div className="flex flex-col md:flex-row items-center gap-4">
-                    <Button
-                        variant="energy"
-                        size="lg"
-                        className="px-8 py-5 text-base md:text-lg min-w-[280px]"
-                        onClick={() => {
-                            triggerConfetti();
-                            if (onOpenBooking) onOpenBooking();
-                            else window.open(`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Vreau să programez o ședință EMS de 30 de minute.`, '_blank');
-                        }}
-                    >
-                        Programează o ședință de 30 minute
-                    </Button>
-                    <button
-                        className="px-8 py-5 rounded-full bg-white text-gray-900 font-bold text-sm md:text-base min-w-[280px] shadow-lg border border-white/30 hover:bg-gray-50 transition-all"
-                        onClick={() => {
-                            window.open(`https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=Salut! Aș vrea o discuție de 10 minute să văd dacă antrenamentul EMS mi se potrivește.`, '_blank');
-                        }}
-                    >
-                        Află dacă ți se potrivește
-                    </button>
                 </div>
-
             </div>
 
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-30 opacity-50 hover:opacity-100 transition-opacity" onClick={() => document.getElementById('beneficii')?.scrollIntoView({ behavior: 'smooth' })}>
-                <ArrowDown size={24} className="text-[var(--text-muted)]" />
+            {/* ---------- Stat strip ---------- */}
+            <div className="relative z-10 mx-auto mt-14 max-w-7xl px-6 lg:px-10">
+                <div className="grid grid-cols-3 divide-x divide-[var(--border-subtle)] rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-secondary)]">
+                    {STATS.map((s) => (
+                        <div key={s.label} className="px-4 py-6 text-center">
+                            <div className="font-display text-3xl font-black text-[var(--text-primary)] md:text-4xl">
+                                {s.value}
+                                <span className="text-[var(--accent-primary)]">{s.unit}</span>
+                            </div>
+                            <div className="mt-1 text-xs font-medium uppercase tracking-wide text-[var(--text-muted)] md:text-sm">
+                                {s.label}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 };

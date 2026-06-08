@@ -22,88 +22,80 @@
 */
 
 :root {
-  /* --- Unified Design System (Premium Clean) --- */
+  /* --- 2025 Minimalist Premium Design System --- */
 
-  /* 1. Backgrounds */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8FAFC;
-  /* Slate-50 - Cooler/Premium feel */
-  --bg-tertiary: #F1F5F9;
-  /* Slate-100 */
+  /* 1. Backgrounds — warm neutral, not clinical white */
+  --bg-primary: #FAFAF9;
+  --bg-secondary: #F5F5F4;
+  --bg-tertiary: #E7E5E4;
 
-  /* 2. Text Colors */
-  --text-primary: #1E293B;
-  /* Slate-800 - Slightly softer than 900 for premium readability */
-  --text-secondary: #475569;
-  /* Slate-600 - Perfect for body text */
-  --text-muted: #64748B;
-  /* Slate-500 */
-  --text-disabled: #94A3B8;
-  /* Slate-400 */
+  /* 2. Text Colors — near-black, high contrast */
+  --text-primary: #0C0A09;
+  --text-secondary: #44403C;
+  --text-muted: #78716C;
+  --text-disabled: #A8A29E;
 
-  /* 3. Brand Colors */
-  --accent-primary: #3A86FF;
-  --accent-secondary: #2563EB;
-  --accent-glow: rgba(58, 134, 255, 0.25);
+  /* 3. Brand Colors — electric blue, single accent */
+  --accent-primary: #2563EB;
+  --accent-secondary: #1D4ED8;
+  --accent-glow: rgba(37, 99, 235, 0.12);
 
   /* 4. Status Colors */
-  --success: #10B981;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --success: #16A34A;
+  --warning: #EA580C;
+  --error: #DC2626;
 
-  /* 5. Metrics */
-  --section-padding-y: 120px;
-  --section-padding-y-mobile: 80px;
+  /* 5. Metrics — tighter radii for minimal look */
+  --section-padding-y: 96px;
+  --section-padding-y-mobile: 64px;
   --section-padding-x: 24px;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  /* Modern curves */
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
-  /* 6. Shadows (Premium/Diffuse) */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 12px 24px -6px rgba(0, 0, 0, 0.06);
-  --shadow-card: 0 24px 48px -12px rgba(15, 23, 42, 0.06);
-  /* Ultra-soft card shadow */
-  --shadow-glow: 0 0 30px rgba(58, 134, 255, 0.15);
+  /* 6. Shadows — barely there */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 8px 24px -8px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-glow: none;
 
-  /* 7. Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  /* More opaque for readability */
-  --glass-border: rgba(255, 255, 255, 0.5);
-  /* Subtle border */
-  --glass-blur: 16px;
+  /* 7. Borders — visible structure, no glass */
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-blur: 12px;
+  --border-subtle: rgba(0, 0, 0, 0.06);
 
-  /* Legacy/Compatibility Support (To avoid breaking old components immediately) */
+  /* Legacy compat */
   --neon-accent: var(--accent-primary);
   --accent: var(--accent-primary);
 }
 
 [data-theme="dark"] {
-  --bg-primary: #0B0F1A;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1E293B;
+  --bg-primary: #09090B;
+  --bg-secondary: #18181B;
+  --bg-tertiary: #27272A;
 
-  --text-primary: #F1F5F9;
-  --text-secondary: #CBD5E1;
-  --text-muted: #94A3B8;
-  --text-disabled: #64748B;
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-disabled: #52525B;
 
-  --accent-primary: #60A5FA;
-  --accent-secondary: #3B82F6;
-  --accent-glow: rgba(96, 165, 250, 0.25);
+  --accent-primary: #3B82F6;
+  --accent-secondary: #2563EB;
+  --accent-glow: rgba(59, 130, 246, 0.15);
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 12px 24px -6px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 30px rgba(96, 165, 250, 0.2);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-glow: none;
 
-  --glass-bg: rgba(15, 23, 42, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(9, 9, 11, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.06);
 }
 
 body {
@@ -227,6 +219,53 @@ body {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* === HERO: kinetic word rotator (pure CSS, GPU-cheap) === */
+@keyframes heroWordCycle {
+  0%, 26% { opacity: 0; transform: translateY(0.4em); }
+  4%, 22% { opacity: 1; transform: translateY(0); }
+  30%, 100% { opacity: 0; transform: translateY(-0.4em); }
+}
+
+.hero-rotator {
+  position: relative;
+  display: block;
+  height: 0.95em;
+  overflow: hidden;
+}
+
+.hero-rotator > span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  animation: heroWordCycle 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: opacity, transform;
+}
+
+.hero-rotator > span:nth-child(1) { animation-delay: 0s; }
+.hero-rotator > span:nth-child(2) { animation-delay: 3s; }
+.hero-rotator > span:nth-child(3) { animation-delay: 6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rotator { height: auto; }
+  .hero-rotator > span { position: static; animation: none; }
+  .hero-rotator > span:nth-child(1) { opacity: 1; }
+  .hero-rotator > span:nth-child(2),
+  .hero-rotator > span:nth-child(3) { display: none; }
+}
+
+/* Snappy entrance for hero blocks */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-rise {
+  opacity: 0;
+  animation: heroRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Gradient Animation for Circular/Border Effects */
@@ -378,13 +417,11 @@ body {
   animation: scaleIn 0.4s ease-out forwards;
 }
 
-/* Scroll Reveal - Soft Effect */
+/* Scroll Reveal — snappy */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  /* Doar 20px translație, fără scale */
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .scroll-reveal.visible {
@@ -462,17 +499,14 @@ body {
 }
 
 .glass-block {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .glass-block:hover {
-  border-color: rgba(58, 134, 255, 0.3);
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .grid-bg {
@@ -660,17 +694,13 @@ body {
 }
 
 .air-glass {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  backdrop-filter: blur(8px);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.15s ease-out;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.15s ease;
 }
 
 .air-glass:hover {
-  border-color: rgba(58, 134, 255, 0.2);
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 .will-change-scroll {

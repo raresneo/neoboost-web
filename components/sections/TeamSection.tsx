@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { FlashcardReveal } from '../ui/FlashcardReveal';
 import { DualToneImage } from '../ui/DualToneImage';
@@ -101,7 +101,7 @@ const BioText = ({ text, isActive, storyImage }: { text: string, isActive: boole
     );
 };
 
-export const TeamSection = () => {
+const TeamSectionInternal = () => {
     const [activeMember, setActiveMember] = useState<string | null>(null);
     const observerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -287,3 +287,5 @@ export const TeamSection = () => {
         </section>
     );
 };
+
+export const TeamSection = memo(TeamSectionInternal);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { History, Zap, CheckCircle2, Quote, Target, Smartphone, Layers, Battery } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { StaggeredText } from '../ui/StaggeredText';
@@ -10,7 +10,7 @@ import { TypingHeading } from '../ui/TypingHeading';
 import { EMS_MILESTONES } from '../../constants';
 
 // --- EMSEducation Component ---
-export const EMSEducation = () => {
+const EMSEducationInternal = () => {
     return (
         <section className="py-20 md:py-32 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6 md:px-24">
@@ -258,3 +258,5 @@ export const EMSEducation = () => {
         </section>
     );
 };
+
+export const EMSEducation = memo(EMSEducationInternal);
