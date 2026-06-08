@@ -18,8 +18,8 @@ export const Reward3Plus1Section: React.FC<Reward3Plus1SectionProps> = ({
         <section className="py-20">
             <div className="relative overflow-hidden rounded-[3rem] border-4 border-[#3A86FF] bg-gradient-to-br from-[#3A86FF]/10 via-[var(--bg-primary)] to-[var(--bg-primary)] p-12 md:p-16">
                 {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#3A86FF]/10 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00F5FF]/10 rounded-full blur-[100px]"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#3A86FF]/10 rounded-full blur-[60px]"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00F5FF]/10 rounded-full blur-[60px]"></div>
 
                 <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-8">

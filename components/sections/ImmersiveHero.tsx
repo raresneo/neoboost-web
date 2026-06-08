@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { MessageCircle, Zap, Star, CheckCircle2, ArrowDown, Activity, Battery, Timer, ShoppingBag, TrendingDown, Clock, Bed, Rocket, Target, UserCheck } from 'lucide-react';
+import { Timer, ShoppingBag, Clock, Rocket, Target, UserCheck } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { TypewriterText } from '../ui/TypewriterText';
 import { ScrollRevealText } from '../ui/ScrollRevealText';
-import { ParticleNetwork } from '../ui/ParticleNetwork';
 import { triggerConfetti } from '../ui/ConfettiTrigger';
 import { BRAND } from '../../constants';
 import { RevealText } from '../ui/RevealText';
@@ -13,6 +12,7 @@ import { RevealText } from '../ui/RevealText';
 
 export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void }) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [videoLoaded, setVideoLoaded] = useState(false);
     const heroRef = useRef(null);
 
     const { scrollYProgress } = useScroll({
@@ -25,6 +25,9 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
 
     useEffect(() => {
         setIsLoaded(true);
+        // Delay video load until page is interactive
+        const timer = setTimeout(() => setVideoLoaded(true), 2000);
+        return () => clearTimeout(timer);
     }, []);
 
     // ... (animations stay same) ...
@@ -51,24 +54,26 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
         <div ref={heroRef} className="relative min-h-[90vh] w-full overflow-hidden flex flex-col items-center justify-center bg-[var(--bg-primary)] mt-[72px]">
             <style>{floatingAnimation}</style>
 
-            {/* Background Video with Parallax - Optimized */}
+            {/* Background Video with Parallax - Lazy Loaded */}
             <motion.div
                 style={{ y: yParallax, opacity: opacityParallax }}
                 className="absolute -inset-y-[15%] inset-x-0 z-0 bg-black origin-center will-change-transform"
             >
-                <iframe
-                    src="https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
-                    title="Hero Video"
-                    className="absolute top-1/2 left-1/2 w-full aspect-[9/16] -translate-x-1/2 -translate-y-1/2 object-cover opacity-60 filter contrast-110 scale-[1.35] pointer-events-none"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    style={{ border: 0 }}
-                />
+                {videoLoaded && (
+                    <iframe
+                        src="https://www.youtube.com/embed/h6UWL9F-m8g?autoplay=1&mute=1&controls=0&loop=1&playlist=h6UWL9F-m8g&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
+                        title="Hero Video"
+                        className="absolute top-1/2 left-1/2 w-full aspect-[9/16] -translate-x-1/2 -translate-y-1/2 object-cover opacity-60 filter contrast-110 scale-[1.35] pointer-events-none"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        style={{ border: 0 }}
+                    />
+                )}
                 {/* Gradient Overlay for Text Readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/90 to-[var(--bg-primary)]/40"></div>
             </motion.div>
 
-            {/* Ambient Glow - Subtle for Light Mode */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-100 to-red-100 rounded-full blur-[100px] pointer-events-none z-10 opacity-60"></div>
+            {/* Ambient Glow - Reduced blur for performance */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-100 to-red-100 rounded-full blur-[60px] pointer-events-none z-10 opacity-40"></div>
 
             {/* Content — always visible immediately */}
             <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-6xl mx-auto">

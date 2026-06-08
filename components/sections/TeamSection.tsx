@@ -153,7 +153,7 @@ export const TeamSection = () => {
                     <div className="grid lg:grid-cols-3 gap-8">
                         <ScrollReveal>
                             <div className="bg-[var(--bg-secondary)] border border-[var(--border-subtle)] p-8 rounded-3xl relative overflow-hidden group hover:border-[var(--accent-primary)]/50 transition-all duration-500">
-                                <div className="absolute top-0 right-0 p-24 bg-blue-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-600/10 transition-colors"></div>
+                                <div className="absolute top-0 right-0 p-24 bg-blue-600/5 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-600/10 transition-colors"></div>
                                 <div className="relative z-10 flex flex-col items-center text-center">
                                     <div className="w-16 h-16 rounded-2xl bg-[#0F172A] border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                                         <Heart size={32} className="text-blue-500" />
@@ -168,7 +168,7 @@ export const TeamSection = () => {
 
                         <ScrollReveal delay={0.1}>
                             <div className="bg-[var(--bg-secondary)] border border-[var(--border-subtle)] p-8 rounded-3xl relative overflow-hidden group hover:border-[var(--accent-primary)]/50 transition-all duration-500 shadow-2xl shadow-blue-900/10 lg:-mt-12 lg:mb-12">
-                                <div className="absolute top-0 right-0 p-24 bg-red-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-red-600/10 transition-colors"></div>
+                                <div className="absolute top-0 right-0 p-24 bg-red-600/5 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 group-hover:bg-red-600/10 transition-colors"></div>
                                 <div className="relative z-10 flex flex-col items-center text-center">
                                     <div className="w-16 h-16 rounded-2xl bg-[#0F172A] border border-red-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                                         <Zap size={32} className="text-red-500" />
@@ -183,7 +183,7 @@ export const TeamSection = () => {
 
                         <ScrollReveal delay={0.2}>
                             <div className="bg-[var(--bg-secondary)] border border-[var(--border-subtle)] p-8 rounded-3xl relative overflow-hidden group hover:border-[var(--accent-primary)]/50 transition-all duration-500">
-                                <div className="absolute top-0 right-0 p-24 bg-purple-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-purple-600/10 transition-colors"></div>
+                                <div className="absolute top-0 right-0 p-24 bg-purple-600/5 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 group-hover:bg-purple-600/10 transition-colors"></div>
                                 <div className="relative z-10 flex flex-col items-center text-center">
                                     <div className="w-16 h-16 rounded-2xl bg-[#0F172A] border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                                         <Activity size={32} className="text-purple-500" />

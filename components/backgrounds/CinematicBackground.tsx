@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 // Reusable Cinematic Background Component
-export const CinematicBackground: React.FC<{ image: string; opacity?: number }> = ({ image, opacity = 0.4 }) => {
+const CinematicBackgroundComponent: React.FC<{ image: string; opacity?: number }> = ({ image, opacity = 0.4 }) => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -30,13 +30,15 @@ export const CinematicBackground: React.FC<{ image: string; opacity?: number }> 
     );
 };
 
+export const CinematicBackground = memo(CinematicBackgroundComponent);
+
 // --- Benefits Video Background Component (Optimized) ---
-export const BenefitsVideoBackground = () => <CinematicBackground image="/DSC00193.webp" opacity={0.5} />;
-export const BiohackVideoBackground = () => <CinematicBackground image="/DSC00223.webp" opacity={0.4} />;
-export const TechnologyVideoBackground = () => <CinematicBackground image="/DSC00205.webp" opacity={0.3} />;
-export const ProgramsVideoBackground = () => <CinematicBackground image="/DSC04717.webp" opacity={0.4} />;
+export const BenefitsVideoBackground = memo(() => <CinematicBackground image="/DSC00193.webp" opacity={0.5} />);
+export const BiohackVideoBackground = memo(() => <CinematicBackground image="/DSC00223.webp" opacity={0.4} />);
+export const TechnologyVideoBackground = memo(() => <CinematicBackground image="/DSC00205.webp" opacity={0.3} />);
+export const ProgramsVideoBackground = memo(() => <CinematicBackground image="/DSC04717.webp" opacity={0.4} />);
 
 // --- New Backgrounds ---
-export const EvolutionVideoBackground = () => <CinematicBackground image="/DSC00193.webp" opacity={0.3} />;
-export const HistoryVideoBackground = () => <CinematicBackground image="/DSC04709.webp" opacity={0.3} />;
-export const TrialVideoBackground = () => <CinematicBackground image="/DSC07054.webp" opacity={0.3} />;
+export const EvolutionVideoBackground = memo(() => <CinematicBackground image="/DSC00193.webp" opacity={0.3} />);
+export const HistoryVideoBackground = memo(() => <CinematicBackground image="/DSC04709.webp" opacity={0.3} />);
+export const TrialVideoBackground = memo(() => <CinematicBackground image="/DSC07054.webp" opacity={0.3} />);

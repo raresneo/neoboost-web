@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { CinematicBackground } from '../backgrounds/CinematicBackground';
 import { GYM_VS_EMS } from '../../constants';
@@ -7,12 +7,12 @@ import { Button } from '../ui/Button';
 import { motion } from 'framer-motion';
 
 // --- Evolution Video Background Component ---
-const EvolutionVideoBackground = () => (
+const EvolutionVideoBackground = memo(() => (
     <CinematicBackground image="/DSC00193.webp" opacity={0.3} />
-);
+));
 
 // --- New Competitive Comparison Section ---
-export const ComparisonSection = () => (
+const ComparisonSectionComponent = () => (
     <section className="py-20 md:py-32 bg-[var(--bg-primary)] relative z-10">
         <div className="container mx-auto px-6 md:px-24 relative z-10">
             <ScrollReveal>
@@ -110,3 +110,5 @@ export const ComparisonSection = () => (
         </div>
     </section >
 );
+
+export const ComparisonSection = memo(ComparisonSectionComponent);

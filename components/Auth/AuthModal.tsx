@@ -84,8 +84,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             {/* Modal with Glassmorphism */}
             <div className="relative w-full max-w-md bg-zinc-900/90 border border-white/10 p-8 rounded-2xl shadow-2xl overflow-hidden glass-modal">
                 {/* Glow Effects */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#00FF88]/10 rounded-full blur-3xl -z-10" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#00FF88]/5 rounded-full blur-3xl -z-10" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#00FF88]/10 rounded-full blur-xl -z-10" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#00FF88]/5 rounded-full blur-xl -z-10" />
 
                 <button
                     onClick={onClose}

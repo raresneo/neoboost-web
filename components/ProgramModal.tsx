@@ -111,7 +111,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, FO
             onClick={handleOutsideClick}
         >
             {/* Header - Fixed Height for Mobile Visibility */}
-            <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-[var(--bg-primary)]/90 backdrop-blur-3xl z-[100000]">
+            <div className="flex-none h-20 md:h-24 flex items-center justify-between px-6 md:px-10 border-b border-white/10 bg-[var(--bg-primary)]/90 backdrop-blur-xl z-[100000]">
                 <button
                     onClick={onClose}
                     className="relative overflow-hidden flex items-center gap-3 text-[#3A86FF] hover:text-black bg-transparent hover:bg-[#3A86FF] transition-all px-6 py-3 rounded-lg border border-[#3A86FF]/30 hover:border-[#3A86FF] text-xs font-black uppercase tracking-[0.2em] group shadow-[0_0_15px_rgba(58,134,255,0.1)] hover:shadow-[0_0_30px_rgba(58,134,255,0.4)]"

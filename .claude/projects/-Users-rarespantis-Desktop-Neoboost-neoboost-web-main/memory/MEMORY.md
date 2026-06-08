@@ -1,0 +1,5 @@
+- [Proiect Salon Fya - Campanie](project-salon-fya.md) — Strategie completa Meta Ads bridal pentru Salon Fya Romania, Oradea
+- [FYA Salon Identity](project-fya-salon-identity.md) — Design system exact salon + Soul ID "Daria" blueprint + media IDs Higgsfield
+- [FYA Status](project-fya-status.md) — Ce s-a facut, ce e in asteptare, urmatorii pasi
+- [FYA No Cliches](feedback-fya-no-cliches.md) — Zero clisee in texte: interzis "rochie de vis", "ziua cea mare" etc.
+- [FYA Photo Fidelity](feedback-fya-photo-fidelity.md) — Fundaluri AI = copie fidela dupa poze reale, nu regenerare

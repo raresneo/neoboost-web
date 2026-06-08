@@ -144,7 +144,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ title,
     <section className="py-20">
         <div className="bg-gray-900 p-12 md:p-16 rounded-[3rem] text-center shadow-2xl relative overflow-hidden">
             {/* Decorative blob for contrast */}
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#3A86FF]/20 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#3A86FF]/20 rounded-full blur-[60px] pointer-events-none"></div>
 
             <Calendar size={48} className="text-[#3A86FF] mx-auto mb-6 relative z-10" />
             <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tighter mb-6 text-white relative z-10">

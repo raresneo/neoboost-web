@@ -60,7 +60,7 @@ export const NoSuitSection: React.FC<NoSuitSectionProps> = ({ onOpenBooking }) =
                     {/* OPTION 1: PERSONAL TRAINING */}
                     <ScrollReveal className="h-full">
                         <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-200 shadow-lg flex flex-col h-full relative overflow-hidden group hover:border-blue-300 hover:shadow-xl transition-all duration-300">
-                            <div className="absolute top-0 right-0 w-3/4 h-3/4 bg-blue-50/30 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+                            <div className="absolute top-0 right-0 w-3/4 h-3/4 bg-blue-50/30 rounded-full blur-xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
 
                             <div className="relative z-10 flex-1">
                                 {/* Header */}
@@ -145,7 +145,7 @@ export const NoSuitSection: React.FC<NoSuitSectionProps> = ({ onOpenBooking }) =
                     <ScrollReveal delay={100} className="h-full">
                         <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-200 shadow-lg flex flex-col h-full relative overflow-hidden group hover:border-blue-300 hover:shadow-xl transition-all duration-300">
                             {/* Subtle background accent */}
-                            <div className="absolute top-0 right-0 w-3/4 h-3/4 bg-purple-50/30 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+                            <div className="absolute top-0 right-0 w-3/4 h-3/4 bg-purple-50/30 rounded-full blur-xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
 
                             <div className="relative z-10 flex-1">
                                 {/* Header */}

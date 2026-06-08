@@ -135,7 +135,7 @@ export const TargetAudienceSection = () => {
                             <div className={`h-full min-h-[450px] rounded-[2.5rem] p-8 md:p-12 border border-[var(--border-subtle)] bg-[var(--bg-secondary)] relative overflow-hidden transition-all duration-500 flex flex-col justify-between shadow-xl shadow-gray-100`}>
 
                                 {/* Animated Background Gradient based on selection */}
-                                <div className={`absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l ${activeContent.bgGradient} opacity-20 pointer-events-none blur-3xl transition-colors duration-700`}></div>
+                                <div className={`absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l ${activeContent.bgGradient} opacity-20 pointer-events-none blur-xl transition-colors duration-700`}></div>
 
                                 <div className="relative z-10 animate-fade-in-up key={activeTab}">
                                     <div className={`inline-block mb-6 px-4 py-1.5 rounded-full bg-white border border-gray-100 ${activeContent.color} text-xs font-bold uppercase tracking-widest shadow-sm`}>

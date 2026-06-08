@@ -51,7 +51,7 @@ export const EMSAppUI = () => (
         <div className="flex-1 flex justify-around items-center">
             {/* Front Body */}
             <div className="relative h-full aspect-[1/2] opacity-80">
-                <div className="absolute inset-0 bg-white/[0.02] blur-3xl rounded-full"></div>
+                <div className="absolute inset-0 bg-white/[0.02] blur-xl rounded-full"></div>
                 <svg viewBox="0 0 100 200" className="h-full w-full">
                     <path d="M50 10 L60 25 L80 40 L85 80 L70 130 L75 190 M50 10 L40 25 L20 40 L15 80 L30 130 L25 190" fill="none" stroke="white" strokeWidth="1" opacity="0.1" />
                     {/* Active Electrodes */}

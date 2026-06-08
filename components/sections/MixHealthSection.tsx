@@ -41,7 +41,7 @@ export const MixHealthSection = () => {
 
                         {/* Visual Side */}
                         <div className="relative aspect-square md:h-[60vh] hidden md:block">
-                            <div className="absolute -inset-10 bg-[#3A86FF]/20 blur-[100px] rounded-full"></div>
+                            <div className="absolute -inset-10 bg-[#3A86FF]/20 blur-[60px] rounded-full"></div>
                             <img
                                 src="/proteinapersonalizata.webp"
                                 className="w-full h-full object-contain relative z-10 drop-shadow-[0_35px_35px_rgba(58,134,255,0.3)]"

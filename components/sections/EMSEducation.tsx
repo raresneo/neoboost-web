@@ -106,7 +106,7 @@ export const EMSEducation = () => {
                     <div className="grid lg:grid-cols-3 gap-8">
                         {/* 1. THE BRAIN (PowerBox) */}
                         <ScrollReveal delay={0} className="lg:col-span-1">
-                            <div className="h-full bg-zinc-950/40 backdrop-blur-3xl rounded-[2.5rem] p-8 flex flex-col items-center text-center group transition-all overflow-hidden relative shadow-premium border border-white/10 hover:border-blue-500/30">
+                            <div className="h-full bg-zinc-950/40 backdrop-blur-xl rounded-[2.5rem] p-8 flex flex-col items-center text-center group transition-all overflow-hidden relative shadow-premium border border-white/10 hover:border-blue-500/30">
                                 {/* Holographic Corner Accent */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/40 blur-[80px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
@@ -148,7 +148,7 @@ export const EMSEducation = () => {
 
                         {/* 2. THE BODY (DrySuit) */}
                         <ScrollReveal delay={100} className="lg:col-span-1">
-                            <div className="h-full bg-zinc-950/40 backdrop-blur-3xl rounded-[2.5rem] p-8 flex flex-col items-center text-center group transition-all overflow-hidden relative shadow-premium border border-white/10 hover:border-blue-500/30">
+                            <div className="h-full bg-zinc-950/40 backdrop-blur-xl rounded-[2.5rem] p-8 flex flex-col items-center text-center group transition-all overflow-hidden relative shadow-premium border border-white/10 hover:border-blue-500/30">
                                 {/* Holographic Corner Accent */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/40 blur-[80px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
@@ -190,7 +190,7 @@ export const EMSEducation = () => {
 
                         {/* 3. THE MIND (Control App) */}
                         <ScrollReveal delay={200} className="lg:col-span-1">
-                            <div className="h-full bg-zinc-950/40 backdrop-blur-3xl rounded-[2.5rem] p-8 flex flex-col items-center text-center group transition-all overflow-hidden relative shadow-premium border border-white/10 hover:border-blue-500/30">
+                            <div className="h-full bg-zinc-950/40 backdrop-blur-xl rounded-[2.5rem] p-8 flex flex-col items-center text-center group transition-all overflow-hidden relative shadow-premium border border-white/10 hover:border-blue-500/30">
                                 {/* Holographic Corner Accent */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/40 blur-[80px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
 

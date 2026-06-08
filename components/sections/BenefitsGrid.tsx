@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { BenefitModal } from '../ui/BenefitModal';
 
 import { UNIFIED_BENEFITS } from '../../constants';
 import { motion } from 'framer-motion';
 
-export const BenefitsGrid = () => {
+export const BenefitsGrid = memo(() => {
     const [selectedBenefit, setSelectedBenefit] = useState<typeof UNIFIED_BENEFITS[0] | null>(null);
 
     const containerVariants = {
@@ -46,9 +46,9 @@ export const BenefitsGrid = () => {
                         onClick={() => setSelectedBenefit(benefit)}
                         className="group relative bg-white border border-gray-100 hover:border-blue-300 rounded-[var(--radius-xl)] p-8 transition-shadow duration-300 cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden"
                     >
-                        {/* Interactive Background Glow */}
-                        <div className="absolute -right-16 -top-16 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors duration-500"></div>
-                        <div className="absolute -left-16 -bottom-16 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-colors duration-500"></div>
+                        {/* Interactive Background Glow - Optimized blur */}
+                        <div className="absolute -right-16 -top-16 w-32 h-32 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/10 transition-colors duration-500"></div>
+                        <div className="absolute -left-16 -bottom-16 w-32 h-32 bg-indigo-500/5 rounded-full blur-xl group-hover:bg-indigo-500/10 transition-colors duration-500"></div>
 
                         {/* Icon */}
                         <div className="flex justify-between items-start mb-6">
@@ -104,4 +104,4 @@ export const BenefitsGrid = () => {
             />
         </>
     );
-};
+});
