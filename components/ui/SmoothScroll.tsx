@@ -5,9 +5,11 @@ export const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        // Respect users who prefer reduced motion — skip smooth scroll entirely.
-        if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            return;
+        // Respect reduced motion, and allow ?nosmooth for debugging/native scroll.
+        if (typeof window !== 'undefined') {
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const noSmooth = new URLSearchParams(window.location.search).has('nosmooth');
+            if (reduce || noSmooth) return;
         }
 
         const lenis = new Lenis({

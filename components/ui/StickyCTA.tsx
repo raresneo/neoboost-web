@@ -1,41 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Calendar } from 'lucide-react';
-import { Button } from './Button';
+import { MessageCircle } from 'lucide-react';
+import { BRAND } from '../../constants';
+
+const WA_LINK = `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(
+    'Salut! Vreau să programez prima ședință EMS gratuită.'
+)}`;
 
 export const StickyCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.scrollY > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener('scroll', toggleVisibility);
-        return () => window.removeEventListener('scroll', toggleVisibility);
+        const onScroll = () => setIsVisible(window.scrollY > 500);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const scrollToContact = () => {
-        const contactSection = document.getElementById('contact-info');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
-        <div className={`fixed bottom-6 right-6 z-[999] transition-all duration-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'} hidden md:block`}>
-            <Button
-                variant="vibrant"
-                size="md"
-                onClick={scrollToContact}
-                className="shadow-[0_10px_30px_rgba(58,134,255,0.4)] !px-6 !py-3 flex items-center gap-2"
-            >
-                <Calendar size={18} />
-                <span>Book Now</span>
-            </Button>
-        </div>
+        <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Scrie-ne pe WhatsApp"
+            className={`fixed bottom-6 right-6 z-[60] hidden items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-bold text-white shadow-[0_10px_30px_rgba(37,211,102,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe57] md:flex ${isVisible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-16 opacity-0'}`}
+        >
+            <MessageCircle size={18} className="fill-white" />
+            Rezervă gratuit
+        </a>
     );
 };
