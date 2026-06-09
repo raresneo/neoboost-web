@@ -4,7 +4,7 @@ import { FlashcardReveal } from '../ui/FlashcardReveal';
 import { DualToneImage } from '../ui/DualToneImage';
 import { Instagram, Linkedin, Quote, ChevronDown, ChevronUp, Fingerprint, Activity, Zap, Heart } from 'lucide-react';
 
-const TEAM = [
+export const TEAM = [
     {
         id: 'rares-pantis',
         name: 'Rareș Pantiș',
