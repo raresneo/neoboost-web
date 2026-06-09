@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useOutletContext } from 'react-router-dom';
 import { Session } from '@supabase/supabase-js';
 import { Instagram, Linkedin, Quote } from 'lucide-react';
-import { TEAM } from '../components/sections/TeamSection';
+import { TEAM } from '../constants';
 import { Section, Heading, PrimaryCta, WhatsappCta } from '../components/home';
 import { Footer } from '../components/Footer';
 
