@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MoveUpRight, Target } from 'lucide-react';
+import { MoveUpRight, Clock, Users, TrendingUp } from 'lucide-react';
 import { getExtendedProgram } from '../../extendedPrograms';
 import { SEO } from '../../components/SEO';
 import {
@@ -140,19 +140,19 @@ export const ProgramLandingPage: React.FC = () => {
                 {/* Quick Info Cards */}
                 <div className="grid md:grid-cols-3 gap-6 mb-20">
                     <div className="bg-gray-50 p-8 border border-gray-100 rounded-2xl text-center shadow-sm">
-                        <Target size={32} className="text-[#3A86FF] mx-auto mb-4" />
+                        <Clock size={32} className="text-[#3A86FF] mx-auto mb-4" />
                         <div className="text-sm uppercase tracking-widest text-gray-500 font-black mb-2">Durată</div>
                         <div className="text-2xl font-bold text-gray-900">{program.duration}</div>
                     </div>
 
                     <div className="bg-gray-50 p-8 border border-gray-100 rounded-2xl text-center shadow-sm">
-                        <Target size={32} className="text-[#3A86FF] mx-auto mb-4" />
+                        <Users size={32} className="text-[#3A86FF] mx-auto mb-4" />
                         <div className="text-sm uppercase tracking-widest text-gray-500 font-black mb-2">Ideal Pentru</div>
                         <div className="text-2xl font-bold text-gray-900">{program.idealFor}</div>
                     </div>
 
                     <div className="bg-gray-50 p-8 border border-gray-100 rounded-2xl text-center shadow-sm">
-                        <Target size={32} className="text-[#3A86FF] mx-auto mb-4" />
+                        <TrendingUp size={32} className="text-[#3A86FF] mx-auto mb-4" />
                         <div className="text-sm uppercase tracking-widest text-gray-500 font-black mb-2">Beneficiu</div>
                         <div className="text-2xl font-bold text-gray-900">{program.benefit}</div>
                     </div>
