@@ -15,7 +15,7 @@ import { useStripeCheckout } from '../../lib/useStripeCheckout';
 export const waLink = (text: string) =>
     `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(text)}`;
 
-const Section: React.FC<{
+export const Section: React.FC<{
     id?: string;
     children: React.ReactNode;
     className?: string;
@@ -29,7 +29,7 @@ const Section: React.FC<{
     </section>
 );
 
-const Heading: React.FC<{ eyebrow: string; title: React.ReactNode; sub?: string; center?: boolean }> = ({
+export const Heading: React.FC<{ eyebrow: string; title: React.ReactNode; sub?: string; center?: boolean }> = ({
     eyebrow, title, sub, center = true,
 }) => (
     <div className={`mb-14 ${center ? 'mx-auto max-w-2xl text-center' : ''}`}>
@@ -184,83 +184,88 @@ export const HowItWorks: React.FC = () => (
 /*  Pricing                                                            */
 /* ------------------------------------------------------------------ */
 
-export const Pricing: React.FC<{ session: Session | null; onOpenBooking: () => void }> = ({ session, onOpenBooking }) => {
+export const PackageGrid: React.FC<{
+    packages: typeof MONTHLY_PACKAGES;
+    session: Session | null;
+    unit?: string;
+}> = ({ packages, session, unit = 'ședințe' }) => {
     const { handleCheckout, isLoading } = useStripeCheckout();
-
     return (
-        <Section id="programe" tint>
-            <Heading
-                eyebrow="Abonamente"
-                title={<>Alege ritmul tău</>}
-                sub="Toate pachetele includ plan alimentar, acces la sală și analiză corporală. Prima ședință e gratuită — fără card, fără obligații."
-            />
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-                {MONTHLY_PACKAGES.map((pkg) => {
-                    const featured = pkg.isRecommended;
-                    return (
-                        <div
-                            key={pkg.title}
-                            className={`relative flex flex-col rounded-[var(--radius-lg)] border bg-[var(--bg-primary)] p-7 transition-all duration-150 ${featured
-                                ? 'border-[var(--accent-primary)] shadow-[var(--shadow-lg)] lg:-translate-y-2'
-                                : 'border-[var(--border-subtle)] hover:border-[var(--text-disabled)]'
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {packages.map((pkg) => {
+                const featured = pkg.isRecommended || (pkg as any).isPremium;
+                return (
+                    <div
+                        key={pkg.title}
+                        className={`relative flex flex-col rounded-[var(--radius-lg)] border bg-[var(--bg-primary)] p-7 transition-all duration-150 ${pkg.isRecommended
+                            ? 'border-[var(--accent-primary)] shadow-[var(--shadow-lg)] lg:-translate-y-2'
+                            : 'border-[var(--border-subtle)] hover:border-[var(--text-disabled)]'
+                            }`}
+                    >
+                        {pkg.isRecommended && (
+                            <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--accent-primary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+                                Cel mai ales
+                            </span>
+                        )}
+                        <h3 className="font-display text-lg font-black text-[var(--text-primary)]">{pkg.title}</h3>
+                        <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[var(--text-muted)]">
+                            {pkg.duration}
+                        </p>
+                        <div className="mt-5 flex items-baseline gap-1">
+                            <span className="font-display text-4xl font-black text-[var(--text-primary)]">{pkg.price}</span>
+                        </div>
+                        <p className="mt-1 text-xs text-[var(--text-muted)]">
+                            {pkg.pricePerSession ? `~${pkg.pricePerSession} RON / ședință · ` : ''}{pkg.sessionCount} {unit}
+                        </p>
+                        <ul className="mt-6 flex-1 space-y-2.5">
+                            {pkg.features.map((f, i) => (
+                                <li key={i} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
+                                    <Check size={16} className="mt-0.5 shrink-0 text-[var(--success)]" />
+                                    {f}
+                                </li>
+                            ))}
+                        </ul>
+                        <button
+                            disabled={isLoading}
+                            onClick={() => handleCheckout(pkg.stripePriceId || '', pkg.price, pkg.title, session)}
+                            className={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors duration-150 disabled:opacity-60 ${featured
+                                ? 'bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-secondary)]'
+                                : 'border border-[var(--border-subtle)] text-[var(--text-primary)] hover:border-[var(--accent-primary)]'
                                 }`}
                         >
-                            {featured && (
-                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--accent-primary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
-                                    Cel mai ales
-                                </span>
-                            )}
-                            <h3 className="font-display text-lg font-black text-[var(--text-primary)]">{pkg.title}</h3>
-                            <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[var(--text-muted)]">
-                                {pkg.duration}
-                            </p>
-                            <div className="mt-5 flex items-baseline gap-1">
-                                <span className="font-display text-4xl font-black text-[var(--text-primary)]">{pkg.price}</span>
-                            </div>
-                            {pkg.pricePerSession && (
-                                <p className="mt-1 text-xs text-[var(--text-muted)]">
-                                    ~{pkg.pricePerSession} RON / ședință · {pkg.sessionCount} ședințe
-                                </p>
-                            )}
-                            <ul className="mt-6 flex-1 space-y-2.5">
-                                {pkg.features.map((f, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                                        <Check size={16} className="mt-0.5 shrink-0 text-[var(--success)]" />
-                                        {f}
-                                    </li>
-                                ))}
-                            </ul>
-                            <button
-                                disabled={isLoading}
-                                onClick={() => handleCheckout(pkg.stripePriceId || '', pkg.price, pkg.title, session)}
-                                className={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors duration-150 disabled:opacity-60 ${featured
-                                    ? 'bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-secondary)]'
-                                    : 'border border-[var(--border-subtle)] text-[var(--text-primary)] hover:border-[var(--accent-primary)]'
-                                    }`}
-                            >
-                                {isLoading ? 'Se încarcă…' : 'Abonează-te'}
-                            </button>
-                            <a
-                                href={waLink(`Salut! Vreau detalii despre abonamentul ${pkg.title} (${pkg.sessionCount} ședințe).`)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-2 text-center text-xs font-semibold text-[var(--text-muted)] transition-colors hover:text-[#1ebe57]"
-                            >
-                                sau întreabă pe WhatsApp
-                            </a>
-                        </div>
-                    );
-                })}
-            </div>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <PrimaryCta onClick={onOpenBooking}>Rezervă ședința gratuită</PrimaryCta>
-                <WhatsappCta text="Salut! Vreau să aflu care abonament mi se potrivește.">
-                    Întreabă un antrenor
-                </WhatsappCta>
-            </div>
-        </Section>
+                            {isLoading ? 'Se încarcă…' : 'Abonează-te'}
+                        </button>
+                        <a
+                            href={waLink(`Salut! Vreau detalii despre abonamentul ${pkg.title} (${pkg.sessionCount} ${unit}).`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 text-center text-xs font-semibold text-[var(--text-muted)] transition-colors hover:text-[#1ebe57]"
+                        >
+                            sau întreabă pe WhatsApp
+                        </a>
+                    </div>
+                );
+            })}
+        </div>
     );
 };
+
+export const Pricing: React.FC<{ session: Session | null; onOpenBooking: () => void }> = ({ session, onOpenBooking }) => (
+    <Section id="programe" tint>
+        <Heading
+            eyebrow="Abonamente"
+            title={<>Alege ritmul tău</>}
+            sub="Toate pachetele includ plan alimentar, acces la sală și analiză corporală. Prima ședință e gratuită — fără card, fără obligații."
+        />
+        <PackageGrid packages={MONTHLY_PACKAGES} session={session} unit="ședințe" />
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <PrimaryCta onClick={onOpenBooking}>Rezervă ședința gratuită</PrimaryCta>
+            <WhatsappCta text="Salut! Vreau să aflu care abonament mi se potrivește.">
+                Întreabă un antrenor
+            </WhatsappCta>
+        </div>
+    </Section>
+);
 
 /* ------------------------------------------------------------------ */
 /*  Locations                                                         */
