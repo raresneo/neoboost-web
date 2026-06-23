@@ -1,15 +1,127 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { MessageCircle, Star, ArrowRight, MapPin, Check, Zap } from 'lucide-react';
 import { BRAND } from '../../constants';
+import { CounterUp } from '../home/index';
+import { MagneticButton } from '../ui/MagneticButton';
 
 const WA = (text: string) =>
     `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(text)}`;
 
 const STATS = [
-    { value: '30', unit: 'min', label: 'pe ședință' },
-    { value: '90', unit: '%', label: 'mușchi activați' },
-    { value: '1:1', unit: '', label: 'cu antrenor' },
+    { end: 30, unit: 'min', label: 'pe ședință' },
+    { end: 90, unit: '%', label: 'mușchi activați' },
+    { end: null, value: '1:1', unit: '', label: 'cu antrenor' },
 ];
+
+const ElectricCanvas3D = () => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+
+    React.useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const FL = 350;
+        const DEPTH = 1200;
+        const isMobile = window.innerWidth < 768;
+        const PARTICLE_COUNT = isMobile ? 80 : 200;
+
+        let W = canvas.offsetWidth;
+        let H = canvas.offsetHeight;
+        let centerX = W / 2;
+        let centerY = H / 2;
+        let scrollSpeed = 0;
+        let rafId: number;
+
+        canvas.width = W;
+        canvas.height = H;
+
+        type Particle = { x: number; y: number; z: number; isBlue: boolean };
+
+        const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
+            x: (Math.random() - 0.5) * W * 2,
+            y: (Math.random() - 0.5) * H * 2,
+            z: Math.random() * DEPTH,
+            isBlue: Math.random() < 0.5,
+        }));
+
+        const toHex2 = (n: number) => {
+            const h = Math.round(n * 255).toString(16);
+            return h.length === 1 ? '0' + h : h;
+        };
+
+        const animate = () => {
+            if (isMobile) {
+                ctx.clearRect(0, 0, W, H);
+            } else {
+                ctx.fillStyle = 'rgba(9,9,11,0.15)';
+                ctx.fillRect(0, 0, W, H);
+            }
+
+            for (const p of particles) {
+                p.z -= 2 + scrollSpeed;
+                if (p.z <= 0) {
+                    p.z = DEPTH;
+                    p.x = (Math.random() - 0.5) * W * 2;
+                    p.y = (Math.random() - 0.5) * H * 2;
+                }
+
+                const scale = FL / (p.z + FL);
+                const screenX = centerX + p.x * scale;
+                const screenY = centerY + p.y * scale;
+                const size = Math.max(0.5, scale * 1.8);
+                const alpha = Math.max(0, 1 - p.z / DEPTH);
+                const color = p.isBlue ? '#3B82F6' : '#818CF8';
+                const fillColor = color + toHex2(alpha);
+
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+                ctx.fillStyle = fillColor;
+                ctx.fill();
+            }
+
+            rafId = requestAnimationFrame(animate);
+        };
+
+        const handleScroll = () => {
+            scrollSpeed = Math.min(window.scrollY * 0.004, 4);
+        };
+
+        const handleResize = () => {
+            W = canvas.offsetWidth;
+            H = canvas.offsetHeight;
+            centerX = W / 2;
+            centerY = H / 2;
+            canvas.width = W;
+            canvas.height = H;
+        };
+
+        animate();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            cancelAnimationFrame(rafId);
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return (
+        <canvas
+            ref={canvasRef}
+            aria-hidden="true"
+            style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                opacity: 0.75,
+            }}
+        />
+    );
+};
 
 export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void }) => {
     const openBooking = () => {
@@ -18,26 +130,24 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
     };
 
     return (
-        <section className="relative w-full overflow-hidden bg-[var(--bg-primary)] pt-28 pb-16 md:pt-36 md:pb-24">
-            {/* Subtle structural grid — cheap, no blur */}
-            <div
-                className="pointer-events-none absolute inset-0 opacity-[0.04]"
-                style={{
-                    backgroundImage:
-                        'linear-gradient(var(--text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--text-primary) 1px, transparent 1px)',
-                    backgroundSize: '64px 64px',
-                    maskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent)',
-                    WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent)',
-                }}
-            />
+        <section
+            className="relative w-full overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24"
+            style={{ background: 'var(--bg-primary)' }}
+        >
+            <ElectricCanvas3D />
 
             <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12 lg:gap-10 lg:px-10">
                 {/* ---------- LEFT: editorial copy ---------- */}
                 <div className="lg:col-span-7">
                     {/* Eyebrow */}
                     <div
-                        className="hero-rise mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-3.5 py-1.5"
-                        style={{ animationDelay: '0ms' }}
+                        className="hero-rise mb-7 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5"
+                        style={{
+                            animationDelay: '0ms',
+                            background: 'rgba(255,255,255,0.04)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                            backdropFilter: 'blur(10px)',
+                        }}
                     >
                         <span className="relative flex h-2 w-2">
                             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--success)] opacity-60" />
@@ -78,23 +188,21 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
                         className="hero-rise mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
                         style={{ animationDelay: '220ms' }}
                     >
-                        <button
+                        <MagneticButton
                             onClick={openBooking}
-                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-transform duration-150 hover:-translate-y-0.5 hover:bg-[var(--accent-secondary)] active:translate-y-0"
+                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors duration-150 hover:bg-[var(--accent-secondary)]"
                         >
                             <Zap size={17} className="fill-current" />
                             Rezervă ședința GRATUITĂ
                             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-1" />
-                        </button>
-                        <a
+                        </MagneticButton>
+                        <MagneticButton
                             href={WA('Salut! Aș vrea o discuție de 10 minute să văd dacă antrenamentul EMS mi se potrivește.')}
-                            target="_blank"
-                            rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-7 py-4 text-sm font-bold text-[var(--text-primary)] transition-colors duration-150 hover:border-[#25D366] hover:text-[#1ebe57]"
                         >
                             <MessageCircle size={17} className="text-[#25D366]" />
                             Scrie-ne pe WhatsApp
-                        </a>
+                        </MagneticButton>
                     </div>
 
                     {/* Trust row */}
@@ -153,12 +261,21 @@ export const ImmersiveHero = ({ onOpenBooking }: { onOpenBooking?: () => void })
 
             {/* ---------- Stat strip ---------- */}
             <div className="relative z-10 mx-auto mt-14 max-w-7xl px-6 lg:px-10">
-                <div className="grid grid-cols-3 divide-x divide-[var(--border-subtle)] rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-secondary)]">
+                <div
+                    className="grid grid-cols-3 divide-x divide-[var(--border-subtle)] rounded-[var(--radius-lg)]"
+                    style={{
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        backdropFilter: 'blur(10px)',
+                    }}
+                >
                     {STATS.map((s) => (
                         <div key={s.label} className="px-4 py-6 text-center">
                             <div className="font-display text-3xl font-black text-[var(--text-primary)] md:text-4xl">
-                                {s.value}
-                                <span className="text-[var(--accent-primary)]">{s.unit}</span>
+                                {s.end !== null
+                                    ? <CounterUp end={s.end!} suffix={s.unit} />
+                                    : <>{s.value}<span className="text-[var(--accent-primary)]">{s.unit}</span></>
+                                }
                             </div>
                             <div className="mt-1 text-xs font-medium uppercase tracking-wide text-[var(--text-muted)] md:text-sm">
                                 {s.label}

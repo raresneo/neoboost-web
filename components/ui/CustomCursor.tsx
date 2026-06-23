@@ -1,145 +1,105 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export const CustomCursor = () => {
-    const cursorRef = useRef<HTMLDivElement>(null);
-    const followerRef = useRef<HTMLDivElement>(null);
-    // State for visual changes only
+    const dotRef = useRef<HTMLDivElement>(null);
+    const ringRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [isClicking, setIsClicking] = useState(false);
 
-    // Physics state refs
-    const pos = useRef({ x: 0, y: 0 });
-    const vel = useRef({ x: 0, y: 0 });
-    const targetPos = useRef({ x: 0, y: 0 });
-    const magneticTargetRef = useRef<HTMLElement | null>(null);
+    const mouseX = useRef(0);
+    const mouseY = useRef(0);
+    const ringX = useRef(0);
+    const ringY = useRef(0);
 
-    // 1. Mouse Event Listeners & Loop
     useEffect(() => {
-        const cursor = cursorRef.current;
-        const follower = followerRef.current;
+        if (window.matchMedia('(pointer: coarse)').matches) return;
 
-        // Hide default cursor globally
         document.body.style.cursor = 'none';
 
-        const moveCursor = (e: MouseEvent) => {
-            const { clientX, clientY } = e;
-            targetPos.current = { x: clientX, y: clientY };
-
-            // Main dot follows instantly
-            if (cursor) {
-                cursor.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
+        const onMove = (e: MouseEvent) => {
+            mouseX.current = e.clientX;
+            mouseY.current = e.clientY;
+            if (dotRef.current) {
+                dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
             }
         };
 
-        const handleMouseOver = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            const interactive = target.closest('a, button, [role="button"], .cursor-pointer') as HTMLElement;
-
-            if (interactive) {
-                if (magneticTargetRef.current !== interactive) {
-                    setIsHovering(true);
-                    magneticTargetRef.current = interactive;
-                }
-            } else {
-                if (magneticTargetRef.current !== null) {
-                    setIsHovering(false);
-                    magneticTargetRef.current = null;
-                }
-            }
+        const onOver = (e: MouseEvent) => {
+            const el = (e.target as HTMLElement).closest('a, button, [role="button"], .cursor-pointer');
+            setIsHovering(!!el);
         };
 
-        const handleMouseDown = () => setIsClicking(true);
-        const handleMouseUp = () => setIsClicking(false);
+        const onDown = () => setIsClicking(true);
+        const onUp = () => setIsClicking(false);
 
-        window.addEventListener('mousemove', moveCursor);
-        document.addEventListener('mouseover', handleMouseOver);
-        window.addEventListener('mousedown', handleMouseDown);
-        window.addEventListener('mouseup', handleMouseUp);
+        window.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseover', onOver);
+        window.addEventListener('mousedown', onDown);
+        window.addEventListener('mouseup', onUp);
 
-        // Physics Loop
-        let animationFrame: number;
-        const loop = () => {
-            const magneticTarget = magneticTargetRef.current;
-
-            const stiffness = magneticTarget ? 0.3 : 0.15;
-            const damping = magneticTarget ? 0.6 : 0.8;
-
-            let destX = targetPos.current.x;
-            let destY = targetPos.current.y;
-
-            if (magneticTarget) {
-                const rect = magneticTarget.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-
-                const distanceX = targetPos.current.x - centerX;
-                const distanceY = targetPos.current.y - centerY;
-
-                destX = centerX + distanceX * 0.4;
-                destY = centerY + distanceY * 0.4;
+        let raf: number;
+        const lerp = () => {
+            ringX.current += (mouseX.current - ringX.current) * 0.1;
+            ringY.current += (mouseY.current - ringY.current) * 0.1;
+            if (ringRef.current) {
+                ringRef.current.style.transform = `translate3d(${ringX.current}px, ${ringY.current}px, 0)`;
             }
-
-            const ax = (destX - pos.current.x) * stiffness;
-            const ay = (destY - pos.current.y) * stiffness;
-
-            vel.current.x = (vel.current.x + ax) * damping;
-            vel.current.y = (vel.current.y + ay) * damping;
-
-            pos.current.x += vel.current.x;
-            pos.current.y += vel.current.y;
-
-            if (follower) {
-                follower.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0)`;
-            }
-
-            animationFrame = requestAnimationFrame(loop);
+            raf = requestAnimationFrame(lerp);
         };
-
-        loop();
+        raf = requestAnimationFrame(lerp);
 
         return () => {
-            document.body.style.cursor = 'auto'; // Restore on unmount
-            window.removeEventListener('mousemove', moveCursor);
-            document.removeEventListener('mouseover', handleMouseOver);
-            window.removeEventListener('mousedown', handleMouseDown);
-            window.removeEventListener('mouseup', handleMouseUp);
-            cancelAnimationFrame(animationFrame);
+            document.body.style.cursor = 'auto';
+            window.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseover', onOver);
+            window.removeEventListener('mousedown', onDown);
+            window.removeEventListener('mouseup', onUp);
+            cancelAnimationFrame(raf);
         };
     }, []);
 
-    // 2. Touch Detection
     const [isTouch, setIsTouch] = useState(false);
     useEffect(() => {
-        if (window.matchMedia("(pointer: coarse)").matches) {
-            setIsTouch(true);
-        }
+        setIsTouch(window.matchMedia('(pointer: coarse)').matches);
     }, []);
 
     if (isTouch) return null;
 
     return (
-        <div className="fixed inset-0 pointer-events-none z-[9999] mix-blend-difference">
-            {/* Main Dot */}
+        <div className="fixed inset-0 pointer-events-none z-[9999]">
             <div
-                ref={cursorRef}
-                className={`absolute w-1.5 h-1.5 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 will-change-transform z-20 transition-all duration-300 ${isHovering ? 'scale-[2] bg-white/50' : 'scale-100 opacity-100'}`}
+                ref={dotRef}
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: 6,
+                    height: 6,
+                    marginLeft: -3,
+                    marginTop: -3,
+                    borderRadius: '50%',
+                    background: 'var(--accent-primary)',
+                    willChange: 'transform',
+                }}
             />
-            {/* Follower Ring */}
             <div
-                ref={followerRef}
-                className={`absolute rounded-full -translate-x-1/2 -translate-y-1/2 will-change-transform z-10 
-                flex items-center justify-center
-                transition-all duration-500 ease-out 
-                ${isHovering
-                        ? 'w-16 h-16 bg-white/5 backdrop-blur-[2px] border border-white/30'
-                        : 'w-10 h-10 border border-white/50'} 
-                ${isClicking ? 'scale-75 border-white/80 border-2' : ''}
-                `}
-            >
-                <div className={`text-[8px] font-bold text-white uppercase tracking-widest transition-all duration-300 ${isHovering ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
-                    Open
-                </div>
-            </div>
+                ref={ringRef}
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: isHovering ? 36 : 26,
+                    height: isHovering ? 36 : 26,
+                    marginLeft: isHovering ? -18 : -13,
+                    marginTop: isHovering ? -18 : -13,
+                    borderRadius: '50%',
+                    border: '1.5px solid var(--accent-primary)',
+                    opacity: isHovering ? 0.55 : 0.35,
+                    transform: isClicking ? 'scale(0.8)' : undefined,
+                    transition: 'width 0.2s ease, height 0.2s ease, margin 0.2s ease, opacity 0.2s ease',
+                    willChange: 'transform',
+                }}
+            />
         </div>
     );
 };

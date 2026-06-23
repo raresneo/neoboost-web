@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Session } from '@supabase/supabase-js';
 
 import { ImmersiveHero } from '../components/sections/ImmersiveHero';
-import { Benefits, Comparison, HowItWorks, Pricing, Locations, Faq, FinalCta } from '../components/home';
+import { Benefits, Comparison, HowItWorks, Pricing, Locations, Faq, FinalCta, StatsMarquee } from '../components/home';
 import { Footer } from '../components/Footer';
 
 export const HomePage = () => {
@@ -16,6 +16,7 @@ export const HomePage = () => {
     return (
         <main id="home" className="relative min-h-screen bg-[var(--bg-primary)]">
             <ImmersiveHero onOpenBooking={onOpenBooking} />
+            <StatsMarquee />
             <Benefits />
             <Comparison />
             <HowItWorks />

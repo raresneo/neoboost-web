@@ -1,24 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, MapPin, User, MessageCircle, Zap } from 'lucide-react';
-import { BRAND } from '../../constants';
-
-// ==============================================
-// Minimal mobile conversion bar — snappy, no infinite animations.
-// Center action drives the primary lead-gen goal (free booking).
-// ==============================================
+import { Home, MapPin, User, HelpCircle, Zap } from 'lucide-react';
 
 interface BottomNavProps {
     onOpenBooking: () => void;
     onOpenAuth: () => void;
+    onOpenQuiz: () => void;
     user: any;
 }
 
-const WA_LINK = `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(
-    'Salut! Aș vrea detalii despre ședința EMS gratuită.'
-)}`;
-
-export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth, user }) => {
+export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth, onOpenQuiz, user }) => {
     const location = useLocation();
     const isActive = (path: string) => location.pathname === path;
 
@@ -61,16 +52,15 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenBooking, onOpenAuth,
                     <span className="mt-1 text-[10px] font-bold text-[var(--text-primary)]">Rezervă</span>
                 </button>
 
-                {/* WhatsApp */}
-                <a
-                    href={WA_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {/* Quiz — replace WhatsApp */}
+                <button
+                    onClick={onOpenQuiz}
                     className={`${itemBase} text-[var(--text-muted)]`}
+                    aria-label="Află pachetul potrivit"
                 >
-                    <MessageCircle size={21} strokeWidth={2} className="text-[#25D366]" />
-                    WhatsApp
-                </a>
+                    <HelpCircle size={21} strokeWidth={2} className="text-[var(--accent-primary)]" />
+                    <span className="text-[var(--accent-primary)]">Ce pachet?</span>
+                </button>
 
                 {/* Profile / Auth */}
                 {user ? (

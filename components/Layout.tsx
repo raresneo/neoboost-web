@@ -14,6 +14,10 @@ import { AmbientAudio } from './AmbientAudio';
 import { ParticleBackground } from './ParticleBackground';
 import { CookieBanner } from './CookieBanner';
 import { SEO } from './SEO';
+import { CustomCursor } from './ui/CustomCursor';
+import { FilmGrain } from './ui/FilmGrain';
+import { SocialProofToast } from './ui/SocialProofToast';
+import { QuizModal } from './ui/QuizModal';
 
 // --- Modals ---
 import { LocationModal } from './modals/LocationModal';
@@ -60,6 +64,7 @@ export const Layout: React.FC = () => {
     // Modal States
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [isBookingOpen, setIsBookingOpen] = useState(false);
+    const [isQuizOpen, setIsQuizOpen] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState<typeof LOCATIONS[0] | null>(null);
     const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
 
@@ -118,6 +123,9 @@ export const Layout: React.FC = () => {
 
     return (
         <div className="relative min-h-screen selection:bg-[#3A86FF] selection:text-black pb-[80px] xl:pb-0">
+            <CustomCursor />
+            <FilmGrain />
+            <SocialProofToast />
             {/* Default Global SEO - Pages can override */}
             <SEO
                 title="NeoBoost — Transformare Corporală EMS Fitness Oradea"
@@ -152,6 +160,7 @@ export const Layout: React.FC = () => {
                             <BottomNav
                                 onOpenBooking={() => setIsBookingOpen(true)}
                                 onOpenAuth={() => setIsAuthOpen(true)}
+                                onOpenQuiz={() => setIsQuizOpen(true)}
                                 user={session?.user}
                             />
                         </>
@@ -170,6 +179,7 @@ export const Layout: React.FC = () => {
                     />
                     <ScrollToTop />
                     <StickyCTA />
+                    <QuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
                     <CookieBanner />
 
                     <main className="flex-1 relative">

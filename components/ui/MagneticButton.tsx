@@ -1,7 +1,15 @@
 import React, { useRef, useState } from 'react';
 
-export const MagneticButton: React.FC<{ children: React.ReactNode; href: string; className?: string }> = ({ children, href, className = "" }) => {
-    const ref = useRef<HTMLAnchorElement>(null);
+type MagneticButtonProps = {
+    children: React.ReactNode;
+    className?: string;
+} & (
+    | { href: string; onClick?: never }
+    | { onClick: () => void; href?: never }
+);
+
+export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '', href, onClick }) => {
+    const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e: React.MouseEvent) => {
@@ -16,18 +24,25 @@ export const MagneticButton: React.FC<{ children: React.ReactNode; href: string;
         setPosition({ x: 0, y: 0 });
     };
 
+    const sharedProps = {
+        ref,
+        className,
+        onMouseMove: handleMouseMove,
+        onMouseLeave: handleMouseLeave,
+        style: { transform: `translate(${position.x}px, ${position.y}px)` },
+    };
+
+    if (href) {
+        return (
+            <a {...sharedProps} href={href} target="_blank" rel="noopener noreferrer">
+                {children}
+            </a>
+        );
+    }
+
     return (
-        <a
-            ref={ref}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={className}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
-        >
+        <button {...sharedProps} onClick={onClick} type="button">
             {children}
-        </a>
+        </button>
     );
 };

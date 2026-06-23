@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MoveUpRight } from 'lucide-react';
 import { BenefitArticlesSection } from '../components/sections/BenefitArticlesSection';
+import { MuscleActivation } from "../components/visuals/MuscleActivation";
 
 // --- Science Page Component ---
 export const SciencePage: React.FC = () => {
@@ -42,6 +43,9 @@ export const SciencePage: React.FC = () => {
 
             <div className="pt-20">
                 <BenefitArticlesSection className="!bg-transparent" />
+                <div className="mx-auto max-w-lg py-12 px-4">
+                    <MuscleActivation />
+                </div>
             </div>
 
             {/* Footer minimal for this page */}
