@@ -52,7 +52,7 @@ export const Navbar = ({ isMuted, setIsMuted, user, onOpenAuth, onOpenBooking, i
         { label: 'Prețuri', path: '/preturi' }, // 2. Pricing
         { label: 'Oferte', path: '/oferta-3-plus-1' }, // 2.5. Special Offer
         { label: 'Programe', path: '/programe' }, // 3. What we offer
-        { label: 'Rezultate', id: 'rezultate' }, // 4. Proof
+        { label: 'Rezultate', path: '/rezultate' }, // 4. Proof
         { label: 'Echipă', path: '/echipa' },    // 5. Trust
         { label: 'Locații', id: 'locatii' },     // 6. Action
         { label: 'FAQ', id: 'faq' },             // 7. Objections

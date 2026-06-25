@@ -39,7 +39,7 @@ export const Footer = () => {
                             <li><Link to="/preturi" className="hover:text-blue-600 transition-colors">Prețuri & Pachete</Link></li>
                             <li><Link to="/#beneficii" className="hover:text-blue-600 transition-colors">Beneficii</Link></li>
                             <li><Link to="/#metoda" className="hover:text-blue-600 transition-colors">Cum Funcționează</Link></li>
-                            <li><Link to="/#rezultate" className="hover:text-blue-600 transition-colors">Rezultate</Link></li>
+                            <li><Link to="/rezultate" className="hover:text-blue-600 transition-colors">Rezultate</Link></li>
                             <li><Link to="/#faq" className="hover:text-blue-600 transition-colors">Întrebări Frecvente</Link></li>
                         </ul>
                     </div>
