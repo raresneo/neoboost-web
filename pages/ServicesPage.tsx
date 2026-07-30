@@ -10,14 +10,14 @@ import { Footer } from '../components/Footer';
 const steps = [
     { number: '01', title: 'Consultație inițială', description: 'Discuți cu antrenorul despre obiectivul tău, nivelul de activitate și eventuale limitări medicale. Totul e personalizat.' },
     { number: '02', title: 'Echipare EMS', description: 'Îmbraci costumul EMS profesional. Antrenorul setează intensitatea impulsurilor în funcție de tine — confortabil dar eficient.' },
-    { number: '03', title: 'Antrenament ghidat', description: '30 de minute de exerciții simple, ghidate pas cu pas. Electrostimularea activează 90% din fibrele musculare simultan.' },
+    { number: '03', title: 'Antrenament ghidat', description: '30 de minute de exerciții simple, ghidate pas cu pas. Electrostimularea activează un număr mare de fibre musculare simultan.' },
     { number: '04', title: 'Recomandări personale', description: 'La final primești sfaturi despre frecvența ședințelor, nutriție și stilul de viață ca să maximizezi rezultatele.' },
 ];
 
 const services = [
-    { icon: <Zap className="h-7 w-7" />, title: 'EMS Funcțional', subtitle: 'Tonifiere & Slăbire', description: 'Antrenamentul EMS clasic, ideal pentru slăbire, tonifiere și creștere de masă musculară. 30 de minute înlocuiesc 2-3 ore de sală clasică.', features: ['Activare 90% fibre musculare', 'Ardere calorii intensă', 'Tonifiere uniformă', 'Fără suprasolicitare articulară'] },
-    { icon: <Heart className="h-7 w-7" />, title: 'EMS Kineto', subtitle: 'Recuperare & Reabilitare', description: 'Program specializat pentru recuperare după accidente, dureri de spate, hernii de disc sau reabilitare musculară. Lucrăm cu protocoale kinetoterapeutice.', features: ['Protocol de recuperare individualizat', 'Redus dureri cronice', 'Reconsolidare musculară', 'Supervizare specializată'] },
-    { icon: <Activity className="h-7 w-7" />, title: 'EMS Performance', subtitle: 'Sportivi & Performanță', description: 'Antrenament EMS adaptat pentru sportivi activi care vor să-și crească performanța, să reducă timpul de recuperare și să prevină accidentările.', features: ['Creștere forță explozivă', 'Recuperare accelerată', 'Prevenție accidentări', 'Complement sport existent'] },
+    { icon: <Zap className="h-7 w-7" />, title: 'EMS Funcțional', subtitle: 'Tonifiere & Slăbire', description: 'Antrenamentul EMS clasic, ideal pentru slăbire, tonifiere și creștere de masă musculară, într-o ședință de 30 de minute.', features: ['Activare musculară extinsă', 'Consum caloric ridicat', 'Tonifiere uniformă', 'Fără suprasolicitare articulară'] },
+    { icon: <Heart className="h-7 w-7" />, title: 'EMS Kineto', subtitle: 'Recuperare & Reabilitare', description: 'Program specializat pentru recuperare după accidente, dureri de spate sau reabilitare musculară. Lucrăm cu protocoale kinetoterapeutice, cu avizul medicului tău atunci când e nevoie.', features: ['Protocol individualizat', 'Program adaptat durerii', 'Reconsolidare musculară', 'Supervizare specializată'] },
+    { icon: <Activity className="h-7 w-7" />, title: 'EMS Performance', subtitle: 'Sportivi & Performanță', description: 'Antrenament EMS adaptat pentru sportivi activi care vor să-și crească performanța, să reducă timpul de recuperare și să prevină accidentările.', features: ['Lucru pe forță explozivă', 'Sprijin în recuperare', 'Echilibrare musculară', 'Complement sport existent'] },
     { icon: <Timer className="h-7 w-7" />, title: 'Ședință de probă', subtitle: 'Prima ședință gratuită', description: 'Vino să testezi fără obligații. Prima ședință este complet gratuită — vei vedea cum funcționează EMS și dacă ți se potrivește, înainte de orice decizie.', features: ['Fără costuri', 'Fără abonament forțat', 'Evaluare personalizată', 'Răspuns la toate întrebările'] },
 ];
 
@@ -27,7 +27,7 @@ const benefits = [
     'Persoane sedentare care vor să reînceapă mișcarea',
     'Cei cu dureri de spate sau probleme articulare',
     'Sportivi care vor să-și crească performanța',
-    'Oricine vrea rezultate vizibile în timp scurt',
+    'Oricine vrea rezultate într-un timp scurt de antrenament',
 ];
 
 export const ServicesPage: React.FC = () => {
@@ -37,7 +37,7 @@ export const ServicesPage: React.FC = () => {
         <main className="min-h-screen bg-[var(--bg-primary)]">
             <Helmet>
                 <title>Servicii EMS Oradea – Cum Funcționează | NeoBoost</title>
-                <meta name="description" content="Servicii EMS NeoBoost Oradea: antrenament funcțional, kineto și performance. Prima ședință gratuită. Rezultate în 30 de minute, ghidat 1-la-1 cu antrenor." />
+                <meta name="description" content="Servicii EMS NeoBoost Oradea: antrenament funcțional, kineto și performance. Prima ședință gratuită. Ședințe de 30 de minute, ghidate de un antrenor." />
                 <link rel="canonical" href="https://neo-boost.com/servicii-ems" />
             </Helmet>
 
@@ -52,7 +52,7 @@ export const ServicesPage: React.FC = () => {
                         Servicii EMS<br /><span className="text-[var(--accent-primary)]">pentru obiectivul tău</span>
                     </h1>
                     <p className="hero-rise mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)] md:text-xl" style={{ animationDelay: '140ms' }}>
-                        Ședințe EMS <strong className="font-semibold text-[var(--text-primary)]">1-la-1 cu antrenor personal</strong>, adaptate ție.
+                        Ședințe EMS <strong className="font-semibold text-[var(--text-primary)]">ghidate de un antrenor</strong>, în grupe mici, cu program și intensitate adaptate ție.
                         Slăbire, tonifiere, recuperare sau performanță — totul în 30 de minute.
                     </p>
                     <div className="hero-rise mt-8 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: '220ms' }}>
@@ -111,7 +111,8 @@ export const ServicesPage: React.FC = () => {
                         </h2>
                         <p className="mt-6 text-lg leading-relaxed text-[var(--text-secondary)]">
                             Indiferent că ești sportiv activ, mamă ocupată sau cineva care nu a mai făcut mișcare de ani de zile —
-                            antrenamentul EMS se adaptează la tine, nu invers.
+                            antrenamentul EMS se adaptează la tine, nu invers. Există însă situații medicale în care EMS nu este permis,
+                            de aceea completăm împreună o declarație de sănătate înainte de prima ședință.
                         </p>
                     </div>
                     <div className="grid gap-3">
