@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { MoveUpRight } from 'lucide-react';
 
+type LegalType = 'privacy' | 'terms' | 'rules' | 'cookies';
+
 // --- Legal Page Component ---
 export const LegalPage: React.FC = () => {
-    const { type = 'privacy' } = useParams<{ type: 'privacy' | 'terms' | 'rules' }>();
+    const { type = 'privacy' } = useParams<{ type: LegalType }>();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [type]);
@@ -35,11 +37,48 @@ export const LegalPage: React.FC = () => {
                 },
                 {
                     h: "6. Drepturile dumneavoastră",
-                    p: "Conform legii, aveți dreptul de a solicita accesul la datele dumneavoastră, rectificarea acestora, ștergerea („dreptul de a fi uitat”), restricționarea prelucrării sau portabilitatea datelor. Pentru orice solicitare, ne puteți contacta la admin@neo-boost.com."
+                    p: "Conform legii, aveți dreptul de a solicita accesul la datele dumneavoastră, rectificarea acestora, ștergerea („dreptul de a fi uitat”), restricționarea prelucrării sau portabilitatea datelor. Pentru orice solicitare, ne puteți contacta la admin@neo-boost.com. Aveți de asemenea dreptul de a depune o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (dataprotection.ro)."
                 },
                 {
                     h: "7. Securitate",
                     p: "Implementăm măsuri tehnice și organizatorice avansate (criptare SSL, stocare securizată) pentru a proteja datele împotriva accesului neautorizat sau pierderii accidentale."
+                }
+            ]
+        },
+        cookies: {
+            title: "Politica de Cookie",
+            sections: [
+                {
+                    h: "1. Ce sunt cookie-urile",
+                    p: "Cookie-urile sunt fișiere text de mici dimensiuni, stocate de browserul dumneavoastră atunci când vizitați un site. Ele permit recunoașterea dispozitivului la vizitele următoare și buna funcționare a paginilor. Un cookie nu conține programe, nu poate accesa fișierele din calculatorul dumneavoastră și nu transmite viruși."
+                },
+                {
+                    h: "2. Cookie-uri strict necesare",
+                    p: "Aceste cookie-uri sunt indispensabile pentru funcționarea site-ului și nu pot fi dezactivate. Ele susțin menținerea sesiunii de autentificare în contul de client, funcționarea coșului și a procesului de plată prin Stripe, reținerea opțiunilor dumneavoastră privind cookie-urile și măsurile de securitate împotriva accesului neautorizat. Temeiul prelucrării este interesul legitim de a furniza serviciul solicitat."
+                },
+                {
+                    h: "3. Cookie-uri de analiză",
+                    p: "Cu acordul dumneavoastră, folosim cookie-uri de analiză pentru a înțelege cum este utilizat site-ul: ce pagini sunt vizitate, cât timp petrec vizitatorii pe ele și de unde provin. Datele sunt agregate și nu vă identifică personal. Ele ne ajută să îmbunătățim conținutul și viteza site-ului."
+                },
+                {
+                    h: "4. Cookie-uri de marketing",
+                    p: "Cu acordul dumneavoastră, pot fi plasate cookie-uri de la platforme de publicitate (de exemplu Meta sau Google) pentru a măsura eficiența campaniilor și pentru a afișa mesaje relevante persoanelor care ne-au vizitat site-ul. Aceste cookie-uri nu sunt plasate dacă refuzați categoria de marketing."
+                },
+                {
+                    h: "5. Cookie-uri plasate de terți",
+                    p: "Anumite funcționalități integrate în site pot plasa propriile cookie-uri, potrivit politicilor lor: Stripe (procesarea plăților), Supabase (autentificare și baza de date), YouTube (redarea materialelor video) și Google Maps (afișarea locațiilor). Vă recomandăm să consultați politicile de confidențialitate ale acestor furnizori pentru detalii suplimentare."
+                },
+                {
+                    h: "6. Consimțământul și retragerea lui",
+                    p: "La prima vizită vi se solicită acordul pentru categoriile de cookie-uri care nu sunt strict necesare. Puteți accepta sau refuza fiecare categorie, iar alegerea se păstrează pentru vizitele următoare. Vă puteți retrage consimțământul oricând, prin ștergerea cookie-urilor din browser sau prin revenirea la setările de cookie-uri ale site-ului. Refuzul categoriilor opționale nu afectează accesul la conținut sau posibilitatea de a face o rezervare."
+                },
+                {
+                    h: "7. Controlul din browser",
+                    p: "Orice browser modern (Chrome, Safari, Firefox, Edge) vă permite să blocați, să limitați sau să ștergeți cookie-urile din setările sale. Rețineți că blocarea cookie-urilor strict necesare poate face imposibilă autentificarea în cont sau finalizarea unei plăți."
+                },
+                {
+                    h: "8. Durata de stocare și contact",
+                    p: "Cookie-urile de sesiune se șterg automat la închiderea browserului, iar cele persistente au o durată de viață de maximum 24 de luni, după care expiră sau vă este cerut din nou acordul. Pentru orice întrebare privind cookie-urile sau prelucrarea datelor, ne puteți scrie la admin@neo-boost.com."
                 }
             ]
         },
@@ -56,7 +95,7 @@ export const LegalPage: React.FC = () => {
                 },
                 {
                     h: "3. Plata și Pachete",
-                    p: "Plata se face în avans pentru pachetele de ședințe. Pachetele au o valabilitate limitată conform descrierii fiecărui abonament (30 de zile pentru pachete lunare)."
+                    p: "Plata se face în avans pentru pachetele de ședințe. Toate prețurile afișate pe site sunt exprimate în RON și includ taxele aplicabile. Pachetele au o valabilitate limitată conform descrierii fiecărui abonament (30 de zile pentru pachete lunare)."
                 },
                 {
                     h: "4. Valabilitatea abonamentului și ședințele neefectuate",
@@ -80,7 +119,7 @@ export const LegalPage: React.FC = () => {
                 },
                 {
                     h: "9. Dreptul de retragere pentru contractele încheiate la distanță",
-                    p: "Conform Ordonanței de Urgență nr. 34/2014, consumatorul beneficiază de un termen de 14 zile calendaristice pentru retragerea din contractele încheiate la distanță sau în afara spațiilor comerciale, termen care curge de la data încheierii contractului. Prin achiziționarea unui abonament și prin programarea sau efectuarea primei ședințe în interiorul acestui termen, clientul solicită în mod expres începerea prestării serviciului înainte de expirarea perioadei de retragere și ia la cunoștință faptul că, potrivit art. 16 din aceeași ordonanță, își pierde dreptul de retragere după prestarea integrală a serviciului. În cazul retragerii în interiorul termenului de 14 zile, pentru un serviciu prestat doar parțial, clientul datorează contravaloarea proporțională a ceea ce i-a fost furnizat până la momentul comunicării retragerii, iar diferența se restituie în termen de 14 zile de la data la care am fost informați, folosind aceeași modalitate de plată. După expirarea termenului de 14 zile, dreptul de retragere nu mai poate fi exercitat, aplicându-se secțiunile 6, 7 și 8."
+                    p: "Conform Ordonanței de Urgență nr. 34/2014, consumatorul beneficiază de un termen de 14 zile calendaristice pentru retragerea din contractele încheiate la distanță sau în afara spațiilor comerciale, termen care curge de la data încheierii contractului. Retragerea se comunică prin orice declarație neechivocă, transmisă la admin@neo-boost.com. Prin achiziționarea unui abonament și prin programarea sau efectuarea primei ședințe în interiorul acestui termen, clientul solicită în mod expres începerea prestării serviciului înainte de expirarea perioadei de retragere și ia la cunoștință faptul că, potrivit art. 16 din aceeași ordonanță, își pierde dreptul de retragere după prestarea integrală a serviciului. În cazul retragerii în interiorul termenului de 14 zile, pentru un serviciu prestat doar parțial, clientul datorează contravaloarea proporțională a ceea ce i-a fost furnizat până la momentul comunicării retragerii, iar diferența se restituie în termen de 14 zile de la data la care am fost informați, folosind aceeași modalitate de plată. După expirarea termenului de 14 zile, dreptul de retragere nu mai poate fi exercitat, aplicându-se secțiunile 6, 7 și 8."
                 },
                 {
                     h: "10. Neprezentarea la ședință",
@@ -95,8 +134,12 @@ export const LegalPage: React.FC = () => {
                     p: "NeoBoost răspunde pentru prestarea serviciului cu personal calificat, cu echipament verificat și igienizat și cu respectarea protocoalelor de siguranță, inclusiv pentru adaptarea intensității la feedbackul comunicat de client în timpul ședinței. În schimb, NeoBoost nu poate fi ținut răspunzător pentru consecințele asupra sănătății care decurg din declararea falsă, incompletă sau omisă a unei afecțiuni, a unei sarcini, a unui dispozitiv implantat, a unei intervenții chirurgicale sau a unui tratament aflat printre contraindicațiile enumerate la secțiunea 11, nici pentru cele care decurg din nerespectarea de către client a indicațiilor antrenorului, a nedeclarării unei modificări a stării de sănătate survenite pe parcurs, ori din continuarea antrenamentelor contrar unei recomandări medicale. Într-o astfel de situație, răspunderea revine exclusiv clientului care a furnizat informația inexactă sau a omis-o. Ne rezervăm dreptul de a refuza sau de a întrerupe o ședință atunci când apreciem că antrenamentul prezintă un risc pentru client, precum și de a solicita un aviz medical prealabil, refuzul prezentării acestuia atrăgând suspendarea prestării serviciului. Prezenta clauză nu limitează și nu înlătură răspunderea NeoBoost în cazurile în care legea o interzice, în special pentru prejudiciile cauzate din culpa proprie."
                 },
                 {
-                    h: "13. Reclamații și soluționarea disputelor",
-                    p: "Orice reclamație legată de serviciile noastre poate fi transmisă la admin@neo-boost.com și primește răspuns în termen de maximum 14 zile calendaristice. Ne angajăm să analizăm fiecare situație individual și să căutăm o soluție echitabilă. În cazul în care nu se ajunge la un acord, consumatorul se poate adresa Autorității Naționale pentru Protecția Consumatorilor (ANPC, anpc.ro) sau poate folosi platforma europeană de soluționare online a litigiilor."
+                    h: "13. Rezultate și informații medicale",
+                    p: "Informațiile publicate pe acest site au caracter informativ și educativ și nu constituie sfat, diagnostic sau tratament medical. Studiile și procentele citate provin din literatura științifică și descriu rezultate obținute în contextul studiilor respective, nu o promisiune individuală. Rezultatele antrenamentului diferă de la o persoană la alta, în funcție de punctul de plecare, frecvența ședințelor, alimentație, somn, stare de sănătate și alți factori pe care nu îi controlăm. Transformările și mărturiile prezentate sunt cazuri reale ale unor clienți, dar nu reprezintă un rezultat garantat. Pentru orice afecțiune, recomandarea noastră este să consultați medicul specialist."
+                },
+                {
+                    h: "14. Reclamații și soluționarea disputelor",
+                    p: "Orice reclamație legată de serviciile noastre poate fi transmisă la admin@neo-boost.com și primește răspuns în termen de maximum 14 zile calendaristice. Ne angajăm să analizăm fiecare situație individual și să căutăm o soluție echitabilă. În cazul în care nu se ajunge la un acord, consumatorul se poate adresa Autorității Naționale pentru Protecția Consumatorilor (ANPC, anpc.ro), poate folosi procedura de soluționare alternativă a litigiilor (SAL) sau platforma europeană de soluționare online a litigiilor (SOL)."
                 }
             ]
         },
@@ -123,7 +166,7 @@ export const LegalPage: React.FC = () => {
         }
     };
 
-    const current = content[type];
+    const current = content[type as LegalType] ?? content.privacy;
 
     return (
         <div className="min-h-screen bg-white text-gray-900 relative z-50">
