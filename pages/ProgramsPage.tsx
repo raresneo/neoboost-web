@@ -7,9 +7,16 @@ import { PROGRAMS } from '../constants';
 import { Section, Heading, PrimaryCta, WhatsappCta, waLink } from '../components/home';
 import { Footer } from '../components/Footer';
 
+// Programe ascunse temporar din listarea publica.
+// "semi-private" iese pana la lansarea pachetului Exclusive, ca sa nu promitem
+// atentie 1:1 pe care nu o putem garanta la orele de varf.
+const HIDDEN_PROGRAM_IDS = ['semi-private'];
+
 export const ProgramsPage = () => {
     const navigate = useNavigate();
     const ctx = useOutletContext<{ session: Session | null; onOpenBooking: () => void }>();
+
+    const visiblePrograms = PROGRAMS.filter((p) => !HIDDEN_PROGRAM_IDS.includes(p.id));
 
     React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -17,7 +24,7 @@ export const ProgramsPage = () => {
         <main className="min-h-screen bg-[var(--bg-primary)]">
             <Helmet>
                 <title>Programe EMS Oradea – Slăbire, Post-Natal, Transformare | NeoBoost</title>
-                <meta name="description" content="Programe EMS structurate la NeoBoost Oradea: 6 Week Kickstart, Fit Mamma post-natal, transformare 8 săptămâni și antrenament semi-privat. Rezultate susținute de disciplină." />
+                <meta name="description" content="Programe EMS structurate la NeoBoost Oradea: 6 Week Kickstart, Fit Mamma post-natal, transformare în 8 săptămâni și reset de 30 de zile. Rezultate susținute de disciplină." />
                 <link rel="canonical" href="https://neo-boost.com/programe" />
             </Helmet>
 
@@ -44,7 +51,7 @@ export const ProgramsPage = () => {
             <Section tint>
                 <Heading eyebrow="Programe structurate" title={<>Alege-ți traseul</>} />
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {PROGRAMS.map((p) => (
+                    {visiblePrograms.map((p) => (
                         <div key={p.id} className="group flex flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-primary)] transition-all duration-150 hover:-translate-y-1 hover:border-[var(--accent-primary)] hover:shadow-[var(--shadow-lg)]">
                             <div className="relative aspect-[16/10] overflow-hidden bg-[var(--bg-tertiary)]">
                                 <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
