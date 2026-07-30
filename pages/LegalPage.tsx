@@ -26,15 +26,19 @@ export const LegalPage: React.FC = () => {
                     p: "Utilizăm aceste date pentru: prelucrarea programărilor pentru sesiunile EMS, procesarea plăților pentru abonamente, comunicarea detaliilor despre serviciile noastre și, doar cu acordul dumneavoastră explicit, pentru trimiterea de oferte promoționale."
                 },
                 {
-                    h: "4. Partajarea datelor",
+                    h: "4. Datele privind starea de sănătate",
+                    p: "Pentru a putea presta serviciul în siguranță, colectăm și date privind starea de sănătate, prin declarația de sănătate și fișa de evaluare completate înainte de prima ședință. Aceste date fac parte din categoriile speciale prevăzute la art. 9 din GDPR și sunt prelucrate exclusiv în temeiul consimțământului dumneavoastră explicit, cu scopul unic de a stabili dacă antrenamentul EMS vă este permis și de a adapta parametrii de lucru. Ele sunt accesibile doar antrenorului care vă susține ședințele și coordonatorului profesional, se păstrează în spațiu securizat și nu sunt transmise partenerilor de locație sau altor terți."
+                },
+                {
+                    h: "5. Partajarea datelor",
                     p: "Nu vindem și nu închiriem datele dumneavoastră către terți. Datele pot fi accesate de furnizori de servicii esențiale precum Stripe (procesare plăți) și Supabase (stocare baze de date), care respectă standarde stricte de securitate."
                 },
                 {
-                    h: "5. Drepturile dumneavoastră",
+                    h: "6. Drepturile dumneavoastră",
                     p: "Conform legii, aveți dreptul de a solicita accesul la datele dumneavoastră, rectificarea acestora, ștergerea („dreptul de a fi uitat”), restricționarea prelucrării sau portabilitatea datelor. Pentru orice solicitare, ne puteți contacta la admin@neo-boost.com."
                 },
                 {
-                    h: "6. Securitate",
+                    h: "7. Securitate",
                     p: "Implementăm măsuri tehnice și organizatorice avansate (criptare SSL, stocare securizată) pentru a proteja datele împotriva accesului neautorizat sau pierderii accidentale."
                 }
             ]
@@ -83,7 +87,15 @@ export const LegalPage: React.FC = () => {
                     p: "Ședința la care clientul nu se prezintă și pe care nu a anulat-o cu cel puțin 12 ore înainte este considerată efectuată și se scade din abonament. Sala, echipamentul și antrenorul sunt rezervate nominal pentru intervalul respectiv, motiv pentru care slotul nu poate fi valorificat altfel."
                 },
                 {
-                    h: "11. Reclamații și soluționarea disputelor",
+                    h: "11. Contraindicații EMS și declarația de sănătate",
+                    p: "Antrenamentul cu electrostimulare musculară (EMS) presupune trecerea unui impuls electric de intensitate redusă prin musculatură și, din acest motiv, nu este permis în anumite situații medicale. Sunt contraindicații absolute, între altele: purtarea unui stimulator cardiac, a unui defibrilator implantat sau a altui dispozitiv electronic implantat; sarcina; epilepsia sau alte afecțiuni convulsive; afecțiunile cardiace și cardiovasculare severe, aritmiile, hipertensiunea necontrolată; tromboza, tromboflebita sau tulburările de coagulare; afecțiunile oncologice active; herniile abdominale sau inghinale; tuberculoza; afecțiunile febrile și infecțiile acute; intervențiile chirurgicale recente și implanturile metalice în zona de aplicare; afecțiunile renale sau hepatice severe; diabetul decompensat; leziunile cutanate deschise sau afecțiunile dermatologice în zona costumului. Sunt contraindicații relative, care necesită aviz medical prealabil, între altele: hernia de disc și afecțiunile coloanei vertebrale în fază acută, protezele articulare, sterilet, afecțiunile neurologice, tulburările de sensibilitate, precum și administrarea de medicamente care influențează contracția musculară sau percepția durerii. Înainte de prima ședință, fiecare client completează și semnează o declarație de sănătate și un consimțământ informat, prin care confirmă că a fost informat asupra acestor contraindicații și că nu se află în niciuna dintre situațiile de mai sus. Clientul are obligația de a comunica imediat, inclusiv pe parcursul abonamentului, orice modificare a stării sale de sănătate, orice diagnostic nou, sarcină sau tratament medicamentos nou apărut. Dacă există cea mai mică incertitudine, clientul este obligat să obțină avizul medicului său înainte de a începe sau de a continua antrenamentele, iar noi îi recomandăm ferm acest lucru."
+                },
+                {
+                    h: "12. Limitarea răspunderii",
+                    p: "NeoBoost răspunde pentru prestarea serviciului cu personal calificat, cu echipament verificat și igienizat și cu respectarea protocoalelor de siguranță, inclusiv pentru adaptarea intensității la feedbackul comunicat de client în timpul ședinței. În schimb, NeoBoost nu poate fi ținut răspunzător pentru consecințele asupra sănătății care decurg din declararea falsă, incompletă sau omisă a unei afecțiuni, a unei sarcini, a unui dispozitiv implantat, a unei intervenții chirurgicale sau a unui tratament aflat printre contraindicațiile enumerate la secțiunea 11, nici pentru cele care decurg din nerespectarea de către client a indicațiilor antrenorului, a nedeclarării unei modificări a stării de sănătate survenite pe parcurs, ori din continuarea antrenamentelor contrar unei recomandări medicale. Într-o astfel de situație, răspunderea revine exclusiv clientului care a furnizat informația inexactă sau a omis-o. Ne rezervăm dreptul de a refuza sau de a întrerupe o ședință atunci când apreciem că antrenamentul prezintă un risc pentru client, precum și de a solicita un aviz medical prealabil, refuzul prezentării acestuia atrăgând suspendarea prestării serviciului. Prezenta clauză nu limitează și nu înlătură răspunderea NeoBoost în cazurile în care legea o interzice, în special pentru prejudiciile cauzate din culpa proprie."
+                },
+                {
+                    h: "13. Reclamații și soluționarea disputelor",
                     p: "Orice reclamație legată de serviciile noastre poate fi transmisă la admin@neo-boost.com și primește răspuns în termen de maximum 14 zile calendaristice. Ne angajăm să analizăm fiecare situație individual și să căutăm o soluție echitabilă. În cazul în care nu se ajunge la un acord, consumatorul se poate adresa Autorității Naționale pentru Protecția Consumatorilor (ANPC, anpc.ro) sau poate folosi platforma europeană de soluționare online a litigiilor."
                 }
             ]
@@ -97,10 +109,14 @@ export const LegalPage: React.FC = () => {
                 },
                 {
                     h: "2. Siguranța la Antrenament",
-                    p: "Este obligatoriu să informați antrenorul despre orice problemă de sănătate sau contraindicație medicală înainte de începerea sesiunii EMS."
+                    p: "Este obligatoriu să informați antrenorul despre orice problemă de sănătate sau contraindicație medicală înainte de începerea sesiunii EMS. Prima ședință se desfășoară numai după completarea declarației de sănătate și semnarea consimțământului informat. Lista contraindicațiilor și consecințele nedeclarării lor se regăsesc în secțiunile 11 și 12 din Termeni și Condiții."
                 },
                 {
-                    h: "3. Comportament",
+                    h: "3. În timpul ședinței",
+                    p: "Comunicați antrenorului, în timp real, orice senzație neobișnuită: durere ascuțită, amețeală, palpitații, furnicături, greață sau disconfort care depășește efortul muscular normal. Intensitatea se reglează împreună și poate fi scăzută sau oprită în orice moment, la cererea dumneavoastră. Hidratarea înainte și după ședință este obligatorie, iar antrenamentul nu se efectuează pe stomacul complet gol sau imediat după o masă copioasă."
+                },
+                {
+                    h: "4. Comportament",
                     p: "NeoBoost promovează un mediu de respect reciproc. Ne rezervăm dreptul de a refuza accesul persoanelor cu un comportament neadecvat."
                 }
             ]
