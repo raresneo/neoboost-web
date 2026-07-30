@@ -75,6 +75,20 @@ export const Footer = () => {
                     </div>
                 </div>
 
+                {/* Date de identificare societate */}
+                <div className="border-t border-slate-800 py-8">
+                    <p className="mb-3 font-bold text-gray-300 text-xs uppercase tracking-wide">Date de identificare</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-2 text-xs text-gray-400">
+                        <p><span className="text-gray-500">Denumire:</span> NRGFITNESS S.R.L.</p>
+                        <p><span className="text-gray-500">CUI:</span> 37715691</p>
+                        <p><span className="text-gray-500">Nr. Reg. Com.:</span> J2017001503058</p>
+                        <p><span className="text-gray-500">Sediu social:</span> Calea Adevărului nr. 12A, Oradea, Bihor, 410170</p>
+                    </div>
+                    <p className="mt-3 text-xs text-gray-500">
+                        NeoBoost este marca sub care NRGFITNESS S.R.L. își desfășoară activitatea. Prețurile afișate sunt exprimate în RON și includ taxele aplicabile.
+                    </p>
+                </div>
+
                 <div className="border-t border-slate-800 py-8 mb-8">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                         <div className="max-w-2xl text-gray-400 text-xs leading-relaxed text-center md:text-left">
@@ -82,8 +96,11 @@ export const Footer = () => {
                             <p>
                                 NeoBoost respectă cu strictețe legislația în vigoare privind protecția consumatorilor.
                                 Operăm cu transparență totală în ceea ce privește prețurile, serviciile și politica de retur.
-                                Pentru orice sesizare, vă stăm la dispoziție prin canalele de contact afișate sau puteți apela la organele abilitate.
-                                Drepturile dumneavoastră sunt prioritare pentru noi.
+                                Detaliile privind valabilitatea abonamentelor, dreptul de retragere și returnarea sumelor se regăsesc în{' '}
+                                <Link to="/legal/terms" className="text-blue-500 hover:text-blue-400 transition-colors">Termeni și Condiții</Link>.
+                                Pentru orice sesizare, ne puteți scrie la{' '}
+                                <a href="mailto:admin@neo-boost.com" className="text-blue-500 hover:text-blue-400 transition-colors">admin@neo-boost.com</a>{' '}
+                                sau vă puteți adresa organelor abilitate. Drepturile dumneavoastră sunt prioritare pentru noi.
                             </p>
                         </div>
                         <div className="flex flex-col gap-4 shrink-0 items-center">
