@@ -31,7 +31,7 @@ export const LegalPage: React.FC = () => {
                 },
                 {
                     h: "5. Drepturile dumneavoastră",
-                    p: "Conform legii, aveți dreptul de a solicita accesul la datele dumneavoastră, rectificarea acestora, ștergerea („dreptul de a fi uitat”), restricționarea prelucrării sau portabilitatea datelor. Pentru orice solicitare, ne puteți contacta la contact@neoboost.ro."
+                    p: "Conform legii, aveți dreptul de a solicita accesul la datele dumneavoastră, rectificarea acestora, ștergerea („dreptul de a fi uitat”), restricționarea prelucrării sau portabilitatea datelor. Pentru orice solicitare, ne puteți contacta la admin@neo-boost.com."
                 },
                 {
                     h: "6. Securitate",
@@ -53,6 +53,38 @@ export const LegalPage: React.FC = () => {
                 {
                     h: "3. Plata și Pachete",
                     p: "Plata se face în avans pentru pachetele de ședințe. Pachetele au o valabilitate limitată conform descrierii fiecărui abonament (30 de zile pentru pachete lunare)."
+                },
+                {
+                    h: "4. Valabilitatea abonamentului și ședințele neefectuate",
+                    p: "Abonamentele lunare se consumă în intervalul de valabilitate de 30 de zile de la data activării. Ședințele incluse trebuie programate și efectuate în acest interval. Ședințele neefectuate în perioada de valabilitate se pierd și nu se reportează automat în luna următoare. Această regulă există pentru ca planificarea sălii și disponibilitatea sloturilor să rămână predictibile pentru toți clienții."
+                },
+                {
+                    h: "5. Recuperarea ședințelor",
+                    p: "Recuperarea ședințelor este o excepție, nu un drept automat. În interiorul perioadei de valabilitate, ședințele ratate într-o săptămână pot fi recuperate în săptămânile următoare. În situații neprevăzute justificate (problemă de sănătate, plecare din localitate) se poate acorda o perioadă suplimentară de o săptămână pentru recuperare, chiar și după expirare, pe baza unui document justificativ (adeverință medicală, document de călătorie). Excepția poate fi folosită o singură dată la 3 luni, iar aprobarea rămâne la latitudinea administratorului."
+                },
+                {
+                    h: "6. Politica de returnare a banilor",
+                    p: "Abonamentele și pachetele de ședințe NeoBoost sunt servicii care se activează la data achiziției și nu sunt eligibile pentru returnarea sau rambursarea sumelor achitate, integral sau parțial, odată ce serviciul a început să fie prestat. Aceasta include situațiile în care clientul renunță la antrenamente din proprie inițiativă, nu se prezintă la ședințele programate sau nu consumă toate ședințele în perioada de valabilitate. Sumele achitate nu se rambursează, nu se convertesc în bani și nu se compensează cu alte produse decât în condițiile prevăzute mai jos."
+                },
+                {
+                    h: "7. Alternative la returnare",
+                    p: "Pentru situațiile în care clientul nu poate continua antrenamentele, oferim, la cerere și în limita disponibilității, următoarele soluții echivalente în valoare: transferul ședințelor neefectuate către un alt tip de antrenament din oferta noastră, transferul acestora către o altă persoană nominalizată de client, sau prelungirea perioadei de valabilitate a abonamentului. Aceste soluții se acordă ca gest comercial, nu ca obligație contractuală, iar aprobarea rămâne la latitudinea administratorului."
+                },
+                {
+                    h: "8. Întreruperea din motive medicale",
+                    p: "Dacă un medic recomandă întreruperea antrenamentelor de tip EMS, clientul are dreptul, pe baza documentului medical, la înghețarea abonamentului pe durata recomandării sau la transferul ședințelor neefectuate către un alt tip de antrenament potrivit stării sale. Siguranța clientului are prioritate față de continuitatea abonamentului. Nici în acest caz nu se efectuează rambursări în bani, valoarea rămasă fiind păstrată integral la dispoziția clientului sub formă de servicii."
+                },
+                {
+                    h: "9. Dreptul de retragere pentru achizițiile online",
+                    p: "Conform Ordonanței de Urgență nr. 34/2014, consumatorul beneficiază de un termen de 14 zile calendaristice pentru retragerea din contractele încheiate la distanță. Prin achiziționarea online a unui abonament și prin programarea sau efectuarea primei ședințe, clientul solicită în mod expres începerea prestării serviciului înainte de expirarea termenului de retragere și ia la cunoștință faptul că, potrivit art. 16 din aceeași ordonanță, își pierde dreptul de retragere după executarea completă a serviciului. Pentru serviciile parțial prestate în interiorul termenului de 14 zile, clientul datorează contravaloarea proporțională a ceea ce i-a fost furnizat până la momentul retragerii."
+                },
+                {
+                    h: "10. Neprezentarea la ședință",
+                    p: "Ședința la care clientul nu se prezintă și pe care nu a anulat-o cu cel puțin 12 ore înainte este considerată efectuată și se scade din abonament. Sala, echipamentul și antrenorul sunt rezervate nominal pentru intervalul respectiv, motiv pentru care slotul nu poate fi valorificat altfel."
+                },
+                {
+                    h: "11. Reclamații și soluționarea disputelor",
+                    p: "Orice reclamație legată de serviciile noastre poate fi transmisă la admin@neo-boost.com și primește răspuns în termen de maximum 14 zile calendaristice. Ne angajăm să analizăm fiecare situație individual și să căutăm o soluție echitabilă. În cazul în care nu se ajunge la un acord, consumatorul se poate adresa Autorității Naționale pentru Protecția Consumatorilor (ANPC, anpc.ro) sau poate folosi platforma europeană de soluționare online a litigiilor."
                 }
             ]
         },
