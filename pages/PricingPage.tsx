@@ -3,8 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { Session } from '@supabase/supabase-js';
 import { Gift, ArrowRight } from 'lucide-react';
-import { MONTHLY_PACKAGES, QUARTERLY_PACKAGES } from '../constants';
+import { QUARTERLY_PACKAGES } from '../constants';
 import { Section, Heading, PackageGrid, PrimaryCta, WhatsappCta } from '../components/home';
+import { PricingPlans } from '../components/home/PricingPlans';
 import { EligibilityDisclaimer } from '../components/ui/EligibilityDisclaimer';
 import { Footer } from '../components/Footer';
 
@@ -19,7 +20,7 @@ export const PricingPage: React.FC = () => {
                 <title>Prețuri și Abonamente EMS Oradea | NeoBoost</title>
                 <meta
                     name="description"
-                    content="Prețuri transparente pentru antrenamentul EMS în Oradea. Pachete de la 460 RON/lună — plan alimentar, acces la sală și analiză corporală incluse. Prima ședință gratuită."
+                    content="Prețuri transparente pentru antrenamentul EMS în Oradea. Grup mic de maximum 2 persoane sau Exclusive 1 la 1, cu toată sala rezervată pentru tine. Ședințe de 30 de minute, de la 460 RON pe lună. Prima ședință gratuită."
                 />
                 <link rel="canonical" href="https://neo-boost.com/preturi" />
             </Helmet>
@@ -29,7 +30,7 @@ export const PricingPage: React.FC = () => {
                 <Heading
                     eyebrow="Prețuri transparente"
                     title={<>Investește în tine,<br />nu în abonamente uitate</>}
-                    sub="Toate pachetele includ plan alimentar, acces la sală și analiză corporală. Testează gratuit, apoi alege ritmul care ți se potrivește."
+                    sub="Toate pachetele includ plan alimentar, acces la sală și analiză corporală. Ședința durează 30 de minute. Testează gratuit, apoi alege ritmul și formatul care ți se potrivesc."
                 />
 
                 {/* 3+1 cross-sell banner */}
@@ -58,7 +59,15 @@ export const PricingPage: React.FC = () => {
                     </span>
                 </button>
 
-                <PackageGrid packages={MONTHLY_PACKAGES} session={session} unit="ședințe / lună" />
+                {/* Abonamente lunare: comută între grup mic și Exclusive 1 la 1 */}
+                <PricingPlans />
+
+                <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <PrimaryCta onClick={ctx?.onOpenBooking}>Rezervă ședința gratuită</PrimaryCta>
+                    <WhatsappCta text="Salut! Vreau să aflu dacă mi se potrivește Standard sau Exclusive.">
+                        Întreabă un antrenor
+                    </WhatsappCta>
+                </div>
             </Section>
 
             {/* Quarterly / long-term */}
