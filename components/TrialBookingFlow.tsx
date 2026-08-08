@@ -31,10 +31,13 @@ const TRAINING_LABELS: Record<TrainingType, string> = {
 const waFallback = (text: string) =>
     `https://wa.me/${BRAND.phone.replace(/\s/g, '')}?text=${encodeURIComponent(text)}`;
 
-const dayKeyOf = (iso: string) => {
-    const d = new Date(iso);
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-};
+/**
+ * Păstrăm sloturile de tipul pe care îl vindem ca probă. Un slot fără
+ * `session_type` rămâne în listă, ca să nu ascundem intervale valide doar
+ * pentru că nu au fost etichetate în GymOS.
+ */
+const isTrialSlot = (slot: GymosSlot) =>
+    !slot.session_type || TRIAL_SESSION_TYPES.includes(slot.session_type);
 
 export const TrialBookingFlow: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const [step, setStep] = useState<Step>('day');
@@ -60,9 +63,7 @@ export const TrialBookingFlow: React.FC<{ onClose: () => void }> = ({ onClose })
             }
             const { slots: fetched } = await fetchAvailableSlots(21);
             if (!alive) return;
-            const relevant = fetched.filter(
-                (s) => !s.session_type || TRAINING_LABELS ? true : false
-            ).filter((s) => !s.session_type || TRIAL_SESSION_TYPES.includes(s.session_type));
+            const relevant = fetched.filter(isTrialSlot);
             setSlots(relevant);
             setLoadFailed(relevant.length === 0);
             setLoading(false);
@@ -114,22 +115,6 @@ export const TrialBookingFlow: React.FC<{ onClose: () => void }> = ({ onClose })
 
     /* ---------------------------------------------------------------- */
 
-    const Header = (
-        <div className="border-b border-gray-200 px-6 py-5">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-[#3A86FF]">
-                Ședință de probă gratuită
-            </p>
-            <h2 className="mt-1 font-display text-2xl font-black uppercase leading-none text-gray-900">
-                {step === 'done' ? 'Rezervare confirmată' : 'Alege când vii'}
-            </h2>
-            {step !== 'done' && (
-                <p className="mt-2 text-xs text-gray-500">
-                    Orele afișate sunt cele libere în acest moment. 30 de minute, echipamentul e al nostru.
-                </p>
-            )}
-        </div>
-    );
-
     const BackButton = ({ to, label }: { to: Step; label: string }) => (
         <button
             onClick={() => { setStep(to); setError(null); }}
@@ -141,7 +126,19 @@ export const TrialBookingFlow: React.FC<{ onClose: () => void }> = ({ onClose })
 
     return (
         <div className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl shadow-black/10">
-            {Header}
+            <div className="border-b border-gray-200 px-6 py-5">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-[#3A86FF]">
+                    Ședință de probă gratuită
+                </p>
+                <h2 className="mt-1 font-display text-2xl font-black uppercase leading-none text-gray-900">
+                    {step === 'done' ? 'Rezervare confirmată' : 'Alege când vii'}
+                </h2>
+                {step !== 'done' && (
+                    <p className="mt-2 text-xs text-gray-500">
+                        Orele afișate sunt cele libere în acest moment. 30 de minute, echipamentul e al nostru.
+                    </p>
+                )}
+            </div>
 
             <div className="flex-1 overflow-y-auto px-6 py-6">
                 {/* Încărcare */}
@@ -181,8 +178,7 @@ export const TrialBookingFlow: React.FC<{ onClose: () => void }> = ({ onClose })
                         </h3>
                         <div className="grid gap-2 sm:grid-cols-2">
                             {days.map((key) => {
-                                const first = byDay.get(key)![0];
-                                const count = byDay.get(key)!.length;
+                                const bucket = byDay.get(key)!;
                                 return (
                                     <button
                                         key={key}
@@ -190,10 +186,10 @@ export const TrialBookingFlow: React.FC<{ onClose: () => void }> = ({ onClose })
                                         className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-left transition-all hover:border-[#3A86FF] hover:bg-blue-50/50"
                                     >
                                         <span className="text-sm font-bold capitalize text-gray-900">
-                                            {formatSlotDate(first.starts_at)}
+                                            {formatSlotDate(bucket[0].starts_at)}
                                         </span>
                                         <span className="text-xs font-semibold text-[#3A86FF]">
-                                            {count} {count === 1 ? 'interval' : 'intervale'}
+                                            {bucket.length} {bucket.length === 1 ? 'interval' : 'intervale'}
                                         </span>
                                     </button>
                                 );
