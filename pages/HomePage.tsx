@@ -3,11 +3,12 @@ import { useOutletContext } from 'react-router-dom';
 import { Session } from '@supabase/supabase-js';
 
 import { ImmersiveHero } from '../components/sections/ImmersiveHero';
-import { Benefits, Comparison, HowItWorks, Pricing, Locations, Faq, FinalCta, StatsMarquee } from '../components/home';
+import { Benefits, Comparison, HowItWorks, Locations, Faq, FinalCta, StatsMarquee } from '../components/home';
+import { PricingSection } from '../components/home/PricingSection';
 import { Footer } from '../components/Footer';
 
 export const HomePage = () => {
-    const { session, onOpenBooking, onOpenLocation } = useOutletContext<{
+    const { onOpenBooking, onOpenLocation } = useOutletContext<{
         session: Session | null;
         onOpenBooking: () => void;
         onOpenLocation: (loc: any) => void;
@@ -20,7 +21,7 @@ export const HomePage = () => {
             <Benefits />
             <Comparison />
             <HowItWorks />
-            <Pricing session={session} onOpenBooking={onOpenBooking} />
+            <PricingSection onOpenBooking={onOpenBooking} />
             <Locations onOpenLocation={onOpenLocation} />
             <Faq />
             <FinalCta onOpenBooking={onOpenBooking} />
