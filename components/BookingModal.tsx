@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BookingCalendar } from './BookingCalendar';
+import { TrialBookingFlow } from './TrialBookingFlow';
 
 interface BookingModalProps {
     isOpen: boolean;
@@ -21,8 +21,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={onClose}></div>
-            <div className="relative z-10">
-                <BookingCalendar onClose={onClose} />
+            <div className="relative z-10 w-full max-w-2xl">
+                <TrialBookingFlow onClose={onClose} />
             </div>
         </div>
     );
