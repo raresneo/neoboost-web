@@ -3,6 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { HelmetProvider } from 'react-helmet-async';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { installLeadTracking } from './lib/tracking';
+
+// UTM capture + eveniment Lead pe orice click WhatsApp / telefon
+installLeadTracking();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -10,8 +16,6 @@ if (!rootElement) {
 }
 
 const root = ReactDOM.createRoot(rootElement);
-import { HelmetProvider } from 'react-helmet-async';
-import { ErrorBoundary } from './components/ErrorBoundary';
 
 root.render(
   <React.StrictMode>

@@ -12,12 +12,15 @@ interface SEOProps {
   keywords?: string[]; // Added keywords prop
 }
 
+// Imagine de share dedicată, 1200x630 JPG (format optim pentru WhatsApp / Facebook).
+const DEFAULT_OG_IMAGE = '/og-default.jpg';
+
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   canonical,
   keywords = ["Antrenament EMS Oradea", "Sala Fitness Oradea", "Slăbire Oradea", "Electrostimulare Oradea", "Fitness Oradea"], // Refined defaults
-  ogImage: image = '/assets/og-default.jpg', // Updated to project standard
+  ogImage: image = DEFAULT_OG_IMAGE,
   ogType = 'website',
   twitterCard = 'summary_large_image',
   jsonLd,
@@ -45,6 +48,9 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={fullImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="ro_RO" />
 
