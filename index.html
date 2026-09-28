@@ -9,8 +9,9 @@
 
   <!-- PRIMARY SEO META TAGS -->
   <title>NeoBoost Oradea – Antrenament EMS & Transformare corporală</title>
-  <link rel="icon" type="image/png" href="/logo_white.png" />
-  <link rel="apple-touch-icon" href="/logo_white.png" />
+  <!-- Favicon: fișierele .png nu existau în /public, folosim .webp existente -->
+  <link rel="icon" type="image/webp" href="/logo_white.webp" />
+  <link rel="apple-touch-icon" href="/logo_white.webp" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="description"
     content="NeoBoost EMS Oradea: Slăbește și tonifiază-ți corpul în doar 30 de minute. Antrenamente EMS personalizate cu tehnologie wireless în locații premium din Oradea.">
@@ -32,15 +33,18 @@
   <meta name="application-name" content="NeoBoost EMS Oradea">
   <meta name="theme-color" content="#3A86FF">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook / WhatsApp (crawlerele citesc DOAR ce e aici, nu Helmet) -->
   <meta property="og:type" content="business.business">
   <meta property="og:url" content="https://neo-boost.com/">
   <meta property="og:title" content="NeoBoost EMS Oradea – Antrenament EMS pentru Slăbire și Tonifiere">
   <meta property="og:description"
     content="Cel mai avansat studio EMS din Oradea ⚡ Antrenamente de 30 minute = 4 ore sală. Tehnologie wireless, rezultate rapide. Programează ședința GRATUITĂ!">
-  <meta property="og:image" content="https://neo-boost.com/assets/og-default.jpg">
+  <meta property="og:image" content="https://neo-boost.com/ramada_ems_1.webp">
+  <meta property="og:image:alt" content="Antrenament EMS la studioul NeoBoost din Hotel Ramada Oradea">
   <meta property="og:locale" content="ro_RO">
   <meta property="og:site_name" content="NeoBoost EMS Oradea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://neo-boost.com/ramada_ems_1.webp">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -52,7 +56,7 @@
           "@id": "https://neo-boost.com/#organization",
           "name": "NeoBoost EMS",
           "url": "https://neo-boost.com",
-          "logo": "https://neo-boost.com/assets/logo.png",
+          "logo": "https://neo-boost.com/logo_black.webp",
           "sameAs": [
             "https://www.instagram.com/neoboost.ems",
             "https://www.facebook.com/neoboost.ems",
@@ -64,7 +68,7 @@
           "@id": "https://neo-boost.com/#localbusiness",
           "name": "NeoBoost EMS Oradea",
           "description": "Cel mai avansat studio de electrostimulare musculară din Oradea. Antrenamente personalizate de 30 minute. Slăbire, tonifiere și recuperare.",
-          "image": "https://neo-boost.com/assets/og-default.jpg",
+          "image": "https://neo-boost.com/ramada_ems_1.webp",
           "url": "https://neo-boost.com",
           "telephone": "+40769124019",
           "address": {
@@ -121,7 +125,7 @@
           "inLanguage": "ro-RO",
           "primaryImageOfPage": {
             "@type": "ImageObject",
-            "url": "https://neo-boost.com/assets/og-default.jpg"
+            "url": "https://neo-boost.com/ramada_ems_1.webp"
           },
           "breadcrumb": {
             "@type": "BreadcrumbList",

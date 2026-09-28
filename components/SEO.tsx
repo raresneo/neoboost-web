@@ -12,12 +12,15 @@ interface SEOProps {
   keywords?: string[]; // Added keywords prop
 }
 
+// Imagine de share existentă în /public. Când ai un JPG 1200x630, pune-l în /public/og-default.jpg și schimbă aici.
+const DEFAULT_OG_IMAGE = '/ramada_ems_1.webp';
+
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   canonical,
   keywords = ["Antrenament EMS Oradea", "Sala Fitness Oradea", "Slăbire Oradea", "Electrostimulare Oradea", "Fitness Oradea"], // Refined defaults
-  ogImage: image = '/assets/og-default.jpg', // Updated to project standard
+  ogImage: image = DEFAULT_OG_IMAGE,
   ogType = 'website',
   twitterCard = 'summary_large_image',
   jsonLd,
@@ -45,6 +48,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={fullImage} />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="ro_RO" />
 
