@@ -12,8 +12,8 @@ interface SEOProps {
   keywords?: string[]; // Added keywords prop
 }
 
-// Imagine de share existentă în /public. Când ai un JPG 1200x630, pune-l în /public/og-default.jpg și schimbă aici.
-const DEFAULT_OG_IMAGE = '/ramada_ems_1.webp';
+// Imagine de share dedicată, 1200x630 JPG (format optim pentru WhatsApp / Facebook).
+const DEFAULT_OG_IMAGE = '/og-default.jpg';
 
 export const SEO: React.FC<SEOProps> = ({
   title,
@@ -48,6 +48,8 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={fullImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="ro_RO" />
