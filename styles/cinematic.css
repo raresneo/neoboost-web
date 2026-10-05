@@ -90,6 +90,13 @@ button[aria-label="Dezactivează sunetul ambient"] {
   display: none;
 }
 
+/* Grilă de 4 coloane cu doar 3 carduri (ex. prețuri fără Transform): trece pe 3 coloane egale. */
+@media (min-width: 1024px) {
+  .grid.lg\:grid-cols-4:has(> :last-child:nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Home: secțiunile devin transparente ca lumea 3D să se vadă în spate pe tot scroll-ul. */
 .nb-cinematic-home section.bg-\[var\(--bg-primary\)\] {
   background-color: transparent;

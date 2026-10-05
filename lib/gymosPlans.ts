@@ -14,6 +14,9 @@
  *
  * Blocarea slotului nu e o promisiune de marketing: e impusă în baza de date
  * GymOS prin flagul `is_exclusive` de pe plan.
+ *
+ * 5 oct 2026: Transform (10 ședințe) nu se mai afișează pe site (decizia lui Rareș).
+ * Planul rămâne aici marcat `hideOnSite`, ca oglinda GymOS să fie completă.
  */
 
 export type PlanMode = 'standard' | 'exclusive';
@@ -32,6 +35,8 @@ export interface GymosPlan {
     cadence: string;
     mode: PlanMode;
     isRecommended?: boolean;
+    /** Există în GymOS, dar nu se vinde pe site */
+    hideOnSite?: boolean;
 }
 
 /** Ruta reală de cumpărare din GymOS. Cere cont de client (login). */
@@ -97,6 +102,7 @@ export const GYMOS_PLANS: GymosPlan[] = [
         durationDays: 30,
         cadence: '2 sau 3x pe săptămână',
         mode: 'standard',
+        hideOnSite: true,
     },
     {
         gymosPlanId: '129c8b7c-2e43-4875-9ca0-fd501f7b19db',
@@ -144,6 +150,7 @@ export const GYMOS_PLANS: GymosPlan[] = [
         durationDays: 30,
         cadence: '2 sau 3x pe săptămână',
         mode: 'exclusive',
+        hideOnSite: true,
     },
     {
         gymosPlanId: '67a11c83-a97b-42c0-a7f8-c6aaabe04556',
@@ -158,8 +165,9 @@ export const GYMOS_PLANS: GymosPlan[] = [
     },
 ];
 
+/** Planurile afișate pe site pentru un mod (fără cele marcate hideOnSite). */
 export const plansByMode = (mode: PlanMode) =>
-    GYMOS_PLANS.filter((plan) => plan.mode === mode);
+    GYMOS_PLANS.filter((plan) => plan.mode === mode && !plan.hideOnSite);
 
 /**
  * Preț pe ședință, calculat, niciodată scris de mână.

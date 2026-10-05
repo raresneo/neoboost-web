@@ -137,15 +137,18 @@ export const OFFER_MIN_PRICE = Math.min(...OFFERS_3PLUS1.map((o) => o.price));
 
 /**
  * MONTHLY_PACKAGES din constants.tsx are prețuri vechi (ex. Progress 710 în loc de 750).
- * Lista asta le aliniază la GymOS după numărul de ședințe, fără să rescriem constants.tsx.
+ * Lista asta le aliniază la GymOS după numărul de ședințe, fără să rescriem constants.tsx,
+ * și scoate planurile marcate hideOnSite.
  */
-export const MONTHLY_PACKAGES_SYNCED = MONTHLY_PACKAGES.map((pkg: any) => {
+export const MONTHLY_PACKAGES_SYNCED = MONTHLY_PACKAGES.flatMap((pkg: any) => {
     const sessions = parseInt(String(pkg.sessionCount), 10);
     const plan = GYMOS_PLANS.find((p) => p.mode === 'standard' && p.sessions === sessions);
-    if (!plan) return pkg;
-    return {
+    if (!plan) return [pkg];
+    // planurile scoase de pe site (ex. Transform) dispar și de pe landing-urile SEO
+    if (plan.hideOnSite) return [];
+    return [{
         ...pkg,
         price: `${plan.price} RON`,
         pricePerSession: String(Math.round(plan.price / plan.sessions)),
-    };
+    }];
 });
