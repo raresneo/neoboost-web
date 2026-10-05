@@ -9,7 +9,8 @@ import { ComparisonSection } from '../components/sections/ComparisonSection';
 import { TrialRoadmap } from '../components/sections/TrialRoadmap';
 import { StickyBanner } from '../components/ui/StickyBanner';
 import { PackageCard } from '../components/ui/PackageCard';
-import { MONTHLY_PACKAGES } from '../constants';
+// Prețuri aliniate la GymOS (MONTHLY_PACKAGES din constants avea Progress 710 în loc de 750)
+import { MONTHLY_PACKAGES_SYNCED as MONTHLY_PACKAGES } from '../lib/offer3plus1';
 import { MoveUpRight, MessageCircle } from 'lucide-react';
 
 export const SeoLandingPage: React.FC = () => {
@@ -34,7 +35,7 @@ export const SeoLandingPage: React.FC = () => {
     }
 
     return (
-        <div className="bg-white min-h-screen text-gray-900 selection:bg-blue-100 selection:text-blue-900">
+        <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
             <SEO
                 title={pageConfig.title}
                 description={pageConfig.description}
@@ -64,15 +65,15 @@ export const SeoLandingPage: React.FC = () => {
                 <>
                     <ImmersiveHero />
                     <div className="container mx-auto px-6 py-12 text-center relative z-10">
-                        <div className="inline-block px-4 py-2 border border-blue-600/30 rounded-full bg-blue-50 mb-6">
-                            <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">
+                        <div className="inline-block px-4 py-2 border border-[var(--accent-primary)]/30 rounded-full bg-[var(--bg-secondary)] mb-6">
+                            <span className="font-mono text-[var(--accent-primary)] font-medium uppercase tracking-widest text-xs">
                                 {pageConfig.keyword}
                             </span>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-black impact-font uppercase max-w-4xl mx-auto mb-8 text-gray-900">
-                            Antrenament EMS în <span className="text-blue-600">Oradea</span>
+                        <h1 className="text-4xl md:text-6xl font-bold font-display uppercase max-w-4xl mx-auto mb-8 text-[var(--text-primary)]">
+                            Antrenament EMS în <span className="text-[var(--accent-primary)]">Oradea</span>
                         </h1>
-                        <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-12">
+                        <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-12">
                             Descoperă cum tehnologia NeoBoost îți poate transforma corpul chiar aici, în orașul tău.
                             Studio privat, vestiare individuale și parcare gratuită.
                         </p>
@@ -88,21 +89,21 @@ export const SeoLandingPage: React.FC = () => {
             {pageConfig.intent === 'commercial' && (
                 <>
                     <div className="pt-32 pb-20 container mx-auto px-6 text-center">
-                        <div className="inline-block px-4 py-2 border border-green-500/30 rounded-full bg-green-50 mb-6">
-                            <span className="text-green-600 font-bold uppercase tracking-widest text-xs">
+                        <div className="inline-block px-4 py-2 border border-[var(--success)]/30 rounded-full bg-[var(--bg-secondary)] mb-6">
+                            <span className="font-mono text-[var(--success)] font-medium uppercase tracking-widest text-xs">
                                 Ofertă Limitată
                             </span>
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-black impact-font uppercase text-gray-900 mb-8">
+                        <h1 className="text-5xl md:text-7xl font-bold font-display uppercase text-[var(--text-primary)] mb-8">
                             {pageConfig.title}
                         </h1>
-                        <p className="text-xl text-gray-500 max-w-3xl mx-auto mb-12">
+                        <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-12">
                             {pageConfig.description}
                         </p>
 
                         {/* Quick Pricing Grid for conversion */}
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
-                            {MONTHLY_PACKAGES.slice(0, 3).map((pkg, i) => (
+                            {MONTHLY_PACKAGES.slice(0, 3).map((pkg: any, i: number) => (
                                 <PackageCard
                                     key={i}
                                     pkg={pkg}
@@ -120,35 +121,35 @@ export const SeoLandingPage: React.FC = () => {
             {/* 3. INFORMATIONAL INTENT LAYOUT (Article style, Education) */}
             {pageConfig.intent === 'informational' && (
                 <div className="pt-32 pb-20 container mx-auto px-6 max-w-4xl">
-                    <button onClick={() => navigate('/')} className="text-blue-600 flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
+                    <button onClick={() => navigate('/')} className="text-[var(--accent-primary)] flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
                         <MoveUpRight size={16} className="rotate-[225deg]" />
-                        <span className="font-bold uppercase tracking-widest text-xs">Înapoi la Home</span>
+                        <span className="font-mono font-medium uppercase tracking-widest text-xs">Înapoi la Home</span>
                     </button>
 
-                    <h1 className="text-4xl md:text-6xl font-black impact-font uppercase mb-8 leading-tight text-gray-900">
+                    <h1 className="text-4xl md:text-6xl font-bold font-display uppercase mb-8 leading-tight text-[var(--text-primary)]">
                         {pageConfig.title}
                     </h1>
 
-                    <div className="prose prose-lg prose-gray max-w-none">
-                        <p className="text-xl text-gray-600 leading-relaxed">
+                    <div className="max-w-none space-y-6">
+                        <p className="text-xl text-[var(--text-secondary)] leading-relaxed">
                             {pageConfig.description}
                         </p>
-                        <p className="text-gray-600">
+                        <p className="text-[var(--text-secondary)]">
                             Tehnologia EMS (Electrical Muscle Stimulation) este o inovație care permite antrenarea completă a corpului în doar 30 de minute.
                             La NeoBoost Oradea, folosim sistemul Wireless DrySuit, care elimină necesitatea umezirii costumului și oferă o igienă impecabilă.
                         </p>
 
-                        <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6">De ce să alegi NeoBoost?</h3>
-                        <ul className="list-disc pl-6 space-y-4 text-gray-600">
-                            <li><strong>Timp Câștigat:</strong> 30 minute intense în loc de ore pierdute la sală.</li>
-                            <li><strong>Protecție Articulară:</strong> Lucrezi mușchii la maxim, fără să îți uzezi spatele sau genunchii.</li>
-                            <li><strong>Atenție Exclusivă:</strong> Ești singur în studio cu antrenorul tău. Fără aglomerație.</li>
+                        <h3 className="text-2xl font-bold font-display text-[var(--text-primary)] mt-12 mb-6">De ce să alegi NeoBoost?</h3>
+                        <ul className="list-disc pl-6 space-y-4 text-[var(--text-secondary)]">
+                            <li><strong className="text-[var(--text-primary)]">Timp Câștigat:</strong> 30 minute intense în loc de ore pierdute la sală.</li>
+                            <li><strong className="text-[var(--text-primary)]">Protecție Articulară:</strong> Lucrezi mușchii la maxim, fără să îți uzezi spatele sau genunchii.</li>
+                            <li><strong className="text-[var(--text-primary)]">Atenție Exclusivă:</strong> Ești singur în studio cu antrenorul tău. Fără aglomerație.</li>
                         </ul>
 
-                        <div className="my-12 p-8 bg-blue-50 border border-blue-200 rounded-2xl text-center">
-                            <h4 className="text-2xl font-black uppercase mb-4 text-gray-900">Pregătit să încerci?</h4>
-                            <p className="mb-6 text-gray-600">Te invităm la o sesiune de probă gratuită în Oradea.</p>
-                            <a href="https://wa.me/40769124019" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-bold uppercase hover:scale-105 transition-transform shadow-md">
+                        <div className="my-12 p-8 bg-[var(--bg-secondary)] border border-[var(--accent-primary)]/30 rounded-[var(--radius-xl)] text-center">
+                            <h4 className="text-2xl font-bold font-display uppercase mb-4 text-[var(--text-primary)]">Pregătit să încerci?</h4>
+                            <p className="mb-6 text-[var(--text-secondary)]">Te invităm la o sesiune de probă gratuită în Oradea.</p>
+                            <a href="https://wa.me/40769124019" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[var(--accent-primary)] text-white px-6 py-3 rounded-full font-bold uppercase hover:bg-[var(--accent-secondary)] transition-colors shadow-[0_0_30px_rgba(58,134,255,0.35)]">
                                 <MessageCircle size={20} />
                                 Programare Rapidă
                             </a>

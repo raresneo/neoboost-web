@@ -3,9 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { Session } from '@supabase/supabase-js';
 import { Gift, ArrowRight } from 'lucide-react';
-import { QUARTERLY_PACKAGES } from '../constants';
-import { Section, Heading, PackageGrid, PrimaryCta, WhatsappCta } from '../components/home';
+import { Section, Heading, PrimaryCta, WhatsappCta } from '../components/home';
 import { PricingPlans } from '../components/home/PricingPlans';
+import { Offer3Plus1Grid } from '../components/home/Offer3Plus1Grid';
+import { OFFER_MIN_PRICE } from '../lib/offer3plus1';
 import { EligibilityDisclaimer } from '../components/ui/EligibilityDisclaimer';
 import { Footer } from '../components/Footer';
 
@@ -43,14 +44,14 @@ export const PricingPage: React.FC = () => {
                             <Gift size={26} />
                         </span>
                         <div>
-                            <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--accent-primary)]">
+                            <p className="mb-1 font-mono text-[12px] font-medium uppercase tracking-[0.2em] text-[var(--accent-primary)]">
                                 Ofertă exclusivă online
                             </p>
-                            <h3 className="font-display text-2xl font-black uppercase italic text-[var(--text-primary)] md:text-3xl">
+                            <h3 className="font-display text-2xl font-bold uppercase text-[var(--text-primary)] md:text-3xl">
                                 Transformare <span className="text-[var(--accent-primary)]">3 + 1 gratuit</span>
                             </h3>
                             <p className="mt-1 text-sm text-[var(--text-secondary)]">
-                                Plătești 3 luni, a 4-a e cadou. Cea mai eficientă metodă pentru o schimbare reală.
+                                Plătești 3 luni la tariful lunar, a 4-a e cadou. De la {OFFER_MIN_PRICE} RON.
                             </p>
                         </div>
                     </div>
@@ -70,14 +71,14 @@ export const PricingPage: React.FC = () => {
                 </div>
             </Section>
 
-            {/* Quarterly / long-term */}
+            {/* Quarterly / long-term: 3 luni la tarif standard + luna 4 cadou */}
             <Section tint>
                 <Heading
                     eyebrow="Pe termen lung"
                     title={<>Pachete trimestriale 3+1</>}
-                    sub="Pentru rezultate sustenabile: 3 luni plătite, una cadou, cu sesiuni bonus și freeze de abonament."
+                    sub="Plătești 3 luni la tariful lunar standard, iar a 4-a lună e cadou, cu toate ședințele ei."
                 />
-                <PackageGrid packages={QUARTERLY_PACKAGES} session={session} unit="ședințe" />
+                <Offer3Plus1Grid userId={session?.user?.id ?? null} />
                 <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                     <PrimaryCta onClick={ctx?.onOpenBooking}>Rezervă ședința gratuită</PrimaryCta>
                     <WhatsappCta text="Salut! Vreau să aflu care pachet mi se potrivește.">

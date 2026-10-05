@@ -3,6 +3,9 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
+// Sistemul vizual cinematic (tema + fonturi), aplicat pe tot site-ul
+import './styles/cinematic.css';
+import './lib/loadFonts';
 // Lazy Load Pages
 const TeamPage = lazy(() => import('./pages/TeamPage').then(module => ({ default: module.TeamPage })));
 const ProfilePage = lazy(() => import('./pages/ProfilePage').then(module => ({ default: module.ProfilePage })));
