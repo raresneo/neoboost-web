@@ -1,11 +1,11 @@
 /**
  * Hero cinematic de 15 secunde: tipografie kinetică, forme care se transformă,
- * lume 3D în spate și o consolă de timeline modelată după tableta aparatului EMS.
- * Totul e calculat din același ceas, deci secvența se poate derula (scrub) oricând.
+ * lume 3D în spate. Rulează singură în buclă, ca design viu al paginii, nu ca video:
+ * fără player, fără timecode. Totul e calculat din același ceas.
  */
 import React, { useEffect, useState } from 'react';
 import {
-    clock, startClock, DURATION, SCENES, seg, clamp, lerp,
+    clock, startClock, seg, clamp, lerp,
     easeOutExpo, easeInOut, easeInCubic, easeOutBack,
 } from './timeline';
 import { morph, toPoints, toClip, type ShapeName } from './shapes';
@@ -246,89 +246,19 @@ const Cuts: React.FC<{ t: number }> = ({ t }) => {
     );
 };
 
-const Console: React.FC = () => {
-    const c = useClock();
-    const t = c.t;
-    const pulse = Math.sin(t * Math.PI * 1.6) > 0;
-    const fmt = (x: number) => `00:${String(Math.floor(x)).padStart(2, '0')}`;
+/** Indicator discret de scroll: fără player, fără timecode. Secvența rulează singură, ca fundal viu. */
+const ScrollCue: React.FC = () => {
+    const { scroll } = useClock();
     return (
-        <div className="pointer-events-auto absolute inset-x-0 bottom-0 z-20 px-4 pb-[96px] md:px-8 xl:pb-7">
-            <div className="mx-auto flex max-w-[1240px] items-center gap-4 rounded-2xl border border-white/10 bg-[#0B0F1C]/70 px-4 py-3 backdrop-blur-xl md:gap-6 md:px-5">
-                <button
-                    type="button"
-                    onClick={() => { clock.playing = !clock.playing; clock.emit(); }}
-                    aria-label={c.playing ? 'Pauză secvență' : 'Pornește secvența'}
-                    className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--text-primary)] text-[#06070B] transition-transform hover:scale-105"
-                >
-                    {c.playing ? (
-                        <svg width="14" height="14" viewBox="0 0 14 14"><rect x="2" y="1" width="3.5" height="12" rx="1" fill="currentColor" /><rect x="8.5" y="1" width="3.5" height="12" rx="1" fill="currentColor" /></svg>
-                    ) : (
-                        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5v11l9.5-5.5z" fill="currentColor" /></svg>
-                    )}
-                </button>
-                <div className="nb-mono w-[118px] shrink-0 text-[14px] tabular-nums text-[var(--text-primary)]">
-                    {fmt(t)} <span className="text-[var(--text-secondary)]">/ 00:15</span>
-                </div>
-                <div className="relative min-w-0 flex-1">
-                    <div
-                        className="relative h-9 cursor-pointer touch-none"
-                        role="slider"
-                        aria-label="Poziție în secvență"
-                        aria-valuemin={0}
-                        aria-valuemax={15}
-                        aria-valuenow={Math.floor(t)}
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                            if (e.key === 'ArrowRight') clock.seek(t + 1);
-                            if (e.key === 'ArrowLeft') clock.seek(t - 1);
-                        }}
-                        onPointerDown={(e) => {
-                            const r = e.currentTarget.getBoundingClientRect();
-                            const go = (x: number) => clock.seek(clamp((x - r.left) / r.width) * (DURATION - 0.01));
-                            go(e.clientX);
-                            const mv = (ev: PointerEvent) => go(ev.clientX);
-                            const up = () => {
-                                window.removeEventListener('pointermove', mv);
-                                window.removeEventListener('pointerup', up);
-                            };
-                            window.addEventListener('pointermove', mv);
-                            window.addEventListener('pointerup', up);
-                        }}
-                    >
-                        <div className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-white/10" />
-                        <div className="absolute left-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[var(--accent-primary)] shadow-[0_0_12px_#3A86FF]" style={{ width: `${(t / DURATION) * 100}%` }} />
-                        {SCENES.map((s) => (
-                            <div key={s.at} className="absolute top-1/2 h-3 w-px -translate-y-1/2 bg-white/30" style={{ left: `${(s.at / DURATION) * 100}%` }} />
-                        ))}
-                    </div>
-                    <div className="relative hidden h-5 md:block">
-                        {SCENES.map((s, i) => {
-                            const on = t >= s.at && (i === SCENES.length - 1 || t < SCENES[i + 1].at);
-                            return (
-                                <button
-                                    key={s.at}
-                                    type="button"
-                                    onClick={() => clock.seek(s.at + 0.01)}
-                                    className={`nb-mono absolute top-0 text-[14px] uppercase tracking-[0.12em] transition-colors ${on ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
-                                    style={{ left: `${(s.at / DURATION) * 100}%` }}
-                                >
-                                    {s.label}
-                                </button>
-                            );
-                        })}
-                    </div>
-                </div>
-                <div className="hidden items-end gap-[3px] lg:flex" aria-hidden="true">
-                    {Array.from({ length: 10 }, (_, i) => {
-                        const h = 6 + (0.5 + 0.5 * Math.sin(t * 3 + i * 0.7)) * 14 + (pulse ? 6 : 0);
-                        return <span key={i} className="w-[4px] rounded-sm bg-[var(--accent-primary)]" style={{ height: h, opacity: pulse ? 1 : 0.6 }} />;
-                    })}
-                </div>
-                <div className="nb-mono hidden items-center gap-2 text-[14px] uppercase tracking-[0.12em] text-[var(--text-secondary)] sm:flex">
-                    <span className="h-2 w-2 rounded-full bg-[var(--success)]" style={{ boxShadow: pulse ? '0 0 10px #39F5A0' : 'none', opacity: pulse ? 1 : 0.45 }} />
-                    85 Hz
-                </div>
-            </div>
+        <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-[104px] z-20 flex flex-col items-center gap-3 xl:bottom-10"
+            style={{ opacity: 1 - clamp(scroll / 200) }}
+        >
+            <span className="nb-mono text-[12px] uppercase tracking-[0.3em] text-[var(--text-secondary)]">Scroll</span>
+            <span className="relative h-12 w-px overflow-hidden bg-white/15">
+                <span className="nb-scroll-dot absolute left-0 top-0 h-4 w-px bg-[var(--accent-primary)] shadow-[0_0_8px_#3A86FF]" />
+            </span>
         </div>
     );
 };
@@ -364,7 +294,7 @@ export const CinematicHero: React.FC<{ onOpenBooking?: () => void; photo?: strin
                     30 de minute. 90% din mușchi lucrează simultan. O ședință NeoBoost echivalează cu 4 ore de sală clasică. Wireless, 1 la 1, în Oradea.
                 </p>
                 <Overlay onCta={onCta} photo={photo} />
-                <Console />
+                <ScrollCue />
             </section>
         </>
     );

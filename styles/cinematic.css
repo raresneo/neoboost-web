@@ -115,3 +115,18 @@ footer {
     transform: none;
   }
 }
+
+/* Indicatorul de scroll din hero */
+@keyframes nbScrollDot {
+  0% { transform: translateY(-16px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(48px); opacity: 0; }
+}
+
+.nb-scroll-dot {
+  animation: nbScrollDot 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nb-scroll-dot { animation: none; }
+}
