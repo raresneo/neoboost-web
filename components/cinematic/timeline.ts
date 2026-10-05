@@ -31,6 +31,9 @@ export const clock = {
     playing: true,
     scroll: 0,
     reduced: false,
+    /** paralaxă netezită, -1..1, din mouse (desktop) sau balans lent (touch) */
+    px: 0,
+    py: 0,
     listeners: new Set<Listener>(),
     seek(t: number) {
         this.t = ((t % DURATION) + DURATION) % DURATION;
@@ -43,6 +46,7 @@ export const clock = {
 
 let raf = 0;
 let users = 0;
+let onPointer: ((e: PointerEvent) => void) | null = null;
 
 /** Pornește bucla master. Se oprește singură când nu mai e nimeni montat. */
 export function startClock() {
@@ -54,12 +58,27 @@ export function startClock() {
         clock.playing = false;
         clock.t = 13.8;
     }
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    let tx = 0;
+    let ty = 0;
+    onPointer = (e: PointerEvent) => {
+        tx = (e.clientX / window.innerWidth) * 2 - 1;
+        ty = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    if (!coarse && !reduced) window.addEventListener('pointermove', onPointer, { passive: true });
     let last = performance.now();
     const loop = (now: number) => {
         const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
         last = now;
         if (clock.playing && !document.hidden) clock.t = (clock.t + dt) % DURATION;
         clock.scroll = window.scrollY || document.documentElement.scrollTop || 0;
+        if (coarse && !reduced) {
+            // pe telefon: balans lent, ca scena să respire și fără mouse
+            tx = Math.sin(now / 2300) * 0.5;
+            ty = Math.cos(now / 3100) * 0.3;
+        }
+        clock.px += (tx - clock.px) * Math.min(1, dt * 3);
+        clock.py += (ty - clock.py) * Math.min(1, dt * 3);
         clock.emit();
         raf = requestAnimationFrame(loop);
     };
@@ -67,7 +86,11 @@ export function startClock() {
     return stopClock;
 }
 
+
 function stopClock() {
     users = Math.max(0, users - 1);
-    if (users === 0) cancelAnimationFrame(raf);
+    if (users === 0) {
+        cancelAnimationFrame(raf);
+        if (onPointer) window.removeEventListener('pointermove', onPointer);
+    }
 }

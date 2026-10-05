@@ -102,10 +102,20 @@ button[aria-label="Dezactivează sunetul ambient"] {
   background-color: transparent;
 }
 
+/* Fără backdrop-filter: blur peste un canvas WebGL animat se recalcula la fiecare cadru și bloca scroll-ul. */
 .nb-cinematic-home section.bg-\[var\(--bg-secondary\)\] {
-  background-color: rgba(11, 15, 28, 0.78);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background-color: rgba(11, 15, 28, 0.86);
+}
+
+/* Efecte vechi din Layout care rulau peste lumea 3D și dublau munca GPU-ului:
+ * grain animat cu SVG + blend (pe tot site-ul), particule 2D și pete blurate (doar pe home). */
+.animate-noise {
+  display: none !important;
+}
+
+body:has(.nb-cinematic-home) canvas.fixed.inset-0.z-0.pointer-events-none,
+body:has(.nb-cinematic-home) div.fixed.top-0.left-0.w-full.h-full.overflow-hidden.pointer-events-none.z-0 {
+  display: none;
 }
 
 /* Secțiunile intră ca și cum camera s-ar înclina spre ele (doar unde browserul suportă scroll timeline). */

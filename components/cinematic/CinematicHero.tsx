@@ -37,21 +37,19 @@ const Letters: React.FC<{
             {chars.map((ch, i) => {
                 const p = seg(t, start + i * stagger, start + i * stagger + dur);
                 const q = out === 'none' ? 0 : seg(t, end + i * stagger * 0.4, end + i * stagger * 0.4 + 0.45);
+                // Doar transform + opacity (pe GPU). Fără filter: blur pe fiecare literă bloca mobilul.
                 let tr = '';
                 let op = 1;
-                let blur = 0;
                 const e = easeOutExpo(p);
                 if (inn === 'slam') {
-                    tr += `translateZ(${lerp(600, 0, e)}px) scale(${lerp(1.8, 1, e)})`;
+                    tr += `translateZ(${lerp(700, 0, e)}px) scale(${lerp(1.9, 1, e)})`;
                     op = clamp(p * 3);
-                    blur = lerp(16, 0, e);
                 } else if (inn === 'rise') {
                     tr += `translateY(${lerp(70, 0, e)}%) rotateX(${lerp(-85, 0, e)}deg)`;
                     op = clamp(p * 2.5);
                 } else if (inn === 'spread') {
-                    tr += `translateX(${lerp((i - chars.length / 2) * 38, 0, e)}px)`;
+                    tr += `translateX(${lerp((i - chars.length / 2) * 38, 0, e)}px) rotateY(${lerp(60, 0, e)}deg)`;
                     op = clamp(p * 2);
-                    blur = lerp(10, 0, e);
                 } else {
                     tr += `scale(${lerp(0.2, 1, easeOutBack(p))}) translateY(${lerp(40, 0, e)}%)`;
                     op = clamp(p * 4);
@@ -60,12 +58,10 @@ const Letters: React.FC<{
                     const k = easeInCubic(q);
                     if (out === 'through') {
                         tr += ` translateZ(${k * 900}px)`;
-                        blur += k * 14;
                     } else if (out === 'drop') {
                         tr += ` translateY(${-k * 90}%) rotateX(${k * 70}deg)`;
                     } else if (out === 'slide') {
-                        tr += ` translateX(${-k * 220}px)`;
-                        blur += k * 8;
+                        tr += ` translateX(${-k * 220}px) rotateY(${-k * 40}deg)`;
                     }
                     op *= 1 - q;
                 }
@@ -73,7 +69,7 @@ const Letters: React.FC<{
                     <span
                         key={i}
                         className="inline-block"
-                        style={{ transform: tr, opacity: op, filter: blur > 0.3 ? `blur(${blur.toFixed(1)}px)` : undefined, willChange: 'transform, opacity' }}
+                        style={{ transform: tr, opacity: op }}
                     >
                         {ch}
                     </span>
@@ -95,13 +91,17 @@ const Mono: React.FC<{ text: string; t: number; start: number; end: number; clas
 };
 
 const display = 'nb-display font-bold uppercase leading-[0.86] tracking-[-0.045em]';
+/** Cifrele mari primesc o „extrudare” 3D: straturi albastre în spate, ca un relief. */
+const extrude: React.CSSProperties = {
+    textShadow: '0 1px 0 #9DBDFF, 0 3px 0 #3A86FF, 0 6px 0 #1F55B8, 0 10px 0 #12306B, 0 18px 40px rgba(58,134,255,0.45)',
+};
 const perspective: React.CSSProperties = { perspective: '1100px' };
 
 const SceneOne: React.FC<{ t: number }> = ({ t }) => (
     <div className="absolute inset-0 grid place-items-center" style={perspective}>
         <div className="text-center" style={{ transformStyle: 'preserve-3d' }}>
             <Mono text="Impuls 01 · 85 Hz · 10 canale" t={t} start={0.25} end={2.7} className="mb-6" />
-            <div className={`${display} text-[clamp(160px,30vw,420px)] text-[var(--text-primary)]`}>
+            <div className={`${display} text-[clamp(160px,30vw,420px)] text-[var(--text-primary)]`} style={extrude}>
                 <Letters text="30" t={t} start={0.35} end={2.75} stagger={0.12} dur={0.9} inn="slam" out="through" />
             </div>
             <div className={`${display} -mt-2 text-[clamp(40px,7vw,104px)] tracking-[0.02em] text-[var(--accent-primary)]`}>
@@ -122,9 +122,9 @@ const SceneTwo: React.FC<{ t: number }> = ({ t }) => {
                 <div
                     className={`${display} text-[clamp(140px,24vw,340px)] tabular-nums text-[var(--text-primary)]`}
                     style={{
+                        ...extrude,
                         opacity: pIn * (1 - pOut),
                         transform: `rotateY(${lerp(-40, 0, pIn) + pOut * 60}deg) translateX(${lerp(-120, 0, pIn)}px) scale(${1 + pOut * 0.3})`,
-                        filter: `blur(${(1 - pIn) * 12 + pOut * 10}px)`,
                     }}
                 >
                     {n}<span className="text-[var(--accent-primary)]">%</span>
@@ -145,7 +145,7 @@ const SceneThree: React.FC<{ t: number }> = ({ t }) => {
         <div className="absolute inset-0 grid place-items-center" style={perspective}>
             <div className="text-center">
                 <Mono text="o ședință NeoBoost ≈" t={t} start={6.05} end={8.6} className="mb-5" />
-                <div className={`${display} text-[clamp(110px,19vw,280px)] text-[var(--text-primary)]`}>
+                <div className={`${display} text-[clamp(110px,19vw,280px)] text-[var(--text-primary)]`} style={extrude}>
                     <Letters text="4 ore" t={t} start={6.2} end={8.75} stagger={0.08} dur={0.8} inn="slam" out="through" />
                 </div>
                 <div className={`${display} mt-2 text-[clamp(32px,5vw,72px)] tracking-[0.01em] text-[var(--accent-primary)]`}>
@@ -264,16 +264,22 @@ const ScrollCue: React.FC = () => {
 };
 
 const Overlay: React.FC<{ onCta: () => void; photo: string }> = ({ onCta, photo }) => {
-    const { t, scroll } = useClock();
+    const { t, scroll, px, py } = useClock();
     const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
     const fade = 1 - clamp(scroll / (vh * 0.55));
+    // după ce hero-ul a ieșit din ecran nu mai randăm nimic
+    if (fade <= 0.001) return null;
+    // tipografia se înclină invers față de cameră: stă „în” spațiul 3D, nu lipită pe ecran
+    const tilt = `rotateY(${(px * 7).toFixed(2)}deg) rotateX(${(-py * 5).toFixed(2)}deg) translate3d(${(-px * 14).toFixed(1)}px, ${(-py * 10).toFixed(1)}px, 0)`;
     return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden" style={{ opacity: fade }}>
-            <SceneOne t={t} />
-            <SceneTwo t={t} />
-            <SceneThree t={t} />
-            <SceneFour t={t} photo={photo} />
-            <SceneFive t={t} onCta={onCta} />
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" style={{ opacity: fade, perspective: '1400px' }}>
+            <div className="absolute inset-0" style={{ transform: tilt, transformStyle: 'preserve-3d' }}>
+                <SceneOne t={t} />
+                <SceneTwo t={t} />
+                <SceneThree t={t} />
+                <SceneFour t={t} photo={photo} />
+                <SceneFive t={t} onCta={onCta} />
+            </div>
             <Cuts t={t} />
         </div>
     );
