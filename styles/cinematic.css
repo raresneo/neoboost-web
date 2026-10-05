@@ -84,6 +84,12 @@ footer {
   background-color: #04050A;
 }
 
+/* Sunetul ambient a fost scos: ascundem și butoanele lui din Navbar (desktop + mobil). */
+button[aria-label="Activează sunetul ambient"],
+button[aria-label="Dezactivează sunetul ambient"] {
+  display: none;
+}
+
 /* Home: secțiunile devin transparente ca lumea 3D să se vadă în spate pe tot scroll-ul. */
 .nb-cinematic-home section.bg-\[var\(--bg-primary\)\] {
   background-color: transparent;
