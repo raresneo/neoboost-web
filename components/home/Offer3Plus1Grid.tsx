@@ -72,7 +72,15 @@ const OfferCard: React.FC<{ o: Offer3Plus1; loading: boolean; onBuy: (o: Offer3P
                 </p>
             </div>
 
-            {o.stripePriceId ? (
+            {o.paymentLink ? (
+                <a
+                    href={o.paymentLink}
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[var(--accent-secondary)]"
+                >
+                    <CreditCard size={16} /> Cumpără acum · {fmt(o.price)} {o.currency}
+                </a>
+            ) : o.stripePriceId ? (
                 <button
                     type="button"
                     onClick={() => onBuy(o)}

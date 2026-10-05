@@ -1,0 +1,5 @@
+# Site-ul rulează pe Vercel (neo-boost.com). Netlify e legat încă la repo din istoric:
+# comanda de mai jos anulează orice build Netlify, ca să nu mai consume build-uri și să nu mai apară în PR-uri.
+# Deconectarea completă se face din Netlify: Project configuration > Build & deploy > Link repository > Unlink.
+[build]
+  ignore = "exit 0"

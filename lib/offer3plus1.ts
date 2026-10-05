@@ -10,9 +10,9 @@
  * Prețurile se calculează din lib/gymosPlans.ts, deci dacă se schimbă un tarif lunar
  * în GymOS (și apoi acolo), pachetele 3+1 se actualizează singure.
  *
- * Stripe: price ID-urile vechi (1150 / 1850 / 2400) NU mai corespund. Noile ID-uri se pun
- * în Vercel ca variabile de mediu. Până atunci, butonul de plată trimite pe WhatsApp,
- * ca nimeni să nu fie taxat cu alt preț decât cel afișat.
+ * Stripe: plata merge prin Payment Links create pe 5 oct 2026 (1380 / 2250 / 2700, trimestrial).
+ * Dacă schimbi un preț, creezi link nou în Stripe și îl înlocuiești aici, altfel clientul
+ * vede un preț pe site și plătește altul. Fără link, butonul trimite pe WhatsApp.
  */
 import { GYMOS_PLANS } from './gymosPlans';
 import { MONTHLY_PACKAGES } from '../constants';
@@ -27,6 +27,8 @@ interface OfferDef {
     title: string;
     idealFor: string;
     stripeEnv: string;
+    /** Stripe Payment Link pentru prețul trimestrial exact (tarif lunar x 3) */
+    paymentLink?: string;
     isPremium?: boolean;
     features: string[];
 }
@@ -37,6 +39,7 @@ const DEFS: OfferDef[] = [
         title: 'Health Pro',
         idealFor: 'Sănătate și postură pe termen lung',
         stripeEnv: 'VITE_STRIPE_PRICE_3P1_HEALTH_PRO',
+        paymentLink: 'https://buy.stripe.com/8x26oI3qc1Hp0gI4Hb4Ni0c', // 1380 RON, 4 ședințe/lună
         features: [
             'Consolidare postură',
             'Ameliorarea durerilor cronice',
@@ -50,6 +53,7 @@ const DEFS: OfferDef[] = [
         title: 'Sculpt Pro',
         idealFor: 'Sculptare și definire sustenabilă',
         stripeEnv: 'VITE_STRIPE_PRICE_3P1_SCULPT_PRO',
+        paymentLink: 'https://buy.stripe.com/9B6dRa6Co1Hp2oQ0qV4Ni0b', // 2250 RON, 8 ședințe/lună
         isPremium: true,
         features: [
             'Protocol intensiv de sculptare',
@@ -64,6 +68,7 @@ const DEFS: OfferDef[] = [
         title: 'Master Body',
         idealFor: 'Reconstrucție totală și performanță',
         stripeEnv: 'VITE_STRIPE_PRICE_3P1_MASTER_BODY',
+        paymentLink: 'https://buy.stripe.com/7sY00k1i44TB8NeflP4Ni0a', // 2700 RON, 12 ședințe/lună
         features: [
             'Reconstrucție corporală totală',
             'Performanță atletică maximă',
@@ -95,7 +100,9 @@ export interface Offer3Plus1 {
     effectivePerSession: number;
     currency: string;
     duration: string;
-    /** Stripe price ID nou, din env. Lipsă = plata merge pe WhatsApp. */
+    /** Stripe Payment Link (prioritar). */
+    paymentLink?: string;
+    /** Stripe price ID, din env (alternativă la Payment Link). */
     stripePriceId?: string;
 }
 
@@ -121,6 +128,7 @@ export const OFFERS_3PLUS1: Offer3Plus1[] = DEFS.map((d) => {
         effectivePerSession: Math.round(price / totalSessions),
         currency: plan.currency,
         duration: `${PAID_MONTHS + FREE_MONTHS} LUNI (${PAID_MONTHS} PLĂTITE + ${FREE_MONTHS} CADOU)`,
+        paymentLink: d.paymentLink,
         stripePriceId: env[d.stripeEnv] || undefined,
     };
 });
