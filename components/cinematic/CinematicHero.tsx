@@ -82,10 +82,17 @@ const Letters: React.FC<{
 const Mono: React.FC<{ text: string; t: number; start: number; end: number; className?: string }> = ({ text, t, start, end, className = '' }) => {
     if (t < start || t > end + 0.4) return null;
     const n = Math.floor(text.length * seg(t, start, start + 0.6));
+    // citire de aparat: cip cu LED verde, textul se „tastează”
     return (
-        <div className={`nb-mono text-[14px] uppercase tracking-[0.2em] text-[var(--text-secondary)] ${className}`} style={{ opacity: 1 - seg(t, end, end + 0.4) }}>
-            {text.slice(0, n)}
-            <span className="text-[var(--accent-primary)]" style={{ opacity: n < text.length ? 1 : 0 }}>▌</span>
+        <div
+            className={`nb-mono inline-flex items-center gap-3 rounded-full border border-white/10 bg-[#0B0F1C]/70 px-4 py-2 text-[13px] uppercase tracking-[0.2em] text-[var(--text-secondary)] ${className}`}
+            style={{ opacity: 1 - seg(t, end, end + 0.4) }}
+        >
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#39F5A0] shadow-[0_0_10px_#39F5A0]" />
+            <span>
+                {text.slice(0, n)}
+                <span className="text-[var(--accent-primary)]" style={{ opacity: n < text.length ? 1 : 0 }}>▌</span>
+            </span>
         </div>
     );
 };
@@ -93,14 +100,14 @@ const Mono: React.FC<{ text: string; t: number; start: number; end: number; clas
 const display = 'nb-display font-bold uppercase leading-[0.86] tracking-[-0.045em]';
 /** Cifrele mari primesc o „extrudare” 3D: straturi albastre în spate, ca un relief. */
 const extrude: React.CSSProperties = {
-    textShadow: '0 1px 0 #9DBDFF, 0 3px 0 #3A86FF, 0 6px 0 #1F55B8, 0 10px 0 #12306B, 0 18px 40px rgba(58,134,255,0.45)',
+    textShadow: '0 1px 0 #C9DAFF, 0 2px 0 #8FB4FF, 0 4px 0 #3A86FF, 0 6px 0 #2A6AD6, 0 8px 0 #1C4FA8, 0 10px 0 #12306B, 0 26px 50px rgba(58,134,255,0.38)',
 };
 const perspective: React.CSSProperties = { perspective: '1100px' };
 
 const SceneOne: React.FC<{ t: number }> = ({ t }) => (
     <div className="absolute inset-0 grid place-items-center" style={perspective}>
         <div className="text-center" style={{ transformStyle: 'preserve-3d' }}>
-            <Mono text="Impuls 01 · 85 Hz · 10 canale" t={t} start={0.25} end={2.7} className="mb-6" />
+            <Mono text="Impuls 01 · 85 Hz · 10 canale" t={t} start={0.25} end={2.7} className="mb-4" />
             <div className={`${display} text-[clamp(160px,30vw,420px)] text-[var(--text-primary)]`} style={extrude}>
                 <Letters text="30" t={t} start={0.35} end={2.75} stagger={0.12} dur={0.9} inn="slam" out="through" />
             </div>
@@ -144,7 +151,7 @@ const SceneThree: React.FC<{ t: number }> = ({ t }) => {
     return (
         <div className="absolute inset-0 grid place-items-center" style={perspective}>
             <div className="text-center">
-                <Mono text="o ședință NeoBoost ≈" t={t} start={6.05} end={8.6} className="mb-5" />
+                <Mono text="o ședință NeoBoost ≈" t={t} start={6.05} end={8.6} className="mb-4" />
                 <div className={`${display} text-[clamp(110px,19vw,280px)] text-[var(--text-primary)]`} style={extrude}>
                     <Letters text="4 ore" t={t} start={6.2} end={8.75} stagger={0.08} dur={0.8} inn="slam" out="through" />
                 </div>
@@ -299,6 +306,15 @@ export const CinematicHero: React.FC<{ onOpenBooking?: () => void; photo?: strin
                 <p className="sr-only">
                     30 de minute. 90% din mușchi lucrează simultan. O ședință NeoBoost echivalează cu 4 ore de sală clasică. Wireless, 1 la 1, în Oradea.
                 </p>
+                {/* vignetă + trecere moale spre secțiunile de dedesubt: adâncime și lizibilitate, cost zero */}
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                        background:
+                            'radial-gradient(ellipse 75% 65% at 50% 46%, rgba(6,7,11,0) 45%, rgba(6,7,11,0.7) 100%), linear-gradient(180deg, rgba(6,7,11,0) 78%, #06070B 100%)',
+                    }}
+                />
                 <Overlay onCta={onCta} photo={photo} />
                 <ScrollCue />
             </section>

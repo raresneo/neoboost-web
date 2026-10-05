@@ -277,14 +277,16 @@ function buildWorld(canvas: HTMLCanvasElement, veil: HTMLDivElement | null) {
         const riseBars = easeOutExpo(seg(t, 6.0, 7.4)) * (1 - easeInOut(seg(t, 8.8, 9.6)));
         const intro = easeOutExpo(seg(t, 0.4, 1.6));
         const pulse = 0.5 + 0.5 * Math.sign(Math.sin(t * Math.PI * 1.6));
+        // scena „Wireless. 1 la 1. În Oradea.”: barele coboară, ca textul și poza să respire
+        const sink = Math.sin(Math.PI * seg(t, 8.9, 12.3));
         channels.scale.set(1, Math.max(0.001, heroFade), 1);
         channels.visible = heroFade > 0.01;
         bars.forEach(({ bar, cap }, i) => {
             const wave = 0.5 + 0.5 * Math.sin(t * 3 + i * 0.7);
-            const h = 0.12 + intro * (0.25 + wave * 0.25 + pulse * 0.12) + riseBars * (0.55 + Math.sin(i * 1.3) * 0.25 + 0.2);
+            const h = (0.12 + intro * (0.25 + wave * 0.25 + pulse * 0.12) + riseBars * (0.55 + Math.sin(i * 1.3) * 0.25 + 0.2)) * (1 - sink * 0.75);
             bar.scale.y = h;
             bar.position.y = -0.6 + h / 2;
-            (bar.material as THREE.MeshPhysicalMaterial).emissiveIntensity = 0.3 + pulse * 0.25 + riseBars * 0.35;
+            (bar.material as THREE.MeshPhysicalMaterial).emissiveIntensity = (0.3 + pulse * 0.25 + riseBars * 0.35) * (1 - sink * 0.5);
             cap.position.y = -0.6 + h + 0.035;
             (cap.material as THREE.MeshBasicMaterial).opacity = 0.5 + pulse * 0.5;
         });
