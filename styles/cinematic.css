@@ -1,0 +1,117 @@
+/*
+ * NeoBoost Cinematic: sistemul vizual nou, aplicat pe tot site-ul.
+ * Fișier separat (nu în index.css), importat din App.tsx, ca să nu intre în conflict cu PR #6.
+ * Regulile sunt în afara oricărui @layer, deci bat utilitarele Tailwind fără !important.
+ *
+ * Paletă: Ink #06070B · Current #3A86FF · Ion #E8EEFF · Steel #B4BCD0 · LED #39F5A0 · Panel #0B0F1C
+ * Fonturi: Space Grotesk (titluri și text) + Azeret Mono (cifre, etichete, tot ce e „citire de aparat”)
+ */
+
+html:root:not([data-theme="light"]) {
+  --bg-primary: #06070B;
+  --bg-secondary: #0B0F1C;
+  --bg-tertiary: #131A2C;
+
+  --text-primary: #E8EEFF;
+  --text-secondary: #B4BCD0;
+  --text-muted: #949CB2;
+  --text-disabled: #5A6278;
+
+  --accent-primary: #3A86FF;
+  --accent-secondary: #5A9BFF;
+  --accent-glow: rgba(58, 134, 255, 0.22);
+
+  --success: #39F5A0;
+
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --border-subtle: rgba(232, 238, 255, 0.09);
+  --glass-bg: rgba(11, 15, 28, 0.72);
+  --glass-border: rgba(232, 238, 255, 0.1);
+  --shadow-glow: 0 0 40px rgba(58, 134, 255, 0.25);
+}
+
+body {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.nb-display,
+.font-display,
+.impact-font {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.nb-mono,
+.font-mono {
+  font-family: 'Azeret Mono', 'JetBrains Mono', monospace;
+}
+
+/* Titlurile: bold drept, tracking strâns. Gata cu italicul „sport generic”. */
+.font-display.italic,
+h1.italic,
+h2.italic,
+h3.italic,
+.impact-font {
+  font-style: normal;
+}
+
+.font-display.font-black,
+h1.font-black,
+h2.font-black,
+h3.font-black {
+  font-weight: 700;
+}
+
+h1.font-display,
+h2.font-display {
+  letter-spacing: -0.035em;
+}
+
+/* Etichetele mono sub 12px devin ilizibile: le aducem la 12px. */
+.font-mono.text-\[9px\],
+.font-mono.text-\[10px\],
+.font-mono.text-\[11px\] {
+  font-size: 12px;
+}
+
+::selection {
+  background: #3A86FF;
+  color: #06070B;
+}
+
+footer {
+  background-color: #04050A;
+}
+
+/* Home: secțiunile devin transparente ca lumea 3D să se vadă în spate pe tot scroll-ul. */
+.nb-cinematic-home section.bg-\[var\(--bg-primary\)\] {
+  background-color: transparent;
+}
+
+.nb-cinematic-home section.bg-\[var\(--bg-secondary\)\] {
+  background-color: rgba(11, 15, 28, 0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Secțiunile intră ca și cum camera s-ar înclina spre ele (doar unde browserul suportă scroll timeline). */
+@media (prefers-reduced-motion: no-preference) {
+  .nb-cinematic-home section:not(.nb-hero) > div {
+    animation: nbTilt linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+    transform-origin: 50% 100%;
+  }
+}
+
+@keyframes nbTilt {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(18deg) translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
