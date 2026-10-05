@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Users, User, Clock, MessageCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Check, Users, User, Clock, MessageCircle, ArrowRight, ShieldCheck, CreditCard } from 'lucide-react';
 import {
     GYMOS_PORTAL_SUBSCRIPTION_URL,
     SESSION_MINUTES,
@@ -95,6 +95,7 @@ const ModeSwitch: React.FC<{ mode: PlanMode; onChange: (mode: PlanMode) => void 
 const PlanCard: React.FC<{ plan: GymosPlan; features: string[] }> = ({ plan, features }) => {
     const isExclusive = plan.mode === 'exclusive';
     const perSession = pricePerSession(plan);
+    const waText = `Salut! Vreau abonamentul ${plan.label} (${plan.sessions} ședințe, ${plan.price} ${plan.currency}). Cum începem?`;
 
     return (
         <div
@@ -135,21 +136,42 @@ const PlanCard: React.FC<{ plan: GymosPlan; features: string[] }> = ({ plan, fea
                 ))}
             </ul>
 
-            <a
-                href={waLink(
-                    `Salut! Vreau abonamentul ${plan.label} (${plan.sessions} ședințe, ${plan.price} ${plan.currency}). Cum începem?`
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors duration-150 ${
-                    plan.isRecommended || isExclusive
-                        ? 'bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-secondary)]'
-                        : 'border border-[var(--border-subtle)] text-[var(--text-primary)] hover:border-[var(--accent-primary)]'
-                }`}
-            >
-                <MessageCircle size={16} />
-                Vreau acest pachet
-            </a>
+            {plan.paymentLink ? (
+                <>
+                    {/* Plată directă: Stripe Payment Link cu prețul lunar exact */}
+                    <a
+                        href={plan.paymentLink}
+                        rel="noopener noreferrer"
+                        className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-5 py-3 text-sm font-bold text-white transition-colors duration-150 hover:bg-[var(--accent-secondary)]"
+                    >
+                        <CreditCard size={16} />
+                        Cumpără acum · {plan.price} {plan.currency}
+                    </a>
+                    <a
+                        href={waLink(waText)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-subtle)] px-5 py-2.5 text-xs font-bold text-[var(--text-primary)] transition-colors duration-150 hover:border-[#25D366] hover:text-[#1ebe57]"
+                    >
+                        <MessageCircle size={15} className="text-[#25D366]" />
+                        Întreabă pe WhatsApp
+                    </a>
+                </>
+            ) : (
+                <a
+                    href={waLink(waText)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors duration-150 ${
+                        plan.isRecommended || isExclusive
+                            ? 'bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-secondary)]'
+                            : 'border border-[var(--border-subtle)] text-[var(--text-primary)] hover:border-[var(--accent-primary)]'
+                    }`}
+                >
+                    <MessageCircle size={16} />
+                    Vreau acest pachet
+                </a>
+            )}
 
             <a
                 href={GYMOS_PORTAL_SUBSCRIPTION_URL}

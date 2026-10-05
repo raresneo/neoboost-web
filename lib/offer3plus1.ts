@@ -150,5 +150,6 @@ export const MONTHLY_PACKAGES_SYNCED = MONTHLY_PACKAGES.flatMap((pkg: any) => {
         ...pkg,
         price: `${plan.price} RON`,
         pricePerSession: String(Math.round(plan.price / plan.sessions)),
+        paymentLink: plan.paymentLink,
     }];
 });

@@ -17,6 +17,8 @@
  *
  * 5 oct 2026: Transform (10 ședințe) nu se mai afișează pe site (decizia lui Rareș).
  * Planul rămâne aici marcat `hideOnSite`, ca oglinda GymOS să fie completă.
+ * 5 oct 2026: Starter / Progress / Elite standard au Stripe Payment Links lunare.
+ * Dacă schimbi prețul, faci link nou în Stripe și îl înlocuiești aici.
  */
 
 export type PlanMode = 'standard' | 'exclusive';
@@ -37,6 +39,8 @@ export interface GymosPlan {
     isRecommended?: boolean;
     /** Există în GymOS, dar nu se vinde pe site */
     hideOnSite?: boolean;
+    /** Stripe Payment Link pentru prețul lunar exact. Lipsă = butonul merge pe WhatsApp. */
+    paymentLink?: string;
 }
 
 /** Ruta reală de cumpărare din GymOS. Cere cont de client (login). */
@@ -79,6 +83,7 @@ export const GYMOS_PLANS: GymosPlan[] = [
         durationDays: 30,
         cadence: '1x pe săptămână',
         mode: 'standard',
+        paymentLink: 'https://buy.stripe.com/9B69AU6CogCj3sU0qV4Ni05',
     },
     {
         gymosPlanId: '17e49206-736f-4e76-b575-5af20cce5aa1',
@@ -90,6 +95,7 @@ export const GYMOS_PLANS: GymosPlan[] = [
         durationDays: 30,
         cadence: '2x pe săptămână',
         mode: 'standard',
+        paymentLink: 'https://buy.stripe.com/cNi9AU2m80Dl8Ne6Pj4Ni09',
         isRecommended: true,
     },
     {
@@ -114,6 +120,7 @@ export const GYMOS_PLANS: GymosPlan[] = [
         durationDays: 30,
         cadence: '3x pe săptămână',
         mode: 'standard',
+        paymentLink: 'https://buy.stripe.com/3cIfZi7Gs0Dl3sUehL4Ni08',
     },
 
     // ---------------- Exclusive ----------------
