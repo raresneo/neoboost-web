@@ -120,7 +120,7 @@ export const OfertaTreiPlusUnuPage: React.FC = () => {
                         <div className="mt-7 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-5">
                             <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
                                 <strong className="text-[var(--text-primary)]">Notă:</strong> Antrenamentul EMS nu este recomandat
-                                persoanelor cu stimulator cardiac, femeilor îsărcinate, persoanelor cu epilepsie sau tromboză.
+                                persoanelor cu stimulator cardiac, femeilor însărcinate, persoanelor cu epilepsie sau tromboză.
                                 Discutăm detaliile la prima evaluare.
                             </p>
                         </div>
